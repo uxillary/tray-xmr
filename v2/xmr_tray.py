@@ -5,7 +5,29 @@ from PIL import Image, ImageDraw
 import threading
 import time
 
-wallet_address = "8BMnEhsVFsa9d9xMNbCqVtRXbMKDGkotY9XVBpxFwhr2KTidB3ucgqWMf9ZMNkra6gbyAek1nnfGqFK8UGLpcvx34yqG5eZ"
+import json
+import os
+
+import sys
+
+def load_config():
+    if getattr(sys, 'frozen', False):
+        # Running from EXE
+        base_path = sys._MEIPASS
+    else:
+        # Running from script
+        base_path = os.path.dirname(__file__)
+
+    config_path = os.path.join(base_path, "config.json")
+    with open(config_path, "r") as f:
+        config = json.load(f)
+
+    address = config["address"]
+    pool_key = config["pool"]
+    pool_url = config["pools"][pool_key]["url"].replace("{address}", address)
+    return address, pool_url
+
+wallet_address, miner_api_url = load_config()
 
 def create_icon_image():
     image = Image.new("RGB", (64, 64), "black")
@@ -14,7 +36,7 @@ def create_icon_image():
     return image
 
 def fetch_tooltip():
-    url = f"https://supportxmr.com/api/miner/{wallet_address}/stats"
+    url = miner_api_url
     try:
         response = requests.get(url, timeout=10)
         data = response.json()

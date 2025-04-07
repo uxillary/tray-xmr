@@ -1,0 +1,13 @@
+{
+    "address": "YOUR_MONERO_ADDRESS",
+    "pool": "supportxmr",
+    "pools": {
+      "supportxmr": {
+        "url": "https://supportxmr.com/api/miner/{address}/stats"
+      },
+      "moneroocean": {
+        "url": "https://moneroocean.stream/api/user/stats?address={address}"
+      }
+    }
+  }
+  
