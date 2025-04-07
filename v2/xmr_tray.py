@@ -10,17 +10,39 @@ import os
 
 import sys
 
-def load_config():
-    if getattr(sys, 'frozen', False):
-        # Running from EXE
-        base_path = sys._MEIPASS
-    else:
-        # Running from script
-        base_path = os.path.dirname(__file__)
+import tkinter as tk
+from tkinter import simpledialog
 
-    config_path = os.path.join(base_path, "config.json")
-    with open(config_path, "r") as f:
-        config = json.load(f)
+def load_config():
+    config_path = os.path.join(os.path.dirname(__file__), "config.json")
+
+    if not os.path.exists(config_path):
+        # Prompt the user the first time
+        root = tk.Tk()
+        root.withdraw()
+
+        address = simpledialog.askstring("XMR Wallet", "Enter your Monero wallet address:")
+        pool = simpledialog.askstring("Pool", "Enter mining pool name (supportxmr / moneroocean):", initialvalue="supportxmr")
+
+        config = {
+            "address": address,
+            "pool": pool,
+            "pools": {
+                "supportxmr": {
+                    "url": "https://supportxmr.com/api/miner/{address}/stats"
+                },
+                "moneroocean": {
+                    "url": "https://moneroocean.stream/api/user/stats?address={address}"
+                }
+            }
+        }
+
+        with open(config_path, "w") as f:
+            json.dump(config, f, indent=4)
+
+    else:
+        with open(config_path, "r") as f:
+            config = json.load(f)
 
     address = config["address"]
     pool_key = config["pool"]
