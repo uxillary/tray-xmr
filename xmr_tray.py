@@ -44,7 +44,7 @@ def update_tooltip(icon):
                 notification.notify(
                     title="💸 XMR Ready!",
                     message=f"Your balance is {balance:.6f} XMR\nPayout threshold reached.",
-                    app_name="XMR Tray Checker"
+                    app_name="trayXMR"
                 )
                 last_notified = True
         except:
@@ -56,7 +56,7 @@ def quit_app(icon, item):
     icon.stop()
 
 # Create the icon
-icon = Icon("xmr_checker")
+icon = Icon("trayxmr")
 icon.icon = create_icon_image()
 icon.menu = Menu(MenuItem("Quit", quit_app))
 
