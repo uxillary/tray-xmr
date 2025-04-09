@@ -27,7 +27,7 @@ class MinerApp(ctk.CTk):
         if self.process is None:
             self.status_label.configure(text="Starting miner...")
             self.process = subprocess.Popen(
-                ["C:\xmrig-6.22.2"],  # CHANGE THIS IF YOUR xmrig IS IN A DIFFERENT LOCATION
+                ["C:/xmrig-6.22.2"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE
             )
