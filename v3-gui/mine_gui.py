@@ -1,9 +1,24 @@
+import ctypes
+import sys
 import customtkinter as ctk
 import subprocess
 import tkinter.messagebox as messagebox
 
-ctk.set_appearance_mode("dark")  # "light" or "dark"
-ctk.set_default_color_theme("dark-blue")  # Options: "blue", "green", "dark-blue"
+# --- Auto-Elevation (UAC Prompt) ---
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+if not is_admin():
+    ctypes.windll.shell32.ShellExecuteW(
+        None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    sys.exit()
+
+# --- GUI Setup ---
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("dark-blue")
 
 class MinerApp(ctk.CTk):
     def __init__(self):
@@ -46,7 +61,7 @@ class MinerApp(ctk.CTk):
             try:
                 self.status_label.configure(text="Starting miner...")
                 self.process = subprocess.Popen(
-                    [r"C:\xmrig-6.22.2\xmrig.exe"],
+                    [r"C:\xmrig-6.22.2\xmrig.exe"],  # Update this path to your actual xmrig.exe
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE
                 )
