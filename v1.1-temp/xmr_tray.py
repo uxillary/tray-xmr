@@ -1,28 +1,36 @@
 import requests
-from datetime import datetime
-from pystray import Icon, Menu, MenuItem
-from PIL import Image, ImageDraw
 import threading
 import time
-import platform
 import psutil
+from pystray import Icon, Menu, MenuItem
+from PIL import Image, ImageDraw, ImageFont
 from plyer import notification
 
+# Your Monero wallet address
 wallet_address = "8BMnEhsVFsa9d9xMNbCqVtRXbMKDGkotY9XVBpxFwhr2KTidB3ucgqWMf9ZMNkra6gbyAek1nnfGqFK8UGLpcvx34yqG5eZ"
+
+# Global notification state
 last_notified = False
 
+# Create tray icon image with a larger ₥ symbol
 def create_icon_image():
     image = Image.new("RGB", (64, 64), "black")
     draw = ImageDraw.Draw(image)
-    draw.text((16, 24), "₥", fill="white")
+    try:
+        font = ImageFont.truetype("arial.ttf", 36)
+    except:
+        font = ImageFont.load_default()
+    draw.text((10, 10), "₥", font=font, fill="white")
     return image
 
+# Get CPU usage percentage with a delay to ensure accuracy
 def get_cpu_usage():
     try:
-        return f"{psutil.cpu_percent()}%"
+        return f"{psutil.cpu_percent(interval=1)}%"
     except:
         return "N/A"
 
+# Get tooltip text from SupportXMR API + CPU load
 def fetch_tooltip():
     url = f"https://supportxmr.com/api/miner/{wallet_address}/stats"
     try:
@@ -34,18 +42,17 @@ def fetch_tooltip():
         percent = (xmr / 0.003) * 100
 
         cpu = get_cpu_usage()
-        cpu_str = f" ⏱ {cpu}"
-
-        return f"💰 {xmr:.6f} XMR | 💯 {percent:.1f}%{cpu_str}"
+        return f"💰 {xmr:.6f} XMR | 💯 {percent:.1f}% ⏱ {cpu}"
     except Exception as e:
         return f"❌ Error fetching XMR\n{e}"
 
+# Background thread to update tooltip and notify on threshold
 def update_tooltip(icon):
     global last_notified
     while True:
         tooltip = fetch_tooltip()
         icon.title = tooltip
-        print("Tooltip:", tooltip)  # Debugging — remove if you want silent tray
+        print("Tooltip:", tooltip)  # Optional: remove for silent tray
 
         try:
             balance = float(tooltip.split()[1])
@@ -59,15 +66,19 @@ def update_tooltip(icon):
         except:
             pass
 
-        time.sleep(3600)
+        time.sleep(3600)  # Update every hour
 
+# Quit option
 def quit_app(icon, item):
     icon.stop()
 
+# Tray icon setup
 icon = Icon("trayxmr")
 icon.icon = create_icon_image()
 icon.menu = Menu(MenuItem("Quit", quit_app))
 
+# Start tooltip updater thread
 threading.Thread(target=update_tooltip, args=(icon,), daemon=True).start()
 
+# Run tray icon
 icon.run()
