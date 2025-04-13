@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw
 import threading
 import time
 import platform
+import psutil
 from plyer import notification
 
 wallet_address = "8BMnEhsVFsa9d9xMNbCqVtRXbMKDGkotY9XVBpxFwhr2KTidB3ucgqWMf9ZMNkra6gbyAek1nnfGqFK8UGLpcvx34yqG5eZ"
@@ -16,19 +17,11 @@ def create_icon_image():
     draw.text((16, 24), "₥", fill="white")
     return image
 
-def get_cpu_temp():
+def get_cpu_usage():
     try:
-        response = requests.get("http://localhost:8085/data.json", timeout=3)
-        sensors = response.json()
-        for hw in sensors["Children"]:
-            if hw["Text"].lower().startswith("cpu"):
-                for sensor in hw["Children"]:
-                    for entry in sensor["Children"]:
-                        if "temperature" in entry["Text"].lower():
-                            return float(entry["Value"].replace("°C", "").strip())
-    except Exception as e:
-        print("Temp read error:", e)
-    return "N/A"
+        return f"{psutil.cpu_percent()}%"
+    except:
+        return "N/A"
 
 def fetch_tooltip():
     url = f"https://supportxmr.com/api/miner/{wallet_address}/stats"
@@ -40,10 +33,10 @@ def fetch_tooltip():
         xmr = balance_nano / 1e12
         percent = (xmr / 0.003) * 100
 
-        temp = get_cpu_temp()
-        temp_str = f" 🌡 {temp}°C" if temp != "N/A" else " 🌡 N/A"
+        cpu = get_cpu_usage()
+        cpu_str = f" ⏱ {cpu}"
 
-        return f"💰 {xmr:.6f} XMR | 💯 {percent:.1f}%{temp_str}"
+        return f"💰 {xmr:.6f} XMR | 💯 {percent:.1f}%{cpu_str}"
     except Exception as e:
         return f"❌ Error fetching XMR\n{e}"
 
@@ -52,7 +45,7 @@ def update_tooltip(icon):
     while True:
         tooltip = fetch_tooltip()
         icon.title = tooltip
-        print("Tooltip:", tooltip)  # You can remove this later
+        print("Tooltip:", tooltip)  # Debugging — remove if you want silent tray
 
         try:
             balance = float(tooltip.split()[1])
