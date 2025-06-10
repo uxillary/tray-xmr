@@ -30,7 +30,12 @@ class MinerApp(ctk.CTk):
         self.geometry("500x350")
         self.resizable(False, False)
 
-        self.status_label = ctk.CTkLabel(self, text="Status: Idle", font=ctk.CTkFont(size=16, weight="bold"), text_color="gold")
+        self.status_label = ctk.CTkLabel(
+            self,
+            text="Status: Idle",
+            font=ctk.CTkFont(size=16, weight="bold"),
+            text_color="gold",
+        )
         self.status_label.pack(pady=(20, 5))
 
         self.hashrate_label = ctk.CTkLabel(self, text="Hashrate: 0 H/s", font=ctk.CTkFont(size=14))
@@ -39,10 +44,23 @@ class MinerApp(ctk.CTk):
         self.shares_label = ctk.CTkLabel(self, text="Shares: 0 / 0", font=ctk.CTkFont(size=14))
         self.shares_label.pack(pady=5)
 
-        self.start_btn = ctk.CTkButton(self, text="⛏️  Start Mining", font=ctk.CTkFont(size=14), width=160, command=self.start_miner)
+        self.start_btn = ctk.CTkButton(
+            self,
+            text="⛏️  Start Mining",
+            font=ctk.CTkFont(size=14),
+            width=160,
+            command=self.start_miner,
+        )
         self.start_btn.pack(pady=10)
 
-        self.stop_btn = ctk.CTkButton(self, text="🛑  Stop Mining", font=ctk.CTkFont(size=14), width=160, command=self.stop_miner)
+        self.stop_btn = ctk.CTkButton(
+            self,
+            text="🛑  Stop Mining",
+            font=ctk.CTkFont(size=14),
+            width=160,
+            command=self.stop_miner,
+            state="disabled",
+        )
         self.stop_btn.pack(pady=10)
 
         self.process = None
@@ -60,6 +78,8 @@ class MinerApp(ctk.CTk):
                     universal_newlines=True
                 )
                 self.status_label.configure(text="Status: Mining Started", text_color="green")
+                self.start_btn.configure(state="disabled")
+                self.stop_btn.configure(state="normal")
                 # Pass the process object to the reader thread so it is not
                 # affected if self.process is later reset in stop_miner
                 self.output_thread = threading.Thread(
@@ -81,13 +101,15 @@ class MinerApp(ctk.CTk):
     def read_output(self, process):
         """Read miner output and update the GUI labels."""
         share_match = re.compile(r"accepted\s+\((\d+)/(\d+)\)")
-        hashrate_match = re.compile(r"speed.*?(\d+(?:\.\d+)?)\s+H/s")
+        hashrate_match = re.compile(r"speed.*?(\d+(?:\.\d+)?)\s*[kMGT]?H/s", re.IGNORECASE)
+        ansi_escape = re.compile(r"\x1b\[[0-9;]*[A-Za-z]")
 
         while True:
             if process.poll() is not None:
                 break
 
             line = process.stdout.readline()
+            line = ansi_escape.sub("", line)
             if not line:
                 continue
 
@@ -114,6 +136,9 @@ class MinerApp(ctk.CTk):
                 pass
             self.process = None
             self.status_label.configure(text="Status: Miner stopped.", text_color="gold")
+            self.hashrate_label.configure(text="Hashrate: 0 H/s")
+            self.start_btn.configure(state="normal")
+            self.stop_btn.configure(state="disabled")
 
 if __name__ == "__main__":
     app = MinerApp()
