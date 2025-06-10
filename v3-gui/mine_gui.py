@@ -81,7 +81,7 @@ class MinerApp(ctk.CTk):
     def read_output(self, process):
         """Read miner output and update the GUI labels."""
         share_match = re.compile(r"accepted\s+\((\d+)/(\d+)\)")
-        hashrate_match = re.compile(r"speed.*?(\d+\.\d+)\s+H/s")
+        hashrate_match = re.compile(r"speed.*?(\d+(?:\.\d+)?)\s+H/s")
 
         while True:
             if process.poll() is not None:
