@@ -14,7 +14,7 @@ def fetch_xmr_balance():
         # Preferred method if 'stats' exists
         if "stats" in data:
             balance_nano = data['stats']['balance']
-        # Fallback to 'amtDue' if not
+        # Fallback to 'amtDue' if 'stats' is missing
         elif "amtDue" in data:
             balance_nano = data['amtDue']
             print("⚠️ 'stats' not found, using 'amtDue' as fallback.")
