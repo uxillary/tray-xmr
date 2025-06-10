@@ -60,7 +60,13 @@ class MinerApp(ctk.CTk):
                     universal_newlines=True
                 )
                 self.status_label.configure(text="Status: Mining Started", text_color="green")
-                self.output_thread = threading.Thread(target=self.read_output, daemon=True)
+                # Pass the process object to the reader thread so it is not
+                # affected if self.process is later reset in stop_miner
+                self.output_thread = threading.Thread(
+                    target=self.read_output,
+                    args=(self.process,),
+                    daemon=True
+                )
                 self.output_thread.start()
             except PermissionError:
                 self.status_label.configure(text="Access denied.", text_color="red")
@@ -72,15 +78,16 @@ class MinerApp(ctk.CTk):
                 self.status_label.configure(text="Error launching miner.", text_color="red")
                 messagebox.showerror("Error", f"Unexpected error:\n{str(e)}")
 
-    def read_output(self):
+    def read_output(self, process):
+        """Read miner output and update the GUI labels."""
         share_match = re.compile(r"accepted\s+\((\d+)/(\d+)\)")
         hashrate_match = re.compile(r"speed.*?(\d+\.\d+)\s+H/s")
 
         while True:
-            if self.process.poll() is not None:
+            if process.poll() is not None:
                 break
 
-            line = self.process.stdout.readline()
+            line = process.stdout.readline()
             if not line:
                 continue
 
@@ -99,6 +106,12 @@ class MinerApp(ctk.CTk):
     def stop_miner(self):
         if self.process:
             self.process.terminate()
+            # Wait briefly for the process to exit to avoid race conditions with
+            # the reader thread.
+            try:
+                self.process.wait(timeout=5)
+            except Exception:
+                pass
             self.process = None
             self.status_label.configure(text="Status: Miner stopped.", text_color="gold")
 
