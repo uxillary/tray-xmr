@@ -1,5 +1,7 @@
 import ctypes
 import sys
+import json
+from pathlib import Path
 import customtkinter as ctk
 import subprocess
 import tkinter.messagebox as messagebox
@@ -22,9 +24,26 @@ if not is_admin():
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
+CONFIG_FILE = Path(__file__).resolve().with_name("config.json")
+
+
+def load_config():
+    if CONFIG_FILE.exists():
+        with open(CONFIG_FILE, "r") as f:
+            return json.load(f)
+    return {"xmrig_path": r"C:\\xmrig-6.22.2\\xmrig.exe"}
+
+
+def save_config(cfg):
+    with open(CONFIG_FILE, "w") as f:
+        json.dump(cfg, f, indent=4)
+
 class MinerApp(ctk.CTk):
     def __init__(self):
         super().__init__()
+
+        self.cfg = load_config()
+        self.xmrig_path = self.cfg.get("xmrig_path", r"C:\\xmrig-6.22.2\\xmrig.exe")
 
         self.title("XMR Miner Dashboard")
         self.geometry("500x350")
@@ -43,6 +62,13 @@ class MinerApp(ctk.CTk):
 
         self.shares_label = ctk.CTkLabel(self, text="Shares: 0 / 0", font=ctk.CTkFont(size=14))
         self.shares_label.pack(pady=5)
+
+        self.path_entry = ctk.CTkEntry(self, width=400)
+        self.path_entry.insert(0, self.xmrig_path)
+        self.path_entry.pack(pady=(10, 5))
+
+        self.save_btn = ctk.CTkButton(self, text="Save Path", command=self.save_path)
+        self.save_btn.pack(pady=5)
 
         self.start_btn = ctk.CTkButton(
             self,
@@ -66,12 +92,21 @@ class MinerApp(ctk.CTk):
         self.process = None
         self.output_thread = None
 
+    def save_path(self):
+        self.xmrig_path = self.path_entry.get()
+        self.cfg["xmrig_path"] = self.xmrig_path
+        try:
+            save_config(self.cfg)
+            self.status_label.configure(text="Path saved", text_color="gold")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to save config:\n{e}")
+
     def start_miner(self):
         if self.process is None:
             try:
                 self.status_label.configure(text="Status: Starting...", text_color="yellow")
                 self.process = subprocess.Popen(
-                    [r"C:\xmrig-6.22.2\xmrig.exe"],
+                    [self.xmrig_path],
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     bufsize=1,
