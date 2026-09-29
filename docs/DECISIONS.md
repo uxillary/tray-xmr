@@ -25,6 +25,10 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-017 | 2026-09-29 | Multi-device monitoring should precede remote control. | Remote control requires separate security design. |
 | D-018 | 2026-09-29 | No cryptocurrency token is part of the initial launch architecture. | Future transferable instruments require separate review. |
 | D-019 | 2026-09-29 | Earnings and electricity outputs must be clearly identified as estimates. | Show inputs/assumptions and distinguish measured from estimated values. |
+| D-020 | 2026-09-29 | M00C places Ember at repository root and historical source under `legacy/`. | Generated PyInstaller build outputs/executables and exact duplicate PNG copies are removed; Git history retains tracked removals. |
+| D-021 | 2026-09-29 | Initial main-window close hides Ember to the tray; tray Open restores the existing window and tray Quit exits. | Future behavior when mining is active remains pending. |
+| D-022 | 2026-09-29 | Rust owns the initial high-level shell status. | `shell_status` reports `notConfigured`; no mining engine or frontend-only mining lifecycle is implemented. |
+| D-023 | 2026-09-29 | The M00C lockfile records Tauri API/CLI/crate 2.12.0, React 19.3.0, TypeScript 6.0.3, and Vite 6.4.3. | Vite 6 was selected for compatibility with the available Node 20.13 toolchain. Reassess framework versions during planned upgrades. |
 
 ## Pending decisions
 
@@ -38,7 +42,7 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | P-006 | Which pool and market data providers, schemas, currencies, and outage/rate-limit behavior are supported? | Statistics and estimate implementation. |
 | P-007 | What is the local storage/database choice, retention, migration, export, and deletion policy? | Persistent history implementation. |
 | P-008 | Which system signals support Smart Mining, and what are profile defaults, limits, priorities, and overrides? | Smart Mining implementation. |
-| P-009 | What should close-window, tray exit, application quit, and active-mining shutdown do? | Tray lifecycle implementation. |
+| P-009 | What should tray Quit do while future mining is active, and is any autostart mechanism appropriate? | Mining lifecycle/autostart design. Initial shell behavior is recorded in D-021. |
 | P-010 | What exact features and acceptance criteria define MVP? | M01 planning and release scope. |
 | P-011 | Which signing, installer, updater, and Windows reputation approach is feasible? | Public distribution. |
 

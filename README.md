@@ -1,12 +1,27 @@
 # Ember
 
-Ember is an active reboot of the historical Tray-XMR project. It aims to become a beginner-friendly, transparent desktop application for Monero mining, with approachable controls and a path to more advanced features.
+Ember is an active reboot of Tray-XMR into a beginner-friendly, transparent desktop application for Monero mining. It is **Windows-first** and currently at the application foundation stage; no production release or mining functionality exists.
 
-The initial direction is **Windows-first**, using **Tauri 2, Rust, React, and TypeScript**. No production Ember release exists yet; the project is currently in its foundation and documentation stage.
+The application uses Tauri 2, Rust, React, TypeScript, and Vite. Historical Python prototypes are preserved separately in [`legacy/`](legacy/).
 
-The old Python implementations remain in the repository as historical material for now. They are not the Ember application and are not being mechanically ported.
+## Development
 
-## Project documentation
+Prerequisites: Node.js 20.x or 22+, Rust stable with the MSVC Windows target, Microsoft C++ Build Tools, and the WebView2 runtime. See the [Tauri Windows prerequisites](https://v2.tauri.app/start/prerequisites/#windows) for platform setup.
+
+```powershell
+npm install
+npm run tauri dev
+```
+
+Create a production build with:
+
+```powershell
+npm run tauri build
+```
+
+`npm run build` checks TypeScript and builds the frontend only.
+
+## Documentation
 
 - [Product direction](docs/PRODUCT.md)
 - [Architecture](docs/ARCHITECTURE.md)

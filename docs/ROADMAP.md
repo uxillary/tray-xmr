@@ -5,16 +5,16 @@
 ## M00 — Project foundation
 
 - **M00A — Legacy audit:** complete. Read-only evidence-based review of historical repository.
-- **M00B — Product and architecture documentation:** current. Establish source-of-truth product, architecture, security, roadmap, decision, and legacy documentation.
-- **M00C — Repository reorganisation and application foundation:** next. Resolve treatment of historical/generated artifacts, establish a clean Ember application foundation, and preserve legacy context. Scope and acceptance criteria should be confirmed before execution; no implementation is part of M00B.
+- **M00B — Product and architecture documentation:** complete. Source-of-truth product, architecture, security, roadmap, decision, and legacy documentation established.
+- **M00C — Repository reorganisation and application foundation:** complete. Historical source is separated under `legacy/`, generated packaging output is removed from the active tree, and the root contains a buildable Tauri 2/React/TypeScript shell with a basic tray/window lifecycle. Mining is not implemented.
 
 ## M01 — Desktop shell and design foundation
 
-Establish a Tauri 2, Rust, React, and TypeScript Windows-first shell with a restrained Ember visual foundation and explicit frontend/backend boundaries. No mining behavior until the required trust and process contracts are designed.
+Refine the existing Tauri 2, Rust, React, and TypeScript shell into an approved Ember desktop design foundation with clear frontend/backend boundaries. No mining behavior until the required trust and process contracts are designed.
 
 ## M02 — Windows tray and local monitoring
 
-Establish a user-visible tray/window lifecycle and safe local system-status foundation. Decide opt-in autostart and define which activity, battery, or hardware signals are dependable before relying on them.
+Extend the basic tray/window lifecycle with safe local system monitoring. Decide opt-in autostart and define which activity, battery, or hardware signals are dependable before relying on them.
 
 ## M03 — Mining-engine integration
 

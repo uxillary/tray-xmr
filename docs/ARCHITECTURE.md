@@ -1,6 +1,6 @@
 # Ember High-Level Architecture
 
-**Status:** Conceptual target and pending decisions, recorded 2026-09-29. No application code or final architecture is established by this document.
+**Status:** Conceptual target and implementation facts, recorded 2026-09-29. The M00C foundation establishes the root layout, a minimal Rust-owned shell status, and initial Windows tray/window behavior; it does not establish a mining architecture implementation.
 
 ## Platform and responsibilities
 
@@ -10,7 +10,9 @@ The planned stack is Tauri 2, Rust, React, and TypeScript, initially Windows-fir
 - **Rust/Tauri backend:** operating-system integration, configuration and persistence access, mining-engine lifecycle, telemetry acquisition, policy enforcement at local boundaries, and narrowly scoped commands/events exposed to the frontend.
 - **Tauri boundary:** define explicit command and event contracts. Validate inputs at the backend boundary; do not treat UI validation as a security boundary. Keep permissions and exposed capabilities narrow.
 
-The exact module structure, IPC schema, and Tauri capability configuration remain pending implementation design.
+The initial Tauri capability grants only `core:default`. Reassess permissions as native features are added. Broader IPC schemas, module boundaries, and future capability needs remain pending design.
+
+The initial repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. The first lockfile resolves Tauri API/CLI/crate 2.12.0, React 19.3.0, TypeScript 6.0.3, and Vite 6.4.3. Vite 6 was selected to work with the available Node 20.13 development environment. The only frontend-to-Rust command is `shell_status`, which reports `notConfigured`; Rust remains authoritative and no miner is integrated. Historical code is separated under `legacy/`.
 
 ## Conceptual components
 
@@ -79,7 +81,7 @@ Earnings, fiat value, power, and net-result views must identify estimates and th
 
 ## Tray and application lifecycle
 
-The Windows tray is a first-class interface. Later design must decide whether closing the window hides it, how tray actions map to controller commands, what quitting does to active mining, and how status remains visible. Autostart must be opt-in and reversible. The historical source does not resolve these lifecycle choices.
+The foundation implements a Windows tray with **Open Ember** and **Quit Ember** actions. Open shows, unminimizes, and focuses the existing main window. Closing the window hides it; it does not quit the application. Quit exits the application. The tray uses the temporary Ember mark and shows no mining telemetry. The production content security policy allows only local assets and Tauri IPC; the development policy additionally permits the local Vite server. This is the initial shell decision, not a final policy for future active mining: later work must decide whether quit prompts/stops a miner and how state remains visible. Autostart remains out of scope and must be opt-in if added.
 
 ## Diagnostics and logging
 
@@ -100,7 +102,7 @@ Use bounded, user-controllable diagnostics. Avoid logging wallet addresses, cred
 5. Local database choice, schema ownership, migration, retention, export, and deletion.
 6. Supported pool/market data sources and estimate methodology.
 7. Smart Mining signals, limits, precedence, overrides, and laptop/thermal behavior.
-8. Tray/window/quit lifecycle and opt-in autostart mechanism.
+8. Behavior of Quit while future mining is active and any opt-in autostart mechanism.
 9. Contribution implementation and auditable accounting.
 
 See [Security](SECURITY.md) for trust constraints and [Decisions](DECISIONS.md) for the decision log.
