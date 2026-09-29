@@ -13,10 +13,10 @@
     "windows": [
       {
         "title": "Ember",
-        "width": 1120,
-        "height": 760,
-        "minWidth": 820,
-        "minHeight": 600,
+        "width": 1180,
+        "height": 780,
+        "minWidth": 900,
+        "minHeight": 640,
         "center": true
       }
     ],

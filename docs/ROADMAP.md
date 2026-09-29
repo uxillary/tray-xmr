@@ -10,7 +10,7 @@
 
 ## M01 — Desktop shell and design foundation
 
-Refine the existing Tauri 2, Rust, React, and TypeScript shell into an approved Ember desktop design foundation with clear frontend/backend boundaries. No mining behavior until the required trust and process contracts are designed.
+- **Complete:** Established a consistent desktop visual system and state-aware Ember core, preserved the four primary sections, and made each page clearly reflect the unconfigured product state. Metrics and activity remain empty/unavailable; settings and mining controls are non-interactive. No mining behavior was added.
 
 ## M02 — Windows tray and local monitoring
 
