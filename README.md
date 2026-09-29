@@ -1,6 +1,6 @@
 # Ember
 
-Ember is an active reboot of Tray-XMR into a beginner-friendly, transparent desktop application for Monero mining. It is **Windows-first** and currently establishing its desktop design foundation; no production release or mining functionality exists.
+Ember is an active reboot of Tray-XMR into a beginner-friendly, transparent desktop application for Monero mining. It is **Windows-first** and its desktop shell is being refined; no production release or mining functionality exists.
 
 The application uses Tauri 2, Rust, React, TypeScript, and Vite. Historical Python prototypes are preserved separately in [`legacy/`](legacy/).
 

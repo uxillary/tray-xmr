@@ -11,6 +11,7 @@ import { EmberCore, type EmberCoreState } from "./components/EmberCore";
 import { EmptyState } from "./components/EmptyState";
 import { MetricCard } from "./components/MetricCard";
 import { StatusBadge } from "./components/StatusBadge";
+import { ThisDeviceStatus } from "./components/ThisDeviceStatus";
 import "./App.css";
 
 type Section = "overview" | "mining" | "activity" | "settings";
@@ -46,6 +47,7 @@ function App() {
 
   const current = sections.find((item) => item.id === section)!;
   const status = nativeState ? stateLabels[nativeState] : undefined;
+  const deviceStatus = statusError ? "Status unavailable" : status?.core === "not-configured" ? "Not mining" : status?.label ?? "Checking status";
 
   return (
     <div className="app-shell">
@@ -55,7 +57,6 @@ function App() {
           <span>ember</span>
         </button>
 
-        <div className="nav-label">WORKSPACE</div>
         <nav className="primary-nav" aria-label="Main navigation">
           {sections.map((item) => (
             <button
@@ -73,56 +74,15 @@ function App() {
         </nav>
 
         <div className="sidebar-bottom">
-          <div className="sidebar-state">
-            <span className="state-led" aria-hidden="true" />
-            <div><span className="sidebar-state-title">Local foundation</span><span className="sidebar-state-detail">No miner configured</span></div>
-          </div>
-          <div className="sidebar-version">EMBER <span>·</span> FOUNDATION</div>
+          <ThisDeviceStatus state={deviceStatus} />
         </div>
       </aside>
 
       <main className="workspace">
-        <header className="topbar">
-          <div className="breadcrumbs"><span>Ember</span><span className="breadcrumb-divider">/</span><span className="breadcrumb-current">{current.label}</span></div>
-          <div className="topbar-right"><span className="local-indicator" aria-hidden="true" /><span>On this device</span></div>
-        </header>
-
         <div className="page-content">
-          <header className="page-heading">
-            <div><p className="eyebrow">YOUR WORKSPACE</p><h1>{current.label}</h1></div>
-            <span className="build-label"><span className="build-led" />FOUNDATION BUILD</span>
-          </header>
+          <header className="page-heading"><h1>{current.label}</h1></header>
 
-          {section === "overview" && (
-            <>
-              <section className="overview-hero" aria-labelledby="overview-title">
-                <div className="hero-copy">
-                  <p className="eyebrow">A CALMER WAY TO MINE</p>
-                  <h2 id="overview-title">Put idle power<br />to work.</h2>
-                  <p className="hero-description">Mining, made more understandable. Ember is being built to help you use your computer on your terms—with clear controls and honest information.</p>
-                  <div className="hero-status"><StatusBadge label={status?.label ?? (statusError ? "Status unavailable" : "Checking status")} tone={status?.core ?? "inactive"} /><span className="status-divider" /><span className="status-caption">{statusError ? "The local app service could not be reached" : "Mining setup arrives in a later milestone"}</span></div>
-                </div>
-                <div className="hero-core-wrap"><EmberCore state={status?.core ?? "not-configured"} /><span className="core-caption">EMBER CORE <span>·</span> {status ? status.core === "mining" ? "ACTIVE" : status.core === "ready" ? "READY" : status.core === "paused" ? "PAUSED" : "IDLE" : statusError ? "UNKNOWN" : "CONNECTING"}</span></div>
-                <span className="hero-grain" aria-hidden="true" />
-              </section>
-
-              <section className="metrics-grid" aria-label="Mining overview">
-                <MetricCard icon={<LightningIcon weight="light" />} label="Hashrate" value="—" detail="Available after setup" />
-                <MetricCard icon={<ClockCounterClockwiseIcon weight="light" />} label="Mining time" value="—" detail="No mining sessions yet" />
-                <MetricCard icon={<WalletIcon weight="light" />} label="Estimated earnings" value="—" detail="Unavailable until mining data exists" />
-                <MetricCard icon={<CpuIcon weight="light" />} label="System" value="Unavailable" detail="System awareness comes later" />
-              </section>
-
-              <section className="setup-panel" aria-labelledby="setup-title">
-                <div className="setup-heading"><div><p className="eyebrow">GETTING STARTED</p><h2 id="setup-title">A foundation, not a miner</h2></div><span className="setup-step">01 <span>/</span> 03</span></div>
-                <p className="setup-description">This build establishes Ember’s desktop experience. Mining setup will come later, with a clear explanation of resource use, wallet addresses, and Ember’s contribution before anything can start.</p>
-                <div className="setup-divider" />
-                <div className="setup-foot"><span className="setup-mark"><img src="/ember-mark.svg" alt="" /></span><span>No mining engine configured</span><span className="setup-note">Nothing is running in the background</span></div>
-              </section>
-              <footer className="page-footer"><span>Ember is in active development.</span><span>Local-first by design.</span></footer>
-            </>
-          )}
-
+          {section === "overview" && <OverviewPage status={status} statusError={statusError} />}
           {section === "mining" && <MiningPage />}
           {section === "activity" && <ActivityPage />}
           {section === "settings" && <SettingsPage />}
@@ -132,48 +92,85 @@ function App() {
   );
 }
 
+function OverviewPage({ status, statusError }: { status: { label: string; core: EmberCoreState } | undefined; statusError: boolean }) {
+  return (
+    <>
+      <section className="overview-hero" aria-labelledby="overview-title">
+        <div className="hero-copy">
+          <p className="eyebrow">A CALMER WAY TO MINE</p>
+          <h2 id="overview-title">Put idle power<br />to work.</h2>
+          <p className="hero-description">Clear information and control, so you can put your computer to work on your terms.</p>
+          <div className="hero-status">
+            <StatusBadge label={status?.label ?? (statusError ? "Status unavailable" : "Checking status")} tone={status?.core ?? "inactive"} />
+            {statusError && <span className="status-caption">Ember couldn’t read its current state.</span>}
+          </div>
+        </div>
+        <div className="hero-core-wrap"><EmberCore state={status?.core ?? "not-configured"} /><span className="core-caption">EMBER CORE <span>·</span> {coreLabel(status, statusError)}</span></div>
+        <span className="hero-grain" aria-hidden="true" />
+      </section>
+
+      <section className="metrics-grid" aria-label="Mining overview">
+        <MetricCard icon={<LightningIcon weight="light" />} label="Hashrate" value="—" />
+        <MetricCard icon={<ClockCounterClockwiseIcon weight="light" />} label="Mining time" value="—" />
+        <MetricCard icon={<WalletIcon weight="light" />} label="Estimated earnings" value="—" />
+        <MetricCard icon={<CpuIcon weight="light" />} label="System" value="Unavailable" />
+      </section>
+
+      <section className="setup-panel" aria-labelledby="setup-title">
+        <p className="eyebrow">GETTING STARTED</p>
+        <h2 id="setup-title">Not set up yet</h2>
+        <p className="setup-description">Set up Ember to start putting idle power to work. Your wallet address, mining engine, and resource preferences will be configured before mining can begin.</p>
+      </section>
+    </>
+  );
+}
+
+function coreLabel(status: { label: string; core: EmberCoreState } | undefined, statusError: boolean) {
+  if (statusError) return "UNKNOWN";
+  if (!status) return "CONNECTING";
+  if (status.core === "mining") return "ACTIVE";
+  if (status.core === "ready") return "READY";
+  if (status.core === "paused") return "PAUSED";
+  if (status.core === "warning") return "ATTENTION";
+  if (status.core === "inactive") return "UNKNOWN";
+  return "IDLE";
+}
+
 function MiningPage() {
   return (
     <>
-      <section className="page-intro"><span className="page-icon"><LightningIcon weight="light" /></span><div><h2>Mining, on your terms.</h2><p>Setup and controls will be introduced after Ember’s consent and engine boundaries are ready.</p></div></section>
-      <section className="mining-state-panel"><div className="mining-core-small"><EmberCore state="not-configured" compact /></div><div className="mining-state-copy"><p className="eyebrow">CURRENT STATE</p><h2>Not configured</h2><p>No mining engine or wallet has been set up. This page will guide you through setup in a later milestone.</p></div><StatusBadge label="Unavailable" tone="inactive" /></section>
+      <section className="mining-state-panel" aria-labelledby="mining-state-title">
+        <div className="mining-core-small"><EmberCore state="not-configured" compact /></div>
+        <div className="mining-state-copy"><p className="eyebrow">CURRENT STATE</p><h2 id="mining-state-title">Not mining</h2><p>Configure an engine, public wallet address, and resource profile before mining can begin.</p></div>
+      </section>
       <div className="details-grid">
-        <InfoCard icon={<CpuIcon weight="regular" />} eyebrow="MINING ENGINE" title="Not configured" detail="Engine setup is not available in this build." />
-        <InfoCard icon={<WalletIcon weight="regular" />} eyebrow="WALLET ADDRESS" title="Not configured" detail="No address requested or stored. Ember will only use a public receiving address." />
-        <InfoCard icon={<LightningIcon weight="regular" />} eyebrow="RESOURCE PROFILE" title="Unavailable" detail="Smart Mining profiles will be designed in a later milestone." />
+        <InfoCard icon={<CpuIcon weight="regular" />} eyebrow="MINING ENGINE" title="Not configured" detail="No mining engine configured." />
+        <InfoCard icon={<WalletIcon weight="regular" />} eyebrow="WALLET ADDRESS" title="Not configured" detail="Ember will use a public receiving address only." />
+        <InfoCard icon={<LightningIcon weight="regular" />} eyebrow="RESOURCE PROFILE" title="Not configured" detail="Choose how Ember should use system resources." />
       </div>
-      <footer className="page-footer"><span>Mining controls are not available in this build.</span><span>Nothing is mining.</span></footer>
     </>
   );
 }
 
 function ActivityPage() {
-  return (
-    <>
-      <section className="page-intro"><span className="page-icon"><ClockCounterClockwiseIcon weight="light" /></span><div><h2>Your history, when there is one.</h2><p>Ember will keep local records of meaningful activity once those features exist.</p></div></section>
-      <EmptyState icon={<ClockCounterClockwiseIcon weight="light" />} title="No activity yet" description="Mining history, Smart Mining decisions, milestones, and notifications will appear here once Ember begins operating. There are no historical events in this foundation build." />
-      <footer className="page-footer"><span>Activity stays empty until there’s real activity.</span><span>Local-first by design.</span></footer>
-    </>
-  );
+  return <EmptyState icon={<ClockCounterClockwiseIcon weight="light" />} title="No activity yet" description="Mining sessions and other meaningful events will appear here." />;
 }
 
 function SettingsPage() {
   return (
     <>
-      <section className="page-intro"><span className="page-icon"><GearSixIcon weight="light" /></span><div><h2>Make Ember yours.</h2><p>Preferences will be added when their behavior is implemented and ready to explain.</p></div></section>
-      <section className="settings-section" aria-labelledby="settings-general"><h2 id="settings-general">Application</h2><SettingRow icon={<HouseIcon />} label="Appearance" description="Visual preferences are not available yet." /><SettingRow icon={<BellSimpleIcon />} label="Notifications" description="Notification controls will appear when notifications are implemented." /></section>
-      <section className="settings-section" aria-labelledby="settings-mining"><h2 id="settings-mining">Mining</h2><SettingRow icon={<CpuIcon />} label="Engine and resources" description="No engine or resource controls are configured." /><SettingRow icon={<LightningIcon />} label="Profiles and schedules" description="Smart Mining is planned for a later milestone." /></section>
-      <footer className="page-footer"><span>Only working settings will become interactive.</span><span>Nothing is mining.</span></footer>
+      <section className="settings-section" aria-labelledby="settings-general"><h2 id="settings-general">Application</h2><SettingRow icon={<HouseIcon />} label="Appearance" description="Using Ember’s default appearance." state="Default" /><SettingRow icon={<BellSimpleIcon />} label="Notifications" description="No notifications configured." state="Off" /></section>
+      <section className="settings-section" aria-labelledby="settings-mining"><h2 id="settings-mining">Mining</h2><SettingRow icon={<CpuIcon />} label="Engine and resources" description="No mining engine configured." state="Not set up" /><SettingRow icon={<LightningIcon />} label="Profiles and schedules" description="No resource profile configured." state="Not set up" /></section>
     </>
   );
 }
 
 function InfoCard({ icon, eyebrow, title, detail }: { icon: ReactNode; eyebrow: string; title: string; detail: string }) {
-  return <article className="info-card"><div className="info-card-icon" aria-hidden="true">{icon}</div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="info-detail">{detail}</p><span className="unavailable-label">NOT AVAILABLE</span></article>;
+  return <article className="info-card"><div className="info-card-icon" aria-hidden="true">{icon}</div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="info-detail">{detail}</p></article>;
 }
 
-function SettingRow({ icon, label, description }: { icon: ReactNode; label: string; description: string }) {
-  return <div className="setting-row"><span className="setting-icon" aria-hidden="true">{icon}</span><span className="setting-copy"><strong>{label}</strong><span>{description}</span></span><span className="setting-status">Coming later</span></div>;
+function SettingRow({ icon, label, description, state }: { icon: ReactNode; label: string; description: string; state: string }) {
+  return <div className="setting-row"><span className="setting-icon" aria-hidden="true">{icon}</span><span className="setting-copy"><strong>{label}</strong><span>{description}</span></span><span className="setting-status">{state}</span></div>;
 }
 
 export default App;

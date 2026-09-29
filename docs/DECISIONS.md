@@ -31,6 +31,7 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-023 | 2026-09-29 | The M00C lockfile records Tauri API/CLI/crate 2.12.0, React 19.3.0, TypeScript 6.0.3, and Vite 6.4.3. | Vite 6 was selected for compatibility with the available Node 20.13 toolchain. Reassess framework versions during planned upgrades. |
 | D-024 | 2026-09-29 | The initial Ember desktop uses a graphite interface with warm Ember accents, semantic state labels, and a state-aware core visual. | Unavailable values remain visibly unavailable. The core visual reflects only shell status; it does not imply mining activity. |
 | D-025 | 2026-09-29 | Use Phosphor icons for the desktop navigation and supporting interface icons. | Import only used icon modules; the library is an icon set, not a product feature dependency. |
+| D-026 | 2026-09-29 | Retain the M01 visual direction after native review. | M01.1 keeps the graphite palette, warm accent, sidebar, Phosphor icons, Ember core, and surface treatment while simplifying page chrome and product language. |
 
 ## Pending decisions
 
