@@ -39,6 +39,8 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-031 | 2026-09-29 | M03B implements a test-only internal MiningEngine boundary and deterministic config validation. | No start command/UI or real XMRig launch is exposed; artifact verification and concrete HTTP transport are absent. |
 | D-032 | 2026-09-29 | M03B process supervision uses direct child ownership, bounded/redacted diagnostics and a kill-on-close Windows Job Object. | M03B.1 creates the child suspended, assigns it, then resumes. Assignment failure is fatal; no unsafe fallback is allowed. |
 | D-033 | 2026-09-29 | Windows process ownership is established before child execution using `CREATE_SUSPENDED`, Job Object assignment, then `ResumeThread`. | Handle ownership is RAII-based, descendants inherit job membership, and tray/Tauri exit paths gate new starts and clean up before exit. Packaged Tauri host verification remains required; nested-job incompatibility fails closed. |
+| D-034 | 2026-09-29 | M03B.2 attributes the `0xC0000409` startup report to launching from the Codex restricted sandbox identity. | Debug identified WebView2 `0x800700AA` before Ember setup; release panic-abort surfaced `0xC0000409`. The clean release executable remained running with a main window under the logged-in Windows user. No application startup workaround was justified. |
+| D-035 | 2026-09-29 | Close the Windows kill-on-close Job Object after the direct child exits and before joining output readers. | A graceful parent can leave a descendant alive with inherited pipe handles; closing the job first terminates that descendant and prevents reader joins from waiting indefinitely. Covered by a Windows regression test. |
 
 ## Pending decisions
 

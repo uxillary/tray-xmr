@@ -113,6 +113,8 @@ impl SupervisedChild {
     pub fn try_wait(&mut self) -> io::Result<Option<ExitStatus>> {
         let status = self.child.try_wait()?;
         if status.is_some() {
+            #[cfg(windows)]
+            drop(self.job.take()); // Close descendants before waiting for pipe EOF.
             self.join_readers();
         }
         Ok(status)
@@ -129,11 +131,10 @@ impl SupervisedChild {
         let _ = request_graceful(self);
         let deadline = Instant::now() + timeout;
         loop {
-            if let Some(status) = self.child.try_wait().map_err(|_| EngineError {
+            if let Some(status) = self.try_wait().map_err(|_| EngineError {
                 kind: EngineErrorKind::StopFailed,
                 message: "Could not check the engine process state".into(),
             })? {
-                self.join_readers();
                 return Ok(status);
             }
             if Instant::now() >= deadline {
@@ -183,6 +184,8 @@ impl Drop for SupervisedChild {
             #[cfg(not(windows))]
             let _ = self.child.kill();
         }
+        #[cfg(windows)]
+        drop(self.job.take()); // Also reap descendants after an already-exited parent.
         let _ = self.child.wait();
         self.join_readers();
     }
@@ -800,6 +803,70 @@ mod tests {
         assert!(windows_process_is_running(descendant_pid));
         drop(child.job.take()); // Equivalent to abrupt owner loss: kill-on-close is kernel enforced.
         let _ = child.child.wait();
+        assert!(!windows_process_is_running(parent_pid));
+        let deadline = std::time::Instant::now() + Duration::from_secs(3);
+        while windows_process_is_running(descendant_pid) && std::time::Instant::now() < deadline {
+            std::thread::sleep(Duration::from_millis(10));
+        }
+        assert!(!windows_process_is_running(descendant_pid));
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn graceful_parent_exit_closes_job_and_reaps_descendant() {
+        let executable = std::env::current_exe().unwrap();
+        let mut child = SupervisedChild::spawn(
+            &executable,
+            &[
+                "--exact".into(),
+                "mining::process::tests::fixture_parent_with_descendant_entrypoint".into(),
+                "--nocapture".into(),
+                "--ignored".into(),
+            ],
+            &std::env::current_dir().unwrap(),
+            RedactionSecrets::new([]),
+        )
+        .unwrap();
+        let parent_pid = child.id();
+        let deadline = std::time::Instant::now() + Duration::from_secs(3);
+        let descendant_pid = loop {
+            if let Some((pid, parent_owned, descendant_owned)) =
+                child.diagnostics().iter().find_map(|line| {
+                    let mut fields = line.message.split(';');
+                    let pid = fields
+                        .next()?
+                        .strip_prefix("DESCENDANT_PID=")?
+                        .parse::<u32>()
+                        .ok()?;
+                    Some((
+                        pid,
+                        fields.next()? == "PARENT_IN_JOB=1",
+                        fields.next()? == "DESCENDANT_IN_JOB=1",
+                    ))
+                })
+            {
+                assert!(parent_owned && descendant_owned);
+                break pid;
+            }
+            assert!(
+                std::time::Instant::now() < deadline,
+                "fixture did not report descendant PID"
+            );
+            std::thread::sleep(Duration::from_millis(10));
+        };
+        assert!(windows_process_is_running(parent_pid));
+        assert!(windows_process_is_running(descendant_pid));
+
+        let status = child
+            .stop_with(
+                |child| {
+                    child.close_stdin();
+                    Ok(())
+                },
+                Duration::from_secs(2),
+            )
+            .expect("graceful parent exit should close its Job Object");
+        assert!(status.success());
         assert!(!windows_process_is_running(parent_pid));
         let deadline = std::time::Instant::now() + Duration::from_secs(3);
         while windows_process_is_running(descendant_pid) && std::time::Instant::now() < deadline {
