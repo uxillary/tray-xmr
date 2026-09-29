@@ -1,0 +1,347 @@
+use serde::Serialize;
+use std::path::PathBuf;
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase", tag = "state", content = "version")]
+pub enum EngineAvailability {
+    Unavailable,
+    Available(String),
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum EngineLifecycleState {
+    Unavailable,
+    NotConfigured,
+    Ready,
+    Starting,
+    Mining,
+    Paused,
+    Stopping,
+    Stopped,
+    Error,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct EngineStatus {
+    pub availability: EngineAvailability,
+    pub state: EngineLifecycleState,
+    pub process_id: Option<u32>,
+    pub error: Option<EngineError>,
+    pub diagnostics: Vec<DiagnosticSummary>,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct MiningConfig {
+    pub pool: PoolConfig,
+    pub public_address: String,
+    pub worker_id: Option<String>,
+    pub cpu: CpuConfig,
+    pub api: LocalApiConfig,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct PoolConfig {
+    pub host: String,
+    pub port: u16,
+    pub tls: bool,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct CpuConfig {
+    pub enabled: bool,
+    pub max_threads_hint: u8,
+}
+
+#[derive(Clone, PartialEq, Eq)]
+pub struct LocalApiConfig {
+    pub host: String,
+    pub port: u16,
+    pub access_token: String,
+    pub restricted: bool,
+}
+
+impl std::fmt::Debug for LocalApiConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("LocalApiConfig")
+            .field("host", &self.host)
+            .field("port", &self.port)
+            .field("access_token", &"[REDACTED]")
+            .field("restricted", &self.restricted)
+            .finish()
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct ValidatedMiningConfig {
+    pub config: MiningConfig,
+    pub engine_version: String,
+}
+
+/// Ember-owned engine boundary. Process creation and lifecycle serialization stay in the supervisor.
+pub trait MiningEngine: Send {
+    fn availability(&self) -> EngineAvailability;
+    fn validate(&self, config: MiningConfig) -> Result<ValidatedMiningConfig, EngineError>;
+    fn start(&mut self, config: ValidatedMiningConfig) -> Result<EngineStatus, EngineError>;
+    fn stop(&mut self, reason: StopReason) -> Result<EngineStatus, EngineError>;
+    fn status(&self) -> EngineStatus;
+    fn telemetry(&self) -> Option<MiningTelemetry>;
+    fn diagnostics(&self) -> Vec<DiagnosticSummary>;
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct MiningTelemetry {
+    pub engine_version: Option<String>,
+    pub paused: Option<bool>,
+    pub supported_algorithms: Vec<String>,
+    pub short_hashrate: Option<f64>,
+    pub medium_hashrate: Option<f64>,
+    pub long_hashrate: Option<f64>,
+    pub sample_time_unix_ms: Option<u64>,
+}
+
+impl Default for MiningTelemetry {
+    fn default() -> Self {
+        Self {
+            engine_version: None,
+            paused: None,
+            supported_algorithms: Vec::new(),
+            short_hashrate: None,
+            medium_hashrate: None,
+            long_hashrate: None,
+            sample_time_unix_ms: None,
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct EngineError {
+    pub kind: EngineErrorKind,
+    pub message: String,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum EngineErrorKind {
+    InvalidTransition,
+    InvalidConfiguration,
+    UntrustedArtifact,
+    SpawnFailed,
+    ApiUnavailable,
+    ApiRejected,
+    UnexpectedExit,
+    StopFailed,
+    Internal,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DiagnosticSummary {
+    pub source: DiagnosticSource,
+    pub message: String,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum DiagnosticSource {
+    Stdout,
+    Stderr,
+    Supervisor,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum StopReason {
+    UserRequest,
+    ApplicationQuit,
+    StartupFailure,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct EngineArtifact {
+    engine_name: String,
+    version: String,
+    architecture: String,
+    source_url: String,
+    archive_sha256: String,
+    verification: ArtifactVerification,
+    installed_path: PathBuf,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum ArtifactVerification {
+    Unverified,
+    Verified {
+        digest: String,
+        verified_at_unix_ms: u64,
+    },
+}
+
+impl EngineArtifact {
+    pub fn unverified(
+        engine_name: String,
+        version: String,
+        architecture: String,
+        source_url: String,
+        archive_sha256: String,
+        installed_path: PathBuf,
+    ) -> Self {
+        Self {
+            engine_name,
+            version,
+            architecture,
+            source_url,
+            archive_sha256,
+            verification: ArtifactVerification::Unverified,
+            installed_path,
+        }
+    }
+
+    pub fn engine_name(&self) -> &str {
+        &self.engine_name
+    }
+    pub fn version(&self) -> &str {
+        &self.version
+    }
+    pub fn architecture(&self) -> &str {
+        &self.architecture
+    }
+    pub fn source_url(&self) -> &str {
+        &self.source_url
+    }
+    pub fn archive_sha256(&self) -> &str {
+        &self.archive_sha256
+    }
+    pub fn installed_path(&self) -> &std::path::Path {
+        &self.installed_path
+    }
+
+    pub fn is_verified(&self) -> bool {
+        matches!(&self.verification, ArtifactVerification::Verified { digest, .. } if digest.eq_ignore_ascii_case(&self.archive_sha256))
+    }
+
+    #[cfg(test)]
+    pub(crate) fn verified_fixture(
+        engine_name: &str,
+        version: &str,
+        architecture: &str,
+        source_url: &str,
+        digest: &str,
+        installed_path: PathBuf,
+    ) -> Self {
+        Self {
+            engine_name: engine_name.into(),
+            version: version.into(),
+            architecture: architecture.into(),
+            source_url: source_url.into(),
+            archive_sha256: digest.into(),
+            verification: ArtifactVerification::Verified {
+                digest: digest.into(),
+                verified_at_unix_ms: 1,
+            },
+            installed_path,
+        }
+    }
+}
+
+#[derive(Default)]
+pub struct LifecycleMachine {
+    state: Option<EngineLifecycleState>,
+}
+
+impl LifecycleMachine {
+    pub fn new(initial: EngineLifecycleState) -> Self {
+        Self {
+            state: Some(initial),
+        }
+    }
+
+    pub fn state(&self) -> EngineLifecycleState {
+        self.state.unwrap_or(EngineLifecycleState::NotConfigured)
+    }
+
+    pub fn transition(&mut self, next: EngineLifecycleState) -> Result<(), EngineError> {
+        use EngineLifecycleState as S;
+        let current = self.state();
+        let valid = matches!(
+            (current, next),
+            (S::Unavailable, S::Ready | S::NotConfigured | S::Error)
+                | (S::NotConfigured, S::Ready | S::Unavailable | S::Error)
+                | (
+                    S::Ready,
+                    S::Starting | S::Unavailable | S::NotConfigured | S::Stopped | S::Error
+                )
+                | (S::Starting, S::Mining | S::Stopping | S::Error)
+                | (S::Mining, S::Paused | S::Stopping | S::Error)
+                | (S::Paused, S::Mining | S::Stopping | S::Error)
+                | (S::Stopping, S::Stopped | S::Error)
+                | (
+                    S::Stopped,
+                    S::Ready | S::Starting | S::NotConfigured | S::Unavailable | S::Error
+                )
+                | (
+                    S::Error,
+                    S::Ready | S::Unavailable | S::NotConfigured | S::Stopped
+                )
+        );
+        if !valid {
+            return Err(EngineError {
+                kind: EngineErrorKind::InvalidTransition,
+                message: format!("Transition {current:?} -> {next:?} is not allowed"),
+            });
+        }
+        self.state = Some(next);
+        Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{EngineErrorKind, EngineLifecycleState as S, LifecycleMachine};
+
+    #[test]
+    fn lifecycle_accepts_ready_start_pause_stop_path() {
+        let mut state = LifecycleMachine::new(S::Ready);
+        for next in [
+            S::Starting,
+            S::Mining,
+            S::Paused,
+            S::Mining,
+            S::Stopping,
+            S::Stopped,
+        ] {
+            state.transition(next).unwrap();
+        }
+        assert_eq!(state.state(), S::Stopped);
+    }
+
+    #[test]
+    fn lifecycle_rejects_mining_from_unavailable_and_duplicate_start() {
+        let mut unavailable = LifecycleMachine::new(S::Unavailable);
+        assert_eq!(
+            unavailable.transition(S::Mining).unwrap_err().kind,
+            EngineErrorKind::InvalidTransition
+        );
+
+        let mut starting = LifecycleMachine::new(S::Starting);
+        assert_eq!(
+            starting.transition(S::Starting).unwrap_err().kind,
+            EngineErrorKind::InvalidTransition
+        );
+        assert_eq!(starting.transition(S::Mining), Ok(()));
+        assert_eq!(
+            starting.transition(S::Starting).unwrap_err().kind,
+            EngineErrorKind::InvalidTransition
+        );
+    }
+
+    #[test]
+    fn error_requires_explicit_transition_before_start() {
+        let mut state = LifecycleMachine::new(S::Error);
+        assert!(state.transition(S::Starting).is_err());
+        state.transition(S::Ready).unwrap();
+        state.transition(S::Starting).unwrap();
+    }
+}

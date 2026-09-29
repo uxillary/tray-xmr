@@ -1,0 +1,8 @@
+{
+  "version": "6.26.0",
+  "paused": false,
+  "algorithms": ["rx/0"],
+  "hashrate": {
+    "total": [125.5, 120.0, 110.0]
+  }
+}

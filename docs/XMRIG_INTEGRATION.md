@@ -1,6 +1,6 @@
 # XMRig Integration Research and Contract
 
-**Status:** M03A research and design, recorded 2026-09-29. No XMRig binary was downloaded, bundled, or run for this work. This is an engineering plan, not legal advice or a release approval. Upstream facts were checked against official XMRig sources and the GNU GPLv3 text on the date above; recheck them against the exact version before implementation or distribution.
+**Status:** M03A research plus M03B test-only Rust groundwork, recorded 2026-09-29. No XMRig binary was downloaded, bundled, or run. Real execution remains disabled; this is not legal advice or release approval. Upstream facts were checked against official XMRig sources and the GNU GPLv3 text on the date above; recheck them against the exact version before implementation or distribution.
 
 ## Decision summary
 
@@ -8,7 +8,7 @@
 - Keep a user-supplied executable as a possible later advanced path; it offers weaker provenance/version consistency and less beginner-friendly support. Do not bundle binaries in Ember's installer initially.
 - Generate deterministic JSON configuration for normal operation. Keep only launch-level controls in argv; never put the wallet address or API token in command-line arguments.
 - Use XMRig's local HTTP API for structured telemetry where the exact pinned version confirms the fields. Treat stdout/stderr as bounded diagnostics, not the telemetry contract.
-- Rust owns engine availability, process ownership, lifecycle state, API polling, normalized telemetry, policy, and consent enforcement. React renders backend state and submits user actions.
+- Rust owns the internal engine contract, lifecycle state, config validation, supervised child, fixture-injected readiness, normalized telemetry, and bounded diagnostics. Tray Quit invokes cleanup. React has no mining start controls. M03B does not implement artifact verification or a concrete HTTP transport, and consent/product policy remains future work.
 - Keep local system telemetry, engine telemetry, and later pool/economic data as separate domains.
 - Do not implement Ember's 5% contribution mechanism in the adapter or UI. Its policy belongs in a distinct Rust contribution/accounting boundary once an auditable mechanism is selected.
 
@@ -74,7 +74,7 @@ Rust `std::process::Command`/`Child` provides controlled process creation, PID a
 
 Track the child handle and PID, monitor process exit and API readiness, and publish lifecycle changes from Rust. A stop request first uses a verified graceful XMRig mechanism; if it does not exit within a bounded timeout, terminate the owned process/job and wait/reap. Do not attempt to find and kill arbitrary `xmrig.exe` processes by name. Ensure quit, Rust panic/error paths, Windows logoff/shutdown, startup failure, timeout, and unexpected exit all converge on cleanup. A stale external process is never adopted automatically; report it for user resolution. Quit semantics while active must be an explicit user-visible choice before M03C.
 
-Prefer a Windows Job Object configured to terminate members when its last handle closes, so Ember crash/forced exit cannot leave an owned miner behind and descendants remain grouped. This is materially useful for this long-running child. Validate host-job/nested-job support in the packaged Tauri environment and assign the process before it can create descendants; use a tested suspended-create/assign/resume approach if necessary. Never treat `Child::kill()` alone as process-tree cleanup. If reliable job assignment/kill-on-close cannot be established, active mining remains release-blocked until an equally reliable cleanup design is demonstrated. Test graceful stop, forced job termination, parent crash, and Windows shutdown/logoff.
+M03B assigns each spawned child to a kill-on-close Windows Job Object and tests assignment and cleanup in the Rust test environment. Assignment happens immediately after process creation, leaving a race before assignment; suspended-create/assign/resume is not implemented. Packaged Tauri host-job behavior, parent-crash behavior, and Windows shutdown/logoff still require validation. `Child::kill()` alone is not process-tree cleanup. Active mining remains disabled until a race-free assignment approach and packaged-host cleanup are demonstrated.
 
 Basic XMRig operation does not have a documented requirement for Ember to run elevated. Keep Ember and XMRig at the normal user's privilege. Optional performance features are separate: Windows large/huge pages require `SeLockMemoryPrivilege` and XMRig docs describe administrative configuration to obtain it; MSR modification may require administrator rights. These are optimization features, not prerequisites for ordinary launch. Exclude them from initial setup; never elevate Ember automatically. If a later opt-in optimization is considered, isolate it, explain effects/privileges, and test it independently.
 

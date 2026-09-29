@@ -1,12 +1,24 @@
+#[allow(dead_code)] // M03B supervisor APIs are intentionally not exposed as start commands.
+mod mining;
 mod system_observation;
 
+use mining::{domain::EngineLifecycleState, EngineSupervisor};
 use std::sync::Mutex;
 use system_observation::{SystemObserver, SystemSnapshot};
 
 #[tauri::command]
-fn shell_status() -> &'static str {
-    // No mining engine is configured or managed by this foundation build.
-    "notConfigured"
+fn shell_status(supervisor: tauri::State<'_, EngineSupervisor>) -> &'static str {
+    match supervisor.status().state {
+        EngineLifecycleState::Ready => "ready",
+        EngineLifecycleState::Mining => "mining",
+        EngineLifecycleState::Paused => "paused",
+        EngineLifecycleState::Error => "error",
+        EngineLifecycleState::Unavailable
+        | EngineLifecycleState::NotConfigured
+        | EngineLifecycleState::Starting
+        | EngineLifecycleState::Stopping
+        | EngineLifecycleState::Stopped => "notConfigured",
+    }
 }
 
 #[tauri::command]
@@ -29,6 +41,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![shell_status, system_snapshot])
         .setup(|app| {
             app.manage(Mutex::new(SystemObserver::new()));
+            app.manage(EngineSupervisor::new());
 
             let status = MenuItem::with_id(app, "status", "Not mining", false, None::<&str>)?;
             let open = MenuItem::with_id(app, "open", "Open Ember", true, None::<&str>)?;
@@ -52,7 +65,12 @@ pub fn run() {
                             let _ = window.set_focus();
                         }
                     }
-                    "quit" => app.exit(0),
+                    "quit" => {
+                        let supervisor = app.state::<EngineSupervisor>();
+                        if supervisor.stop_for_application_quit().is_ok() {
+                            app.exit(0);
+                        }
+                    }
                     _ => {}
                 })
                 .build(app)?;

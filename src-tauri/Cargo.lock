@@ -719,6 +719,7 @@ name = "ember"
 version = "0.1.0"
 dependencies = [
  "serde",
+ "serde_json",
  "sysinfo",
  "tauri",
  "tauri-build",

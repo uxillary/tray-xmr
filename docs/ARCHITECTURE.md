@@ -1,6 +1,6 @@
 # Ember High-Level Architecture
 
-**Status:** Conceptual target and implementation facts, recorded 2026-09-29. The M00C foundation establishes the root layout, a minimal Rust-owned shell status, and initial Windows tray/window behavior; it does not establish a mining architecture implementation.
+**Status:** Conceptual target and implementation facts, recorded 2026-09-29. M03B establishes test-only Rust mining-engine groundwork; no real XMRig is acquired or executable.
 
 ## Platform and responsibilities
 
@@ -12,7 +12,7 @@ The planned stack is Tauri 2, Rust, React, and TypeScript, initially Windows-fir
 
 The initial Tauri capability grants only `core:default`. Reassess permissions as native features are added. Broader IPC schemas, module boundaries, and future capability needs remain pending design.
 
-The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. The frontend calls narrowly scoped Tauri commands; OS observations are acquired in Rust, while React formats and presents their typed snapshot. No miner is integrated. Historical code is separated under `legacy/`.
+The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations and the internal M03B mining domain, config, diagnostics, process, supervisor, and XMRig contract modules. Frontend mining controls remain absent; no real miner is integrated. Historical code is separated under `legacy/
 
 ### Local system observation (M02)
 
@@ -48,15 +48,15 @@ Future Ember services may support optional accounts, synchronization, community 
 
 ## Mining engine boundary
 
-Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the only planned initial adapter; this is not a plugin framework. The user interface renders Rust-owned lifecycle state and cannot start a miner outside the consent-checked backend path. Detailed M03A contract and research are in [XMRig Integration](XMRIG_INTEGRATION.md).
+Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the only planned initial adapter; this is not a plugin framework. The user interface renders Rust-owned lifecycle state and cannot start a miner outside the consent-checked backend path. M03B implements this boundary in `src-tauri/src/mining/`, with fixture-only process/API tests. Artifact verification and a concrete HTTP transport remain unimplemented. Detailed contract and limits are in [XMRig Integration](XMRIG_INTEGRATION.md).
 
 Keep the data domains separate: M02 local system telemetry describes host CPU/RAM/device/activity/power; mining-engine telemetry describes engine version/state/hashrate/backend; later pool/economic telemetry owns shares, balance, payout, market rates, and estimates. Do not derive economic claims from local system or engine readings.
 
 ### Process lifecycle responsibilities
 
-The future controller/adapter needs explicit handling for locating or provisioning a binary, validating configuration, launching with controlled arguments/environment, confirming startup, tracking unexpected exits, requesting graceful stop, timeout/escalation behavior, process-tree cleanup, and shutdown/restart behavior. It also needs version and health reporting, bounded logging, and a documented update path.
+M03B adds deterministic config validation, a verified-artifact gate, controlled process construction, fixture-injected readiness, unexpected-exit handling, bounded diagnostics and stop escalation. There is no artifact verifier, HTTP transport, or enabled XMRig launch implementation.
 
-Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback, use a per-run secret, and keep full control routes disabled unless the chosen shutdown mechanism demonstrably requires them and is reviewed. Public endpoint docs are incomplete; verify response schema and control semantics for the pinned release. No XMRig integration is implemented in M03A.
+Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback, use a per-run secret, and keep full control routes disabled unless the chosen shutdown mechanism demonstrably requires them and is reviewed. The parser accepts only the researched summary fields; `LocalApiTransport` remains an injected test contract with no concrete HTTP implementation. No real XMRig integration is enabled.
 
 The future Ember policy/contribution layer owns the disclosed 5% Contribution and accounting; neither the UI nor process adapter contains contribution logic. The XMRig built-in 1% donation is separate and must be represented honestly.
 
