@@ -1,7 +1,22 @@
+mod system_observation;
+
+use std::sync::Mutex;
+use system_observation::{SystemObserver, SystemSnapshot};
+
 #[tauri::command]
 fn shell_status() -> &'static str {
     // No mining engine is configured or managed by this foundation build.
     "notConfigured"
+}
+
+#[tauri::command]
+fn system_snapshot(
+    observer: tauri::State<'_, Mutex<SystemObserver>>,
+) -> Result<SystemSnapshot, String> {
+    observer
+        .lock()
+        .map(|mut observer| observer.snapshot())
+        .map_err(|_| "System observation is temporarily unavailable".to_owned())
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -11,14 +26,17 @@ pub fn run() {
     use tauri::{Manager, WindowEvent};
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![shell_status])
+        .invoke_handler(tauri::generate_handler![shell_status, system_snapshot])
         .setup(|app| {
+            app.manage(Mutex::new(SystemObserver::new()));
+
+            let status = MenuItem::with_id(app, "status", "Not mining", false, None::<&str>)?;
             let open = MenuItem::with_id(app, "open", "Open Ember", true, None::<&str>)?;
             let quit = MenuItem::with_id(app, "quit", "Quit Ember", true, None::<&str>)?;
-            let menu = Menu::with_items(app, &[&open, &quit])?;
+            let menu = Menu::with_items(app, &[&status, &open, &quit])?;
 
             TrayIconBuilder::new()
-                .tooltip("Ember")
+                .tooltip("Ember — Not mining")
                 .icon(
                     app.default_window_icon()
                         .expect("Ember app icon is configured")

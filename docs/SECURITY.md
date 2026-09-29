@@ -41,6 +41,8 @@ Future application and miner updates need authenticated provenance and integrity
 
 Store only information needed for the user-facing feature. Define retention, export, deletion, and migrations for local history. Distinguish public wallet data from secrets and from private behavioral/statistical data. Redact addresses, credentials, machine identifiers, and unnecessary paths from logs. Diagnostics should be bounded, user-controlled, and inspectable before sharing; no cloud upload is required for core use.
 
+M02 system awareness is local-only and memory-only. It reads coarse CPU/memory/device/OS/uptime and documented session/power status APIs. It does not collect input content, enumerate processes, inspect windows/files, persist telemetry history, or send telemetry externally. Missing hardware/API values remain unavailable rather than being inferred.
+
 ## Future remote devices
 
 Remote control is not in the initial scope. If introduced, require explicit per-device enrollment, strong device identity, authentication and authorization, encrypted transport, command allowlists/bounds, revocation, auditable actions, and safe behavior for offline/reconnected devices. Monitoring should precede control. Do not build backend or networking infrastructure before this review.

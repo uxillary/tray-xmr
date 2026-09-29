@@ -32,6 +32,7 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-024 | 2026-09-29 | The initial Ember desktop uses a graphite interface with warm Ember accents, semantic state labels, and a state-aware core visual. | Unavailable values remain visibly unavailable. The core visual reflects only shell status; it does not imply mining activity. |
 | D-025 | 2026-09-29 | Use Phosphor icons for the desktop navigation and supporting interface icons. | Import only used icon modules; the library is an icon set, not a product feature dependency. |
 | D-026 | 2026-09-29 | Retain the M01 visual direction after native review. | M01.1 keeps the graphite palette, warm accent, sidebar, Phosphor icons, Ember core, and surface treatment while simplifying page chrome and product language. |
+| D-027 | 2026-09-29 | M02 observes local CPU, memory, device/OS, uptime, power, and coarse session idle state only. | Use `sysinfo` for general system data and documented Windows APIs for power/idle. Poll the visible UI every five seconds; keep all readings in memory, expose unavailable values as null/unknown, and do not use observations to control resources. Five minutes is a provisional UI idle label threshold. Defer temperature, fan, and CPU/GPU power pending generic trustworthy APIs. |
 
 ## Pending decisions
 

@@ -15,7 +15,7 @@
 
 ## M02 — Windows tray and local monitoring
 
-Extend the basic tray/window lifecycle with safe local system monitoring. Decide opt-in autostart and define which activity, battery, or hardware signals are dependable before relying on them.
+- **Complete:** Added a typed, Rust-owned local snapshot for CPU, memory, device/OS, uptime, power/battery, and session idle state; integrated it into Overview and This device; and added a disabled **Not mining** tray status with an honest tooltip. Sampling is limited to the visible app and remains in memory. No mining/resource-control behavior was added. Temperature, fan speed, and CPU/GPU power remain deferred because generic low-privilege sources are not dependable across Windows hardware. Autostart remains undecided and out of scope.
 
 ## M03 — Mining-engine integration
 

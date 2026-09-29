@@ -12,6 +12,9 @@ import { EmptyState } from "./components/EmptyState";
 import { MetricCard } from "./components/MetricCard";
 import { StatusBadge } from "./components/StatusBadge";
 import { ThisDeviceStatus } from "./components/ThisDeviceStatus";
+import { SystemOverview, systemMetric } from "./components/SystemOverview";
+import { useSystemSnapshot } from "./hooks/useSystemSnapshot";
+import type { SystemSnapshot } from "./types/system";
 import "./App.css";
 
 type Section = "overview" | "mining" | "activity" | "settings";
@@ -35,6 +38,7 @@ function App() {
   const [section, setSection] = useState<Section>("overview");
   const [nativeState, setNativeState] = useState<string | null>(null);
   const [statusError, setStatusError] = useState(false);
+  const systemSnapshot = useSystemSnapshot();
 
   useEffect(() => {
     invoke<string>("shell_status")
@@ -47,7 +51,7 @@ function App() {
 
   const current = sections.find((item) => item.id === section)!;
   const status = nativeState ? stateLabels[nativeState] : undefined;
-  const deviceStatus = statusError ? "Status unavailable" : status?.core === "not-configured" ? "Not mining" : status?.label ?? "Checking status";
+  const system = systemMetric(systemSnapshot);
 
   return (
     <div className="app-shell">
@@ -74,7 +78,7 @@ function App() {
         </nav>
 
         <div className="sidebar-bottom">
-          <ThisDeviceStatus state={deviceStatus} />
+          <ThisDeviceStatus deviceName={systemSnapshot?.deviceName ?? null} cpuPercent={systemSnapshot?.cpu.usagePercent ?? null} />
         </div>
       </aside>
 
@@ -82,7 +86,7 @@ function App() {
         <div className="page-content">
           <header className="page-heading"><h1>{current.label}</h1></header>
 
-          {section === "overview" && <OverviewPage status={status} statusError={statusError} />}
+          {section === "overview" && <OverviewPage status={status} statusError={statusError} systemSnapshot={systemSnapshot} systemMetric={system} />}
           {section === "mining" && <MiningPage />}
           {section === "activity" && <ActivityPage />}
           {section === "settings" && <SettingsPage />}
@@ -92,7 +96,7 @@ function App() {
   );
 }
 
-function OverviewPage({ status, statusError }: { status: { label: string; core: EmberCoreState } | undefined; statusError: boolean }) {
+function OverviewPage({ status, statusError, systemSnapshot, systemMetric: system }: { status: { label: string; core: EmberCoreState } | undefined; statusError: boolean; systemSnapshot: SystemSnapshot | null; systemMetric: { value: string; detail: string } }) {
   return (
     <>
       <section className="overview-hero" aria-labelledby="overview-title">
@@ -113,8 +117,10 @@ function OverviewPage({ status, statusError }: { status: { label: string; core: 
         <MetricCard icon={<LightningIcon weight="light" />} label="Hashrate" value="—" />
         <MetricCard icon={<ClockCounterClockwiseIcon weight="light" />} label="Mining time" value="—" />
         <MetricCard icon={<WalletIcon weight="light" />} label="Estimated earnings" value="—" />
-        <MetricCard icon={<CpuIcon weight="light" />} label="System" value="Unavailable" />
+        <MetricCard icon={<CpuIcon weight="light" />} label="System" value={system.value} detail={system.detail} />
       </section>
+
+      <SystemOverview snapshot={systemSnapshot} />
 
       <section className="setup-panel" aria-labelledby="setup-title">
         <p className="eyebrow">GETTING STARTED</p>

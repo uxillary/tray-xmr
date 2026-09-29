@@ -12,7 +12,13 @@ The planned stack is Tauri 2, Rust, React, and TypeScript, initially Windows-fir
 
 The initial Tauri capability grants only `core:default`. Reassess permissions as native features are added. Broader IPC schemas, module boundaries, and future capability needs remain pending design.
 
-The initial repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. The first lockfile resolves Tauri API/CLI/crate 2.12.0, React 19.3.0, TypeScript 6.0.3, and Vite 6.4.3. Vite 6 was selected to work with the available Node 20.13 development environment. The only frontend-to-Rust command is `shell_status`, which reports `notConfigured`; Rust remains authoritative and no miner is integrated. Historical code is separated under `legacy/`.
+The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. The frontend calls narrowly scoped Tauri commands; OS observations are acquired in Rust, while React formats and presents their typed snapshot. No miner is integrated. Historical code is separated under `legacy/`.
+
+### Local system observation (M02)
+
+`src-tauri/src/system_observation.rs` owns a single `sysinfo::System` instance managed by Tauri. The `system_snapshot` command returns nullable, serializable fields for CPU model/logical processor count/overall usage, physical memory, hostname, OS version, uptime, power source/battery percentage, and session input idle duration. `sysinfo` refreshes only CPU and RAM; it does not enumerate processes. Windows power and idle details use `GetSystemPowerStatus` and `GetLastInputInfo` plus `GetTickCount` through `windows-sys`. Failed or unsupported queries remain unknown/null independently.
+
+The visible shell requests one snapshot every five seconds, waits for each request before scheduling the next, and pauses while the WebView document is hidden. CPU utilization uses the native library’s inter-sample calculation; until a valid second sample exists, its value is null. The current Active/Idle label is a presentation hint using a five-minute threshold; the raw session idle duration is preserved. `GetLastInputInfo` is session-specific, and Ember does not collect input content. All data remains in memory and on-device; it is not persisted or transmitted. These observations are not Smart Mining decisions and do not change resource use. Temperature, fan speed, CPU package power, and GPU telemetry are deferred because there is no generic reliable low-privilege source across Windows hardware.
 
 ## Conceptual components
 
@@ -81,7 +87,7 @@ Earnings, fiat value, power, and net-result views must identify estimates and th
 
 ## Tray and application lifecycle
 
-The foundation implements a Windows tray with **Open Ember** and **Quit Ember** actions. Open shows, unminimizes, and focuses the existing main window. Closing the window hides it; it does not quit the application. Quit exits the application. The tray uses the temporary Ember mark and shows no mining telemetry. The production content security policy allows only local assets and Tauri IPC; the development policy additionally permits the local Vite server. This is the initial shell decision, not a final policy for future active mining: later work must decide whether quit prompts/stops a miner and how state remains visible. Autostart remains out of scope and must be opt-in if added.
+The Windows tray provides **Open Ember** and **Quit Ember**, plus a disabled **Not mining** state item and the tooltip **Ember — Not mining**. Open shows, unminimizes, and focuses the existing main window. Closing the window hides it; it does not quit the application. Quit exits the application. The tray shows no telemetry. The production content security policy allows only local assets and Tauri IPC; the development policy additionally permits the local Vite server. This is the initial shell decision, not a final policy for future active mining: later work must decide whether quit prompts/stops a miner and how state remains visible. Autostart remains out of scope and must be opt-in if added.
 
 ## Diagnostics and logging
 
