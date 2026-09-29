@@ -12,7 +12,7 @@ The planned stack is Tauri 2, Rust, React, and TypeScript, initially Windows-fir
 
 The initial Tauri capability grants only `core:default`. Reassess permissions as native features are added. Broader IPC schemas, module boundaries, and future capability needs remain pending design.
 
-The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations and the internal M03B mining domain, config, diagnostics, process, supervisor, and XMRig contract modules. Frontend mining controls remain absent; no real miner is integrated. Historical code is separated under `legacy/
+The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations and the internal M03B mining domain, config, diagnostics, process, supervisor, and XMRig contract modules. Frontend mining controls remain absent; no real miner is integrated. Historical code is separated under `legacy/`.
 
 ### Local system observation (M02)
 
@@ -54,7 +54,7 @@ Keep the data domains separate: M02 local system telemetry describes host CPU/RA
 
 ### Process lifecycle responsibilities
 
-M03B adds deterministic config validation, a verified-artifact gate, controlled process construction, fixture-injected readiness, unexpected-exit handling, bounded diagnostics and stop escalation. There is no artifact verifier, HTTP transport, or enabled XMRig launch implementation.
+M03B adds deterministic config validation, a verified-artifact gate, fixture-injected readiness, unexpected-exit handling, bounded diagnostics and stop escalation. On Windows, `process.rs` creates the Job Object first, creates the child suspended with redirected stdio, assigns the process handle to the kill-on-close job, and resumes its primary thread only after assignment succeeds. Any failure before resume terminates/reaps the suspended process; RAII-owned handles close on every path. Job assignment failure, including unsupported nested-job constraints, fails closed. No artifact verifier, HTTP transport, or enabled XMRig launch implementation exists.
 
 Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback, use a per-run secret, and keep full control routes disabled unless the chosen shutdown mechanism demonstrably requires them and is reviewed. The parser accepts only the researched summary fields; `LocalApiTransport` remains an injected test contract with no concrete HTTP implementation. No real XMRig integration is enabled.
 

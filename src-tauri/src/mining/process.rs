@@ -3,7 +3,12 @@ use super::domain::{DiagnosticSource, DiagnosticSummary, EngineError, EngineErro
 use std::ffi::OsString;
 use std::io::{self, Read};
 use std::path::Path;
-use std::process::{Child, Command, ExitStatus, Stdio};
+#[cfg(not(windows))]
+use std::process::Child;
+#[cfg(windows)]
+use std::process::ExitStatus;
+#[cfg(not(windows))]
+use std::process::{Command, ExitStatus, Stdio};
 use std::sync::{Arc, Mutex};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
@@ -11,7 +16,10 @@ use std::time::{Duration, Instant};
 const MAX_CAPTURE_LINE: usize = 2 * 1024;
 
 pub struct SupervisedChild {
+    #[cfg(not(windows))]
     child: Child,
+    #[cfg(windows)]
+    child: WindowsChild,
     diagnostics: Arc<Mutex<DiagnosticRing>>,
     readers: Vec<JoinHandle<()>>,
     #[cfg(windows)]
@@ -32,31 +40,25 @@ impl SupervisedChild {
             });
         }
 
-        let mut command = Command::new(executable);
-        command
-            .args(arguments)
-            .current_dir(working_directory)
-            .env_clear()
-            .stdin(Stdio::piped())
-            .stdout(Stdio::piped())
-            .stderr(Stdio::piped());
-        let mut child = command.spawn().map_err(|_| EngineError {
-            kind: EngineErrorKind::SpawnFailed,
-            message: "The verified engine process could not be started".into(),
-        })?;
-
-        #[cfg(windows)]
-        let job = match JobObject::assign(child.id()) {
-            Ok(job) => Some(job),
-            Err(_) => {
-                let _ = child.kill();
-                let _ = child.wait();
-                return Err(EngineError {
-                    kind: EngineErrorKind::SpawnFailed,
-                    message: "The engine could not be assigned to its cleanup job".into(),
-                });
-            }
+        #[cfg(not(windows))]
+        let (mut child, stdout, stderr) = {
+            let mut command = Command::new(executable);
+            command
+                .args(arguments)
+                .current_dir(working_directory)
+                .env_clear()
+                .stdin(Stdio::piped())
+                .stdout(Stdio::piped())
+                .stderr(Stdio::piped());
+            let mut child = command.spawn().map_err(|_| EngineError {
+                kind: EngineErrorKind::SpawnFailed,
+                message: "The supervised process could not be started".into(),
+            })?;
+            (child, child.stdout.take(), child.stderr.take())
         };
+        #[cfg(windows)]
+        let (child, stdout, stderr, job) =
+            spawn_suspended_in_job(executable, arguments, working_directory)?;
 
         let diagnostics = Arc::new(Mutex::new(DiagnosticRing::new(
             100,
@@ -64,13 +66,13 @@ impl SupervisedChild {
             redaction.clone(),
         )));
         let stdout_reader = spawn_reader(
-            child.stdout.take(),
+            stdout,
             DiagnosticSource::Stdout,
             Arc::clone(&diagnostics),
             redaction.clone(),
         );
         let stderr_reader = spawn_reader(
-            child.stderr.take(),
+            stderr,
             DiagnosticSource::Stderr,
             Arc::clone(&diagnostics),
             redaction,
@@ -84,12 +86,21 @@ impl SupervisedChild {
                 .flatten()
                 .collect(),
             #[cfg(windows)]
-            job,
+            job: Some(job),
         })
     }
 
     pub fn id(&self) -> u32 {
         self.child.id()
+    }
+
+    pub fn close_stdin(&mut self) {
+        #[cfg(windows)]
+        self.child.close_stdin();
+        #[cfg(not(windows))]
+        {
+            self.child.stdin.take();
+        }
     }
 
     pub fn diagnostics(&self) -> Vec<DiagnosticSummary> {
@@ -113,9 +124,9 @@ impl SupervisedChild {
         timeout: Duration,
     ) -> Result<ExitStatus, EngineError>
     where
-        F: FnOnce(&mut Child) -> io::Result<()>,
+        F: FnOnce(&mut Self) -> io::Result<()>,
     {
-        let _ = request_graceful(&mut self.child);
+        let _ = request_graceful(self);
         let deadline = Instant::now() + timeout;
         loop {
             if let Some(status) = self.child.try_wait().map_err(|_| EngineError {
@@ -228,6 +239,308 @@ fn push_line(
 }
 
 #[cfg(windows)]
+struct WindowsChild {
+    process: std::os::windows::io::OwnedHandle,
+    stdin: Option<std::fs::File>,
+    pid: u32,
+    status: Option<ExitStatus>,
+}
+
+#[cfg(windows)]
+impl WindowsChild {
+    fn id(&self) -> u32 {
+        self.pid
+    }
+    fn close_stdin(&mut self) {
+        self.stdin.take();
+    }
+    fn try_wait(&mut self) -> io::Result<Option<ExitStatus>> {
+        use std::os::windows::io::AsRawHandle;
+        use windows_sys::Win32::System::Threading::{GetExitCodeProcess, WaitForSingleObject};
+        if let Some(status) = self.status {
+            return Ok(Some(status));
+        }
+        let handle = self.process.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
+        let wait = unsafe { WaitForSingleObject(handle, 0) };
+        if wait == windows_sys::Win32::Foundation::WAIT_TIMEOUT {
+            return Ok(None);
+        }
+        if wait != windows_sys::Win32::Foundation::WAIT_OBJECT_0 {
+            return Err(io::Error::last_os_error());
+        }
+        let mut code = 259; // STILL_ACTIVE
+        if unsafe { GetExitCodeProcess(handle, &mut code) } == 0 {
+            return Err(io::Error::last_os_error());
+        }
+        use std::os::windows::process::ExitStatusExt;
+        let status = ExitStatus::from_raw(code);
+        self.status = Some(status);
+        Ok(Some(status))
+    }
+    fn kill(&mut self) -> io::Result<()> {
+        use std::os::windows::io::AsRawHandle;
+        let handle = self.process.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
+        if unsafe { windows_sys::Win32::System::Threading::TerminateProcess(handle, 1) } == 0 {
+            let _ = self.try_wait()?;
+            if self.status.is_some() {
+                return Ok(());
+            }
+            return Err(io::Error::last_os_error());
+        }
+        Ok(())
+    }
+    fn wait(&mut self) -> io::Result<ExitStatus> {
+        use std::os::windows::io::AsRawHandle;
+        let handle = self.process.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
+        let wait =
+            unsafe { windows_sys::Win32::System::Threading::WaitForSingleObject(handle, u32::MAX) };
+        if wait != windows_sys::Win32::Foundation::WAIT_OBJECT_0 {
+            return Err(io::Error::last_os_error());
+        }
+        self.try_wait()?.ok_or_else(io::Error::last_os_error)
+    }
+}
+
+#[cfg(windows)]
+fn spawn_suspended_in_job(
+    executable: &Path,
+    arguments: &[OsString],
+    working_directory: &Path,
+) -> Result<
+    (
+        WindowsChild,
+        Option<std::fs::File>,
+        Option<std::fs::File>,
+        JobObject,
+    ),
+    EngineError,
+> {
+    use std::ffi::c_void;
+    use std::os::windows::ffi::OsStrExt;
+    use std::os::windows::io::{AsRawHandle, FromRawHandle, OwnedHandle};
+    use windows_sys::Win32::Foundation::{SetHandleInformation, HANDLE, HANDLE_FLAG_INHERIT};
+    use windows_sys::Win32::Security::SECURITY_ATTRIBUTES;
+    use windows_sys::Win32::System::Pipes::CreatePipe;
+    use windows_sys::Win32::System::Threading::{
+        CreateProcessW, DeleteProcThreadAttributeList, InitializeProcThreadAttributeList,
+        ResumeThread, UpdateProcThreadAttribute, CREATE_SUSPENDED, CREATE_UNICODE_ENVIRONMENT,
+        EXTENDED_STARTUPINFO_PRESENT, PROCESS_INFORMATION, PROC_THREAD_ATTRIBUTE_HANDLE_LIST,
+        STARTF_USESTDHANDLES, STARTUPINFOEXW,
+    };
+    let error = || EngineError {
+        kind: EngineErrorKind::SpawnFailed,
+        message: "The process could not be created and assigned safely".into(),
+    };
+    unsafe fn pipe() -> io::Result<(OwnedHandle, OwnedHandle)> {
+        let mut read = std::ptr::null_mut();
+        let mut write = std::ptr::null_mut();
+        let mut attrs = SECURITY_ATTRIBUTES {
+            nLength: std::mem::size_of::<SECURITY_ATTRIBUTES>() as u32,
+            lpSecurityDescriptor: std::ptr::null_mut(),
+            bInheritHandle: 1,
+        };
+        if CreatePipe(&mut read, &mut write, &mut attrs, 0) == 0 {
+            return Err(io::Error::last_os_error());
+        }
+        Ok((
+            OwnedHandle::from_raw_handle(read as _),
+            OwnedHandle::from_raw_handle(write as _),
+        ))
+    }
+    let job = JobObject::create().map_err(|_| error())?;
+    let (child_stdin, parent_stdin) = unsafe { pipe().map_err(|_| error())? };
+    let (parent_stdout, child_stdout) = unsafe { pipe().map_err(|_| error())? };
+    let (parent_stderr, child_stderr) = unsafe { pipe().map_err(|_| error())? };
+    unsafe {
+        for handle in [&parent_stdin, &parent_stdout, &parent_stderr] {
+            if SetHandleInformation(handle.as_raw_handle() as HANDLE, HANDLE_FLAG_INHERIT, 0) == 0 {
+                return Err(error());
+            }
+        }
+    }
+    let mut startup: STARTUPINFOEXW = unsafe { std::mem::zeroed() };
+    startup.StartupInfo.cb = std::mem::size_of::<STARTUPINFOEXW>() as u32;
+    startup.StartupInfo.dwFlags = STARTF_USESTDHANDLES;
+    startup.StartupInfo.hStdInput = child_stdin.as_raw_handle() as HANDLE;
+    startup.StartupInfo.hStdOutput = child_stdout.as_raw_handle() as HANDLE;
+    startup.StartupInfo.hStdError = child_stderr.as_raw_handle() as HANDLE;
+    let inherited = [
+        startup.StartupInfo.hStdInput,
+        startup.StartupInfo.hStdOutput,
+        startup.StartupInfo.hStdError,
+    ];
+    let mut attr_size = 0usize;
+    unsafe {
+        InitializeProcThreadAttributeList(std::ptr::null_mut(), 1, 0, &mut attr_size);
+    }
+    if attr_size == 0 {
+        return Err(error());
+    }
+    let mut attr_storage = vec![0usize; attr_size.div_ceil(std::mem::size_of::<usize>())];
+    let attrs = attr_storage.as_mut_ptr()
+        as windows_sys::Win32::System::Threading::LPPROC_THREAD_ATTRIBUTE_LIST;
+    if unsafe { InitializeProcThreadAttributeList(attrs, 1, 0, &mut attr_size) } == 0 {
+        return Err(error());
+    }
+    struct AttributeList(
+        windows_sys::Win32::System::Threading::LPPROC_THREAD_ATTRIBUTE_LIST,
+        Vec<usize>,
+    );
+    impl Drop for AttributeList {
+        fn drop(&mut self) {
+            unsafe {
+                DeleteProcThreadAttributeList(self.0);
+            }
+            let _ = &self.1;
+        }
+    }
+    let attrs = AttributeList(attrs, attr_storage);
+    startup.lpAttributeList = attrs.0;
+    if unsafe {
+        UpdateProcThreadAttribute(
+            attrs.0,
+            0,
+            PROC_THREAD_ATTRIBUTE_HANDLE_LIST as usize,
+            inherited.as_ptr() as *const c_void,
+            std::mem::size_of_val(&inherited),
+            std::ptr::null_mut(),
+            std::ptr::null(),
+        )
+    } == 0
+    {
+        return Err(error());
+    }
+    let mut info: PROCESS_INFORMATION = unsafe { std::mem::zeroed() };
+    let mut command = quote_windows_arg(executable.as_os_str());
+    for arg in arguments {
+        if arg.encode_wide().any(|unit| unit == 0) {
+            return Err(error());
+        }
+        command.push(b' ' as u16);
+        command.extend(quote_windows_arg(arg));
+    }
+    command.push(0);
+    let app: Vec<u16> = executable
+        .as_os_str()
+        .encode_wide()
+        .chain(std::iter::once(0))
+        .collect();
+    let cwd: Vec<u16> = working_directory
+        .as_os_str()
+        .encode_wide()
+        .chain(std::iter::once(0))
+        .collect();
+    let env: [u16; 2] = [0, 0];
+    let created = unsafe {
+        CreateProcessW(
+            app.as_ptr(),
+            command.as_mut_ptr(),
+            std::ptr::null(),
+            std::ptr::null(),
+            1,
+            CREATE_SUSPENDED | CREATE_UNICODE_ENVIRONMENT | EXTENDED_STARTUPINFO_PRESENT,
+            env.as_ptr() as *const c_void,
+            cwd.as_ptr(),
+            &startup as *const STARTUPINFOEXW
+                as *const windows_sys::Win32::System::Threading::STARTUPINFOW,
+            &mut info,
+        )
+    };
+    // Closing the parent's child-side pipe copies is essential for EOF.
+    drop(child_stdin);
+    drop(child_stdout);
+    drop(child_stderr);
+    if created == 0 {
+        return Err(error());
+    }
+    if info.hProcess.is_null() || info.hThread.is_null() {
+        unsafe {
+            if !info.hProcess.is_null() {
+                windows_sys::Win32::System::Threading::TerminateProcess(info.hProcess, 1);
+                windows_sys::Win32::System::Threading::WaitForSingleObject(info.hProcess, u32::MAX);
+                windows_sys::Win32::Foundation::CloseHandle(info.hProcess);
+            } else if info.dwProcessId != 0 {
+                let process = windows_sys::Win32::System::Threading::OpenProcess(
+                    windows_sys::Win32::System::Threading::PROCESS_TERMINATE | 0x0010_0000, // SYNCHRONIZE
+                    0,
+                    info.dwProcessId,
+                );
+                if !process.is_null() {
+                    windows_sys::Win32::System::Threading::TerminateProcess(process, 1);
+                    windows_sys::Win32::System::Threading::WaitForSingleObject(process, u32::MAX);
+                    windows_sys::Win32::Foundation::CloseHandle(process);
+                }
+            }
+            if !info.hThread.is_null() {
+                windows_sys::Win32::Foundation::CloseHandle(info.hThread);
+            }
+        }
+        return Err(error());
+    }
+    let process = unsafe { OwnedHandle::from_raw_handle(info.hProcess as _) };
+    let thread = unsafe { OwnedHandle::from_raw_handle(info.hThread as _) };
+    if unsafe { job.assign(info.hProcess) }.is_err() {
+        unsafe {
+            windows_sys::Win32::System::Threading::TerminateProcess(info.hProcess, 1);
+            windows_sys::Win32::System::Threading::WaitForSingleObject(info.hProcess, u32::MAX);
+        }
+        drop(thread);
+        drop(process);
+        return Err(error());
+    }
+    if unsafe { ResumeThread(info.hThread) } == u32::MAX {
+        unsafe {
+            windows_sys::Win32::System::Threading::TerminateProcess(info.hProcess, 1);
+            windows_sys::Win32::System::Threading::WaitForSingleObject(info.hProcess, u32::MAX);
+        }
+        drop(thread);
+        drop(process);
+        return Err(error());
+    }
+    drop(thread);
+    let child = WindowsChild {
+        process,
+        stdin: Some(std::fs::File::from(parent_stdin)),
+        pid: info.dwProcessId,
+        status: None,
+    };
+    let stdout = Some(std::fs::File::from(parent_stdout));
+    let stderr = Some(std::fs::File::from(parent_stderr));
+    Ok((child, stdout, stderr, job))
+}
+
+#[cfg(windows)]
+fn quote_windows_arg(arg: &std::ffi::OsStr) -> Vec<u16> {
+    use std::os::windows::ffi::OsStrExt;
+    let value: Vec<u16> = arg.encode_wide().collect();
+    if !value.is_empty()
+        && !value
+            .iter()
+            .any(|&c| c == b' ' as u16 || c == b'\t' as u16 || c == b'"' as u16)
+    {
+        return value;
+    }
+    let mut out = vec![b'"' as u16];
+    let mut slashes = 0;
+    for ch in value {
+        if ch == b'\\' as u16 {
+            slashes += 1;
+        } else if ch == b'"' as u16 {
+            out.extend(std::iter::repeat(b'\\' as u16).take(slashes * 2 + 1));
+            out.push(b'"' as u16);
+            slashes = 0;
+        } else {
+            out.extend(std::iter::repeat(b'\\' as u16).take(slashes));
+            slashes = 0;
+            out.push(ch);
+        }
+    }
+    out.extend(std::iter::repeat(b'\\' as u16).take(slashes * 2));
+    out.push(b'"' as u16);
+    out
+}
+
+#[cfg(windows)]
 struct JobObject(windows_sys::Win32::Foundation::HANDLE);
 
 // The job handle is an owned kernel handle; moving it between supervisor threads is safe.
@@ -236,16 +549,12 @@ unsafe impl Send for JobObject {}
 
 #[cfg(windows)]
 impl JobObject {
-    fn assign(process_id: u32) -> Result<Self, ()> {
+    fn create() -> Result<Self, ()> {
         use std::mem::{size_of, zeroed};
         use windows_sys::Win32::Foundation::{CloseHandle, GetLastError};
         use windows_sys::Win32::System::JobObjects::{
-            AssignProcessToJobObject, CreateJobObjectW, JobObjectExtendedLimitInformation,
-            SetInformationJobObject, JOBOBJECT_EXTENDED_LIMIT_INFORMATION,
-            JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE,
-        };
-        use windows_sys::Win32::System::Threading::{
-            OpenProcess, PROCESS_SET_QUOTA, PROCESS_TERMINATE,
+            CreateJobObjectW, JobObjectExtendedLimitInformation, SetInformationJobObject,
+            JOBOBJECT_EXTENDED_LIMIT_INFORMATION, JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE,
         };
 
         unsafe {
@@ -266,18 +575,15 @@ impl JobObject {
                 CloseHandle(job);
                 return Err(());
             }
-            let process = OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, 0, process_id);
-            if process.is_null() {
-                CloseHandle(job);
-                return Err(());
-            }
-            let assigned = AssignProcessToJobObject(job, process);
-            CloseHandle(process);
-            if assigned == 0 {
-                CloseHandle(job);
-                return Err(());
-            }
             Ok(Self(job))
+        }
+    }
+
+    unsafe fn assign(&self, process: windows_sys::Win32::Foundation::HANDLE) -> Result<(), ()> {
+        if windows_sys::Win32::System::JobObjects::AssignProcessToJobObject(self.0, process) == 0 {
+            Err(())
+        } else {
+            Ok(())
         }
     }
 }
@@ -296,7 +602,6 @@ mod tests {
     use std::ffi::OsString;
     use std::io;
     use std::path::PathBuf;
-    use std::process::Child;
     use std::time::Duration;
 
     #[test]
@@ -314,6 +619,67 @@ mod tests {
     #[ignore]
     fn fixture_exit_entrypoint() {
         std::thread::sleep(Duration::from_millis(80));
+    }
+
+    #[test]
+    #[ignore]
+    fn fixture_descendant_entrypoint() {
+        loop {
+            std::thread::sleep(Duration::from_secs(1));
+        }
+    }
+
+    #[cfg(windows)]
+    #[test]
+    #[ignore]
+    fn fixture_parent_with_descendant_entrypoint() {
+        use std::io::{Read, Write};
+        use std::process::{Command, Stdio};
+        let descendant = Command::new(std::env::current_exe().unwrap())
+            .args([
+                "--exact",
+                "mining::process::tests::fixture_descendant_entrypoint",
+                "--nocapture",
+                "--ignored",
+            ])
+            .stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .spawn()
+            .unwrap();
+        use windows_sys::Win32::System::JobObjects::IsProcessInJob;
+        use windows_sys::Win32::System::Threading::{
+            GetCurrentProcess, OpenProcess, PROCESS_QUERY_LIMITED_INFORMATION,
+        };
+        let mut parent_in_job = 0;
+        let mut descendant_in_job = 0;
+        unsafe {
+            assert_ne!(
+                IsProcessInJob(
+                    GetCurrentProcess(),
+                    std::ptr::null_mut(),
+                    &mut parent_in_job
+                ),
+                0
+            );
+            let process = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, 0, descendant.id());
+            assert!(!process.is_null());
+            assert_ne!(
+                IsProcessInJob(process, std::ptr::null_mut(), &mut descendant_in_job),
+                0
+            );
+            windows_sys::Win32::Foundation::CloseHandle(process);
+        }
+        println!(
+            "DESCENDANT_PID={};PARENT_IN_JOB={};DESCENDANT_IN_JOB={}",
+            descendant.id(),
+            parent_in_job,
+            descendant_in_job
+        );
+        let _ = io::stdout().flush();
+        let mut buffer = [0; 1];
+        let _ = io::stdin().read(&mut buffer);
+        std::mem::forget(descendant); // Job Object, not Rust Drop, owns its lifetime.
     }
 
     fn fixture_args() -> Vec<OsString> {
@@ -347,8 +713,8 @@ mod tests {
         let pid = graceful.id();
         let status = graceful
             .stop_with(
-                |child: &mut Child| {
-                    drop(child.stdin.take());
+                |child: &mut SupervisedChild| {
+                    child.close_stdin();
                     Ok(())
                 },
                 Duration::from_secs(1),
@@ -384,6 +750,62 @@ mod tests {
         );
         drop(child); // Drop closes the kill-on-close Job Object, then waits/reaps.
         assert!(!windows_process_is_running(pid));
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn closing_supervisor_handle_reaps_parent_and_descendant() {
+        let executable = std::env::current_exe().unwrap();
+        let mut child = SupervisedChild::spawn(
+            &executable,
+            &[
+                "--exact".into(),
+                "mining::process::tests::fixture_parent_with_descendant_entrypoint".into(),
+                "--nocapture".into(),
+                "--ignored".into(),
+            ],
+            &std::env::current_dir().unwrap(),
+            RedactionSecrets::new([]),
+        )
+        .unwrap();
+        let parent_pid = child.id();
+        let deadline = std::time::Instant::now() + Duration::from_secs(3);
+        let descendant_pid = loop {
+            if let Some((pid, parent_owned, descendant_owned)) =
+                child.diagnostics().iter().find_map(|line| {
+                    let mut fields = line.message.split(';');
+                    let pid = fields
+                        .next()?
+                        .strip_prefix("DESCENDANT_PID=")?
+                        .parse::<u32>()
+                        .ok()?;
+                    let parent_owned = fields.next()? == "PARENT_IN_JOB=1";
+                    let descendant_owned = fields.next()? == "DESCENDANT_IN_JOB=1";
+                    Some((pid, parent_owned, descendant_owned))
+                })
+            {
+                assert!(
+                    parent_owned && descendant_owned,
+                    "parent and descendant must inherit Job Object ownership"
+                );
+                break pid;
+            }
+            assert!(
+                std::time::Instant::now() < deadline,
+                "fixture did not report descendant PID"
+            );
+            std::thread::sleep(Duration::from_millis(10));
+        };
+        assert!(windows_process_is_running(parent_pid));
+        assert!(windows_process_is_running(descendant_pid));
+        drop(child.job.take()); // Equivalent to abrupt owner loss: kill-on-close is kernel enforced.
+        let _ = child.child.wait();
+        assert!(!windows_process_is_running(parent_pid));
+        let deadline = std::time::Instant::now() + Duration::from_secs(3);
+        while windows_process_is_running(descendant_pid) && std::time::Instant::now() < deadline {
+            std::thread::sleep(Duration::from_millis(10));
+        }
+        assert!(!windows_process_is_running(descendant_pid));
     }
 
     #[cfg(windows)]

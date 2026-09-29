@@ -37,7 +37,7 @@ pub fn run() {
     use tauri::tray::TrayIconBuilder;
     use tauri::{Manager, WindowEvent};
 
-    tauri::Builder::default()
+    let app = tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![shell_status, system_snapshot])
         .setup(|app| {
             app.manage(Mutex::new(SystemObserver::new()));
@@ -83,6 +83,17 @@ pub fn run() {
                 let _ = window.hide();
             }
         })
-        .run(tauri::generate_context!())
-        .expect("failed to run Ember");
+        .build(tauri::generate_context!())
+        .expect("failed to build Ember");
+    app.run(|app, event| {
+        if let tauri::RunEvent::ExitRequested { api, .. } = event {
+            if app
+                .state::<EngineSupervisor>()
+                .stop_for_application_quit()
+                .is_err()
+            {
+                api.prevent_exit();
+            }
+        }
+    });
 }

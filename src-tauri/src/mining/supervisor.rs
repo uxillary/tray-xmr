@@ -8,7 +8,6 @@ use super::xmrig::ApiClientError;
 use std::ffi::OsString;
 use std::io;
 use std::path::Path;
-use std::process::Child;
 use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
@@ -24,6 +23,7 @@ struct SupervisorInner {
     telemetry: Option<MiningTelemetry>,
     error: Option<EngineError>,
     diagnostics: Vec<super::domain::DiagnosticSummary>,
+    shutting_down: bool,
 }
 
 pub struct EngineSupervisor {
@@ -47,6 +47,7 @@ impl EngineSupervisor {
                 telemetry: None,
                 error: None,
                 diagnostics: Vec::new(),
+                shutting_down: false,
             }),
             operation: Mutex::new(()),
         }
@@ -155,6 +156,7 @@ impl EngineSupervisor {
         {
             let mut inner = self.inner.lock().map_err(|_| lock_error())?;
             if inner.process.is_some()
+                || inner.shutting_down
                 || !matches!(
                     inner.lifecycle.state(),
                     EngineLifecycleState::Ready | EngineLifecycleState::Stopped
@@ -300,9 +302,16 @@ impl EngineSupervisor {
 
     pub fn stop_with<F>(&self, _reason: StopReason, graceful: F) -> Result<(), EngineError>
     where
-        F: FnOnce(&mut Child) -> io::Result<()>,
+        F: FnOnce(&mut SupervisedChild) -> io::Result<()>,
     {
         let _operation = self.operation.lock().map_err(|_| lock_error())?;
+        self.stop_owned_process(graceful)
+    }
+
+    fn stop_owned_process<F>(&self, graceful: F) -> Result<(), EngineError>
+    where
+        F: FnOnce(&mut SupervisedChild) -> io::Result<()>,
+    {
         let mut inner = self.inner.lock().map_err(|_| lock_error())?;
         if inner.process.is_none() {
             return Ok(()); // Explicitly idempotent when this supervisor owns no process.
@@ -338,7 +347,9 @@ impl EngineSupervisor {
     }
 
     pub fn stop_for_application_quit(&self) -> Result<(), EngineError> {
-        self.stop_with(StopReason::ApplicationQuit, |_| Ok(()))
+        let _operation = self.operation.lock().map_err(|_| lock_error())?;
+        self.inner.lock().map_err(|_| lock_error())?.shutting_down = true;
+        self.stop_owned_process(|_| Ok(()))
     }
 
     fn fail<T>(&self, error: EngineError) -> Result<T, EngineError> {
@@ -378,7 +389,6 @@ mod tests {
     use crate::mining::process::SupervisedChild;
     use std::ffi::OsString;
     use std::path::{Path, PathBuf};
-    use std::process::Child;
     use std::time::Duration;
 
     fn fixture_artifact(path: PathBuf) -> EngineArtifact {
@@ -468,8 +478,8 @@ mod tests {
             )
             .is_err());
         supervisor
-            .stop_with(StopReason::UserRequest, |child: &mut Child| {
-                drop(child.stdin.take());
+            .stop_with(StopReason::UserRequest, |child: &mut SupervisedChild| {
+                child.close_stdin();
                 Ok(())
             })
             .unwrap();
@@ -558,7 +568,25 @@ mod tests {
             supervisor.status().state,
             EngineLifecycleState::NotConfigured
         );
-        let _ = Duration::from_millis(0);
+        let artifact = fixture_artifact(std::env::current_exe().unwrap());
+        let config = crate::mining::config::validate(fixture_config(), "6.26.0").unwrap();
+        let supervisor = EngineSupervisor::new();
+        supervisor.configure_ready(&artifact, &config).unwrap();
+        supervisor.stop_for_application_quit().unwrap();
+        let started = supervisor.start_with(
+            &artifact,
+            &config,
+            artifact.installed_path(),
+            &[],
+            &std::env::current_dir().unwrap(),
+            RedactionSecrets::new([]),
+            spawn_test_child,
+            || Ok(fixture_telemetry(false)),
+        );
+        assert_eq!(
+            started.unwrap_err().kind,
+            EngineErrorKind::InvalidTransition
+        );
     }
 
     #[test]
