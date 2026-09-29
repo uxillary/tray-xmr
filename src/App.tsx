@@ -1,4 +1,3 @@
-import { invoke } from "@tauri-apps/api/core";
 import { BellSimpleIcon } from "@phosphor-icons/react/dist/csr/BellSimple";
 import { ClockCounterClockwiseIcon } from "@phosphor-icons/react/dist/csr/ClockCounterClockwise";
 import { CpuIcon } from "@phosphor-icons/react/dist/csr/Cpu";
@@ -7,6 +6,7 @@ import { HouseIcon } from "@phosphor-icons/react/dist/csr/House";
 import { LightningIcon } from "@phosphor-icons/react/dist/csr/Lightning";
 import { WalletIcon } from "@phosphor-icons/react/dist/csr/Wallet";
 import { useEffect, useState, type ReactNode } from "react";
+import { invoke } from "@tauri-apps/api/core";
 import { EmberCore, type EmberCoreState } from "./components/EmberCore";
 import { EmptyState } from "./components/EmptyState";
 import { MetricCard } from "./components/MetricCard";
@@ -143,6 +143,20 @@ function coreLabel(status: { label: string; core: EmberCoreState } | undefined, 
 }
 
 function MiningPage() {
+  const [engineState, setEngineState] = useState<"notInstalled" | "installing" | "ready" | "error">("notInstalled");
+  const [engineVersion, setEngineVersion] = useState<string | null>(null);
+
+  async function setupEngine() {
+    setEngineState("installing");
+    try {
+      const installed = await invoke<{ version: string }>("provision_xmrig");
+      setEngineVersion(installed.version);
+      setEngineState("ready");
+    } catch {
+      setEngineState("error");
+    }
+  }
+
   return (
     <>
       <section className="mining-state-panel" aria-labelledby="mining-state-title">
@@ -150,7 +164,7 @@ function MiningPage() {
         <div className="mining-state-copy"><p className="eyebrow">CURRENT STATE</p><h2 id="mining-state-title">Not mining</h2><p>Configure an engine, public wallet address, and resource profile before mining can begin.</p></div>
       </section>
       <div className="details-grid">
-        <InfoCard icon={<CpuIcon weight="regular" />} eyebrow="MINING ENGINE" title="Not configured" detail="No mining engine configured." />
+        <article className="info-card"><div className="info-card-icon" aria-hidden="true"><CpuIcon weight="regular" /></div><p className="eyebrow">MINING ENGINE</p><h3>{engineState === "ready" ? `XMRig ${engineVersion}` : engineState === "installing" ? "Setting up…" : "Not configured"}</h3><p className="info-detail">{engineState === "ready" ? "Verified · Ready. Download verified against the official XMRig release." : "XMRig is a separate open-source mining engine. Ember downloads it from the official upstream release and verifies it locally. Setup does not start mining."}</p>{engineState !== "ready" && <button className="setup-engine-button" type="button" onClick={setupEngine} disabled={engineState === "installing"}>{engineState === "installing" ? "Downloading and verifying…" : "Set up engine"}</button>}{engineState === "error" && <p className="setup-engine-error" role="alert">Setup was blocked or could not be completed. Ember tried to install XMRig {" "}<a href="https://github.com/xmrig/xmrig/releases/tag/v6.26.0" target="_blank" rel="noreferrer">v6.26.0 from the official release</a>. Check your connection, available storage, and security notifications, then retry. Do not disable security software.</p>}<p className="info-detail">XMRig is licensed under GPLv3. <a href="https://github.com/xmrig/xmrig" target="_blank" rel="noreferrer">Upstream source and notices</a>.</p></article>
         <InfoCard icon={<WalletIcon weight="regular" />} eyebrow="WALLET ADDRESS" title="Not configured" detail="Ember will use a public receiving address only." />
         <InfoCard icon={<LightningIcon weight="regular" />} eyebrow="RESOURCE PROFILE" title="Not configured" detail="Choose how Ember should use system resources." />
       </div>

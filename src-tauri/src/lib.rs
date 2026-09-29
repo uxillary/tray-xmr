@@ -6,6 +6,24 @@ use mining::{domain::EngineLifecycleState, EngineSupervisor};
 use std::sync::Mutex;
 use system_observation::{SystemObserver, SystemSnapshot};
 
+#[cfg(windows)]
+#[tauri::command]
+async fn provision_xmrig(
+    app: tauri::AppHandle,
+) -> Result<mining::provisioner::InstalledEngine, String> {
+    use tauri::Manager;
+    let root = app
+        .path()
+        .local_data_dir()
+        .map_err(|_| "Ember could not access local application storage".to_owned())?;
+    tauri::async_runtime::spawn_blocking(move || mining::provisioner::provision(&root))
+        .await
+        .map_err(|_| "XMRig setup failed unexpectedly. You can retry.".to_owned())?
+        .map_err(|_| {
+            "XMRig setup failed. Check the connection and available storage, then retry.".to_owned()
+        })
+}
+
 #[tauri::command]
 fn shell_status(supervisor: tauri::State<'_, EngineSupervisor>) -> &'static str {
     match supervisor.status().state {
@@ -37,8 +55,16 @@ pub fn run() {
     use tauri::tray::TrayIconBuilder;
     use tauri::{Manager, WindowEvent};
 
-    let app = tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![shell_status, system_snapshot])
+    let builder = tauri::Builder::default();
+    #[cfg(windows)]
+    let builder = builder.invoke_handler(tauri::generate_handler![
+        shell_status,
+        system_snapshot,
+        provision_xmrig
+    ]);
+    #[cfg(not(windows))]
+    let builder = builder.invoke_handler(tauri::generate_handler![shell_status, system_snapshot]);
+    let app = builder
         .setup(|app| {
             app.manage(Mutex::new(SystemObserver::new()));
             app.manage(EngineSupervisor::new());

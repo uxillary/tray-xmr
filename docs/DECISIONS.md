@@ -41,13 +41,15 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-033 | 2026-09-29 | Windows process ownership is established before child execution using `CREATE_SUSPENDED`, Job Object assignment, then `ResumeThread`. | Handle ownership is RAII-based, descendants inherit job membership, and tray/Tauri exit paths gate new starts and clean up before exit. Packaged Tauri host verification remains required; nested-job incompatibility fails closed. |
 | D-034 | 2026-09-29 | M03B.2 attributes the `0xC0000409` startup report to launching from the Codex restricted sandbox identity. | Debug identified WebView2 `0x800700AA` before Ember setup; release panic-abort surfaced `0xC0000409`. The clean release executable remained running with a main window under the logged-in Windows user. No application startup workaround was justified. |
 | D-035 | 2026-09-29 | Close the Windows kill-on-close Job Object after the direct child exits and before joining output readers. | A graceful parent can leave a descendant alive with inherited pipe handles; closing the job first terminates that descendant and prevents reader joins from waiting indefinitely. Covered by a Windows regression test. |
+| D-036 | 2026-09-29 | M03C.1 pins XMRig v6.26.0 Windows x64 and upstream GPG fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409`. | xmrig.com publishes the fingerprint and says its key must match the official repository copy; the public key blocks match byte-for-byte. See `docs/XMRIG_INTEGRATION.md`. |
+| D-037 | 2026-09-29 | M03C.1 uses explicit user-approved upstream download, Sequoia OpenPGP with the Windows CNG backend, strict SHA-256 manifest verification, and bounded safe extraction. | A controlled v6.26.0 Windows x64 install completed in per-user app data. Mining launch remains disabled. Public release is subject to GPL/dependency review. |
 
 ## Pending decisions
 
 | ID | Question | Needed before |
 |---|---|---|
-| P-001 | Legal approval of GPLv3 distribution/aggregation, exact notices, source obligations, and Ember's role in user-initiated official-release download. | Before shipping miner acquisition or bundling. |
-| P-002 | Independently confirm upstream GPG key fingerprint/rotation policy, verification toolchain, supported architecture/version, and update cadence/rollback. | Before any acquisition implementation. |
+| P-001 | Legal approval of GPLv3 acquisition/aggregation, exact notices, source obligations, Ember's role in user-initiated download, and dependency notices including Sequoia LGPL. | Before public release. |
+| P-002 | Define key rotation/revocation response for future upstream signing-key changes. | Before changing the pinned key. |
 | P-003 | Verify exact pinned XMRig API schemas, restricted-mode access semantics, authenticated graceful stop, and fields available for shares/pool/uptime. | Before XMRig adapter implementation. |
 | P-004 | Test child/job ownership, Job Object feasibility in packaged Tauri, graceful stop, timeout escalation, shutdown/logoff, and crash recovery. | Before active mining integration. |
 | P-005 | How will the 5% contribution be implemented and accounted for in an accurate, auditable, disclosed way? | Contribution implementation. |

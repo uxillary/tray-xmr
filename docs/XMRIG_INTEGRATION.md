@@ -1,6 +1,6 @@
 # XMRig Integration Research and Contract
 
-**Status:** M03A research plus M03B test-only Rust groundwork, recorded 2026-09-29. No XMRig binary was downloaded, bundled, or run. Real execution remains disabled; this is not legal advice or release approval. Upstream facts were checked against official XMRig sources and the GNU GPLv3 text on the date above; recheck them against the exact version before implementation or distribution.
+**Status:** M03C.1 verified provisioning complete (2026-09-29). XMRig v6.26.0 was downloaded from the official release, signature/hash verified, and installed under the per-user Ember data directory. `xmrig.exe` was never executed. Public-release legal review remains open; this is not legal advice or release approval.
 
 ## Decision summary
 
@@ -20,13 +20,13 @@ The XMRig repository currently identifies its license as **GNU GPL version 3 or 
 
 GPLv3 permits redistribution, but conveying an object-code copy carries license conditions. These include keeping copyright/license/warranty notices, providing the GPL text, and providing Corresponding Source using one of the license's permitted methods. A hosted download offer must keep equivalent source access available. Redistribution is not made compliant by attribution alone. If Ember modifies XMRig, it must mark modifications and dates and convey the derivative covered work under GPLv3-compatible terms, including Corresponding Source and required notices. Whether the separately licensed Ember application and miner form an aggregate or a combined work in the planned packaging/integration is a legal question for review; do not infer the answer from process separation alone.
 
-The least-complex initial approach is to have the user's Ember installation fetch an unmodified upstream release directly from the official release location, rather than Ember redistributing the executable inside its own installer. That lowers bundled artifact and installer-maintenance obligations but does not itself settle every legal issue. Before shipping the download feature, legal review must approve the exact distribution flow, attribution/notices, user-facing license presentation, source link/availability, and treatment of bundled dependencies. Do not patch the upstream donation behavior or remove its notices.
+The least-complex initial approach is to have the user's Ember installation fetch an unmodified upstream release directly from the official release location, rather than Ember redistributing the executable inside its own installer. That lowers bundled artifact and installer-maintenance obligations but does not itself settle every legal issue. The implementation adds `sequoia-openpgp` (LGPL-2.0-or-later), `reqwest` (MIT/Apache-2.0), `sha2` (MIT/Apache-2.0), `zip` (MIT), `hex` (MIT/Apache-2.0), and `anyhow` (MIT/Apache-2.0); review notices and dependency obligations before public release. Legal review must approve the exact acquisition flow, attribution/notices, user-facing license presentation, source link/availability, and dependency treatment. Do not patch upstream donation behavior or remove its notices.
 
 ### Release provenance and integrity
 
-The official release page publishes per-archive SHA-256 values and a detached GPG signature for the checksum manifest. This is better than HTTPS alone: HTTPS authenticates the connection to the server, while signature verification can authenticate the manifest against a trusted signing key. A hash copied from the same unauthenticated channel only detects accidental mismatch; it does not independently authenticate origin.
+The official v6.26.0 release publishes per-archive SHA-256 values and a detached GPG signature for `SHA256SUMS`. The selected Windows x64 asset is `xmrig-6.26.0-windows-x64.zip` (3.7 MB); its published digest is `bba8097cb37d9b458a1cb1137876b27cde6740d17fe4ccbc086ba07d87d9e147`. The manifest and detached signature are separate official release assets. The signing key is `XMRig <support@xmrig.com>`, key ID `446A53638BE94409`, full fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409`. The full fingerprint and public key are published at [xmrig.com/docs/gpg-key](https://xmrig.com/docs/gpg-key); the page explicitly says this key must equal the copy in the official [XMRig repository](https://github.com/xmrig/xmrig/blob/master/doc/gpg_keys/xmrig.asc). The public key blocks match byte-for-byte, and the v6.26.0 release signature issuer matches the full fingerprint's key ID. This supplies two official upstream-controlled publication locations; no public keyserver is used as a trust source. Pin the full fingerprint, accept no other key, and require a reviewed Ember source change for rotation. Upstream does not provide an independent key-transparency or revocation service in these sources, so rotation/revocation still requires a deliberate Ember update.
 
-Future Ember provisioning should:
+Ember provisioning should:
 
 1. Pin a specific XMRig version, expected official release URL, archive name, and upstream signing-key fingerprint in reviewed Ember release metadata.
 2. Fetch only over HTTPS from the official release endpoint; verify the detached signature over `SHA256SUMS` with a key whose fingerprint Ember has pinned through an independent trusted channel.
@@ -34,7 +34,17 @@ Future Ember provisioning should:
 4. Extract to a fresh versioned staging directory with path-traversal checks; verify the expected executable is present, then atomically promote it to the managed version directory.
 5. Record version and verified digest locally. Re-verify before every launch and fail closed if the file changes. Updates install side-by-side, verify before activation, preserve the previous verified version for rollback, and never start mining or change consent automatically.
 
-The release metadata establishes what upstream published, not that the source is free of defects or that a binary behaves benignly. A signed checksum manifest does not appear to be an Authenticode signature on `xmrig.exe`. Do not claim Windows publisher identity from the checksum signature. Exact current upstream key fingerprints, signature algorithms/key rotation and verification tooling must be pinned/reviewed during implementation. M03A did not download artifacts or execute cryptographic verification.
+The release metadata establishes what upstream published, not that the source is free of defects or that a binary behaves benignly. A signed checksum manifest is not an Authenticode signature on `xmrig.exe`; do not claim Windows publisher identity from it. The M03C.1 controlled development install verified the pinned signing identity and archive digest and atomically promoted the extracted release. Ember did not execute the binary.
+
+### M03C.1 provisioning implementation
+
+`src-tauri/src/mining/provisioner.rs` owns static v6.26.0 Windows x64 metadata, HTTPS-only downloads from the pinned GitHub release URL (redirects only to HTTPS `github.com` or `*.githubusercontent.com`), connection/request timeouts and artifact-size caps. It verifies `SHA256SUMS.sig` using Sequoia OpenPGP's Windows CNG backend and the embedded upstream public key, checks the full pinned fingerprint, strictly parses the signed manifest, and compares the archive SHA-256 with the reviewed digest. It does not invoke shell tools or accept frontend URLs/paths.
+
+Provisioning requires the Mining-page **Set up engine** action. It downloads into a fresh sibling staging directory under `%LOCALAPPDATA%\\Ember\\miners\\xmrig`, rejects unsafe or out-of-root paths, Windows alternate data stream names, symlinks, unexpected root layout, duplicate paths, excessive file counts/expanded size, and missing `xmrig.exe`. It writes provenance metadata and promotes the completed directory by same-volume rename. Failed staging is removed. Existing installs are not overwritten; they are checked for metadata, pinned version/location fields, and executable digest. A modified executable fails verification. Ember does not automatically download on launch, replace versions, start XMRig, or configure mining.
+
+The persisted record contains engine/version/architecture, signed archive digest, installed executable digest, signing fingerprint, upstream source and install time; no personal path is stored. The UI describes XMRig as separate GPLv3 software, links upstream notices/source, identifies v6.26.0 and the official source on error, and offers retry. Its setup action currently reports one combined download/verification/install activity state; it does not provide precise percentage progress or cancellation. Engine execution remains disabled, so integrity re-verification is not yet wired into an executable start path; future engine availability must require `read_and_verify_install` before any launch.
+
+The one controlled real provisioning run installed XMRig 6.26.0 from the official GitHub release. Detached manifest signature and archive SHA-256 both verified; resulting installation was `%LOCALAPPDATA%\\Ember\\miners\\xmrig\\6.26.0`. The installed executable SHA-256 recorded by the test was `6fa80698d7268f6e88aa88c06fb27ee99e1bcee747c2e76911e6206a5b1aeeb3`. No `xmrig` process was present afterward, and `xmrig.exe` was never executed.
 
 ### Acquisition trade-offs
 
@@ -64,7 +74,7 @@ XMRig includes a built-in HTTP server. Official docs list `GET /2/summary`, `GET
 
 Do not yet promise average hashrate, shares accepted/rejected, pool connection state, worker identity, or precise miner uptime in Ember's stable contract solely from the public API docs: current endpoint docs do not specify complete response schemas or versioning guarantees for these fields. Inspect the pinned release's API source and fixture responses and test pool states in M03B before adopting each field. Treat missing fields as unknown. API failure makes engine telemetry unavailable; it must not be inferred from text output. Console output remains useful for bounded failure diagnostics.
 
-The API is not read-only by design: upstream describes live config/state changes, `/2/config` has write verbs, and JSON-RPC supports pause, resume, and stop. XMRig API config documents host default `127.0.0.1`, port default `0` (random port), an optional access token, and `restricted: true` (available only when a token is configured) versus full access. CLI equivalents exist. The upstream docs say `0.0.0.0` and `::` bind broadly. This makes configuration and default choices security-critical.
+The API is not read-only by design: upstream describes live config/state changes, `/2/config` has write verbs, and JSON-RPC supports pause, resume, and stop. XMRig API config documents host default `127.0.0.1`, port default `0` (random port), an optional access token, and `restricted: true` (available only when a token is configured) versus full access. CLI equivalents exist. The upstream docs say `0.0.0.0` and `::` bind broadly. This makes configuration and default choices security-critical. M03C.1 does not configure or start the API.
 
 Initial Ember stance: explicitly enable the API; bind **only** to `127.0.0.1`; never accept arbitrary bind hosts; use a randomly generated per-run high-entropy token held only by the Rust supervisor; persist it nowhere beyond a user-private short-lived config if XMRig requires config-file provisioning; never expose it to React/logs/diagnostics. Select a local port and retry safely on collision (the documented random port cannot be discovered through a documented handshake). Use restricted mode for normal telemetry. Validate response size, schema, numeric bounds, and API identity. If stop control requires full API access, prefer a separately reviewed authenticated loopback control path; do not quietly enable unrestricted API features. No LAN bind, internet exposure, firewall rule, or inbound connectivity is needed. Confirm exact access semantics and a safe stop path against the pinned XMRig release before implementation.
 
@@ -76,11 +86,11 @@ Track the child handle and PID, monitor process exit and API readiness, and publ
 
 M03B.1 creates the Job Object, calls `CreateProcessW` with `CREATE_SUSPENDED` and redirected standard handles, assigns the process handle, and calls `ResumeThread` only after successful assignment. Job Object configuration is limited to `JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE`. Every pre-resume failure terminates and waits for the suspended process; process, thread, job, and pipe handles use RAII ownership. When a direct child exits, the Job Object closes before pipe readers are joined, which terminates descendants that might keep inherited pipe handles open. A Windows regression test covers graceful parent exit with a live descendant. Nested-job assignment failures are fail-closed; behavior under CI/development parent jobs depends on Windows nested-job support.
 
-Packaged verification used a temporary compile-time-gated fixture and a full feature-enabled Tauri build; the `target/release/ember.exe` artifact was run directly, not installed. Four start/stop cycles removed each fixture parent and descendant. A fifth pair remained alive until the Ember owner process was forcibly terminated externally; PID-handle checks confirmed the owner, parent, and descendant exited. Tray Quit was not exercised because the available desktop automation exposed no native app window or controls. The temporary feature, fixture source, executable, marker files, and feature-built MSI/NSIS artifacts were removed. M03B.1 remains in progress until packaged tray Quit is verified.
+Packaged verification used a temporary compile-time-gated fixture and a full feature-enabled Tauri build; the `target/release/ember.exe` artifact was run directly, not installed. Four start/stop cycles removed each fixture parent and descendant. A fifth pair remained alive until the Ember owner process was forcibly terminated externally; PID-handle checks confirmed the owner, parent, and descendant exited. The user subsequently manually verified normal Ember launch, tray availability, **Quit Ember**, and application exit. The temporary feature, fixture source, executable, marker files, and feature-built MSI/NSIS artifacts were removed. M03B.1 is complete.
 
 The earlier `0xC0000409` release exit reproduced only when launching from the Codex restricted sandbox identity. Debug output showed Tauri/Wry failing during WebView2 environment creation with `HRESULT 0x800700AA`, before the setup closure; release panic-abort surfaced as `0xC0000409`. No matching Application Error/WER event was recorded. The clean normal release executable launched under the logged-in Windows user and remained running with an Ember main-window title and WebView2 processes. No application startup code change was needed; the sandboxed launch was not a valid packaged-host test.
 
-To finish M03B.1 verification, build with `npm run tauri build`, run the resulting packaged Ember app under the logged-in user, and use a local developer-only fixture harness that calls `SupervisedChild::spawn` with a harmless fixture executable (never XMRig). Close Ember through tray **Quit** and verify both the fixture and descendant exit by PID/handle. Repeat forced app termination to check kernel kill-on-close. Remove the local harness after the check; do not ship a fixture-start command.
+The manual normal-app tray Quit verification supplements automated parent/descendant and forced-owner-loss cleanup checks. It did not run or require XMRig.
 
 Basic XMRig operation does not have a documented requirement for Ember to run elevated. Keep Ember and XMRig at the normal user's privilege. Optional performance features are separate: Windows large/huge pages require `SeLockMemoryPrivilege` and XMRig docs describe administrative configuration to obtain it; MSR modification may require administrator rights. These are optimization features, not prerequisites for ordinary launch. Exclude them from initial setup; never elevate Ember automatically. If a later opt-in optimization is considered, isolate it, explain effects/privileges, and test it independently.
 
@@ -151,20 +161,22 @@ Mining executables are likely to receive security-product scrutiny, but outcomes
 ## Unresolved before release
 
 1. Legal review of GPLv3 distribution/aggregation, Ember process/API integration, exact notices, and Corresponding Source delivery for Ember's chosen download/bundle flow.
-2. Independently confirmed GPG key fingerprint and key-rotation/revocation policy; exact release download and verification toolchain.
-3. Pin supported Windows architectures/version and define update cadence, rollback, end-of-support and download consent.
+2. Define key-rotation/revocation response for future upstream signing-key changes.
+3. Define update cadence, rollback and end-of-support; provisioning has one reviewed static version and no updater.
 4. Confirm current API schema and semantics, especially shares, pool connection, uptime, worker, and API restricted-mode/read/control behavior, against the exact release.
 5. Confirm a safe, authenticated graceful-stop path while preserving least API privilege; select port allocation/discovery and token lifecycle.
 6. Determine whether XMRig creates descendants and validate Job Object assignment/cleanup in packaged Tauri and Windows shutdown conditions.
 7. Decide whether API config includes an access token and how to protect/clean the generated config, including ACLs and crash cleanup.
-8. Decide Ember Quit behavior while active and later opt-in autostart policy.
+8. Decide Ember Quit behavior while mining is active and later opt-in autostart policy. The idle tray Quit path is manually verified and M03B.1 is complete.
 9. Approve contribution mechanism and its accounting/source evidence independently from XMRig's 1% donation.
 10. Test actual Defender/SmartScreen behavior, installer reputation/signing, and user-facing remediation without exclusions.
 
 ## Primary sources
 
 - [XMRig repository and license](https://github.com/xmrig/xmrig)
-- [XMRig v6.26.0 releases and signed SHA256SUMS](https://github.com/xmrig/xmrig/releases)
+- [XMRig v6.26.0 release and signed SHA256SUMS](https://github.com/xmrig/xmrig/releases/tag/v6.26.0)
+- [XMRig published GPG fingerprint](https://xmrig.com/docs/gpg-key)
+- [Matching XMRig repository public key](https://github.com/xmrig/xmrig/blob/master/doc/gpg_keys/xmrig.asc)
 - [XMRig command-line options](https://xmrig.com/docs/miner/command-line-options)
 - [XMRig HTTP API overview](https://xmrig.com/docs/miner/api)
 - [XMRig API configuration](https://xmrig.com/docs/miner/config/api)

@@ -1,6 +1,6 @@
 # Ember High-Level Architecture
 
-**Status:** Conceptual target and implementation facts, recorded 2026-09-29. M03B establishes test-only Rust mining-engine groundwork; no real XMRig is acquired or executable.
+**Status:** Conceptual target and implementation facts, recorded 2026-09-29. M03C.1 provisions verified XMRig v6.26.0 Windows x64 after an explicit user action; it does not execute the miner or enable mining.
 
 ## Platform and responsibilities
 
@@ -62,7 +62,7 @@ The future Ember policy/contribution layer owns the disclosed 5% Contribution an
 
 ## Miner acquisition and integrity
 
-M03A prefers an Ember-managed download of an unmodified, pinned official XMRig release, subject to legal review. The official project publishes Windows ZIPs and a signed SHA-256 manifest. The implementation must verify the detached manifest signature with a separately pinned upstream key and verify the exact archive hash before install/launch. Do not bundle initially; an advanced user-supplied path may be considered later. See [XMRig Integration](XMRIG_INTEGRATION.md) for trade-offs and verification limits.
+M03A prefers an Ember-managed, explicitly user-approved download of an unmodified official XMRig release, subject to legal review. M03C.1 provisions v6.26.0 Windows x64 (`xmrig-6.26.0-windows-x64.zip`). Its fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409` was independently confirmed from xmrig.com and the byte-identical official repository key. Rust verifies the detached signature and signed archive hash, extracts into a bounded staging directory, atomically promotes, and stores provenance/integrity metadata under per-user local app data. The one controlled install succeeded; the binary was never executed. Launch-time integrity gating remains future work with mining lifecycle. Do not bundle initially; see [XMRig Integration](XMRIG_INTEGRATION.md).
 
 Any future downloaded or bundled executable requires a documented provenance and integrity strategy, including release source, signature/hash verification, version pinning/update policy, failure behavior, and user-visible status. Research current XMRig licensing and redistribution obligations before selecting a strategy.
 
@@ -105,8 +105,8 @@ Use bounded, user-controllable diagnostics. Avoid logging wallet addresses, cred
 
 ## Pending architecture decisions
 
-1. Legal approval of XMRig GPLv3 distribution/aggregation, notices and source obligations for the chosen acquisition flow.
-2. Independent GPG trust anchor and update policy for signed upstream checksums.
+1. Legal approval of XMRig GPLv3 acquisition/aggregation, notices and source obligations, including dependency notices.
+2. Key-rotation/revocation response for future signing-key changes.
 3. Pinned XMRig API schema, restricted-mode semantics, authentication and graceful-stop path.
 4. Shutdown semantics, Job Object suitability, process-tree management, timeout escalation, and crash recovery.
 5. Local database choice, schema ownership, migration, retention, export, and deletion.

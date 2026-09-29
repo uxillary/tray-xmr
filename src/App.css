@@ -167,6 +167,11 @@ h1,h2,h3 { font-family: "Segoe UI", "Aptos", sans-serif; }
 .details-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 13px; }
 .info-card { min-height: 166px; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-panel); }
 .info-card-icon { display: grid; width: 32px; height: 32px; place-items: center; margin-bottom: 15px; border: 1px solid #303630; border-radius: var(--radius-sm); background: #1e231f; color: #a8927e; }
+.setup-engine-button { min-height: 34px; margin-top: 8px; padding: 0 13px; border: 1px solid #79573f; border-radius: 9px; background: #30271f; color: #edc09a; font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; }
+.setup-engine-button:hover:not(:disabled) { background: #3a2d23; }
+.setup-engine-button:disabled { opacity: .65; cursor: progress; }
+.setup-engine-error { color: #e1b9a4; font-size: 11px; line-height: 1.5; }
+.info-detail a, .setup-engine-error a { color: #e3ae84; }
 .info-card-icon svg { width: 17px; height: 17px; }
 .info-card .eyebrow { margin-bottom: 7px; font-size: 9px; }
 .info-card h3 { margin: 0 0 6px; color: #e0e4dd; font-size: 14px; font-weight: 600; }
