@@ -19,7 +19,9 @@
 
 ## M03 — Mining-engine integration
 
-Implement a controlled engine lifecycle behind an abstraction, beginning with XMRig only after acquisition, licensing, integrity, API, and process-safety decisions are resolved.
+- **M03A — XMRig research and engine contract: complete.** Verified current upstream license/release/API sources; recorded a preferred verified official-release download strategy subject to legal review; defined process, API, lifecycle, telemetry, consent, contribution and trust boundaries. No miner was acquired or executed.
+- **M03B — Controlled engine implementation: next.** Resolve legal and signing-key prerequisites; implement the Rust-owned MiningEngine/XMRig boundary, deterministic config validation, provenance verification and supervised child lifecycle. Start with fake-process/API fixtures and dry-run validation; no autostart, contribution mechanism, onboarding, or earnings. Do not ship acquisition until legal approval.
+- **M03C — First end-to-end mining setup: later.** Add guided wallet/pool setup, explicit resource and contribution disclosure, consent-gated start/pause/stop, live structured telemetry, and user-visible failure/recovery behavior after M03B's process and distribution controls are proven.
 
 ## M04 — Beginner onboarding and wallet configuration
 

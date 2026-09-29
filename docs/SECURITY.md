@@ -16,6 +16,7 @@ The user and owner/operator of a machine must knowingly enroll that machine and 
 - Autostart is opt-in, clearly described, and easy to disable. Installation, updates, and uninstall behave normally.
 - No deceptive persistence, disguised processes/installers, hidden resource use, or security-tool evasion.
 - Least privilege is the default. Elevation may be considered only for a specific proven need, with an understandable explanation and narrow scope.
+- A miner never starts on installation, app launch, tray restore, update, or recovery. Before any start, require completed setup, valid wallet/pool configuration, disclosed contribution and resource behavior, and explicit user action. Autostart mining needs a separate later opt-in.
 
 ## Wallet and configuration
 
@@ -27,7 +28,11 @@ Never request, collect, or store wallet seed phrases or private keys. Ember is n
 
 Before distributing or downloading XMRig, establish licensing and distribution obligations through authoritative research. Define trusted release provenance, signature/hash verification, version policy, and failure behavior before implementation. Do not execute an unverified or unexpected binary.
 
+M03A prefers direct download of a pinned, unmodified official release after legal approval. Upstream currently publishes a detached GPG signature for its checksum manifest. Verify the manifest with an independently pinned key, then verify the exact selected archive hash; HTTPS alone or an unsigned hash is insufficient provenance. Never silently replace a binary or launch one whose digest changes. See [XMRig Integration](XMRIG_INTEGRATION.md) for GPLv3 findings, verification sequence, source links and unresolved legal review. No license conclusion here is legal advice.
+
 Treat the miner as a separately managed process: use controlled executable paths and arguments, avoid shell interpretation, constrain local API exposure, validate API responses and miner output, bound output/log volume, detect exit/failure, and reliably stop/clean up the process tree. The exact controls depend on later XMRig integration research.
+
+The initial API stance is explicit loopback-only (`127.0.0.1`), authenticated with a Rust-held per-run token, never LAN or internet bound. Do not expose the token to React, argv, or logs. Use restricted API mode for telemetry; confirm exact stop/control semantics before enabling any wider API access. Rust retains child ownership and must stop and reap the process; dropping a Rust `Child` handle is not termination. Evaluate Windows Job Objects for descendant cleanup and test packaged-host constraints. Ordinary mining must not elevate Ember; optional huge-page/MSR optimizations are separately reviewed, off by default, and not prerequisites. Do not auto-elevate.
 
 ## Contribution transparency
 
@@ -36,6 +41,8 @@ The 5% Ember Contribution is a product decision and must be clearly disclosed be
 ## Updates and downloads
 
 Future application and miner updates need authenticated provenance and integrity validation, clear version/source information, safe failure/rollback behavior, and user-visible status. Updates must not silently change mining consent, contribution behavior, resource limits, or autostart preference. Research code signing, release publication, and Windows reputation considerations before distribution.
+
+Never evade Defender/SmartScreen, obfuscate/pack XMRig to avoid scanners, disable protections, or add exclusions. Prefer transparent disclosure, unmodified official artifacts, verifiable provenance, Ember publisher signing where appropriate, source/license notices, and normal installation/removal. Actual Defender and SmartScreen results remain release-testing work; Ember's signature does not make XMRig an Ember-signed executable.
 
 ## Privacy, storage, and diagnostics
 

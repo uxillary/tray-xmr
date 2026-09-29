@@ -48,17 +48,21 @@ Future Ember services may support optional accounts, synchronization, community 
 
 ## Mining engine boundary
 
-The application should depend on a conceptual mining-engine interface rather than XMRig-specific UI behavior. The boundary is expected to cover capability/version information, configuration, availability/validation, start/stop, lifecycle status, health, and normalized telemetry. XMRig would initially be implemented as an adapter. This is not a proposal for a plugin framework; additional engines and assets are future possibilities.
+Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the only planned initial adapter; this is not a plugin framework. The user interface renders Rust-owned lifecycle state and cannot start a miner outside the consent-checked backend path. Detailed M03A contract and research are in [XMRig Integration](XMRIG_INTEGRATION.md).
+
+Keep the data domains separate: M02 local system telemetry describes host CPU/RAM/device/activity/power; mining-engine telemetry describes engine version/state/hashrate/backend; later pool/economic telemetry owns shares, balance, payout, market rates, and estimates. Do not derive economic claims from local system or engine readings.
 
 ### Process lifecycle responsibilities
 
 The future controller/adapter needs explicit handling for locating or provisioning a binary, validating configuration, launching with controlled arguments/environment, confirming startup, tracking unexpected exits, requesting graceful stop, timeout/escalation behavior, process-tree cleanup, and shutdown/restart behavior. It also needs version and health reporting, bounded logging, and a documented update path.
 
-Prefer a supported structured local API for telemetry/control when appropriate and safe. Define access controls, loopback binding, authentication/secrets, and failure behavior before enabling an API. Console parsing may be a compatibility/fallback mechanism, not the sole assumed contract. No XMRig integration is implemented in this milestone.
+Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback, use a per-run secret, and keep full control routes disabled unless the chosen shutdown mechanism demonstrably requires them and is reviewed. Public endpoint docs are incomplete; verify response schema and control semantics for the pinned release. No XMRig integration is implemented in M03A.
+
+The future Ember policy/contribution layer owns the disclosed 5% Contribution and accounting; neither the UI nor process adapter contains contribution logic. The XMRig built-in 1% donation is separate and must be represented honestly.
 
 ## Miner acquisition and integrity
 
-Three strategies remain open: bundle XMRig, download a verified official release, or ask users to supply an existing installation. Ember’s preferred eventual usability direction is managed acquisition/configuration if legally and technically appropriate, but no decision is made before authoritative licensing and security research.
+M03A prefers an Ember-managed download of an unmodified, pinned official XMRig release, subject to legal review. The official project publishes Windows ZIPs and a signed SHA-256 manifest. The implementation must verify the detached manifest signature with a separately pinned upstream key and verify the exact archive hash before install/launch. Do not bundle initially; an advanced user-supplied path may be considered later. See [XMRig Integration](XMRIG_INTEGRATION.md) for trade-offs and verification limits.
 
 Any future downloaded or bundled executable requires a documented provenance and integrity strategy, including release source, signature/hash verification, version pinning/update policy, failure behavior, and user-visible status. Research current XMRig licensing and redistribution obligations before selecting a strategy.
 
@@ -101,10 +105,10 @@ Use bounded, user-controllable diagnostics. Avoid logging wallet addresses, cred
 
 ## Pending architecture decisions
 
-1. XMRig acquisition strategy, release source, licensing obligations, and verification mechanism.
-2. XMRig API/control configuration, authentication, binding, and telemetry contract.
-3. Shutdown semantics, process-tree management, timeout escalation, and crash recovery.
-4. Whether/when admin rights are ever needed; default is least privilege.
+1. Legal approval of XMRig GPLv3 distribution/aggregation, notices and source obligations for the chosen acquisition flow.
+2. Independent GPG trust anchor and update policy for signed upstream checksums.
+3. Pinned XMRig API schema, restricted-mode semantics, authentication and graceful-stop path.
+4. Shutdown semantics, Job Object suitability, process-tree management, timeout escalation, and crash recovery.
 5. Local database choice, schema ownership, migration, retention, export, and deletion.
 6. Supported pool/market data sources and estimate methodology.
 7. Smart Mining signals, limits, precedence, overrides, and laptop/thermal behavior.

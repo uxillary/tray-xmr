@@ -33,21 +33,24 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-025 | 2026-09-29 | Use Phosphor icons for the desktop navigation and supporting interface icons. | Import only used icon modules; the library is an icon set, not a product feature dependency. |
 | D-026 | 2026-09-29 | Retain the M01 visual direction after native review. | M01.1 keeps the graphite palette, warm accent, sidebar, Phosphor icons, Ember core, and surface treatment while simplifying page chrome and product language. |
 | D-027 | 2026-09-29 | M02 observes local CPU, memory, device/OS, uptime, power, and coarse session idle state only. | Use `sysinfo` for general system data and documented Windows APIs for power/idle. Poll the visible UI every five seconds; keep all readings in memory, expose unavailable values as null/unknown, and do not use observations to control resources. Five minutes is a provisional UI idle label threshold. Defer temperature, fan, and CPU/GPU power pending generic trustworthy APIs. |
+| D-028 | 2026-09-29 | M03A prefers an Ember-managed download of an unmodified, pinned official XMRig release, pending GPL/legal approval. | Do not bundle the miner initially. Verify the upstream signed SHA-256 manifest with an independently pinned key and then the exact archive hash; fail closed. A user-supplied executable may be a later advanced option. See `docs/XMRIG_INTEGRATION.md`; this is not legal advice or distribution approval. |
+| D-029 | 2026-09-29 | Rust owns a single internal MiningEngine lifecycle and telemetry boundary; XMRig is its first adapter. | UI renders authoritative backend state. Keep local system, mining-engine, and pool/economic telemetry separate. Prefer structured API telemetry, bounded diagnostics, loopback-only authenticated API; verify exact API fields and stop semantics against the pinned release before implementation. |
+| D-030 | 2026-09-29 | XMRig configuration should be generated as deterministic JSON by Ember. | JSON is the upstream preferred flexible configuration form. The public wallet address is configuration data, never a private key; secrets stay out of argv/logs. The native XMRig 1% donation is separate from Ember's proposed 5% contribution; no contribution mechanism was selected. |
 
 ## Pending decisions
 
 | ID | Question | Needed before |
 |---|---|---|
-| P-001 | Should Ember bundle XMRig, download a verified official release, or require a user-supplied copy? What license/attribution/source obligations apply? | Miner distribution implementation. Requires authoritative current licensing and security research. |
-| P-002 | What binary provenance, integrity verification, version pinning, and update policy will be used? | Any miner download or distribution. |
-| P-003 | Which XMRig API/control and telemetry mechanisms are supported, and how will local access be secured? | XMRig adapter implementation. |
-| P-004 | What are start confirmation, stop timeout, escalation, process-tree, and crash-recovery semantics? | Mining lifecycle implementation. |
+| P-001 | Legal approval of GPLv3 distribution/aggregation, exact notices, source obligations, and Ember's role in user-initiated official-release download. | Before shipping miner acquisition or bundling. |
+| P-002 | Independently confirm upstream GPG key fingerprint/rotation policy, verification toolchain, supported architecture/version, and update cadence/rollback. | Before any acquisition implementation. |
+| P-003 | Verify exact pinned XMRig API schemas, restricted-mode access semantics, authenticated graceful stop, and fields available for shares/pool/uptime. | Before XMRig adapter implementation. |
+| P-004 | Test child/job ownership, Job Object feasibility in packaged Tauri, graceful stop, timeout escalation, shutdown/logoff, and crash recovery. | Before active mining integration. |
 | P-005 | How will the 5% contribution be implemented and accounted for in an accurate, auditable, disclosed way? | Contribution implementation. |
 | P-006 | Which pool and market data providers, schemas, currencies, and outage/rate-limit behavior are supported? | Statistics and estimate implementation. |
 | P-007 | What is the local storage/database choice, retention, migration, export, and deletion policy? | Persistent history implementation. |
 | P-008 | Which system signals support Smart Mining, and what are profile defaults, limits, priorities, and overrides? | Smart Mining implementation. |
 | P-009 | What should tray Quit do while future mining is active, and is any autostart mechanism appropriate? | Mining lifecycle/autostart design. Initial shell behavior is recorded in D-021. |
 | P-010 | What exact features and acceptance criteria define MVP? | Release scope. |
-| P-011 | Which signing, installer, updater, and Windows reputation approach is feasible? | Public distribution. |
+| P-011 | Which signing, installer, updater, and Windows reputation approach is feasible, and what do Defender/SmartScreen do with actual release artifacts? | Public distribution; requires later clean-system testing. |
 
 Decisions should be updated when evidence or product direction changes. See [Product](PRODUCT.md), [Architecture](ARCHITECTURE.md), and [Security](SECURITY.md).
