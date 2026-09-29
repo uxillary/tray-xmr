@@ -3,9 +3,15 @@ use std::collections::VecDeque;
 
 const MAX_LINE_BYTES: usize = 2 * 1024;
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub struct RedactionSecrets {
     values: Vec<String>,
+}
+
+impl std::fmt::Debug for RedactionSecrets {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str("RedactionSecrets([REDACTED])")
+    }
 }
 
 impl RedactionSecrets {

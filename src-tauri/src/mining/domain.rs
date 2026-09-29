@@ -32,7 +32,7 @@ pub struct EngineStatus {
     pub diagnostics: Vec<DiagnosticSummary>,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, PartialEq, Eq)]
 pub struct MiningConfig {
     pub pool: PoolConfig,
     pub public_address: String,
@@ -52,6 +52,16 @@ pub struct PoolConfig {
 pub struct CpuConfig {
     pub enabled: bool,
     pub max_threads_hint: u8,
+    pub threads: Option<usize>,
+}
+
+impl std::fmt::Debug for MiningConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("MiningConfig")
+            .field("public_address", &"[REDACTED]")
+            .field("api", &self.api)
+            .finish_non_exhaustive()
+    }
 }
 
 #[derive(Clone, PartialEq, Eq)]

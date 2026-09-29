@@ -1,6 +1,6 @@
 # Ember High-Level Architecture
 
-**Status:** Conceptual target and implementation facts, recorded 2026-09-29. M03C.1 provisions verified XMRig v6.26.0 Windows x64 after an explicit user action; it does not execute the miner or enable mining.
+**Status:** Conceptual target and implementation facts, recorded 2026-09-29. M03C.2A adds local setup, startup re-verification and consent readiness for verified XMRig v6.26.0 Windows x64; execution remains disabled.
 
 ## Platform and responsibilities
 
@@ -62,7 +62,7 @@ The future Ember policy/contribution layer owns the disclosed 5% Contribution an
 
 ## Miner acquisition and integrity
 
-M03A prefers an Ember-managed, explicitly user-approved download of an unmodified official XMRig release, subject to legal review. M03C.1 provisions v6.26.0 Windows x64 (`xmrig-6.26.0-windows-x64.zip`). Its fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409` was independently confirmed from xmrig.com and the byte-identical official repository key. Rust verifies the detached signature and signed archive hash, extracts into a bounded staging directory, atomically promotes, and stores provenance/integrity metadata under per-user local app data. The one controlled install succeeded; the binary was never executed. Launch-time integrity gating remains future work with mining lifecycle. Do not bundle initially; see [XMRig Integration](XMRIG_INTEGRATION.md).
+M03A prefers an Ember-managed, explicitly user-approved download of an unmodified official XMRig release, subject to legal review. M03C.1 provisions v6.26.0 Windows x64 (`xmrig-6.26.0-windows-x64.zip`). Its fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409` was independently confirmed from xmrig.com and the byte-identical official repository key. Rust verifies the detached signature and signed archive hash, extracts into a bounded staging directory, atomically promotes, and stores provenance/integrity metadata under per-user local app data. The one controlled install succeeded; the binary was never executed. M03C.2A implements startup and readiness integrity gating; an immediate pre-spawn gate remains required before execution. Do not bundle initially; see [XMRig Integration](XMRIG_INTEGRATION.md).
 
 Any future downloaded or bundled executable requires a documented provenance and integrity strategy, including release source, signature/hash verification, version pinning/update policy, failure behavior, and user-visible status. Research current XMRig licensing and redistribution obligations before selecting a strategy.
 
@@ -104,6 +104,10 @@ Use bounded, user-controllable diagnostics. Avoid logging wallet addresses, cred
 - **Additional engines/assets:** add through the engine/domain boundary after requirements and support are established; do not bind all application concepts to XMRig or Monero.
 
 ## Pending architecture decisions
+
+M03C.2A introduces `mining::readiness::SetupService` behind a Tauri-managed mutex. `mining_readiness` and `update_mining_setup` run blocking verification/storage work outside the UI thread; provisioning shares that mutex. Rust owns normalized setup, candidate JSON, typed availability and every readiness prerequisite. Frontend changes use a tagged allowlist, never paths, argv, tokens or raw JSON. The Mining page is the primary editor; Settings links to it and Overview renders setup readiness. `shell_status` remains the older supervisor lifecycle command; setup readiness is a separate contract until C.2B bridges verified artifacts into active lifecycle.
+
+Schema 1 lives in `%LOCALAPPDATA%\Ember\setup-v1.json` with a revision and disclosure-version acknowledgement. No-config migrates to empty state; unsupported/corrupt files block setup and require explicit reset. Edits revoke acknowledgement; atomic same-directory replacement preserves the old config on write failure. Ephemeral API token/port and runtime JSON remain in Rust memory. C.2B must add private short-lived runtime-file lifecycle and a verified launch bridge. See [XMRig Integration](XMRIG_INTEGRATION.md) for exact validation, thread mapping and execution prerequisites.
 
 1. Legal approval of XMRig GPLv3 acquisition/aggregation, notices and source obligations, including dependency notices.
 2. Key-rotation/revocation response for future signing-key changes.

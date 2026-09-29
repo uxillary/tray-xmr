@@ -17,6 +17,8 @@ The eventual onboarding should explain what Ember and mining do, hardware and el
 
 ## Product principles
 
+M03C.2A's Mining page offers verified engine status/repair, public wallet change/removal, explicit manual pool host/port/TLS, static Quiet/Balanced/Performance profiles, disclosure reviews and Rust-owned readiness. Settings links to the same editor. Complete setup may show Ready in Overview, with mining metrics still unavailable and Start disabled. Acknowledgement is not a start action; app launch never mines. Changes require a fresh review. The planned 5% Ember Contribution is visibly inactive, distinct from XMRig's separate 1% donation. A future controlled development session may run without Ember's contribution only when explicitly authorized and labeled; user-facing release policy remains pending.
+
 1. **Understandable by default:** use profiles and explanations rather than requiring users to understand threads or miner flags.
 2. **Visible and controllable:** show mining state and provide straightforward pause, stop, and quit actions.
 3. **Honest about money and resources:** label estimates, state assumptions, and distinguish measurements from estimates.

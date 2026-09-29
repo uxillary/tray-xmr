@@ -44,6 +44,14 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-036 | 2026-09-29 | M03C.1 pins XMRig v6.26.0 Windows x64 and upstream GPG fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409`. | xmrig.com publishes the fingerprint and says its key must match the official repository copy; the public key blocks match byte-for-byte. See `docs/XMRIG_INTEGRATION.md`. |
 | D-037 | 2026-09-29 | M03C.1 uses explicit user-approved upstream download, Sequoia OpenPGP with the Windows CNG backend, strict SHA-256 manifest verification, and bounded safe extraction. | A controlled v6.26.0 Windows x64 install completed in per-user app data. Mining launch remains disabled. Public release is subject to GPL/dependency review. |
 
+M03C.2A decisions (2026-09-29):
+
+- **D-038:** Manual explicit Stratum host/port/TLS/worker setup; mainnet-only public wallet parser with checksum/key validation; no wallet/pool network lookup.
+- **D-039:** Static Quiet/Balanced/Performance profiles use quarter/half/all logical CPU threads, minimum one; explicit RandomX thread arrays and bounded dataset initialization; no Smart Mining or privileged optimizations.
+- **D-040:** Rust owns startup/readiness verification, schema-1 private local setup and revision-bound disclosure acknowledgement. Runtime candidate token/port/JSON remain ephemeral in Rust memory. Start stays disabled.
+- **D-041:** Contribution option A: a separately authorized first controlled development session may run without the inactive Ember 5% contribution, explicitly labeled. XMRig's upstream 1% donation remains separate. No public-release contribution implementation decision is implied.
+- **D-042:** Do not execute dry-run until constructor/strategy side effects before its early exit are fully reviewed. Use Ember's local candidate validation in C.2A. See [pinned source evidence](XMRIG_INTEGRATION.md).
+
 ## Pending decisions
 
 | ID | Question | Needed before |

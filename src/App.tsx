@@ -14,6 +14,7 @@ import { StatusBadge } from "./components/StatusBadge";
 import { ThisDeviceStatus } from "./components/ThisDeviceStatus";
 import { SystemOverview, systemMetric } from "./components/SystemOverview";
 import { useSystemSnapshot } from "./hooks/useSystemSnapshot";
+import { MiningSetup, type MiningReadiness } from "./components/MiningSetup";
 import type { SystemSnapshot } from "./types/system";
 import "./App.css";
 
@@ -39,15 +40,22 @@ function App() {
   const [nativeState, setNativeState] = useState<string | null>(null);
   const [statusError, setStatusError] = useState(false);
   const systemSnapshot = useSystemSnapshot();
+  const [setup, setSetup] = useState<MiningReadiness | null>(null);
+
+  function acceptSetup(next: MiningReadiness) {
+    setSetup(next);
+    setNativeState(next.ready ? "ready" : "notConfigured");
+    setStatusError(false);
+  }
+
+  async function refreshSetup() {
+    try { acceptSetup(await invoke<MiningReadiness>("mining_readiness")); }
+    catch { setStatusError(true); setNativeState(null); setSetup(null); }
+  }
 
   useEffect(() => {
-    invoke<string>("shell_status")
-      .then((nextState) => {
-        if (stateLabels[nextState]) setNativeState(nextState);
-        else setStatusError(true);
-      })
-      .catch(() => setStatusError(true));
-  }, []);
+    void refreshSetup();
+  }, [section]);
 
   const current = sections.find((item) => item.id === section)!;
   const status = nativeState ? stateLabels[nativeState] : undefined;
@@ -87,9 +95,9 @@ function App() {
           <header className="page-heading"><h1>{current.label}</h1></header>
 
           {section === "overview" && <OverviewPage status={status} statusError={statusError} systemSnapshot={systemSnapshot} systemMetric={system} />}
-          {section === "mining" && <MiningPage />}
+          {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} />}
           {section === "activity" && <ActivityPage />}
-          {section === "settings" && <SettingsPage />}
+          {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} />}
         </div>
       </main>
     </div>
@@ -124,8 +132,8 @@ function OverviewPage({ status, statusError, systemSnapshot, systemMetric: syste
 
       <section className="setup-panel" aria-labelledby="setup-title">
         <p className="eyebrow">GETTING STARTED</p>
-        <h2 id="setup-title">Not set up yet</h2>
-        <p className="setup-description">Set up Ember to start putting idle power to work. Your wallet address, mining engine, and resource preferences will be configured before mining can begin.</p>
+        <h2 id="setup-title">{status?.core === "ready" ? "Setup ready" : "Complete your mining setup"}</h2>
+        <p className="setup-description">{status?.core === "ready" ? "Your local configuration and disclosures are complete. Mining is disabled pending the controlled-session milestone." : "Configure your public wallet, pool, verified engine and resource profile on the Mining page, then review the disclosures."}</p>
       </section>
     </>
   );
@@ -142,53 +150,25 @@ function coreLabel(status: { label: string; core: EmberCoreState } | undefined, 
   return "IDLE";
 }
 
-function MiningPage() {
-  const [engineState, setEngineState] = useState<"notInstalled" | "installing" | "ready" | "error">("notInstalled");
-  const [engineVersion, setEngineVersion] = useState<string | null>(null);
-
-  async function setupEngine() {
-    setEngineState("installing");
-    try {
-      const installed = await invoke<{ version: string }>("provision_xmrig");
-      setEngineVersion(installed.version);
-      setEngineState("ready");
-    } catch {
-      setEngineState("error");
-    }
-  }
-
-  return (
-    <>
-      <section className="mining-state-panel" aria-labelledby="mining-state-title">
-        <div className="mining-core-small"><EmberCore state="not-configured" compact /></div>
-        <div className="mining-state-copy"><p className="eyebrow">CURRENT STATE</p><h2 id="mining-state-title">Not mining</h2><p>Configure an engine, public wallet address, and resource profile before mining can begin.</p></div>
-      </section>
-      <div className="details-grid">
-        <article className="info-card"><div className="info-card-icon" aria-hidden="true"><CpuIcon weight="regular" /></div><p className="eyebrow">MINING ENGINE</p><h3>{engineState === "ready" ? `XMRig ${engineVersion}` : engineState === "installing" ? "Setting up…" : "Not configured"}</h3><p className="info-detail">{engineState === "ready" ? "Verified · Ready. Download verified against the official XMRig release." : "XMRig is a separate open-source mining engine. Ember downloads it from the official upstream release and verifies it locally. Setup does not start mining."}</p>{engineState !== "ready" && <button className="setup-engine-button" type="button" onClick={setupEngine} disabled={engineState === "installing"}>{engineState === "installing" ? "Downloading and verifying…" : "Set up engine"}</button>}{engineState === "error" && <p className="setup-engine-error" role="alert">Setup was blocked or could not be completed. Ember tried to install XMRig {" "}<a href="https://github.com/xmrig/xmrig/releases/tag/v6.26.0" target="_blank" rel="noreferrer">v6.26.0 from the official release</a>. Check your connection, available storage, and security notifications, then retry. Do not disable security software.</p>}<p className="info-detail">XMRig is licensed under GPLv3. <a href="https://github.com/xmrig/xmrig" target="_blank" rel="noreferrer">Upstream source and notices</a>.</p></article>
-        <InfoCard icon={<WalletIcon weight="regular" />} eyebrow="WALLET ADDRESS" title="Not configured" detail="Ember will use a public receiving address only." />
-        <InfoCard icon={<LightningIcon weight="regular" />} eyebrow="RESOURCE PROFILE" title="Not configured" detail="Choose how Ember should use system resources." />
-      </div>
-    </>
-  );
-}
-
 function ActivityPage() {
   return <EmptyState icon={<ClockCounterClockwiseIcon weight="light" />} title="No activity yet" description="Mining sessions and other meaningful events will appear here." />;
 }
 
-function SettingsPage() {
+function SettingsPage({ setup, editSetup }: { setup: MiningReadiness | null; editSetup: () => void }) {
   return (
     <>
       <section className="settings-section" aria-labelledby="settings-general"><h2 id="settings-general">Application</h2><SettingRow icon={<HouseIcon />} label="Appearance" description="Using Ember’s default appearance." state="Default" /><SettingRow icon={<BellSimpleIcon />} label="Notifications" description="No notifications configured." state="Off" /></section>
-      <section className="settings-section" aria-labelledby="settings-mining"><h2 id="settings-mining">Mining</h2><SettingRow icon={<CpuIcon />} label="Engine and resources" description="No mining engine configured." state="Not set up" /><SettingRow icon={<LightningIcon />} label="Profiles and schedules" description="No resource profile configured." state="Not set up" /></section>
+      <section className="settings-section" aria-labelledby="settings-mining">
+        <h2 id="settings-mining">Mining setup</h2>
+        <SettingRow icon={<WalletIcon />} label="Public wallet" description={setup?.walletMasked ?? "No receiving address configured."} state="Local only" />
+        <SettingRow icon={<CpuIcon />} label="Pool" description={setup?.pool ? `${setup.pool.host}:${setup.pool.port} · ${setup.pool.tls ? "TLS" : "Unencrypted TCP"}` : "No pool selected."} state="Untested" />
+        <SettingRow icon={<LightningIcon />} label="Resource profile" description={setup?.profile ? `${setup.profile} · ${setup.threads} CPU threads` : "No profile selected."} state="Static" />
+        <button className="setup-engine-button" type="button" onClick={editSetup}>Edit wallet, pool and resources</button>
+        <p className="info-detail settings-note">Changes require a fresh acknowledgement on the Mining page.</p>
+      </section>
     </>
   );
 }
-
-function InfoCard({ icon, eyebrow, title, detail }: { icon: ReactNode; eyebrow: string; title: string; detail: string }) {
-  return <article className="info-card"><div className="info-card-icon" aria-hidden="true">{icon}</div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="info-detail">{detail}</p></article>;
-}
-
 function SettingRow({ icon, label, description, state }: { icon: ReactNode; label: string; description: string; state: string }) {
   return <div className="setting-row"><span className="setting-icon" aria-hidden="true">{icon}</span><span className="setting-copy"><strong>{label}</strong><span>{description}</span></span><span className="setting-status">{state}</span></div>;
 }

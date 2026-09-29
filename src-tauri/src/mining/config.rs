@@ -2,7 +2,6 @@ use super::domain::{EngineError, EngineErrorKind, MiningConfig, ValidatedMiningC
 use serde::Serialize;
 use std::net::IpAddr;
 
-const MAX_ADDRESS_LENGTH: usize = 128;
 const MIN_TOKEN_LENGTH: usize = 32;
 
 #[derive(Serialize)]
@@ -10,6 +9,12 @@ struct XmrigConfig<'a> {
     autosave: bool,
     background: bool,
     colors: bool,
+    #[serde(rename = "donate-level")]
+    donate_level: u8,
+    randomx: serde_json::Value,
+    opencl: bool,
+    cuda: bool,
+    watch: bool,
     cpu: XmrigCpu,
     http: XmrigHttp<'a>,
     pools: [XmrigPool<'a>; 1],
@@ -22,6 +27,12 @@ struct XmrigCpu {
     max_threads_hint: u8,
     #[serde(rename = "yield")]
     yield_threads: bool,
+    #[serde(rename = "huge-pages")]
+    huge_pages: bool,
+    #[serde(rename = "huge-pages-jit")]
+    huge_pages_jit: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    rx: Option<Vec<i32>>,
 }
 
 #[derive(Serialize)]
@@ -61,12 +72,9 @@ pub fn validate(
     if !valid_host(&config.pool.host) || config.pool.port == 0 {
         return Err(invalid("Pool endpoint must have a valid host and port"));
     }
-    if config.public_address.trim().is_empty()
-        || config.public_address.len() > MAX_ADDRESS_LENGTH
-        || config.public_address.chars().any(char::is_control)
-    {
+    if !super::wallet::valid(&config.public_address) {
         return Err(invalid(
-            "Public receiving address must be non-empty and bounded",
+            "Enter a valid mainnet Monero public receiving address",
         ));
     }
     if let Some(worker_id) = &config.worker_id {
@@ -81,6 +89,9 @@ pub fn validate(
     }
     if config.cpu.max_threads_hint == 0 || config.cpu.max_threads_hint > 100 {
         return Err(invalid("CPU thread hint must be between 1 and 100"));
+    }
+    if matches!(config.cpu.threads, Some(0 | 4097..)) || !config.cpu.enabled {
+        return Err(invalid("A bounded enabled CPU profile is required"));
     }
     if config.api.host != "127.0.0.1" {
         return Err(invalid("XMRig API host must be exactly 127.0.0.1"));
@@ -107,7 +118,7 @@ pub fn validate(
     })
 }
 
-fn valid_host(host: &str) -> bool {
+pub(crate) fn valid_host(host: &str) -> bool {
     if host.is_empty() || host.len() > 253 || host.chars().any(char::is_control) {
         return false;
     }
@@ -131,10 +142,18 @@ pub fn generate_json(config: &ValidatedMiningConfig) -> Result<String, EngineErr
         autosave: false,
         background: false,
         colors: false,
+        donate_level: 1,
+        randomx: serde_json::json!({"init": settings.cpu.threads.map(|n| n as i64).unwrap_or(-1), "1gb-pages": false, "rdmsr": false, "wrmsr": false, "cache_qos": false}),
+        opencl: false,
+        cuda: false,
+        watch: false,
         cpu: XmrigCpu {
             enabled: settings.cpu.enabled,
             max_threads_hint: settings.cpu.max_threads_hint,
             yield_threads: true,
+            huge_pages: false,
+            huge_pages_jit: false,
+            rx: settings.cpu.threads.map(|n| vec![-1; n]),
         },
         http: XmrigHttp {
             enabled: true,
@@ -179,11 +198,12 @@ pub(crate) mod tests {
                 port: 3333,
                 tls: true,
             },
-            public_address: "TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE".to_owned(),
+            public_address: crate::mining::wallet::fixture(18),
             worker_id: Some("fixture-worker".to_owned()),
             cpu: CpuConfig {
                 enabled: true,
                 max_threads_hint: 50,
+                threads: Some(2),
             },
             api: LocalApiConfig {
                 host: "127.0.0.1".to_owned(),
@@ -204,11 +224,18 @@ pub(crate) mod tests {
         assert_eq!(parsed["autosave"], false);
         assert_eq!(parsed["http"]["host"], "127.0.0.1");
         assert_eq!(parsed["http"]["restricted"], true);
+        assert_eq!(parsed["cpu"]["huge-pages"], false);
+        assert_eq!(parsed["randomx"]["rdmsr"], false);
+        assert_eq!(parsed["donate-level"], 1);
+        assert_eq!(parsed["opencl"], false);
+        assert!(!format!("{:?}", validated).contains(&fixture_config().public_address));
+        let redacted = crate::mining::diagnostics::RedactionSecrets::new([fixture_config()
+            .public_address
+            .clone()])
+        .redact(&fixture_config().public_address);
+        assert_eq!(redacted, "[REDACTED]");
         assert_eq!(parsed["pools"][0]["url"], "pool.example.invalid:3333");
-        assert_eq!(
-            parsed["pools"][0]["user"],
-            "TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE"
-        );
+        assert_eq!(parsed["pools"][0]["user"], fixture_config().public_address);
         assert!(parsed.get("wallet_private_key").is_none());
     }
 

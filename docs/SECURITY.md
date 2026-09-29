@@ -58,6 +58,10 @@ Remote control is not in the initial scope. If introduced, require explicit per-
 
 ## Review checklist
 
+M03C.2A keeps mining disabled through an absent start command and a permanently disabled button. Launch/readiness re-verification hashes the installed engine and validates pinned metadata/location/native architecture; repair is explicit and fails closed. Wallet input accepts only a locally validated mainnet public receiving address; saved summaries are masked, domain Debug output redacts it, and diagnostics remain bounded/redacted. Neither candidates nor personal setup implement raw Debug logging. API tokens are 256 random bits generated in Rust, remain memory-only, and never cross IPC. The candidate binds only loopback in restricted mode; no HTTP server or pool connection starts.
+
+Pool input becomes typed host/port/TLS/worker fields, with no command-line fragments or embedded credentials. Rust controls storage under the per-user Ember directory, rejects reparse installation/config files, and uses atomic setup replacement. This inherits the user's LocalAppData ACLs; public addresses are personal data, not encrypted secrets. Verification metadata is local: an attacker with the same user's filesystem access can change both recorded digest and binary. Immediate pre-spawn gating, explicit private runtime-file ACLs/crash cleanup and authenticated transport/stop review remain required before C.2B. No elevation, huge pages, MSR tuning or firewall rules are introduced. Consent reviews are versioned and invalidated by configuration edits; the 5% contribution is disclosed as planned and inactive.
+
 Future changes that affect mining, binaries, wallet/configuration, startup, updates, contribution, or remote access should answer:
 
 1. What user action authorizes this behavior, and where is it visible?

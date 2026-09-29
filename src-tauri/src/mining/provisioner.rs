@@ -10,7 +10,7 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
-const VERSION: &str = "6.26.0";
+pub const VERSION: &str = "6.26.0";
 const ARCHIVE: &str = "xmrig-6.26.0-windows-x64.zip";
 const ARCHIVE_SHA256: &str = "bba8097cb37d9b458a1cb1137876b27cde6740d17fe4ccbc086ba07d87d9e147";
 const SIGNING_FINGERPRINT: &str = "9AC4CEA8E66E35A5C7CDDC1B446A53638BE94409";
@@ -56,6 +56,7 @@ pub fn provision(root: &Path) -> Result<InstalledEngine> {
     ensure_supported_architecture()?;
     let miners = root.join("miners").join("xmrig");
     fs::create_dir_all(&miners).context("Could not create Ember's local engine directory")?;
+    verify_install_location(root)?;
     let destination = miners.join(VERSION);
     if destination.exists() {
         let installed = read_and_verify_install(&destination)?;
@@ -70,6 +71,65 @@ pub fn provision(root: &Path) -> Result<InstalledEngine> {
         let _ = fs::remove_dir_all(&staging);
     }
     result
+}
+
+/// Fixed Rust-owned location, checked before any read, rename or extraction.
+pub fn verify_install_location(root: &Path) -> Result<PathBuf> {
+    let mut directory = root.to_path_buf();
+    reject_reparse(&directory)?;
+    for component in ["miners", "xmrig", VERSION] {
+        directory.push(component);
+        if directory.exists() {
+            reject_reparse(&directory)?;
+        }
+    }
+    Ok(directory)
+}
+
+fn reject_reparse(path: &Path) -> Result<()> {
+    use std::os::windows::fs::MetadataExt;
+    let metadata = fs::symlink_metadata(path)?;
+    if metadata.file_attributes() & 0x400 != 0 {
+        bail!("Reparse locations are unsupported");
+    }
+    Ok(())
+}
+
+pub fn verify_installed(root: &Path) -> Result<InstalledEngine> {
+    ensure_supported_architecture()?;
+    read_and_verify_install(&verify_install_location(root)?)
+}
+
+pub fn platform_supported() -> bool {
+    ensure_supported_architecture().is_ok()
+}
+
+/// Explicit repair preserves the previous install until a verified replacement succeeds.
+pub fn repair(root: &Path) -> Result<InstalledEngine> {
+    ensure_supported_architecture()?;
+    let destination = verify_install_location(root)?;
+    if !destination.exists() {
+        return provision(root);
+    }
+    if let Ok(installed) = verify_installed(root) {
+        return Ok(installed);
+    }
+    let quarantine = destination.with_file_name(format!(
+        ".repair-{}",
+        SystemTime::now().duration_since(UNIX_EPOCH)?.as_nanos()
+    ));
+    fs::rename(&destination, &quarantine)?;
+    match provision(root) {
+        Ok(installed) => {
+            let _ = fs::remove_dir_all(quarantine);
+            Ok(installed)
+        }
+        Err(error) => {
+            fs::rename(&quarantine, &destination)
+                .context("Could not restore previous installation")?;
+            Err(error)
+        }
+    }
 }
 
 fn provision_staged(staging: &Path, destination: &Path) -> Result<InstalledEngine> {
@@ -355,6 +415,12 @@ fn extract_archive(archive: &[u8], destination: &Path) -> Result<()> {
 }
 
 fn read_and_verify_install(directory: &Path) -> Result<InstalledEngine> {
+    reject_reparse(directory)?;
+    reject_reparse(&directory.join("ember-verification.json"))?;
+    reject_reparse(&directory.join("xmrig.exe"))?;
+    if fs::metadata(directory.join("ember-verification.json"))?.len() > MAX_MANIFEST as u64 {
+        bail!("Verification metadata exceeds limit");
+    }
     let data = fs::read(directory.join("ember-verification.json"))
         .context("Existing XMRig install has no verification metadata")?;
     let installed: InstalledEngine =
@@ -364,6 +430,13 @@ fn read_and_verify_install(directory: &Path) -> Result<InstalledEngine> {
         || installed.architecture != "windows-x64"
         || installed.archive_sha256 != ARCHIVE_SHA256
         || installed.signing_fingerprint != SIGNING_FINGERPRINT
+        || installed.upstream_source != format!("{RELEASE_BASE}/{ARCHIVE}")
+        || installed.installed_at_unix_ms == 0
+        || installed.executable_sha256.len() != 64
+        || !installed
+            .executable_sha256
+            .bytes()
+            .all(|b| b.is_ascii_hexdigit())
         || hash_file(&directory.join("xmrig.exe"))? != installed.executable_sha256
     {
         bail!("Existing XMRig installation failed integrity verification");
@@ -388,12 +461,50 @@ fn hash_file(path: &Path) -> Result<String> {
 fn ensure_supported_architecture() -> Result<()> {
     #[cfg(all(target_os = "windows", target_arch = "x86_64"))]
     {
+        use windows_sys::Win32::System::SystemInformation::{
+            GetNativeSystemInfo, PROCESSOR_ARCHITECTURE_AMD64, SYSTEM_INFO,
+        };
+        let mut information: SYSTEM_INFO = unsafe { std::mem::zeroed() };
+        unsafe {
+            GetNativeSystemInfo(&mut information);
+        }
+        if unsafe { information.Anonymous.Anonymous.wProcessorArchitecture }
+            != PROCESSOR_ARCHITECTURE_AMD64
+        {
+            bail!("Native system architecture is unsupported");
+        }
         Ok(())
     }
     #[cfg(not(all(target_os = "windows", target_arch = "x86_64")))]
     {
         bail!("XMRig v6.26.0 provisioning currently supports Windows x64 only")
     }
+}
+
+#[cfg(test)]
+pub(crate) fn install_fixture(root: &Path) {
+    let directory = root.join("miners").join("xmrig").join(VERSION);
+    fs::create_dir_all(&directory).unwrap();
+    fs::write(
+        directory.join("xmrig.exe"),
+        b"non executable integrity fixture",
+    )
+    .unwrap();
+    let metadata = InstalledEngine {
+        engine: "xmrig".into(),
+        version: VERSION.into(),
+        architecture: "windows-x64".into(),
+        archive_sha256: ARCHIVE_SHA256.into(),
+        executable_sha256: hash_file(&directory.join("xmrig.exe")).unwrap(),
+        signing_fingerprint: SIGNING_FINGERPRINT.into(),
+        upstream_source: format!("{RELEASE_BASE}/{ARCHIVE}"),
+        installed_at_unix_ms: 1,
+    };
+    fs::write(
+        directory.join("ember-verification.json"),
+        serde_json::to_vec(&metadata).unwrap(),
+    )
+    .unwrap();
 }
 
 #[cfg(test)]
@@ -537,6 +648,8 @@ mod tests {
         .unwrap();
         assert!(read_and_verify_install(&directory).is_ok());
         fs::write(directory.join("xmrig.exe"), b"modified fixture").unwrap();
+        assert!(read_and_verify_install(&directory).is_err());
+        fs::remove_file(directory.join("ember-verification.json")).unwrap();
         assert!(read_and_verify_install(&directory).is_err());
         fs::remove_dir_all(directory).unwrap();
     }

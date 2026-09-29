@@ -1091,12 +1091,15 @@ name = "ember"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "curve25519-dalek",
+ "getrandom 0.4.3",
  "hex",
  "reqwest",
  "sequoia-openpgp",
  "serde",
  "serde_json",
  "sha2",
+ "sha3",
  "sysinfo",
  "tauri",
  "tauri-build",

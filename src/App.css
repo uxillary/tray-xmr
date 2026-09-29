@@ -172,6 +172,28 @@ h1,h2,h3 { font-family: "Segoe UI", "Aptos", sans-serif; }
 .setup-engine-button:disabled { opacity: .65; cursor: progress; }
 .setup-engine-error { color: #e1b9a4; font-size: 11px; line-height: 1.5; }
 .info-detail a, .setup-engine-error a { color: #e3ae84; }
+.mining-setup .setup-panel h2 { overflow-wrap: anywhere; }
+.setup-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.mining-setup form { margin-top: 12px; }
+.mining-setup label:not(.check-label) { display: grid; gap: 6px; margin-top: 10px; color: var(--text-secondary); font-size: 12px; }
+.mining-setup input:not([type="checkbox"]) { width: 100%; min-width: 0; padding: 9px 10px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-inset); color: var(--text-primary); font: inherit; }
+.mining-setup input:focus-visible, .profile-option:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.pool-fields { display: grid; grid-template-columns: 95px 1fr; gap: 10px; }
+.check-label { display: flex; align-items: flex-start; gap: 9px; margin-top: 12px; color: var(--text-secondary); font-size: 12px; line-height: 1.6; }
+.check-label input { flex-shrink: 0; margin-top: 3px; accent-color: var(--ember); }
+.setup-engine-button.secondary { margin-left: 8px; border-color: var(--line-strong); background: transparent; color: var(--text-secondary); }
+.mining-setup .setup-engine-button:disabled { cursor: not-allowed; }
+.profile-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 13px 0; }
+.profile-option { display: grid; gap: 6px; padding: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-inset); text-align: left; cursor: pointer; }
+.profile-option.selected { border-color: var(--ember); background: var(--surface-selected); }
+.profile-option span { color: var(--text-muted); font-size: 12px; }
+.consent-panel .info-detail { margin-top: 9px; }
+.consent-saved, .check-pass { color: var(--success); }
+.readiness-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; gap: 9px 18px; list-style: none; color: var(--text-secondary); font-size: 12px; }
+.readiness-checks li { display: flex; gap: 10px; align-items: baseline; }
+.readiness-checks li > span { min-width: 84px; }
+.check-pending { color: var(--warning); }
+.settings-note { margin: 10px 0 14px; }
 .info-card-icon svg { width: 17px; height: 17px; }
 .info-card .eyebrow { margin-bottom: 7px; font-size: 9px; }
 .info-card h3 { margin: 0 0 6px; color: #e0e4dd; font-size: 14px; font-weight: 600; }
