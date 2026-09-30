@@ -43,6 +43,7 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-035 | 2026-09-29 | Close the Windows kill-on-close Job Object after the direct child exits and before joining output readers. | A graceful parent can leave a descendant alive with inherited pipe handles; closing the job first terminates that descendant and prevents reader joins from waiting indefinitely. Covered by a Windows regression test. |
 | D-036 | 2026-09-29 | M03C.1 pins XMRig v6.26.0 Windows x64 and upstream GPG fingerprint `9AC4 CEA8 E66E 35A5 C7CD DC1B 446A 5363 8BE9 4409`. | xmrig.com publishes the fingerprint and says its key must match the official repository copy; the public key blocks match byte-for-byte. See `docs/XMRIG_INTEGRATION.md`. |
 | D-037 | 2026-09-29 | M03C.1 uses explicit user-approved upstream download, Sequoia OpenPGP with the Windows CNG backend, strict SHA-256 manifest verification, and bounded safe extraction. | A controlled v6.26.0 Windows x64 install completed in per-user app data. Mining launch remains disabled. Public release is subject to GPL/dependency review. |
+| D-043 | 2026-09-30 | Beginner Mining setup follows Wallet → Pool → Power → Review → Ready with progressive disclosure. | Keep pool recommendations unavailable until provider details are reviewed. Keep Custom pool, technical checks, and healthy engine provenance secondary; put actionable problems beside the action. Readiness and consent stay Rust-owned. |
 
 M03C.2A decisions (2026-09-29):
 

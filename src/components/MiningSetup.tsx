@@ -1,113 +1,211 @@
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { EmberCore } from "./EmberCore";
 
 type Profile = "quiet" | "balanced" | "performance";
 type Pool = { host: string; port: number; tls: boolean; worker: string | null };
+type Check = { id: string; label: string; passed: boolean };
+
 export type MiningReadiness = {
   engine: "notInstalled" | "verifying" | "ready" | "modified" | "unsupported" | "error";
-  engineVersion: string; walletMasked: string | null; pool: Pool | null;
-  profile: Profile | null; logicalProcessors: number; threads: number | null;
+  engineVersion: string;
+  walletMasked: string | null;
+  pool: Pool | null;
+  profile: Profile | null;
+  logicalProcessors: number;
+  threads: number | null;
   profileOptions: { profile: Profile; threads: number | null }[];
-  revision: number; acknowledged: boolean; ready: boolean; startAllowed: boolean; startReason: string;
-  checks: { id: string; label: string; passed: boolean }[]; storageError: string | null;
+  revision: number;
+  acknowledged: boolean;
+  ready: boolean;
+  startAllowed: boolean;
+  startReason: string;
+  checks: Check[];
+  storageError: string | null;
 };
 
-export function MiningSetup({ setup, onChange, refresh }: {
-  setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>;
-}) {
+type Props = { setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void> };
+
+const engineCopy: Record<MiningReadiness["engine"], string> = {
+  notInstalled: "Not installed",
+  verifying: "Checking",
+  ready: "Verified",
+  modified: "Needs attention",
+  unsupported: "Unavailable on this device",
+  error: "Could not check",
+};
+
+export function MiningSetup({ setup, onChange, refresh }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [editingWallet, setEditingWallet] = useState(false);
   const [address, setAddress] = useState("");
+  const [customPool, setCustomPool] = useState(false);
   const [editingPool, setEditingPool] = useState(false);
-  const [host, setHost] = useState(setup?.pool?.host ?? "");
-  const [port, setPort] = useState(setup?.pool?.port?.toString() ?? "");
-  const [tls, setTls] = useState(setup?.pool?.tls ?? true);
-  const [worker, setWorker] = useState(setup?.pool?.worker ?? "");
-  const [review, setReview] = useState({ risks: false, selections: false, donations: false });
+  const [host, setHost] = useState("");
+  const [port, setPort] = useState("");
+  const [tls, setTls] = useState(true);
+  const [worker, setWorker] = useState("");
+  const [reviewed, setReviewed] = useState(false);
 
   async function update(kind: string, value?: unknown) {
-    setBusy(true); setError(null);
+    setBusy(true);
+    setError(null);
     try {
       const next = await invoke<MiningReadiness>("update_mining_setup", { change: { kind, value } });
-      onChange(next); setReview({ risks: false, selections: false, donations: false });
+      onChange(next);
+      setReviewed(false);
       if (kind === "wallet") { setAddress(""); setEditingWallet(false); }
-      if (kind === "pool") setEditingPool(false);
-    } catch (failure) { setError(typeof failure === "string" ? failure : "Setup could not be saved. Please retry."); }
-    finally { setBusy(false); }
+      if (kind === "pool") { setCustomPool(false); setEditingPool(false); }
+    } catch (failure) {
+      setError(classifyError(kind, failure));
+    } finally {
+      setBusy(false);
+    }
   }
 
-  async function install() {
-    setBusy(true); setError(null);
-    try { await invoke("provision_xmrig"); await refresh(); }
-    catch { setError("Engine setup could not be completed. Check your connection, storage and security notifications, then retry. Do not disable security software."); await refresh(); }
-    finally { setBusy(false); }
+  async function setupEngine() {
+    setBusy(true);
+    setError(null);
+    try {
+      await invoke("provision_xmrig");
+      await refresh();
+    } catch {
+      setError("Ember couldn’t verify or install the mining engine. Check your connection, storage, or security notifications, then try again.");
+      await refresh();
+    } finally {
+      setBusy(false);
+    }
   }
 
-  if (!setup) return <section className="setup-panel"><h2>Checking setup</h2><p className="info-detail">Ember is reading local configuration and verifying the engine.</p><button className="setup-engine-button" onClick={refresh}>Retry verification</button></section>;
-  const completeExceptConsent = setup.checks.every((check) => check.passed || check.id === "consent");
-  const engineLabel = { notInstalled: "Not installed", verifying: "Verifying…", ready: "Verified · Ready", modified: "Integrity check failed", unsupported: "Unsupported platform", error: "Verification unavailable" }[setup.engine];
+  if (!setup) return <section className="setup-panel"><h2>Checking your setup</h2><p className="info-detail">Ember is checking your saved settings.</p><button className="setup-engine-button" onClick={refresh}>Try again</button></section>;
+
+  const checksExceptConsent = setup.checks.filter((check) => check.id !== "consent");
+  const completeExceptConsent = checksExceptConsent.every((check) => check.passed);
+  const nextStep = nextUserAction(setup);
   const showWalletForm = editingWallet || !setup.walletMasked;
-  const showPoolForm = editingPool || !setup.pool;
+  const showPoolForm = editingPool || customPool;
+  const engineProblem = setup.engine === "modified" || setup.engine === "unsupported" || setup.engine === "error";
+  const engineNeedsInstall = setup.engine === "notInstalled";
 
   return <div className="mining-setup" aria-busy={busy}>
-    <section className="mining-state-panel">
-      <div className="mining-core-small"><EmberCore state={setup.ready ? "ready" : "not-configured"} compact /></div>
-      <div className="mining-state-copy"><p className="eyebrow">CURRENT STATE</p><h2>{setup.ready ? "Setup ready · Not mining" : "Ready to configure"}</h2><p>Complete your local setup and review the disclosures. Mining is disabled in this milestone.</p></div>
+    <section className={`setup-welcome${setup.ready ? " is-ready" : ""}`} aria-live="polite">
+      <div><p className="eyebrow">YOUR SETUP</p><h2>{setup.ready ? "Setup complete" : "Finish setup to continue"}</h2>
+        <p>{setup.ready ? "Your setup is ready. Mining remains disabled until a future Ember release." : nextStep}</p></div>
+      <span className={`setup-state-mark${setup.ready ? " complete" : ""}`} aria-hidden="true">{setup.ready ? "✓" : ""}</span>
     </section>
-    {error && <p className="setup-engine-error" role="alert">{error}</p>}
-    {setup.storageError && <section className="setup-panel"><p role="alert">{setup.storageError}</p><button className="setup-engine-button" disabled={busy} onClick={() => update("reset")}>Reset saved setup</button><p className="info-detail">Removes the saved wallet, pool, profile and acknowledgements.</p></section>}
-    <section className="setup-panel">
-      <p className="eyebrow">MINING ENGINE</p><h2>XMRig {setup.engineVersion} · {busy ? "Checking / saving…" : engineLabel}</h2>
-      <p className="info-detail">Ember verifies the installed executable against its recorded digest. Setup downloads the official release and does not start mining. <a href="https://github.com/xmrig/xmrig" target="_blank" rel="noreferrer">XMRig source and GPLv3 notices</a>.</p>
-      {setup.engine !== "ready" && setup.engine !== "unsupported" && <button className="setup-engine-button" disabled={busy} onClick={install}>{setup.engine === "notInstalled" ? "Set up engine" : "Repair / reinstall engine"}</button>}
-      <button className="setup-engine-button secondary" disabled={busy} onClick={refresh}>Recheck integrity</button>
+
+    {error && !["wallet", "pool", "review", "storage"].includes(error) && <p className="setup-error-banner" role="alert">Ember couldn’t save that change. Check your setup and try again.</p>}
+    {(setup.storageError || error === "storage") && <section className="setup-problem" role="alert"><div><h3>Saved setup needs attention</h3><p>Ember couldn’t read or save your local mining setup. Reset saved settings to start again.</p></div><button className="setup-engine-button" disabled={busy} onClick={() => update("reset")}>Reset setup</button></section>}
+
+    {engineProblem && <section className="setup-problem" aria-live="polite"><div><p className="eyebrow">MINING ENGINE</p><h3>{setup.engine === "unsupported" ? "This device isn’t currently supported" : "Mining engine needs attention"}</h3><p>{setup.engine === "unsupported" ? "Ember can’t run the verified mining engine on this device." : "Ember couldn’t verify the installed mining engine."}</p></div>{setup.engine !== "unsupported" && <button className="setup-engine-button" disabled={busy} onClick={setupEngine}>Repair engine</button>}</section>}
+    {engineNeedsInstall && <section className="setup-engine-compact"><span><strong>Mining engine</strong><small>XMRig {setup.engineVersion} · Not installed</small></span><button className="setup-engine-button" disabled={busy} onClick={setupEngine}>{busy ? "Setting up…" : "Set up engine"}</button></section>}
+
+    <section className="setup-step" aria-labelledby="step-wallet">
+      <StepHeading number="1" title="Wallet" id="step-wallet" />
+      {showWalletForm ? <div className="step-body">
+        <p className="step-description">Where should your mining rewards be sent?</p>
+        <form onSubmit={(event) => { event.preventDefault(); void update("wallet", address); }}>
+          <label className="setup-label" htmlFor="wallet-address">Monero wallet address</label>
+          <input id="wallet-address" className="setup-input wallet-input" value={address} onChange={(event) => setAddress(event.target.value)} maxLength={106} autoComplete="off" spellCheck={false} required aria-describedby="wallet-help wallet-error" />
+          <p id="wallet-help" className="field-help">Ember only needs your public receiving address. Never enter a seed phrase or private key.</p>
+          {error === "wallet" && <p id="wallet-error" className="field-error" role="alert">Enter a valid Monero receiving address.</p>}
+          <div className="form-actions"><button className="setup-engine-button" disabled={busy}>Save wallet</button>{editingWallet && <button className="setup-engine-button secondary" type="button" disabled={busy} onClick={() => { setAddress(""); setEditingWallet(false); setError(null); }}>Cancel</button>}</div>
+        </form>
+      </div> : <div className="step-body step-summary"><div><strong>Wallet configured</strong><span>{setup.walletMasked}</span></div><button className="text-action" disabled={busy} onClick={() => { setEditingWallet(true); setError(null); }}>Change</button><button className="text-action remove-action" disabled={busy} onClick={() => update("wallet", null)}>Remove</button></div>}
     </section>
-    <div className="setup-grid">
-      <section className="setup-panel" aria-labelledby="wallet-title">
-        <p className="eyebrow">PUBLIC WALLET</p><h2 id="wallet-title">{setup.walletMasked ?? "Receiving address"}</h2>
-        <p className="info-detail">Use a mainnet Monero standard address, subaddress or integrated address. Your pool must support the selected format. Ember never receives your seed, private keys or wallet password.</p>
-        {showWalletForm ? <form onSubmit={(event) => { event.preventDefault(); void update("wallet", address); }}>
-          <label>Public receiving address<input value={address} onChange={(event) => setAddress(event.target.value)} maxLength={106} autoComplete="off" spellCheck={false} required /></label>
-          <button className="setup-engine-button" disabled={busy}>Save address</button>
-          {setup.walletMasked && <button className="setup-engine-button secondary" type="button" disabled={busy} onClick={() => { setAddress(""); setEditingWallet(false); }}>Cancel</button>}
-        </form> : <div><button className="setup-engine-button" disabled={busy} onClick={() => setEditingWallet(true)}>Change address</button><button className="setup-engine-button secondary" disabled={busy} onClick={() => update("wallet", null)}>Remove</button></div>}
-      </section>
-      <section className="setup-panel" aria-labelledby="pool-title">
-        <p className="eyebrow">POOL</p><h2 id="pool-title">{setup.pool ? `${setup.pool.host}:${setup.pool.port}` : "Choose your pool"}</h2>
-        <p className="info-detail">Manual Stratum connection · {setup.pool ? (setup.pool.tls ? "TLS enabled" : "Unencrypted TCP") : "TLS recommended"}. Copy host and port from your pool’s instructions. No connection or pool compatibility check is performed here.</p>
-        {showPoolForm ? <form onSubmit={(event) => { event.preventDefault(); void update("pool", { host, port: Number(port), tls, worker: worker || null }); }}>
-          <label>Pool host (no URL)<input value={host} onChange={(event) => setHost(event.target.value)} maxLength={253} placeholder="pool.example.org" autoComplete="off" required /></label>
-          <div className="pool-fields"><label>Port<input type="number" min={1} max={65535} value={port} onChange={(event) => setPort(event.target.value)} required /></label><label>Worker name (optional)<input value={worker} onChange={(event) => setWorker(event.target.value)} maxLength={64} autoComplete="off" /></label></div>
-          <label className="check-label"><input type="checkbox" checked={tls} onChange={(event) => setTls(event.target.checked)} />Use TLS</label>
-          <button className="setup-engine-button" disabled={busy}>Save pool</button>
-          {setup.pool && <button type="button" className="setup-engine-button secondary" disabled={busy} onClick={() => setEditingPool(false)}>Cancel</button>}
-        </form> : <div><p className="info-detail">Worker: {setup.pool?.worker ?? "None"}</p><button className="setup-engine-button" disabled={busy} onClick={() => { setHost(setup.pool!.host); setPort(String(setup.pool!.port)); setTls(setup.pool!.tls); setWorker(setup.pool!.worker ?? ""); setEditingPool(true); }}>Edit pool</button><button className="setup-engine-button secondary" disabled={busy} onClick={() => update("pool", null)}>Remove</button></div>}
-      </section>
-    </div>
-    <section className="setup-panel">
-      <p className="eyebrow">RESOURCE PROFILE</p><h2>CPU resources</h2>
-      <p className="info-detail">{setup.logicalProcessors} logical processors detected. Profiles select a fixed number of mining threads; they do not cap CPU usage or monitor other apps.</p>
-      <div className="profile-options">{setup.profileOptions.map(({ profile, threads }) => <button key={profile} className={`profile-option${setup.profile === profile ? " selected" : ""}`} aria-pressed={setup.profile === profile} disabled={busy || threads === null} onClick={() => update("profile", profile)}><strong>{profile[0].toUpperCase() + profile.slice(1)}</strong><span>{threads ?? "—"} threads · {profile === "quiet" ? "Fewer resources" : profile === "balanced" ? "Moderate resources" : "More resources"}</span></button>)}</div>
-      <p className="info-detail">Selected: {setup.profile ?? "None"}{setup.threads ? ` · ${setup.threads} threads` : ""}. Huge pages and MSR optimizations are disabled. Electricity use and performance vary by device.</p>
+
+    <section className="setup-step" aria-labelledby="step-pool">
+      <StepHeading number="2" title="Pool" id="step-pool" />
+      <div className="step-body">
+        <p className="step-description">The pool is where your computer would connect to mine. Ember won’t connect during setup.</p>
+        {!setup.pool && !customPool && <div className="pool-choice-grid">
+          <div className="pool-choice pool-choice-muted"><span className="choice-label">RECOMMENDED</span><strong>Pool suggestions</strong><span>Coming in a future update</span></div>
+          <button className="pool-choice pool-choice-custom" type="button" onClick={() => { setCustomPool(true); setError(null); }}><span className="choice-label">YOUR POOL</span><strong>Use a custom pool</strong><span>Enter the details supplied by your pool</span></button>
+        </div>}
+        {setup.pool && !editingPool ? <div className="step-summary pool-summary"><div><strong>{setup.pool.host}:{setup.pool.port}</strong><span>{setup.pool.tls ? "Secure connection · TLS" : "Unencrypted connection"}{setup.pool.worker ? ` · Worker ${setup.pool.worker}` : ""}</span></div><button className="text-action" disabled={busy} onClick={() => { setHost(setup.pool!.host); setPort(String(setup.pool!.port)); setTls(setup.pool!.tls); setWorker(setup.pool!.worker ?? ""); setEditingPool(true); setError(null); }}>Edit</button><button className="text-action remove-action" disabled={busy} onClick={() => update("pool", null)}>Remove</button></div> : showPoolForm && <form onSubmit={(event) => { event.preventDefault(); void update("pool", { host, port: Number(port), tls, worker: worker || null }); }}>
+          <label className="setup-label" htmlFor="pool-address">Pool address</label>
+          <input id="pool-address" className="setup-input" value={host} onChange={(event) => setHost(event.target.value)} maxLength={253} placeholder="pool.example.com" autoComplete="off" required aria-describedby="pool-address-error" />
+          <div className="pool-fields"><label className="setup-label" htmlFor="pool-port">Port<input id="pool-port" className="setup-input" type="number" min={1} max={65535} value={port} onChange={(event) => setPort(event.target.value)} required aria-describedby="pool-address-error" /></label>
+            <label className="setup-label worker-label" htmlFor="pool-worker">Worker name <span>Optional</span><input id="pool-worker" className="setup-input" value={worker} onChange={(event) => setWorker(event.target.value)} maxLength={64} autoComplete="off" /></label></div>
+          <label className="tls-option"><input type="checkbox" checked={tls} onChange={(event) => setTls(event.target.checked)} /><span><strong>Secure connection (TLS)</strong><small>Encrypts the connection to your pool when supported.</small></span></label>
+          {error === "pool" && <p id="pool-address-error" className="field-error" role="alert">Check the pool address, port and optional worker name.</p>}
+          <div className="form-actions"><button className="setup-engine-button" disabled={busy}>Save pool</button>{editingPool && <button type="button" className="setup-engine-button secondary" disabled={busy} onClick={() => { setEditingPool(false); setError(null); }}>Cancel</button>}</div>
+        </form>}
+      </div>
     </section>
-    <section className="setup-panel consent-panel">
-      <p className="eyebrow">BEFORE YOU MINE</p><h2>Review and acknowledge</h2>
-      <p className="info-detail">Wallet: {setup.walletMasked ?? "Not configured"} · Pool: {setup.pool ? `${setup.pool.host}:${setup.pool.port} (${setup.pool.tls ? "TLS" : "unencrypted TCP"})` : "Not configured"} · Profile: {setup.profile ?? "Not selected"} ({setup.threads ?? "—"} threads) · Engine: XMRig {setup.engineVersion}.</p>
-      <p className="info-detail">Ember plans a 5% contribution to support the project. Its accounting and technical mechanism are not active, and no Ember contribution is charged here. XMRig separately uses its own upstream donation, configured at 1%. A future controlled development session will be explicitly labeled as running without the Ember contribution.</p>
-      {setup.acknowledged ? <><p className="consent-saved" role="status">Acknowledged for these settings. Changes require a fresh review.</p><button className="setup-engine-button secondary" disabled={busy} onClick={() => update("revoke")}>Withdraw acknowledgement</button></> : <>
-        <label className="check-label"><input type="checkbox" checked={review.risks} disabled={busy} onChange={(event) => setReview({ ...review, risks: event.target.checked })} />I understand mining uses significant CPU and electricity, may affect device performance, and rewards are uncertain.</label>
-        <label className="check-label"><input type="checkbox" checked={review.selections} disabled={busy} onChange={(event) => setReview({ ...review, selections: event.target.checked })} />I reviewed my public wallet, pool, resource profile and local XMRig engine above.</label>
-        <label className="check-label"><input type="checkbox" checked={review.donations} disabled={busy} onChange={(event) => setReview({ ...review, donations: event.target.checked })} />I understand XMRig’s separate donation and Ember’s planned 5% contribution. Ember never starts mining automatically on launch.</label>
-        <button className="setup-engine-button" disabled={busy || !completeExceptConsent || !Object.values(review).every(Boolean)} onClick={() => update("acknowledge", { revision: setup.revision, ...review })}>Acknowledge these settings</button>
-        {!completeExceptConsent && <p className="info-detail">Complete the setup checks below before acknowledging.</p>}
-      </>}
+
+    <section className="setup-step" aria-labelledby="step-power">
+      <StepHeading number="3" title="Power" id="step-power" />
+      <div className="step-body"><p className="step-description">Choose how many of your {setup.logicalProcessors} CPU threads Ember may use while mining.</p>
+        <div className="profile-options">{setup.profileOptions.map(({ profile, threads }) => <button key={profile} className={`profile-option${setup.profile === profile ? " selected" : ""}`} aria-pressed={setup.profile === profile} disabled={busy || threads === null} onClick={() => update("profile", profile)}><strong>{profile[0].toUpperCase() + profile.slice(1)}</strong><span>{profileDescription(profile)}</span><small>{threads === null ? "Unavailable" : `${threads} of ${setup.logicalProcessors} CPU threads`}</small></button>)}</div>
+        <p className="field-help">These settings choose mining threads; actual CPU use and performance vary. Smart Mining is not available yet.</p>
+      </div>
     </section>
-    <section className="setup-panel">
-      <p className="eyebrow">READINESS</p><h2>{setup.ready ? "Local setup is ready" : "Setup needs attention"}</h2>
-      <ul className="readiness-checks">{setup.checks.map((check) => <li key={check.id}><span className={check.passed ? "check-pass" : "check-pending"}>{check.passed ? "✓ Complete" : "○ Required"}</span>{check.label}</li>)}</ul>
-      <button className="setup-engine-button" disabled>Start mining</button><p className="info-detail">{setup.startReason}</p>
+
+    <section className="setup-step review-step" aria-labelledby="step-review">
+      <StepHeading number="4" title="Review" id="step-review" />
+      <div className="step-body"><p className="step-description">A few things to know before mining.</p>
+        <ul className="review-points"><li>Mining uses CPU and electricity. Your device may feel slower, and rewards are not guaranteed.</li><li>Mining uses XMRig, which has a separate 1% upstream donation.</li><li>Ember plans a separate 5% contribution. Its accounting mechanism is not active, and no Ember contribution is charged now.</li><li>Ember won’t start mining automatically when the app opens.</li></ul>
+        <p className="review-selection">Your choices: {setup.walletMasked ?? "wallet not set"} · {setup.pool ? `${setup.pool.host}:${setup.pool.port}` : "pool not set"} · {setup.profile ? `${capitalize(setup.profile)} · ${setup.threads} threads` : "power not set"}</p>
+        {setup.acknowledged ? <div className="consent-saved"><span role="status">Reviewed for these settings</span><button className="text-action" disabled={busy} onClick={() => update("revoke")}>Withdraw review</button></div> : <><label className="review-checkbox"><input type="checkbox" checked={reviewed} disabled={busy || !completeExceptConsent} onChange={(event) => setReviewed(event.target.checked)} /><span>I understand and have reviewed these choices.</span></label><button className="setup-engine-button" disabled={busy || !completeExceptConsent || !reviewed} onClick={() => update("acknowledge", { revision: setup.revision, risks: true, selections: true, donations: true })}>Confirm review</button>{error === "review" && <p className="field-error" role="alert">Complete the setup and review your current choices before confirming.</p>}{!completeExceptConsent && <p className="field-help">Complete the steps above before confirming.</p>}</>}
+      </div>
     </section>
+
+    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button start-disabled" disabled={!setup.startAllowed}>Start mining</button><p className="ready-note">Your setup is ready. Mining remains disabled in this milestone.</p></section>}
+
+    <details className="setup-details"><summary>Setup details</summary><div className="setup-details-body">
+      <div className="detail-engine"><span>Mining engine</span><strong>XMRig {setup.engineVersion} · {engineCopy[setup.engine]}</strong>{setup.engine !== "ready" && setup.engine !== "unsupported" && <button className="text-action" disabled={busy} onClick={setupEngine}>{setup.engine === "notInstalled" ? "Set up" : "Repair"}</button>}</div>
+      {setup.engine === "ready" && <p className="field-help">Ember checked the installed engine. <a href="https://github.com/xmrig/xmrig" target="_blank" rel="noreferrer">XMRig source and license</a>.</p>}
+      {setup.storageError && <p className="field-error" role="alert">Ember couldn’t read your local mining setup. Reset saved settings above to start again.</p>}
+      <ul className="readiness-checks">{setup.checks.map((check) => <li key={check.id}><span className={check.passed ? "check-pass" : "check-pending"}>{check.passed ? "Complete" : "Needs attention"}</span>{detailLabel(check)}</li>)}</ul>
+      <p className="field-help">Pool settings are saved locally. Ember has not connected to the pool.</p>
+    </div></details>
   </div>;
 }
+
+function StepHeading({ number, title, id }: { number: string; title: string; id: string }) {
+  return <div className="setup-step-heading"><span aria-hidden="true">{number}</span><h2 id={id}>{title}</h2></div>;
+}
+
+function nextUserAction(setup: MiningReadiness): string {
+  if (setup.storageError) return "Reset your saved setup to continue.";
+  if (setup.engine === "unsupported") return "This device isn’t currently supported for mining.";
+  if (setup.engine !== "ready") return setup.engine === "notInstalled" ? "Set up the mining engine to continue." : "Repair the mining engine to continue.";
+  if (!setup.walletMasked) return "Add your wallet address.";
+  if (!setup.pool) return "Choose how to connect to a pool.";
+  if (!setup.profile) return "Choose how much CPU Ember may use.";
+  if (!setup.acknowledged) return "Review the information before continuing.";
+  return "Ember needs attention before setup can be ready.";
+}
+
+function classifyError(kind: string, failure: unknown) {
+  const message = typeof failure === "string" ? failure : "";
+  if (message.includes("Local setup") || message.toLowerCase().includes("storage")) return "storage";
+  if (kind === "wallet" && message.includes("public receiving address")) return "wallet";
+  if (kind === "pool" && (message.includes("host or IP") || message.includes("Worker name") || message.includes("Pool endpoint"))) return "pool";
+  if (kind === "acknowledge") return "review";
+  return "setup";
+}
+
+function profileDescription(profile: Profile) {
+  if (profile === "quiet") return "Light CPU use";
+  if (profile === "balanced") return "Good everyday balance";
+  return "Maximum configured CPU use";
+}
+
+function detailLabel(check: Check) {
+  const labels: Record<string, string> = {
+    engine: "Mining engine verified",
+    wallet: "Public wallet address validated",
+    pool: "Pool settings valid (connection untested)",
+    profile: "Power profile selected",
+    runtime: "Candidate configuration validated locally",
+    consent: "Review acknowledged for current settings",
+    process: "No Ember mining process running",
+    platform: "Device platform and CPU count supported",
+    storage: "Local setup storage available",
+  };
+  return labels[check.id] ?? check.label;
+}
+
+function capitalize(value: string) { return value[0].toUpperCase() + value.slice(1); }
