@@ -13,8 +13,14 @@ use std::thread;
 use std::time::Duration;
 
 const STOP_GRACE: Duration = Duration::from_secs(2);
+#[cfg(not(test))]
+const READINESS_ATTEMPTS: usize = 120;
+#[cfg(test)]
 const READINESS_ATTEMPTS: usize = 20;
-const READINESS_INTERVAL: Duration = Duration::from_millis(50);
+#[cfg(not(test))]
+const READINESS_INTERVAL: Duration = Duration::from_millis(500);
+#[cfg(test)]
+const READINESS_INTERVAL: Duration = Duration::from_millis(5);
 
 struct SupervisorInner {
     lifecycle: LifecycleMachine,
@@ -80,6 +86,14 @@ impl EngineSupervisor {
             .lock()
             .ok()
             .and_then(|inner| inner.telemetry.clone())
+    }
+
+    pub fn update_telemetry(&self, telemetry: MiningTelemetry) {
+        if let Ok(mut inner) = self.inner.lock() {
+            if inner.lifecycle.state() == EngineLifecycleState::Mining {
+                inner.telemetry = Some(telemetry);
+            }
+        }
     }
 
     pub fn configure_ready(
@@ -212,7 +226,7 @@ impl EngineSupervisor {
             match poll_api() {
                 Ok(telemetry)
                     if telemetry.engine_version.as_deref() == Some(artifact.version())
-                        && telemetry.paused == Some(false) =>
+                        && super::xmrig::XmrigAdapter::is_ready_to_mine(&telemetry) =>
                 {
                     let mut inner = self.inner.lock().map_err(|_| lock_error())?;
                     inner.lifecycle.transition(EngineLifecycleState::Mining)?;
@@ -405,9 +419,10 @@ mod tests {
     fn fixture_telemetry(paused: bool) -> MiningTelemetry {
         MiningTelemetry {
             engine_version: Some("6.26.0".into()),
+            uptime_seconds: Some(1),
             paused: Some(paused),
             supported_algorithms: vec!["rx/0".into()],
-            short_hashrate: None,
+            short_hashrate: (!paused).then_some(1.0),
             medium_hashrate: None,
             long_hashrate: None,
             sample_time_unix_ms: None,

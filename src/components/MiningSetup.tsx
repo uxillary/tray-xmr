@@ -23,7 +23,13 @@ export type MiningReadiness = {
   storageError: string | null;
 };
 
-type Props = { setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void> };
+export type MiningSessionStatus = {
+  state: "unavailable" | "notConfigured" | "ready" | "starting" | "mining" | "paused" | "stopping" | "stopped" | "error";
+  telemetry: { engineVersion: string | null; uptimeSeconds: number | null; paused: boolean | null; shortHashrate: number | null; mediumHashrate: number | null; longHashrate: number | null } | null;
+  error: { kind: string; message: string } | null;
+};
+
+type Props = { setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>; session: MiningSessionStatus | null; refreshSession: () => Promise<void> };
 
 const engineCopy: Record<MiningReadiness["engine"], string> = {
   notInstalled: "Not installed",
@@ -34,7 +40,7 @@ const engineCopy: Record<MiningReadiness["engine"], string> = {
   error: "Could not check",
 };
 
-export function MiningSetup({ setup, onChange, refresh }: Props) {
+export function MiningSetup({ setup, onChange, refresh, session, refreshSession }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [editingWallet, setEditingWallet] = useState(false);
@@ -46,6 +52,36 @@ export function MiningSetup({ setup, onChange, refresh }: Props) {
   const [tls, setTls] = useState(true);
   const [worker, setWorker] = useState("");
   const [reviewed, setReviewed] = useState(false);
+
+  async function startMining() {
+    setBusy(true);
+    setError(null);
+    try {
+      const next = await invoke<MiningReadiness>("start_mining");
+      onChange(next);
+      await refreshSession();
+    } catch (failure) {
+      setError(typeof failure === "string" ? failure : "Ember could not start a controlled mining session.");
+      await refresh();
+      await refreshSession();
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function stopMining() {
+    setBusy(true);
+    setError(null);
+    try {
+      onChange(await invoke<MiningReadiness>("stop_mining"));
+      await refreshSession();
+    } catch (failure) {
+      setError(typeof failure === "string" ? failure : "Ember could not stop the owned mining process.");
+      await refreshSession();
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function update(kind: string, value?: unknown) {
     setBusy(true);
@@ -78,6 +114,21 @@ export function MiningSetup({ setup, onChange, refresh }: Props) {
   }
 
   if (!setup) return <section className="setup-panel"><h2>Checking your setup</h2><p className="info-detail">Ember is checking your saved settings.</p><button className="setup-engine-button" onClick={refresh}>Try again</button></section>;
+
+  if (session && ["starting", "mining", "paused", "stopping"].includes(session.state)) {
+    const starting = session.state === "starting";
+    const rate = session.telemetry?.shortHashrate;
+    const uptime = session.telemetry?.uptimeSeconds;
+    return <section className="active-mining-panel" aria-live="polite">
+      <p className="eyebrow">CONTROLLED SESSION</p>
+      <h2>{starting ? "Starting XMRig" : session.state === "stopping" ? "Stopping mining" : session.state === "paused" ? "Mining paused" : "Mining"}</h2>
+      <p>{starting ? "Ember is checking the authenticated local miner status. This can take a short while." : "Ember is supervising this session. Close the window to return to the tray; mining will continue until you stop or quit Ember."}</p>
+      {!starting && <div className="active-mining-metrics"><div><span>Hashrate</span><strong>{rate == null ? "Waiting for telemetry" : `${rate.toFixed(1)} H/s`}</strong></div><div><span>Mining time</span><strong>{uptime == null ? "—" : formatDuration(uptime)}</strong></div><div><span>Pool status</span><strong>Unavailable</strong></div></div>}
+      {session.error && <p className="field-error" role="alert">{session.error.message}</p>}
+      {error && <p className="field-error" role="alert">{error}</p>}
+      {session.state !== "stopping" && <button className="setup-engine-button stop-mining-button" disabled={busy || starting} onClick={() => void stopMining()}>{busy ? "Stopping…" : "Stop mining"}</button>}
+    </section>;
+  }
 
   const checksExceptConsent = setup.checks.filter((check) => check.id !== "consent");
   const completeExceptConsent = checksExceptConsent.every((check) => check.passed);
@@ -151,7 +202,7 @@ export function MiningSetup({ setup, onChange, refresh }: Props) {
       </div>
     </section>
 
-    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button start-disabled" disabled={!setup.startAllowed}>Start mining</button><p className="ready-note">Your setup is ready. Mining remains disabled in this milestone.</p></section>}
+    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy} onClick={() => void startMining()}>{busy ? "Starting…" : "Start mining"}</button><p className="ready-note">Starting connects this device to the pool you selected. You can stop the session at any time.</p>{error && <p className="field-error" role="alert">{error}</p>}</section>}
 
     <details className="setup-details"><summary>Setup details</summary><div className="setup-details-body">
       <div className="detail-engine"><span>Mining engine</span><strong>XMRig {setup.engineVersion} · {engineCopy[setup.engine]}</strong>{setup.engine !== "ready" && setup.engine !== "unsupported" && <button className="text-action" disabled={busy} onClick={setupEngine}>{setup.engine === "notInstalled" ? "Set up" : "Repair"}</button>}</div>
@@ -209,3 +260,4 @@ function detailLabel(check: Check) {
 }
 
 function capitalize(value: string) { return value[0].toUpperCase() + value.slice(1); }
+function formatDuration(seconds: number) { const hours = Math.floor(seconds / 3600); const minutes = Math.floor((seconds % 3600) / 60); return hours ? `${hours}h ${minutes}m` : `${minutes}m`; }

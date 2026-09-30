@@ -6,6 +6,8 @@ pub mod process;
 pub mod provisioner;
 #[cfg(windows)]
 pub mod readiness;
+#[cfg(windows)]
+pub mod runtime;
 pub mod supervisor;
 pub mod wallet;
 pub mod xmrig;

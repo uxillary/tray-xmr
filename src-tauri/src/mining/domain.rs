@@ -104,6 +104,7 @@ pub trait MiningEngine: Send {
 #[serde(rename_all = "camelCase")]
 pub struct MiningTelemetry {
     pub engine_version: Option<String>,
+    pub uptime_seconds: Option<u64>,
     pub paused: Option<bool>,
     pub supported_algorithms: Vec<String>,
     pub short_hashrate: Option<f64>,
@@ -116,6 +117,7 @@ impl Default for MiningTelemetry {
     fn default() -> Self {
         Self {
             engine_version: None,
+            uptime_seconds: None,
             paused: None,
             supported_algorithms: Vec::new(),
             short_hashrate: None,
@@ -190,6 +192,28 @@ pub enum ArtifactVerification {
 }
 
 impl EngineArtifact {
+    pub(crate) fn verified_installed(
+        engine_name: String,
+        version: String,
+        architecture: String,
+        source_url: String,
+        archive_sha256: String,
+        installed_path: PathBuf,
+    ) -> Self {
+        Self {
+            engine_name,
+            version,
+            architecture,
+            source_url,
+            verification: ArtifactVerification::Verified {
+                digest: archive_sha256.clone(),
+                verified_at_unix_ms: 0,
+            },
+            archive_sha256,
+            installed_path,
+        }
+    }
+
     pub fn unverified(
         engine_name: String,
         version: String,

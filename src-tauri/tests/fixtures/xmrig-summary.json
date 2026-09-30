@@ -1,5 +1,9 @@
 {
   "version": "6.26.0",
+  "kind": "miner",
+  "id": "fixture-xmrig-instance",
+  "uptime": 12,
+  "restricted": true,
   "paused": false,
   "algorithms": ["rx/0"],
   "hashrate": {

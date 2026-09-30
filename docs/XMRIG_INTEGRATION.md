@@ -1,6 +1,6 @@
 # XMRig Integration Research and Contract
 
-**Status:** M03C.2A local setup and readiness implemented (2026-09-29). XMRig v6.26.0 remains installed from the verified official release. `xmrig.exe` has never been executed. Start remains disabled. Public-release legal review remains open.
+**Status:** M03C.2B controlled launch path implemented and release/no-bundle validated (2026-09-30). The first actual session awaits the owner's click. XMRig v6.26.0 is installed from the verified official release. Public-release legal review remains open.
 
 ## Decision summary
 
@@ -8,7 +8,7 @@
 - Keep a user-supplied executable as a possible later advanced path; it offers weaker provenance/version consistency and less beginner-friendly support. Do not bundle binaries in Ember's installer initially.
 - Generate deterministic JSON configuration for normal operation. Keep only launch-level controls in argv; never put the wallet address or API token in command-line arguments.
 - Use XMRig's local HTTP API for structured telemetry where the exact pinned version confirms the fields. Treat stdout/stderr as bounded diagnostics, not the telemetry contract.
-- Rust owns the internal engine contract, lifecycle state, config validation, supervised child, fixture-injected readiness, normalized telemetry, and bounded diagnostics. Tray Quit invokes cleanup. React has no mining start controls. M03B does not implement artifact verification or a concrete HTTP transport, and consent/product policy remains future work.
+- Rust owns the internal engine contract, lifecycle state, config validation, supervised child, authenticated readiness, normalized telemetry, and bounded diagnostics. Tray Stop and Quit clean up the owned process and runtime session. React exposes only readiness-gated start and stop actions; the backend independently rechecks consent and artifact integrity.
 - Keep local system telemetry, engine telemetry, and later pool/economic data as separate domains.
 - Do not implement Ember's 5% contribution mechanism in the adapter or UI. Its policy belongs in a distinct Rust contribution/accounting boundary once an auditable mechanism is selected.
 
@@ -26,9 +26,9 @@ The initial pool UX is explicit manual Stratum host/port and visible TLS choice,
 
 Quiet selects `max(1, floor(logical CPUs / 4))` threads, Balanced `max(1, floor(logical CPUs / 2))`, Performance all logical CPUs. Unknown/zero or counts above 4096 block readiness. Rust supplies all profile counts to React. JSON uses that many `cpu.rx` entries of `-1` (no affinity) and the same `randomx.init` count, following [official XMRig CPU configuration](https://xmrig.com/docs/miner/config/cpu). This controls threads, not a CPU-utilization/power/temperature limit; dataset memory and device performance vary. CPU huge pages/JIT, RandomX 1GB pages/MSR/cache QoS, OpenCL/CUDA, autosave/background/watch are disabled. Upstream donation is explicitly 1%.
 
-Candidate API configuration reserves an OS-selected TCP port on **127.0.0.1**, uses its explicit nonzero port, 256 random token bits from Rust `getrandom`, and restricted mode. No HTTP server, firewall change or outbound connection is made. Candidate JSON and token stay in Rust memory and drop with the reservation after validation; no runtime config file is written or persisted in C.2A. Serialization is deterministic for identical validated inputs; new candidates intentionally have fresh tokens/ports. C.2B must generate a fresh candidate and introduce a short-lived file in the private Ember runtime subtree, restrictive ACLs, crash cleanup and port handoff/collision recovery before launch.
+M03C.2A generated disposable candidates in memory only. M03C.2B now creates a fresh candidate per attempt, holds its loopback port reservation until immediately before spawn, writes JSON into a private per-session runtime subtree with restrictive ACLs, and removes it on stop/failure or next-launch crash cleanup. Token and config never cross the frontend boundary.
 
-`MiningReadiness` requires verified engine, valid wallet/pool/profile, candidate generation, current disclosures, no owned process/supervisor error, supported platform/CPU count and readable local setup. All checks must pass for local Ready. `startAllowed` is always false, there is no start command, and process supervision is unchanged. The setup model is separate from active lifecycle; React/Overview render Rust's result while hashrate/time/earnings remain unavailable.
+`MiningReadiness` requires verified engine, valid wallet/pool/profile, candidate generation, current disclosures, no owned process, supported platform/CPU count and readable local setup. All checks must pass for Ready. M03C.2A kept `startAllowed` false; M03C.2B derives it from readiness and idle lifecycle state, while the Rust `start_mining` command repeats the setup/consent check before launch. The UI reads live lifecycle and supported telemetry from Rust; pool/share status and earnings remain unavailable.
 
 **Contribution decision A:** a future controlled development session may run without Ember's contribution, visibly labeled as such. This grants no current mining authorization or public-release approval. UI discloses CPU/electricity use, performance effects, uncertain rewards, wallet/pool/profile/XMRig selections, separate upstream 1% donation, planned 5% Ember contribution with no active mechanism, and no automatic mining on launch. Three explicit reviews cover risks, selections and donation/automatic-start policy. Rust rejects incomplete/stale reviews; wallet/pool/profile edits invalidate acknowledgement, which can be withdrawn. No contribution mechanism or developer destination exists.
 
@@ -68,7 +68,7 @@ The release metadata establishes what upstream published, not that the source is
 
 Provisioning requires the Mining-page **Set up engine** action. It downloads into a fresh sibling staging directory under `%LOCALAPPDATA%\\Ember\\miners\\xmrig`, rejects unsafe or out-of-root paths, Windows alternate data stream names, symlinks, unexpected root layout, duplicate paths, excessive file counts/expanded size, and missing `xmrig.exe`. It writes provenance metadata and promotes the completed directory by same-volume rename. Failed staging is removed. Existing installs are not overwritten; they are checked for metadata, pinned version/location fields, and executable digest. A modified executable fails verification. Ember does not automatically download on launch, replace versions, start XMRig, or configure mining.
 
-The persisted record contains engine/version/architecture, signed archive digest, installed executable digest, signing fingerprint, upstream source and install time; no personal path is stored. The UI describes XMRig as separate GPLv3 software, links upstream notices/source, identifies v6.26.0 and the official source on error, and offers retry. Its setup action currently reports one combined download/verification/install activity state; it does not provide precise percentage progress or cancellation. Engine execution remains disabled, so integrity re-verification is not yet wired into an executable start path; future engine availability must require `read_and_verify_install` before any launch.
+The persisted record contains engine/version/architecture, signed archive digest, installed executable digest, signing fingerprint, upstream source and install time; no personal path is stored. The UI describes XMRig as separate GPLv3 software, links upstream notices/source, identifies v6.26.0 and the official source on error, and offers retry. Its setup action currently reports one combined download/verification/install activity state; it does not provide precise percentage progress or cancellation. M03C.2B re-verifies `read_and_verify_install` immediately before process creation and fails closed on any change.
 
 The one controlled real provisioning run installed XMRig 6.26.0 from the official GitHub release. Detached manifest signature and archive SHA-256 both verified; resulting installation was `%LOCALAPPDATA%\\Ember\\miners\\xmrig\\6.26.0`. The installed executable SHA-256 recorded by the test was `6fa80698d7268f6e88aa88c06fb27ee99e1bcee747c2e76911e6206a5b1aeeb3`. No `xmrig` process was present afterward, and `xmrig.exe` was never executed.
 
@@ -178,7 +178,7 @@ Initial normalized telemetry candidates: current/short-window hashrate (numeric 
 
 The Rust application policy layer (a future contribution/accounting service above the engine adapter) owns the 5% Ember Contribution. UI explains and displays the policy; adapter only receives explicitly approved mining configuration. Process code, screen components, and pool-data code must not independently implement contribution behavior. XMRig config must be capable of representing a transparent approved destination/policy if selected, but XMRig's ordinary pool failover list is not a split and its built-in 1% donation is separate. Do not choose wallet switching, destination rotation, developer mining, or another mechanism until a technically honest, auditable model and legal review are complete. Future transparent accounting needs engine/session duration or hashrate work by destination, pool-side share/reward records, clear denominators/fees, policy/version history, and user-visible gross/contribution/net accounting; the precise required source depends on the approved mechanism.
 
-Before a future start, require setup complete, valid public wallet and explicit pool/configuration, visible disclosure and acknowledgement of the 5% contribution and XMRig's own donation behavior, explanation of resource use and mining uncertainty, and a fresh explicit user start action. Installation, update, app launch, tray restoration, or recovery never starts mining. Autostart mining is out of scope until a separate opt-in setting and consent UX exists. M03B may build the engine boundary and safe, non-mining validation tests; M03C owns first end-to-end setup/consent/mining flow.
+Every start requires complete setup, a valid public wallet and explicit pool/configuration, visible disclosure and acknowledgement of the planned 5% contribution and XMRig's own donation behavior, an explanation of resource use and mining uncertainty, and a fresh explicit user action. No Ember contribution mechanism or accounting is active or charged. Installation, update, app launch, tray restoration, or recovery never starts mining. Autostart mining is out of scope until a separate opt-in setting and consent UX exists.
 
 ### Windows security-product and reputation notes
 
@@ -189,13 +189,30 @@ Mining executables are likely to receive security-product scrutiny, but outcomes
 1. Legal review of GPLv3 distribution/aggregation, Ember process/API integration, exact notices, and Corresponding Source delivery for Ember's chosen download/bundle flow.
 2. Define key-rotation/revocation response for future upstream signing-key changes.
 3. Define update cadence, rollback and end-of-support; provisioning has one reviewed static version and no updater.
-4. Confirm current API schema and semantics, especially shares, pool connection, uptime, worker, and API restricted-mode/read/control behavior, against the exact release.
-5. Confirm a safe, authenticated graceful-stop path while preserving least API privilege; select port allocation/discovery and token lifecycle.
-6. Determine whether XMRig creates descendants and validate Job Object assignment/cleanup in packaged Tauri and Windows shutdown conditions.
-7. Decide whether API config includes an access token and how to protect/clean the generated config, including ACLs and crash cleanup.
-8. Decide Ember Quit behavior while mining is active and later opt-in autostart policy. The idle tray Quit path is manually verified and M03B.1 is complete.
+4. Pool connection and share data remain unavailable unless a separately pinned v6.26.0 source contract is verified; do not infer them from `/2/summary`.
+5. The first owner-controlled live session must confirm real machine behavior and pool configuration. Stop uses the bounded two-second wait followed by termination of Ember's owned Job Object; no HTTP stop call is made.
+6. Deterministic Windows process tests cover Job Object assignment and cleanup; the owner-controlled run confirms the packaged app's user-visible lifecycle.
+7. Runtime config is created with a fresh token in a private per-session directory, protected by a restrictive ACL, and removed on normal stop, startup failure, unexpected exit, or next-launch stale cleanup.
+8. Tray Quit stops the active owned process tree before exit. Mining remains strictly user initiated; autostart is a separate future policy decision.
 9. Approve contribution mechanism and its accounting/source evidence independently from XMRig's 1% donation.
 10. Test actual Defender/SmartScreen behavior, installer reputation/signing, and user-facing remediation without exclusions.
+
+## Pinned v6.26.0 `/2/summary` contract review
+
+The implementation was inspected at the immutable `v6.26.0` tag, rather than inferred from `master`:
+
+- `src/base/api/requests/HttpApiRequest.cpp`: GET `/2/summary` is classified as `REQ_SUMMARY`; `/2/` selects API response version 2. POST `/json_rpc` is parsed as a JSON-RPC request.
+- `src/base/api/Api.cpp`, `Api::exec`: adds `id`, `worker_id`, `uptime` (integer seconds), and `restricted` (boolean from the request's restricted-mode flag) to summary replies.
+- `src/core/Miner.cpp`, `Miner::onRequest`: handles GET summary and invokes `getMiner` plus `getHashrate`; it also handles JSON-RPC `pause`, `resume`, and `stop` operations.
+- `src/core/Miner.cpp`, `MinerPrivate::getMiner`: emits `version` (string), `kind` (string; release miner identity is `miner`), `paused` (boolean), and `algorithms` (array of enabled algorithm names).
+- `src/core/Miner.cpp`, `MinerPrivate::getHashrate`: emits `hashrate.total` as a three-element array: normalized short, medium, and large windows. Each element may be JSON `null` until a rate is available. For API v2, per-thread rates are deliberately omitted.
+- `src/base/api/Httpd.cpp` at the exact [`v6.26.0` tag](https://github.com/xmrig/xmrig/blob/v6.26.0/src/base/api/Httpd.cpp): verified contract is a lowercase `authorization` header with exact `Bearer <access-token>` formatting. Missing authorization is `401` when auth is required; malformed, short, wrong-scheme, or wrong-token values are `403`; a correct token is `200`. Restricted mode permits authenticated `GET /2/summary` and rejects authenticated non-GET requests with `403`. Ember's client is fixed to loopback GET and the session token.
+
+Ember's minimal typed parser now requires only the readiness fields `version: String`, `kind: String`, `paused: bool`, and `restricted: bool`; serde ignores unknown fields. Optional values are `algorithms: Option<Vec<String>>`, `hashrate.total: Option<Vec<Option<f64>>>`, and `uptime: Option<u64>`. Hashrates are accepted only when finite and within the existing safety bound. Startup readiness requires version `6.26.0`, kind `miner`, restricted API mode, `paused == false`, enabled algorithm `rx/0`, and a positive short-window rate. A submitted pool share is not required. Share and pool connection data are not in the summary constructed by `Miner.cpp`, so they remain unavailable here.
+
+The JSON-RPC `stop` operation calls the miner core's `stop()`; source does not show this as process shutdown. Ember will use it only if its end-to-end behavior is demonstrated to exit the process; otherwise the first-version Stop remains bounded termination under the existing Windows Job Object supervisor. Console `Ctrl+C` is handled by `App::onConsoleCommand`, but the current suspended/job-owned launch does not establish a reliable console control event channel. Job-owned termination remains the conservative fallback.
+
+Exact-tag sources: [Miner.cpp](https://github.com/xmrig/xmrig/blob/v6.26.0/src/core/Miner.cpp), [Api.cpp](https://github.com/xmrig/xmrig/blob/v6.26.0/src/base/api/Api.cpp), and [HttpApiRequest.cpp](https://github.com/xmrig/xmrig/blob/v6.26.0/src/base/api/requests/HttpApiRequest.cpp). Public docs: [HTTP API](https://xmrig.com/docs/miner/api), [API configuration](https://xmrig.com/docs/miner/config/api), [summary endpoint](https://xmrig.com/docs/miner/api/summary).
 
 ## Primary sources
 
@@ -212,7 +229,7 @@ Mining executables are likely to receive security-product scrutiny, but outcomes
 - [XMRig pool configuration](https://xmrig.com/docs/miner/config/pool)
 - [XMRig network configuration and donation level](https://xmrig.com/docs/miner/config/network)
 - [XMRig huge pages documentation](https://xmrig.com/docs/miner/hugepages)
-- [XMRig upstream API implementation (`Miner.cpp`)](https://github.com/xmrig/xmrig/blob/master/src/core/Miner.cpp)
+- [XMRig v6.26.0 upstream API implementation (`Miner.cpp`)](https://github.com/xmrig/xmrig/blob/v6.26.0/src/core/Miner.cpp)
 - [GNU GPLv3 full text](https://www.gnu.org/licenses/gpl-3.0.html)
 - [Rust `std::process::Child`](https://doc.rust-lang.org/std/process/struct.Child.html)
 - [Microsoft Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects)

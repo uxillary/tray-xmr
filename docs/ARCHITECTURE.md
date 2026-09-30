@@ -1,6 +1,6 @@
 # Ember High-Level Architecture
 
-**Status:** Conceptual target and implementation facts, recorded 2026-09-29. M03C.2A adds local setup, startup re-verification and consent readiness for verified XMRig v6.26.0 Windows x64; execution remains disabled.
+**Status:** Conceptual target and implementation facts, recorded 2026-09-30. M03C.2B implements the controlled-session launch path for verified XMRig v6.26.0 Windows x64; the first actual mining start awaits the owner's click.
 
 ## Platform and responsibilities
 
@@ -12,7 +12,7 @@ The planned stack is Tauri 2, Rust, React, and TypeScript, initially Windows-fir
 
 The initial Tauri capability grants only `core:default`. Reassess permissions as native features are added. Broader IPC schemas, module boundaries, and future capability needs remain pending design.
 
-The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations and the internal M03B mining domain, config, diagnostics, process, supervisor, and XMRig contract modules. Frontend mining controls remain absent; no real miner is integrated. Historical code is separated under `legacy/`.
+The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations, setup/consent, config, diagnostics, process supervision, runtime storage, and the XMRig API contract. Mining controls are implemented; the first actual XMRig session has not yet been started. Historical code is separated under `legacy/`.
 
 ### Local system observation (M02)
 
@@ -48,15 +48,15 @@ Future Ember services may support optional accounts, synchronization, community 
 
 ## Mining engine boundary
 
-Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the only planned initial adapter; this is not a plugin framework. The user interface renders Rust-owned lifecycle state and cannot start a miner outside the consent-checked backend path. M03B implements this boundary in `src-tauri/src/mining/`, with fixture-only process/API tests. Artifact verification and a concrete HTTP transport remain unimplemented. Detailed contract and limits are in [XMRig Integration](XMRIG_INTEGRATION.md).
+Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the initial adapter; this is not a plugin framework. The UI renders Rust-owned lifecycle state and cannot bypass the consent-checked backend path. M03C.2B connects the pinned summary parser, authenticated loopback client, private runtime session, verified artifact and suspended Job Object launch, readiness gate, telemetry monitor, stop/quit cleanup and active-session views. Shares and pool connection data are not exposed. Detailed contract and limits are in [XMRig Integration](XMRIG_INTEGRATION.md).
 
 Keep the data domains separate: M02 local system telemetry describes host CPU/RAM/device/activity/power; mining-engine telemetry describes engine version/state/hashrate/backend; later pool/economic telemetry owns shares, balance, payout, market rates, and estimates. Do not derive economic claims from local system or engine readings.
 
 ### Process lifecycle responsibilities
 
-M03B adds deterministic config validation, a verified-artifact gate, fixture-injected readiness, unexpected-exit handling, bounded diagnostics and stop escalation. On Windows, `process.rs` creates the Job Object first, creates the child suspended with redirected stdio, assigns the process handle to the kill-on-close job, and resumes its primary thread only after assignment succeeds. Any failure before resume terminates/reaps the suspended process; RAII-owned handles close on every path. When the direct child exits, the supervisor closes the Job Object before joining pipe readers so remaining descendants cannot keep redirected pipes open. Job assignment failure, including unsupported nested-job constraints, fails closed. No artifact verifier, HTTP transport, or enabled XMRig launch implementation exists.
+M03B adds deterministic config validation, a verified-artifact gate, fixture-injected readiness, unexpected-exit handling, bounded diagnostics and stop escalation. On Windows, `process.rs` creates the Job Object first, creates the child suspended with redirected stdio, assigns the process handle to the kill-on-close job, and resumes its primary thread only after assignment succeeds. Any failure before resume terminates/reaps the suspended process; RAII-owned handles close on every path. When the direct child exits, the supervisor closes the Job Object before joining pipe readers so remaining descendants cannot keep redirected pipes open. Job assignment failure, including unsupported nested-job constraints, fails closed. M03C.2B uses this path for XMRig after immediate artifact and consent re-verification.
 
-Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback, use a per-run secret, and keep full control routes disabled unless the chosen shutdown mechanism demonstrably requires them and is reviewed. The parser accepts only the researched summary fields; `LocalApiTransport` remains an injected test contract with no concrete HTTP implementation. No real XMRig integration is enabled.
+Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback and use a per-run secret. `ReqwestLocalApiTransport` uses a fixed loopback URL, verified Bearer authorization, no proxy, no redirects, bounded body and strict deadlines. Restricted mode permits only the authenticated GET summary request; Stop uses a bounded wait and then the owned Job Object rather than a control API route.
 
 The future Ember policy/contribution layer owns the disclosed 5% Contribution and accounting; neither the UI nor process adapter contains contribution logic. The XMRig built-in 1% donation is separate and must be represented honestly.
 
@@ -105,18 +105,18 @@ Use bounded, user-controllable diagnostics. Avoid logging wallet addresses, cred
 
 ## Pending architecture decisions
 
-M03C.2A introduces `mining::readiness::SetupService` behind a Tauri-managed mutex. `mining_readiness` and `update_mining_setup` run blocking verification/storage work outside the UI thread; provisioning shares that mutex. Rust owns normalized setup, candidate JSON, typed availability and every readiness prerequisite. Frontend changes use a tagged allowlist, never paths, argv, tokens or raw JSON. The Mining page is the primary editor; Settings links to it and Overview renders setup readiness. `shell_status` remains the older supervisor lifecycle command; setup readiness is a separate contract until C.2B bridges verified artifacts into active lifecycle.
+`mining::readiness::SetupService` owns normalized setup, consent revision and fresh validated candidates. `start_mining` rechecks setup and consent, verifies the pinned install immediately before the suspended-create/Job Object spawn, and holds a private ACL-protected runtime config for the process lifetime. The supervisor gates Mining on authenticated version/kind/restricted/paused/algorithm/positive-rate summary fields. A monitor refreshes normalized telemetry and reaps unexpected exits; `stop_mining`, tray Stop and tray Quit terminate only the owned process tree and clean its runtime session. Frontend inputs remain narrow and never include paths, argv, tokens or raw JSON. Overview, sidebar and Mining view consume state and telemetry IPC.
 
-Schema 1 lives in `%LOCALAPPDATA%\Ember\setup-v1.json` with a revision and disclosure-version acknowledgement. No-config migrates to empty state; unsupported/corrupt files block setup and require explicit reset. Edits revoke acknowledgement; atomic same-directory replacement preserves the old config on write failure. Ephemeral API token/port and runtime JSON remain in Rust memory. C.2B must add private short-lived runtime-file lifecycle and a verified launch bridge. See [XMRig Integration](XMRIG_INTEGRATION.md) for exact validation, thread mapping and execution prerequisites.
+Schema 1 lives in `%LOCALAPPDATA%\Ember\setup-v1.json` with a revision and disclosure-version acknowledgement. No-config migrates to empty state; unsupported/corrupt files block setup and require explicit reset. Edits revoke acknowledgement; atomic same-directory replacement preserves the old config on write failure. Ephemeral API token and port remain Rust-owned; the generated JSON is stored only in a private per-session runtime directory and removed at session end or next startup after a crash.
 
 1. Legal approval of XMRig GPLv3 acquisition/aggregation, notices and source obligations, including dependency notices.
 2. Key-rotation/revocation response for future signing-key changes.
-3. Pinned XMRig API schema, restricted-mode semantics, authentication and graceful-stop path.
-4. Shutdown semantics, Job Object suitability, process-tree management, timeout escalation, and crash recovery.
+3. Pool shares and connection fields are not established by `/2/summary` and remain unavailable until separately sourced and verified.
+4. First owner-controlled run remains necessary to confirm real machine and pool behavior; runtime failure remains bounded to Ember's owned Job Object.
 5. Local database choice, schema ownership, migration, retention, export, and deletion.
 6. Supported pool/market data sources and estimate methodology.
 7. Smart Mining signals, limits, precedence, overrides, and laptop/thermal behavior.
-8. Behavior of Quit while future mining is active and any opt-in autostart mechanism.
+8. Any opt-in autostart mechanism remains a separate future decision; current launch is user initiated only.
 9. Contribution implementation and auditable accounting.
 
 See [Security](SECURITY.md) for trust constraints and [Decisions](DECISIONS.md) for the decision log.

@@ -1,4 +1,4 @@
-//! Local setup only. No command in this module can spawn an engine or connect to a pool.
+//! Local setup validation and Rust-owned per-start configuration construction.
 use super::{
     config,
     domain::{CpuConfig, LocalApiConfig, MiningConfig, PoolConfig},
@@ -260,8 +260,7 @@ impl SetupService {
             checks: vec![],
             ready: false,
             start_allowed: false,
-            start_reason:
-                "Mining is disabled in this milestone. A controlled session requires M03C.2B.",
+            start_reason: "Complete the required setup checks before starting.",
             storage_error: self.storage_error.then_some(STORAGE_ERROR),
         };
         snapshot.checks = checks([
@@ -276,12 +275,26 @@ impl SetupService {
             !self.storage_error,
         ]);
         snapshot.ready = snapshot.checks.iter().all(|c| c.passed);
+        snapshot.start_allowed = snapshot.ready && no_process;
+        if snapshot.start_allowed {
+            snapshot.start_reason = "Ready to start a controlled mining session.";
+        }
         snapshot
     }
 
-    /// Generates and validates a disposable candidate entirely in Rust memory.
-    /// The port reservation drops with it. C.2B must generate a fresh token/port and
-    /// implement a private short-lived file and collision recovery before launch.
+    /// Generates a fresh validated config and reserves its loopback port until launch.
+    pub fn prepare_start(&self, logical: usize) -> Result<RuntimeCandidate, String> {
+        let readiness = self.snapshot(logical, true);
+        if !readiness.start_allowed {
+            return Err("Complete setup and review the current choices before starting".into());
+        }
+        self.candidate(
+            readiness
+                .threads
+                .ok_or("Choose a supported resource profile")?,
+        )
+    }
+
     fn candidate(&self, threads: usize) -> Result<RuntimeCandidate, String> {
         provisioner::verify_installed(&self.root)
             .map_err(|_| "Engine integrity verification failed")?;
@@ -326,9 +339,14 @@ impl SetupService {
         let validated = config::validate(config, provisioner::VERSION).map_err(|e| e.message)?;
         let json = config::generate_json(&validated).map_err(|e| e.message)?;
         Ok(RuntimeCandidate {
-            _reservation: reservation,
-            _json: json,
+            reservation: Some(reservation),
+            json,
+            validated,
         })
+    }
+
+    pub fn data_root(&self) -> &Path {
+        &self.root
     }
 
     pub fn update(
@@ -396,9 +414,19 @@ impl SetupService {
 }
 
 // Neither this candidate nor persisted personal configuration implements Debug/Serialize to IPC.
-struct RuntimeCandidate {
-    _reservation: TcpListener,
-    _json: String,
+pub struct RuntimeCandidate {
+    reservation: Option<TcpListener>,
+    json: String,
+    pub validated: super::domain::ValidatedMiningConfig,
+}
+
+impl RuntimeCandidate {
+    pub fn config_json(&self) -> &str {
+        &self.json
+    }
+    pub fn release_port(&mut self) {
+        self.reservation.take();
+    }
 }
 
 fn invalidate(saved: &mut SavedSetup) -> Result<(), String> {
@@ -710,11 +738,11 @@ mod tests {
             )
             .unwrap();
         assert!(snapshot.ready);
-        assert!(!snapshot.start_allowed);
+        assert!(snapshot.start_allowed);
         assert!(!service.snapshot(8, false).ready);
         assert!(!service.snapshot(0, true).ready);
         let candidate = service.candidate(4).unwrap();
-        let json: serde_json::Value = serde_json::from_str(&candidate._json).unwrap();
+        let json: serde_json::Value = serde_json::from_str(candidate.config_json()).unwrap();
         assert_eq!(json["cpu"]["rx"], serde_json::json!([-1, -1, -1, -1]));
         assert_eq!(json["randomx"]["init"], 4);
         assert_eq!(json["cpu"]["huge-pages"], false);
@@ -726,7 +754,7 @@ mod tests {
         let dto = serde_json::to_string(&snapshot).unwrap();
         assert!(!dto.contains(token));
         let second = service.candidate(4).unwrap();
-        assert_ne!(candidate._json, second._json); // Fresh ephemeral secrets and port; JSON otherwise deterministic.
+        assert_ne!(candidate.json, second.json); // Fresh ephemeral secrets and port; JSON otherwise deterministic.
         let directory = provisioner::verify_install_location(&root).unwrap();
         fs::write(directory.join("xmrig.exe"), b"modified").unwrap();
         let snapshot = service.snapshot(8, true);
