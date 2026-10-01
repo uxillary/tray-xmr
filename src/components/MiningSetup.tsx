@@ -7,6 +7,7 @@ type Check = { id: string; label: string; passed: boolean };
 
 export type MiningReadiness = {
   engine: "notInstalled" | "verifying" | "ready" | "modified" | "unsupported" | "error";
+  engineIssue: string | null;
   engineVersion: string;
   walletMasked: string | null;
   pool: Pool | null;
@@ -27,6 +28,9 @@ export type MiningSessionStatus = {
   state: "unavailable" | "notConfigured" | "ready" | "starting" | "mining" | "paused" | "stopping" | "stopped" | "error";
   telemetry: { engineVersion: string | null; uptimeSeconds: number | null; paused: boolean | null; shortHashrate: number | null; mediumHashrate: number | null; longHashrate: number | null } | null;
   error: { kind: string; message: string } | null;
+  startupStage: "checkingEngine" | "preparingSession" | "startingXmrig" | "waitingForMiner" | null;
+  startupElapsedMs: number | null;
+  startupTimings: { stage: string; elapsedMs: number }[];
 };
 
 type Props = { setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>; session: MiningSessionStatus | null; refreshSession: () => Promise<void> };
@@ -61,9 +65,10 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession 
       onChange(next);
       await refreshSession();
     } catch (failure) {
-      setError(typeof failure === "string" ? failure : "Ember could not start a controlled mining session.");
+      const startError = typeof failure === "string" ? failure : "Ember could not start a controlled mining session.";
       await refresh();
       await refreshSession();
+      setError(startError);
     } finally {
       setBusy(false);
     }
@@ -115,18 +120,26 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession 
 
   if (!setup) return <section className="setup-panel"><h2>Checking your setup</h2><p className="info-detail">Ember is checking your saved settings.</p><button className="setup-engine-button" onClick={refresh}>Try again</button></section>;
 
-  if (session && ["starting", "mining", "paused", "stopping"].includes(session.state)) {
-    const starting = session.state === "starting";
+  if (session && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state))) {
+    const starting = session.state === "starting" || session.startupStage !== null;
+    const stageCopy = {
+      checkingEngine: "Checking mining engine…",
+      preparingSession: "Preparing session…",
+      startingXmrig: "Starting XMRig…",
+      waitingForMiner: "Waiting for miner…",
+    } as const;
+    const stageMessage = stageCopy[session.startupStage ?? "waitingForMiner"];
+    const startupSeconds = Math.floor((session.startupElapsedMs ?? 0) / 1000);
     const rate = session.telemetry?.shortHashrate;
     const uptime = session.telemetry?.uptimeSeconds;
     return <section className="active-mining-panel" aria-live="polite">
       <p className="eyebrow">CONTROLLED SESSION</p>
       <h2>{starting ? "Starting XMRig" : session.state === "stopping" ? "Stopping mining" : session.state === "paused" ? "Mining paused" : "Mining"}</h2>
-      <p>{starting ? "Ember is checking the authenticated local miner status. This can take a short while." : "Ember is supervising this session. Close the window to return to the tray; mining will continue until you stop or quit Ember."}</p>
+      <p>{starting ? `${stageMessage}${startupSeconds >= 10 ? ` · ${startupSeconds}s` : ""}` : "Ember is supervising this session. Close the window to return to the tray; mining will continue until you stop or quit Ember."}</p>
       {!starting && <div className="active-mining-metrics"><div><span>Hashrate</span><strong>{rate == null ? "Waiting for telemetry" : `${rate.toFixed(1)} H/s`}</strong></div><div><span>Mining time</span><strong>{uptime == null ? "—" : formatDuration(uptime)}</strong></div><div><span>Pool status</span><strong>Unavailable</strong></div></div>}
       {session.error && <p className="field-error" role="alert">{session.error.message}</p>}
       {error && <p className="field-error" role="alert">{error}</p>}
-      {session.state !== "stopping" && <button className="setup-engine-button stop-mining-button" disabled={busy || starting} onClick={() => void stopMining()}>{busy ? "Stopping…" : "Stop mining"}</button>}
+      {session.state !== "stopping" && <button className="setup-engine-button stop-mining-button" disabled={busy} onClick={() => void stopMining()}>{busy ? "Stopping…" : "Stop mining"}</button>}
     </section>;
   }
 
@@ -137,11 +150,12 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession 
   const showPoolForm = editingPool || customPool;
   const engineProblem = setup.engine === "modified" || setup.engine === "unsupported" || setup.engine === "error";
   const engineNeedsInstall = setup.engine === "notInstalled";
+  const startBlockedByWindows = error?.includes("Windows prevented") || error?.includes("no longer available") || error?.includes("stopped before Ember could connect");
 
   return <div className="mining-setup" aria-busy={busy}>
     <section className={`setup-welcome${setup.ready ? " is-ready" : ""}`} aria-live="polite">
       <div><p className="eyebrow">YOUR SETUP</p><h2>{setup.ready ? "Setup complete" : "Finish setup to continue"}</h2>
-        <p>{setup.ready ? "Your setup is ready. Mining remains disabled until a future Ember release." : nextStep}</p></div>
+        <p>{setup.ready ? "Your setup is ready. Mining starts only when you choose Start." : nextStep}</p></div>
       <span className={`setup-state-mark${setup.ready ? " complete" : ""}`} aria-hidden="true">{setup.ready ? "✓" : ""}</span>
     </section>
 
@@ -196,16 +210,17 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession 
     <section className="setup-step review-step" aria-labelledby="step-review">
       <StepHeading number="4" title="Review" id="step-review" />
       <div className="step-body"><p className="step-description">A few things to know before mining.</p>
-        <ul className="review-points"><li>Mining uses CPU and electricity. Your device may feel slower, and rewards are not guaranteed.</li><li>Mining uses XMRig, which has a separate 1% upstream donation.</li><li>Ember plans a separate 5% contribution. Its accounting mechanism is not active, and no Ember contribution is charged now.</li><li>Ember won’t start mining automatically when the app opens.</li></ul>
+        <ul className="review-points"><li>Mining uses CPU and electricity. Your device may feel slower, and rewards are not guaranteed.</li><li>Mining uses XMRig, which has a separate 1% upstream donation. Ember verifies the official pinned release before using it.</li><li>Windows or other security software may inspect or block mining software. Ember does not change those settings; review any security notification yourself.</li><li>Ember plans a separate 5% contribution. Its accounting mechanism is not active, and no Ember contribution is charged now.</li><li>Ember won’t start mining automatically when the app opens. You can stop or quit Ember at any time.</li></ul>
         <p className="review-selection">Your choices: {setup.walletMasked ?? "wallet not set"} · {setup.pool ? `${setup.pool.host}:${setup.pool.port}` : "pool not set"} · {setup.profile ? `${capitalize(setup.profile)} · ${setup.threads} threads` : "power not set"}</p>
         {setup.acknowledged ? <div className="consent-saved"><span role="status">Reviewed for these settings</span><button className="text-action" disabled={busy} onClick={() => update("revoke")}>Withdraw review</button></div> : <><label className="review-checkbox"><input type="checkbox" checked={reviewed} disabled={busy || !completeExceptConsent} onChange={(event) => setReviewed(event.target.checked)} /><span>I understand and have reviewed these choices.</span></label><button className="setup-engine-button" disabled={busy || !completeExceptConsent || !reviewed} onClick={() => update("acknowledge", { revision: setup.revision, risks: true, selections: true, donations: true })}>Confirm review</button>{error === "review" && <p className="field-error" role="alert">Complete the setup and review your current choices before confirming.</p>}{!completeExceptConsent && <p className="field-help">Complete the steps above before confirming.</p>}</>}
       </div>
     </section>
 
-    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy} onClick={() => void startMining()}>{busy ? "Starting…" : "Start mining"}</button><p className="ready-note">Starting connects this device to the pool you selected. You can stop the session at any time.</p>{error && <p className="field-error" role="alert">{error}</p>}</section>}
+    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy} onClick={() => void startMining()}>{busy ? "Starting…" : "Start mining"}</button><p className="ready-note">Starting connects this device to the pool you selected. You can stop the session at any time.</p>{error && <><p className="field-error" role="alert">{error}</p>{startBlockedByWindows && <div className="setup-recovery-actions"><button className="text-action" disabled={busy} onClick={() => void startMining()}>Try again</button><button className="text-action" disabled={busy} onClick={() => void refresh()}>Check engine</button><button className="text-action" disabled={busy} onClick={() => void setupEngine()}>Repair engine</button><p>Review any Windows Security notification yourself. Ember does not change security settings or restore quarantined files.</p></div>}</>}</section>}
 
     <details className="setup-details"><summary>Setup details</summary><div className="setup-details-body">
       <div className="detail-engine"><span>Mining engine</span><strong>XMRig {setup.engineVersion} · {engineCopy[setup.engine]}</strong>{setup.engine !== "ready" && setup.engine !== "unsupported" && <button className="text-action" disabled={busy} onClick={setupEngine}>{setup.engine === "notInstalled" ? "Set up" : "Repair"}</button>}</div>
+      {setup.engineIssue && <p className="field-error" role="alert">{setup.engineIssue}</p>}
       {setup.engine === "ready" && <p className="field-help">Ember checked the installed engine. <a href="https://github.com/xmrig/xmrig" target="_blank" rel="noreferrer">XMRig source and license</a>.</p>}
       {setup.storageError && <p className="field-error" role="alert">Ember couldn’t read your local mining setup. Reset saved settings above to start again.</p>}
       <ul className="readiness-checks">{setup.checks.map((check) => <li key={check.id}><span className={check.passed ? "check-pass" : "check-pending"}>{check.passed ? "Complete" : "Needs attention"}</span>{detailLabel(check)}</li>)}</ul>

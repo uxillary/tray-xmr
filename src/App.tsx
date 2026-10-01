@@ -77,7 +77,7 @@ function App() {
 
   const current = sections.find((item) => item.id === section)!;
   const busyStates = ["starting", "mining", "paused", "stopping"];
-  const currentState = session && busyStates.includes(session.state) ? session.state : session?.state === "error" ? "error" : nativeState;
+  const currentState = session?.startupStage ? "starting" : session && busyStates.includes(session.state) ? session.state : session?.state === "error" ? "error" : nativeState;
   const status = currentState ? stateLabels[currentState] : undefined;
   const system = systemMetric(systemSnapshot);
 

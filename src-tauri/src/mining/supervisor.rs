@@ -1,18 +1,21 @@
 use super::diagnostics::RedactionSecrets;
 use super::domain::{
     EngineArtifact, EngineAvailability, EngineError, EngineErrorKind, EngineLifecycleState,
-    EngineStatus, LifecycleMachine, MiningTelemetry, StopReason, ValidatedMiningConfig,
+    EngineStatus, LifecycleMachine, MiningTelemetry, StartupStage, StartupTiming, StopReason,
+    ValidatedMiningConfig,
 };
 use super::process::SupervisedChild;
 use super::xmrig::ApiClientError;
 use std::ffi::OsString;
 use std::io;
 use std::path::Path;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Mutex;
 use std::thread;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 
 const STOP_GRACE: Duration = Duration::from_secs(2);
+const MAX_STARTUP_TIMINGS: usize = 64;
 #[cfg(not(test))]
 const READINESS_ATTEMPTS: usize = 120;
 #[cfg(test)]
@@ -30,11 +33,16 @@ struct SupervisorInner {
     error: Option<EngineError>,
     diagnostics: Vec<super::domain::DiagnosticSummary>,
     shutting_down: bool,
+    startup_stage: Option<StartupStage>,
+    startup_started: Option<Instant>,
+    startup_stage_started: Option<Instant>,
+    startup_timings: Vec<StartupTiming>,
 }
 
 pub struct EngineSupervisor {
     inner: Mutex<SupervisorInner>,
     operation: Mutex<()>,
+    cancel_startup: AtomicBool,
 }
 
 impl Default for EngineSupervisor {
@@ -54,8 +62,13 @@ impl EngineSupervisor {
                 error: None,
                 diagnostics: Vec::new(),
                 shutting_down: false,
+                startup_stage: None,
+                startup_started: None,
+                startup_stage_started: None,
+                startup_timings: Vec::new(),
             }),
             operation: Mutex::new(()),
+            cancel_startup: AtomicBool::new(false),
         }
     }
 
@@ -68,6 +81,11 @@ impl EngineSupervisor {
                 process_id: inner.process.as_ref().map(SupervisedChild::id),
                 error: inner.error.clone(),
                 diagnostics: inner.diagnostics.clone(),
+                startup_stage: inner.startup_stage,
+                startup_elapsed_ms: inner
+                    .startup_started
+                    .map(|at| at.elapsed().as_millis().min(u64::MAX as u128) as u64),
+                startup_timings: inner.startup_timings.clone(),
             })
             .unwrap_or_else(|_| EngineStatus {
                 availability: EngineAvailability::Unavailable,
@@ -78,7 +96,101 @@ impl EngineSupervisor {
                     message: "Mining supervisor state is unavailable".into(),
                 }),
                 diagnostics: Vec::new(),
+                startup_stage: None,
+                startup_elapsed_ms: None,
+                startup_timings: Vec::new(),
             })
+    }
+
+    pub fn begin_startup(&self, stage: StartupStage) {
+        self.cancel_startup.store(false, Ordering::Release);
+        if let Ok(mut inner) = self.inner.lock() {
+            let now = Instant::now();
+            inner.startup_stage = Some(stage);
+            inner.startup_started = Some(now);
+            inner.startup_stage_started = Some(now);
+            inner.startup_timings.clear();
+        }
+    }
+
+    pub fn cancel_startup(&self) {
+        self.cancel_startup.store(true, Ordering::Release);
+    }
+
+    pub fn set_startup_stage(&self, stage: StartupStage) {
+        if let Ok(mut inner) = self.inner.lock() {
+            if inner.startup_stage == Some(stage) {
+                return;
+            }
+            let now = Instant::now();
+            if let (Some(previous), Some(started)) =
+                (inner.startup_stage, inner.startup_stage_started)
+            {
+                inner.startup_timings.push(StartupTiming {
+                    stage: format!("{:?}", previous),
+                    elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                });
+                if inner.startup_timings.len() > MAX_STARTUP_TIMINGS {
+                    inner.startup_timings.remove(0);
+                }
+            }
+            inner.startup_stage = Some(stage);
+            inner.startup_stage_started = Some(now);
+        }
+    }
+
+    pub fn finish_startup(&self) {
+        if let Ok(mut inner) = self.inner.lock() {
+            if let (Some(stage), Some(started)) = (inner.startup_stage, inner.startup_stage_started)
+            {
+                inner.startup_timings.push(StartupTiming {
+                    stage: format!("{:?}", stage),
+                    elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                });
+                if inner.startup_timings.len() > MAX_STARTUP_TIMINGS {
+                    inner.startup_timings.remove(0);
+                }
+            }
+            inner.startup_stage = None;
+            inner.startup_stage_started = None;
+            inner.startup_started = None;
+        }
+    }
+
+    pub fn record_startup_timings(&self, timings: &[StartupTiming]) {
+        if let Ok(mut inner) = self.inner.lock() {
+            inner.startup_timings.extend_from_slice(timings);
+            if inner.startup_timings.len() > MAX_STARTUP_TIMINGS {
+                let excess = inner.startup_timings.len() - MAX_STARTUP_TIMINGS;
+                inner.startup_timings.drain(0..excess);
+            }
+        }
+    }
+
+    fn record_startup_milestone(&self, name: &str) {
+        if let Ok(mut inner) = self.inner.lock() {
+            if let Some(started) = inner.startup_started {
+                inner.startup_timings.push(StartupTiming {
+                    stage: name.to_owned(),
+                    elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                });
+                if inner.startup_timings.len() > MAX_STARTUP_TIMINGS {
+                    inner.startup_timings.remove(0);
+                }
+            }
+        }
+    }
+
+    pub fn record_startup_duration(&self, name: &str, elapsed_ms: u64) {
+        if let Ok(mut inner) = self.inner.lock() {
+            inner.startup_timings.push(StartupTiming {
+                stage: name.to_owned(),
+                elapsed_ms,
+            });
+            if inner.startup_timings.len() > MAX_STARTUP_TIMINGS {
+                inner.startup_timings.remove(0);
+            }
+        }
     }
 
     pub fn telemetry(&self) -> Option<MiningTelemetry> {
@@ -186,6 +298,9 @@ impl EngineSupervisor {
             inner.telemetry = None;
             inner.error = None;
             inner.diagnostics.clear();
+            if inner.startup_started.is_none() {
+                inner.startup_started = Some(Instant::now());
+            }
         }
 
         let redaction = redaction.with_values([
@@ -194,11 +309,25 @@ impl EngineSupervisor {
             working_directory.to_string_lossy().into_owned(),
             executable.to_string_lossy().into_owned(),
         ]);
+        self.set_startup_stage(StartupStage::StartingXmrig);
         let mut child = match spawn(executable, arguments, working_directory, redaction) {
             Ok(child) => child,
             Err(error) => return self.fail(error),
         };
+        self.set_startup_stage(StartupStage::WaitingForMiner);
+        self.record_startup_timings(child.startup_timings());
+        let mut saw_summary = false;
+        let mut saw_randomx = false;
+        let mut saw_hashrate = false;
         for attempt in 0..READINESS_ATTEMPTS {
+            if self.cancel_startup.load(Ordering::Acquire) {
+                let _ = child.stop_with(|_| Ok(()), Duration::from_millis(0));
+                drop(child);
+                return self.fail(EngineError {
+                    kind: EngineErrorKind::StartupCancelled,
+                    message: "Mining startup was stopped at your request.".into(),
+                });
+            }
             let child_status = match child.try_wait() {
                 Ok(status) => status,
                 Err(_) => {
@@ -211,7 +340,10 @@ impl EngineSupervisor {
                 }
             };
             if let Some(exit) = child_status {
-                let safe_exit = format!("Engine exited during startup (code {:?})", exit.code());
+                let safe_exit = format!(
+                    "The mining engine stopped before Ember could connect to it (exit code {:?}).",
+                    exit.code()
+                );
                 let diagnostics = child.diagnostics();
                 drop(child);
                 let error = EngineError {
@@ -223,15 +355,47 @@ impl EngineSupervisor {
                 return Err(error);
             }
 
-            match poll_api() {
+            let response = poll_api();
+            if let Ok(telemetry) = &response {
+                if !saw_summary {
+                    self.record_startup_milestone("FirstAuthenticatedSummaryAtMs");
+                    saw_summary = true;
+                }
+                if telemetry
+                    .supported_algorithms
+                    .iter()
+                    .any(|algorithm| algorithm == "rx/0")
+                    && !saw_randomx
+                {
+                    self.record_startup_milestone("RandomXAlgorithmAdvertisedAtMs");
+                    saw_randomx = true;
+                }
+                if telemetry.short_hashrate.is_some_and(|rate| rate > 0.0) && !saw_hashrate {
+                    self.record_startup_milestone("FirstPositiveHashrateAtMs");
+                    saw_hashrate = true;
+                }
+            }
+            match response {
                 Ok(telemetry)
                     if telemetry.engine_version.as_deref() == Some(artifact.version())
                         && super::xmrig::XmrigAdapter::is_ready_to_mine(&telemetry) =>
                 {
+                    self.record_startup_milestone("MiningReadinessAtMs");
                     let mut inner = self.inner.lock().map_err(|_| lock_error())?;
                     inner.lifecycle.transition(EngineLifecycleState::Mining)?;
                     inner.telemetry = Some(telemetry);
                     inner.process = Some(child);
+                    if let (Some(stage), Some(started)) =
+                        (inner.startup_stage, inner.startup_stage_started)
+                    {
+                        inner.startup_timings.push(StartupTiming {
+                            stage: format!("{:?}", stage),
+                            elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                        });
+                    }
+                    inner.startup_stage = None;
+                    inner.startup_started = None;
+                    inner.startup_stage_started = None;
                     return Ok(());
                 }
                 Ok(telemetry)
@@ -244,7 +408,7 @@ impl EngineSupervisor {
                             .into(),
                     });
                 }
-                Ok(_) => {} // Paused is not considered ready to mine.
+                Ok(_) => self.set_startup_stage(StartupStage::WaitingForMiner),
                 Err(error) => {
                     if matches!(
                         error,
@@ -275,6 +439,16 @@ impl EngineSupervisor {
                 kind: EngineErrorKind::ApiUnavailable,
                 message: "Local API was not ready before the deadline".into(),
             });
+            if let (Some(stage), Some(started)) = (inner.startup_stage, inner.startup_stage_started)
+            {
+                inner.startup_timings.push(StartupTiming {
+                    stage: format!("{:?}", stage),
+                    elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                });
+            }
+            inner.startup_stage = None;
+            inner.startup_started = None;
+            inner.startup_stage_started = None;
             inner.diagnostics = if final_diagnostics.is_empty() {
                 diagnostics
             } else {
@@ -374,6 +548,9 @@ impl EngineSupervisor {
             }
             inner.error = Some(error.clone());
             inner.telemetry = None;
+            inner.startup_stage = None;
+            inner.startup_started = None;
+            inner.startup_stage_started = None;
         }
         Err(error)
     }
@@ -398,7 +575,8 @@ mod tests {
     use crate::mining::config::tests::fixture_config;
     use crate::mining::diagnostics::RedactionSecrets;
     use crate::mining::domain::{
-        EngineArtifact, EngineErrorKind, EngineLifecycleState, MiningTelemetry, StopReason,
+        EngineArtifact, EngineErrorKind, EngineLifecycleState, MiningTelemetry, StartupStage,
+        StopReason,
     };
     use crate::mining::process::SupervisedChild;
     use std::ffi::OsString;
@@ -456,6 +634,8 @@ mod tests {
         let config = crate::mining::config::validate(fixture_config(), "6.26.0").unwrap();
         let supervisor = EngineSupervisor::new();
         supervisor.configure_ready(&artifact, &config).unwrap();
+        supervisor.begin_startup(StartupStage::CheckingEngine);
+        supervisor.set_startup_stage(StartupStage::PreparingSession);
         let mut polls = 0;
         supervisor
             .start_with(
@@ -468,10 +648,14 @@ mod tests {
                 spawn_test_child,
                 || {
                     polls += 1;
-                    if polls == 1 {
-                        Err(crate::mining::xmrig::ApiClientError::Unavailable)
-                    } else {
-                        Ok(fixture_telemetry(false))
+                    match polls {
+                        1 => Err(crate::mining::xmrig::ApiClientError::Unavailable),
+                        2 => {
+                            let mut initializing = fixture_telemetry(false);
+                            initializing.short_hashrate = Some(0.0);
+                            Ok(initializing)
+                        }
+                        _ => Ok(fixture_telemetry(false)),
                     }
                 },
             )
@@ -480,6 +664,30 @@ mod tests {
         assert_eq!(supervisor.status().state, EngineLifecycleState::Mining);
         assert!(supervisor.status().process_id.is_some());
         assert_eq!(supervisor.telemetry().unwrap().paused, Some(false));
+        let timings = supervisor.status().startup_timings;
+        let stages = timings
+            .iter()
+            .map(|timing| timing.stage.as_str())
+            .collect::<Vec<_>>();
+        let starting = stages
+            .iter()
+            .position(|stage| *stage == "StartingXmrig")
+            .unwrap();
+        let waiting = stages
+            .iter()
+            .position(|stage| *stage == "WaitingForMiner")
+            .unwrap();
+        assert!(starting < waiting);
+        assert!(stages
+            .iter()
+            .any(|stage| *stage == "FirstAuthenticatedSummaryAtMs"));
+        assert!(stages
+            .iter()
+            .any(|stage| *stage == "RandomXAlgorithmAdvertisedAtMs"));
+        assert!(stages
+            .iter()
+            .any(|stage| *stage == "FirstPositiveHashrateAtMs"));
+        assert!(stages.iter().any(|stage| *stage == "MiningReadinessAtMs"));
         assert!(supervisor
             .start_with(
                 &artifact,
@@ -535,6 +743,69 @@ mod tests {
                 || Ok(fixture_telemetry(false)),
             )
             .is_err());
+    }
+
+    #[test]
+    fn stop_request_cancels_startup_and_reaps_owned_child() {
+        let path = std::env::current_exe().unwrap();
+        let artifact = fixture_artifact(path.clone());
+        let config = crate::mining::config::validate(fixture_config(), "6.26.0").unwrap();
+        let supervisor = EngineSupervisor::new();
+        supervisor.configure_ready(&artifact, &config).unwrap();
+        supervisor.begin_startup(StartupStage::CheckingEngine);
+        let error = supervisor
+            .start_with(
+                &artifact,
+                &config,
+                &path,
+                &[],
+                &std::env::current_dir().unwrap(),
+                RedactionSecrets::new(["fixture-private-token".into()]),
+                spawn_test_child,
+                || {
+                    supervisor.cancel_startup();
+                    Err(crate::mining::xmrig::ApiClientError::Unavailable)
+                },
+            )
+            .unwrap_err();
+        assert_eq!(error.kind, EngineErrorKind::StartupCancelled);
+        assert!(!error.message.contains("fixture-private-token"));
+        assert_eq!(supervisor.status().state, EngineLifecycleState::Error);
+        assert!(supervisor.status().process_id.is_none());
+    }
+
+    #[test]
+    fn immediate_child_exit_is_classified_before_api_readiness() {
+        let path = std::env::current_exe().unwrap();
+        let artifact = fixture_artifact(path.clone());
+        let config = crate::mining::config::validate(fixture_config(), "6.26.0").unwrap();
+        let supervisor = EngineSupervisor::new();
+        supervisor.configure_ready(&artifact, &config).unwrap();
+        let error = supervisor
+            .start_with(
+                &artifact,
+                &config,
+                &path,
+                &[
+                    "--exact".into(),
+                    "mining::process::tests::fixture_exit_entrypoint".into(),
+                    "--nocapture".into(),
+                    "--ignored".into(),
+                ],
+                &std::env::current_dir().unwrap(),
+                RedactionSecrets::new([]),
+                |executable, args, cwd, redaction| {
+                    SupervisedChild::spawn(executable, args, cwd, redaction)
+                },
+                || {
+                    std::thread::sleep(Duration::from_millis(200));
+                    Err(crate::mining::xmrig::ApiClientError::Unavailable)
+                },
+            )
+            .unwrap_err();
+        assert_eq!(error.kind, EngineErrorKind::UnexpectedExit);
+        assert!(error.message.contains("stopped before Ember could connect"));
+        assert!(supervisor.status().process_id.is_none());
     }
 
     #[test]

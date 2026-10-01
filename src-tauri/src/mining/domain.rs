@@ -22,6 +22,22 @@ pub enum EngineLifecycleState {
     Error,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum StartupStage {
+    CheckingEngine,
+    PreparingSession,
+    StartingXmrig,
+    WaitingForMiner,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct StartupTiming {
+    pub stage: String,
+    pub elapsed_ms: u64,
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct EngineStatus {
@@ -30,6 +46,9 @@ pub struct EngineStatus {
     pub process_id: Option<u32>,
     pub error: Option<EngineError>,
     pub diagnostics: Vec<DiagnosticSummary>,
+    pub startup_stage: Option<StartupStage>,
+    pub startup_elapsed_ms: Option<u64>,
+    pub startup_timings: Vec<StartupTiming>,
 }
 
 #[derive(Clone, PartialEq, Eq)]
@@ -141,6 +160,9 @@ pub enum EngineErrorKind {
     InvalidTransition,
     InvalidConfiguration,
     UntrustedArtifact,
+    ArtifactUnavailable,
+    SecurityBlocked,
+    StartupCancelled,
     SpawnFailed,
     ApiUnavailable,
     ApiRejected,
@@ -199,6 +221,7 @@ impl EngineArtifact {
         source_url: String,
         archive_sha256: String,
         installed_path: PathBuf,
+        verified_at_unix_ms: u64,
     ) -> Self {
         Self {
             engine_name,
@@ -207,7 +230,7 @@ impl EngineArtifact {
             source_url,
             verification: ArtifactVerification::Verified {
                 digest: archive_sha256.clone(),
-                verified_at_unix_ms: 0,
+                verified_at_unix_ms,
             },
             archive_sha256,
             installed_path,
@@ -253,7 +276,7 @@ impl EngineArtifact {
     }
 
     pub fn is_verified(&self) -> bool {
-        matches!(&self.verification, ArtifactVerification::Verified { digest, .. } if digest.eq_ignore_ascii_case(&self.archive_sha256))
+        matches!(&self.verification, ArtifactVerification::Verified { digest, verified_at_unix_ms } if *verified_at_unix_ms > 0 && digest.eq_ignore_ascii_case(&self.archive_sha256))
     }
 
     #[cfg(test)]

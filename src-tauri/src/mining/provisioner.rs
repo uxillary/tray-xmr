@@ -39,8 +39,8 @@ pub enum ProvisioningState {
     Error(String),
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct InstalledEngine {
     pub engine: String,
     pub version: String,
@@ -50,6 +50,102 @@ pub struct InstalledEngine {
     pub signing_fingerprint: String,
     pub upstream_source: String,
     pub installed_at_unix_ms: u128,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VerificationIssue {
+    UnsupportedPlatform,
+    NotInstalled,
+    UnsafeInstallPath,
+    MetadataMissing,
+    MetadataUnreadable,
+    MetadataCorrupt,
+    MetadataOutdated,
+    ExecutableMissing,
+    ExecutableUnreadable,
+    ExecutableDigestMismatch,
+}
+
+impl VerificationIssue {
+    pub fn owner_message(self) -> &'static str {
+        match self {
+            Self::UnsupportedPlatform => "This device cannot run the pinned XMRig build.",
+            Self::NotInstalled => "XMRig is not installed. Set up the verified engine to continue.",
+            Self::UnsafeInstallPath => "XMRig is in an unsafe or unsupported location. Use Repair to install it again.",
+            Self::MetadataMissing => "XMRig verification metadata is missing. Repair the mining engine before starting.",
+            Self::MetadataUnreadable => "XMRig verification metadata could not be read. Repair the mining engine before starting.",
+            Self::MetadataCorrupt => "XMRig verification metadata is corrupt. Repair the mining engine before starting.",
+            Self::MetadataOutdated => "XMRig verification metadata is outdated or does not match v6.26.0. Repair the mining engine before starting.",
+            Self::ExecutableMissing => "The verified XMRig executable is missing. Repair the mining engine before starting.",
+            Self::ExecutableUnreadable => "The XMRig executable could not be checked. Repair the mining engine before starting.",
+            Self::ExecutableDigestMismatch => "The XMRig executable changed after verification. Repair the mining engine before starting.",
+        }
+    }
+
+    fn diagnostic(self) -> &'static str {
+        match self {
+            Self::UnsupportedPlatform => "unsupported platform or architecture",
+            Self::NotInstalled => "pinned install directory missing",
+            Self::UnsafeInstallPath => "reparse point or unsafe install path rejected",
+            Self::MetadataMissing => "verification metadata missing",
+            Self::MetadataUnreadable => "verification metadata unreadable",
+            Self::MetadataCorrupt => {
+                "verification metadata malformed or has an unsupported field shape"
+            }
+            Self::MetadataOutdated => {
+                "verification metadata does not match pinned release provenance"
+            }
+            Self::ExecutableMissing => "xmrig.exe missing",
+            Self::ExecutableUnreadable => "xmrig.exe could not be hashed",
+            Self::ExecutableDigestMismatch => {
+                "xmrig.exe SHA-256 differs from persisted verification metadata"
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for VerificationIssue {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(self.diagnostic())
+    }
+}
+
+impl std::error::Error for VerificationIssue {}
+
+/// Evidence returned only after the pinned metadata, provenance and executable digest pass.
+#[derive(Clone, Debug)]
+pub struct VerifiedInstallation {
+    metadata: InstalledEngine,
+    directory: PathBuf,
+}
+
+impl VerifiedInstallation {
+    pub fn metadata(&self) -> &InstalledEngine {
+        &self.metadata
+    }
+    pub fn executable_path(&self) -> PathBuf {
+        self.directory.join("xmrig.exe")
+    }
+
+    pub fn same_installation(&self, other: &Self) -> bool {
+        self.metadata == other.metadata && self.directory == other.directory
+    }
+
+    pub(crate) fn artifact(&self) -> super::domain::EngineArtifact {
+        let verified_at = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .map(|duration| duration.as_millis().min(u64::MAX as u128) as u64)
+            .unwrap_or(1);
+        super::domain::EngineArtifact::verified_installed(
+            "XMRig".into(),
+            self.metadata.version.clone(),
+            self.metadata.architecture.clone(),
+            self.metadata.upstream_source.clone(),
+            self.metadata.archive_sha256.clone(),
+            self.executable_path(),
+            verified_at,
+        )
+    }
 }
 
 pub fn provision(root: &Path) -> Result<InstalledEngine> {
@@ -79,8 +175,10 @@ pub fn verify_install_location(root: &Path) -> Result<PathBuf> {
     reject_reparse(&directory)?;
     for component in ["miners", "xmrig", VERSION] {
         directory.push(component);
-        if directory.exists() {
-            reject_reparse(&directory)?;
+        match fs::symlink_metadata(&directory) {
+            Ok(_) => reject_reparse(&directory)?,
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+            Err(error) => return Err(error.into()),
         }
     }
     Ok(directory)
@@ -96,8 +194,25 @@ fn reject_reparse(path: &Path) -> Result<()> {
 }
 
 pub fn verify_installed(root: &Path) -> Result<InstalledEngine> {
-    ensure_supported_architecture()?;
-    read_and_verify_install(&verify_install_location(root)?)
+    verify_installation(root)
+        .map(|verified| verified.metadata)
+        .map_err(anyhow::Error::new)
+}
+
+pub fn verify_installation(
+    root: &Path,
+) -> std::result::Result<VerifiedInstallation, VerificationIssue> {
+    ensure_supported_architecture().map_err(|_| VerificationIssue::UnsupportedPlatform)?;
+    let directory =
+        verify_install_location(root).map_err(|_| VerificationIssue::UnsafeInstallPath)?;
+    if !directory.exists() {
+        return Err(VerificationIssue::NotInstalled);
+    }
+    let metadata = read_and_verify_install_detailed(&directory)?;
+    Ok(VerifiedInstallation {
+        metadata,
+        directory,
+    })
 }
 
 pub fn platform_supported() -> bool {
@@ -106,6 +221,13 @@ pub fn platform_supported() -> bool {
 
 /// Explicit repair preserves the previous install until a verified replacement succeeds.
 pub fn repair(root: &Path) -> Result<InstalledEngine> {
+    repair_with(root, provision)
+}
+
+fn repair_with(
+    root: &Path,
+    provision_again: impl FnOnce(&Path) -> Result<InstalledEngine>,
+) -> Result<InstalledEngine> {
     ensure_supported_architecture()?;
     let destination = verify_install_location(root)?;
     if !destination.exists() {
@@ -119,7 +241,7 @@ pub fn repair(root: &Path) -> Result<InstalledEngine> {
         SystemTime::now().duration_since(UNIX_EPOCH)?.as_nanos()
     ));
     fs::rename(&destination, &quarantine)?;
-    match provision(root) {
+    match provision_again(root) {
         Ok(installed) => {
             let _ = fs::remove_dir_all(quarantine);
             Ok(installed)
@@ -171,13 +293,22 @@ fn provision_staged(staging: &Path, destination: &Path) -> Result<InstalledEngin
     }
 
     extract_archive(&archive, staging)?;
-    let executable = staging.join("xmrig.exe");
-    let executable_sha256 = hash_file(&executable)?;
+    let installed = write_install_verification_metadata(staging, &actual_digest)?;
+    fs::rename(staging, destination).context("Could not atomically promote verified XMRig")?;
+    Ok(installed)
+}
+
+/// Persist install metadata only after the archive signature, archive digest and extraction pass.
+fn write_install_verification_metadata(
+    directory: &Path,
+    archive_sha256: &str,
+) -> Result<InstalledEngine> {
+    let executable_sha256 = hash_file(&directory.join("xmrig.exe"))?;
     let installed = InstalledEngine {
         engine: "xmrig".into(),
         version: VERSION.into(),
         architecture: "windows-x64".into(),
-        archive_sha256: actual_digest,
+        archive_sha256: archive_sha256.into(),
         executable_sha256,
         signing_fingerprint: SIGNING_FINGERPRINT.into(),
         upstream_source: format!("{RELEASE_BASE}/{ARCHIVE}"),
@@ -187,11 +318,10 @@ fn provision_staged(staging: &Path, destination: &Path) -> Result<InstalledEngin
     let mut file = OpenOptions::new()
         .write(true)
         .create_new(true)
-        .open(staging.join("ember-verification.json"))?;
+        .open(directory.join("ember-verification.json"))?;
     file.write_all(&metadata)?;
     file.sync_all()?;
     drop(file);
-    fs::rename(staging, destination).context("Could not atomically promote verified XMRig")?;
     Ok(installed)
 }
 
@@ -415,16 +545,48 @@ fn extract_archive(archive: &[u8], destination: &Path) -> Result<()> {
 }
 
 fn read_and_verify_install(directory: &Path) -> Result<InstalledEngine> {
-    reject_reparse(directory)?;
-    reject_reparse(&directory.join("ember-verification.json"))?;
-    reject_reparse(&directory.join("xmrig.exe"))?;
-    if fs::metadata(directory.join("ember-verification.json"))?.len() > MAX_MANIFEST as u64 {
-        bail!("Verification metadata exceeds limit");
+    read_and_verify_install_detailed(directory).map_err(anyhow::Error::new)
+}
+
+fn read_and_verify_install_detailed(
+    directory: &Path,
+) -> std::result::Result<InstalledEngine, VerificationIssue> {
+    use std::os::windows::fs::MetadataExt;
+    reject_reparse(directory).map_err(|_| VerificationIssue::UnsafeInstallPath)?;
+    let metadata_path = directory.join("ember-verification.json");
+    let executable_path = directory.join("xmrig.exe");
+    for path in [&metadata_path, &executable_path] {
+        match fs::symlink_metadata(path) {
+            Ok(metadata) if metadata.file_attributes() & 0x400 != 0 => {
+                return Err(VerificationIssue::UnsafeInstallPath);
+            }
+            Ok(_) => {}
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+                return Err(if path == &metadata_path {
+                    VerificationIssue::MetadataMissing
+                } else {
+                    VerificationIssue::ExecutableMissing
+                });
+            }
+            Err(_) => {
+                return Err(if path == &metadata_path {
+                    VerificationIssue::MetadataUnreadable
+                } else {
+                    VerificationIssue::ExecutableUnreadable
+                })
+            }
+        }
     }
-    let data = fs::read(directory.join("ember-verification.json"))
-        .context("Existing XMRig install has no verification metadata")?;
+    let metadata =
+        fs::metadata(&metadata_path).map_err(|_| VerificationIssue::MetadataUnreadable)?;
+    if metadata.len() > MAX_MANIFEST as u64 {
+        return Err(VerificationIssue::MetadataCorrupt);
+    }
+    let data = fs::read(&metadata_path).map_err(|_| VerificationIssue::MetadataUnreadable)?;
+    let value: serde_json::Value =
+        serde_json::from_slice(&data).map_err(|_| VerificationIssue::MetadataCorrupt)?;
     let installed: InstalledEngine =
-        serde_json::from_slice(&data).context("Existing XMRig verification metadata is invalid")?;
+        serde_json::from_value(value).map_err(|_| VerificationIssue::MetadataOutdated)?;
     if installed.engine != "xmrig"
         || installed.version != VERSION
         || installed.architecture != "windows-x64"
@@ -437,9 +599,13 @@ fn read_and_verify_install(directory: &Path) -> Result<InstalledEngine> {
             .executable_sha256
             .bytes()
             .all(|b| b.is_ascii_hexdigit())
-        || hash_file(&directory.join("xmrig.exe"))? != installed.executable_sha256
     {
-        bail!("Existing XMRig installation failed integrity verification");
+        return Err(VerificationIssue::MetadataOutdated);
+    }
+    let actual_digest =
+        hash_file(&executable_path).map_err(|_| VerificationIssue::ExecutableUnreadable)?;
+    if actual_digest != installed.executable_sha256 {
+        return Err(VerificationIssue::ExecutableDigestMismatch);
     }
     Ok(installed)
 }
@@ -490,21 +656,7 @@ pub(crate) fn install_fixture(root: &Path) {
         b"non executable integrity fixture",
     )
     .unwrap();
-    let metadata = InstalledEngine {
-        engine: "xmrig".into(),
-        version: VERSION.into(),
-        architecture: "windows-x64".into(),
-        archive_sha256: ARCHIVE_SHA256.into(),
-        executable_sha256: hash_file(&directory.join("xmrig.exe")).unwrap(),
-        signing_fingerprint: SIGNING_FINGERPRINT.into(),
-        upstream_source: format!("{RELEASE_BASE}/{ARCHIVE}"),
-        installed_at_unix_ms: 1,
-    };
-    fs::write(
-        directory.join("ember-verification.json"),
-        serde_json::to_vec(&metadata).unwrap(),
-    )
-    .unwrap();
+    write_install_verification_metadata(&directory, ARCHIVE_SHA256).unwrap();
 }
 
 #[cfg(test)]
@@ -652,5 +804,128 @@ mod tests {
         fs::remove_file(directory.join("ember-verification.json")).unwrap();
         assert!(read_and_verify_install(&directory).is_err());
         fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
+    fn repair_reprovision_metadata_is_accepted_by_readiness_and_fresh_pre_spawn_contract() {
+        let root = scratch_dir("repair-contract");
+        install_fixture(&root);
+        let destination = verify_install_location(&root).unwrap();
+        fs::write(destination.join("ember-verification.json"), b"{broken").unwrap();
+
+        let repaired_metadata = repair_with(&root, |repair_root| {
+            let install = verify_install_location(repair_root)?;
+            fs::create_dir_all(&install)?;
+            fs::write(
+                install.join("xmrig.exe"),
+                b"reprovisioned fixture executable",
+            )?;
+            write_install_verification_metadata(&install, ARCHIVE_SHA256)
+        })
+        .unwrap();
+
+        let readiness_verification = verify_installation(&root).unwrap();
+        assert_eq!(readiness_verification.metadata(), &repaired_metadata);
+        assert_eq!(readiness_verification.metadata().engine, "xmrig");
+        let fresh_pre_spawn = verify_installation(&root).unwrap();
+        assert!(readiness_verification.same_installation(&fresh_pre_spawn));
+        assert_eq!(
+            super::super::readiness::SetupService::load(root.clone())
+                .snapshot(8, true)
+                .engine,
+            super::super::readiness::EngineState::Ready
+        );
+        let artifact = fresh_pre_spawn.artifact();
+        assert_eq!(artifact.engine_name(), "XMRig");
+        assert!(artifact.is_verified());
+        let adapter = super::super::xmrig::XmrigAdapter::new(artifact).unwrap();
+        assert_eq!(adapter.version(), VERSION);
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn verifier_distinguishes_missing_corrupt_stale_and_modified_installations() {
+        let root = scratch_dir("verification-failures");
+        install_fixture(&root);
+        let directory = verify_install_location(&root).unwrap();
+        let metadata_path = directory.join("ember-verification.json");
+        let valid = verify_installation(&root).unwrap().metadata().clone();
+
+        let mut stale = valid.clone();
+        stale.version = "6.25.0".into();
+        fs::write(&metadata_path, serde_json::to_vec(&stale).unwrap()).unwrap();
+        assert_eq!(
+            verify_installation(&root).unwrap_err(),
+            VerificationIssue::MetadataOutdated
+        );
+        assert!(VerificationIssue::MetadataOutdated
+            .owner_message()
+            .contains("Repair"));
+        let snapshot = super::super::readiness::SetupService::load(root.clone()).snapshot(8, true);
+        assert_eq!(
+            snapshot.engine,
+            super::super::readiness::EngineState::Modified
+        );
+        assert_eq!(
+            snapshot.engine_issue,
+            Some(VerificationIssue::MetadataOutdated.owner_message())
+        );
+        assert!(!snapshot.start_allowed);
+
+        let mut old_schema = serde_json::to_value(&valid).unwrap();
+        old_schema
+            .as_object_mut()
+            .unwrap()
+            .remove("installedAtUnixMs");
+        fs::write(&metadata_path, serde_json::to_vec(&old_schema).unwrap()).unwrap();
+        assert_eq!(
+            verify_installation(&root).unwrap_err(),
+            VerificationIssue::MetadataOutdated
+        );
+
+        fs::write(&metadata_path, b"{broken").unwrap();
+        assert_eq!(
+            verify_installation(&root).unwrap_err(),
+            VerificationIssue::MetadataCorrupt
+        );
+        let snapshot = super::super::readiness::SetupService::load(root.clone()).snapshot(8, true);
+        assert_ne!(snapshot.engine, super::super::readiness::EngineState::Ready);
+        assert_eq!(
+            snapshot.engine_issue,
+            Some(VerificationIssue::MetadataCorrupt.owner_message())
+        );
+        assert!(!snapshot.start_allowed);
+
+        fs::write(&metadata_path, serde_json::to_vec(&valid).unwrap()).unwrap();
+        fs::remove_file(&metadata_path).unwrap();
+        assert_eq!(
+            verify_installation(&root).unwrap_err(),
+            VerificationIssue::MetadataMissing
+        );
+        let snapshot = super::super::readiness::SetupService::load(root.clone()).snapshot(8, true);
+        assert_ne!(snapshot.engine, super::super::readiness::EngineState::Ready);
+        assert_eq!(
+            snapshot.engine_issue,
+            Some(VerificationIssue::MetadataMissing.owner_message())
+        );
+        assert!(!snapshot.start_allowed);
+
+        fs::write(&metadata_path, serde_json::to_vec(&valid).unwrap()).unwrap();
+        fs::write(directory.join("xmrig.exe"), b"changed executable").unwrap();
+        assert_eq!(
+            verify_installation(&root).unwrap_err(),
+            VerificationIssue::ExecutableDigestMismatch
+        );
+        let snapshot = super::super::readiness::SetupService::load(root.clone()).snapshot(8, true);
+        assert_eq!(
+            snapshot.engine,
+            super::super::readiness::EngineState::Modified
+        );
+        assert_eq!(
+            snapshot.engine_issue,
+            Some(VerificationIssue::ExecutableDigestMismatch.owner_message())
+        );
+        assert!(!snapshot.start_allowed);
+        fs::remove_dir_all(root).unwrap();
     }
 }

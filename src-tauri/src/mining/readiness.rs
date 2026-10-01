@@ -151,6 +151,7 @@ pub struct ReadinessCheck {
 #[serde(rename_all = "camelCase")]
 pub struct MiningReadiness {
     pub engine: EngineState,
+    pub engine_issue: Option<&'static str>,
     pub engine_version: &'static str,
     pub wallet_masked: Option<String>,
     pub pool: Option<PoolSetup>,
@@ -196,21 +197,29 @@ impl SetupService {
     }
 
     pub fn snapshot(&self, logical: usize, no_process: bool) -> MiningReadiness {
-        let engine = if !supported(std::env::consts::OS, std::env::consts::ARCH)
+        let verification = if !supported(std::env::consts::OS, std::env::consts::ARCH)
             || !provisioner::platform_supported()
         {
-            EngineState::Unsupported
+            Err(provisioner::VerificationIssue::UnsupportedPlatform)
         } else if !self.root.exists() {
-            EngineState::NotInstalled
+            Err(provisioner::VerificationIssue::NotInstalled)
         } else {
-            match provisioner::verify_install_location(&self.root) {
-                Ok(directory) if !directory.exists() => EngineState::NotInstalled,
-                Ok(_) => match provisioner::verify_installed(&self.root) {
-                    Ok(_) => EngineState::Ready,
-                    Err(_) => EngineState::Modified,
-                },
-                Err(_) => EngineState::Error,
-            }
+            provisioner::verify_installation(&self.root)
+        };
+        let engine_issue = verification
+            .as_ref()
+            .err()
+            .map(|issue| issue.owner_message());
+        let engine = match verification {
+            Ok(_) => EngineState::Ready,
+            Err(provisioner::VerificationIssue::UnsupportedPlatform) => EngineState::Unsupported,
+            Err(provisioner::VerificationIssue::NotInstalled) => EngineState::NotInstalled,
+            Err(
+                provisioner::VerificationIssue::UnsafeInstallPath
+                | provisioner::VerificationIssue::MetadataUnreadable
+                | provisioner::VerificationIssue::ExecutableUnreadable,
+            ) => EngineState::Error,
+            Err(_) => EngineState::Modified,
         };
         let threads = self.saved.profile.and_then(|p| p.threads(logical));
         let address_valid = self
@@ -233,6 +242,7 @@ impl SetupService {
             && self.candidate(threads.unwrap_or(0)).is_ok();
         let mut snapshot = MiningReadiness {
             engine,
+            engine_issue,
             engine_version: provisioner::VERSION,
             wallet_masked: self
                 .saved
@@ -274,6 +284,9 @@ impl SetupService {
             engine != EngineState::Unsupported && logical > 0,
             !self.storage_error,
         ]);
+        if engine_issue.is_some() {
+            snapshot.checks[0].label = "Mining engine needs attention";
+        }
         snapshot.ready = snapshot.checks.iter().all(|c| c.passed);
         snapshot.start_allowed = snapshot.ready && no_process;
         if snapshot.start_allowed {
@@ -286,7 +299,10 @@ impl SetupService {
     pub fn prepare_start(&self, logical: usize) -> Result<RuntimeCandidate, String> {
         let readiness = self.snapshot(logical, true);
         if !readiness.start_allowed {
-            return Err("Complete setup and review the current choices before starting".into());
+            return Err(readiness
+                .engine_issue
+                .unwrap_or("Complete setup and review the current choices before starting")
+                .into());
         }
         self.candidate(
             readiness
@@ -296,8 +312,6 @@ impl SetupService {
     }
 
     fn candidate(&self, threads: usize) -> Result<RuntimeCandidate, String> {
-        provisioner::verify_installed(&self.root)
-            .map_err(|_| "Engine integrity verification failed")?;
         let pool = self
             .saved
             .pool
@@ -676,7 +690,33 @@ mod tests {
         ));
         provisioner::install_fixture(&root);
         let mut service = SetupService::load(root.clone());
-        assert_eq!(service.snapshot(8, true).engine, EngineState::Ready);
+        let ui_verification = service.snapshot(8, true);
+        assert_eq!(ui_verification.engine, EngineState::Ready);
+        assert_eq!(ui_verification.engine_issue, None);
+        let first = provisioner::verify_installation(&root).unwrap();
+        assert_eq!(first.metadata().engine, "xmrig");
+        let fresh_pre_spawn = provisioner::verify_installation(&root).unwrap();
+        assert!(first.same_installation(&fresh_pre_spawn));
+        let artifact = fresh_pre_spawn.artifact();
+        assert_eq!(artifact.engine_name(), "XMRig");
+        assert!(artifact.is_verified());
+        assert!(super::super::xmrig::XmrigAdapter::new(artifact).is_ok());
+        let legacy_id_artifact = super::super::domain::EngineArtifact::verified_fixture(
+            "xmrig",
+            "6.26.0",
+            "windows-x64",
+            "fixture://pinned-release",
+            &"a".repeat(64),
+            fresh_pre_spawn.executable_path(),
+        );
+        assert!(legacy_id_artifact.is_verified());
+        let identity_error = super::super::xmrig::XmrigAdapter::new(legacy_id_artifact)
+            .err()
+            .unwrap();
+        assert_eq!(
+            identity_error.message,
+            "The verified installation has an unsupported engine identity"
+        );
         assert!(!service.snapshot(8, true).ready);
         service
             .update(SetupChange::Wallet(Some(wallet::fixture(42))), 8, true)
@@ -759,8 +799,12 @@ mod tests {
         fs::write(directory.join("xmrig.exe"), b"modified").unwrap();
         let snapshot = service.snapshot(8, true);
         assert_eq!(snapshot.engine, EngineState::Modified);
+        assert_eq!(
+            snapshot.engine_issue,
+            Some(provisioner::VerificationIssue::ExecutableDigestMismatch.owner_message())
+        );
         assert!(!snapshot.ready);
-        assert!(service.candidate(4).is_err());
+        assert!(!snapshot.start_allowed);
         fs::remove_file(directory.join("ember-verification.json")).unwrap();
         assert_eq!(service.snapshot(8, true).engine, EngineState::Modified);
         fs::remove_dir_all(root).unwrap();

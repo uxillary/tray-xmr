@@ -40,10 +40,20 @@ fn update_tray(app: &tauri::AppHandle, active: bool, failed: bool) {
 }
 
 #[cfg(windows)]
+fn update_tray_starting(app: &tauri::AppHandle) {
+    use tauri::Manager;
+    if let Some(items) = app.try_state::<TrayMiningItems>() {
+        let _ = items.status.set_text("Starting XMRig");
+        let _ = items.stop.set_enabled(true);
+    }
+}
+
+#[cfg(windows)]
 fn stop_mining_sync(app: &tauri::AppHandle, quitting: bool) -> Result<(), String> {
     use mining::domain::StopReason;
     use tauri::Manager;
     let operation = app.state::<Mutex<()>>();
+    app.state::<EngineSupervisor>().cancel_startup();
     let _operation = operation
         .lock()
         .map_err(|_| "Mining controls are temporarily unavailable")?;
@@ -66,7 +76,8 @@ fn stop_mining_sync(app: &tauri::AppHandle, quitting: bool) -> Result<(), String
 async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::MiningReadiness, String> {
     use mining::{
         diagnostics::RedactionSecrets,
-        domain::{EngineArtifact, EngineErrorKind},
+        domain::EngineErrorKind,
+        domain::StartupStage,
         process::SupervisedChild,
         provisioner,
         runtime::RuntimeSession,
@@ -74,7 +85,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
     };
     use std::{
         ffi::OsString,
-        time::{SystemTime, UNIX_EPOCH},
+        time::{Instant, SystemTime, UNIX_EPOCH},
     };
     use tauri::Manager;
 
@@ -110,36 +121,51 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
         {
             return Err("Ember already owns an active XMRig process".to_owned());
         }
-        let initial = provisioner::verify_installed(&root).map_err(|_| {
-            "XMRig integrity verification failed immediately before start".to_owned()
-        })?;
-        let executable = provisioner::verify_install_location(&root)
-            .map_err(|_| "XMRig install location is invalid".to_owned())?
-            .join("xmrig.exe");
-        let artifact = EngineArtifact::verified_installed(
-            initial.engine.clone(),
-            initial.version.clone(),
-            initial.architecture.clone(),
-            initial.upstream_source.clone(),
-            initial.archive_sha256.clone(),
-            executable.clone(),
-        );
-        let adapter = XmrigAdapter::new(artifact.clone()).map_err(|e| e.message)?;
         let supervisor = app.state::<EngineSupervisor>();
-
+        supervisor.begin_startup(StartupStage::CheckingEngine);
+        update_tray_starting(&app);
+        let verification_started = Instant::now();
+        let initial = match provisioner::verify_installation(&root) {
+            Ok(initial) => initial,
+            Err(issue) => {
+                supervisor.finish_startup();
+                update_tray(&app, false, false);
+                return Err(format!("{} ({issue})", issue.owner_message()));
+            }
+        };
+        supervisor.record_startup_duration("InitialArtifactVerification", verification_started.elapsed().as_millis().min(u64::MAX as u128) as u64);
+        let executable = initial.executable_path();
+        let artifact = initial.artifact();
+        let adapter = match XmrigAdapter::new(artifact.clone()) {
+            Ok(adapter) => adapter,
+            Err(error) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err(error.message); }
+        };
         let mut last_error = None;
         for attempt in 0..3 {
-            let mut candidate = setup.prepare_start(logical)?;
-            let runtime = RuntimeSession::create(&root, candidate.config_json())
-                .map_err(|_| "Private mining runtime could not be created".to_owned())?;
+            supervisor.set_startup_stage(StartupStage::PreparingSession);
+            let candidate_started = Instant::now();
+            let mut candidate = match setup.prepare_start(logical) {
+                Ok(candidate) => candidate,
+                Err(error) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err(error); }
+            };
+            supervisor.record_startup_duration("CandidateConfigAndConsentPreparation", candidate_started.elapsed().as_millis().min(u64::MAX as u128) as u64);
+            let runtime = match RuntimeSession::create(&root, candidate.config_json()) {
+                Ok(runtime) => runtime,
+                Err(_) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err("Private mining runtime could not be created".to_owned()); }
+            };
+            supervisor.record_startup_timings(runtime.creation_timings());
             let config = candidate.validated.clone();
             let token = config.config.api.access_token.clone();
             let wallet = config.config.public_address.clone();
-            let mut transport = ReqwestLocalApiTransport::new()
-                .map_err(|_| "Local mining telemetry could not be initialized".to_owned())?;
-            supervisor
-                .configure_ready(&artifact, &config)
-                .map_err(|e| e.message)?;
+            let mut transport = match ReqwestLocalApiTransport::new() {
+                Ok(transport) => transport,
+                Err(_) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err("Local mining telemetry could not be initialized".to_owned()); }
+            };
+            if let Err(error) = supervisor.configure_ready(&artifact, &config) {
+                supervisor.finish_startup();
+                update_tray(&app, false, false);
+                return Err(error.message);
+            }
             let config_path = runtime.config_path().to_owned();
             let working_directory = runtime.working_directory().to_owned();
             let arguments = vec![
@@ -152,6 +178,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             candidate.release_port();
             let spawn_root = root.clone();
             let spawn_initial = initial.clone();
+            let supervisor_for_spawn = &*supervisor;
             let started = supervisor.start_with(
                 &artifact,
                 &config,
@@ -160,20 +187,22 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
                 &working_directory,
                 secrets,
                 move |path, args, cwd, redaction| {
-                    let verified = provisioner::verify_installed(&spawn_root).map_err(|_| {
+                    supervisor_for_spawn.set_startup_stage(StartupStage::CheckingEngine);
+                    let pre_spawn_started = Instant::now();
+                    let verified = provisioner::verify_installation(&spawn_root).map_err(|issue| {
                         mining::domain::EngineError {
                             kind: EngineErrorKind::UntrustedArtifact,
-                            message: "XMRig failed its immediate pre-spawn integrity check".into(),
+                            message: format!("{} ({issue})", issue.owner_message()),
                         }
                     })?;
-                    if verified.executable_sha256 != spawn_initial.executable_sha256
-                        || verified.archive_sha256 != spawn_initial.archive_sha256
-                    {
+                    if !verified.same_installation(&spawn_initial) {
                         return Err(mining::domain::EngineError {
                             kind: EngineErrorKind::UntrustedArtifact,
-                            message: "XMRig changed after verification".into(),
+                            message: "The verified XMRig installation changed before process creation. Repair the mining engine before starting.".into(),
                         });
                     }
+                    supervisor_for_spawn.record_startup_duration("ImmediatePreSpawnVerification", pre_spawn_started.elapsed().as_millis().min(u64::MAX as u128) as u64);
+                    supervisor_for_spawn.set_startup_stage(StartupStage::StartingXmrig);
                     SupervisedChild::spawn(path, args, cwd, redaction)
                 },
                 move || {
@@ -186,6 +215,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             );
             match started {
                 Ok(()) => {
+                    supervisor.finish_startup();
                     *app.state::<Mutex<Option<ActiveSession>>>()
                         .lock()
                         .map_err(|_| "Mining session state unavailable")? = Some(ActiveSession {
@@ -206,6 +236,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
                 }
             }
         }
+        supervisor.finish_startup();
         update_tray(&app, false, true);
         Err(last_error.unwrap_or_else(|| "Mining could not be started".into()))
     })
@@ -231,6 +262,9 @@ struct MiningSessionStatus {
     state: EngineLifecycleState,
     telemetry: Option<mining::domain::MiningTelemetry>,
     error: Option<mining::domain::EngineError>,
+    startup_stage: Option<mining::domain::StartupStage>,
+    startup_elapsed_ms: Option<u64>,
+    startup_timings: Vec<mining::domain::StartupTiming>,
 }
 
 #[cfg(windows)]
@@ -241,6 +275,9 @@ fn mining_status(supervisor: tauri::State<'_, EngineSupervisor>) -> MiningSessio
         state: status.state,
         telemetry: supervisor.telemetry(),
         error: status.error,
+        startup_stage: status.startup_stage,
+        startup_elapsed_ms: status.startup_elapsed_ms,
+        startup_timings: status.startup_timings,
     }
 }
 

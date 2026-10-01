@@ -1,4 +1,5 @@
 //! Private, per-session runtime configuration storage.
+use super::domain::StartupTiming;
 use anyhow::{bail, Context, Result};
 use std::{
     fs::{self, OpenOptions},
@@ -13,24 +14,31 @@ pub struct RuntimeSession {
     root: PathBuf,
     directory: PathBuf,
     config: PathBuf,
+    creation_timings: Vec<StartupTiming>,
 }
 
 impl RuntimeSession {
     pub fn create(ember_data_dir: &Path, config_json: &str) -> Result<Self> {
+        let mut creation_timings = Vec::new();
         ensure_no_reparse(ember_data_dir)?;
         let root = ember_data_dir.join("runtime");
         fs::create_dir_all(&root).context("Could not create Ember runtime storage")?;
         ensure_no_reparse(ember_data_dir)?;
         ensure_no_reparse(&root)?;
+        let acl_started = std::time::Instant::now();
         apply_private_acl(&root)?;
+        creation_timings.push(timing("RuntimeRootAcl", acl_started));
 
         let mut random = [0u8; SESSION_ID_BYTES];
         getrandom::fill(&mut random).context("Could not create a private session identifier")?;
         let directory = root.join(hex::encode(random));
         fs::create_dir(&directory).context("Could not create a fresh runtime session")?;
         let result = (|| {
+            let acl_started = std::time::Instant::now();
             apply_private_acl(&directory)?;
+            creation_timings.push(timing("SessionAcl", acl_started));
             let config = directory.join("config.json");
+            let write_started = std::time::Instant::now();
             let mut file = OpenOptions::new()
                 .write(true)
                 .create_new(true)
@@ -38,11 +46,15 @@ impl RuntimeSession {
                 .context("Could not create the runtime configuration")?;
             file.write_all(config_json.as_bytes())?;
             file.sync_all()?;
+            creation_timings.push(timing("RuntimeConfigWrite", write_started));
+            let acl_started = std::time::Instant::now();
             apply_private_acl(&config)?;
+            creation_timings.push(timing("RuntimeConfigAcl", acl_started));
             Ok(Self {
                 root: root.clone(),
                 directory: directory.clone(),
                 config,
+                creation_timings: creation_timings.clone(),
             })
         })();
         if result.is_err() {
@@ -57,6 +69,17 @@ impl RuntimeSession {
 
     pub fn working_directory(&self) -> &Path {
         &self.directory
+    }
+
+    pub fn creation_timings(&self) -> &[StartupTiming] {
+        &self.creation_timings
+    }
+}
+
+fn timing(stage: &str, started: std::time::Instant) -> StartupTiming {
+    StartupTiming {
+        stage: stage.to_owned(),
+        elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
     }
 }
 

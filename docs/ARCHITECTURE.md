@@ -14,6 +14,8 @@ The initial Tauri capability grants only `core:default`. Reassess permissions as
 
 The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations, setup/consent, config, diagnostics, process supervision, runtime storage, and the XMRig API contract. Mining controls are implemented; the first actual XMRig session has not yet been started. Historical code is separated under `legacy/`.
 
+The controlled Windows launch uses `CREATE_NO_WINDOW` with `CREATE_SUSPENDED`, explicit redirected standard handles, and Job Object assignment before resume. Rust publishes truthful startup stages and bounded monotonic stage timings; the frontend presents those values and never runs its own startup timer. XMRig's summary algorithm list does not prove RandomX has initialized, so the UI stays at `Waiting for miner…` until positive short-window hashrate supports the `Mining` state. Windows security-product failures are reported without guessing which product acted; Ember offers its ordinary verified retry/check/repair paths and does not alter security settings.
+
 ### Local system observation (M02)
 
 `src-tauri/src/system_observation.rs` owns a single `sysinfo::System` instance managed by Tauri. The `system_snapshot` command returns nullable, serializable fields for CPU model/logical processor count/overall usage, physical memory, hostname, OS version, uptime, power source/battery percentage, and session input idle duration. `sysinfo` refreshes only CPU and RAM; it does not enumerate processes. Windows power and idle details use `GetSystemPowerStatus` and `GetLastInputInfo` plus `GetTickCount` through `windows-sys`. Failed or unsupported queries remain unknown/null independently.

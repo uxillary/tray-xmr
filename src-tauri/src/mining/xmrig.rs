@@ -150,6 +150,9 @@ impl MiningEngine for XmrigAdapter {
             process_id: None,
             error: None,
             diagnostics: Vec::new(),
+            startup_stage: None,
+            startup_elapsed_ms: None,
+            startup_timings: Vec::new(),
         }
     }
 
@@ -164,10 +167,17 @@ impl MiningEngine for XmrigAdapter {
 
 impl XmrigAdapter {
     pub fn new(artifact: EngineArtifact) -> Result<Self, EngineError> {
-        if artifact.engine_name() != "XMRig" || !artifact.is_verified() {
+        if artifact.engine_name() != "XMRig" {
             return Err(EngineError {
                 kind: EngineErrorKind::UntrustedArtifact,
-                message: "XMRig artifact metadata is not verified".to_owned(),
+                message: "The verified installation has an unsupported engine identity".to_owned(),
+            });
+        }
+        if !artifact.is_verified() {
+            return Err(EngineError {
+                kind: EngineErrorKind::UntrustedArtifact,
+                message: "XMRig verification evidence does not match its pinned archive digest"
+                    .to_owned(),
             });
         }
         Ok(Self { artifact })

@@ -1,4 +1,5 @@
 use super::diagnostics::{DiagnosticRing, RedactionSecrets};
+use super::domain::StartupTiming;
 use super::domain::{DiagnosticSource, DiagnosticSummary, EngineError, EngineErrorKind};
 use std::ffi::OsString;
 use std::io::{self, Read};
@@ -22,6 +23,7 @@ pub struct SupervisedChild {
     child: WindowsChild,
     diagnostics: Arc<Mutex<DiagnosticRing>>,
     readers: Vec<JoinHandle<()>>,
+    startup_timings: Vec<StartupTiming>,
     #[cfg(windows)]
     job: Option<JobObject>,
 }
@@ -41,7 +43,7 @@ impl SupervisedChild {
         }
 
         #[cfg(not(windows))]
-        let (mut child, stdout, stderr) = {
+        let (mut child, stdout, stderr, startup_timings) = {
             let mut command = Command::new(executable);
             command
                 .args(arguments)
@@ -54,10 +56,10 @@ impl SupervisedChild {
                 kind: EngineErrorKind::SpawnFailed,
                 message: "The supervised process could not be started".into(),
             })?;
-            (child, child.stdout.take(), child.stderr.take())
+            (child, child.stdout.take(), child.stderr.take(), Vec::new())
         };
         #[cfg(windows)]
-        let (child, stdout, stderr, job) =
+        let (child, stdout, stderr, job, startup_timings) =
             spawn_suspended_in_job(executable, arguments, working_directory)?;
 
         let diagnostics = Arc::new(Mutex::new(DiagnosticRing::new(
@@ -85,6 +87,7 @@ impl SupervisedChild {
                 .into_iter()
                 .flatten()
                 .collect(),
+            startup_timings,
             #[cfg(windows)]
             job: Some(job),
         })
@@ -108,6 +111,10 @@ impl SupervisedChild {
             .lock()
             .map(|ring| ring.snapshot())
             .unwrap_or_default()
+    }
+
+    pub fn startup_timings(&self) -> &[StartupTiming] {
+        &self.startup_timings
     }
 
     pub fn try_wait(&mut self) -> io::Result<Option<ExitStatus>> {
@@ -226,6 +233,27 @@ fn spawn_reader(
     })
 }
 
+fn classify_windows_creation_error(code: u32) -> EngineError {
+    let (kind, message) = match code {
+        2 | 3 => (
+            EngineErrorKind::ArtifactUnavailable,
+            "The mining engine is no longer available. Windows Security or another security product may have removed it.",
+        ),
+        5 => (
+            EngineErrorKind::SecurityBlocked,
+            "Windows prevented the mining engine from starting.",
+        ),
+        _ => (
+            EngineErrorKind::SpawnFailed,
+            "The mining engine could not be started safely.",
+        ),
+    };
+    EngineError {
+        kind,
+        message: format!("{message} (Windows error {code})"),
+    }
+}
+
 fn push_line(
     ring: &Mutex<DiagnosticRing>,
     source: DiagnosticSource,
@@ -315,6 +343,7 @@ fn spawn_suspended_in_job(
         Option<std::fs::File>,
         Option<std::fs::File>,
         JobObject,
+        Vec<StartupTiming>,
     ),
     EngineError,
 > {
@@ -326,9 +355,8 @@ fn spawn_suspended_in_job(
     use windows_sys::Win32::System::Pipes::CreatePipe;
     use windows_sys::Win32::System::Threading::{
         CreateProcessW, DeleteProcThreadAttributeList, InitializeProcThreadAttributeList,
-        ResumeThread, UpdateProcThreadAttribute, CREATE_SUSPENDED, CREATE_UNICODE_ENVIRONMENT,
-        EXTENDED_STARTUPINFO_PRESENT, PROCESS_INFORMATION, PROC_THREAD_ATTRIBUTE_HANDLE_LIST,
-        STARTF_USESTDHANDLES, STARTUPINFOEXW,
+        ResumeThread, UpdateProcThreadAttribute, PROCESS_INFORMATION,
+        PROC_THREAD_ATTRIBUTE_HANDLE_LIST, STARTF_USESTDHANDLES, STARTUPINFOEXW,
     };
     let error = || EngineError {
         kind: EngineErrorKind::SpawnFailed,
@@ -434,6 +462,7 @@ fn spawn_suspended_in_job(
         .chain(std::iter::once(0))
         .collect();
     let env: [u16; 2] = [0, 0];
+    let create_started = Instant::now();
     let created = unsafe {
         CreateProcessW(
             app.as_ptr(),
@@ -441,7 +470,7 @@ fn spawn_suspended_in_job(
             std::ptr::null(),
             std::ptr::null(),
             1,
-            CREATE_SUSPENDED | CREATE_UNICODE_ENVIRONMENT | EXTENDED_STARTUPINFO_PRESENT,
+            windows_creation_flags(),
             env.as_ptr() as *const c_void,
             cwd.as_ptr(),
             &startup as *const STARTUPINFOEXW
@@ -449,13 +478,23 @@ fn spawn_suspended_in_job(
             &mut info,
         )
     };
+    let creation_error = if created == 0 {
+        unsafe { windows_sys::Win32::Foundation::GetLastError() }
+    } else {
+        0
+    };
     // Closing the parent's child-side pipe copies is essential for EOF.
     drop(child_stdin);
     drop(child_stdout);
     drop(child_stderr);
     if created == 0 {
-        return Err(error());
+        let code = creation_error;
+        return Err(classify_windows_creation_error(code));
     }
+    let mut startup_timings = vec![StartupTiming {
+        stage: "ProcessCreation".into(),
+        elapsed_ms: create_started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+    }];
     if info.hProcess.is_null() || info.hThread.is_null() {
         unsafe {
             if !info.hProcess.is_null() {
@@ -482,6 +521,7 @@ fn spawn_suspended_in_job(
     }
     let process = unsafe { OwnedHandle::from_raw_handle(info.hProcess as _) };
     let thread = unsafe { OwnedHandle::from_raw_handle(info.hThread as _) };
+    let job_started = Instant::now();
     if unsafe { job.assign(info.hProcess) }.is_err() {
         unsafe {
             windows_sys::Win32::System::Threading::TerminateProcess(info.hProcess, 1);
@@ -491,6 +531,11 @@ fn spawn_suspended_in_job(
         drop(process);
         return Err(error());
     }
+    startup_timings.push(StartupTiming {
+        stage: "JobAssignment".into(),
+        elapsed_ms: job_started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+    });
+    let resume_started = Instant::now();
     if unsafe { ResumeThread(info.hThread) } == u32::MAX {
         unsafe {
             windows_sys::Win32::System::Threading::TerminateProcess(info.hProcess, 1);
@@ -500,6 +545,10 @@ fn spawn_suspended_in_job(
         drop(process);
         return Err(error());
     }
+    startup_timings.push(StartupTiming {
+        stage: "ProcessResume".into(),
+        elapsed_ms: resume_started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+    });
     drop(thread);
     let child = WindowsChild {
         process,
@@ -509,7 +558,16 @@ fn spawn_suspended_in_job(
     };
     let stdout = Some(std::fs::File::from(parent_stdout));
     let stderr = Some(std::fs::File::from(parent_stderr));
-    Ok((child, stdout, stderr, job))
+    Ok((child, stdout, stderr, job, startup_timings))
+}
+
+#[cfg(windows)]
+fn windows_creation_flags() -> u32 {
+    use windows_sys::Win32::System::Threading::{
+        CREATE_NO_WINDOW, CREATE_SUSPENDED, CREATE_UNICODE_ENVIRONMENT,
+        EXTENDED_STARTUPINFO_PRESENT,
+    };
+    CREATE_SUSPENDED | CREATE_UNICODE_ENVIRONMENT | EXTENDED_STARTUPINFO_PRESENT | CREATE_NO_WINDOW
 }
 
 #[cfg(windows)]
@@ -606,6 +664,18 @@ mod tests {
     use std::io;
     use std::path::PathBuf;
     use std::time::Duration;
+
+    #[cfg(windows)]
+    #[test]
+    fn windows_launch_keeps_suspended_job_safe_flags_and_suppresses_console() {
+        use windows_sys::Win32::System::Threading::{
+            CREATE_NO_WINDOW, CREATE_SUSPENDED, EXTENDED_STARTUPINFO_PRESENT,
+        };
+        let flags = super::windows_creation_flags();
+        assert_ne!(flags & CREATE_NO_WINDOW, 0);
+        assert_ne!(flags & CREATE_SUSPENDED, 0);
+        assert_ne!(flags & EXTENDED_STARTUPINFO_PRESENT, 0);
+    }
 
     #[test]
     #[ignore]
@@ -907,5 +977,49 @@ mod tests {
             error.kind,
             crate::mining::domain::EngineErrorKind::SpawnFailed
         );
+    }
+
+    #[test]
+    fn windows_creation_errors_are_classified_without_product_attribution() {
+        let denied = super::classify_windows_creation_error(5);
+        assert_eq!(
+            denied.kind,
+            crate::mining::domain::EngineErrorKind::SecurityBlocked
+        );
+        assert!(denied.message.contains("Windows prevented"));
+        assert!(!denied.message.contains("Defender"));
+        let missing = super::classify_windows_creation_error(2);
+        assert_eq!(
+            missing.kind,
+            crate::mining::domain::EngineErrorKind::ArtifactUnavailable
+        );
+        assert!(missing.message.contains("may have removed it"));
+        let other = super::classify_windows_creation_error(1234);
+        assert_eq!(
+            other.kind,
+            crate::mining::domain::EngineErrorKind::SpawnFailed
+        );
+        assert!(other.message.contains("1234"));
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn missing_executable_has_a_safe_windows_specific_error_category() {
+        let missing =
+            std::env::temp_dir().join(format!("ember-missing-{}.exe", std::process::id()));
+        let error = match SupervisedChild::spawn(
+            &missing,
+            &[],
+            &std::env::current_dir().unwrap(),
+            RedactionSecrets::new([]),
+        ) {
+            Ok(_) => panic!("missing executable started"),
+            Err(error) => error,
+        };
+        assert_eq!(
+            error.kind,
+            crate::mining::domain::EngineErrorKind::ArtifactUnavailable
+        );
+        assert!(error.message.contains("no longer available"));
     }
 }
