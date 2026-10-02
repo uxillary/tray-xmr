@@ -10,6 +10,7 @@ use std::process::Child;
 use std::process::ExitStatus;
 #[cfg(not(windows))]
 use std::process::{Command, ExitStatus, Stdio};
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
@@ -22,10 +23,15 @@ pub struct SupervisedChild {
     #[cfg(windows)]
     child: WindowsChild,
     diagnostics: Arc<Mutex<DiagnosticRing>>,
-    readers: Vec<JoinHandle<()>>,
+    readers: Vec<ReaderHandle>,
     startup_timings: Vec<StartupTiming>,
     #[cfg(windows)]
     job: Option<JobObject>,
+}
+
+struct ReaderHandle {
+    thread: JoinHandle<()>,
+    finished: Arc<AtomicBool>,
 }
 
 impl SupervisedChild {
@@ -122,7 +128,12 @@ impl SupervisedChild {
         if status.is_some() {
             #[cfg(windows)]
             drop(self.job.take()); // Close descendants before waiting for pipe EOF.
-            self.join_readers();
+            if !self.join_readers() {
+                return Err(io::Error::new(
+                    io::ErrorKind::TimedOut,
+                    "output readers did not finish after the owned Job Object closed",
+                ));
+            }
         }
         Ok(status)
     }
@@ -164,37 +175,106 @@ impl SupervisedChild {
             kind: EngineErrorKind::StopFailed,
             message: "Could not terminate the owned engine process".into(),
         })?;
+        #[cfg(windows)]
+        let status = match self.child.wait_timeout(Duration::from_secs(2)) {
+            Ok(Some(status)) => status,
+            Ok(None) => {
+                self.child.kill().map_err(|_| EngineError {
+                    kind: EngineErrorKind::StopFailed,
+                    message: "The owned engine did not exit after Job Object closure".into(),
+                })?;
+                self.child
+                    .wait_timeout(Duration::from_secs(2))
+                    .map_err(|_| EngineError {
+                        kind: EngineErrorKind::StopFailed,
+                        message: "Could not check termination of the owned engine".into(),
+                    })?
+                    .ok_or_else(|| EngineError {
+                        kind: EngineErrorKind::StopFailed,
+                        message: "The owned engine did not exit within the bounded stop period"
+                            .into(),
+                    })?
+            }
+            Err(_) => {
+                return Err(EngineError {
+                    kind: EngineErrorKind::StopFailed,
+                    message: "Could not reap the terminated engine process".into(),
+                })
+            }
+        };
+        #[cfg(not(windows))]
         let status = self.child.wait().map_err(|_| EngineError {
             kind: EngineErrorKind::StopFailed,
             message: "Could not reap the terminated engine process".into(),
         })?;
-        self.join_readers();
+        if !self.join_readers() {
+            return Err(EngineError {
+                kind: EngineErrorKind::StopFailed,
+                message: "The process exited, but output readers did not finish within the bounded cleanup period".into(),
+            });
+        }
         Ok(status)
     }
 
-    fn join_readers(&mut self) {
+    fn join_readers(&mut self) -> bool {
+        let deadline = Instant::now() + Duration::from_secs(2);
+        let mut all_finished = true;
         for reader in self.readers.drain(..) {
-            let _ = reader.join();
+            while !reader.finished.load(Ordering::Acquire) && Instant::now() < deadline {
+                thread::sleep(Duration::from_millis(5));
+            }
+            if reader.finished.load(Ordering::Acquire) {
+                let _ = reader.thread.join();
+            } else {
+                all_finished = false;
+            }
         }
+        all_finished
     }
 }
 
 impl Drop for SupervisedChild {
     fn drop(&mut self) {
-        if self.child.try_wait().ok().flatten().is_none() {
-            #[cfg(windows)]
-            if let Some(job) = self.job.take() {
-                drop(job); // JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
-            } else {
+        #[cfg(windows)]
+        {
+            let exited = self.child.try_wait().ok().flatten().is_some();
+            if !exited {
+                if let Some(job) = self.job.take() {
+                    drop(job); // Close descendants before allowing pipe readers to finish.
+                }
+                if self
+                    .child
+                    .wait_timeout(Duration::from_secs(2))
+                    .ok()
+                    .flatten()
+                    .is_none()
+                {
+                    let _ = self.child.kill();
+                    if self
+                        .child
+                        .wait_timeout(Duration::from_secs(2))
+                        .ok()
+                        .flatten()
+                        .is_none()
+                    {
+                        // Never block destruction forever if Windows cannot confirm exit.
+                        self.readers.clear();
+                        return;
+                    }
+                }
+            }
+            drop(self.job.take());
+            let _ = self.join_readers();
+            return;
+        }
+        #[cfg(not(windows))]
+        {
+            if self.child.try_wait().ok().flatten().is_none() {
                 let _ = self.child.kill();
             }
-            #[cfg(not(windows))]
-            let _ = self.child.kill();
+            let _ = self.child.wait();
+            let _ = self.join_readers();
         }
-        #[cfg(windows)]
-        drop(self.job.take()); // Also reap descendants after an already-exited parent.
-        let _ = self.child.wait();
-        self.join_readers();
     }
 }
 
@@ -203,9 +283,18 @@ fn spawn_reader(
     source: DiagnosticSource,
     ring: Arc<Mutex<DiagnosticRing>>,
     redaction: RedactionSecrets,
-) -> Option<JoinHandle<()>> {
+) -> Option<ReaderHandle> {
     stream.map(|mut stream| {
-        thread::spawn(move || {
+        let finished = Arc::new(AtomicBool::new(false));
+        let reader_finished = Arc::clone(&finished);
+        let thread = thread::spawn(move || {
+            struct MarkFinished(Arc<AtomicBool>);
+            impl Drop for MarkFinished {
+                fn drop(&mut self) {
+                    self.0.store(true, Ordering::Release);
+                }
+            }
+            let _finished = MarkFinished(reader_finished);
             let mut chunk = [0u8; 1024];
             let mut line = Vec::with_capacity(MAX_CAPTURE_LINE);
             let mut truncated = false;
@@ -229,7 +318,8 @@ fn spawn_reader(
             if !line.is_empty() || truncated {
                 push_line(&ring, source, &redaction, &line, truncated);
             }
-        })
+        });
+        ReaderHandle { thread, finished }
     })
 }
 
@@ -308,6 +398,30 @@ impl WindowsChild {
         self.status = Some(status);
         Ok(Some(status))
     }
+    fn wait_timeout(&mut self, timeout: Duration) -> io::Result<Option<ExitStatus>> {
+        use std::os::windows::io::AsRawHandle;
+        use windows_sys::Win32::System::Threading::{GetExitCodeProcess, WaitForSingleObject};
+        if let Some(status) = self.status {
+            return Ok(Some(status));
+        }
+        let handle = self.process.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
+        let millis = timeout.as_millis().min(u32::MAX as u128) as u32;
+        let wait = unsafe { WaitForSingleObject(handle, millis) };
+        if wait == windows_sys::Win32::Foundation::WAIT_TIMEOUT {
+            return Ok(None);
+        }
+        if wait != windows_sys::Win32::Foundation::WAIT_OBJECT_0 {
+            return Err(io::Error::last_os_error());
+        }
+        let mut code = 259;
+        if unsafe { GetExitCodeProcess(handle, &mut code) } == 0 {
+            return Err(io::Error::last_os_error());
+        }
+        use std::os::windows::process::ExitStatusExt;
+        let status = ExitStatus::from_raw(code);
+        self.status = Some(status);
+        Ok(Some(status))
+    }
     fn kill(&mut self) -> io::Result<()> {
         use std::os::windows::io::AsRawHandle;
         let handle = self.process.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
@@ -319,16 +433,6 @@ impl WindowsChild {
             return Err(io::Error::last_os_error());
         }
         Ok(())
-    }
-    fn wait(&mut self) -> io::Result<ExitStatus> {
-        use std::os::windows::io::AsRawHandle;
-        let handle = self.process.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
-        let wait =
-            unsafe { windows_sys::Win32::System::Threading::WaitForSingleObject(handle, u32::MAX) };
-        if wait != windows_sys::Win32::Foundation::WAIT_OBJECT_0 {
-            return Err(io::Error::last_os_error());
-        }
-        self.try_wait()?.ok_or_else(io::Error::last_os_error)
     }
 }
 
@@ -663,7 +767,7 @@ mod tests {
     use std::ffi::OsString;
     use std::io;
     use std::path::PathBuf;
-    use std::time::Duration;
+    use std::time::{Duration, Instant};
 
     #[cfg(windows)]
     #[test]
@@ -716,8 +820,8 @@ mod tests {
                 "--ignored",
             ])
             .stdin(Stdio::null())
-            .stdout(Stdio::null())
-            .stderr(Stdio::null())
+            .stdout(Stdio::inherit())
+            .stderr(Stdio::inherit())
             .spawn()
             .unwrap();
         use windows_sys::Win32::System::JobObjects::IsProcessInJob;
@@ -872,7 +976,7 @@ mod tests {
         assert!(windows_process_is_running(parent_pid));
         assert!(windows_process_is_running(descendant_pid));
         drop(child.job.take()); // Equivalent to abrupt owner loss: kill-on-close is kernel enforced.
-        let _ = child.child.wait();
+        let _ = child.child.wait_timeout(Duration::from_secs(3));
         assert!(!windows_process_is_running(parent_pid));
         let deadline = std::time::Instant::now() + Duration::from_secs(3);
         while windows_process_is_running(descendant_pid) && std::time::Instant::now() < deadline {
@@ -927,6 +1031,7 @@ mod tests {
         assert!(windows_process_is_running(parent_pid));
         assert!(windows_process_is_running(descendant_pid));
 
+        let stop_started = Instant::now();
         let status = child
             .stop_with(
                 |child| {
@@ -936,6 +1041,7 @@ mod tests {
                 Duration::from_secs(2),
             )
             .expect("graceful parent exit should close its Job Object");
+        assert!(stop_started.elapsed() < Duration::from_secs(4));
         assert!(status.success());
         assert!(!windows_process_is_running(parent_pid));
         let deadline = std::time::Instant::now() + Duration::from_secs(3);

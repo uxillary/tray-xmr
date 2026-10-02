@@ -13,6 +13,8 @@ const MAX_HASHRATE: f64 = 1.0e15;
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ApiClientError {
     Unavailable,
+    ConnectionFailed,
+    TimedOut,
     Unauthorized,
     InvalidResponse,
     UnexpectedVersion,
@@ -76,7 +78,7 @@ fn get_summary_request(
     if let Some(value) = authorization {
         request = request.header(reqwest::header::AUTHORIZATION, value);
     }
-    let response = request.send().map_err(|_| ApiClientError::Unavailable)?;
+    let response = request.send().map_err(classify_transport_error)?;
     if response.status() == reqwest::StatusCode::UNAUTHORIZED
         || response.status() == reqwest::StatusCode::FORBIDDEN
     {
@@ -95,11 +97,27 @@ fn get_summary_request(
     response
         .take((MAX_API_RESPONSE_BYTES + 1) as u64)
         .read_to_end(&mut body)
-        .map_err(|_| ApiClientError::Unavailable)?;
+        .map_err(|error| {
+            if error.kind() == std::io::ErrorKind::TimedOut {
+                ApiClientError::TimedOut
+            } else {
+                ApiClientError::Unavailable
+            }
+        })?;
     if body.len() > MAX_API_RESPONSE_BYTES {
         return Err(ApiClientError::OversizedResponse);
     }
     Ok(body)
+}
+
+fn classify_transport_error(error: reqwest::Error) -> ApiClientError {
+    if error.is_connect() {
+        ApiClientError::ConnectionFailed
+    } else if error.is_timeout() {
+        ApiClientError::TimedOut
+    } else {
+        ApiClientError::Unavailable
+    }
 }
 
 #[derive(Deserialize)]
@@ -567,9 +585,23 @@ mod tests {
         });
         assert_eq!(
             client.get_summary("127.0.0.1", port, "test_only_token_0123456789abcdef"),
-            Err(ApiClientError::Unavailable)
+            Err(ApiClientError::TimedOut)
         );
         server.join().unwrap();
+    }
+
+    #[test]
+    fn concrete_transport_distinguishes_loopback_connection_failure() {
+        use std::net::TcpListener;
+
+        let listener = TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, 0)).unwrap();
+        let port = listener.local_addr().unwrap().port();
+        drop(listener);
+        let mut client = ReqwestLocalApiTransport::new().unwrap();
+        assert_eq!(
+            client.get_summary("127.0.0.1", port, "test_only_token_0123456789abcdef"),
+            Err(ApiClientError::ConnectionFailed)
+        );
     }
 
     #[test]

@@ -14,7 +14,9 @@ use std::sync::Mutex;
 use std::thread;
 use std::time::{Duration, Instant};
 
-const STOP_GRACE: Duration = Duration::from_secs(2);
+// The restricted XMRig API is telemetry-only. Stop therefore closes the owned
+// Job Object immediately instead of waiting for an unimplemented graceful API.
+const STOP_GRACE: Duration = Duration::ZERO;
 const MAX_STARTUP_TIMINGS: usize = 64;
 #[cfg(not(test))]
 const READINESS_ATTEMPTS: usize = 120;
@@ -42,6 +44,7 @@ struct SupervisorInner {
 pub struct EngineSupervisor {
     inner: Mutex<SupervisorInner>,
     operation: Mutex<()>,
+    spawn_gate: Mutex<()>,
     cancel_startup: AtomicBool,
 }
 
@@ -68,6 +71,7 @@ impl EngineSupervisor {
                 startup_timings: Vec::new(),
             }),
             operation: Mutex::new(()),
+            spawn_gate: Mutex::new(()),
             cancel_startup: AtomicBool::new(false),
         }
     }
@@ -113,8 +117,21 @@ impl EngineSupervisor {
         }
     }
 
+    pub fn try_begin_startup(&self, stage: StartupStage) -> Result<(), EngineError> {
+        let _operation = self.operation.try_lock().map_err(|_| EngineError {
+            kind: EngineErrorKind::InvalidTransition,
+            message: "The previous mining session is still stopping".into(),
+        })?;
+        self.begin_startup(stage);
+        Ok(())
+    }
+
     pub fn cancel_startup(&self) {
         self.cancel_startup.store(true, Ordering::Release);
+    }
+
+    pub fn startup_cancelled(&self) -> bool {
+        self.cancel_startup.load(Ordering::Acquire)
     }
 
     pub fn set_startup_stage(&self, stage: StartupStage) {
@@ -279,6 +296,10 @@ impl EngineSupervisor {
             });
         }
 
+        let spawn_gate = self.spawn_gate.lock().map_err(|_| lock_error())?;
+        if self.cancel_startup.load(Ordering::Acquire) {
+            return Err(start_cancelled_error());
+        }
         {
             let mut inner = self.inner.lock().map_err(|_| lock_error())?;
             if inner.process.is_some()
@@ -310,29 +331,47 @@ impl EngineSupervisor {
             executable.to_string_lossy().into_owned(),
         ]);
         self.set_startup_stage(StartupStage::StartingXmrig);
-        let mut child = match spawn(executable, arguments, working_directory, redaction) {
+        let child = match spawn(executable, arguments, working_directory, redaction) {
             Ok(child) => child,
             Err(error) => return self.fail(error),
         };
         self.set_startup_stage(StartupStage::WaitingForMiner);
         self.record_startup_timings(child.startup_timings());
+        {
+            let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+            inner.process = Some(child);
+            inner.diagnostics.push(super::domain::DiagnosticSummary {
+                source: super::domain::DiagnosticSource::Supervisor,
+                message: format!(
+                    "XMRig process created; waiting for authenticated local API readiness at {}:{}",
+                    config.config.api.host, config.config.api.port
+                ),
+            });
+        }
+        drop(spawn_gate);
         let mut saw_summary = false;
         let mut saw_randomx = false;
         let mut saw_hashrate = false;
+        let mut last_paused = None;
+        let mut last_hashrate = None;
+        let mut last_api_error = None;
+        let mut response_observed = false;
         for attempt in 0..READINESS_ATTEMPTS {
             if self.cancel_startup.load(Ordering::Acquire) {
-                let _ = child.stop_with(|_| Ok(()), Duration::from_millis(0));
-                drop(child);
-                return self.fail(EngineError {
-                    kind: EngineErrorKind::StartupCancelled,
-                    message: "Mining startup was stopped at your request.".into(),
-                });
+                return self.cancelled_startup_result();
             }
-            let child_status = match child.try_wait() {
+            let child_status = match self
+                .inner
+                .lock()
+                .map_err(|_| lock_error())?
+                .process
+                .as_mut()
+                .expect("starting process is owned")
+                .try_wait()
+            {
                 Ok(status) => status,
                 Err(_) => {
-                    let _ = child.stop_with(|_| Ok(()), Duration::from_millis(0));
-                    drop(child);
+                    self.terminate_starting_process("Could not inspect startup process");
                     return self.fail(EngineError {
                         kind: EngineErrorKind::UnexpectedExit,
                         message: "Could not check whether the engine exited during startup".into(),
@@ -340,23 +379,45 @@ impl EngineSupervisor {
                 }
             };
             if let Some(exit) = child_status {
+                let succeeded = exit.success();
                 let safe_exit = format!(
                     "The mining engine stopped before Ember could connect to it (exit code {:?}).",
                     exit.code()
                 );
-                let diagnostics = child.diagnostics();
-                drop(child);
+                let mut diagnostics = self.take_starting_process_diagnostics();
+                diagnostics.push(super::domain::DiagnosticSummary {
+                    source: super::domain::DiagnosticSource::Supervisor,
+                    message: format!(
+                        "XMRig exited during startup: success={succeeded}, code={:?}",
+                        exit.code()
+                    ),
+                });
                 let error = EngineError {
                     kind: EngineErrorKind::UnexpectedExit,
                     message: safe_exit,
                 };
-                self.fail::<()>(error.clone())?;
+                let _ = self.fail::<()>(error.clone());
                 self.set_diagnostics(diagnostics);
                 return Err(error);
             }
 
             let response = poll_api();
+            if self.cancel_startup.load(Ordering::Acquire) {
+                return self.cancelled_startup_result();
+            }
+            response_observed |= match &response {
+                Ok(_) => true,
+                Err(error) => matches!(
+                    error,
+                    ApiClientError::Unauthorized
+                        | ApiClientError::InvalidResponse
+                        | ApiClientError::UnexpectedVersion
+                        | ApiClientError::OversizedResponse
+                ),
+            };
             if let Ok(telemetry) = &response {
+                last_paused = telemetry.paused;
+                last_hashrate = telemetry.short_hashrate;
                 if !saw_summary {
                     self.record_startup_milestone("FirstAuthenticatedSummaryAtMs");
                     saw_summary = true;
@@ -382,9 +443,19 @@ impl EngineSupervisor {
                 {
                     self.record_startup_milestone("MiningReadinessAtMs");
                     let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+                    if self.cancel_startup.load(Ordering::Acquire)
+                        || inner.lifecycle.state() != EngineLifecycleState::Starting
+                    {
+                        let already_stopped =
+                            inner.lifecycle.state() == EngineLifecycleState::Stopped;
+                        drop(inner);
+                        if already_stopped {
+                            return Err(start_cancelled_error());
+                        }
+                        return self.cancelled_startup_result();
+                    }
                     inner.lifecycle.transition(EngineLifecycleState::Mining)?;
                     inner.telemetry = Some(telemetry);
-                    inner.process = Some(child);
                     if let (Some(stage), Some(started)) =
                         (inner.startup_stage, inner.startup_stage_started)
                     {
@@ -401,7 +472,7 @@ impl EngineSupervisor {
                 Ok(telemetry)
                     if telemetry.engine_version.as_deref() != Some(artifact.version()) =>
                 {
-                    drop(child);
+                    self.terminate_starting_process("Local API identity did not match");
                     return self.fail(EngineError {
                         kind: EngineErrorKind::ApiRejected,
                         message: "Local API engine identity did not match the verified artifact"
@@ -410,11 +481,14 @@ impl EngineSupervisor {
                 }
                 Ok(_) => self.set_startup_stage(StartupStage::WaitingForMiner),
                 Err(error) => {
+                    last_api_error = Some(error.clone());
                     if matches!(
                         error,
                         ApiClientError::UnexpectedVersion | ApiClientError::Unauthorized
                     ) {
-                        drop(child);
+                        self.terminate_starting_process(&format!(
+                            "Local API response rejected: {error:?}; Ember terminated the owned XMRig process"
+                        ));
                         return self.fail(EngineError {
                             kind: EngineErrorKind::ApiRejected,
                             message: "Local API identity or access policy was rejected".into(),
@@ -423,15 +497,30 @@ impl EngineSupervisor {
                     let _ = error;
                 }
             }
+            if attempt % 10 == 0 || response_observed {
+                self.record_api_probe(
+                    &config.config.api.host,
+                    config.config.api.port,
+                    attempt + 1,
+                    response_observed,
+                    last_api_error
+                        .as_ref()
+                        .map(|error| format!("{error:?}"))
+                        .unwrap_or_else(|| "none".into()),
+                );
+            }
             if attempt + 1 < READINESS_ATTEMPTS {
                 thread::sleep(READINESS_INTERVAL);
             }
         }
 
-        let diagnostics = child.diagnostics();
-        let _ = child.stop_with(|_| Ok(()), Duration::from_millis(100));
-        let final_diagnostics = child.diagnostics();
-        drop(child);
+        let outcome = format!(
+            "Readiness deadline: process observed alive at last check=true, API endpoint={}:{}, connection attempts={}, TCP/API response observed={response_observed}, authenticated summary={saw_summary}, expected version/miner kind/restricted policy validated={saw_summary}, rx/0 advertised={saw_randomx}, positive short-window hashrate={saw_hashrate}, last paused={last_paused:?}, last short-window rate={last_hashrate:?}, last API result={last_api_error:?}; Ember terminated the owned XMRig process",
+            config.config.api.host,
+            config.config.api.port,
+            READINESS_ATTEMPTS
+        );
+        let diagnostics = self.terminate_starting_process(&outcome);
         {
             let mut inner = self.inner.lock().map_err(|_| lock_error())?;
             inner.lifecycle.transition(EngineLifecycleState::Error)?;
@@ -449,41 +538,196 @@ impl EngineSupervisor {
             inner.startup_stage = None;
             inner.startup_started = None;
             inner.startup_stage_started = None;
-            inner.diagnostics = if final_diagnostics.is_empty() {
-                diagnostics
-            } else {
-                final_diagnostics
-            };
+            inner.diagnostics = diagnostics;
         }
         Err(EngineError {
             kind: EngineErrorKind::ApiUnavailable,
-            message: "Local API readiness timed out; the owned process was stopped".into(),
+            message: "The mining engine started but did not become ready. Ember stopped the owned process. Try Start mining again.".into(),
         })
     }
 
-    pub fn poll_unexpected_exit(&self) -> Result<Option<i32>, EngineError> {
-        let mut inner = self.inner.lock().map_err(|_| lock_error())?;
-        let Some(child) = inner.process.as_mut() else {
-            return Ok(None);
+    fn take_starting_process_diagnostics(&self) -> Vec<super::domain::DiagnosticSummary> {
+        let Ok(mut inner) = self.inner.lock() else {
+            return Vec::new();
         };
-        let Some(status) = child.try_wait().map_err(|_| EngineError {
-            kind: EngineErrorKind::Internal,
-            message: "Could not inspect the owned engine process".into(),
-        })?
-        else {
-            return Ok(None);
+        let Some(child) = inner.process.take() else {
+            return inner.diagnostics.clone();
+        };
+        let mut diagnostics = child.diagnostics();
+        drop(child);
+        diagnostics.extend(inner.diagnostics.drain(..));
+        diagnostics
+    }
+
+    fn terminate_starting_process(&self, outcome: &str) -> Vec<super::domain::DiagnosticSummary> {
+        let (mut child, mut diagnostics) = {
+            let Ok(mut inner) = self.inner.lock() else {
+                return Vec::new();
+            };
+            let child = inner.process.take();
+            let diagnostics = inner.diagnostics.drain(..).collect::<Vec<_>>();
+            (child, diagnostics)
+        };
+        if let Some(child) = child.as_mut() {
+            let _ = child.stop_with(|_| Ok(()), Duration::ZERO);
+            diagnostics.extend(child.diagnostics());
+        }
+        drop(child);
+        diagnostics.push(super::domain::DiagnosticSummary {
+            source: super::domain::DiagnosticSource::Supervisor,
+            message: outcome.to_owned(),
+        });
+        if let Ok(mut inner) = self.inner.lock() {
+            inner.diagnostics = diagnostics.clone();
+        }
+        diagnostics
+    }
+
+    fn cancelled_startup_result(&self) -> Result<(), EngineError> {
+        if self.status().state == EngineLifecycleState::Stopped {
+            return Err(start_cancelled_error());
+        }
+        self.terminate_starting_process("Startup cancelled by owner; owned process terminated");
+        if self.status().state == EngineLifecycleState::Stopped {
+            return Err(start_cancelled_error());
+        }
+        self.fail(start_cancelled_error())
+    }
+
+    /// Stop a Starting session without waiting for the readiness operation lock.
+    /// The spawn gate only covers verification/spawn/ownership transfer, never polling.
+    pub fn stop_starting(&self) -> Result<(), EngineError> {
+        self.cancel_startup();
+        self.stop_starting_inner()
+    }
+
+    pub fn stop_starting_for_application_quit(&self) -> Result<(), EngineError> {
+        self.cancel_startup();
+        self.inner.lock().map_err(|_| lock_error())?.shutting_down = true;
+        self.stop_starting_inner()
+    }
+
+    fn stop_starting_inner(&self) -> Result<(), EngineError> {
+        let spawn_gate = self.spawn_gate.lock().map_err(|_| lock_error())?;
+        let mut process = {
+            let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+            if inner.lifecycle.state() != EngineLifecycleState::Starting {
+                if inner.lifecycle.state() == EngineLifecycleState::Error
+                    && inner
+                        .error
+                        .as_ref()
+                        .is_some_and(|error| error.kind == EngineErrorKind::StartupCancelled)
+                {
+                    inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
+                    inner.error = None;
+                }
+                if let (Some(stage), Some(started)) =
+                    (inner.startup_stage, inner.startup_stage_started)
+                {
+                    inner.startup_timings.push(StartupTiming {
+                        stage: format!("{:?}", stage),
+                        elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                    });
+                }
+                inner.startup_stage = None;
+                inner.startup_started = None;
+                inner.startup_stage_started = None;
+                return Ok(());
+            }
+            inner.lifecycle.transition(EngineLifecycleState::Stopping)?;
+            inner.process.take()
+        };
+        drop(spawn_gate);
+
+        let stop_error = process
+            .as_mut()
+            .and_then(|child| child.stop_with(|_| Ok(()), Duration::ZERO).err());
+        let mut diagnostics = process
+            .as_ref()
+            .map(SupervisedChild::diagnostics)
+            .unwrap_or_default();
+        drop(process);
+
+        let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+        if let Some(error) = stop_error {
+            inner.lifecycle.transition(EngineLifecycleState::Error)?;
+            inner.error = Some(error.clone());
+            inner.diagnostics = diagnostics;
+            if let (Some(stage), Some(started)) = (inner.startup_stage, inner.startup_stage_started)
+            {
+                inner.startup_timings.push(StartupTiming {
+                    stage: format!("{:?}", stage),
+                    elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+                });
+            }
+            inner.startup_stage = None;
+            inner.startup_started = None;
+            inner.startup_stage_started = None;
+            return Err(error);
+        }
+        inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
+        inner.error = None;
+        inner.telemetry = None;
+        diagnostics.push(super::domain::DiagnosticSummary {
+            source: super::domain::DiagnosticSource::Supervisor,
+            message: "Starting session stopped by owner; Job Object closed before output readers were joined".into(),
+        });
+        inner.diagnostics = diagnostics;
+        if let (Some(stage), Some(started)) = (inner.startup_stage, inner.startup_stage_started) {
+            inner.startup_timings.push(StartupTiming {
+                stage: format!("{:?}", stage),
+                elapsed_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+            });
+        }
+        inner.startup_stage = None;
+        inner.startup_started = None;
+        inner.startup_stage_started = None;
+        Ok(())
+    }
+
+    pub fn poll_unexpected_exit(&self) -> Result<Option<i32>, EngineError> {
+        let _operation = self.operation.lock().map_err(|_| lock_error())?;
+        let mut child = {
+            let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+            let Some(child) = inner.process.take() else {
+                return Ok(None);
+            };
+            child
+        };
+        let status = match child.try_wait() {
+            Ok(Some(status)) => status,
+            Ok(None) => {
+                self.inner.lock().map_err(|_| lock_error())?.process = Some(child);
+                return Ok(None);
+            }
+            Err(_) => {
+                self.inner.lock().map_err(|_| lock_error())?.process = Some(child);
+                return Err(EngineError {
+                    kind: EngineErrorKind::Internal,
+                    message: "Could not inspect the owned engine process".into(),
+                });
+            }
         };
         let code = status.code();
+        let succeeded = status.success();
         let diagnostics = child.diagnostics();
-        inner.process.take();
+        drop(child);
+        let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+        if inner.lifecycle.state() != EngineLifecycleState::Mining {
+            return Ok(None);
+        }
         inner.lifecycle.transition(EngineLifecycleState::Error)?;
         inner.error = Some(EngineError {
             kind: EngineErrorKind::UnexpectedExit,
             message: format!(
-                "Engine exited unexpectedly (code {code:?}); no restart was attempted"
+                "Engine exited unexpectedly (success={succeeded}, code {code:?}); no restart was attempted"
             ),
         });
         inner.diagnostics = diagnostics;
+        inner.diagnostics.push(super::domain::DiagnosticSummary {
+            source: super::domain::DiagnosticSource::Supervisor,
+            message: format!("XMRig exited after Mining: success={succeeded}, code={code:?}"),
+        });
         inner.telemetry = None;
         Ok(code)
     }
@@ -500,35 +744,63 @@ impl EngineSupervisor {
     where
         F: FnOnce(&mut SupervisedChild) -> io::Result<()>,
     {
-        let mut inner = self.inner.lock().map_err(|_| lock_error())?;
-        if inner.process.is_none() {
-            return Ok(()); // Explicitly idempotent when this supervisor owns no process.
-        }
-        match inner.lifecycle.state() {
-            EngineLifecycleState::Mining | EngineLifecycleState::Paused => {
-                inner.lifecycle.transition(EngineLifecycleState::Stopping)?;
+        let mut process = {
+            let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+            if inner.process.is_none() {
+                if inner.lifecycle.state() == EngineLifecycleState::Error
+                    && inner
+                        .error
+                        .as_ref()
+                        .is_some_and(|error| error.kind == EngineErrorKind::StartupCancelled)
+                {
+                    inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
+                    inner.error = None;
+                    inner.telemetry = None;
+                }
+                return Ok(()); // Explicitly idempotent when this supervisor owns no process.
             }
-            EngineLifecycleState::Starting | EngineLifecycleState::Stopping => {}
-            _ => {
-                return Err(EngineError {
-                    kind: EngineErrorKind::InvalidTransition,
-                    message: "Engine state cannot be stopped through this path".into(),
-                })
+            match inner.lifecycle.state() {
+                EngineLifecycleState::Mining | EngineLifecycleState::Paused => {
+                    inner.lifecycle.transition(EngineLifecycleState::Stopping)?;
+                }
+                EngineLifecycleState::Starting => {
+                    inner.lifecycle.transition(EngineLifecycleState::Stopping)?;
+                }
+                EngineLifecycleState::Stopping | EngineLifecycleState::Error => {}
+                _ => {
+                    return Err(EngineError {
+                        kind: EngineErrorKind::InvalidTransition,
+                        message: "Engine state cannot be stopped through this path".into(),
+                    })
+                }
             }
-        }
+            inner.process.take().expect("checked owned process")
+        };
 
-        let mut process = inner.process.take().expect("checked owned process");
-        match process.stop_with(graceful, STOP_GRACE) {
+        let result = process.stop_with(graceful, STOP_GRACE);
+        let mut diagnostics = process.diagnostics();
+        drop(process);
+        let mut inner = self.inner.lock().map_err(|_| lock_error())?;
+        match result {
             Ok(_) => {
-                inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
+                if inner.lifecycle.state() != EngineLifecycleState::Stopped {
+                    inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
+                }
                 inner.telemetry = None;
                 inner.error = None;
-                inner.diagnostics = process.diagnostics();
+                diagnostics.push(super::domain::DiagnosticSummary {
+                    source: super::domain::DiagnosticSource::Supervisor,
+                    message: "XMRig stopped by Ember; its owned Job Object was closed before output readers were joined".into(),
+                });
+                inner.diagnostics = diagnostics;
                 Ok(())
             }
             Err(error) => {
-                inner.lifecycle.transition(EngineLifecycleState::Error)?;
+                if inner.lifecycle.state() != EngineLifecycleState::Error {
+                    inner.lifecycle.transition(EngineLifecycleState::Error)?;
+                }
                 inner.error = Some(error.clone());
+                inner.diagnostics = diagnostics;
                 Err(error)
             }
         }
@@ -560,12 +832,39 @@ impl EngineSupervisor {
             inner.diagnostics = diagnostics;
         }
     }
+
+    fn record_api_probe(
+        &self,
+        host: &str,
+        port: u16,
+        attempts: usize,
+        connected: bool,
+        result: String,
+    ) {
+        if let Ok(mut inner) = self.inner.lock() {
+            inner.diagnostics.retain(|entry| {
+                entry.source != super::domain::DiagnosticSource::Supervisor
+                    || !entry.message.starts_with("Local API probe:")
+            });
+            inner.diagnostics.push(super::domain::DiagnosticSummary {
+                source: super::domain::DiagnosticSource::Supervisor,
+                message: format!("Local API probe: endpoint={host}:{port}, attempts={attempts}, connectable={connected}, last result={result}"),
+            });
+        }
+    }
 }
 
 fn lock_error() -> EngineError {
     EngineError {
         kind: EngineErrorKind::Internal,
         message: "Mining supervisor state is unavailable".into(),
+    }
+}
+
+fn start_cancelled_error() -> EngineError {
+    EngineError {
+        kind: EngineErrorKind::StartupCancelled,
+        message: "Mining startup was stopped at your request.".into(),
     }
 }
 
@@ -581,7 +880,7 @@ mod tests {
     use crate::mining::process::SupervisedChild;
     use std::ffi::OsString;
     use std::path::{Path, PathBuf};
-    use std::time::Duration;
+    use std::time::{Duration, Instant};
 
     fn fixture_artifact(path: PathBuf) -> EngineArtifact {
         EngineArtifact::verified_fixture(
@@ -731,6 +1030,12 @@ mod tests {
         assert_eq!(error.kind, EngineErrorKind::ApiUnavailable);
         assert_eq!(supervisor.status().state, EngineLifecycleState::Error);
         assert!(supervisor.status().process_id.is_none());
+        assert!(supervisor.status().diagnostics.iter().any(|line| {
+            line.message
+                .contains("process observed alive at last check=true")
+                && line.message.contains("TCP/API response observed=false")
+                && line.message.contains("last API result=Some(Unavailable)")
+        }));
         assert!(supervisor
             .start_with(
                 &artifact,
@@ -743,6 +1048,55 @@ mod tests {
                 || Ok(fixture_telemetry(false)),
             )
             .is_err());
+    }
+
+    #[test]
+    fn authenticated_api_without_positive_rate_records_observed_readiness_evidence() {
+        let path = std::env::current_exe().unwrap();
+        let artifact = fixture_artifact(path.clone());
+        let config = crate::mining::config::validate(fixture_config(), "6.26.0").unwrap();
+        let wallet = config.config.public_address.clone();
+        let token = config.config.api.access_token.clone();
+        let supervisor = EngineSupervisor::new();
+        supervisor.configure_ready(&artifact, &config).unwrap();
+        let error = supervisor
+            .start_with(
+                &artifact,
+                &config,
+                &path,
+                &[],
+                &std::env::current_dir().unwrap(),
+                RedactionSecrets::new([wallet.clone(), token.clone()]),
+                spawn_test_child,
+                || {
+                    let mut telemetry = fixture_telemetry(false);
+                    telemetry.short_hashrate = Some(0.0);
+                    Ok(telemetry)
+                },
+            )
+            .unwrap_err();
+        assert_eq!(error.kind, EngineErrorKind::ApiUnavailable);
+        let diagnostics = supervisor.status().diagnostics;
+        let evidence = diagnostics
+            .iter()
+            .find(|line| line.message.contains("Readiness deadline:"))
+            .expect("timeout diagnostics include the last observed readiness evidence");
+        assert!(evidence.message.contains("authenticated summary=true"));
+        assert!(evidence
+            .message
+            .contains("expected version/miner kind/restricted policy validated=true"));
+        assert!(evidence.message.contains("rx/0 advertised=true"));
+        assert!(evidence
+            .message
+            .contains("positive short-window hashrate=false"));
+        assert!(evidence.message.contains("last paused=Some(false)"));
+        assert!(evidence
+            .message
+            .contains("last short-window rate=Some(0.0)"));
+        assert!(!diagnostics
+            .iter()
+            .any(|line| { line.message.contains(&wallet) || line.message.contains(&token) }));
+        assert!(supervisor.status().process_id.is_none());
     }
 
     #[test]
@@ -772,6 +1126,86 @@ mod tests {
         assert!(!error.message.contains("fixture-private-token"));
         assert_eq!(supervisor.status().state, EngineLifecycleState::Error);
         assert!(supervisor.status().process_id.is_none());
+        assert!(supervisor
+            .status()
+            .diagnostics
+            .iter()
+            .all(|line| !line.message.contains("fixture-private-token")));
+    }
+
+    #[test]
+    fn stop_while_waiting_cancels_owned_process_and_allows_a_fresh_start() {
+        use std::sync::{mpsc, Arc};
+
+        let path = std::env::current_exe().unwrap();
+        let artifact = fixture_artifact(path.clone());
+        let config = crate::mining::config::validate(fixture_config(), "6.26.0").unwrap();
+        let supervisor = Arc::new(EngineSupervisor::new());
+        supervisor.configure_ready(&artifact, &config).unwrap();
+        let (polling_tx, polling_rx) = mpsc::channel();
+        let (poll_done_tx, poll_done_rx) = mpsc::channel();
+        let worker = Arc::clone(&supervisor);
+        let worker_artifact = artifact.clone();
+        let worker_config = config.clone();
+        let worker_path = path.clone();
+        let worker = std::thread::spawn(move || {
+            worker.start_with(
+                &worker_artifact,
+                &worker_config,
+                &worker_path,
+                &[],
+                &std::env::current_dir().unwrap(),
+                RedactionSecrets::new([]),
+                spawn_test_child,
+                || {
+                    let _ = polling_tx.send(());
+                    std::thread::sleep(Duration::from_millis(150));
+                    let _ = poll_done_tx.send(());
+                    Err(crate::mining::xmrig::ApiClientError::Unavailable)
+                },
+            )
+        });
+        polling_rx.recv_timeout(Duration::from_secs(2)).unwrap();
+        assert_eq!(supervisor.status().state, EngineLifecycleState::Starting);
+        assert!(supervisor.status().process_id.is_some());
+
+        let stop_started = Instant::now();
+        supervisor.stop_starting().unwrap();
+        assert!(stop_started.elapsed() < Duration::from_secs(2));
+        assert!(
+            poll_done_rx.try_recv().is_err(),
+            "Stop must not wait for readiness polling to finish"
+        );
+        assert!(
+            supervisor
+                .try_begin_startup(StartupStage::CheckingEngine)
+                .is_err(),
+            "a new Start cannot clear cancellation while the previous worker is unwinding"
+        );
+        assert_eq!(
+            worker.join().unwrap().unwrap_err().kind,
+            EngineErrorKind::StartupCancelled
+        );
+        assert_eq!(supervisor.status().state, EngineLifecycleState::Stopped);
+        assert!(supervisor.status().process_id.is_none());
+
+        supervisor.configure_ready(&artifact, &config).unwrap();
+        supervisor.begin_startup(StartupStage::CheckingEngine);
+        supervisor
+            .start_with(
+                &artifact,
+                &config,
+                &path,
+                &[],
+                &std::env::current_dir().unwrap(),
+                RedactionSecrets::new([]),
+                spawn_test_child,
+                || Ok(fixture_telemetry(false)),
+            )
+            .unwrap();
+        supervisor
+            .stop_with(StopReason::UserRequest, |_| Ok(()))
+            .unwrap();
     }
 
     #[test]
@@ -805,6 +1239,10 @@ mod tests {
             .unwrap_err();
         assert_eq!(error.kind, EngineErrorKind::UnexpectedExit);
         assert!(error.message.contains("stopped before Ember could connect"));
+        assert!(supervisor.status().diagnostics.iter().any(|line| {
+            line.message
+                .contains("XMRig exited during startup: success=true, code=Some(0)")
+        }));
         assert!(supervisor.status().process_id.is_none());
     }
 

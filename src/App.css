@@ -283,6 +283,10 @@ h1,h2,h3 { font-family: "Segoe UI", "Aptos", sans-serif; }
 
 .settings-section { margin-top: 13px; padding: 17px 19px 4px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-panel); }
 .settings-section:first-child { margin-top: 0; }
+.diagnostics-toggle { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+.diagnostics-toggle span { display: grid; gap: 4px; }
+.diagnostics-toggle strong { color: var(--text-primary); font-size: 13px; }
+.diagnostics-toggle small { color: var(--text-muted); font-size: 12px; }
 .settings-section > h2 { margin: 0 0 6px; color: #e0e4dd; font-size: 15px; font-weight: 600; }
 .setting-row { display: flex; min-height: 66px; align-items: center; gap: 12px; border-top: 1px solid #282d29; }
 .setting-icon { display: grid; width: 30px; height: 30px; flex: 0 0 30px; place-items: center; color: #9aa595; }

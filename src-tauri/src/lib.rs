@@ -58,8 +58,19 @@ fn stop_mining_sync(app: &tauri::AppHandle, quitting: bool) -> Result<(), String
         .lock()
         .map_err(|_| "Mining controls are temporarily unavailable")?;
     let supervisor = app.state::<EngineSupervisor>();
+    let supervisor_status = supervisor.status();
     let stopped = if quitting {
-        supervisor.stop_for_application_quit()
+        if supervisor_status.state == EngineLifecycleState::Starting
+            || supervisor_status.startup_stage.is_some()
+        {
+            supervisor.stop_starting_for_application_quit()
+        } else {
+            supervisor.stop_for_application_quit()
+        }
+    } else if supervisor_status.state == EngineLifecycleState::Starting
+        || supervisor_status.startup_stage.is_some()
+    {
+        supervisor.stop_starting()
     } else {
         supervisor.stop_with(StopReason::UserRequest, |_| Ok(()))
     };
@@ -91,9 +102,9 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
 
     tauri::async_runtime::spawn_blocking(move || {
         let operation = app.state::<Mutex<()>>();
-        let _operation = operation
+        let mut operation_guard = Some(operation
             .lock()
-            .map_err(|_| "Mining controls are temporarily unavailable")?;
+            .map_err(|_| "Mining controls are temporarily unavailable")?);
         if app
             .state::<Mutex<Option<ActiveSession>>>()
             .lock()
@@ -110,9 +121,12 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             .cpu
             .logical_processors
             .unwrap_or(0);
-        let setup = app.state::<Mutex<mining::readiness::SetupService>>();
-        let setup = setup.lock().map_err(|_| "Setup state unavailable")?;
-        let root = setup.data_root().to_owned();
+        let setup_state = app.state::<Mutex<mining::readiness::SetupService>>();
+        let root = setup_state
+            .lock()
+            .map_err(|_| "Setup state unavailable")?
+            .data_root()
+            .to_owned();
         if app
             .state::<EngineSupervisor>()
             .status()
@@ -122,7 +136,9 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             return Err("Ember already owns an active XMRig process".to_owned());
         }
         let supervisor = app.state::<EngineSupervisor>();
-        supervisor.begin_startup(StartupStage::CheckingEngine);
+        supervisor
+            .try_begin_startup(StartupStage::CheckingEngine)
+            .map_err(|error| error.message)?;
         update_tray_starting(&app);
         let verification_started = Instant::now();
         let initial = match provisioner::verify_installation(&root) {
@@ -134,26 +150,45 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             }
         };
         supervisor.record_startup_duration("InitialArtifactVerification", verification_started.elapsed().as_millis().min(u64::MAX as u128) as u64);
+        if supervisor.startup_cancelled() {
+            supervisor.finish_startup();
+            update_tray(&app, false, false);
+            return Err("Mining startup was stopped at your request.".into());
+        }
         let executable = initial.executable_path();
         let artifact = initial.artifact();
         let adapter = match XmrigAdapter::new(artifact.clone()) {
             Ok(adapter) => adapter,
             Err(error) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err(error.message); }
         };
-        let mut last_error = None;
-        for attempt in 0..3 {
+        {
             supervisor.set_startup_stage(StartupStage::PreparingSession);
             let candidate_started = Instant::now();
+            let setup = setup_state
+                .lock()
+                .map_err(|_| "Setup state unavailable")?;
             let mut candidate = match setup.prepare_start(logical) {
                 Ok(candidate) => candidate,
                 Err(error) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err(error); }
             };
             supervisor.record_startup_duration("CandidateConfigAndConsentPreparation", candidate_started.elapsed().as_millis().min(u64::MAX as u128) as u64);
+            if supervisor.startup_cancelled() {
+                supervisor.finish_startup();
+                update_tray(&app, false, false);
+                return Err("Mining startup was stopped at your request.".into());
+            }
             let runtime = match RuntimeSession::create(&root, candidate.config_json()) {
                 Ok(runtime) => runtime,
                 Err(_) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err("Private mining runtime could not be created".to_owned()); }
             };
             supervisor.record_startup_timings(runtime.creation_timings());
+            drop(setup);
+            if supervisor.startup_cancelled() {
+                drop(runtime);
+                supervisor.finish_startup();
+                update_tray(&app, false, false);
+                return Err("Mining startup was stopped at your request.".into());
+            }
             let config = candidate.validated.clone();
             let token = config.config.api.access_token.clone();
             let wallet = config.config.public_address.clone();
@@ -176,6 +211,16 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             let poll_adapter = adapter.clone();
             let secrets = RedactionSecrets::new([token, wallet]);
             candidate.release_port();
+            *app.state::<Mutex<Option<ActiveSession>>>()
+                .lock()
+                .map_err(|_| "Mining session state unavailable")? = Some(ActiveSession {
+                _runtime: runtime,
+                config: config.clone(),
+                adapter: adapter.clone(),
+            });
+            // The supervisor and active-session slot now own the process lifecycle
+            // and its private runtime. Stop can acquire app controls while readiness polls.
+            drop(operation_guard.take());
             let spawn_root = root.clone();
             let spawn_initial = initial.clone();
             let supervisor_for_spawn = &*supervisor;
@@ -201,6 +246,12 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
                             message: "The verified XMRig installation changed before process creation. Repair the mining engine before starting.".into(),
                         });
                     }
+                    if supervisor_for_spawn.startup_cancelled() {
+                        return Err(mining::domain::EngineError {
+                            kind: EngineErrorKind::StartupCancelled,
+                            message: "Mining startup was stopped at your request.".into(),
+                        });
+                    }
                     supervisor_for_spawn.record_startup_duration("ImmediatePreSpawnVerification", pre_spawn_started.elapsed().as_millis().min(u64::MAX as u128) as u64);
                     supervisor_for_spawn.set_startup_stage(StartupStage::StartingXmrig);
                     SupervisedChild::spawn(path, args, cwd, redaction)
@@ -216,29 +267,22 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             match started {
                 Ok(()) => {
                     supervisor.finish_startup();
-                    *app.state::<Mutex<Option<ActiveSession>>>()
-                        .lock()
-                        .map_err(|_| "Mining session state unavailable")? = Some(ActiveSession {
-                        _runtime: runtime,
-                        config,
-                        adapter,
-                    });
-                    update_tray(&app, true, false);
-                    return Ok(setup.snapshot(logical, false));
+                    if supervisor.status().state == EngineLifecycleState::Mining {
+                        update_tray(&app, true, false);
+                    }
+                    return setup_snapshot(&app);
                 }
                 Err(error) => {
-                    let retryable = error.kind == EngineErrorKind::ApiUnavailable;
-                    last_error = Some(error.message);
-                    drop(runtime);
-                    if !retryable || attempt == 2 {
-                        break;
-                    }
+                    app.state::<Mutex<Option<ActiveSession>>>()
+                        .lock()
+                        .map_err(|_| "Mining session cleanup is unavailable")?
+                        .take();
+                    supervisor.finish_startup();
+                    update_tray(&app, false, false);
+                    return Err(error.message);
                 }
             }
         }
-        supervisor.finish_startup();
-        update_tray(&app, false, true);
-        Err(last_error.unwrap_or_else(|| "Mining could not be started".into()))
     })
     .await
     .map_err(|_| "Mining start failed unexpectedly".to_owned())?
@@ -260,8 +304,10 @@ async fn stop_mining(app: tauri::AppHandle) -> Result<mining::readiness::MiningR
 #[serde(rename_all = "camelCase")]
 struct MiningSessionStatus {
     state: EngineLifecycleState,
+    process_id: Option<u32>,
     telemetry: Option<mining::domain::MiningTelemetry>,
     error: Option<mining::domain::EngineError>,
+    diagnostics: Vec<mining::domain::DiagnosticSummary>,
     startup_stage: Option<mining::domain::StartupStage>,
     startup_elapsed_ms: Option<u64>,
     startup_timings: Vec<mining::domain::StartupTiming>,
@@ -273,12 +319,79 @@ fn mining_status(supervisor: tauri::State<'_, EngineSupervisor>) -> MiningSessio
     let status = supervisor.status();
     MiningSessionStatus {
         state: status.state,
+        process_id: status.process_id,
         telemetry: supervisor.telemetry(),
         error: status.error,
+        // Process output and its sanitized event tail stay in Rust. The normal
+        // status IPC returns supervisor-owned progress only.
+        diagnostics: status
+            .diagnostics
+            .into_iter()
+            .filter(|entry| entry.source == mining::domain::DiagnosticSource::Supervisor)
+            .collect(),
         startup_stage: status.startup_stage,
         startup_elapsed_ms: status.startup_elapsed_ms,
         startup_timings: status.startup_timings,
     }
+}
+
+#[cfg(windows)]
+#[tauri::command]
+fn copy_diagnostics(
+    app: tauri::AppHandle,
+    supervisor: tauri::State<'_, EngineSupervisor>,
+) -> String {
+    use tauri::Manager;
+    let status = supervisor.status();
+    let state = format!("{:?}", status.state);
+    let stage = status
+        .startup_stage
+        .map(|stage| format!("{stage:?}"))
+        .unwrap_or_else(|| "none".into());
+    let system = app
+        .state::<Mutex<SystemObserver>>()
+        .lock()
+        .ok()
+        .map(|mut observer| observer.snapshot());
+    let setup = setup_snapshot(&app).ok();
+    let os = system
+        .as_ref()
+        .and_then(|snapshot| snapshot.os.as_deref())
+        .unwrap_or("Windows (version unavailable)");
+    let logical_processors = system
+        .as_ref()
+        .and_then(|snapshot| snapshot.cpu.logical_processors)
+        .map(|count| count.to_string())
+        .unwrap_or_else(|| "unavailable".into());
+    let profile = setup
+        .as_ref()
+        .and_then(|setup| setup.profile.map(|profile| format!("{profile:?}")))
+        .unwrap_or_else(|| "unavailable".into());
+    let threads = setup
+        .as_ref()
+        .and_then(|setup| setup.threads)
+        .map(|count| count.to_string())
+        .unwrap_or_else(|| "unavailable".into());
+    let mut report = format!(
+        "Ember {}\nOS: {os}\nExpected XMRig: 6.26.0\nLifecycle: {state}\nSelected profile: {profile}\nCPU threads: {threads} of {logical_processors}\nStartup stage: {stage}\nProcess alive: {}\n",
+        env!("CARGO_PKG_VERSION"),
+        status.process_id.is_some()
+    );
+    if let Some(error) = status.error {
+        report.push_str(&format!("Error category: {:?}\n", error.kind));
+    }
+    report.push_str("Stage timings (ms):\n");
+    for timing in status.startup_timings {
+        report.push_str(&format!("- {}: {}\n", timing.stage, timing.elapsed_ms));
+    }
+    report.push_str("Sanitized diagnostic events:\n");
+    for entry in status.diagnostics.iter().take(80) {
+        // Never include process output in the general IPC status. Copy diagnostics
+        // explicitly returns the Rust-redacted bounded event tail to the clipboard.
+        let message = mining::diagnostics::RedactionSecrets::new([]).redact(&entry.message);
+        report.push_str(&format!("- {:?}: {message}\n", entry.source));
+    }
+    report
 }
 
 #[cfg(windows)]
@@ -292,7 +405,8 @@ fn monitor_mining(app: tauri::AppHandle, running: std::sync::Arc<AtomicBool>) {
                 break;
             }
             let supervisor = app.state::<EngineSupervisor>();
-            if supervisor.status().process_id.is_none() {
+            let status = supervisor.status();
+            if status.process_id.is_none() || status.state != EngineLifecycleState::Mining {
                 continue;
             }
             let active_state = app.state::<Mutex<Option<ActiveSession>>>();
@@ -472,7 +586,8 @@ pub fn run() {
         update_mining_setup,
         start_mining,
         stop_mining,
-        mining_status
+        mining_status,
+        copy_diagnostics
     ]);
     #[cfg(not(windows))]
     let builder = builder.invoke_handler(tauri::generate_handler![shell_status, system_snapshot]);

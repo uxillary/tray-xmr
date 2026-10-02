@@ -29,6 +29,13 @@ impl RedactionSecrets {
         for secret in &self.values {
             safe = safe.replace(secret, "[REDACTED]");
         }
+        let lower = safe.to_ascii_lowercase();
+        if (safe.trim_start().starts_with('{') && safe.contains("\"pools\""))
+            || lower.contains("\"access-token\"")
+            || lower.contains("authorization: bearer ")
+        {
+            return "[runtime configuration or authorization material omitted]".into();
+        }
         safe
     }
 
@@ -59,7 +66,13 @@ impl DiagnosticRing {
     }
 
     pub fn push(&mut self, source: DiagnosticSource, raw: &str) {
-        let message = self.redaction.redact(raw);
+        let safe = self.redaction.redact(raw);
+        let event = classify_event(&safe);
+        let message = if event.is_empty() {
+            safe
+        } else {
+            format!("{event}: {safe}")
+        };
         let size = message.len();
         if size > self.max_bytes {
             return;
@@ -78,6 +91,23 @@ impl DiagnosticRing {
 
     pub fn snapshot(&self) -> Vec<DiagnosticSummary> {
         self.entries.iter().cloned().collect()
+    }
+}
+
+fn classify_event(message: &str) -> &'static str {
+    let lower = message.to_ascii_lowercase();
+    if lower.contains("http api") && (lower.contains("127.0.0.1") || lower.contains("listen")) {
+        "http-listener"
+    } else if lower.contains("config") && (lower.contains("error") || lower.contains("invalid")) {
+        "config-error"
+    } else if lower.contains("randomx") {
+        "randomx"
+    } else if lower.contains("pool") && (lower.contains("connect") || lower.contains("resolve")) {
+        "pool-network"
+    } else if lower.contains("error") || lower.contains("failed") || lower.contains("fatal") {
+        "warning-or-error"
+    } else {
+        ""
     }
 }
 
@@ -110,5 +140,47 @@ mod tests {
         assert_eq!(lines.len(), 2);
         assert_eq!(lines[0].message, "line two");
         assert_eq!(lines[1].message, "line three");
+    }
+
+    #[test]
+    fn never_keeps_complete_runtime_config_or_authorization_headers() {
+        let secrets = RedactionSecrets::new([
+            "48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD".into(),
+            "private-token-012345678901234567890".into(),
+        ]);
+        let config = r#"{"pools":[{"user":"48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD"}],"http":{"access-token":"private-token-012345678901234567890"}}"#;
+        assert_eq!(
+            secrets.redact(config),
+            "[runtime configuration or authorization material omitted]"
+        );
+        assert_eq!(
+            secrets.redact("Authorization: Bearer private-token-012345678901234567890"),
+            "[runtime configuration or authorization material omitted]"
+        );
+    }
+
+    #[test]
+    fn copied_diagnostic_event_tail_contains_evidence_without_wallet_or_token() {
+        let wallet = "TEST_PUBLIC_WALLET_ADDRESS_ONLY_FOR_REDACTION_TEST";
+        let token = "private-token-012345678901234567890";
+        let mut ring = DiagnosticRing::new(
+            8,
+            1024,
+            RedactionSecrets::new([wallet.into(), token.into()]),
+        );
+        ring.push(
+            DiagnosticSource::Stderr,
+            &format!("HTTP API 127.0.0.1:18080 bind failed; wallet={wallet}; token={token}"),
+        );
+        let report_tail = ring
+            .snapshot()
+            .iter()
+            .map(|entry| entry.message.as_str())
+            .collect::<Vec<_>>()
+            .join("\n");
+        assert!(report_tail.contains("http-listener"));
+        assert!(report_tail.contains("18080"));
+        assert!(!report_tail.contains(wallet));
+        assert!(!report_tail.contains(token));
     }
 }

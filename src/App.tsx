@@ -44,6 +44,17 @@ function App() {
   const systemSnapshot = useSystemSnapshot();
   const [setup, setSetup] = useState<MiningReadiness | null>(null);
   const [session, setSession] = useState<MiningSessionStatus | null>(null);
+  const [diagnosticsMode, setDiagnosticsMode] = useState(() => localStorage.getItem("ember.diagnosticsMode") === "true");
+
+  function changeDiagnosticsMode(enabled: boolean) {
+    setDiagnosticsMode(enabled);
+    localStorage.setItem("ember.diagnosticsMode", String(enabled));
+  }
+
+  async function copyDiagnostics() {
+    const report = await invoke<string>("copy_diagnostics");
+    await navigator.clipboard.writeText(report);
+  }
 
   function acceptSetup(next: MiningReadiness) {
     setSetup(next);
@@ -115,9 +126,9 @@ function App() {
           <header className="page-heading"><h1>{current.label}</h1></header>
 
           {section === "overview" && <OverviewPage status={status} statusError={statusError} systemSnapshot={systemSnapshot} systemMetric={system} session={session} />}
-          {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} />}
+          {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} diagnosticsMode={diagnosticsMode} copyDiagnostics={() => void copyDiagnostics()} />}
           {section === "activity" && <ActivityPage />}
-          {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} />}
+          {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} />}
         </div>
       </main>
     </div>
@@ -179,7 +190,7 @@ function ActivityPage() {
   return <EmptyState icon={<ClockCounterClockwiseIcon weight="light" />} title="No activity yet" description="Mining sessions and other meaningful events will appear here." />;
 }
 
-function SettingsPage({ setup, editSetup }: { setup: MiningReadiness | null; editSetup: () => void }) {
+function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode }: { setup: MiningReadiness | null; editSetup: () => void; diagnosticsMode: boolean; setDiagnosticsMode: (enabled: boolean) => void }) {
   return (
     <>
       <section className="settings-section" aria-labelledby="settings-general"><h2 id="settings-general">Application</h2><SettingRow icon={<HouseIcon />} label="Appearance" description="Using Ember’s default appearance." state="Default" /><SettingRow icon={<BellSimpleIcon />} label="Notifications" description="No notifications configured." state="Off" /></section>
@@ -191,6 +202,7 @@ function SettingsPage({ setup, editSetup }: { setup: MiningReadiness | null; edi
         <button className="setup-engine-button" type="button" onClick={editSetup}>Edit wallet, pool and resources</button>
         <p className="info-detail settings-note">Changes require a fresh acknowledgement on the Mining page.</p>
       </section>
+      <section className="settings-section" aria-labelledby="settings-diagnostics"><h2 id="settings-diagnostics">Advanced / Diagnostics</h2><label className="diagnostics-toggle"><span><strong>Diagnostics mode</strong><small>Show sanitized startup evidence and enable Copy diagnostics.</small></span><input type="checkbox" checked={diagnosticsMode} onChange={(event) => setDiagnosticsMode(event.currentTarget.checked)} /></label></section>
     </>
   );
 }

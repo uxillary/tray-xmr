@@ -3,9 +3,11 @@ use super::domain::StartupTiming;
 use anyhow::{bail, Context, Result};
 use std::{
     fs::{self, OpenOptions},
-    io::Write,
+    io::{Read, Write},
     path::{Path, PathBuf},
-    process::Command,
+    process::{Command, Output, Stdio},
+    thread,
+    time::{Duration, Instant},
 };
 
 const SESSION_ID_BYTES: usize = 16;
@@ -168,11 +170,13 @@ fn apply_private_acl(path: &Path) -> Result<()> {
     let system32 = PathBuf::from(system_root).join("System32");
     let whoami = system32.join("whoami.exe");
     let icacls = system32.join("icacls.exe");
-    let output = Command::new(whoami)
-        .args(["/user", "/fo", "csv", "/nh"])
-        .env_clear()
-        .output()
-        .context("Could not resolve the current Windows user SID")?;
+    let output = run_bounded_output(
+        Command::new(whoami)
+            .args(["/user", "/fo", "csv", "/nh"])
+            .env_clear(),
+        Duration::from_secs(5),
+    )
+    .context("Could not resolve the current Windows user SID")?;
     if !output.status.success() {
         bail!("Could not resolve the current Windows user SID");
     }
@@ -194,19 +198,61 @@ fn apply_private_acl(path: &Path) -> Result<()> {
     let user_grant = format!("*{sid}:{inherit}F");
     let system_grant = format!("*S-1-5-18:{inherit}F");
     let admin_grant = format!("*S-1-5-32-544:{inherit}F");
-    let result = Command::new(icacls)
-        .arg(path)
-        .args(["/inheritance:r", "/grant:r"])
-        .arg(&user_grant)
-        .arg(system_grant)
-        .arg(admin_grant)
-        .env_clear()
-        .output()
-        .context("Could not restrict runtime storage permissions")?;
+    let result = run_bounded_output(
+        Command::new(icacls)
+            .arg(path)
+            .args(["/inheritance:r", "/grant:r"])
+            .arg(&user_grant)
+            .arg(system_grant)
+            .arg(admin_grant)
+            .env_clear(),
+        Duration::from_secs(5),
+    )
+    .context("Could not restrict runtime storage permissions")?;
     if !result.status.success() {
         bail!("Could not restrict runtime storage permissions");
     }
     Ok(())
+}
+
+fn run_bounded_output(command: &mut Command, timeout: Duration) -> Result<Output> {
+    command
+        .stdin(Stdio::null())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::null());
+    let mut child = command
+        .spawn()
+        .context("Could not start Windows permission command")?;
+    let deadline = Instant::now() + timeout;
+    let status = loop {
+        if let Some(status) = child.try_wait()? {
+            break status;
+        }
+        if Instant::now() >= deadline {
+            let _ = child.kill();
+            let kill_deadline = Instant::now() + Duration::from_secs(2);
+            while Instant::now() < kill_deadline {
+                if let Some(status) = child.try_wait()? {
+                    return Err(anyhow::anyhow!(
+                        "Windows permission command exceeded its time limit (exit code {:?})",
+                        status.code()
+                    ));
+                }
+                thread::sleep(Duration::from_millis(10));
+            }
+            bail!("Windows permission command did not stop within the bounded cleanup period");
+        }
+        thread::sleep(Duration::from_millis(10));
+    };
+    let mut stdout = Vec::new();
+    if let Some(mut pipe) = child.stdout.take() {
+        pipe.read_to_end(&mut stdout)?;
+    }
+    Ok(Output {
+        status,
+        stdout,
+        stderr: Vec::new(),
+    })
 }
 
 #[cfg(test)]
@@ -224,6 +270,28 @@ mod tests {
         ));
         fs::create_dir_all(&path).unwrap();
         path
+    }
+
+    #[test]
+    #[ignore]
+    fn fixture_runtime_hang() {
+        loop {
+            thread::sleep(Duration::from_secs(1));
+        }
+    }
+
+    #[test]
+    fn permission_commands_have_a_bounded_wait_and_cleanup() {
+        let mut command = Command::new(std::env::current_exe().unwrap());
+        command.args([
+            "--exact",
+            "mining::runtime::tests::fixture_runtime_hang",
+            "--ignored",
+            "--nocapture",
+        ]);
+        let started = Instant::now();
+        assert!(run_bounded_output(&mut command, Duration::from_millis(50)).is_err());
+        assert!(started.elapsed() < Duration::from_secs(2));
     }
 
     #[test]
