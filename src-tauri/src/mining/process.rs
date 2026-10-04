@@ -1,5 +1,5 @@
 use super::diagnostics::{DiagnosticRing, RedactionSecrets};
-use super::domain::StartupTiming;
+use super::domain::{CaptureHealth, StartupTiming};
 use super::domain::{DiagnosticSource, DiagnosticSummary, EngineError, EngineErrorKind};
 use std::ffi::OsString;
 use std::io::{self, Read};
@@ -23,6 +23,7 @@ pub struct SupervisedChild {
     #[cfg(windows)]
     child: WindowsChild,
     diagnostics: Arc<Mutex<DiagnosticRing>>,
+    capture_health: Arc<Mutex<CaptureHealth>>,
     readers: Vec<ReaderHandle>,
     startup_timings: Vec<StartupTiming>,
     #[cfg(windows)]
@@ -73,22 +74,26 @@ impl SupervisedChild {
             32 * 1024,
             redaction.clone(),
         )));
+        let capture_health = Arc::new(Mutex::new(CaptureHealth::default()));
         let stdout_reader = spawn_reader(
             stdout,
             DiagnosticSource::Stdout,
             Arc::clone(&diagnostics),
             redaction.clone(),
+            Arc::clone(&capture_health),
         );
         let stderr_reader = spawn_reader(
             stderr,
             DiagnosticSource::Stderr,
             Arc::clone(&diagnostics),
             redaction,
+            Arc::clone(&capture_health),
         );
 
         Ok(Self {
             child,
             diagnostics,
+            capture_health,
             readers: [stdout_reader, stderr_reader]
                 .into_iter()
                 .flatten()
@@ -116,6 +121,13 @@ impl SupervisedChild {
         self.diagnostics
             .lock()
             .map(|ring| ring.snapshot())
+            .unwrap_or_default()
+    }
+
+    pub fn capture_health(&self) -> CaptureHealth {
+        self.capture_health
+            .lock()
+            .map(|health| health.clone())
             .unwrap_or_default()
     }
 
@@ -283,10 +295,19 @@ fn spawn_reader(
     source: DiagnosticSource,
     ring: Arc<Mutex<DiagnosticRing>>,
     redaction: RedactionSecrets,
+    health: Arc<Mutex<CaptureHealth>>,
 ) -> Option<ReaderHandle> {
     stream.map(|mut stream| {
         let finished = Arc::new(AtomicBool::new(false));
         let reader_finished = Arc::clone(&finished);
+        let reader_health = Arc::clone(&health);
+        if let Ok(mut health) = health.lock() {
+            match source {
+                DiagnosticSource::Stdout => health.stdout_reader_started = true,
+                DiagnosticSource::Stderr => health.stderr_reader_started = true,
+                DiagnosticSource::Supervisor => {}
+            }
+        }
         let thread = thread::spawn(move || {
             struct MarkFinished(Arc<AtomicBool>);
             impl Drop for MarkFinished {
@@ -300,12 +321,19 @@ fn spawn_reader(
             let mut truncated = false;
             loop {
                 let count = match stream.read(&mut chunk) {
-                    Ok(0) | Err(_) => break,
+                    Ok(0) => {
+                        set_reader_eof(&reader_health, source);
+                        break;
+                    }
+                    Err(error) => {
+                        set_reader_error(&reader_health, source, error.kind());
+                        break;
+                    }
                     Ok(count) => count,
                 };
                 for byte in &chunk[..count] {
                     if *byte == b'\n' {
-                        push_line(&ring, source, &redaction, &line, truncated);
+                        push_line(&ring, &reader_health, source, &redaction, &line, truncated);
                         line.clear();
                         truncated = false;
                     } else if line.len() < MAX_CAPTURE_LINE {
@@ -316,7 +344,7 @@ fn spawn_reader(
                 }
             }
             if !line.is_empty() || truncated {
-                push_line(&ring, source, &redaction, &line, truncated);
+                push_line(&ring, &reader_health, source, &redaction, &line, truncated);
             }
         });
         ReaderHandle { thread, finished }
@@ -346,6 +374,7 @@ fn classify_windows_creation_error(code: u32) -> EngineError {
 
 fn push_line(
     ring: &Mutex<DiagnosticRing>,
+    health: &Mutex<CaptureHealth>,
     source: DiagnosticSource,
     redaction: &RedactionSecrets,
     bytes: &[u8],
@@ -356,6 +385,30 @@ fn push_line(
     let safe = redaction.redact(&format!("{line}{suffix}"));
     if let Ok(mut ring) = ring.lock() {
         ring.push(source, &safe);
+    }
+    if let Ok(mut health) = health.lock() {
+        health.sanitized_lines_observed = health.sanitized_lines_observed.saturating_add(1);
+    }
+}
+
+fn set_reader_eof(health: &Mutex<CaptureHealth>, source: DiagnosticSource) {
+    if let Ok(mut health) = health.lock() {
+        match source {
+            DiagnosticSource::Stdout => health.stdout_eof_observed = true,
+            DiagnosticSource::Stderr => health.stderr_eof_observed = true,
+            DiagnosticSource::Supervisor => {}
+        }
+    }
+}
+
+fn set_reader_error(health: &Mutex<CaptureHealth>, source: DiagnosticSource, kind: io::ErrorKind) {
+    if let Ok(mut health) = health.lock() {
+        let category = format!("{kind:?}");
+        match source {
+            DiagnosticSource::Stdout => health.stdout_read_error = Some(category),
+            DiagnosticSource::Stderr => health.stderr_read_error = Some(category),
+            DiagnosticSource::Supervisor => {}
+        }
     }
 }
 
@@ -565,7 +618,6 @@ fn spawn_suspended_in_job(
         .encode_wide()
         .chain(std::iter::once(0))
         .collect();
-    let env: [u16; 2] = [0, 0];
     let create_started = Instant::now();
     let created = unsafe {
         CreateProcessW(
@@ -575,7 +627,10 @@ fn spawn_suspended_in_job(
             std::ptr::null(),
             1,
             windows_creation_flags(),
-            env.as_ptr() as *const c_void,
+            // A null environment pointer inherits Ember's normal process
+            // environment. Passing an empty Unicode block can remove Windows
+            // networking/runtime variables from XMRig's process context.
+            std::ptr::null(),
             cwd.as_ptr(),
             &startup as *const STARTUPINFOEXW
                 as *const windows_sys::Win32::System::Threading::STARTUPINFOW,
@@ -781,12 +836,399 @@ mod tests {
         assert_ne!(flags & EXTENDED_STARTUPINFO_PRESENT, 0);
     }
 
+    #[cfg(windows)]
+    #[test]
+    fn windows_process_creation_inherits_environment_for_networking() {
+        // The production CreateProcessW call supplies null lpEnvironment so
+        // Windows inherits the current environment instead of an empty block.
+        let inherited_environment: *const std::ffi::c_void = std::ptr::null();
+        assert!(inherited_environment.is_null());
+        let current = std::env::vars_os().collect::<Vec<_>>();
+        assert!(!current.is_empty());
+        assert!(std::env::var_os("SystemRoot").is_some());
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn windows_child_can_resolve_pool_host_with_inherited_environment() {
+        let addresses = std::net::ToSocketAddrs::to_socket_addrs(&("gulf.moneroocean.stream", 443));
+        assert!(addresses
+            .map(|mut resolved| resolved.next().is_some())
+            .unwrap_or(true));
+    }
+
+    #[cfg(windows)]
+    #[test]
+    #[ignore = "opt-in, non-mining XMRig launch-boundary diagnostic"]
+    fn verified_xmrig_production_launch_diagnostic() {
+        use std::io::Write;
+        use std::net::{TcpListener, TcpStream, ToSocketAddrs};
+
+        use crate::mining::config::{generate_json, tests::fixture_config, validate};
+        use crate::mining::integration_diagnostic::{build_candidate, DiagnosticVariant};
+        use crate::mining::xmrig::{LocalApiTransport, ReqwestLocalApiTransport};
+
+        let executable = std::env::var_os("EMBER_XMRIG_DIAGNOSTIC_PATH")
+            .map(PathBuf::from)
+            .expect("set EMBER_XMRIG_DIAGNOSTIC_PATH to the verified local XMRig executable");
+        assert!(executable.is_file(), "verified XMRig binary is unavailable");
+        let root = std::env::temp_dir().join(format!(
+            "ember-xmrig-diagnostic-{}-{}",
+            std::process::id(),
+            getrandom::u64().unwrap()
+        ));
+        std::fs::create_dir_all(&root).unwrap();
+
+        // Each variant gets a new port/token/config. A-C use only a reserved .invalid
+        // pool hostname; D uses example.com:1 only to check ordinary DNS and cannot
+        // speak Stratum. The CPU-enabled variant gets no pool job, so workers do not start.
+        let variants = [
+            (
+                "A-known-good",
+                false,
+                true,
+                "does-not-exist.invalid",
+                20128,
+                false,
+            ),
+            (
+                "B-production-settings-cpu-off",
+                false,
+                false,
+                "does-not-exist.invalid",
+                20128,
+                true,
+            ),
+            (
+                "C-production-quiet-cpu-on",
+                true,
+                false,
+                "does-not-exist.invalid",
+                20128,
+                true,
+            ),
+            // Port 1 is not a mining/Stratum service; this variant checks ordinary
+            // hostname resolution in the same supervised XMRig process context.
+            ("D-safe-public-dns", false, false, "example.com", 1, false),
+        ];
+        let mut failures = Vec::new();
+
+        for (variant, cpu_enabled, baseline, pool_host, pool_port, pool_tls) in variants {
+            let directory = root.join(variant);
+            std::fs::create_dir_all(&directory).unwrap();
+            let config_path = directory.join("diagnostic.json");
+            let shared_variant = match variant {
+                "A-known-good" => Some(DiagnosticVariant::Minimal),
+                "C-production-quiet-cpu-on" => Some(DiagnosticVariant::Quiet),
+                _ => None,
+            };
+            let (api_port, token, mut config) = if let Some(shared_variant) = shared_variant {
+                let mut candidate = build_candidate(shared_variant, 16).unwrap();
+                let values = (
+                    candidate.port,
+                    candidate.token.clone(),
+                    serde_json::from_str(&candidate.json).unwrap(),
+                );
+                candidate.release_port();
+                values
+            } else {
+                let reservation = TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, 0)).unwrap();
+                let api_port = reservation.local_addr().unwrap().port();
+                drop(reservation);
+                let mut token_bytes = [0u8; 32];
+                getrandom::fill(&mut token_bytes).unwrap();
+                let token = hex::encode(token_bytes);
+                let mut fixture = fixture_config();
+                fixture.pool.host = pool_host.to_owned();
+                fixture.pool.port = pool_port;
+                fixture.pool.tls = pool_tls;
+                fixture.worker_id = Some("diagnostic-worker".to_owned());
+                // Validation requires the production CPU profile. Toggle only the
+                // generated JSON for the CPU-disabled bisect variant afterward.
+                fixture.cpu.enabled = true;
+                fixture.cpu.max_threads_hint = 100;
+                fixture.cpu.threads = Some(4);
+                fixture.api.port = api_port;
+                fixture.api.access_token = token.clone();
+                let validated = validate(fixture, "6.26.0").unwrap();
+                let mut generated: serde_json::Value =
+                    serde_json::from_str(&generate_json(&validated).unwrap()).unwrap();
+                generated["cpu"]["enabled"] = serde_json::json!(cpu_enabled);
+                (api_port, token, generated)
+            };
+            if !baseline {
+                // XMRig's upstream donation is disabled only in these inert tests.
+                config["donate-level"] = serde_json::json!(0);
+            }
+            std::fs::File::create(&config_path)
+                .unwrap()
+                .write_all(config.to_string().as_bytes())
+                .unwrap();
+
+            let mut arguments = vec![
+                OsString::from("--config"),
+                config_path.as_os_str().to_owned(),
+            ];
+            if baseline {
+                arguments.extend([
+                    OsString::from("--no-color"),
+                    OsString::from("--no-cpu"),
+                    OsString::from("--no-title"),
+                ]);
+            }
+            let spawn = SupervisedChild::spawn(
+                &executable,
+                &arguments,
+                &directory,
+                RedactionSecrets::new([token.clone()]),
+            );
+            let Ok(mut child) = spawn else {
+                failures.push(format!("{variant}: process start failed"));
+                let _ = std::fs::remove_dir_all(&directory);
+                continue;
+            };
+
+            let deadline = Instant::now() + Duration::from_secs(8);
+            let mut listener = "timeout";
+            let mut reported_port = None;
+            while Instant::now() < deadline {
+                let output = child.diagnostics();
+                if let Some(line) = output.iter().find(|entry| {
+                    entry.message.contains("HTTP API")
+                        && entry.message.contains("127.0.0.1:")
+                        && !entry.message.contains("unknown error")
+                }) {
+                    listener = "started";
+                    reported_port = line
+                        .message
+                        .split("127.0.0.1:")
+                        .nth(1)
+                        .and_then(|rest| rest.split_whitespace().next())
+                        .and_then(|value| value.parse::<u16>().ok());
+                    break;
+                }
+                if output.iter().any(|entry| {
+                    entry.message.contains("HTTP API server failed to start")
+                        || entry.message.contains("HTTP API 127.0.0.1:")
+                            && entry.message.contains("unknown error")
+                }) {
+                    listener = "failed";
+                    break;
+                }
+                if child.try_wait().unwrap().is_some() {
+                    listener = "process-exited";
+                    break;
+                }
+                std::thread::sleep(Duration::from_millis(20));
+            }
+            let tcp = reported_port
+                .filter(|port| *port == api_port)
+                .is_some_and(|port| TcpStream::connect(("127.0.0.1", port)).is_ok());
+            let summary_result = if tcp {
+                ReqwestLocalApiTransport::new()
+                    .and_then(|mut client| client.get_summary("127.0.0.1", api_port, &token))
+            } else {
+                Err(crate::mining::xmrig::ApiClientError::ConnectionFailed)
+            };
+            let summary = summary_result.is_ok();
+            let summary_evidence = summary_result
+                .as_ref()
+                .map(|_| "success".to_owned())
+                .unwrap_or_else(|error| format!("{error:?}"));
+            let dns_deadline = Instant::now() + Duration::from_secs(3);
+            let dns_result = loop {
+                let output = child.diagnostics();
+                if output.iter().any(|entry| {
+                    entry.message.contains(pool_host)
+                        && entry.message.to_ascii_lowercase().contains("dns error")
+                }) {
+                    break "dns-failed";
+                }
+                if pool_host == "example.com"
+                    && output.iter().any(|entry| {
+                        entry.message.contains(pool_host)
+                            && entry.message.to_ascii_lowercase().contains("connect error")
+                    })
+                {
+                    break "dns-resolved-connect-failed";
+                }
+                if Instant::now() >= dns_deadline {
+                    break "not-observed";
+                }
+                std::thread::sleep(Duration::from_millis(20));
+            };
+            let _ = (pool_host, pool_port)
+                .to_socket_addrs()
+                .map(|mut addresses| addresses.next().is_some());
+            let events = child
+                .diagnostics()
+                .into_iter()
+                .filter(|entry| {
+                    entry.message.contains("HTTP API")
+                        || entry.message.contains("DNS error")
+                        || entry.message.contains("connect error")
+                        || entry.message.contains("RandomX")
+                        || entry.message.contains("READY")
+                })
+                .map(|entry| entry.message)
+                .take(6)
+                .collect::<Vec<_>>();
+            let stop = child.stop_with(|_| Ok(()), Duration::from_millis(300));
+            let cleanup = stop.is_ok() && child.try_wait().unwrap().is_some();
+            println!(
+                "DIAGNOSTIC variant={variant} cpu_enabled={cpu_enabled} process_started=true http={listener} tcp={tcp} authenticated_summary={summary_evidence} dns={dns_result} cleanup={cleanup} events={events:?}"
+            );
+            if listener != "started" || !tcp || !summary || !cleanup {
+                failures.push(format!(
+                    "{variant}: http={listener}, tcp={tcp}, authenticated_summary={summary}, cleanup={cleanup}"
+                ));
+            }
+            let dns_expected = if pool_host == "example.com" {
+                "dns-resolved-connect-failed"
+            } else {
+                "dns-failed"
+            };
+            if dns_result != dns_expected {
+                failures.push(format!(
+                    "{variant}: expected DNS evidence {dns_expected}, got {dns_result}"
+                ));
+            }
+            let _ = std::fs::remove_dir_all(&directory);
+        }
+
+        let dns_directory = root.join("supervised-dns");
+        std::fs::create_dir_all(&dns_directory).unwrap();
+        let test_binary = std::env::current_exe().unwrap();
+        let dns_arguments = [
+            OsString::from("--exact"),
+            OsString::from("mining::process::tests::fixture_safe_dns_entrypoint"),
+            OsString::from("--nocapture"),
+            OsString::from("--ignored"),
+        ];
+        let mut dns_child = SupervisedChild::spawn(
+            &test_binary,
+            &dns_arguments,
+            &dns_directory,
+            RedactionSecrets::new(std::iter::empty::<String>()),
+        )
+        .unwrap();
+        let dns_deadline = Instant::now() + Duration::from_secs(8);
+        let mut supervised_dns = "timeout";
+        while Instant::now() < dns_deadline {
+            let output = dns_child.diagnostics();
+            if let Some(result) = output
+                .iter()
+                .find(|entry| entry.message.contains("SAFE_DNS_RESULT"))
+            {
+                supervised_dns = if result.message.contains("resolved=true") {
+                    "resolved"
+                } else {
+                    "failed"
+                };
+                break;
+            }
+            if dns_child.try_wait().unwrap().is_some() {
+                break;
+            }
+            std::thread::sleep(Duration::from_millis(20));
+        }
+        let dns_cleanup = dns_child
+            .stop_with(|_| Ok(()), Duration::from_millis(300))
+            .is_ok()
+            && dns_child.try_wait().unwrap().is_some();
+        println!(
+            "DIAGNOSTIC variant=E-supervised-safe-dns host=gulf.moneroocean.stream socket_opened=false result={supervised_dns} cleanup={dns_cleanup}"
+        );
+        if !dns_cleanup {
+            failures.push("E-supervised-safe-dns: child cleanup failed".to_owned());
+        }
+
+        let tcp_directory = root.join("supervised-safe-tcp");
+        std::fs::create_dir_all(&tcp_directory).unwrap();
+        let tcp_arguments = [
+            OsString::from("--exact"),
+            OsString::from("mining::process::tests::fixture_safe_tcp_entrypoint"),
+            OsString::from("--nocapture"),
+            OsString::from("--ignored"),
+        ];
+        let mut tcp_child = SupervisedChild::spawn(
+            &test_binary,
+            &tcp_arguments,
+            &tcp_directory,
+            RedactionSecrets::new(std::iter::empty::<String>()),
+        )
+        .unwrap();
+        let tcp_deadline = Instant::now() + Duration::from_secs(5);
+        let mut safe_tcp = "timeout";
+        while Instant::now() < tcp_deadline {
+            let output = tcp_child.diagnostics();
+            if let Some(result) = output
+                .iter()
+                .find(|entry| entry.message.contains("SAFE_TCP_RESULT"))
+            {
+                safe_tcp = if result.message.contains("connected=true") {
+                    "connected"
+                } else {
+                    "failed"
+                };
+                break;
+            }
+            if tcp_child.try_wait().unwrap().is_some() {
+                break;
+            }
+            std::thread::sleep(Duration::from_millis(20));
+        }
+        let tcp_cleanup = tcp_child
+            .stop_with(|_| Ok(()), Duration::from_millis(300))
+            .is_ok()
+            && tcp_child.try_wait().unwrap().is_some();
+        println!(
+            "DIAGNOSTIC variant=F-supervised-safe-tcp host=example.com:443 application_data_sent=false result={safe_tcp} cleanup={tcp_cleanup}"
+        );
+        if !tcp_cleanup {
+            failures.push("F-supervised-safe-tcp: child cleanup failed".to_owned());
+        }
+
+        std::fs::remove_dir_all(&root).unwrap();
+        assert!(failures.is_empty(), "diagnostic failures: {failures:?}");
+    }
+
+    #[cfg(windows)]
+    #[test]
+    #[ignore = "child entrypoint for the opt-in supervised DNS diagnostic"]
+    fn fixture_safe_dns_entrypoint() {
+        use std::net::ToSocketAddrs;
+
+        let resolved = ("gulf.moneroocean.stream", 443)
+            .to_socket_addrs()
+            .map(|mut addresses| addresses.next().is_some())
+            .unwrap_or(false);
+        println!("SAFE_DNS_RESULT resolved={resolved}");
+    }
+
+    #[cfg(windows)]
+    #[test]
+    #[ignore = "child entrypoint for the opt-in safe TCP diagnostic"]
+    fn fixture_safe_tcp_entrypoint() {
+        use std::net::{TcpStream, ToSocketAddrs};
+
+        let connected = ("example.com", 443)
+            .to_socket_addrs()
+            .ok()
+            .and_then(|mut addresses| addresses.next())
+            .is_some_and(|address| {
+                TcpStream::connect_timeout(&address, Duration::from_secs(2)).is_ok()
+            });
+        println!("SAFE_TCP_RESULT connected={connected}");
+    }
+
     #[test]
     #[ignore]
     fn fixture_process_entrypoint() {
         // Invoked only as a child test-harness process by the tests below.
         use std::io::Read;
-        println!("fixture TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE fixture-private-token C:\\Users\\Fixture\\AppData");
+        println!("\u{1b}[32mHTTP API 127.0.0.1:58670 bind failed\u{1b}[0m TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE fixture-private-token C:\\Users\\Fixture\\AppData");
+        eprintln!("RandomX initialization warning TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE fixture-private-token");
         let mut stdin = io::stdin();
         let mut buffer = [0u8; 16];
         while stdin.read(&mut buffer).unwrap_or(0) > 0 {}
@@ -914,6 +1356,63 @@ mod tests {
         let _forced_status = status;
         assert_ne!(pid, forced.id());
         assert!(forced.try_wait().unwrap().is_some());
+    }
+
+    #[test]
+    fn captures_sanitized_stdout_and_stderr_while_child_is_alive_then_stops_cleanly() {
+        let mut child = spawn_fixture();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        let (stdout_seen, stderr_seen) = loop {
+            let diagnostics = child.diagnostics();
+            let stdout_seen = diagnostics.iter().any(|entry| {
+                entry.source == super::DiagnosticSource::Stdout
+                    && entry
+                        .message
+                        .contains("HTTP API 127.0.0.1:58670 bind failed")
+            });
+            let stderr_seen = diagnostics.iter().any(|entry| {
+                entry.source == super::DiagnosticSource::Stderr
+                    && entry.message.contains("RandomX initialization warning")
+            });
+            if stdout_seen && stderr_seen {
+                break (stdout_seen, stderr_seen);
+            }
+            assert!(
+                Instant::now() < deadline,
+                "output readers did not capture fixture output while it remained alive"
+            );
+            assert!(
+                child.try_wait().unwrap().is_none(),
+                "fixture exited before live output was observed"
+            );
+            std::thread::sleep(Duration::from_millis(5));
+        };
+        assert!(stdout_seen && stderr_seen);
+        let live_health = child.capture_health();
+        assert!(live_health.stdout_reader_started && live_health.stderr_reader_started);
+        assert!(live_health.sanitized_lines_observed >= 2);
+        assert!(!live_health.stdout_eof_observed && !live_health.stderr_eof_observed);
+        let live = child
+            .diagnostics()
+            .iter()
+            .map(|line| line.message.as_str())
+            .collect::<Vec<_>>()
+            .join("\n");
+        assert!(!live.contains("TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE"));
+        assert!(!live.contains("fixture-private-token"));
+        assert!(!live.contains("\u{1b}"));
+
+        child
+            .stop_with(
+                |child| {
+                    child.close_stdin();
+                    Ok(())
+                },
+                Duration::from_secs(1),
+            )
+            .unwrap();
+        let stopped_health = child.capture_health();
+        assert!(stopped_health.stdout_eof_observed && stopped_health.stderr_eof_observed);
     }
 
     #[cfg(windows)]

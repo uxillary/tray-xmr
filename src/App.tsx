@@ -19,6 +19,17 @@ import type { SystemSnapshot } from "./types/system";
 import "./App.css";
 
 type Section = "overview" | "mining" | "activity" | "settings";
+type TestMark = "notRun" | "running" | "passed" | "failed" | "cancelled";
+type IntegrationTestStatus = {
+  running: boolean;
+  currentVariant: string | null;
+  engineVerification: TestMark;
+  minimalApiTest: TestMark;
+  quietProfileApiTest: TestMark;
+  cleanup: TestMark;
+  details: string[];
+  reportAvailable: boolean;
+};
 
 const sections: { id: Section; label: string; icon: ReactNode }[] = [
   { id: "overview", label: "Overview", icon: <HouseIcon weight="regular" /> },
@@ -45,6 +56,8 @@ function App() {
   const [setup, setSetup] = useState<MiningReadiness | null>(null);
   const [session, setSession] = useState<MiningSessionStatus | null>(null);
   const [diagnosticsMode, setDiagnosticsMode] = useState(() => localStorage.getItem("ember.diagnosticsMode") === "true");
+  const [integrationTest, setIntegrationTest] = useState<IntegrationTestStatus | null>(null);
+  const [integrationTestError, setIntegrationTestError] = useState<string | null>(null);
 
   function changeDiagnosticsMode(enabled: boolean) {
     setDiagnosticsMode(enabled);
@@ -54,6 +67,55 @@ function App() {
   async function copyDiagnostics() {
     const report = await invoke<string>("copy_diagnostics");
     await navigator.clipboard.writeText(report);
+  }
+
+  async function refreshIntegrationTest() {
+    try { setIntegrationTest(await invoke<IntegrationTestStatus>("xmrig_integration_test_status")); }
+    catch { setIntegrationTest(null); }
+  }
+
+  async function startIntegrationTest() {
+    setIntegrationTestError(null);
+    setIntegrationTest((current) => ({
+      running: true,
+      currentVariant: "Preparing",
+      engineVerification: "running",
+      minimalApiTest: "notRun",
+      quietProfileApiTest: "notRun",
+      cleanup: "notRun",
+      details: current?.details ?? [],
+      reportAvailable: false,
+    }));
+    try {
+      setIntegrationTest(await invoke<IntegrationTestStatus>("start_xmrig_integration_test"));
+    } catch (failure) {
+      setIntegrationTestError(typeof failure === "string" ? failure : "The XMRig integration test could not start.");
+      await refreshIntegrationTest();
+    } finally {
+      await refreshSetup();
+    }
+  }
+
+  async function stopIntegrationTest() {
+    setIntegrationTestError(null);
+    try {
+      setIntegrationTest(await invoke<IntegrationTestStatus>("stop_xmrig_integration_test"));
+    } catch (failure) {
+      setIntegrationTestError(typeof failure === "string" ? failure : "The integration test is still stopping.");
+      await refreshIntegrationTest();
+    } finally {
+      await refreshSetup();
+    }
+  }
+
+  async function copyIntegrationReport() {
+    try {
+      const report = await invoke<string>("copy_xmrig_integration_report");
+      await navigator.clipboard.writeText(report);
+      setIntegrationTestError(null);
+    } catch (failure) {
+      setIntegrationTestError(typeof failure === "string" ? failure : "The diagnostic report could not be copied.");
+    }
   }
 
   function acceptSetup(next: MiningReadiness) {
@@ -68,7 +130,7 @@ function App() {
   }
 
   async function refreshSession() {
-    try { setSession(await invoke<MiningSessionStatus>("mining_status")); }
+    try { setSession(await invoke<MiningSessionStatus>("mining_status", { diagnosticsMode })); }
     catch { setSession(null); }
   }
 
@@ -80,7 +142,14 @@ function App() {
     void refreshSession();
     const timer = window.setInterval(() => { void refreshSession(); }, 1000);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [diagnosticsMode]);
+
+  useEffect(() => {
+    if (!diagnosticsMode) return;
+    void refreshIntegrationTest();
+    const timer = window.setInterval(() => { void refreshIntegrationTest(); }, 500);
+    return () => window.clearInterval(timer);
+  }, [diagnosticsMode]);
 
   useEffect(() => {
     if (section === "mining" && (session?.state === "error" || session?.state === "stopped")) void refreshSetup();
@@ -126,9 +195,9 @@ function App() {
           <header className="page-heading"><h1>{current.label}</h1></header>
 
           {section === "overview" && <OverviewPage status={status} statusError={statusError} systemSnapshot={systemSnapshot} systemMetric={system} session={session} />}
-          {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} diagnosticsMode={diagnosticsMode} copyDiagnostics={() => void copyDiagnostics()} />}
+          {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} diagnosticsMode={diagnosticsMode} diagnosticRunning={integrationTest?.running ?? false} copyDiagnostics={() => void copyDiagnostics()} />}
           {section === "activity" && <ActivityPage />}
-          {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} />}
+          {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} miningBusy={session !== null && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state))} integrationTest={integrationTest} integrationTestError={integrationTestError} startIntegrationTest={() => void startIntegrationTest()} stopIntegrationTest={() => void stopIntegrationTest()} copyIntegrationReport={() => void copyIntegrationReport()} />}
         </div>
       </main>
     </div>
@@ -190,7 +259,7 @@ function ActivityPage() {
   return <EmptyState icon={<ClockCounterClockwiseIcon weight="light" />} title="No activity yet" description="Mining sessions and other meaningful events will appear here." />;
 }
 
-function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode }: { setup: MiningReadiness | null; editSetup: () => void; diagnosticsMode: boolean; setDiagnosticsMode: (enabled: boolean) => void }) {
+function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode, miningBusy, integrationTest, integrationTestError, startIntegrationTest, stopIntegrationTest, copyIntegrationReport }: { setup: MiningReadiness | null; editSetup: () => void; diagnosticsMode: boolean; setDiagnosticsMode: (enabled: boolean) => void; miningBusy: boolean; integrationTest: IntegrationTestStatus | null; integrationTestError: string | null; startIntegrationTest: () => void; stopIntegrationTest: () => void; copyIntegrationReport: () => void }) {
   return (
     <>
       <section className="settings-section" aria-labelledby="settings-general"><h2 id="settings-general">Application</h2><SettingRow icon={<HouseIcon />} label="Appearance" description="Using Ember’s default appearance." state="Default" /><SettingRow icon={<BellSimpleIcon />} label="Notifications" description="No notifications configured." state="Off" /></section>
@@ -202,9 +271,33 @@ function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode }:
         <button className="setup-engine-button" type="button" onClick={editSetup}>Edit wallet, pool and resources</button>
         <p className="info-detail settings-note">Changes require a fresh acknowledgement on the Mining page.</p>
       </section>
-      <section className="settings-section" aria-labelledby="settings-diagnostics"><h2 id="settings-diagnostics">Advanced / Diagnostics</h2><label className="diagnostics-toggle"><span><strong>Diagnostics mode</strong><small>Show sanitized startup evidence and enable Copy diagnostics.</small></span><input type="checkbox" checked={diagnosticsMode} onChange={(event) => setDiagnosticsMode(event.currentTarget.checked)} /></label></section>
+      <section className="settings-section" aria-labelledby="settings-diagnostics">
+        <h2 id="settings-diagnostics">Advanced / Diagnostics</h2>
+        <label className="diagnostics-toggle"><span><strong>Diagnostics mode</strong><small>Show sanitized startup evidence and enable controlled diagnostic tools.</small></span><input type="checkbox" checked={diagnosticsMode} disabled={integrationTest?.running ?? false} onChange={(event) => setDiagnosticsMode(event.currentTarget.checked)} /></label>
+        {diagnosticsMode && <div className="integration-test-panel" aria-live="polite">
+          <div><strong>XMRig integration test</strong><p>Starts XMRig briefly using a safe test configuration. It does not use your wallet, connect to a mining pool, or mine.</p></div>
+          {!integrationTest?.running && <button className="setup-engine-button" type="button" disabled={miningBusy} onClick={startIntegrationTest}>Test XMRig integration</button>}
+          {miningBusy && !integrationTest?.running && <p>Stop the active mining session before running this test.</p>}
+          {integrationTest?.running && <button className="setup-engine-button stop-mining-button" type="button" onClick={stopIntegrationTest}>Stop test</button>}
+          {integrationTest?.running && <p className="integration-test-progress">Running {integrationTest.currentVariant ?? "diagnostic"}…</p>}
+          {integrationTest && integrationTest.engineVerification !== "notRun" && <div className="integration-test-result">
+            <h3>XMRig integration test</h3>
+            <TestResultRow label="Engine verification" mark={integrationTest.engineVerification} />
+            <TestResultRow label="Minimal API test" mark={integrationTest.minimalApiTest} />
+            <TestResultRow label="Quiet-profile API test" mark={integrationTest.quietProfileApiTest} />
+            <TestResultRow label="Cleanup" mark={integrationTest.cleanup} />
+            {integrationTest.reportAvailable && <button className="text-action" type="button" onClick={copyIntegrationReport}>Copy diagnostic report</button>}
+            {integrationTest.details.length > 0 && <details><summary>Show sanitized details</summary><ul>{integrationTest.details.map((detail, index) => <li key={`${index}-${detail}`}>{detail}</li>)}</ul></details>}
+          </div>}
+          {integrationTestError && <p className="field-error" role="alert">{integrationTestError}</p>}
+        </div>}
+      </section>
     </>
   );
+}
+function TestResultRow({ label, mark }: { label: string; mark: TestMark }) {
+  const labels: Record<TestMark, string> = { notRun: "Not run", running: "Running", passed: "Passed", failed: "Failed", cancelled: "Cancelled" };
+  return <div className="integration-test-row"><span>{label}</span><strong className={`test-mark-${mark}`}>{labels[mark]}</strong></div>;
 }
 function SettingRow({ icon, label, description, state }: { icon: ReactNode; label: string; description: string; state: string }) {
   return <div className="setting-row"><span className="setting-icon" aria-hidden="true">{icon}</span><span className="setting-copy"><strong>{label}</strong><span>{description}</span></span><span className="setting-status">{state}</span></div>;

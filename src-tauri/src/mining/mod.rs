@@ -1,6 +1,8 @@
 pub mod config;
 pub mod diagnostics;
 pub mod domain;
+#[cfg(windows)]
+pub mod integration_diagnostic;
 pub mod process;
 #[cfg(windows)]
 pub mod provisioner;

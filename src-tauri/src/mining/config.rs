@@ -137,18 +137,33 @@ pub(crate) fn valid_host(host: &str) -> bool {
 }
 
 pub fn generate_json(config: &ValidatedMiningConfig) -> Result<String, EngineError> {
+    generate_json_with_options(config, true, 1)
+}
+
+pub(crate) fn generate_diagnostic_json(
+    config: &ValidatedMiningConfig,
+    cpu_enabled: bool,
+) -> Result<String, EngineError> {
+    generate_json_with_options(config, cpu_enabled, 0)
+}
+
+fn generate_json_with_options(
+    config: &ValidatedMiningConfig,
+    cpu_enabled: bool,
+    donate_level: u8,
+) -> Result<String, EngineError> {
     let settings = &config.config;
     let generated = XmrigConfig {
         autosave: false,
         background: false,
         colors: false,
-        donate_level: 1,
+        donate_level,
         randomx: serde_json::json!({"init": settings.cpu.threads.map(|n| n as i64).unwrap_or(-1), "1gb-pages": false, "rdmsr": false, "wrmsr": false, "cache_qos": false}),
         opencl: false,
         cuda: false,
         watch: false,
         cpu: XmrigCpu {
-            enabled: settings.cpu.enabled,
+            enabled: cpu_enabled,
             max_threads_hint: settings.cpu.max_threads_hint,
             yield_threads: true,
             huge_pages: false,

@@ -17,6 +17,7 @@ pub struct RuntimeSession {
     directory: PathBuf,
     config: PathBuf,
     creation_timings: Vec<StartupTiming>,
+    cleaned: bool,
 }
 
 impl RuntimeSession {
@@ -57,6 +58,7 @@ impl RuntimeSession {
                 directory: directory.clone(),
                 config,
                 creation_timings: creation_timings.clone(),
+                cleaned: false,
             })
         })();
         if result.is_err() {
@@ -76,6 +78,12 @@ impl RuntimeSession {
     pub fn creation_timings(&self) -> &[StartupTiming] {
         &self.creation_timings
     }
+
+    pub fn cleanup(mut self) -> Result<()> {
+        remove_session_safely(&self.root, &self.directory)?;
+        self.cleaned = true;
+        Ok(())
+    }
 }
 
 fn timing(stage: &str, started: std::time::Instant) -> StartupTiming {
@@ -87,7 +95,9 @@ fn timing(stage: &str, started: std::time::Instant) -> StartupTiming {
 
 impl Drop for RuntimeSession {
     fn drop(&mut self) {
-        let _ = remove_session_safely(&self.root, &self.directory);
+        if !self.cleaned {
+            let _ = remove_session_safely(&self.root, &self.directory);
+        }
     }
 }
 

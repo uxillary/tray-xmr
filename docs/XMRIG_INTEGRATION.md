@@ -1,6 +1,6 @@
 # XMRig Integration Research and Contract
 
-**Status:** M03C.2B controlled launch path implemented and release/no-bundle validated (2026-09-30). The first actual session awaits the owner's click. XMRig v6.26.0 is installed from the verified official release. Public-release legal review remains open.
+**Status:** M03C.2B controlled launch path is implemented. The owner-machine production Start remains under investigation after XMRig stayed alive but failed to open its loopback HTTP API. A focused, non-mining same-machine integration test is now available in Diagnostics Mode. XMRig v6.26.0 is installed from the verified official release. Public-release legal review remains open.
 
 ## Decision summary
 
@@ -35,6 +35,12 @@ M03C.2A generated disposable candidates in memory only. M03C.2B now creates a fr
 `provisioner::verify_installation` is the single verifier used by readiness, Start preflight, and the immediate pre-spawn check. It validates the non-reparse install root, the strict `ember-verification.json` field set (the format has no separate schema-version field), pinned v6.26.0 / Windows x64 metadata, archive digest, official release URL, signer fingerprint, nonzero persisted install time, and a fresh executable SHA-256. Failure is typed as missing, corrupt, outdated, unsafe, unreadable, or digest-mismatched metadata/install state and keeps Start disabled; owner messages request Repair where appropriate.
 
 The persisted release identifier is deliberately lowercase `xmrig`. Only after the verifier returns `VerifiedInstallation` does its adapter conversion map that persisted ID to the canonical display/adapter identity `XMRig`, carrying the pinned archive digest and fresh verification timestamp. This fixes the M03C.2B first-start regression: the adapter previously compared the persisted lowercase ID directly to its title-case label and misleadingly reported unverified metadata, even though readiness and the fresh executable/provenance checks had passed. No installed binary or sidecar is trusted from that label conversion alone.
+
+### Owner-machine integration diagnostic
+
+Diagnostics Mode exposes an explicit **Test XMRig integration** action under Settings → Advanced / Diagnostics. It reuses the shared installation verifier, private runtime storage, reserve/drop port handoff, redirected handles and production `SupervisedChild::spawn` boundary. It sequentially runs a CPU-disabled minimal configuration and a production-shaped Quiet configuration capped at four threads. Both use a fresh restricted loopback API token, a fixed fake diagnostic identity, `does-not-exist.invalid`, disabled GPU backends and donation level zero. No persisted owner wallet, worker or pool enters either configuration, and no pool job can arrive.
+
+The bounded result records listener, TCP, authenticated `/2/summary`, expected safe DNS, memory and cleanup evidence. Copied reports omit the token and private paths and retain only relevant sanitized XMRig events. Test cancellation and Ember Quit cancel the run, close Job Object ownership and remove the ephemeral runtime. Production Start and this diagnostic are mutually exclusive.
 
 **Contribution decision A:** a future controlled development session may run without Ember's contribution, visibly labeled as such. This grants no current mining authorization or public-release approval. UI discloses CPU/electricity use, performance effects, uncertain rewards, wallet/pool/profile/XMRig selections, separate upstream 1% donation, planned 5% Ember contribution with no active mechanism, and no automatic mining on launch. Three explicit reviews cover risks, selections and donation/automatic-start policy. Rust rejects incomplete/stale reviews; wallet/pool/profile edits invalidate acknowledgement, which can be withdrawn. No contribution mechanism or developer destination exists.
 

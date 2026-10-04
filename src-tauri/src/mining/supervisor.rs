@@ -79,17 +79,27 @@ impl EngineSupervisor {
     pub fn status(&self) -> EngineStatus {
         self.inner
             .lock()
-            .map(|inner| EngineStatus {
-                availability: inner.availability.clone(),
-                state: inner.lifecycle.state(),
-                process_id: inner.process.as_ref().map(SupervisedChild::id),
-                error: inner.error.clone(),
-                diagnostics: inner.diagnostics.clone(),
-                startup_stage: inner.startup_stage,
-                startup_elapsed_ms: inner
-                    .startup_started
-                    .map(|at| at.elapsed().as_millis().min(u64::MAX as u128) as u64),
-                startup_timings: inner.startup_timings.clone(),
+            .map(|inner| {
+                let mut diagnostics = inner.diagnostics.clone();
+                let capture_health = if let Some(process) = inner.process.as_ref() {
+                    diagnostics.extend(process.diagnostics());
+                    process.capture_health()
+                } else {
+                    super::domain::CaptureHealth::default()
+                };
+                EngineStatus {
+                    availability: inner.availability.clone(),
+                    state: inner.lifecycle.state(),
+                    process_id: inner.process.as_ref().map(SupervisedChild::id),
+                    error: inner.error.clone(),
+                    diagnostics,
+                    capture_health,
+                    startup_stage: inner.startup_stage,
+                    startup_elapsed_ms: inner
+                        .startup_started
+                        .map(|at| at.elapsed().as_millis().min(u64::MAX as u128) as u64),
+                    startup_timings: inner.startup_timings.clone(),
+                }
             })
             .unwrap_or_else(|_| EngineStatus {
                 availability: EngineAvailability::Unavailable,
@@ -100,6 +110,7 @@ impl EngineSupervisor {
                     message: "Mining supervisor state is unavailable".into(),
                 }),
                 diagnostics: Vec::new(),
+                capture_health: super::domain::CaptureHealth::default(),
                 startup_stage: None,
                 startup_elapsed_ms: None,
                 startup_timings: Vec::new(),
@@ -906,6 +917,65 @@ mod tests {
         }
     }
 
+    #[test]
+    fn status_snapshots_live_output_and_capture_health_before_child_exit() {
+        let path = std::env::current_exe().unwrap();
+        let mut child = spawn_test_child(
+            &path,
+            &[],
+            &std::env::current_dir().unwrap(),
+            RedactionSecrets::new([
+                "TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE".into(),
+                "fixture-private-token".into(),
+            ]),
+        )
+        .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            let diagnostics = child.diagnostics();
+            let stdout_seen = diagnostics.iter().any(|entry| {
+                entry.source == crate::mining::domain::DiagnosticSource::Stdout
+                    && entry
+                        .message
+                        .contains("HTTP API 127.0.0.1:58670 bind failed")
+            });
+            let stderr_seen = diagnostics.iter().any(|entry| {
+                entry.source == crate::mining::domain::DiagnosticSource::Stderr
+                    && entry.message.contains("RandomX initialization warning")
+            });
+            if stdout_seen && stderr_seen {
+                break;
+            }
+            assert!(child.try_wait().unwrap().is_none());
+            assert!(
+                Instant::now() < deadline,
+                "fixture output readers did not observe both streams"
+            );
+            std::thread::sleep(Duration::from_millis(5));
+        }
+        assert!(child.try_wait().unwrap().is_none());
+        let supervisor = EngineSupervisor::new();
+        supervisor.inner.lock().unwrap().process = Some(child);
+        let snapshot = supervisor.status();
+        assert!(snapshot.capture_health.stdout_reader_started);
+        assert!(snapshot.capture_health.stderr_reader_started);
+        assert!(snapshot.capture_health.sanitized_lines_observed >= 2);
+        assert!(snapshot.diagnostics.iter().any(|entry| {
+            entry.source == crate::mining::domain::DiagnosticSource::Stdout
+                && entry
+                    .message
+                    .contains("HTTP API 127.0.0.1:58670 bind failed")
+        }));
+        assert!(snapshot.diagnostics.iter().any(|entry| {
+            entry.source == crate::mining::domain::DiagnosticSource::Stderr
+                && entry.message.contains("RandomX initialization warning")
+        }));
+        assert!(snapshot.diagnostics.iter().all(|entry| !entry
+            .message
+            .contains("TEST_ONLY_PUBLIC_ADDRESS_DO_NOT_USE")
+            && !entry.message.contains("fixture-private-token")));
+    }
+
     fn spawn_test_child(
         _path: &Path,
         _args: &[OsString],
@@ -1279,7 +1349,18 @@ mod tests {
             .unwrap();
         assert_eq!(supervisor.status().state, EngineLifecycleState::Mining);
         std::thread::sleep(Duration::from_millis(120));
-        assert_eq!(supervisor.poll_unexpected_exit().unwrap(), Some(0));
+        let deadline = Instant::now() + Duration::from_secs(2);
+        let exit = loop {
+            if let Some(code) = supervisor.poll_unexpected_exit().unwrap() {
+                break Some(code);
+            }
+            assert!(
+                Instant::now() < deadline,
+                "fixture did not exit within the expected bound"
+            );
+            std::thread::sleep(Duration::from_millis(10));
+        };
+        assert_eq!(exit, Some(0));
         assert_eq!(supervisor.status().state, EngineLifecycleState::Error);
         assert_eq!(supervisor.poll_unexpected_exit().unwrap(), None);
     }

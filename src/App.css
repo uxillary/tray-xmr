@@ -287,6 +287,22 @@ h1,h2,h3 { font-family: "Segoe UI", "Aptos", sans-serif; }
 .diagnostics-toggle span { display: grid; gap: 4px; }
 .diagnostics-toggle strong { color: var(--text-primary); font-size: 13px; }
 .diagnostics-toggle small { color: var(--text-muted); font-size: 12px; }
+.integration-test-panel { display: grid; gap: 12px; padding: 16px 0 17px; border-top: 1px solid #282d29; }
+.integration-test-panel > div:first-child { display: grid; gap: 5px; }
+.integration-test-panel > div:first-child > strong { color: var(--text-primary); font-size: 13px; }
+.integration-test-panel p { margin: 0; color: var(--text-muted); font-size: 12px; line-height: 1.55; }
+.integration-test-panel > .setup-engine-button { justify-self: start; }
+.integration-test-progress { color: var(--text-secondary) !important; }
+.integration-test-result { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #151916; }
+.integration-test-result h3 { margin: 0 0 3px; color: var(--text-primary); font-size: 14px; }
+.integration-test-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--text-secondary); font-size: 12px; }
+.integration-test-row strong { font-size: 11px; }
+.test-mark-passed { color: var(--success); }
+.test-mark-failed, .test-mark-cancelled { color: var(--warning); }
+.test-mark-running { color: #c1926d; }
+.test-mark-notRun { color: var(--text-muted); }
+.integration-test-result details { color: var(--text-muted); font-size: 11px; }
+.integration-test-result details ul { display: grid; gap: 5px; margin: 9px 0 0; padding-left: 18px; }
 .settings-section > h2 { margin: 0 0 6px; color: #e0e4dd; font-size: 15px; font-weight: 600; }
 .setting-row { display: flex; min-height: 66px; align-items: center; gap: 12px; border-top: 1px solid #282d29; }
 .setting-icon { display: grid; width: 30px; height: 30px; flex: 0 0 30px; place-items: center; color: #9aa595; }

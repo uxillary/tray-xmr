@@ -168,6 +168,7 @@ impl MiningEngine for XmrigAdapter {
             process_id: None,
             error: None,
             diagnostics: Vec::new(),
+            capture_health: super::domain::CaptureHealth::default(),
             startup_stage: None,
             startup_elapsed_ms: None,
             startup_timings: Vec::new(),
@@ -537,7 +538,9 @@ mod tests {
             crate::mining::domain::DiagnosticSource::Stderr,
             &format!("Authorization Bearer {expected_token}"),
         );
-        assert!(diagnostics.snapshot()[0].message.contains("[REDACTED]"));
+        assert!(diagnostics.snapshot()[0]
+            .message
+            .contains("authorization material omitted"));
         assert!(!format!("{:?}", ApiClientError::Unauthorized).contains(&expected_token));
         assert_eq!(
             client.get_summary("localhost", port, &expected_token),

@@ -25,14 +25,18 @@ impl RedactionSecrets {
     }
 
     pub fn redact(&self, input: &str) -> String {
-        let mut safe = input.chars().take(MAX_LINE_BYTES).collect::<String>();
+        let mut safe = strip_terminal_controls(input)
+            .chars()
+            .take(MAX_LINE_BYTES)
+            .collect::<String>();
         for secret in &self.values {
             safe = safe.replace(secret, "[REDACTED]");
         }
         let lower = safe.to_ascii_lowercase();
         if (safe.trim_start().starts_with('{') && safe.contains("\"pools\""))
             || lower.contains("\"access-token\"")
-            || lower.contains("authorization: bearer ")
+            || lower.contains("authorization:")
+            || lower.contains("authorization ")
         {
             return "[runtime configuration or authorization material omitted]".into();
         }
@@ -44,6 +48,57 @@ impl RedactionSecrets {
         secrets.extend(values.into_iter().filter(|value| !value.is_empty()));
         Self { values: secrets }
     }
+}
+
+fn strip_terminal_controls(input: &str) -> String {
+    #[derive(Clone, Copy)]
+    enum EscapeState {
+        Text,
+        Escape,
+        Csi,
+        Osc,
+        OscEscape,
+    }
+    let mut state = EscapeState::Text;
+    let mut output = String::with_capacity(input.len());
+    for ch in input.chars() {
+        state = match state {
+            EscapeState::Text => match ch {
+                '\u{1b}' => EscapeState::Escape,
+                '\n' | '\r' => EscapeState::Text,
+                c if c.is_control() => EscapeState::Text,
+                c => {
+                    output.push(c);
+                    EscapeState::Text
+                }
+            },
+            EscapeState::Escape => match ch {
+                '[' => EscapeState::Csi,
+                ']' => EscapeState::Osc,
+                _ => EscapeState::Text,
+            },
+            EscapeState::Csi => {
+                if ('@'..='~').contains(&ch) {
+                    EscapeState::Text
+                } else {
+                    EscapeState::Csi
+                }
+            }
+            EscapeState::Osc => match ch {
+                '\u{7}' => EscapeState::Text,
+                '\u{1b}' => EscapeState::OscEscape,
+                _ => EscapeState::Osc,
+            },
+            EscapeState::OscEscape => {
+                if ch == '\\' {
+                    EscapeState::Text
+                } else {
+                    EscapeState::Osc
+                }
+            }
+        };
+    }
+    output
 }
 
 pub struct DiagnosticRing {
@@ -96,15 +151,39 @@ impl DiagnosticRing {
 
 fn classify_event(message: &str) -> &'static str {
     let lower = message.to_ascii_lowercase();
-    if lower.contains("http api") && (lower.contains("127.0.0.1") || lower.contains("listen")) {
-        "http-listener"
+    if lower.contains("http api") && lower.contains("127.0.0.1") {
+        if lower.contains("unknown error") || lower.contains("bind failed") {
+            "http-listener-bind-failed"
+        } else {
+            "http-listener-started"
+        }
+    } else if lower.contains("http api server failed to start") {
+        "http-server-failed"
     } else if lower.contains("config") && (lower.contains("error") || lower.contains("invalid")) {
         "config-error"
     } else if lower.contains("randomx") {
         "randomx"
-    } else if lower.contains("pool") && (lower.contains("connect") || lower.contains("resolve")) {
-        "pool-network"
-    } else if lower.contains("error") || lower.contains("failed") || lower.contains("fatal") {
+    } else if lower.contains("dns error") || lower.contains("name or service not known") {
+        "pool-dns-failed"
+    } else if lower.contains("pool") && lower.contains("tls") && lower.contains("error") {
+        "pool-tls-failed"
+    } else if lower.contains("pool") && lower.contains("auth") && lower.contains("reject") {
+        "pool-auth-rejected"
+    } else if lower.contains("new job from") {
+        "pool-job-received"
+    } else if lower.contains("pool") && lower.contains("connect") && lower.contains("error") {
+        "pool-tcp-failed"
+    } else if lower.contains("pool") && lower.contains("connect") {
+        "pool-connected-or-connecting"
+    } else if lower.contains("cpu")
+        && (lower.contains("backend") || lower.contains("thread") || lower.contains("ready"))
+    {
+        "cpu-backend"
+    } else if lower.contains("warning")
+        || lower.contains("error")
+        || lower.contains("failed")
+        || lower.contains("fatal")
+    {
         "warning-or-error"
     } else {
         ""
@@ -113,7 +192,7 @@ fn classify_event(message: &str) -> &'static str {
 
 #[cfg(test)]
 mod tests {
-    use super::{DiagnosticRing, RedactionSecrets};
+    use super::{strip_terminal_controls, DiagnosticRing, RedactionSecrets};
     use crate::mining::domain::DiagnosticSource;
 
     #[test]
@@ -182,5 +261,46 @@ mod tests {
         assert!(report_tail.contains("18080"));
         assert!(!report_tail.contains(wallet));
         assert!(!report_tail.contains(token));
+    }
+
+    #[test]
+    fn ansi_control_sequences_are_removed_without_hiding_bind_evidence() {
+        let safe =
+            strip_terminal_controls("\u{1b}[32mHTTP API 127.0.0.1:58670 bind failed\u{1b}[0m\r\n");
+        assert_eq!(safe, "HTTP API 127.0.0.1:58670 bind failed");
+    }
+
+    #[test]
+    fn classifies_api_listener_failure_separately_from_pool_dns_failure() {
+        let mut ring = DiagnosticRing::new(8, 2048, RedactionSecrets::new([]));
+        ring.push(
+            DiagnosticSource::Stdout,
+            "* HTTP API 127.0.0.1:64207 unknown error",
+        );
+        ring.push(
+            DiagnosticSource::Stderr,
+            "net gulf.moneroocean.stream:443 DNS error: \"permanent failure\"",
+        );
+        let messages = ring
+            .snapshot()
+            .into_iter()
+            .map(|entry| entry.message)
+            .collect::<Vec<_>>();
+        assert!(messages[0].starts_with("http-listener-bind-failed:"));
+        assert!(messages[1].starts_with("pool-dns-failed:"));
+        assert!(messages[0].contains("127.0.0.1:64207"));
+        assert!(messages[1].contains("gulf.moneroocean.stream"));
+    }
+
+    #[test]
+    fn classifies_listener_started_and_generic_server_failure() {
+        assert_eq!(
+            super::classify_event("* HTTP API 127.0.0.1:64207"),
+            "http-listener-started"
+        );
+        assert_eq!(
+            super::classify_event("net HTTP API server failed to start."),
+            "http-server-failed"
+        );
     }
 }

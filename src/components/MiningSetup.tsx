@@ -30,12 +30,13 @@ export type MiningSessionStatus = {
   telemetry: { engineVersion: string | null; uptimeSeconds: number | null; paused: boolean | null; shortHashrate: number | null; mediumHashrate: number | null; longHashrate: number | null } | null;
   error: { kind: string; message: string } | null;
   diagnostics: { source: "stdout" | "stderr" | "supervisor"; message: string }[];
+  captureHealth: { stdoutReaderStarted: boolean; stderrReaderStarted: boolean; sanitizedLinesObserved: number; stdoutEofObserved: boolean; stderrEofObserved: boolean; stdoutReadError: string | null; stderrReadError: string | null } | null;
   startupStage: "checkingEngine" | "preparingSession" | "startingXmrig" | "waitingForMiner" | null;
   startupElapsedMs: number | null;
   startupTimings: { stage: string; elapsedMs: number }[];
 };
 
-type Props = { setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>; session: MiningSessionStatus | null; refreshSession: () => Promise<void>; diagnosticsMode: boolean; copyDiagnostics: () => void };
+type Props = { setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>; session: MiningSessionStatus | null; refreshSession: () => Promise<void>; diagnosticsMode: boolean; diagnosticRunning: boolean; copyDiagnostics: () => void };
 
 const engineCopy: Record<MiningReadiness["engine"], string> = {
   notInstalled: "Not installed",
@@ -46,7 +47,7 @@ const engineCopy: Record<MiningReadiness["engine"], string> = {
   error: "Could not check",
 };
 
-export function MiningSetup({ setup, onChange, refresh, session, refreshSession, diagnosticsMode, copyDiagnostics }: Props) {
+export function MiningSetup({ setup, onChange, refresh, session, refreshSession, diagnosticsMode, diagnosticRunning, copyDiagnostics }: Props) {
   const [busy, setBusy] = useState(false);
   const [starting, setStarting] = useState(false);
   const [stopping, setStopping] = useState(false);
@@ -222,7 +223,7 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
       </div>
     </section>
 
-    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy || starting || stopping} onClick={() => void startMining()}>{starting ? "Starting…" : "Start mining"}</button><p className="ready-note">Starting connects this device to the pool you selected. You can stop the session at any time.</p>{error && <><p className="field-error" role="alert">{error}</p>{startBlockedByWindows && <div className="setup-recovery-actions"><button className="text-action" disabled={busy || starting || stopping} onClick={() => void startMining()}>Try again</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void refresh()}>Check engine</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void setupEngine()}>Repair engine</button><p>Review any Windows Security notification yourself. Ember does not change security settings or restore quarantined files.</p></div>}</>}{session?.state === "error" && <StartupDetails session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} />}</section>}
+    {setup.ready && <section className="ready-panel" role="status"><div><p className="eyebrow">SETUP COMPLETE</p><h2>Ready to mine</h2><p>XMRig verified · Wallet configured · Pool configured</p><strong>{setup.profile ? capitalize(setup.profile) : "Power profile"}</strong><span>{setup.threads} of {setup.logicalProcessors} CPU threads</span></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy || starting || stopping || diagnosticRunning} onClick={() => void startMining()}>{starting ? "Starting…" : "Start mining"}</button><p className="ready-note">{diagnosticRunning ? "The XMRig integration test must finish or be stopped before mining can start." : "Starting connects this device to the pool you selected. You can stop the session at any time."}</p>{error && <><p className="field-error" role="alert">{error}</p>{startBlockedByWindows && <div className="setup-recovery-actions"><button className="text-action" disabled={busy || starting || stopping} onClick={() => void startMining()}>Try again</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void refresh()}>Check engine</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void setupEngine()}>Repair engine</button><p>Review any Windows Security notification yourself. Ember does not change security settings or restore quarantined files.</p></div>}</>}{session?.state === "error" && <StartupDetails session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} />}</section>}
 
     <details className="setup-details"><summary>Setup details</summary><div className="setup-details-body">
       <div className="detail-engine"><span>Mining engine</span><strong>XMRig {setup.engineVersion} · {engineCopy[setup.engine]}</strong>{setup.engine !== "ready" && setup.engine !== "unsupported" && <button className="text-action" disabled={busy} onClick={setupEngine}>{setup.engine === "notInstalled" ? "Set up" : "Repair"}</button>}</div>
@@ -288,7 +289,8 @@ function StartupDetails({ session, diagnosticsMode, copyDiagnostics }: { session
   if (!supervisorNotes.length && !session.startupTimings.length && !diagnosticsMode) return null;
   return <details className="setup-details"><summary>Show details</summary><div className="setup-details-body">
     <ul>{session.startupTimings.map((timing, index) => <li key={`${index}-${timing.stage}`}>{timing.stage}: {timing.elapsedMs} ms</li>)}{session.startupStage && <li>Current stage: {session.startupStage}</li>}{session.state === "starting" && <li>Miner process: {session.processId == null ? "not yet created" : "running; awaiting readiness"}</li>}</ul>
-    {diagnosticsMode && supervisorNotes.length > 0 && <ul>{supervisorNotes.map((entry, index) => <li key={`${index}-${entry.message}`}>{entry.message}</li>)}</ul>}
+    {diagnosticsMode && session.captureHealth && <ul><li>Output readers: stdout {session.captureHealth.stdoutReaderStarted ? "started" : "not started"}, stderr {session.captureHealth.stderrReaderStarted ? "started" : "not started"}</li><li>Sanitized lines observed: {session.captureHealth.sanitizedLinesObserved}</li><li>Pipe EOF: stdout {session.captureHealth.stdoutEofObserved ? "yes" : "no"}, stderr {session.captureHealth.stderrEofObserved ? "yes" : "no"}</li>{(session.captureHealth.stdoutReadError || session.captureHealth.stderrReadError) && <li>Reader error category: {session.captureHealth.stdoutReadError ?? session.captureHealth.stderrReadError}</li>}</ul>}
+    {diagnosticsMode && session.diagnostics.length > 0 && <ul>{session.diagnostics.map((entry, index) => <li key={`${index}-${entry.source}-${entry.message}`}>{entry.source}: {entry.message}</li>)}</ul>}
     {diagnosticsMode && <button className="text-action" type="button" onClick={copyDiagnostics}>Copy diagnostics</button>}
   </div></details>;
 }

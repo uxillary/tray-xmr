@@ -38,6 +38,18 @@ pub struct StartupTiming {
     pub elapsed_ms: u64,
 }
 
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct CaptureHealth {
+    pub stdout_reader_started: bool,
+    pub stderr_reader_started: bool,
+    pub sanitized_lines_observed: u64,
+    pub stdout_eof_observed: bool,
+    pub stderr_eof_observed: bool,
+    pub stdout_read_error: Option<String>,
+    pub stderr_read_error: Option<String>,
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct EngineStatus {
@@ -46,6 +58,7 @@ pub struct EngineStatus {
     pub process_id: Option<u32>,
     pub error: Option<EngineError>,
     pub diagnostics: Vec<DiagnosticSummary>,
+    pub capture_health: CaptureHealth,
     pub startup_stage: Option<StartupStage>,
     pub startup_elapsed_ms: Option<u64>,
     pub startup_timings: Vec<StartupTiming>,

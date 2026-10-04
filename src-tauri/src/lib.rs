@@ -105,6 +105,9 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
         let mut operation_guard = Some(operation
             .lock()
             .map_err(|_| "Mining controls are temporarily unavailable")?);
+        mining::integration_diagnostic::ensure_production_start_allowed(
+            &app.state::<mining::integration_diagnostic::IntegrationTestController>(),
+        )?;
         if app
             .state::<Mutex<Option<ActiveSession>>>()
             .lock()
@@ -300,6 +303,127 @@ async fn stop_mining(app: tauri::AppHandle) -> Result<mining::readiness::MiningR
 }
 
 #[cfg(windows)]
+#[tauri::command]
+async fn start_xmrig_integration_test(
+    app: tauri::AppHandle,
+) -> Result<mining::integration_diagnostic::IntegrationTestStatus, String> {
+    use mining::integration_diagnostic::{EnvironmentEvidence, IntegrationTestController};
+    use tauri::Manager;
+
+    tauri::async_runtime::spawn_blocking(move || {
+        let operation = app.state::<Mutex<()>>();
+        let operation_guard = operation
+            .lock()
+            .map_err(|_| "Mining controls are temporarily unavailable")?;
+        let supervisor_status = app.state::<EngineSupervisor>().status();
+        mining::integration_diagnostic::ensure_diagnostic_start_allowed(
+            supervisor_status.state,
+            supervisor_status.process_id,
+        )?;
+        let controller = app.state::<IntegrationTestController>();
+        let root = app
+            .state::<Mutex<mining::readiness::SetupService>>()
+            .lock()
+            .map_err(|_| "Setup state unavailable")?
+            .data_root()
+            .to_owned();
+        let snapshot = app
+            .state::<Mutex<SystemObserver>>()
+            .lock()
+            .map_err(|_| "System information unavailable")?
+            .snapshot();
+        controller.begin()?;
+        drop(operation_guard);
+
+        let initial = match mining::provisioner::verify_installation(&root) {
+            Ok(verified) if verified.metadata().version == mining::provisioner::VERSION => verified,
+            Ok(_) => {
+                let message = "The installed XMRig version is not the required 6.26.0".to_owned();
+                controller.verification_failed(
+                    message.clone(),
+                    format!("XMRig integration test\nEmber version: {}\nExpected XMRig version: 6.26.0\nEngine verification: Failed\nReason: {message}\nCleanup: Passed\n", env!("CARGO_PKG_VERSION")),
+                );
+                return Ok(controller.status());
+            }
+            Err(issue) => {
+                let message = format!("{} ({issue})", issue.owner_message());
+                controller.verification_failed(
+                    message.clone(),
+                    format!("XMRig integration test\nEmber version: {}\nExpected XMRig version: 6.26.0\nEngine verification: Failed\nReason: {message}\nCleanup: Passed\n", env!("CARGO_PKG_VERSION")),
+                );
+                return Ok(controller.status());
+            }
+        };
+        let memory_available = match (snapshot.memory.total_bytes, snapshot.memory.used_bytes) {
+            (Some(total), Some(used)) => Some(total.saturating_sub(used)),
+            _ => None,
+        };
+        let evidence = EnvironmentEvidence {
+            ember_version: env!("CARGO_PKG_VERSION").into(),
+            os_version: snapshot
+                .os
+                .unwrap_or_else(|| "Windows (version unavailable)".into()),
+            memory_used_bytes: snapshot.memory.used_bytes,
+            memory_available_bytes: memory_available,
+            logical_processors: snapshot.cpu.logical_processors.unwrap_or(1),
+        };
+        match mining::integration_diagnostic::execute(&root, &initial, evidence, &controller) {
+            Ok(status) => Ok(status),
+            Err(message) => {
+                controller.execution_failed(
+                    message.clone(),
+                    format!("XMRig integration test\nEmber version: {}\nExpected XMRig version: 6.26.0\nEngine verification: Passed\nTest execution: Failed\nReason: {message}\nCleanup: Failed or unconfirmed\n", env!("CARGO_PKG_VERSION")),
+                );
+                Ok(controller.status())
+            }
+        }
+    })
+    .await
+    .map_err(|_| "The XMRig integration test failed unexpectedly".to_owned())?
+}
+
+#[cfg(windows)]
+#[tauri::command]
+fn xmrig_integration_test_status(
+    controller: tauri::State<'_, mining::integration_diagnostic::IntegrationTestController>,
+) -> mining::integration_diagnostic::IntegrationTestStatus {
+    controller.status()
+}
+
+#[cfg(windows)]
+#[tauri::command]
+async fn stop_xmrig_integration_test(
+    app: tauri::AppHandle,
+) -> Result<mining::integration_diagnostic::IntegrationTestStatus, String> {
+    use tauri::Manager;
+    tauri::async_runtime::spawn_blocking(move || {
+        let controller = app.state::<mining::integration_diagnostic::IntegrationTestController>();
+        controller.cancel();
+        let started = std::time::Instant::now();
+        while controller.is_running() && started.elapsed() < std::time::Duration::from_secs(8) {
+            std::thread::sleep(std::time::Duration::from_millis(25));
+        }
+        if controller.is_running() {
+            Err("The test is still stopping; Ember retains ownership of XMRig".into())
+        } else {
+            Ok(controller.status())
+        }
+    })
+    .await
+    .map_err(|_| "The integration test stop failed unexpectedly".to_owned())?
+}
+
+#[cfg(windows)]
+#[tauri::command]
+fn copy_xmrig_integration_report(
+    controller: tauri::State<'_, mining::integration_diagnostic::IntegrationTestController>,
+) -> Result<String, String> {
+    controller
+        .report()
+        .ok_or_else(|| "Run the XMRig integration test before copying its report".into())
+}
+
+#[cfg(windows)]
 #[derive(serde::Serialize)]
 #[serde(rename_all = "camelCase")]
 struct MiningSessionStatus {
@@ -308,6 +432,7 @@ struct MiningSessionStatus {
     telemetry: Option<mining::domain::MiningTelemetry>,
     error: Option<mining::domain::EngineError>,
     diagnostics: Vec<mining::domain::DiagnosticSummary>,
+    capture_health: Option<mining::domain::CaptureHealth>,
     startup_stage: Option<mining::domain::StartupStage>,
     startup_elapsed_ms: Option<u64>,
     startup_timings: Vec<mining::domain::StartupTiming>,
@@ -315,7 +440,10 @@ struct MiningSessionStatus {
 
 #[cfg(windows)]
 #[tauri::command]
-fn mining_status(supervisor: tauri::State<'_, EngineSupervisor>) -> MiningSessionStatus {
+fn mining_status(
+    supervisor: tauri::State<'_, EngineSupervisor>,
+    diagnostics_mode: bool,
+) -> MiningSessionStatus {
     let status = supervisor.status();
     MiningSessionStatus {
         state: status.state,
@@ -327,8 +455,11 @@ fn mining_status(supervisor: tauri::State<'_, EngineSupervisor>) -> MiningSessio
         diagnostics: status
             .diagnostics
             .into_iter()
-            .filter(|entry| entry.source == mining::domain::DiagnosticSource::Supervisor)
+            .filter(|entry| {
+                diagnostics_mode || entry.source == mining::domain::DiagnosticSource::Supervisor
+            })
             .collect(),
+        capture_health: diagnostics_mode.then_some(status.capture_health),
         startup_stage: status.startup_stage,
         startup_elapsed_ms: status.startup_elapsed_ms,
         startup_timings: status.startup_timings,
@@ -377,21 +508,36 @@ fn copy_diagnostics(
         env!("CARGO_PKG_VERSION"),
         status.process_id.is_some()
     );
-    if let Some(error) = status.error {
+    if let Some(error) = &status.error {
         report.push_str(&format!("Error category: {:?}\n", error.kind));
     }
     report.push_str("Stage timings (ms):\n");
-    for timing in status.startup_timings {
+    for timing in &status.startup_timings {
         report.push_str(&format!("- {}: {}\n", timing.stage, timing.elapsed_ms));
     }
+    append_capture_diagnostics(&mut report, &status);
+    report
+}
+
+fn append_capture_diagnostics(report: &mut String, status: &mining::domain::EngineStatus) {
+    let health = &status.capture_health;
+    report.push_str(&format!(
+        "Capture health: stdout reader started={}, stderr reader started={}, sanitized lines observed={}, stdout EOF={}, stderr EOF={}, stdout read error={}, stderr read error={}\n",
+        health.stdout_reader_started,
+        health.stderr_reader_started,
+        health.sanitized_lines_observed,
+        health.stdout_eof_observed,
+        health.stderr_eof_observed,
+        health.stdout_read_error.as_deref().unwrap_or("none"),
+        health.stderr_read_error.as_deref().unwrap_or("none"),
+    ));
     report.push_str("Sanitized diagnostic events:\n");
-    for entry in status.diagnostics.iter().take(80) {
+    for entry in status.diagnostics.iter().rev().take(100).rev() {
         // Never include process output in the general IPC status. Copy diagnostics
         // explicitly returns the Rust-redacted bounded event tail to the clipboard.
         let message = mining::diagnostics::RedactionSecrets::new([]).redact(&entry.message);
         report.push_str(&format!("- {:?}: {message}\n", entry.source));
     }
-    report
 }
 
 #[cfg(windows)]
@@ -460,6 +606,9 @@ async fn provision_xmrig(
             .status()
             .process_id
             .is_some()
+            || app
+                .state::<mining::integration_diagnostic::IntegrationTestController>()
+                .is_running()
         {
             anyhow::bail!("Engine is active");
         }
@@ -484,7 +633,11 @@ fn setup_snapshot(app: &tauri::AppHandle) -> Result<mining::readiness::MiningRea
         .logical_processors
         .unwrap_or(0);
     let status = app.state::<EngineSupervisor>().status();
-    let no_process = status.process_id.is_none()
+    let diagnostic_running = app
+        .state::<mining::integration_diagnostic::IntegrationTestController>()
+        .is_running();
+    let no_process = !diagnostic_running
+        && status.process_id.is_none()
         && !matches!(
             status.state,
             EngineLifecycleState::Starting
@@ -525,13 +678,17 @@ async fn update_mining_setup(
             .logical_processors
             .unwrap_or(0);
         let status = app.state::<EngineSupervisor>().status();
+        let diagnostic_running = app
+            .state::<mining::integration_diagnostic::IntegrationTestController>()
+            .is_running();
         app.state::<Mutex<mining::readiness::SetupService>>()
             .lock()
             .map_err(|_| "Setup state unavailable".to_owned())?
             .update(
                 change,
                 logical,
-                status.process_id.is_none()
+                !diagnostic_running
+                    && status.process_id.is_none()
                     && !matches!(
                         status.state,
                         EngineLifecycleState::Starting
@@ -587,7 +744,11 @@ pub fn run() {
         start_mining,
         stop_mining,
         mining_status,
-        copy_diagnostics
+        copy_diagnostics,
+        start_xmrig_integration_test,
+        stop_xmrig_integration_test,
+        xmrig_integration_test_status,
+        copy_xmrig_integration_report
     ]);
     #[cfg(not(windows))]
     let builder = builder.invoke_handler(tauri::generate_handler![shell_status, system_snapshot]);
@@ -599,6 +760,7 @@ pub fn run() {
             {
                 app.manage(Mutex::new(()));
                 app.manage(Mutex::new(None::<ActiveSession>));
+                app.manage(mining::integration_diagnostic::IntegrationTestController::default());
                 let ember_data_dir = app.path().local_data_dir()?.join("Ember");
                 // Startup recovery deletes only validated child session directories
                 // after rejecting reparse-point paths beneath the Ember runtime root.
@@ -641,7 +803,15 @@ pub fn run() {
                     }
                     "quit" => {
                         #[cfg(windows)]
-                        let stopped = stop_mining_sync(app, true).is_ok();
+                        let stopped = {
+                            let diagnostic = app.state::<mining::integration_diagnostic::IntegrationTestController>();
+                            diagnostic.cancel();
+                            let deadline = std::time::Instant::now() + std::time::Duration::from_secs(8);
+                            while diagnostic.is_running() && std::time::Instant::now() < deadline {
+                                std::thread::sleep(std::time::Duration::from_millis(25));
+                            }
+                            !diagnostic.is_running() && stop_mining_sync(app, true).is_ok()
+                        };
                         #[cfg(not(windows))]
                         let supervisor = app.state::<EngineSupervisor>();
                         #[cfg(not(windows))]
@@ -684,6 +854,16 @@ pub fn run() {
             }
         }
         if let tauri::RunEvent::ExitRequested { api, .. } = event {
+            #[cfg(windows)]
+            {
+                let diagnostic =
+                    app.state::<mining::integration_diagnostic::IntegrationTestController>();
+                diagnostic.cancel();
+                if diagnostic.is_running() {
+                    api.prevent_exit();
+                    return;
+                }
+            }
             if app
                 .state::<EngineSupervisor>()
                 .stop_for_application_quit()
@@ -693,4 +873,53 @@ pub fn run() {
             }
         }
     });
+}
+
+#[cfg(test)]
+mod capture_report_tests {
+    use super::append_capture_diagnostics;
+    use crate::mining::{
+        diagnostics::{DiagnosticRing, RedactionSecrets},
+        domain::{
+            CaptureHealth, DiagnosticSource, EngineAvailability, EngineLifecycleState, EngineStatus,
+        },
+    };
+
+    #[test]
+    fn copy_diagnostics_renders_capture_health_and_sanitized_live_events() {
+        let wallet = "TEST_PUBLIC_WALLET_ADDRESS_ONLY_FOR_REDACTION_TEST";
+        let token = "private-token-012345678901234567890";
+        let mut ring = DiagnosticRing::new(
+            100,
+            32 * 1024,
+            RedactionSecrets::new([wallet.into(), token.into()]),
+        );
+        ring.push(
+            DiagnosticSource::Stdout,
+            &format!("HTTP API 127.0.0.1:58670 bind failed wallet={wallet} token={token}"),
+        );
+        let status = EngineStatus {
+            availability: EngineAvailability::Available("6.26.0".into()),
+            state: EngineLifecycleState::Starting,
+            process_id: Some(1234),
+            error: None,
+            diagnostics: ring.snapshot(),
+            capture_health: CaptureHealth {
+                stdout_reader_started: true,
+                stderr_reader_started: true,
+                sanitized_lines_observed: 1,
+                ..CaptureHealth::default()
+            },
+            startup_stage: None,
+            startup_elapsed_ms: Some(15_000),
+            startup_timings: Vec::new(),
+        };
+        let mut report = String::new();
+        append_capture_diagnostics(&mut report, &status);
+        assert!(report.contains("stdout reader started=true"));
+        assert!(report.contains("sanitized lines observed=1"));
+        assert!(report.contains("HTTP API 127.0.0.1:58670 bind failed"));
+        assert!(!report.contains(wallet));
+        assert!(!report.contains(token));
+    }
 }
