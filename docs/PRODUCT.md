@@ -1,12 +1,12 @@
 # Ember Product Direction
 
-**Status:** Product direction for the reboot, recorded 2026-09-29. This document distinguishes current decisions from future and exploratory ideas; it is not a release commitment.
+**Status:** Durable product direction, consolidated 2026-10-05. Planned concepts are not claims of currently shipped features; see [Roadmap](ROADMAP.md) for sequencing.
 
 ## Vision
 
 Ember aims to make cryptocurrency mining approachable for people with no mining experience while retaining a path to capable controls for experienced users. The working proposition is **“Put idle power to work.”** Ember should normally be available from the Windows system tray and make mining activity, resource use, earnings estimates, electricity estimates, and the Ember Contribution understandable.
 
-The brand direction is premium, modern, dark, restrained, trustworthy, technically capable, and approachable, with subtle crypto/cyberpunk influence. Full visual design is out of scope for this documentation milestone.
+The brand direction is premium, dark graphite with a warm Ember accent, confident, calm and technical, with a subtle cyber/crypto influence. Avoid neon cliché and casino-like presentation.
 
 ## Audiences and experience
 
@@ -17,17 +17,33 @@ The eventual onboarding should explain what Ember and mining do, hardware and el
 
 ## Product principles
 
-The intended beginner setup is **Wallet → Pool → Power → Review → Ready**, presented on one calm Mining page with progressive disclosure. The page asks where rewards go, offers a future recommended-pool path when reviewed provider details exist and keeps manual custom-pool fields behind an explicit choice, then asks how many CPU threads to use and presents the disclosures. Rust retains all authoritative validation/readiness; successful engine and technical checks stay under Setup details, while repair and configuration errors are shown beside an action.
+The intended beginner setup is **Wallet → Pool → Power → Review → Ready**, presented with progressive disclosure. Prefer a simple primary surface, then useful details, then advanced/raw information. Experienced users should retain access to technical detail without imposing mining jargon on beginners. Rust retains authoritative validation/readiness; actionable errors belong beside the relevant action.
 
-The Mining page offers verified engine status/repair, public wallet change/removal, explicit manual pool host/port/TLS, static Quiet/Balanced/Performance profiles, disclosure review and Rust-owned readiness. Settings links to the same editor. Complete setup may show Ready in Overview, with mining metrics unavailable and Start disabled. A review acknowledgement is not a start action; app launch never mines. Changes require a fresh review. The planned 5% Ember Contribution is visibly inactive, distinct from XMRig's separate 1% donation. A future controlled development session may run without Ember's contribution only when explicitly authorized and labeled; user-facing release policy remains pending.
+The current Mining setup offers verified engine status/repair, public wallet management, explicit manual pool host/port/TLS, static Quiet/Balanced/Performance profiles, disclosure review and Rust-owned readiness. A review acknowledgement is not a start action; app launch never mines. Changes require a fresh review. The planned 5% Ember Contribution is inactive and distinct from XMRig's separate 1% donation. A controlled development session may run without Ember contribution only when specifically authorized and labeled; public-release policy remains pending.
 
-1. **Understandable by default:** use profiles and explanations rather than requiring users to understand threads or miner flags.
-2. **Visible and controllable:** show mining state and provide straightforward pause, stop, and quit actions.
-3. **Honest about money and resources:** label estimates, state assumptions, and distinguish measurements from estimates.
-4. **Non-custodial:** accept a public receiving address when needed; never request or store seed phrases or private keys.
-5. **Local-first:** basic mining and local statistics should not require an Ember account or cloud service.
-6. **Trust over growth mechanics:** engagement features must not obscure costs or pressure users to mine.
-7. **Extensible without premature platforms:** begin with Windows, Monero, and the expected XMRig engine while keeping product boundaries open to future engines and assets.
+1. **Beginner first, advanced always available:** explain simply by default and progressively disclose details, advanced controls and raw diagnostics.
+2. **Visual before verbose:** use status objects, meters, compact diagrams, visual flows, activity states, progress and meaningful icons before long explanations. Text clarifies the interface rather than dominating it. Provide accessible text alternatives.
+3. **Mining should feel alive, honestly:** let genuine state and events make the experience responsive and rewarding. Never invent shares, earnings, work, hashrate, pool events, profitability, contribution or progress as mining output.
+4. **Explain automatic behavior:** users should understand why Ember starts, pauses, resumes, reduces resources, changes profile or responds to battery, activity or workload.
+5. **XMRig is the engine, not the experience:** ordinary users should not need to edit XMRig JSON, launch it, understand its CLI, configure its API, manage its process or inspect raw logs. Advanced diagnostics may expose redacted raw information.
+6. **Trust over extraction:** never obscure poor profitability, electricity/resource use, contribution, upstream donation, errors, pauses or rejected shares.
+7. **Visible and controllable:** state and controls are explicit; Start, Stop, Pause, autostart and future remote control remain user-controlled.
+8. **Non-custodial and local-first:** use only public receiving information; never request/store seeds or private keys. Core local use should not require an Ember account or cloud.
+9. **Extensible without premature platforms:** begin with Windows, Monero and XMRig behind clear boundaries.
+
+## Ember Stream
+
+Ember Stream is a planned live operational feed, not a terminal emulator or raw XMRig stdout window. It translates genuine observable mining and Smart Mining events into concise human-readable activity. Candidate categories include Engine, Connect, Work, Share, CPU, Smart, Earnings, Contribution, Warning, Error and System. Entries should support timestamps, hierarchy/severity, meaningful icons/status markers, restrained animation, bounded history and accessible non-colour indicators. Example wording is deliberately left to design work. Advanced users may inspect **Raw XMRig** output separately. Neither view may expose secrets, and every Stream event must derive from genuine observable state or an event.
+
+## Progression and rewards
+
+Planned progression may recognize truthful accepted shares, successful/lifetime mining time, Smart Mining time, session/lifetime milestones, personal hashrate records, reliability/uptime and efficient idle mining. Presentation could include achievements, records, an Ember level/XP system or visual Ember Core progression. XP and levels mean application progression only; they are not cryptocurrency, financial value or transferable assets. Prefer consistency, efficiency and Smart Mining. Never reward unsafe temperatures, wasteful electricity use, maximum load for its own sake or unsuitable uptime. Progression must not obscure real mining/economic state or pressure users to continue.
+
+## Ember Core and visual language
+
+The Ember Core should become a meaningful visual object representing real app/mining state, with possible dormant/stopped, ready, starting, mining, accepted-share pulse, Smart Mining adjustment, paused/cooling, attention/warning and error states. It is not a game dashboard. Motion stays restrained and respects reduced-motion preferences; labels/text alternatives communicate state without colour alone.
+
+Vary the GUI where a visual model explains state more quickly than another text card: CPU/profile lanes, Smart Mining state flow, a truthful PC → Ember → Pool relationship, understandable energy meters, and compact earnings hierarchy are possible directions. These are examples, not mandatory literal designs. Keep accessibility and text alternatives.
 
 ## Initial product boundary
 
@@ -47,7 +63,7 @@ The dashboard may eventually show current and average hashrate, accepted/rejecte
 
 ## Transparency and Ember Contribution
 
-The current business-model decision is a **5% Ember Contribution** from mining activity. It must be disclosed during onboarding before mining, understandable, accurately represented, and visible in relevant settings/statistics. It must never be hidden, disguised, or described misleadingly. How the contribution is implemented and independently audited is **pending architecture and licensing/security research**; M00B does not choose a mechanism.
+The current working baseline is a **5% Ember Contribution**. Do not silently increase it; a higher percentage is an open product/business decision. The final rate and model require explicit approval. Before mining, the rate must be visible, represented in Settings and truthful statistics, and clearly distinguished from XMRig's upstream 1% donation. The mechanism and audit model remain undecided. Never describe contribution as unavoidable or impossible to modify on a user-owned computer.
 
 Electricity estimates should use a user-configured electricity rate. The conceptual calculation is gross mining value minus estimated electricity cost equals estimated net result. Power draw may be estimated rather than measured; the interface must say which. Exchange rate, pool data, tariff, measurement quality, and other assumptions must be visible enough to interpret the result.
 
@@ -61,17 +77,13 @@ Electricity estimates should use a user-configured electricity rate. The concept
 - Explicit mining consent, visible state, accessible pause/stop, and sensible resource controls.
 - Clear disclosure of the 5% Ember Contribution.
 
-### Later
+### Planned direction
 
-- Smart Mining profiles and activity/battery/schedule responses.
-- Rich statistics and history, configurable notifications, milestones, and optional Expert Mode.
-- Optional accounts/profiles and cloud enhancements that do not gate basic local mining.
-- Multi-device monitoring, with explicit enrollment, before any remote management.
+See [Roadmap](ROADMAP.md) for M04 onward: telemetry/control, Ember Stream, Smart Mining, economics, progression, contribution, visual experience, history, public-beta hardening and only later an explicitly enrolled Ember Network.
 
 ### Exploratory
 
-- Community features, rankings, and progression systems.
-- Ember Pool evaluation and additional assets/engines.
+- Community features, Ember Pool evaluation, and additional assets/engines.
 - Any transferable token or financial instrument. No token is part of initial architecture; future progression should first be considered as non-transferable XP, achievements, contribution metrics, or reputation.
 
 ## Explicit initial non-goals

@@ -1,6 +1,6 @@
 # Ember
 
-Ember is an active reboot of Tray-XMR into a beginner-friendly, transparent desktop application for Monero mining. It is **Windows-first** and its desktop shell is being refined; no production release or mining functionality exists.
+Ember is a Windows-first, local-first desktop product for putting idle power to work through transparent Monero mining. Its M03 foundation now verifies and provisions XMRig, owns its process lifecycle, and supports a controlled native mining session. Public release is not ready: owner-machine session verification and release hardening remain open. See the [roadmap](docs/ROADMAP.md) for current scope and planned direction.
 
 The application uses Tauri 2, Rust, React, TypeScript, and Vite. Historical Python prototypes are preserved separately in [`legacy/`](legacy/).
 
@@ -22,6 +22,8 @@ npm run tauri build
 `npm run build` checks TypeScript and builds the frontend only.
 
 ## Documentation
+
+Current foundations are described separately from future product direction; planned telemetry, Ember Stream, Smart Mining, economics, progression and public beta features are not all available today.
 
 - [Product direction](docs/PRODUCT.md)
 - [Architecture](docs/ARCHITECTURE.md)

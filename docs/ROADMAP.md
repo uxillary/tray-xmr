@@ -1,57 +1,81 @@
 # Ember Roadmap
 
-**Status:** Directional roadmap recorded 2026-09-29. Milestone outcomes are intended scope, not commitments to dates or final feature sets.
+**Status:** Directional roadmap, consolidated 2026-10-05. Outcomes are intended scope, not dates or release commitments.
 
 ## M00 — Project foundation
 
-- **M00A — Legacy audit:** complete. Read-only evidence-based review of historical repository.
-- **M00B — Product and architecture documentation:** complete. Source-of-truth product, architecture, security, roadmap, decision, and legacy documentation established.
-- **M00C — Repository reorganisation and application foundation:** complete. Historical source is separated under `legacy/`, generated packaging output is removed from the active tree, and the root contains a buildable Tauri 2/React/TypeScript shell with a basic tray/window lifecycle. Mining is not implemented.
+- **M00A — Legacy audit:** complete. Evidence-based review of historical repository.
+- **M00B — Product and architecture documentation:** complete; now extended by this consolidation.
+- **M00C — Repository reorganisation and application foundation:** complete. Historical source is under `legacy/`; active tree contains the Tauri 2/React/TypeScript application shell.
 
 ## M01 — Desktop shell and design foundation
 
-- **Complete:** Established a consistent desktop visual system and state-aware Ember core, preserved the four primary sections, and made each page clearly reflect the unconfigured product state. Metrics and activity remain empty/unavailable; settings and mining controls are non-interactive. No mining behavior was added.
-- **M01.1 — Native UI polish: complete.** Retained the manually reviewed visual direction while improving supporting-text readability, simplifying page chrome and product copy, adding a reusable truthful device-status area, and tightening Activity’s empty state. No system or mining functionality was introduced.
+- **Complete:** established the visual system, four primary sections, state-aware Ember Core and honest unconfigured states. No mining behavior was added.
+- **M01.1 — Native UI polish:** complete. Improved readability, page chrome, device status and Activity empty state.
 
 ## M02 — Windows tray and local monitoring
 
-- **Complete:** Added a typed, Rust-owned local snapshot for CPU, memory, device/OS, uptime, power/battery, and session idle state; integrated it into Overview and This device; and added a disabled **Not mining** tray status with an honest tooltip. Sampling is limited to the visible app and remains in memory. No mining/resource-control behavior was added. Temperature, fan speed, and CPU/GPU power remain deferred because generic low-privilege sources are not dependable across Windows hardware. Autostart remains undecided and out of scope.
+- **Complete:** typed Rust-owned local snapshots for CPU, memory, device/OS, uptime, power/battery and coarse session idle state; visible Overview/device presentation and disabled **Not mining** tray state. Sampling is local, in-memory and limited to the visible app. No resource control is applied. Generic temperature, fan and CPU/GPU power telemetry remain deferred.
 
-## M03 — Mining-engine integration
+## M03 — Mining-engine foundation
 
-- **M03A — XMRig research and engine contract: complete.** Verified current upstream license/release/API sources; recorded a preferred verified official-release download strategy subject to legal review; defined process, API, lifecycle, telemetry, consent, contribution and trust boundaries. No miner was acquired or executed.
-- **M03B — Safe engine groundwork: complete.** Added an internal Rust MiningEngine contract, deterministic configuration validation, fixture-only XMRig summary parsing, a verified-artifact gate, supervised child lifecycle, bounded/redacted diagnostics, and tray-Quit cleanup. Tests use only local fixtures and the Rust test executable; no XMRig was acquired or run. Start remains disabled.
-- **M03B.1 — Process ownership hardening: complete.** Windows creates suspended, assigns to a kill-on-close Job Object, then resumes. Windows tests and the feature-gated packaged host verified four graceful parent/descendant cleanup cycles; external termination of the packaged Ember owner also removed its live fixture parent and descendant. The user manually verified normal Ember launch, tray experience, and tray **Quit** exit. Real XMRig remains disabled.
-- **M03B.2 — Native startup diagnosis: complete.** The `0xC0000409` result was specific to launching the release executable from Codex’s restricted sandbox identity: WebView2 returned `0x800700AA` before Tauri setup, and release panic-abort surfaced the status. The same normal release executable remained running with its Ember window when launched as the logged-in Windows user; no application code change was warranted for startup.
-- **M03C.1 — Verified XMRig provisioning: complete.** Pins XMRig v6.26.0 Windows x64, verifies the official detached manifest signature against the independently confirmed key and the archive SHA-256, extracts safely, atomically promotes to per-user app data, and records integrity metadata. Deterministic fixtures pass; the one controlled real provisioning run succeeded. `xmrig.exe` was never executed. GPL/dependency legal review remains open before public release.
-- **M03C.2A — Local launch readiness and consent setup: implemented.** Startup/readiness integrity checks, mainnet public-wallet validation/storage, explicit manual pool/TLS, static CPU profiles, ephemeral loopback candidate config, revision-bound consent and readiness UI. Start is disabled; XMRig has never executed. See [integration contract](XMRIG_INTEGRATION.md).
-- **M03C.2A.1 — Beginner setup UX: implemented.** Reorders Mining into Wallet → Pool → Power → Review → Ready, progressively reveals custom pool entry and technical readiness, and keeps repairs/actionable errors visible without exposing raw internal errors. Backend readiness, validation, consent and the disabled Start boundary are unchanged.
-- **M03C.2B — First controlled mining session: implementation and build gate complete; native retest pending.** Rust owns `start_mining`/`stop_mining`, fresh validated config and Bearer token generation, pre-spawn integrity/consent checks, per-session ACL-protected runtime files, bounded loopback-port retries, suspended Job Object launch with `CREATE_NO_WINDOW`, authenticated `/2/summary` readiness, conservative Mining transition, telemetry, unexpected-exit cleanup and tray Stop/Quit. Rust-owned startup stages and bounded monotonic timings make verification, preparation, launch and waiting for miner evidence visible without guessed timers. The summary's `rx/0` list is capability evidence, not proof of RandomX backend initialization; Mining still requires positive short-window hashrate. The initial owner click exposed a case-sensitive persisted `xmrig` versus adapter `XMRig` identity mismatch; shared typed verification and regression coverage now keep readiness and pre-spawn verification coherent without re-provisioning. This pass adds no-window launch, startup progress, bounded stage timings, safe Windows failure classification, and recovery/disclosure UX. Shares, pool status and earnings remain unavailable. Automated and Windows release/no-bundle checks pass; owner must repeat controlled Start → Mining → Stop and confirm no console appears. Public release still requires clean-machine Defender/SmartScreen tests. No automatic mining, Smart Mining or Ember contribution mechanism is enabled.
+**Functional foundation complete; public-release hardening remains.** M03 established verified XMRig v6.26.0 Windows x64 provisioning and provenance, artifact integrity checks, deterministic generated configuration, public-wallet and explicit pool/profile setup, revision-bound consent, a supervised Windows process path, kill-on-close Job Object ownership, no-console launch, authenticated loopback API, lifecycle control, Stop/Quit cleanup, bounded sanitized diagnostics, native integration diagnostics and a controlled real-mining path.
 
-## M04 — Beginner onboarding and wallet configuration
+- **M03A — Research and engine contract:** complete. Licensing and distribution approval remain open.
+- **M03B — Safe engine groundwork and process ownership:** complete. Includes deterministic validation, bounded/redacted diagnostics, suspended creation before Job Object assignment, descendant cleanup, tray-Quit cleanup and packaged host checks.
+- **M03B.2 — Native startup diagnosis:** complete. The earlier sandbox-specific WebView2 failure was isolated; no app workaround was needed.
+- **M03C.1 — Verified provisioning:** complete. Pinned release signature and archive hash are verified before safe extraction/promotion, with local provenance metadata.
+- **M03C.2A — Setup and consent:** complete. Mainnet public address, manual pool/TLS, static CPU profiles, generated candidate config and backend-owned readiness/disclosure.
+- **M03C.2A.1 — Beginner setup UX:** complete. Wallet → Pool → Power → Review → Ready with progressive disclosure.
+- **M03C.2B — Controlled mining session:** implementation complete; real owner-machine Start → Mining → Stop verification remains open. Rust owns fresh consent/artifact checks, private per-session config, `CREATE_NO_WINDOW` suspended Job Object launch, authenticated restricted `/2/summary` readiness, hashrate-gated Mining, telemetry monitoring, unexpected-exit cleanup and tray Stop/Quit. The current owner-machine report is that XMRig remained alive but did not open its loopback API; investigate this before treating the native session as verified. Shares and pool connection are not exposed by the current summary contract. See [XMRig integration notes](XMRIG_INTEGRATION.md).
 
-Guide users through mining implications, public address setup, initial profile, contribution disclosure, and informed start. Keep key custody out of scope.
+### M03 public-release hardening still required
 
-## M05 — Smart Mining
+- Complete owner-controlled real-session verification and resolve the API startup issue.
+- Review GPLv3 acquisition/aggregation, notices, Corresponding Source and dependency licensing.
+- Define signing-key rotation/revocation and XMRig update/rollback/support policy.
+- Test packaged release behavior on clean Windows systems, including Defender and SmartScreen outcomes and user recovery.
+- Confirm installer/update, diagnostics/support, accessibility, performance, clean uninstall and disclosure polish before public beta.
+- Keep autostart mining opt-in only; no automatic mining is enabled.
 
-Add understandable profiles and resource/activity policies with visible reasons, user limits, and safe overrides based on supported signals.
+## M04 — Mining Telemetry & Control
 
-## M06 — Statistics, pool data, earnings, and electricity estimates
+Turn the working engine into a reliable observable session: live hashrate; accepted/rejected shares where authoritative data is available; pool connection state; mining uptime; current profile; Pause, Resume and Stop; lifecycle/reconnect/error representation; and normalized engine telemetry. Preserve the distinction between unavailable and zero. Do not fabricate values. Resolve API provenance and behavior against the pinned engine before exposing each field.
 
-Present normalized mining/pool statistics and transparent estimates with stated data sources and assumptions, distinguishing measurements from estimates.
+## M05 — Ember Stream
 
-## M07 — History, milestones, and notifications
+Create a bounded, timestamped operational feed that translates genuine Ember and mining events into concise human-readable activity. Include useful category, hierarchy/severity, accessible non-colour markers and restrained motion. Keep advanced **Raw XMRig** output as a separate diagnostics view. Redact secrets in both.
 
-Add useful local history, configurable notifications, and optional engagement features that preserve cost and profitability transparency.
+## M06 — Smart Mining v1
 
-## M08 — Contribution, release hardening, and distribution review
+Make Quiet/Balanced/Performance real, explainable policies using reliable idle/activity signals, resource adaptation, schedules, battery safeguards and foreground/demanding-workload response where reliably detectable. Keep Stop/Quit available. Promise thermal behavior only if trustworthy telemetry exists.
 
-Implement the disclosed 5% contribution only after an auditable design is approved; complete installer, update, licensing, integrity, privacy, and Windows distribution reviews before release.
+## M07 — Earnings & Economics
 
-## M09+ — Optional services foundation
+Show session/lifetime XMR and authoritative pool-reported earnings where available, fiat conversion, daily/monthly estimates, electricity-cost estimate and estimated net result. Label measured, pool-reported, observed and estimated values with their source and uncertainty.
 
-Evaluate optional accounts/profiles and cloud capabilities without making them prerequisites for local mining. Define privacy and security boundaries before service implementation.
+## M08 — Progression & Rewards
 
-## Later possibilities
+Explore truthful milestones, achievements, records, lifetime progression and Ember visual feedback. Potential evidence includes accepted shares, mining time, Smart Mining time, session/lifetime milestones, personal hashrate records, reliability and efficient idle mining. Any XP/level is application progression, with no cryptocurrency, financial value or transferability. Reward consistency, efficiency and Smart Mining; do not pressure unsafe temperatures, wasteful power or unsuitable uptime.
 
-Multi-device monitoring; remote management after a separate security decision; Expert Mode; additional engines/assets; community systems; Ember Pool evaluation; and rewards/economy research. These are exploratory and are not MVP commitments. No token is in the initial architecture.
+## M09 — Ember Contribution
+
+Implement only an explicitly approved, transparent model. The working baseline remains 5%; a proposed higher rate is an open business decision, not an approved change. Disclose the chosen percentage before mining, show it in Settings and represent it accurately in statistics. Keep it distinct from XMRig's upstream 1% donation. Do not imply contribution is unavoidable or impossible to modify on a user-owned computer.
+
+## M10 — Experience & Visual Language
+
+Continue product polish throughout earlier milestones; this is a dedicated broader refinement horizon, not a reason to defer usability work. Develop meaningful Ember Core states, visual state representations and GUI metaphors, reduced text density, progressive disclosure, beginner/advanced layers, accessible alternatives and restrained motion. Keep the premium graphite/warm Ember visual language calm and technical, not casino-like.
+
+## M11 — Activity & History
+
+Make Activity a useful local historical timeline for sessions, accepted/rejected work when verified, profile changes, Smart Mining decisions, connectivity, errors/recovery, milestones and contribution activity. Define retention, export and deletion before accumulating history.
+
+## M12 — Release Hardening & Public Beta
+
+Complete installer and update strategy, first-run polish, recovery and support diagnostics, Defender/SmartScreen testing, licensing/dependency review, accessibility/performance review, clean uninstall, and zero-console-flash verification. Normal Ember operation must not visibly flash command prompts or console windows. By public beta, Start → Ember Starting → Mining must remain within Ember's experience; inspect helper processes, ACL/security commands and setup/verification utilities if any flash remains. This is ordinary desktop polish, never stealth or evasion. Autostart remains opt-in.
+
+## M13+ — Ember Network
+
+Only after the local single-machine product is excellent: explicitly enrolled machines, multi-machine status and aggregate statistics, optional account/sync, and authenticated remote control only after separate design, enrollment and revocation. No covert deployment or remote control. Ember Pool/community remain later research, not commitments.
+
+See [Product](PRODUCT.md), [Architecture](ARCHITECTURE.md), [Security](SECURITY.md), and [Decisions](DECISIONS.md) for durable principles and boundaries.

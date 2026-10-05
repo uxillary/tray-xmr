@@ -1,6 +1,6 @@
 # Ember Decision Log
 
-This lightweight log records decisions and unresolved questions. Dates use the current milestone context (2026-09-29). A recorded direction is not automatically a release commitment.
+This lightweight log records decisions and unresolved questions. Historical dates identify when a decision was recorded; a direction is not automatically a release commitment.
 
 ## Decided direction
 
@@ -45,6 +45,12 @@ This lightweight log records decisions and unresolved questions. Dates use the c
 | D-037 | 2026-09-29 | M03C.1 uses explicit user-approved upstream download, Sequoia OpenPGP with the Windows CNG backend, strict SHA-256 manifest verification, and bounded safe extraction. | A controlled v6.26.0 Windows x64 install completed in per-user app data. Mining launch remains disabled. Public release is subject to GPL/dependency review. |
 | D-043 | 2026-09-30 | Beginner Mining setup follows Wallet → Pool → Power → Review → Ready with progressive disclosure. | Keep pool recommendations unavailable until provider details are reviewed. Keep Custom pool, technical checks, and healthy engine provenance secondary; put actionable problems beside the action. Readiness and consent stay Rust-owned. |
 | D-044 | 2026-10-01 | Start Ember-managed XMRig with `CREATE_NO_WINDOW` and retain suspended Job Object supervision. | Redirected standard handles continue capturing output; assignment still precedes resume. Rust-owned startup stages/timings drive truthful UX. Report Windows launch errors without asserting a specific security product; never alter its settings or bypass quarantine. Clean-machine Defender/SmartScreen behavior remains public-release testing. |
+| D-045 | 2026-10-05 | Make the default experience beginner-first with advanced detail progressively available. | Prefer visual state communication, concise labels and accessible alternatives; keep advanced/raw diagnostics available without making them the primary product experience. |
+| D-046 | 2026-10-05 | Mining and progression displays must be grounded in observable truth. | Stream events, hashrate, work, shares, earnings, contribution and milestones must not be fabricated. Estimates carry explicit provenance; application XP/levels are not financial or transferable value. |
+| D-047 | 2026-10-05 | Ember Stream is a planned human-readable operational feed; raw XMRig output is a separate advanced diagnostic. | Stream entries derive only from genuine events/state, are bounded and timestamped, support severity and accessible non-colour markers, and redact secrets. |
+| D-048 | 2026-10-05 | Keep 5% as the working Ember Contribution baseline pending explicit final decision. | A proposed higher rate remains an open business decision. Disclose the chosen rate before mining and distinguish it from XMRig's upstream 1% donation; do not imply contribution is unavoidable or impossible to modify on a user-owned machine. |
+| D-049 | 2026-10-05 | Require no visible console-window flashes during normal Ember operation by public beta. | Investigate the entire startup/helper chain if needed; this is desktop polish and must not use stealth or evasion. |
+| D-050 | 2026-10-05 | Consolidate forward roadmap as M04 telemetry/control through M13+ Ember Network. | M03 functional foundation is complete; real owner-machine session verification and legal, distribution, security-product and other release-hardening work remain open. See [Roadmap](ROADMAP.md). |
 
 M03C.2A decisions (2026-09-29):
 
@@ -60,14 +66,16 @@ M03C.2A decisions (2026-09-29):
 |---|---|---|
 | P-001 | Legal approval of GPLv3 acquisition/aggregation, exact notices, source obligations, Ember's role in user-initiated download, and dependency notices including Sequoia LGPL. | Before public release. |
 | P-002 | Define key rotation/revocation response for future upstream signing-key changes. | Before changing the pinned key. |
-| P-003 | Verify exact pinned XMRig API schemas, restricted-mode access semantics, authenticated graceful stop, and fields available for shares/pool/uptime. | Before XMRig adapter implementation. |
-| P-004 | Test child/job ownership, Job Object feasibility in packaged Tauri, graceful stop, timeout escalation, shutdown/logoff, and crash recovery. | Before active mining integration. |
-| P-005 | How will the 5% contribution be implemented and accounted for in an accurate, auditable, disclosed way? | Contribution implementation. |
+| P-003 | Continue verifying pinned XMRig API behavior, including the owner-machine API startup failure, and determine authoritative sources for shares/pool/uptime. | M04 telemetry/control. |
+| P-004 | Complete owner-controlled real-session Start/Mining/Stop verification and retain lifecycle/crash-recovery checks across release candidates. | Before public beta. |
+| P-005 | What final Ember Contribution percentage and mechanism can be accurate, auditable and clearly disclosed? A higher rate than 5% has been raised but is not approved. | Before M09 implementation. |
 | P-006 | Which pool and market data providers, schemas, currencies, and outage/rate-limit behavior are supported? | Statistics and estimate implementation. |
 | P-007 | What is the local storage/database choice, retention, migration, export, and deletion policy? | Persistent history implementation. |
-| P-008 | Which system signals support Smart Mining, and what are profile defaults, limits, priorities, and overrides? | Smart Mining implementation. |
-| P-009 | What should tray Quit do while future mining is active, and is any autostart mechanism appropriate? | Mining lifecycle/autostart design. Initial shell behavior is recorded in D-021. |
-| P-010 | What exact features and acceptance criteria define MVP? | Release scope. |
-| P-011 | Which signing, installer, updater, and Windows reputation approach is feasible, and what do Defender/SmartScreen do with actual release artifacts? | Public distribution; requires later clean-system testing. |
+| P-008 | Which system signals support Smart Mining, and what are profile defaults, limits, priorities, and overrides? | M06 implementation. |
+| P-009 | Which opt-in autostart mechanism, if any, is appropriate? Active tray Quit already stops the owned process tree. | Before any autostart implementation. |
+| P-010 | What exact features and acceptance criteria define public-beta MVP? | Release scope. |
+| P-011 | Which signing, installer, updater, and Windows reputation approach is feasible, and what do Defender/SmartScreen do with actual release artifacts? | M12 public beta. |
+| P-012 | What event source/schema and retention policy support Ember Stream and separate Raw XMRig diagnostics safely? | M05 implementation. |
+| P-013 | Which progression measures and reward rules remain truthful and avoid unsafe/wasteful incentives? | M08 implementation. |
 
 Decisions should be updated when evidence or product direction changes. See [Product](PRODUCT.md), [Architecture](ARCHITECTURE.md), and [Security](SECURITY.md).
