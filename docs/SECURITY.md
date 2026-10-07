@@ -2,6 +2,8 @@
 
 **Status:** Required product constraints for future implementation and review, recorded 2026-09-29. This is a high-level model, not a completed threat assessment or security certification.
 
+M05A Ember Stream events are an allowlisted structured domain, not a view of raw output. The bounded in-memory event payload deliberately has no fields for wallet address, pool endpoint, worker credentials, API token, private runtime path or config. M05B presentation omits opaque session IDs and sources, and displays only concise wording, category, severity and supplied timestamps. Raw and sanitized XMRig output stays in the separate diagnostics path.
+
 ## Trust boundaries and assets
 
 Ember coordinates a resource-intensive external executable and may handle a user’s public wallet address, local usage/statistics, configuration, downloaded binaries, and (only if later needed) service credentials or device identity. Treat the frontend, local files, miner output, external APIs, downloaded artifacts, and any future cloud service as separate trust boundaries. Validate data crossing each boundary.
@@ -62,7 +64,7 @@ Remote control is not in the initial scope. If introduced, require explicit per-
 
 ## Review checklist
 
-M03C.2B exposes explicit Rust-owned Start/Stop controls. Readiness and immediate pre-spawn verification share the same typed verifier, and the latter freshly revalidates the pinned artifact. Wallet input accepts only a locally validated mainnet public receiving address; saved summaries are masked, domain Debug output redacts it, and diagnostics remain bounded/redacted. Neither candidates nor personal setup implement raw Debug logging. API tokens are 256 random bits generated in Rust, remain memory-only, and never cross IPC. The candidate binds only loopback in restricted mode. Owner-controlled production session verification remains open after the local API failed to open during a reported session.
+M03C.2B exposes explicit Rust-owned Start/Stop controls. Readiness and immediate pre-spawn verification share the same typed verifier, and the latter freshly revalidates the pinned artifact. Wallet input accepts only a locally validated mainnet public receiving address; saved summaries are masked, domain Debug output redacts it, and diagnostics remain bounded/redacted. Neither candidates nor personal setup implement raw Debug logging. API tokens are 256 random bits generated in Rust, remain memory-only, and never cross IPC. The candidate binds only loopback in restricted mode. A later current-release owner session successfully reached authenticated local API telemetry and real mining; the earlier API startup failure is no longer reproducing, with no root cause claimed. Stop/Quit acceptance and release hardening remain open.
 
 Pool input becomes typed host/port/TLS/worker fields, with no command-line fragments or embedded credentials. Rust controls storage under the per-user Ember directory, rejects reparse installation/config files, and uses atomic setup replacement. This inherits the user's LocalAppData ACLs; public addresses are personal data, not encrypted secrets. Verification metadata is local: an attacker with the same user's filesystem access can change both recorded digest and binary. Pre-spawn gating, private runtime-file ACL/crash cleanup, and authenticated transport are implemented. No elevation, huge pages, MSR tuning or firewall rules are introduced. Consent reviews are versioned and invalidated by configuration edits; the 5% contribution is disclosed as planned and inactive.
 

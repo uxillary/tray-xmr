@@ -1,0 +1,9 @@
+---
+import HubPage from '../../components/HubPage.astro';
+const cards = [
+  { icon:'steps', category:'Before you begin', title:'Understand the machine and its limits', description:'Plan for resource use, heat, electricity cost and an explicit way to stop.' },
+  { icon:'shieldCheck', category:'Setup choices', title:'Wallet, pool and CPU profile', description:'Review the information each choice requires and how it affects a mining session.' },
+  { icon:'playCircle', category:'Operate', title:'Review, start and stop with care', description:'A careful session workflow that separates setup review from active mining.' },
+] as const;
+---
+<HubPage kind="guides" title="Monero mining guides — Ember" description="Practical, careful guides for Windows CPU mining, setup choices and session control." kicker="WORKSHOP / 02" heading="A good guide explains the decision, too." intro="Practical walkthroughs should leave the reader more capable, not dependent on unexplained commands or copied settings." index="02" indexLabel="PREPARE / CONFIGURE / OPERATE" featureTitle="Three steps: prepare, configure, review." featureCopy="The guide collection will focus on safe, understandable workflows for Windows CPU mining. Ember-specific steps will be separated from general XMRig guidance." featureAside="No blanket administrator instructions, unknown executables or unexplained pool credentials." cardsTitle="A guide path, in order" cards={cards} note="These are guide themes. We will publish a walkthrough only when the steps are reproducible and the platform details are checked." />

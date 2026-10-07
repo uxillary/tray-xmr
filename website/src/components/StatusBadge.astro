@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+const { state, label } = Astro.props as { state: 'good' | 'check' | 'limited' | 'info' | 'unavailable'; label: string };
+const symbol = { good: 'checkCircle', check: 'magnifyingGlass', limited: 'warning', info: 'info', unavailable: 'xCircle' }[state];
+---
+<span class={`status-badge status-${state}`}><Icon name={symbol} size="inline" /><span>{label}</span></span>

@@ -1,6 +1,6 @@
 # Ember Roadmap
 
-**Status:** Directional roadmap, consolidated 2026-10-05. Outcomes are intended scope, not dates or release commitments.
+**Status:** Directional roadmap, updated 2026-10-07. Outcomes are intended scope, not dates or release commitments.
 
 ## M00 — Project foundation
 
@@ -19,7 +19,7 @@
 
 ## M03 — Mining-engine foundation
 
-**Functional foundation complete; public-release hardening remains.** M03 established verified XMRig v6.26.0 Windows x64 provisioning and provenance, artifact integrity checks, deterministic generated configuration, public-wallet and explicit pool/profile setup, revision-bound consent, a supervised Windows process path, kill-on-close Job Object ownership, no-console launch, authenticated loopback API, lifecycle control, Stop/Quit cleanup, bounded sanitized diagnostics, native integration diagnostics and a controlled real-mining path.
+**Functional foundation complete; public-release hardening remains.** M03 established verified XMRig v6.26.0 Windows x64 provisioning and provenance, artifact integrity checks, deterministic generated configuration, public-wallet and explicit pool/profile setup, revision-bound consent, a supervised Windows process path, kill-on-close Job Object ownership, no-console launch, authenticated loopback API, lifecycle control, Stop/Quit cleanup, bounded sanitized diagnostics, native integration diagnostics and a controlled real-mining path. A subsequent current-release owner session passed native acceptance; the earlier owner-machine API startup failure is no longer reproducing, with no root cause claimed.
 
 - **M03A — Research and engine contract:** complete. Licensing and distribution approval remain open.
 - **M03B — Safe engine groundwork and process ownership:** complete. Includes deterministic validation, bounded/redacted diagnostics, suspended creation before Job Object assignment, descendant cleanup, tray-Quit cleanup and packaged host checks.
@@ -27,20 +27,28 @@
 - **M03C.1 — Verified provisioning:** complete. Pinned release signature and archive hash are verified before safe extraction/promotion, with local provenance metadata.
 - **M03C.2A — Setup and consent:** complete. Mainnet public address, manual pool/TLS, static CPU profiles, generated candidate config and backend-owned readiness/disclosure.
 - **M03C.2A.1 — Beginner setup UX:** complete. Wallet → Pool → Power → Review → Ready with progressive disclosure.
-- **M03C.2B — Controlled mining session:** implementation complete; real owner-machine Start → Mining → Stop verification remains open. Rust owns fresh consent/artifact checks, private per-session config, `CREATE_NO_WINDOW` suspended Job Object launch, authenticated restricted `/2/summary` readiness, hashrate-gated Mining, telemetry monitoring, unexpected-exit cleanup and tray Stop/Quit. The current owner-machine report is that XMRig remained alive but did not open its loopback API; investigate this before treating the native session as verified. Shares and pool connection are not exposed by the current summary contract. See [XMRig integration notes](XMRIG_INTEGRATION.md).
+- **M03C.2B — Controlled mining session:** implementation and native owner-machine Start → Mining verification complete. The owner rebuilt the current release and observed authenticated local API telemetry, Connected pool, approximately 873 H/s, Quiet configured at 4 of 16 threads and an advancing session timer. Earlier reports of a live XMRig process without its loopback API remain historical; the issue is no longer reproducing and no root cause is claimed. See [XMRig integration notes](XMRIG_INTEGRATION.md).
+
+## M04 — Mining telemetry and control
+
+- **M04A — Telemetry contract and source audit:** complete. Verified pinned v6.26.0 `/2/summary` and `/2/backends` semantics, documented provenance and missing-versus-zero behavior, normalized summary rates/results/pool/CPU huge-page fields, and added freshness state. No Pause/Resume control.
+- **M04B — Live mining session telemetry:** implementation complete and natively exercised. Overview and Mining consume Rust-normalized status via bounded, serial Tauri requests; display hashrate, pool state, results, session duration, configured profile/thread capacity and freshness. Stop remains the only session control.
+- **M04C — Session reliability and control:** implementation and native startup/live telemetry acceptance passed. The owner has now also visually reviewed the stable live experience. The explicit Stop/Quit checklist remains for owner confirmation. Keep pool/API connectivity separate from process lifecycle; retain restricted API mode and defer Pause/Resume absent a safe verified mechanism. Backend worker evidence, helper-window prevention, stable sidebar and concise startup state are documented/implemented.
+- **M04D — Mining experience polish:** implementation and owner native visual review complete. Review confirmed Starting → Mining, authenticated telemetry, Connected pool, real hashrate, Quiet configured allocation, advancing session time and a stable live UI. M04 is functionally complete; only M04C Stop/Quit owner acceptance remains before closure.
+
+## M05 — Ember Stream
+
+- **M05A — Event model & translation layer:** event domain, baseline/delta translator, session identity, bounded process-local buffer and frontend retrieval command implemented. Deterministic Rust coverage is included; a clean build/test run remains required before milestone acceptance.
+- **M05B — Stream presentation:** implemented. Mining reads the structured command and displays a compact, accessible recent-event stream with local-time timestamps, concise kind-based wording, category markers and severity icons. React creates no events. A clean build/test run remains required before milestone acceptance.
 
 ### M03 public-release hardening still required
 
-- Complete owner-controlled real-session verification and resolve the API startup issue.
+- Retain owner-controlled real-session verification across release candidates; the earlier API startup issue is no longer reproducing.
 - Review GPLv3 acquisition/aggregation, notices, Corresponding Source and dependency licensing.
 - Define signing-key rotation/revocation and XMRig update/rollback/support policy.
 - Test packaged release behavior on clean Windows systems, including Defender and SmartScreen outcomes and user recovery.
 - Confirm installer/update, diagnostics/support, accessibility, performance, clean uninstall and disclosure polish before public beta.
 - Keep autostart mining opt-in only; no automatic mining is enabled.
-
-## M04 — Mining Telemetry & Control
-
-Turn the working engine into a reliable observable session: live hashrate; accepted/rejected shares where authoritative data is available; pool connection state; mining uptime; current profile; Pause, Resume and Stop; lifecycle/reconnect/error representation; and normalized engine telemetry. Preserve the distinction between unavailable and zero. Do not fabricate values. Resolve API provenance and behavior against the pinned engine before exposing each field.
 
 ## M05 — Ember Stream
 

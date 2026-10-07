@@ -1,0 +1,11 @@
+---
+import HubPage from '../../components/HubPage.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('articles', ({ data }) => !data.draft && data.section === 'learn')).sort((a, b) => a.data.publishedDate.valueOf() - b.data.publishedDate.valueOf());
+const cards = [
+  { icon:'graduationCap', category:'Foundations', title:'What is Monero mining?', description:'A grounded introduction to how mining contributes work to the Monero network.' },
+  { icon:'gauge', category:'Measurements', title:'Hashrate, explained', description:'What a hashrate measures, why time windows differ and what the number cannot promise.' },
+  { icon:'network', category:'Network', title:'Pools, solo mining and P2Pool', description:'How miners coordinate work, and how the main participation models differ.' },
+] as const;
+---
+<HubPage kind="learn" title="Learn Monero mining — Ember" description="Understand Monero mining, RandomX, CPU cache and XMRig thread selection through clear, technically grounded explanations." kicker="FIELD NOTES / 01" heading="Understand the work behind the numbers." intro="Build a useful mental model before diving into configuration. Each explanation distinguishes what can be observed from what is inferred." index="01" indexLabel="CONCEPTS / MEASUREMENTS / NETWORK" featureTitle="Start with a mental model, not a settings file." featureCopy="The first learning cluster explains RandomX memory and CPU cache, and why XMRig may choose fewer mining threads than Windows reports logical processors." featureAside="Each article cites primary XMRig references and keeps system-specific recommendations qualified." cardsTitle="More concepts in scope" cards={cards} articles={articles} note="Additional concepts will be published after sourcing and technical review." />

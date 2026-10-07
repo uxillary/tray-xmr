@@ -1,0 +1,35 @@
+---
+import arrowDown from '@phosphor-icons/core/light/arrow-down-light.svg?raw';
+import arrowRight from '@phosphor-icons/core/light/arrow-right-light.svg?raw';
+import arrowsLeftRight from '@phosphor-icons/core/light/arrows-left-right-light.svg?raw';
+import bookOpenText from '@phosphor-icons/core/light/book-open-text-light.svg?raw';
+import books from '@phosphor-icons/core/light/books-light.svg?raw';
+import chartLineUp from '@phosphor-icons/core/light/chart-line-up-light.svg?raw';
+import checkCircle from '@phosphor-icons/core/light/check-circle-light.svg?raw';
+import circuitry from '@phosphor-icons/core/light/circuitry-light.svg?raw';
+import cpu from '@phosphor-icons/core/light/cpu-light.svg?raw';
+import flowArrow from '@phosphor-icons/core/light/flow-arrow-light.svg?raw';
+import gauge from '@phosphor-icons/core/light/gauge-light.svg?raw';
+import gear from '@phosphor-icons/core/light/gear-light.svg?raw';
+import graduationCap from '@phosphor-icons/core/light/graduation-cap-light.svg?raw';
+import hardDrives from '@phosphor-icons/core/light/hard-drives-light.svg?raw';
+import info from '@phosphor-icons/core/light/info-light.svg?raw';
+import lightning from '@phosphor-icons/core/light/lightning-light.svg?raw';
+import lockKey from '@phosphor-icons/core/light/lock-key-light.svg?raw';
+import memory from '@phosphor-icons/core/light/memory-light.svg?raw';
+import magnifyingGlass from '@phosphor-icons/core/light/magnifying-glass-light.svg?raw';
+import network from '@phosphor-icons/core/light/network-light.svg?raw';
+import playCircle from '@phosphor-icons/core/light/play-circle-light.svg?raw';
+import shieldCheck from '@phosphor-icons/core/light/shield-check-light.svg?raw';
+import stack from '@phosphor-icons/core/light/stack-light.svg?raw';
+import steps from '@phosphor-icons/core/light/steps-light.svg?raw';
+import thermometer from '@phosphor-icons/core/light/thermometer-light.svg?raw';
+import warning from '@phosphor-icons/core/light/warning-light.svg?raw';
+import xCircle from '@phosphor-icons/core/light/x-circle-light.svg?raw';
+import wrench from '@phosphor-icons/core/light/wrench-light.svg?raw';
+
+const { name, size = 'inline' } = Astro.props as { name: keyof typeof icons; size?: 'inline' | 'card' | 'section' | 'diagram' | 'feature' };
+const icons = { arrowDown, arrowRight, arrowsLeftRight, bookOpenText, books, chartLineUp, checkCircle, circuitry, cpu, flowArrow, gauge, gear, graduationCap, hardDrives, info, lightning, lockKey, memory, magnifyingGlass, network, playCircle, shieldCheck, stack, steps, thermometer, warning, wrench, xCircle };
+const svg = icons[name].replace('<svg ', '<svg class="phosphor-svg" aria-hidden="true" focusable="false" ');
+---
+<span class={`icon-box icon-${size}`} aria-hidden="true" set:html={svg}></span>

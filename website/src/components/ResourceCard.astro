@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+import StatusBadge from './StatusBadge.astro';
+const { title, description, category, icon, href, status = href ? 'Published' : 'Planned' } = Astro.props as {
+  title: string; description: string; category: string;
+  icon: 'bookOpenText' | 'books' | 'graduationCap' | 'network' | 'memory' | 'hardDrives' | 'cpu' | 'gauge' | 'circuitry' | 'thermometer' | 'wrench' | 'shieldCheck' | 'steps' | 'lightning' | 'chartLineUp' | 'magnifyingGlass' | 'lockKey' | 'playCircle';
+  href?: string; status?: string;
+};
+---
+{href ? <article class="resource-card resource-card-published"><a class="resource-card-link" href={href}><span class="resource-icon"><Icon name={icon} size="card" /></span><span class="resource-card-meta"><span>{category}</span><StatusBadge state="good" label={status} /></span><h3>{title}</h3><p>{description}</p><span class="resource-card-action">Read resource <Icon name="arrowRight" size="inline" /></span></a></article> : <article class="resource-card resource-card-planned"><div class="resource-card-body"><span class="resource-icon"><Icon name={icon} size="card" /></span><span class="resource-card-meta"><span>{category}</span><StatusBadge state="info" label={status} /></span><h3>{title}</h3><p>{description}</p></div></article>}

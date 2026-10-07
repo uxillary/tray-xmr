@@ -1,6 +1,16 @@
 # Ember Product Direction
 
-**Status:** Durable product direction, consolidated 2026-10-05. Planned concepts are not claims of currently shipped features; see [Roadmap](ROADMAP.md) for sequencing.
+**Status:** Durable product direction, updated 2026-10-07. Planned concepts are not claims of currently shipped features; see [Roadmap](ROADMAP.md) for sequencing.
+
+## Desktop layout and density
+
+On normal desktop layouts, keep the navigation sidebar stable while the main workspace scrolls independently. Keep Overview, Mining, Activity and Settings reachable without making long pages the default: prioritize the main state/action area, use compact visual state and progressive disclosure, and aim for important page content to fit a typical laptop viewport where practical. Layout must remain usable with short viewports, zoom and accessibility settings; fixed heights must not hide content.
+
+The M04B direction is approved, with owner feedback for M04D: the interface remains somewhat card/text heavy; increase visual metaphor and representation, reduce unnecessary explanatory copy, avoid excessive nested rectangles, keep advanced information progressively disclosed, retain stable navigation, and manage content density to reduce unnecessary scrolling. M04D applies this through a dominant live-rate treatment, a compact pool route and configured-thread lanes. Do not use Ember Stream as a substitute for this experience work.
+
+M04D review rules: Overview is a short operational snapshot (rate, pool, profile and duration); Mining is the detailed session view (state, rate, pool, configured CPU capacity, time, work counts and Stop). Keep rolling-window semantics, worker limitations and backend detail under Details. Start is prominent when setup is ready; Stop is a normal visible session control. The Ember Core reflects only known Ember lifecycle state, with restrained Starting/Mining motion and reduced-motion support. No share-pulse event is implied.
+
+Ember Stream translates only meaningful observed transitions into product events. A periodic telemetry sample is not itself an event: rate fluctuation and unchanged counters do not add feed activity. The initial authenticated sample establishes a baseline rather than manufacturing historical pool/share events. Result deltas may be aggregated when multiple submissions occur between observations. The Stream is a curated product surface; raw XMRig output remains separate diagnostics.
 
 ## Vision
 
@@ -33,7 +43,7 @@ The current Mining setup offers verified engine status/repair, public wallet man
 
 ## Ember Stream
 
-Ember Stream is a planned live operational feed, not a terminal emulator or raw XMRig stdout window. It translates genuine observable mining and Smart Mining events into concise human-readable activity. Candidate categories include Engine, Connect, Work, Share, CPU, Smart, Earnings, Contribution, Warning, Error and System. Entries should support timestamps, hierarchy/severity, meaningful icons/status markers, restrained animation, bounded history and accessible non-colour indicators. Example wording is deliberately left to design work. Advanced users may inspect **Raw XMRig** output separately. Neither view may expose secrets, and every Stream event must derive from genuine observable state or an event.
+Ember Stream is a live operational feed, not a terminal emulator or raw XMRig stdout window. The Mining page presents concise local-time entries translated from genuine lifecycle, pool-transition and accepted/rejected-result events. The UI reads the bounded Rust event source; it does not generate events from telemetry samples. Advanced users may inspect **Raw XMRig** output separately. Neither view may expose secrets, and every Stream event derives from genuine observable state or an event.
 
 ## Progression and rewards
 

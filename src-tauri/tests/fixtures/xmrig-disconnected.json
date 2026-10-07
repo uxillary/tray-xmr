@@ -1,0 +1,27 @@
+{
+  "version": "6.26.0",
+  "kind": "miner",
+  "uptime": 45,
+  "restricted": true,
+  "paused": false,
+  "algorithms": ["rx/0"],
+  "hashrate": {"total": [0, 0, null]},
+  "results": {"diff_current": 0, "shares_good": 0, "shares_total": 0, "hashes_total": 0, "best": []},
+  "connection": {
+    "pool": "pool.example:3333",
+    "uptime": 0,
+    "uptime_ms": 0,
+    "ping": 0,
+    "failures": 2,
+    "tls": null,
+    "tls-fingerprint": null,
+    "algo": "rx/0",
+    "diff": 0,
+    "accepted": 0,
+    "rejected": 0,
+    "avg_time": 0,
+    "avg_time_ms": 0,
+    "hashes_total": 0
+  },
+  "hugepages": [0, 16]
+}

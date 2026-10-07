@@ -1,4 +1,4 @@
-export type EmberCoreState = "not-configured" | "ready" | "mining" | "paused" | "warning" | "inactive";
+export type EmberCoreState = "not-configured" | "ready" | "starting" | "mining" | "paused" | "stopped" | "warning" | "inactive";
 
 export function EmberCore({ state, compact = false }: { state: EmberCoreState; compact?: boolean }) {
   return (

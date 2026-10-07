@@ -2,7 +2,10 @@ use super::diagnostics::RedactionSecrets;
 use super::domain::{
     EngineArtifact, EngineAvailability, EngineError, EngineErrorKind, EngineLifecycleState,
     EngineStatus, LifecycleMachine, MiningTelemetry, StartupStage, StartupTiming, StopReason,
-    ValidatedMiningConfig,
+    TelemetryFreshness, ValidatedMiningConfig,
+};
+use super::events::{
+    EmberEvent, EventLog, EventSessionContext, FailureKind, StopReason as EventStopReason,
 };
 use super::process::SupervisedChild;
 use super::xmrig::ApiClientError;
@@ -18,6 +21,7 @@ use std::time::{Duration, Instant};
 // Job Object immediately instead of waiting for an unimplemented graceful API.
 const STOP_GRACE: Duration = Duration::ZERO;
 const MAX_STARTUP_TIMINGS: usize = 64;
+const TELEMETRY_STALE_AFTER: Duration = Duration::from_secs(5);
 #[cfg(not(test))]
 const READINESS_ATTEMPTS: usize = 120;
 #[cfg(test)]
@@ -32,6 +36,8 @@ struct SupervisorInner {
     availability: EngineAvailability,
     process: Option<SupervisedChild>,
     telemetry: Option<MiningTelemetry>,
+    telemetry_received_at: Option<Instant>,
+    mining_started_at: Option<Instant>,
     error: Option<EngineError>,
     diagnostics: Vec<super::domain::DiagnosticSummary>,
     shutting_down: bool,
@@ -39,6 +45,7 @@ struct SupervisorInner {
     startup_started: Option<Instant>,
     startup_stage_started: Option<Instant>,
     startup_timings: Vec<StartupTiming>,
+    events: EventLog,
 }
 
 pub struct EngineSupervisor {
@@ -62,6 +69,8 @@ impl EngineSupervisor {
                 availability: EngineAvailability::Unavailable,
                 process: None,
                 telemetry: None,
+                telemetry_received_at: None,
+                mining_started_at: None,
                 error: None,
                 diagnostics: Vec::new(),
                 shutting_down: false,
@@ -69,6 +78,7 @@ impl EngineSupervisor {
                 startup_started: None,
                 startup_stage_started: None,
                 startup_timings: Vec::new(),
+                events: EventLog::default(),
             }),
             operation: Mutex::new(()),
             spawn_gate: Mutex::new(()),
@@ -228,10 +238,43 @@ impl EngineSupervisor {
             .and_then(|inner| inner.telemetry.clone())
     }
 
+    pub fn events(&self) -> Vec<EmberEvent> {
+        self.inner
+            .lock()
+            .map(|inner| inner.events.snapshot())
+            .unwrap_or_default()
+    }
+
+    pub fn telemetry_freshness(&self) -> TelemetryFreshness {
+        self.inner
+            .lock()
+            .ok()
+            .map(|inner| match inner.telemetry_received_at {
+                None => TelemetryFreshness::Unavailable,
+                Some(received_at) if received_at.elapsed() > TELEMETRY_STALE_AFTER => {
+                    TelemetryFreshness::Stale
+                }
+                Some(_) => TelemetryFreshness::Fresh,
+            })
+            .unwrap_or(TelemetryFreshness::Unavailable)
+    }
+
+    pub fn session_duration_seconds(&self) -> Option<u64> {
+        self.inner
+            .lock()
+            .ok()
+            .and_then(|inner| inner.mining_started_at)
+            .map(|started_at| started_at.elapsed().as_secs())
+    }
+
     pub fn update_telemetry(&self, telemetry: MiningTelemetry) {
         if let Ok(mut inner) = self.inner.lock() {
             if inner.lifecycle.state() == EngineLifecycleState::Mining {
+                inner
+                    .events
+                    .observe(&telemetry, super::events::timestamp_now_ms());
                 inner.telemetry = Some(telemetry);
+                inner.telemetry_received_at = Some(Instant::now());
             }
         }
     }
@@ -274,6 +317,7 @@ impl EngineSupervisor {
         arguments: &[OsString],
         working_directory: &Path,
         redaction: RedactionSecrets,
+        event_session: EventSessionContext,
         mut spawn: S,
         mut poll_api: P,
     ) -> Result<(), EngineError>
@@ -326,8 +370,13 @@ impl EngineSupervisor {
                 });
             }
             inner.lifecycle.transition(EngineLifecycleState::Starting)?;
+            inner
+                .events
+                .begin_session(event_session, super::events::timestamp_now_ms());
             inner.availability = EngineAvailability::Available(artifact.version().to_owned());
             inner.telemetry = None;
+            inner.telemetry_received_at = None;
+            inner.mining_started_at = None;
             inner.error = None;
             inner.diagnostics.clear();
             if inner.startup_started.is_none() {
@@ -466,6 +515,10 @@ impl EngineSupervisor {
                         return self.cancelled_startup_result();
                     }
                     inner.lifecycle.transition(EngineLifecycleState::Mining)?;
+                    inner
+                        .events
+                        .mining_started(&telemetry, super::events::timestamp_now_ms());
+                    inner.mining_started_at = Some(Instant::now());
                     inner.telemetry = Some(telemetry);
                     if let (Some(stage), Some(started)) =
                         (inner.startup_stage, inner.startup_stage_started)
@@ -535,6 +588,9 @@ impl EngineSupervisor {
         {
             let mut inner = self.inner.lock().map_err(|_| lock_error())?;
             inner.lifecycle.transition(EngineLifecycleState::Error)?;
+            inner
+                .events
+                .failed(FailureKind::Startup, super::events::timestamp_now_ms());
             inner.error = Some(EngineError {
                 kind: EngineErrorKind::ApiUnavailable,
                 message: "Local API was not ready before the deadline".into(),
@@ -609,16 +665,16 @@ impl EngineSupervisor {
     /// The spawn gate only covers verification/spawn/ownership transfer, never polling.
     pub fn stop_starting(&self) -> Result<(), EngineError> {
         self.cancel_startup();
-        self.stop_starting_inner()
+        self.stop_starting_inner(EventStopReason::Owner)
     }
 
     pub fn stop_starting_for_application_quit(&self) -> Result<(), EngineError> {
         self.cancel_startup();
         self.inner.lock().map_err(|_| lock_error())?.shutting_down = true;
-        self.stop_starting_inner()
+        self.stop_starting_inner(EventStopReason::ApplicationQuit)
     }
 
-    fn stop_starting_inner(&self) -> Result<(), EngineError> {
+    fn stop_starting_inner(&self, reason: EventStopReason) -> Result<(), EngineError> {
         let spawn_gate = self.spawn_gate.lock().map_err(|_| lock_error())?;
         let mut process = {
             let mut inner = self.inner.lock().map_err(|_| lock_error())?;
@@ -631,6 +687,7 @@ impl EngineSupervisor {
                 {
                     inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
                     inner.error = None;
+                    inner.events.stopped(reason, false, super::events::timestamp_now_ms());
                 }
                 if let (Some(stage), Some(started)) =
                     (inner.startup_stage, inner.startup_stage_started)
@@ -662,6 +719,10 @@ impl EngineSupervisor {
         let mut inner = self.inner.lock().map_err(|_| lock_error())?;
         if let Some(error) = stop_error {
             inner.lifecycle.transition(EngineLifecycleState::Error)?;
+            inner.events.failed(
+                FailureKind::StopFailed,
+                super::events::timestamp_now_ms(),
+            );
             inner.error = Some(error.clone());
             inner.diagnostics = diagnostics;
             if let (Some(stage), Some(started)) = (inner.startup_stage, inner.startup_stage_started)
@@ -677,8 +738,11 @@ impl EngineSupervisor {
             return Err(error);
         }
         inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
+        inner.events.stopped(reason, false, super::events::timestamp_now_ms());
         inner.error = None;
         inner.telemetry = None;
+        inner.telemetry_received_at = None;
+        inner.mining_started_at = None;
         diagnostics.push(super::domain::DiagnosticSummary {
             source: super::domain::DiagnosticSource::Supervisor,
             message: "Starting session stopped by owner; Job Object closed before output readers were joined".into(),
@@ -728,6 +792,11 @@ impl EngineSupervisor {
             return Ok(None);
         }
         inner.lifecycle.transition(EngineLifecycleState::Error)?;
+        inner.events.failed(
+            FailureKind::UnexpectedEngineExit,
+            super::events::timestamp_now_ms(),
+        );
+        inner.mining_started_at = None;
         inner.error = Some(EngineError {
             kind: EngineErrorKind::UnexpectedExit,
             message: format!(
@@ -740,6 +809,7 @@ impl EngineSupervisor {
             message: format!("XMRig exited after Mining: success={succeeded}, code={code:?}"),
         });
         inner.telemetry = None;
+        inner.telemetry_received_at = None;
         Ok(code)
     }
 
@@ -748,14 +818,23 @@ impl EngineSupervisor {
         F: FnOnce(&mut SupervisedChild) -> io::Result<()>,
     {
         let _operation = self.operation.lock().map_err(|_| lock_error())?;
-        self.stop_owned_process(graceful)
+        let reason = match _reason {
+            StopReason::ApplicationQuit => EventStopReason::ApplicationQuit,
+            StopReason::UserRequest => EventStopReason::Owner,
+            StopReason::StartupFailure => EventStopReason::StartupCancelled,
+        };
+        self.stop_owned_process(graceful, reason)
     }
 
-    fn stop_owned_process<F>(&self, graceful: F) -> Result<(), EngineError>
+    fn stop_owned_process<F>(
+        &self,
+        graceful: F,
+        reason: EventStopReason,
+    ) -> Result<(), EngineError>
     where
         F: FnOnce(&mut SupervisedChild) -> io::Result<()>,
     {
-        let mut process = {
+        let (mut process, was_mining) = {
             let mut inner = self.inner.lock().map_err(|_| lock_error())?;
             if inner.process.is_none() {
                 if inner.lifecycle.state() == EngineLifecycleState::Error
@@ -767,9 +846,16 @@ impl EngineSupervisor {
                     inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
                     inner.error = None;
                     inner.telemetry = None;
+                    inner.telemetry_received_at = None;
+                    inner.mining_started_at = None;
+                    inner.events.stopped(reason, false, super::events::timestamp_now_ms());
                 }
                 return Ok(()); // Explicitly idempotent when this supervisor owns no process.
             }
+            let was_mining = matches!(
+                inner.lifecycle.state(),
+                EngineLifecycleState::Mining | EngineLifecycleState::Paused
+            );
             match inner.lifecycle.state() {
                 EngineLifecycleState::Mining | EngineLifecycleState::Paused => {
                     inner.lifecycle.transition(EngineLifecycleState::Stopping)?;
@@ -785,7 +871,7 @@ impl EngineSupervisor {
                     })
                 }
             }
-            inner.process.take().expect("checked owned process")
+            (inner.process.take().expect("checked owned process"), was_mining)
         };
 
         let result = process.stop_with(graceful, STOP_GRACE);
@@ -797,7 +883,12 @@ impl EngineSupervisor {
                 if inner.lifecycle.state() != EngineLifecycleState::Stopped {
                     inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
                 }
+                inner
+                    .events
+                    .stopped(reason, was_mining, super::events::timestamp_now_ms());
                 inner.telemetry = None;
+                inner.telemetry_received_at = None;
+                inner.mining_started_at = None;
                 inner.error = None;
                 diagnostics.push(super::domain::DiagnosticSummary {
                     source: super::domain::DiagnosticSource::Supervisor,
@@ -810,6 +901,11 @@ impl EngineSupervisor {
                 if inner.lifecycle.state() != EngineLifecycleState::Error {
                     inner.lifecycle.transition(EngineLifecycleState::Error)?;
                 }
+                inner.events.failed(
+                    FailureKind::StopFailed,
+                    super::events::timestamp_now_ms(),
+                );
+                inner.mining_started_at = None;
                 inner.error = Some(error.clone());
                 inner.diagnostics = diagnostics;
                 Err(error)
@@ -820,7 +916,7 @@ impl EngineSupervisor {
     pub fn stop_for_application_quit(&self) -> Result<(), EngineError> {
         let _operation = self.operation.lock().map_err(|_| lock_error())?;
         self.inner.lock().map_err(|_| lock_error())?.shutting_down = true;
-        self.stop_owned_process(|_| Ok(()))
+        self.stop_owned_process(|_| Ok(()), EventStopReason::ApplicationQuit)
     }
 
     fn fail<T>(&self, error: EngineError) -> Result<T, EngineError> {
@@ -830,7 +926,14 @@ impl EngineSupervisor {
                 let _ = inner.lifecycle.transition(EngineLifecycleState::Error);
             }
             inner.error = Some(error.clone());
+            if error.kind != EngineErrorKind::StartupCancelled {
+                inner
+                    .events
+                    .failed(FailureKind::Startup, super::events::timestamp_now_ms());
+            }
             inner.telemetry = None;
+            inner.telemetry_received_at = None;
+            inner.mining_started_at = None;
             inner.startup_stage = None;
             inner.startup_started = None;
             inner.startup_stage_started = None;
@@ -881,17 +984,26 @@ fn start_cancelled_error() -> EngineError {
 
 #[cfg(test)]
 mod tests {
-    use super::EngineSupervisor;
+    use super::{EngineSupervisor, TELEMETRY_STALE_AFTER};
     use crate::mining::config::tests::fixture_config;
     use crate::mining::diagnostics::RedactionSecrets;
     use crate::mining::domain::{
         EngineArtifact, EngineErrorKind, EngineLifecycleState, MiningTelemetry, StartupStage,
-        StopReason,
+        StopReason, TelemetryFreshness,
     };
+    use crate::mining::events::{EventSessionContext, MiningProfile};
     use crate::mining::process::SupervisedChild;
     use std::ffi::OsString;
     use std::path::{Path, PathBuf};
     use std::time::{Duration, Instant};
+
+    fn test_event_context() -> EventSessionContext {
+        EventSessionContext {
+            session_id: "test-session".into(),
+            profile: MiningProfile::Quiet,
+            configured_threads: Some(4),
+        }
+    }
 
     fn fixture_artifact(path: PathBuf) -> EngineArtifact {
         EngineArtifact::verified_fixture(
@@ -913,8 +1025,42 @@ mod tests {
             short_hashrate: (!paused).then_some(1.0),
             medium_hashrate: None,
             long_hashrate: None,
+            results: None,
+            pool_connection: None,
+            cpu_huge_pages: None,
             sample_time_unix_ms: None,
         }
+    }
+
+    #[test]
+    fn telemetry_freshness_distinguishes_unavailable_fresh_and_stale() {
+        let supervisor = EngineSupervisor::new();
+        assert_eq!(
+            supervisor.telemetry_freshness(),
+            TelemetryFreshness::Unavailable
+        );
+        {
+            let mut inner = supervisor.inner.lock().unwrap();
+            inner
+                .lifecycle
+                .transition(EngineLifecycleState::Ready)
+                .unwrap();
+            inner
+                .lifecycle
+                .transition(EngineLifecycleState::Starting)
+                .unwrap();
+            inner
+                .lifecycle
+                .transition(EngineLifecycleState::Mining)
+                .unwrap();
+            inner.mining_started_at = Some(Instant::now() - Duration::from_secs(2));
+        }
+        supervisor.update_telemetry(fixture_telemetry(false));
+        assert_eq!(supervisor.telemetry_freshness(), TelemetryFreshness::Fresh);
+        assert_eq!(supervisor.session_duration_seconds(), Some(2));
+        supervisor.inner.lock().unwrap().telemetry_received_at =
+            Some(Instant::now() - TELEMETRY_STALE_AFTER - Duration::from_millis(1));
+        assert_eq!(supervisor.telemetry_freshness(), TelemetryFreshness::Stale);
     }
 
     #[test]
@@ -1014,6 +1160,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 spawn_test_child,
                 || {
                     polls += 1;
@@ -1065,6 +1212,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 spawn_test_child,
                 || Ok(fixture_telemetry(false)),
             )
@@ -1093,6 +1241,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 spawn_test_child,
                 || Err(crate::mining::xmrig::ApiClientError::Unavailable),
             )
@@ -1114,6 +1263,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 spawn_test_child,
                 || Ok(fixture_telemetry(false)),
             )
@@ -1137,6 +1287,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([wallet.clone(), token.clone()]),
+                test_event_context(),
                 spawn_test_child,
                 || {
                     let mut telemetry = fixture_telemetry(false);
@@ -1185,6 +1336,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new(["fixture-private-token".into()]),
+                test_event_context(),
                 spawn_test_child,
                 || {
                     supervisor.cancel_startup();
@@ -1226,6 +1378,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 spawn_test_child,
                 || {
                     let _ = polling_tx.send(());
@@ -1269,6 +1422,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 spawn_test_child,
                 || Ok(fixture_telemetry(false)),
             )
@@ -1298,6 +1452,7 @@ mod tests {
                 ],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 |executable, args, cwd, redaction| {
                     SupervisedChild::spawn(executable, args, cwd, redaction)
                 },
@@ -1331,6 +1486,7 @@ mod tests {
                 &[],
                 &std::env::current_dir().unwrap(),
                 RedactionSecrets::new([]),
+                test_event_context(),
                 |_, _, cwd, redaction| {
                     SupervisedChild::spawn(
                         &std::env::current_exe().unwrap(),
@@ -1385,6 +1541,7 @@ mod tests {
             &[],
             &std::env::current_dir().unwrap(),
             RedactionSecrets::new([]),
+            test_event_context(),
             spawn_test_child,
             || Ok(fixture_telemetry(false)),
         );

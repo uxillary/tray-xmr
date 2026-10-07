@@ -14,6 +14,7 @@ const SESSION_ID_BYTES: usize = 16;
 
 pub struct RuntimeSession {
     root: PathBuf,
+    session_id: String,
     directory: PathBuf,
     config: PathBuf,
     creation_timings: Vec<StartupTiming>,
@@ -55,6 +56,7 @@ impl RuntimeSession {
             creation_timings.push(timing("RuntimeConfigAcl", acl_started));
             Ok(Self {
                 root: root.clone(),
+                session_id: hex::encode(random),
                 directory: directory.clone(),
                 config,
                 creation_timings: creation_timings.clone(),
@@ -69,6 +71,11 @@ impl RuntimeSession {
 
     pub fn config_path(&self) -> &Path {
         &self.config
+    }
+
+    /// Opaque session identity; intentionally not a filesystem path.
+    pub fn session_id(&self) -> &str {
+        &self.session_id
     }
 
     pub fn working_directory(&self) -> &Path {
@@ -230,6 +237,9 @@ fn run_bounded_output(command: &mut Command, timeout: Duration) -> Result<Output
         .stdin(Stdio::null())
         .stdout(Stdio::piped())
         .stderr(Stdio::null());
+    // These trusted System32 permission helpers are console programs. Keep their
+    // windows out of the desktop session during normal Start and diagnostics.
+    suppress_console_window(command);
     let mut child = command
         .spawn()
         .context("Could not start Windows permission command")?;
@@ -264,6 +274,15 @@ fn run_bounded_output(command: &mut Command, timeout: Duration) -> Result<Output
         stderr: Vec::new(),
     })
 }
+
+#[cfg(windows)]
+fn suppress_console_window(command: &mut Command) {
+    use std::os::windows::process::CommandExt;
+    command.creation_flags(0x0800_0000); // CREATE_NO_WINDOW
+}
+
+#[cfg(not(windows))]
+fn suppress_console_window(_command: &mut Command) {}
 
 #[cfg(test)]
 mod tests {

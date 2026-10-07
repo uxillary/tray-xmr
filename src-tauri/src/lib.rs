@@ -184,6 +184,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
                 Ok(runtime) => runtime,
                 Err(_) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err("Private mining runtime could not be created".to_owned()); }
             };
+            let runtime_session_id = runtime.session_id().to_owned();
             supervisor.record_startup_timings(runtime.creation_timings());
             drop(setup);
             if supervisor.startup_cancelled() {
@@ -213,6 +214,15 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             let api_config = config.clone();
             let poll_adapter = adapter.clone();
             let secrets = RedactionSecrets::new([token, wallet]);
+            let event_session = mining::events::EventSessionContext {
+                session_id: runtime_session_id,
+                profile: match candidate.profile {
+                    mining::readiness::ResourceProfile::Quiet => mining::events::MiningProfile::Quiet,
+                    mining::readiness::ResourceProfile::Balanced => mining::events::MiningProfile::Balanced,
+                    mining::readiness::ResourceProfile::Performance => mining::events::MiningProfile::Performance,
+                },
+                configured_threads: config.config.cpu.threads,
+            };
             candidate.release_port();
             *app.state::<Mutex<Option<ActiveSession>>>()
                 .lock()
@@ -234,6 +244,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
                 &arguments,
                 &working_directory,
                 secrets,
+                event_session,
                 move |path, args, cwd, redaction| {
                     supervisor_for_spawn.set_startup_stage(StartupStage::CheckingEngine);
                     let pre_spawn_started = Instant::now();
@@ -429,7 +440,9 @@ fn copy_xmrig_integration_report(
 struct MiningSessionStatus {
     state: EngineLifecycleState,
     process_id: Option<u32>,
+    session_duration_seconds: Option<u64>,
     telemetry: Option<mining::domain::MiningTelemetry>,
+    telemetry_freshness: mining::domain::TelemetryFreshness,
     error: Option<mining::domain::EngineError>,
     diagnostics: Vec<mining::domain::DiagnosticSummary>,
     capture_health: Option<mining::domain::CaptureHealth>,
@@ -448,7 +461,9 @@ fn mining_status(
     MiningSessionStatus {
         state: status.state,
         process_id: status.process_id,
+        session_duration_seconds: supervisor.session_duration_seconds(),
         telemetry: supervisor.telemetry(),
+        telemetry_freshness: supervisor.telemetry_freshness(),
         error: status.error,
         // Process output and its sanitized event tail stay in Rust. The normal
         // status IPC returns supervisor-owned progress only.
@@ -464,6 +479,14 @@ fn mining_status(
         startup_elapsed_ms: status.startup_elapsed_ms,
         startup_timings: status.startup_timings,
     }
+}
+
+#[cfg(windows)]
+#[tauri::command]
+fn mining_events(supervisor: tauri::State<'_, EngineSupervisor>) -> Vec<mining::events::EmberEvent> {
+    // Event records are structured and curated by the supervisor; diagnostics
+    // and raw/sanitized XMRig output never cross this retrieval boundary.
+    supervisor.events()
 }
 
 #[cfg(windows)]
@@ -744,6 +767,7 @@ pub fn run() {
         start_mining,
         stop_mining,
         mining_status,
+        mining_events,
         copy_diagnostics,
         start_xmrig_integration_test,
         stop_xmrig_integration_test,

@@ -1,6 +1,7 @@
 pub mod config;
 pub mod diagnostics;
 pub mod domain;
+pub mod events;
 #[cfg(windows)]
 pub mod integration_diagnostic;
 pub mod process;

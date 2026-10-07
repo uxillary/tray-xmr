@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+---
+<figure class="technical-flow" aria-labelledby="flow-title" aria-describedby="flow-description flow-caption">
+  <div class="flow-heading"><span class="flow-overline">A CONCEPTUAL MODEL</span><span class="signal-key"><i aria-hidden="true"></i>LOCAL CONTROL · NETWORK WORK</span></div>
+  <h2 id="flow-title">Where Ember fits in the work.</h2>
+  <p id="flow-description" class="flow-description">The configured pool coordinates work. Ember supervises its local XMRig process; XMRig runs RandomX CPU work and submits results to the pool.</p>
+  <div class="flow-stages">
+    <div class="flow-node"><span class="node-code">01 / NETWORK</span><Icon name="network" size="section" /><strong>Monero</strong><small>Network</small></div>
+    <span class="flow-connector" aria-hidden="true"><i></i></span>
+    <div class="flow-node"><span class="node-code">02 / COORDINATION</span><Icon name="arrowsLeftRight" size="section" /><strong>Mining pool</strong><small>Configured work source</small></div>
+    <span class="flow-connector" aria-hidden="true"><i></i></span>
+    <div class="flow-engine">
+      <div class="engine-label"><span>EMBER / LOCAL SUPERVISION</span><span class="engine-status"><Icon name="checkCircle" size="inline" />PROCESS CONTROL</span></div>
+      <div class="engine-core"><div><span class="node-code">03 / MINING ENGINE</span><strong>XMRig</strong><small>Child process supervised by Ember</small></div><Icon name="cpu" size="section" /></div>
+      <div class="engine-work"><span><Icon name="cpu" size="inline" />CPU</span><Icon name="arrowRight" size="inline" /><span><Icon name="circuitry" size="inline" />RandomX work</span></div>
+    </div>
+  </div>
+  <div class="flow-return"><Icon name="arrowRight" size="section" /><span><small>RESULT SUBMISSIONS / BACK TO POOL</small><strong>XMRig sends work results to the configured pool.</strong></span></div>
+  <figcaption id="flow-caption">Conceptual only. Pool protocol, work and result handling depend on configuration and the mining service. Ember does not perform the RandomX workload.</figcaption>
+</figure>

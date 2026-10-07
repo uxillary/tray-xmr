@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "section": {
+      "type": "string",
+      "enum": [
+        "learn",
+        "troubleshoot"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "visual": {
+      "type": "string",
+      "enum": [
+        "huge-pages",
+        "msr",
+        "hashrate",
+        "threads",
+        "memory"
+      ]
+    },
+    "callout": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "good",
+            "check",
+            "limited",
+            "info",
+            "unavailable"
+          ]
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "state",
+        "body"
+      ]
+    },
+    "draft": {
+      "default": false,
+      "type": "boolean"
+    },
+    "sources": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "organization": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "accessed": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "organization",
+          "title",
+          "url",
+          "accessed"
+        ]
+      }
+    },
+    "related": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "publishedDate",
+    "section",
+    "summary",
+    "visual",
+    "sources"
+  ]
+}

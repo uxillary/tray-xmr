@@ -356,6 +356,7 @@ impl SetupService {
             reservation: Some(reservation),
             json,
             validated,
+            profile: self.saved.profile.ok_or("Choose a supported resource profile")?,
         })
     }
 
@@ -432,6 +433,7 @@ pub struct RuntimeCandidate {
     reservation: Option<TcpListener>,
     json: String,
     pub validated: super::domain::ValidatedMiningConfig,
+    pub profile: ResourceProfile,
 }
 
 impl RuntimeCandidate {

@@ -1,6 +1,6 @@
 # Ember High-Level Architecture
 
-**Status:** Conceptual target and implementation facts, consolidated 2026-10-05. M03's functional foundation includes a controlled-session launch path for verified XMRig v6.26.0 Windows x64. Owner-machine production session verification remains open because XMRig stayed alive without opening its local API. See [Roadmap](ROADMAP.md) for status and release-hardening items.
+**Status:** Conceptual target and implementation facts, updated 2026-10-07. M03's functional foundation includes a controlled-session launch path for verified XMRig v6.26.0 Windows x64. The owner has verified a stable native Starting → Mining session, authenticated API telemetry, a connected pool, real hashrate and the compact live UI. Stop/Quit owner acceptance remains open. The earlier API startup failure is no longer reproducing. See [Roadmap](ROADMAP.md) for release-hardening items.
 
 ## Platform and responsibilities
 
@@ -12,7 +12,7 @@ The planned stack is Tauri 2, Rust, React, and TypeScript, initially Windows-fir
 
 The initial Tauri capability grants only `core:default`. Reassess permissions as native features are added. Broader IPC schemas, module boundaries, and future capability needs remain pending design.
 
-The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations, setup/consent, config, diagnostics, process supervision, runtime storage, and the XMRig API contract. Mining controls and controlled native launch are implemented; production session verification on the owner's machine remains open. Historical code is under `legacy/`.
+The repository root contains the React/Vite frontend in `src/` and the Tauri/Rust application in `src-tauri/`. Rust owns system observations, setup/consent, config, diagnostics, process supervision, runtime storage, and the XMRig API contract. Mining controls and controlled native launch are implemented and have passed a real owner-machine session. Historical code is under `legacy/`.
 
 The controlled Windows launch uses `CREATE_NO_WINDOW` with `CREATE_SUSPENDED`, explicit redirected standard handles, and Job Object assignment before resume. Rust publishes truthful startup stages and bounded monotonic stage timings; the frontend presents those values and never runs its own startup timer. XMRig's summary algorithm list does not prove RandomX has initialized, so the UI stays at `Waiting for miner…` until positive short-window hashrate supports the `Mining` state. Windows security-product failures are reported without guessing which product acted; Ember offers its ordinary verified retry/check/repair paths and does not alter security settings.
 
@@ -58,7 +58,7 @@ These are ownership boundaries for roadmap planning, not a prescribed module/cla
 
 ### Telemetry provenance
 
-Every user-facing metric has a known source. **Engine measured** includes hashrate, process uptime and backend state. **Pool reported** includes accepted/rejected shares, balance, payouts and pool-side hashrate where available. **Ember observed** includes Smart Mining time, application state, idle state and profile changes. **Estimated** includes fiat value, projected earnings, electricity when hardware power is not directly measured, and net result. Preserve unavailable distinctly from numeric zero. Do not style or label estimates as measured facts; provenance can be concise on the primary surface and explained in details.
+Every user-facing metric has a known source. **Engine measured** includes hashrate, process uptime and backend state; XMRig-relayed pool submission results remain engine telemetry. **Pool reported** includes balance, payouts and pool-side hashrate where an authoritative provider supplies them. **Ember observed** includes Smart Mining time, application state, idle state and profile changes. **Estimated** includes fiat value, projected earnings, electricity when hardware power is not directly measured, and net result. Preserve unavailable distinctly from numeric zero. Do not style or label estimates as measured facts; provenance can be concise on the primary surface and explained in details.
 
 ## Local-first boundary
 
@@ -68,9 +68,25 @@ Future Ember services may support optional accounts, synchronization, community 
 
 ## Mining engine boundary
 
-Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the initial adapter; this is not a plugin framework. The UI renders Rust-owned lifecycle state and cannot bypass the consent-checked backend path. M03C.2B connects the pinned summary parser, authenticated loopback client, private runtime session, verified artifact and suspended Job Object launch, readiness gate, telemetry monitor, stop/quit cleanup and active-session views. Shares and pool connection data are not exposed. Detailed contract and limits are in [XMRig Integration](XMRIG_INTEGRATION.md).
+Rust owns one internal `MiningEngine` boundary rather than XMRig-specific UI behavior. It covers availability/version, validation, start/stop, lifecycle status, normalized telemetry, and bounded diagnostics. XMRig is the initial adapter; this is not a plugin framework. The UI renders Rust-owned lifecycle state and cannot bypass the consent-checked backend path. M03C.2B connects the pinned summary parser, authenticated loopback client, private runtime session, verified artifact and suspended Job Object launch, readiness gate, telemetry monitor, stop/quit cleanup and active-session views. The M04A parser normalizes XMRig summary result counters and current pool connection facts as well as hashrate and CPU huge-page counts. See [XMRig Integration](XMRIG_INTEGRATION.md) for exact source semantics and limitations.
 
-Keep system, engine, pool/economic, progression and presentation state in their owning domains. Do not derive pool/economic claims from local system or engine readings. Follow the provenance model above and [Product principles](PRODUCT.md).
+### M04A telemetry contract
+
+`MiningTelemetry` is an engine snapshot: version, XMRig API uptime, pause flag, enabled algorithms, three H/s windows, optional result counters/current difficulty, optional pool connection state/endpoint/uptime/failure/ping/TLS/job facts, optional CPU huge-page allocation and sample time. Rust `Option` preserves missing/null distinctly from reported zero. XMRig-reported share counters represent pool submission responses, not direct account telemetry. Ember lifecycle/process ownership, monotonic session duration and selected profile remain separate observed facts. The snapshot carries no earnings, progression, contribution, cloud or UI animation state.
+
+Hashrate windows mean 10s/60s/15m rolling rates. Use the 10-second value as beginner-facing **Current hashrate**, with its window clarified in Details. Lifecycle does not imply a connected pool, available job, nonzero rate at each sample, or accepted shares. Process existence, API health/freshness, backend state, pool connection and hashing are separate facts. See the [complete source audit](XMRIG_INTEGRATION.md#m04a-normalized-summary-contract).
+
+The local monitor uses one serial poller with a two-second deadline and one-second loop delay. The last good sample is Fresh for five seconds, then Stale while retained; no sample or a cleaned-up session is Unavailable. Poll failures do not change lifecycle; process exit remains supervisor-owned. Continue local sampling while hidden, poll more slowly when paused, and never poll after stop. Pause/Resume has no established control mechanism compatible with restricted read-only API access; M04C must not relax that boundary.
+
+M04B exposes the normalized snapshot and freshness enum only through the existing `mining_status` command. The frontend polls that Rust-owned snapshot serially with a one-second delay; it never contacts XMRig. Rust separately reports monotonic session duration. Profile and configured thread count come from the validated Ember setup. The UI preserves last-known values when stale, displays missing values as unavailable, and keeps lifecycle independent from pool state. It labels a positive hashrate as observed hashing but does not claim configured/listed threads are active workers. M04D keeps Overview to a short rate/pool/profile/time snapshot and gives Mining one operational composition for state, rate, pool, configured CPU capacity, duration, work results and Stop. Rolling windows, backend limits and provenance remain under keyboard-accessible Details. The Ember Core style reflects known state; it does not create telemetry or share events. M05B adds a compact Stream below Mining operations, reading only the `mining_events` command and showing recent event wording, category, severity and supplied timestamp. No chart or persistent event history is built. On desktop, the navigation sidebar and main workspace scroll independently; each remains scrollable for short viewports and zoom.
+
+### M05A event model
+
+`mining::events::EventLog` lives with the supervisor and owns transition translation plus a 256-entry FIFO buffer for the current Ember process. Event IDs combine the opaque random runtime-session ID and monotonic per-process sequence; timestamps are UTC Unix milliseconds. Starting/Mining/Stopped/Failed come from supervisor lifecycle transitions. The first authenticated Mining sample seeds pool and result-counter baselines, then later samples may yield pool state changes and aggregated accepted/rejected deltas. Missing/unknown values do not manufacture transitions; counter decreases rebaseline without negative events. Hashrate remains state. Events are retrieved through the `mining_events` Tauri command; frontend reads cannot create them.
+
+The event vocabulary is structured (`EventKind`, category, severity and source), not a collection of display strings. Current categories are System, Pool and Result. Pool endpoint, wallet, worker credentials, API token, runtime path, config and raw output are excluded from event payloads. XMRig's normalized summary exposes counters and pool connection facts but no verified discrete job identity, so WORK events are deferred. Persistent Activity/history and retention, notifications, Smart Mining, economics, progression and contribution remain future consumers/sources.
+
+Keep system, engine, pool results relayed through XMRig, pool/economic, progression and presentation state in their owning domains. Do not derive account/economic claims from local system or engine readings. Follow the provenance model above and [Product principles](PRODUCT.md).
 
 ### Process lifecycle responsibilities
 
@@ -131,8 +147,8 @@ Schema 1 lives in `%LOCALAPPDATA%\Ember\setup-v1.json` with a revision and discl
 
 1. Legal approval of XMRig GPLv3 acquisition/aggregation, notices and source obligations, including dependency notices.
 2. Key-rotation/revocation response for future signing-key changes.
-3. Pool shares and connection fields are not established by `/2/summary` and remain unavailable until separately sourced and verified.
-4. Owner-controlled Start → Mining → Stop verification remains open; current report is XMRig alive without its loopback API opening. Runtime cleanup remains bounded to Ember's owned Job Object.
+3. XMRig v6.26.0 `/2/summary` includes engine-relayed share counters and current connection fields; direct pool account balances/payouts remain unavailable without a provider.
+4. Native Start → Mining and live API telemetry have passed on the owner's current release. Stop/Quit acceptance remains open for the checklist in [XMRig integration](XMRIG_INTEGRATION.md). Runtime cleanup remains bounded to Ember's owned Job Object.
 5. Local database choice, schema ownership, migration, retention, export, and deletion.
 6. Supported pool/market data sources and estimate methodology.
 7. Smart Mining signals, limits, precedence, overrides, and laptop/thermal behavior.

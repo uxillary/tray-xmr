@@ -1,0 +1,56 @@
+---
+import SiteLayout from '../../components/SiteLayout.astro';
+import Icon from '../../components/Icon.astro';
+import '../../styles/site.css';
+import '../../styles/electricity-calculator.css';
+---
+
+<SiteLayout title="Mining Electricity Cost Calculator" description="Estimate the electricity energy and running cost of a mining PC or other continuous workload using your own measured power, runtime and tariff.">
+  <div class="wrap calculator-page">
+    <header class="page-intro calculator-heading">
+      <span class="page-kicker">TOOLS / ENERGY</span>
+      <h1>Mining Electricity Cost Calculator</h1>
+      <p>Estimate what a mining PC or other continuous workload uses and costs to run. Enter your own power measurement and electricity rate; no tariff is assumed.</p>
+    </header>
+
+    <section class="calculator-shell" aria-label="Electricity cost calculator">
+      <form id="electricity-calculator" class="calculator-inputs" novalidate>
+        <div class="calculator-panel-heading"><span class="eyebrow">01 / YOUR INPUTS</span><span class="calculator-live"><i aria-hidden="true"></i> LOCAL CALCULATION</span></div>
+        <label class="calc-field" for="power-watts"><span>Whole-system power</span><span class="calc-input-wrap"><input id="power-watts" name="watts" type="text" inputmode="decimal" autocomplete="off" value="100" aria-describedby="power-help power-error"><span>W</span></span><small id="power-help">Measure at the wall for a household estimate. Maximum 20,000 W.</small><span class="calc-error" id="power-error"></span></label>
+        <div class="calc-field"><label for="electricity-rate">Electricity rate</label><div class="calc-input-wrap"><input id="electricity-rate" name="rate" type="text" inputmode="decimal" autocomplete="off" placeholder="Enter your rate" aria-describedby="rate-help rate-error"><select id="rate-unit" name="rateUnit" aria-label="Rate unit"><option value="kwh">/ kWh</option><option value="pence">p / kWh</option></select></div><small id="rate-help">Enter the price from your own tariff. Rate maximum: 1,000 per kWh or 100,000 p/kWh.</small><span class="calc-error" id="rate-error"></span></div>
+        <fieldset class="calc-field calc-runtime"><legend>Runtime</legend><label for="runtime-preset" class="sr-only">Hours per day preset</label><select id="runtime-preset" name="runtime"><option value="24">24 hours / day</option><option value="12">12 hours / day</option><option value="8">8 hours / day</option><option value="custom">Custom</option></select><div class="calc-input-wrap"><input id="runtime-hours" name="hours" type="text" inputmode="decimal" value="24" aria-label="Custom runtime in hours per day" aria-describedby="hours-error"><span>hours / day</span></div><small>Choose a preset or enter any runtime from 0 to 24 hours.</small><span class="calc-error" id="hours-error"></span></fieldset>
+        <div class="calc-field"><label for="period-days">Calculation period</label><div class="calc-input-wrap"><input id="period-days" name="days" type="text" inputmode="decimal" value="30" aria-describedby="days-help days-error"><span>days</span></div><small id="days-help">Set 1 to 365 days. The yearly view always uses 365 days.</small><span class="calc-error" id="days-error"></span></div>
+        <div class="calc-field"><label for="currency">Currency</label><select id="currency" name="currency"><option value="GBP">GBP — £</option><option value="USD">USD — $</option><option value="EUR">EUR — €</option></select><small>Currency changes display only. No conversion is performed.</small></div>
+        <button class="calc-reset" type="reset"><Icon name="gear" size="inline" /> Reset to defaults</button>
+      </form>
+
+      <section class="calculator-results" aria-labelledby="result-title">
+        <div class="calculator-panel-heading"><span class="eyebrow">02 / ENERGY → COST</span><span class="result-period-tag" id="period-label">30 DAYS</span></div>
+        <div class="energy-flow" aria-label="Power becomes energy, which is priced as electricity cost">
+          <div class="flow-node"><Icon name="cpu" size="card" /><span>POWER</span><strong id="power-readout">Set inputs</strong></div><span class="flow-connector" aria-hidden="true"></span>
+          <div class="flow-node flow-energy"><Icon name="lightning" size="card" /><span>ENERGY / DAY</span><strong id="energy-day">—</strong></div><span class="flow-connector" aria-hidden="true"></span>
+          <div class="flow-node flow-cost"><Icon name="chartLineUp" size="card" /><span>ESTIMATED COST / DAY</span><strong id="cost-day">Enter a rate</strong></div>
+        </div>
+        <div class="cost-readouts">
+          <div><span>PER HOUR</span><strong id="cost-hour">Enter a rate</strong></div>
+          <div><span id="period-cost-label">30 DAYS</span><strong id="cost-period">Enter a rate</strong></div>
+          <div><span>365 DAYS</span><strong id="cost-year">Enter a rate</strong></div>
+        </div>
+        <div class="energy-readouts"><span>ENERGY</span><span><strong id="energy-period">—</strong> / period</span><span><strong id="energy-year">—</strong> / 365 days</span></div>
+        <p class="calc-status" id="calc-status" aria-live="polite">Energy updates as you change inputs. Add a rate to see estimated electricity cost.</p>
+      </section>
+    </section>
+
+    <section class="power-note" aria-labelledby="power-note-title"><div class="power-note-icon"><Icon name="circuitry" size="feature" /></div><div><span class="eyebrow">MEASURE THE WHOLE SYSTEM</span><h2 id="power-note-title">What power value should I enter?</h2><p>For a household electricity estimate, use whole-system power measured at the wall. CPU package power is only one part of the computer: GPU, motherboard, RAM, storage, fans and power-supply losses also contribute. Software-reported CPU power is useful for rough comparisons, but may not represent wall draw.</p></div></section>
+
+    <section class="calculator-explainer" aria-label="Calculation details">
+      <article><span class="eyebrow">METHOD / 01</span><h2>How the calculation works</h2><p>Watts are converted to kilowatts, then multiplied by the hours the system runs. Energy in kilowatt-hours is multiplied by your entered electricity rate.</p><p class="formula-block"><code>kWh = (watts ÷ 1,000) × hours</code><code>Cost = kWh × price per kWh</code></p><p>The day uses your runtime. The selected period uses your chosen number of days. The yearly estimate uses 365 days. Values are calculated without rounding and rounded only for display.</p></article>
+      <article><span class="eyebrow">CONTEXT / 02</span><h2>Why mining electricity use matters</h2><p>Continuous workloads accumulate energy over time, and part-time operation changes the estimate directly. A measured whole-system value gives a better household-cost estimate than CPU package power alone.</p><p>Electricity is one part of mining economics. This tool intentionally estimates energy and electricity cost only; it does not estimate mining income or profitability.</p><a href="/learn/randomx-memory-cache/">Understand the memory used by RandomX <span aria-hidden="true">↗</span></a></article>
+    </section>
+    <p class="calculator-backlink"><a href="/tools/">← Back to all tools</a></p>
+  </div>
+</SiteLayout>
+
+<script>
+  import '../../scripts/electricity-calculator.js';
+</script>

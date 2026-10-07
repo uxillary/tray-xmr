@@ -1,0 +1,9 @@
+---
+import Icon from './Icon.astro';
+const { label, state, body } = Astro.props as { label: string; state: 'good' | 'check' | 'limited' | 'info' | 'unavailable'; body: string };
+const icon = { good: 'checkCircle', check: 'magnifyingGlass', limited: 'warning', info: 'info', unavailable: 'xCircle' }[state];
+---
+<aside class={`technical-callout callout-${state}`} aria-label={label}>
+  <div class="technical-callout-label"><Icon name={icon} size="inline" /><strong>{label}</strong></div>
+  <p>{body}</p>
+</aside>

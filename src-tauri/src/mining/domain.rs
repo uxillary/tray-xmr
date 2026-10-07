@@ -142,7 +142,58 @@ pub struct MiningTelemetry {
     pub short_hashrate: Option<f64>,
     pub medium_hashrate: Option<f64>,
     pub long_hashrate: Option<f64>,
+    pub results: Option<MiningResultsTelemetry>,
+    pub pool_connection: Option<PoolConnectionTelemetry>,
+    pub cpu_huge_pages: Option<HugePagesTelemetry>,
     pub sample_time_unix_ms: Option<u64>,
+}
+
+/// XMRig's `/2/summary` result counters; counts reflect pool submission responses
+/// received by XMRig, not independently fetched pool-account data.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct MiningResultsTelemetry {
+    pub accepted: Option<u64>,
+    pub rejected: Option<u64>,
+    pub total: Option<u64>,
+    pub current_job_difficulty: Option<u64>,
+    pub accepted_difficulty_total: Option<u64>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum PoolConnectionState {
+    Connected,
+    Disconnected,
+    Unknown,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PoolConnectionTelemetry {
+    pub state: PoolConnectionState,
+    pub endpoint: Option<String>,
+    pub uptime_seconds: Option<u64>,
+    pub failures: Option<u64>,
+    pub ping_ms: Option<u64>,
+    pub tls_version: Option<String>,
+    pub algorithm: Option<String>,
+    pub current_job_difficulty: Option<u64>,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct HugePagesTelemetry {
+    pub allocated: u64,
+    pub total: u64,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum TelemetryFreshness {
+    Unavailable,
+    Fresh,
+    Stale,
 }
 
 impl Default for MiningTelemetry {
@@ -155,6 +206,9 @@ impl Default for MiningTelemetry {
             short_hashrate: None,
             medium_hashrate: None,
             long_hashrate: None,
+            results: None,
+            pool_connection: None,
+            cpu_huge_pages: None,
             sample_time_unix_ms: None,
         }
     }

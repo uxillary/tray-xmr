@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+const { type } = Astro.props as { type: 'huge-pages' | 'msr' | 'hashrate' | 'threads' | 'memory' };
+const title = {
+  'huge-pages': 'Memory allocation, then mining work',
+  msr: 'A CPU preset behind an access boundary',
+  hashrate: 'Check the signal, then narrow the cause',
+  threads: 'Logical processors are not a thread target',
+  memory: 'RandomX uses several different memory layers',
+}[type];
+---
+<figure class={`article-visual visual-${type}`} aria-labelledby="article-visual-title" aria-describedby="article-visual-description">
+  <div class="visual-kicker"><span>TECHNICAL MODEL</span><span class="visual-rule" aria-hidden="true"></span></div>
+  <h2 id="article-visual-title">{title}</h2>
+  {type === 'huge-pages' && <>
+    <div class="pages-compare">
+      <div class="page-sample"><span class="diagram-label">STANDARD PAGES</span><div class="small-pages" aria-hidden="true">{Array.from({ length: 12 }, (_, i) => <i class={i === 6 ? 'page-gap' : ''}></i>)}</div><p>Many smaller page mappings</p></div>
+      <Icon name="arrowRight" size="section" />
+      <div class="page-sample page-sample-large"><span class="diagram-label">LARGE PAGES</span><div class="large-pages" aria-hidden="true"><i></i><i></i><i></i></div><p>Fewer larger page mappings</p></div>
+    </div>
+    <div class="diagram-path"><span><Icon name="lockKey" size="diagram" />Permission</span><Icon name="arrowRight" size="inline" /><span><Icon name="memory" size="diagram" />Allocation</span><Icon name="arrowRight" size="inline" /><span><Icon name="cpu" size="diagram" />RandomX work</span></div>
+    <p id="article-visual-description" class="visual-caption">Large-page permission allows a request; successful allocation is a separate result. The blocks are schematic, not memory measurements.</p>
+  </>}
+  {type === 'msr' && <>
+    <div class="msr-path"><div class="visual-node"><Icon name="cpu" size="section" /><strong>Supported CPU</strong><small>hardware-specific preset</small></div><Icon name="arrowRight" size="section" /><div class="guarded-node"><span class="diagram-label">ACCESS BOUNDARY</span><Icon name="lockKey" size="section" /><strong>Windows permission / driver access</strong><small>elevated access may be required</small></div><Icon name="arrowRight" size="section" /><div class="visual-outcomes"><span class="outcome-good"><Icon name="checkCircle" size="inline" />Preset applied</span><span class="outcome-muted"><Icon name="info" size="inline" />Unavailable: mining may continue without this optimisation</span></div></div>
+    <p id="article-visual-description" class="visual-caption">XMRig applies a supported preset when the CPU and access path allow it. No manual register values are shown.</p>
+  </>}
+  {type === 'hashrate' && <>
+    <div class="diagnostic-map"><strong class="diagnostic-root"><Icon name="gauge" size="section" />LOW HASHRATE</strong><div class="diagnostic-branches"><span><Icon name="memory" size="diagram" />Memory allocation</span><span><Icon name="circuitry" size="diagram" />MSR status</span><span><Icon name="cpu" size="diagram" />Useful threads</span><span><Icon name="stack" size="diagram" />Cache &amp; bandwidth</span><span><Icon name="chartLineUp" size="diagram" />System load</span><span><Icon name="thermometer" size="diagram" />Power &amp; cooling</span></div></div>
+    <p id="article-visual-description" class="visual-caption">A diagnostic map of possible areas to inspect, not a ranking or a claim that any one issue is present.</p>
+  </>}
+  {type === 'threads' && <>
+    <div class="thread-model"><div class="logical-pool"><span class="diagram-label">LOGICAL PROCESSORS · EXAMPLE</span><div class="processor-dots" aria-hidden="true">{Array.from({ length: 16 }, (_, i) => <i class={`processor-dot dot-${i + 1}`}></i>)}</div><p>16 visible logical processors ≠ 16 useful RandomX threads</p></div><Icon name="arrowsLeftRight" size="section" /><div class="cache-workspace"><span class="diagram-label">SHARED CPU-CACHE WORKSPACE</span><div class="workspace-table" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b><b></b></div><p>Cache limits how many workers can stay productive</p></div></div>
+    <p id="article-visual-description" class="visual-caption">The processor dots are illustrative, not a hardware profile. XMRig's selected worker count depends on the CPU and algorithm configuration.</p>
+  </>}
+  {type === 'memory' && <>
+    <div class="memory-stack"><div class="memory-layer cpu-layer"><span class="layer-index">01</span><Icon name="cpu" size="section" /><span><strong>CPU cache</strong><small>L2 / L3 close to active workers</small></span><span class="layer-distance">NEAREST</span></div><div class="memory-layer randomx-cache-layer"><span class="layer-index">02</span><Icon name="stack" size="section" /><span><strong>RandomX cache</strong><small>RAM allocation used to prepare the dataset</small></span><span class="layer-distance">SYSTEM MEMORY</span></div><div class="memory-layer dataset-layer"><span class="layer-index">03</span><Icon name="hardDrives" size="section" /><span><strong>RandomX dataset</strong><small>Main working dataset in RAM</small></span><span class="layer-distance">SYSTEM MEMORY</span></div></div>
+    <div class="memory-foot"><span><Icon name="flowArrow" size="inline" /> NUMA can divide allocations across memory nodes</span><span><Icon name="info" size="inline" /> Huge Pages change allocation mapping, not capacity</span></div>
+    <p id="article-visual-description" class="visual-caption">Three distinct layers: processor cache, RandomX cache and the RAM-resident dataset. The illustration is conceptual and not to scale.</p>
+  </>}
+</figure>

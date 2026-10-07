@@ -5,8 +5,35 @@
   "uptime": 12,
   "restricted": true,
   "paused": false,
+  "donate_level": 1,
   "algorithms": ["rx/0"],
   "hashrate": {
     "total": [125.5, 120.0, 110.0]
-  }
+  },
+  "results": {
+    "diff_current": 10000,
+    "shares_good": 3,
+    "shares_total": 4,
+    "avg_time": 18,
+    "avg_time_ms": 18000,
+    "hashes_total": 30000,
+    "best": []
+  },
+  "connection": {
+    "pool": "pool.example:3333",
+    "uptime": 9,
+    "uptime_ms": 9123,
+    "ping": 43,
+    "failures": 0,
+    "tls": "TLSv1.3",
+    "tls-fingerprint": null,
+    "algo": "rx/0",
+    "diff": 10000,
+    "accepted": 3,
+    "rejected": 1,
+    "avg_time": 18,
+    "avg_time_ms": 18000,
+    "hashes_total": 30000
+  },
+  "hugepages": [0, 16]
 }

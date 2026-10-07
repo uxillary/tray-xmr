@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+const { kind } = Astro.props as { kind: 'learn' | 'guides' | 'troubleshoot' | 'tools' };
+const labels = { learn: 'A concept map connecting system memory, CPU cache and mining threads.', guides: 'A three-step guide path: prepare, configure, review.', troubleshoot: 'A diagnostic signal path: observe, check, verify.', tools: 'An instrument panel representing input, measurement and output.' };
+---
+<figure class={`hub-visual hub-visual-${kind}`} aria-label={labels[kind]}>
+  {kind === 'learn' && <div class="concept-map"><span><Icon name="memory" size="section" />System memory</span><Icon name="arrowsLeftRight" size="inline" /><span><Icon name="cpu" size="section" />CPU cache</span><Icon name="arrowsLeftRight" size="inline" /><span><Icon name="steps" size="section" />Mining threads</span></div>}
+  {kind === 'guides' && <ol class="guide-path"><li><span>01</span><strong><Icon name="magnifyingGlass" size="inline" /> Prepare</strong></li><li><span>02</span><strong><Icon name="gear" size="inline" /> Configure</strong></li><li><span>03</span><strong><Icon name="checkCircle" size="inline" /> Review</strong></li></ol>}
+  {kind === 'troubleshoot' && <div class="signal-path"><span><i class="signal-check"></i><strong>OBSERVE</strong><small>Read the status</small></span><Icon name="arrowRight" size="inline" /><span><i class="signal-limited"></i><strong>NARROW</strong><small>Test one cause</small></span><Icon name="arrowRight" size="inline" /><span><i class="signal-ready"></i><strong>VERIFY</strong><small>Compare again</small></span></div>}
+  {kind === 'tools' && <div class="instrument-panel"><span class="instrument-readout"><small>INPUT</small><Icon name="arrowsLeftRight" size="inline" /><small>METHOD</small><Icon name="gauge" size="section" /><small>OUTPUT</small></span><span class="instrument-scale" aria-hidden="true"><i></i><i></i><i></i><b></b></span><span class="instrument-label">ASSUMPTIONS STAY VISIBLE</span></div>}
+</figure>

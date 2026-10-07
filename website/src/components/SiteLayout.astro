@@ -1,0 +1,57 @@
+---
+import '../styles/site.css';
+const { title, description, canonical, type = 'website', publishedDate, updatedDate } = Astro.props;
+const origin = Astro.site?.toString().replace(/\/$/, '') ?? 'https://example.com';
+const canonicalUrl = canonical ? new URL(canonical, origin).toString() : new URL(Astro.url.pathname, origin).toString();
+const nav = [
+  { href: '/ember/', label: 'Ember' }, { href: '/learn/', label: 'Learn' },
+  { href: '/guides/', label: 'Guides' }, { href: '/troubleshoot/', label: 'Troubleshoot' },
+  { href: '/tools/', label: 'Tools' }, { href: '/trust/', label: 'Trust' },
+];
+const activePath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111310" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content={type} />
+    {publishedDate && <meta property="article:published_time" content={publishedDate.toISOString()} />}
+    {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Ember" />
+    <meta property="og:image" content={`${origin}/social-card.svg`} />
+    <meta property="og:image:alt" content="Ember — Monero mining, without the mystery" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={`${origin}/social-card.svg`} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Ember home"><span class="brand-mark" aria-hidden="true">E</span><span>EMBER<span class="brand-period">.</span></span></a>
+        <nav aria-label="Main navigation">
+          {nav.map((item) => <a href={item.href} aria-current={activePath === item.href ? 'page' : undefined}>{item.label}</a>)}
+        </nav>
+        <a class="header-cta" href="/ember/">Explore Ember <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true">E</span><span>EMBER<span class="brand-period">.</span></span></a>
+      <p>Monero mining, made easier to understand.</p>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="/ember/">Ember</a><a href="/learn/">Learn</a><a href="/guides/">Guides</a><a href="/troubleshoot/">Troubleshoot</a><a href="/tools/">Tools</a><a href="/trust/">Trust</a><a href="/third-party-notices.txt">Open-source notices</a><a href="https://github.com/uxillary/tray-xmr" rel="noreferrer">GitHub</a></nav>
+      <small>Independent project. Not affiliated with the Monero Project or XMRig.</small>
+    </footer>
+  </body>
+</html>
+

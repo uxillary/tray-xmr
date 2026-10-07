@@ -1,6 +1,6 @@
 # Ember
 
-Ember is a Windows-first, local-first desktop product for putting idle power to work through transparent Monero mining. Its M03 foundation now verifies and provisions XMRig, owns its process lifecycle, and supports a controlled native mining session. Public release is not ready: owner-machine session verification and release hardening remain open. See the [roadmap](docs/ROADMAP.md) for current scope and planned direction.
+Ember is a Windows-first, local-first desktop product for putting idle power to work through transparent Monero mining. Its M03 foundation verifies and provisions XMRig, owns its process lifecycle, and supports a controlled native mining session. Native owner-machine acceptance of authenticated API telemetry and real mining has subsequently passed; licensing, distribution, security-product and other release hardening remain open. See the [roadmap](docs/ROADMAP.md) for current scope and planned direction.
 
 The application uses Tauri 2, Rust, React, TypeScript, and Vite. Historical Python prototypes are preserved separately in [`legacy/`](legacy/).
 

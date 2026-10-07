@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import SiteLayout from './SiteLayout.astro';
+import ArticleVisual from './ArticleVisual.astro';
+import StatusBadge from './StatusBadge.astro';
+import TechnicalCallout from './TechnicalCallout.astro';
+interface Props { entry: CollectionEntry<'articles'>; }
+const { entry } = Astro.props as Props;
+const { Content } = await render(entry);
+const sectionTitle = entry.data.section === 'learn' ? 'Learn' : 'Troubleshoot';
+const path = `/${entry.data.section}/${entry.id}/`;
+const origin = Astro.site?.toString().replace(/\/$/, '') ?? 'https://example.com';
+const canonical = new URL(path, origin).toString();
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: origin },
+    { '@type': 'ListItem', position: 2, name: sectionTitle, item: new URL(`/${entry.data.section}/`, origin).toString() },
+    { '@type': 'ListItem', position: 3, name: entry.data.title, item: canonical },
+  ],
+};
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.publishedDate.toISOString().slice(0, 10),
+  ...(entry.data.updatedDate ? { dateModified: entry.data.updatedDate.toISOString().slice(0, 10) } : {}),
+  mainEntityOfPage: canonical,
+  publisher: { '@type': 'Organization', name: 'Ember' },
+};
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const relatedEntries = entry.data.related.flatMap((id) => {
+  const relatedEntry = allArticles.find((item) => item.id === id);
+  return relatedEntry ? [relatedEntry] : [];
+});
+---
+<SiteLayout title={`${entry.data.title} — Ember`} description={entry.data.description} canonical={path} type="article" publishedDate={entry.data.publishedDate} updatedDate={entry.data.updatedDate}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <div class="wrap article-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href={`/${entry.data.section}/`}>{sectionTitle}</a><span aria-hidden="true">/</span><span aria-current="page">{entry.data.title}</span></nav>
+    <article class="article">
+      <header class="article-header"><span class="page-kicker">{sectionTitle.toUpperCase()} / XMRIG + RANDOMX</span><h1>{entry.data.title}</h1><div class="article-deck"><StatusBadge state="info" label="Quick answer" /><p>{entry.data.summary}</p></div><p class="article-date">Published <time datetime={entry.data.publishedDate.toISOString().slice(0, 10)}>{entry.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></p></header>
+      <ArticleVisual type={entry.data.visual} />
+      {entry.data.callout && <TechnicalCallout {...entry.data.callout} />}
+      <div class="article-body"><Content /></div>
+      <section class="article-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2><ul>{entry.data.sources.map((source) => <li><a href={source.url} rel="external noreferrer">{source.organization}: {source.title}</a><span> Accessed <time datetime={source.accessed.toISOString().slice(0, 10)}>{source.accessed.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></span></li>)}</ul></section>
+      <aside class="article-context"><strong>About Ember</strong><p>Ember is an in-development Windows desktop interface for XMRig. It has no public release; these explanations stand on their own and do not depend on Ember.</p><a href="/ember/">See the current product status →</a></aside>
+      {relatedEntries.length > 0 && <nav class="article-related" aria-label="Related articles"><h2>Related reading</h2><ul>{relatedEntries.map((item) => <li><a href={`/${item.data.section}/${item.id}/`}>{item.data.title} <span aria-hidden="true">↗</span></a></li>)}</ul></nav>}
+      <p class="article-back"><a href={`/${entry.data.section}/`}>← Back to {sectionTitle.toLowerCase()}</a></p>
+    </article>
+  </div>
+</SiteLayout>
+<style>
+  .article-wrap{padding-top:24px;padding-bottom:100px}.breadcrumbs{display:flex;gap:10px;align-items:center;max-width:820px;margin:0 auto 54px;color:var(--muted,#9b9b92);font-size:.78rem;flex-wrap:wrap}.breadcrumbs a,.article a{color:var(--ember,#e76d3a);text-underline-offset:3px}.article{max-width:820px;margin:0 auto}.article-header{padding:0 0 36px;border-bottom:1px solid var(--line,#363831)}.article-header h1{max-width:780px;margin:14px 0 20px;font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.045em}.article-deck{max-width:690px;color:#d1d0c8;font-size:1.2rem;line-height:1.65}.article-deck p{margin:9px 0 0}.article-date{margin-top:22px;color:#9b9b92;font-size:.8rem}.article-body{padding:38px 0 8px;color:#d8d8d1;font-size:1.02rem;line-height:1.8}.article-body :global(h2){margin:48px 0 14px;color:#f4f1e8;font-size:1.8rem;line-height:1.18;letter-spacing:-.02em}.article-body :global(h3){margin:30px 0 10px;color:#f4f1e8;font-size:1.25rem}.article-body :global(p){margin:0 0 18px}.article-body :global(ul),.article-body :global(ol){padding-left:1.4rem;margin:0 0 22px}.article-body :global(li){padding-left:.2rem;margin:.4rem 0}.article-body :global(blockquote){margin:26px 0;padding:18px 22px;border-left:3px solid var(--ember,#e76d3a);background:#191a17;color:#f4f1e8}.article-body :global(code){font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em}.article-body :global(pre){max-width:100%;overflow-x:auto;padding:18px 20px;background:#111310;border:1px solid #363831;border-radius:12px;line-height:1.6}.article-body :global(.article-callout){margin:26px 0;padding:20px 22px;background:#1c211b;border:1px solid #394536;border-radius:12px}.article-body :global(.article-callout strong){display:block;color:#f4f1e8;margin-bottom:6px}.article-body :global(.diagnostic-flow){display:grid;gap:10px;margin:25px 0;padding:0;list-style:none;counter-reset:step}.article-body :global(.diagnostic-flow li){counter-increment:step;list-style:none;margin:0;padding:16px 18px;border:1px solid #363831;border-radius:10px;background:#191a17}.article-body :global(.diagnostic-flow li::before){content:counter(step,decimal-leading-zero);display:inline-block;margin-right:12px;color:var(--ember,#e76d3a);font-family:ui-monospace,monospace}.article-sources,.article-related{border-top:1px solid #363831;padding:26px 0}.article-sources h2,.article-related h2{font-size:1.12rem;color:#f4f1e8}.article-sources ul,.article-related ul{padding-left:20px;color:#9b9b92;line-height:1.8}.article-sources li{margin:10px 0}.article-sources span{font-size:.78rem}.article-context{margin:10px 0 24px;padding:20px;background:#191a17;border-radius:12px;color:#c0c0b7;font-size:.9rem}.article-context strong{color:#f4f1e8}.article-context p{margin:8px 0}.article-back{padding-top:18px;font-size:.9rem}@media(max-width:600px){.article-wrap{padding-top:18px;padding-bottom:64px}.breadcrumbs{margin-bottom:36px}.article-header h1{font-size:2.55rem}.article-deck{font-size:1.05rem}.article-body{font-size:.98rem}.article-body :global(pre){margin-left:-8px;margin-right:-8px;padding:14px}}
+</style>

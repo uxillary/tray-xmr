@@ -1,8 +1,9 @@
 use super::config;
 use super::domain::{
     DiagnosticSummary, EngineArtifact, EngineAvailability, EngineError, EngineErrorKind,
-    EngineLifecycleState, EngineStatus, MiningConfig, MiningEngine, MiningTelemetry, StopReason,
-    ValidatedMiningConfig,
+    EngineLifecycleState, EngineStatus, HugePagesTelemetry, MiningConfig, MiningEngine,
+    MiningResultsTelemetry, MiningTelemetry, PoolConnectionState, PoolConnectionTelemetry,
+    StopReason, ValidatedMiningConfig,
 };
 use serde::Deserialize;
 use std::io::Read;
@@ -129,11 +130,33 @@ struct XmrigSummary {
     algorithms: Option<Vec<String>>,
     hashrate: Option<HashrateSummary>,
     uptime: Option<u64>,
+    results: Option<XmrigResults>,
+    connection: Option<XmrigConnection>,
+    hugepages: Option<Vec<u64>>,
 }
 
 #[derive(Deserialize)]
 struct HashrateSummary {
     total: Option<Vec<Option<f64>>>,
+}
+
+#[derive(Deserialize)]
+struct XmrigResults {
+    diff_current: Option<u64>,
+    shares_good: Option<u64>,
+    shares_total: Option<u64>,
+    hashes_total: Option<u64>,
+}
+
+#[derive(Deserialize)]
+struct XmrigConnection {
+    pool: Option<String>,
+    uptime_ms: Option<u64>,
+    failures: Option<u64>,
+    ping: Option<u64>,
+    tls: Option<String>,
+    algo: Option<String>,
+    diff: Option<u64>,
 }
 
 #[derive(Clone)]
@@ -229,6 +252,14 @@ impl XmrigAdapter {
         if summary.kind != "miner" || !summary.restricted {
             return Err(ApiClientError::InvalidResponse);
         }
+        if summary.results.as_ref().is_some_and(|results| {
+            results
+                .shares_total
+                .zip(results.shares_good)
+                .is_some_and(|(total, accepted)| accepted > total)
+        }) {
+            return Err(ApiClientError::InvalidResponse);
+        }
         let rates = summary
             .hashrate
             .and_then(|hashrate| hashrate.total)
@@ -240,6 +271,51 @@ impl XmrigAdapter {
                 .flatten()
                 .filter(|value| value.is_finite() && (0.0..=MAX_HASHRATE).contains(value))
         };
+
+        let results = summary.results.map(|results| {
+            let rejected = results
+                .shares_total
+                .zip(results.shares_good)
+                .and_then(|(total, accepted)| total.checked_sub(accepted));
+            MiningResultsTelemetry {
+                accepted: results.shares_good,
+                rejected,
+                total: results.shares_total,
+                current_job_difficulty: results.diff_current,
+                accepted_difficulty_total: results.hashes_total,
+            }
+        });
+        let pool_connection = summary.connection.map(|connection| {
+            let endpoint = connection.pool.filter(|pool| safe_pool_endpoint(pool));
+            let uptime_ms = connection.uptime_ms;
+            let failures = connection.failures;
+            let state = if uptime_ms.is_some_and(|uptime| uptime > 0) {
+                PoolConnectionState::Connected
+            } else if failures.is_some_and(|count| count > 0) {
+                PoolConnectionState::Disconnected
+            } else {
+                PoolConnectionState::Unknown
+            };
+            let algorithm = connection.algo.filter(|value| safe_algorithm(value));
+            PoolConnectionTelemetry {
+                state,
+                endpoint,
+                uptime_seconds: uptime_ms.map(|uptime| uptime / 1000),
+                failures,
+                ping_ms: connection.ping.map(u64::from),
+                tls_version: connection
+                    .tls
+                    .filter(|tls| !tls.is_empty() && tls.len() <= 64),
+                algorithm,
+                current_job_difficulty: connection.diff,
+            }
+        });
+        let cpu_huge_pages = summary.hugepages.and_then(|pages| {
+            (pages.len() == 2 && pages[0] <= pages[1]).then_some(HugePagesTelemetry {
+                allocated: pages[0],
+                total: pages[1],
+            })
+        });
 
         Ok(MiningTelemetry {
             engine_version: Some(summary.version),
@@ -261,6 +337,9 @@ impl XmrigAdapter {
             short_hashrate: rate(0),
             medium_hashrate: rate(1),
             long_hashrate: rate(2),
+            results,
+            pool_connection,
+            cpu_huge_pages,
             sample_time_unix_ms,
         })
     }
@@ -289,11 +368,28 @@ impl XmrigAdapter {
     }
 }
 
+fn safe_pool_endpoint(value: &str) -> bool {
+    !value.is_empty()
+        && value.len() <= 320
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || b".-_[]:%".contains(&byte))
+        && !value.contains("..")
+}
+
+fn safe_algorithm(value: &str) -> bool {
+    !value.is_empty()
+        && value.len() <= 40
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || b"/-_".contains(&byte))
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
-        get_summary_request, ApiClientError, LocalApiTransport, ReqwestLocalApiTransport,
-        XmrigAdapter,
+        get_summary_request, ApiClientError, LocalApiTransport, PoolConnectionState,
+        ReqwestLocalApiTransport, XmrigAdapter,
     };
     use crate::mining::domain::{EngineArtifact, EngineAvailability, EngineErrorKind, StopReason};
     use std::path::PathBuf;
@@ -325,6 +421,21 @@ mod tests {
         assert_eq!(parsed.short_hashrate, Some(125.5));
         assert_eq!(parsed.medium_hashrate, Some(120.0));
         assert_eq!(parsed.long_hashrate, Some(110.0));
+        let results = parsed.results.as_ref().unwrap();
+        assert_eq!(results.accepted, Some(3));
+        assert_eq!(results.rejected, Some(1));
+        assert_eq!(results.total, Some(4));
+        assert_eq!(results.current_job_difficulty, Some(10_000));
+        assert_eq!(results.accepted_difficulty_total, Some(30_000));
+        let pool = parsed.pool_connection.as_ref().unwrap();
+        assert_eq!(pool.state, PoolConnectionState::Connected);
+        assert_eq!(pool.endpoint.as_deref(), Some("pool.example:3333"));
+        assert_eq!(pool.uptime_seconds, Some(9));
+        assert_eq!(pool.ping_ms, Some(43));
+        assert_eq!(pool.algorithm.as_deref(), Some("rx/0"));
+        assert_eq!(pool.current_job_difficulty, Some(10_000));
+        assert_eq!(parsed.cpu_huge_pages.as_ref().unwrap().allocated, 0);
+        assert_eq!(parsed.cpu_huge_pages.as_ref().unwrap().total, 16);
         assert_eq!(parsed.sample_time_unix_ms, Some(42));
 
         let paused = adapter()
@@ -335,6 +446,38 @@ mod tests {
             .unwrap();
         assert_eq!(paused.paused, Some(true));
         assert_eq!(paused.short_hashrate, None);
+    }
+
+    #[test]
+    fn zero_is_distinct_from_missing_and_disconnect_does_not_mean_process_exit() {
+        let adapter = adapter();
+        let disconnected = adapter
+            .normalize_summary(
+                include_bytes!("../../tests/fixtures/xmrig-disconnected.json"),
+                Some(10),
+            )
+            .unwrap();
+        assert_eq!(disconnected.short_hashrate, Some(0.0));
+        assert_eq!(disconnected.medium_hashrate, Some(0.0));
+        assert_eq!(disconnected.long_hashrate, None);
+        let results = disconnected.results.unwrap();
+        assert_eq!(results.accepted, Some(0));
+        assert_eq!(results.rejected, Some(0));
+        assert_eq!(results.total, Some(0));
+        assert_eq!(
+            disconnected.pool_connection.unwrap().state,
+            PoolConnectionState::Disconnected
+        );
+
+        let missing = adapter
+            .normalize_summary(
+                br#"{"version":"6.26.0","kind":"miner","paused":false,"restricted":true,"hashrate":{"total":[null,null,null]}}"#,
+                Some(11),
+            )
+            .unwrap();
+        assert_eq!(missing.short_hashrate, None);
+        assert!(missing.results.is_none());
+        assert!(missing.pool_connection.is_none());
     }
 
     #[test]
@@ -371,6 +514,13 @@ mod tests {
         assert_eq!(
             adapter.normalize_summary(
                 br#"{"version":"6.26.0","kind":"miner","paused":false,"restricted":false}"#,
+                None
+            ),
+            Err(ApiClientError::InvalidResponse)
+        );
+        assert_eq!(
+            adapter.normalize_summary(
+                br#"{"version":"6.26.0","kind":"miner","paused":false,"restricted":true,"results":{"shares_good":2,"shares_total":1}}"#,
                 None
             ),
             Err(ApiClientError::InvalidResponse)
@@ -439,6 +589,61 @@ mod tests {
             .telemetry(&validated, &mut FixtureTransport, None)
             .unwrap();
         assert_eq!(telemetry.paused, Some(false));
+    }
+
+    #[test]
+    fn api_poll_and_pool_disconnect_recover_on_sequential_telemetry_polls() {
+        struct RecoveryTransport {
+            poll: usize,
+        }
+        impl LocalApiTransport for RecoveryTransport {
+            fn get_summary(
+                &mut self,
+                _host: &str,
+                _port: u16,
+                _token: &str,
+            ) -> Result<Vec<u8>, ApiClientError> {
+                self.poll += 1;
+                match self.poll {
+                    1 => Err(ApiClientError::Unavailable),
+                    2 => {
+                        Ok(include_bytes!("../../tests/fixtures/xmrig-disconnected.json").to_vec())
+                    }
+                    _ => Ok(include_bytes!("../../tests/fixtures/xmrig-summary.json").to_vec()),
+                }
+            }
+        }
+
+        let validated = crate::mining::config::validate(
+            crate::mining::config::tests::fixture_config(),
+            "6.26.0",
+        )
+        .unwrap();
+        let mut transport = RecoveryTransport { poll: 0 };
+        let adapter = adapter();
+
+        assert!(matches!(
+            adapter.telemetry(&validated, &mut transport, Some(7)),
+            Err(ApiClientError::Unavailable)
+        ));
+        let disconnected = adapter
+            .telemetry(&validated, &mut transport, Some(7))
+            .unwrap();
+        assert_eq!(
+            disconnected.pool_connection.unwrap().state,
+            PoolConnectionState::Disconnected
+        );
+        assert_eq!(disconnected.short_hashrate, Some(0.0));
+
+        let recovered = adapter
+            .telemetry(&validated, &mut transport, Some(7))
+            .unwrap();
+        assert_eq!(
+            recovered.pool_connection.unwrap().state,
+            PoolConnectionState::Connected
+        );
+        assert!(recovered.short_hashrate.unwrap() > 0.0);
+        assert_eq!(transport.poll, 3);
     }
 
     #[test]
