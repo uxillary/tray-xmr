@@ -3,6 +3,7 @@ import HubPage from '../../components/HubPage.astro';
 import { getCollection } from 'astro:content';
 const articles = (await getCollection('articles', ({ data }) => !data.draft && data.section === 'troubleshoot')).sort((a, b) => a.data.publishedDate.valueOf() - b.data.publishedDate.valueOf());
 const cards = [
+  { icon:'magnifyingGlass', category:'Local diagnostic · tool', title:'XMRig Log Decoder', description:'Check a bounded set of startup, memory, MSR, pool and share signals locally in your browser.', href:'/tools/xmrig-log-decoder/', status:'Available' },
   { icon:'network', category:'Network · pool', title:'Pool connection problems', description:'Separate host, port, TLS and pool-side symptoms without exposing wallet details.' },
   { icon:'shieldCheck', category:'Windows · security', title:'Security alert about a miner', description:'Review what a detection says and the safe options for deciding what to do next.' },
 ] as const;

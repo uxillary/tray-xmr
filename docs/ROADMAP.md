@@ -38,8 +38,11 @@
 
 ## M05 — Ember Stream
 
+Create a bounded, timestamped operational feed from genuine Ember and mining events. Keep it human-readable, accessible, locally focused and distinct from advanced **Raw XMRig** diagnostics; redact secrets in both.
+
 - **M05A — Event model & translation layer:** event domain, baseline/delta translator, session identity, bounded process-local buffer and frontend retrieval command implemented. Deterministic Rust coverage is included; a clean build/test run remains required before milestone acceptance.
 - **M05B — Stream presentation:** implemented. Mining reads the structured command and displays a compact, accessible recent-event stream with local-time timestamps, concise kind-based wording, category markers and severity icons. React creates no events. A clean build/test run remains required before milestone acceptance.
+- **M05C — UI cohesion:** implementation complete. Flattens secondary surfaces, leads Overview with actual device state, distinguishes sidebar lifecycle/attention and stale readings, makes Stream status truthful, and aligns the normal minimum window width to 820px with zoom reflow. Production build and focused frontend tests pass; the existing full-test Vite SSR `EPERM` and owner visual review at target sizes remain open.
 
 ### M03 public-release hardening still required
 
@@ -49,10 +52,6 @@
 - Test packaged release behavior on clean Windows systems, including Defender and SmartScreen outcomes and user recovery.
 - Confirm installer/update, diagnostics/support, accessibility, performance, clean uninstall and disclosure polish before public beta.
 - Keep autostart mining opt-in only; no automatic mining is enabled.
-
-## M05 — Ember Stream
-
-Create a bounded, timestamped operational feed that translates genuine Ember and mining events into concise human-readable activity. Include useful category, hierarchy/severity, accessible non-colour markers and restrained motion. Keep advanced **Raw XMRig** output as a separate diagnostics view. Redact secrets in both.
 
 ## M06 — Smart Mining v1
 

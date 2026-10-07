@@ -10,7 +10,12 @@ export function parseNumber(value) {
       ? input.replaceAll('.', '').replace(',', '.')
       : input.replaceAll(',', '');
   } else if (input.includes(',')) {
-    normalized = input.replace(',', '.');
+    if (/^[+-]?(?:[1-9]\d{0,2})(,\d{3})+$/.test(input)) normalized = input.replaceAll(',', '');
+    else if ((input.match(/,/g) ?? []).length === 1) normalized = input.replace(',', '.');
+    else return { value: null, error: 'Check the number separators.' };
+  } else if (input.includes('.')) {
+    if (/^[+-]?(?:[1-9]\d{0,2})(\.\d{3})+$/.test(input)) normalized = input.replaceAll('.', '');
+    else if ((input.match(/\./g) ?? []).length > 1) return { value: null, error: 'Check the number separators.' };
   }
   const number = Number(normalized);
   return Number.isFinite(number) ? { value: number, error: null } : { value: null, error: 'Enter a valid number.' };

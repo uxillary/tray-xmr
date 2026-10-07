@@ -73,6 +73,7 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
   const [address, setAddress] = useState("");
   const [customPool, setCustomPool] = useState(false);
   const [editingPool, setEditingPool] = useState(false);
+  const [editingPower, setEditingPower] = useState(false);
   const [host, setHost] = useState("");
   const [port, setPort] = useState("");
   const [tls, setTls] = useState(true);
@@ -119,6 +120,7 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
       setReviewed(false);
       if (kind === "wallet") { setAddress(""); setEditingWallet(false); }
       if (kind === "pool") { setCustomPool(false); setEditingPool(false); }
+      if (kind === "profile") setEditingPower(false);
     } catch (failure) {
       setError(classifyError(kind, failure));
     } finally {
@@ -148,13 +150,22 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
     const starting = session.state === "starting" || session.startupStage !== null;
     return <section className="active-mining-panel">
       <MiningSessionTelemetry session={session} setup={setup} statusUnavailable={sessionStatusUnavailable} onStop={() => void stopMining()} stopping={stopping} />
-      <EmberStream events={events} unavailable={eventsUnavailable} />
+      <EmberStream events={events} unavailable={eventsUnavailable} mining={session.state === "mining" && !sessionStatusUnavailable} />
       {session.error && <p className="field-error" role="alert">Ember couldn’t update the mining session. Technical details are available in Diagnostics.</p>}
       {(starting || session.state === "error") && <StartupDetails session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} />}
       {diagnosticsMode && !starting && session.state !== "error" && <StartupDetails session={session} diagnosticsMode copyDiagnostics={copyDiagnostics} />}
       {error && <p className="field-error" role="alert">{error}</p>}
     </section>;
   }
+
+  const stepComplete = {
+    wallet: Boolean(setup.walletMasked),
+    pool: setup.pool !== null,
+    power: setup.profile !== null && setup.threads !== null,
+    review: setup.acknowledged,
+  };
+  const currentStep = !stepComplete.wallet ? "wallet" : !stepComplete.pool ? "pool" : !stepComplete.power ? "power" : !stepComplete.review ? "review" : null;
+  const stepStatus = (step: keyof typeof stepComplete) => stepComplete[step] ? "complete" : currentStep === step ? "current" : "upcoming";
 
   const checksExceptConsent = setup.checks.filter((check) => check.id !== "consent");
   const completeExceptConsent = checksExceptConsent.every((check) => check.passed);
@@ -176,11 +187,11 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
     {engineProblem && <section className="setup-problem" aria-live="polite"><div><p className="eyebrow">MINING ENGINE</p><h3>{setup.engine === "unsupported" ? "This device isn’t currently supported" : "Mining engine needs attention"}</h3><p>{setup.engine === "unsupported" ? "Ember can’t run the verified mining engine on this device." : "Ember couldn’t verify the installed mining engine."}</p></div>{setup.engine !== "unsupported" && <button className="setup-engine-button" disabled={busy} onClick={setupEngine}>Repair engine</button>}</section>}
     {engineNeedsInstall && <section className="setup-engine-compact"><span><strong>Mining engine</strong><small>XMRig {setup.engineVersion} · Not installed</small></span><button className="setup-engine-button" disabled={busy} onClick={setupEngine}>{busy ? "Setting up…" : "Set up engine"}</button></section>}
 
-    {setup.ready && <section className="ready-panel" aria-labelledby="ready-title"><div><p className="eyebrow">YOUR MINING SETUP</p><h2 id="ready-title">Ready to mine</h2><div className="ready-operational"><span>{setup.profile ? capitalize(setup.profile) : "Power profile"}</span><span>{setup.threads} of {setup.logicalProcessors} threads configured</span></div></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy || starting || stopping || diagnosticRunning} onClick={() => void startMining()}>{starting ? "Starting…" : "Start mining"}</button>{diagnosticRunning && <p className="ready-note">Finish or stop the XMRig integration test before mining.</p>}{error && <><p className="field-error" role="alert">{error}</p>{startBlockedByWindows && <div className="setup-recovery-actions"><button className="text-action" disabled={busy || starting || stopping} onClick={() => void startMining()}>Try again</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void refresh()}>Check engine</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void setupEngine()}>Repair engine</button><p>Review any Windows Security notification yourself. Ember does not change security settings or restore quarantined files.</p></div>}</>}{session?.state === "error" && <StartupDetails session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} />}</section>}
+    {setup.ready && <section className="ready-panel" aria-labelledby="ready-title"><div><p className="eyebrow">YOUR MINING SETUP</p><h2 id="ready-title">Ready to mine</h2><p>Your reviewed settings are ready. Start only when you choose to.</p></div><button className="setup-engine-button" disabled={!setup.startAllowed || busy || starting || stopping || diagnosticRunning} onClick={() => void startMining()}>{starting ? "Starting…" : "Start mining"}</button>{diagnosticRunning && <p className="ready-note">Finish or stop the XMRig integration test before mining.</p>}{error && <><p className="field-error" role="alert">{error}</p>{startBlockedByWindows && <div className="setup-recovery-actions"><button className="text-action" disabled={busy || starting || stopping} onClick={() => void startMining()}>Try again</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void refresh()}>Check engine</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void setupEngine()}>Repair engine</button><p>Review any Windows Security notification yourself. Ember does not change security settings or restore quarantined files.</p></div>}</>}{session?.state === "error" && <StartupDetails session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} />}</section>}
     {events.length > 0 && <EmberStream events={events} unavailable={eventsUnavailable} compact />}
 
-    <section className="setup-step" aria-labelledby="step-wallet">
-      <StepHeading number="1" title="Wallet" id="step-wallet" />
+    <section className={`setup-step setup-step--${stepStatus("wallet")}`} aria-labelledby="step-wallet">
+      <StepHeading number="1" title="Wallet" id="step-wallet" status={stepStatus("wallet")} />
       {showWalletForm ? <div className="step-body">
         <p className="step-description">Where should your mining rewards be sent?</p>
         <form onSubmit={(event) => { event.preventDefault(); void update("wallet", address); }}>
@@ -193,8 +204,8 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
       </div> : <div className="step-body step-summary"><div><strong>Wallet configured</strong><span>{setup.walletMasked}</span></div><button className="text-action" disabled={busy} onClick={() => { setEditingWallet(true); setError(null); }}>Change</button><button className="text-action remove-action" disabled={busy} onClick={() => update("wallet", null)}>Remove</button></div>}
     </section>
 
-    <section className="setup-step" aria-labelledby="step-pool">
-      <StepHeading number="2" title="Pool" id="step-pool" />
+    <section className={`setup-step setup-step--${stepStatus("pool")}`} aria-labelledby="step-pool">
+      <StepHeading number="2" title="Pool" id="step-pool" status={stepStatus("pool")} />
       <div className="step-body">
         <p className="step-description">The pool is where your computer would connect to mine. Ember won’t connect during setup.</p>
         {!setup.pool && !customPool && <div className="pool-choice-grid">
@@ -213,16 +224,15 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
       </div>
     </section>
 
-    <section className="setup-step" aria-labelledby="step-power">
-      <StepHeading number="3" title="Power" id="step-power" />
-      <div className="step-body"><p className="step-description">Choose how many of your {setup.logicalProcessors} CPU threads Ember may use while mining.</p>
+    <section className={`setup-step setup-step--${stepStatus("power")}`} aria-labelledby="step-power">
+      <StepHeading number="3" title="Power" id="step-power" status={stepStatus("power")} />
+      <div className="step-body">{setup.profile && setup.threads !== null && !editingPower ? <div className="step-summary"><div><strong>{capitalize(setup.profile)} · {setup.threads} of {setup.logicalProcessors} threads configured</strong><span>Actual CPU use and performance vary.</span></div><button className="text-action" disabled={busy} onClick={() => setEditingPower(true)}>Edit</button></div> : <><p className="step-description">Choose how many of your {setup.logicalProcessors} CPU threads Ember may use while mining.</p>
         <div className="profile-options">{setup.profileOptions.map(({ profile, threads }) => <button key={profile} className={`profile-option${setup.profile === profile ? " selected" : ""}`} aria-pressed={setup.profile === profile} disabled={busy || threads === null} onClick={() => update("profile", profile)}><strong>{profile[0].toUpperCase() + profile.slice(1)}</strong><span>{profileDescription(profile)}</span><small>{threads === null ? "Unavailable" : `${threads} of ${setup.logicalProcessors} CPU threads`}</small></button>)}</div>
-        <p className="field-help">These settings choose mining threads; actual CPU use and performance vary. Smart Mining is not available yet.</p>
-      </div>
+        <p className="field-help">These settings choose mining threads; actual CPU use and performance vary. Smart Mining is not available yet.</p></>}</div>
     </section>
 
-    <section className="setup-step review-step" aria-labelledby="step-review">
-      <StepHeading number="4" title="Review" id="step-review" />
+    <section className={`setup-step review-step setup-step--${stepStatus("review")}`} aria-labelledby="step-review">
+      <StepHeading number="4" title="Review" id="step-review" status={stepStatus("review")} />
       <div className="step-body"><p className="step-description">A few things to know before mining.</p>
         <ul className="review-points"><li>Mining uses CPU and electricity. Your device may feel slower, and rewards are not guaranteed.</li><li>Mining uses XMRig, which has a separate 1% upstream donation. Ember verifies the official pinned release before using it.</li><li>Windows or other security software may inspect or block mining software. Ember does not change those settings; review any security notification yourself.</li><li>Ember plans a separate 5% contribution. Its accounting mechanism is not active, and no Ember contribution is charged now.</li><li>Ember won’t start mining automatically when the app opens. You can stop or quit Ember at any time.</li></ul>
         <p className="review-selection">Your choices: {setup.walletMasked ?? "wallet not set"} · {setup.pool ? `${setup.pool.host}:${setup.pool.port}` : "pool not set"} · {setup.profile ? `${capitalize(setup.profile)} · ${setup.threads} threads` : "power not set"}</p>
@@ -241,8 +251,9 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
   </div>;
 }
 
-function StepHeading({ number, title, id }: { number: string; title: string; id: string }) {
-  return <div className="setup-step-heading"><span aria-hidden="true">{number}</span><h2 id={id}>{title}</h2></div>;
+function StepHeading({ number, title, id, status }: { number: string; title: string; id: string; status: "complete" | "current" | "upcoming" }) {
+  const statusLabel = status === "complete" ? "Complete" : status === "current" ? "Current" : "Up next";
+  return <div className="setup-step-heading"><span aria-hidden="true">{number}</span><h2 id={id}>{title}</h2><span className="setup-step-state">{statusLabel}</span></div>;
 }
 
 function nextUserAction(setup: MiningReadiness): string {

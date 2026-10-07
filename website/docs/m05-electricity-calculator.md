@@ -10,7 +10,7 @@ The calculator estimates electricity energy and cost for a mining PC or another 
 - `cost = kWh × manually entered price per kWh`
 - Per-hour energy uses one hour; daily energy uses the entered hours per day; the selected period uses entered days; annual energy uses 365 days.
 - The rate remains a manually entered numeric value. Pence per kWh is converted to pounds per kWh by dividing by 100. GBP, USD and EUR affect display only; there is no foreign-exchange conversion.
-- Calculations retain full JavaScript number precision and format only for display. Currency normally shows two decimals; non-zero amounts below one cent/penny show four decimals.
+- Calculations retain full JavaScript number precision and format only for display. Currency normally shows two decimals; amounts below one cent/penny show up to four significant digits, with scientific notation for extremely small non-zero costs.
 
 ## Assumptions and bounds
 
@@ -30,7 +30,7 @@ The route has a clean canonical URL, descriptive title and description, useful s
 
 ## Verification and performance
 
-Run `npm test`, `npm run check`, `npm run build` and `npm run check:links` in `website/`. The content verifier checks canonical/title uniqueness, JSON-LD parsing, internal routes, article content and sitemap coverage; it also enforces the calculator-only client script scope. Build output should contain one small route bundle and no new runtime dependency. Record the measured bundle and shared CSS sizes after a production build.
+Run `npm test`, `npm run check`, `npm run build` and `npm run check:links` in `website/`. The content verifier checks canonical/title uniqueness, JSON-LD parsing, internal routes, article content and sitemap coverage; it also enforces the calculator-only client script scope. The production calculator JavaScript bundle is 4,824 bytes uncompressed and appears only on this route. Calculator-specific CSS is 6,345 bytes uncompressed; the shared 40,789 byte site stylesheet is unchanged by this route-level stylesheet. No browser framework or client runtime dependency was added. `yaml` is declared as a direct website build dependency for the custom Markdown loader; the installed package was already present transitively in the toolchain and is not bundled for visitors.
 
 ## Future reuse
 

@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-const routes = ['/', '/ember/', '/learn/', '/guides/', '/troubleshoot/', '/tools/', '/tools/electricity-cost-calculator/', '/trust/'];
+const routes = ['/', '/ember/', '/learn/', '/guides/', '/troubleshoot/', '/tools/', '/tools/electricity-cost-calculator/', '/tools/xmrig-log-decoder/', '/trust/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = site?.toString().replace(/\/$/, '') ?? 'https://example.com';

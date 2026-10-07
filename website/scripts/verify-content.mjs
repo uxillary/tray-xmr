@@ -36,13 +36,18 @@ for (const file of files) {
   const scriptTags = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   const clientScripts = scriptTags.filter(([, attrs]) => !/type="application\/ld\+json"/i.test(attrs));
   const route = canonical ? new URL(canonical).pathname : '';
-  if (route === '/tools/electricity-cost-calculator/') {
-    if (clientScripts.length !== 1 || !/type="module"/i.test(clientScripts[0]?.[1] ?? '') || /\bsrc=/i.test(clientScripts[0]?.[1] ?? '')) {
-      failures.push(`${file}: expected one bundled inline calculator module`);
-    }
-    if ((clientScripts[0]?.[2]?.length ?? 0) > 12_000) failures.push(`${file}: calculator script exceeds 12 KB uncompressed`);
-    for (const required of ['How the calculation works', 'kWh = (watts ÷ 1,000) × hours', 'CPU package power', 'no tariff is assumed']) {
-      if (!html.includes(required)) failures.push(`${file}: missing static calculator content: ${required}`);
+  if (route === '/tools/electricity-cost-calculator/' || route === '/tools/xmrig-log-decoder/') {
+    const attrs = clientScripts[0]?.[1] ?? '';
+    const scriptSrc = attrs.match(/\bsrc="([^"]+)"/i)?.[1];
+    const scriptFile = scriptSrc ? join(dist, decodeURIComponent(new URL(scriptSrc, canonical).pathname.replace(/^\/+/, ''))) : null;
+    if (clientScripts.length !== 1 || !/type="module"/i.test(attrs) || !scriptFile || !existsSync(scriptFile)) {
+      failures.push(`${file}: expected one external tool module asset`);
+    } else if (statSync(scriptFile).size > (route.includes('decoder') ? 16_000 : 12_000)) failures.push(`${file}: tool script exceeds its uncompressed size budget`);
+    const required = route.includes('decoder')
+      ? ['Your pasted log is processed locally', 'not uploaded by this tool', 'Unknown output stays unknown', 'wallet addresses']
+      : ['How the calculation works', 'kWh = (watts ÷ 1,000) × hours', 'CPU package power', 'no tariff is assumed'];
+    for (const text of required) {
+      if (!html.includes(text)) failures.push(`${file}: missing static tool content: ${text}`);
     }
   } else if (clientScripts.length) {
     failures.push(`${file}: unexpected client-side script outside the calculator route`);
@@ -78,6 +83,7 @@ const expected = [
   'troubleshoot/xmrig-huge-pages/index.html', 'troubleshoot/xmrig-msr-error/index.html',
   'troubleshoot/xmrig-low-hashrate/index.html',
   'tools/electricity-cost-calculator/index.html',
+  'tools/xmrig-log-decoder/index.html',
 ];
 for (const path of expected) {
   const fullPath = join(dist, path);

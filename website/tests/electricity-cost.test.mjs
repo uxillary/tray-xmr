@@ -18,6 +18,12 @@ test('handles zero and fractional values', () => {
   assert.equal(formatCost(result.costPerHour, 'GBP'), '£0.001543');
 });
 
+test('keeps very small non-zero costs visible', () => {
+  const display = formatCost(0.000000001, 'GBP');
+  assert.notEqual(display, '£0.00');
+  assert.match(display, /E/i);
+});
+
 test('runtime and pence rate are applied consistently', () => {
   const result = calculateElectricity({ watts: 100, rate: 24, rateUnit: 'pence', hours: 12, days: 30 });
   assert.ok(Math.abs(result.kwhPerDay - 1.2) < 1e-12);
@@ -29,6 +35,9 @@ test('runtime and pence rate are applied consistently', () => {
 
 test('accepts decimal comma and grouped locale values', () => {
   assert.deepEqual(parseNumber('0,25'), { value: 0.25, error: null });
+  assert.deepEqual(parseNumber('0,125'), { value: 0.125, error: null });
+  assert.deepEqual(parseNumber('20,000'), { value: 20_000, error: null });
+  assert.deepEqual(parseNumber('1,234,567'), { value: 1_234_567, error: null });
   assert.deepEqual(parseNumber('1.234,56'), { value: 1234.56, error: null });
   assert.deepEqual(parseNumber('1,234.56'), { value: 1234.56, error: null });
 });
@@ -38,6 +47,7 @@ test('rejects blank, non-numeric, negative and out-of-range values', () => {
   assert.equal(parseNumber('-1').value, -1);
   assert.throws(() => calculateElectricity({ watts: -1, rate: 0, hours: 1, days: 1 }), RangeError);
   assert.throws(() => calculateElectricity({ watts: 20_001, rate: 0, hours: 1, days: 1 }), RangeError);
+  assert.throws(() => calculateElectricity({ watts: 1, rate: 1_001, hours: 1, days: 1 }), RangeError);
   assert.throws(() => calculateElectricity({ watts: 1, rate: 0, hours: 25, days: 1 }), RangeError);
   assert.throws(() => calculateElectricity({ watts: 1, rate: 0, hours: 1, days: 366 }), RangeError);
 });

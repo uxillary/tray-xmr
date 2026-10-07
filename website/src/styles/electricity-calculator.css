@@ -68,9 +68,9 @@
   .calculator-panel-heading { align-items: flex-start; }
   .energy-flow { grid-template-columns: 1fr; gap: 13px; }
   .flow-node { grid-template-columns: 28px 1fr; align-items: center; column-gap: 10px; }
-  .flow-node > svg { grid-row: span 2; }
-  .flow-node > span { align-self: end; }
-  .flow-node > strong { font-size: 18px; }
+  .flow-node > .icon-box { grid-column: 1; grid-row: 1 / span 2; }
+  .flow-node > span:not(.icon-box) { grid-column: 2; grid-row: 1; align-self: end; }
+  .flow-node > strong { grid-column: 2; grid-row: 2; font-size: 18px; }
   .flow-connector { width: 1px; height: 12px; margin-left: 13px; }
   .cost-readouts > div { padding: 13px 9px; }
   .cost-readouts strong { font-size: 14px; }

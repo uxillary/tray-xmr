@@ -1,40 +1,28 @@
 # M05 tooling investigation: Astro, Vite, and picomatch
 
-## Reproduction
+## Reproduction and diagnosis
 
-On this workspace, `npm run check` fails in Astro's implicit content synchronization before Astro's TypeScript diagnostics start. The error is:
+Before the M05 change, `npm run check` failed while Astro synchronized the Markdown collection. The error was `require is not defined` in `picomatch/index.js`, reached through Vite's `ModuleRunner`. The website uses Node 24 in ESM mode, Astro's `glob()` content loader, and CommonJS `picomatch@4.0.7`. A plain build sometimes succeeded, while `astro check`'s sync path reproduced the failure. This was an ESM/CommonJS evaluation issue in Astro's Vite module-runner path, not an unsupported Node version or a conflicting picomatch install.
 
-```text
-GenerateContentTypesError: require is not defined
-  at .../picomatch/index.js
-  at .../vite/dist/node/module-runner.js
-```
+The check also exposed that CommonJS dependencies reached through an ESM module-runner import could fail similarly; loading YAML from the content config produced the same `require is not defined` error. Node's native `createRequire()` works because the content loader runs as a Node module rather than being evaluated as source by Vite's module runner.
 
-`npm run build` succeeds and synchronizes the same content collection. After a successful build, `npx astro check --noSync` also succeeds with 0 errors, warnings, or hints. This isolates the failure to the `astro check` command's sync/module-runner path rather than the content schema, generated page code, or a general Node CommonJS import failure.
+## Website-only fix
 
-## Environment and dependency resolution
+Replaced Astro's `glob()` loader with a small file-backed loader in `src/content/article-loader.mjs`. It reads the existing flat Markdown article directory, parses YAML frontmatter, validates it against the existing Astro collection schema, renders Markdown through Astro's loader context and watches article files in development. The loader uses `createRequire(import.meta.url)('yaml')`, avoiding the Vite module-runner's CommonJS evaluation path. Astro's content config remains typed and declares the same collection schema. YAML `2.9.1` is declared as a direct website build dependency because the loader imports it explicitly; that was the version already present in `node_modules`. No Astro, Vite, picomatch or Node version was changed.
+
+## Environment and dependency versions
 
 - Node: `v24.21.0`
 - npm: `11.19.0`
-- Astro: `7.3.5` (requires Node `>=22.12.0`; depends on Vite `^8.0.13`)
-- Vite: `8.3.2` (requires Node `^20.19.0 || >=22.12.0`)
-- `@astrojs/check`: `0.9.10` resolved from the website range `^0.9.6`
+- Astro: `7.3.5` (Node `>=22.12.0`)
+- Vite: `8.3.2` (`^20.19.0 || >=22.12.0`)
+- `@astrojs/check`: `0.9.10`
 - TypeScript: `6.0.3`
-- picomatch: `4.0.7`, CommonJS (`main: index.js`, no package `type` field); a nested `2.3.2` remains under Astro's `anymatch` dependency
-- Website package type: `module`
+- picomatch: `4.0.7` CommonJS; a nested `2.3.2` remains under Astro's `anymatch`
+- website package type: `module`
 
-The root project dependency graph resolves the Astro/Vite/tinyglobby branches to one `picomatch@4.0.7`; no conflicting root duplicate was found. Node 24 and Vite 8 satisfy Astro's declared engine and dependency ranges. The failing source is the standard `glob()` content loader in `src/content.config.ts`, which imports `picomatch`. The Vite `ModuleRunner` stack shows the CommonJS source being evaluated in an ESM module context during `astro check`'s sync step. The build path handles the same loader successfully.
-
-## Workaround
-
-The website `check` script now runs a production build first, then runs `astro check --noSync`. The build refreshes Astro's generated content types; `--noSync` skips the failing duplicate sync phase while still running Astro/TypeScript diagnostics against those generated types. This does not patch or upgrade Astro, Vite, picomatch, or Node, and it does not claim the underlying Astro module-runner issue is fixed.
+No Astro, Vite, picomatch or Node version was changed. No desktop file or dependency was touched.
 
 ## Verification
 
-Verified in this environment:
-
-- `npm run check`: production build followed by Astro diagnostics (0 errors, warnings, or hints).
-- `npm run build`: static build completes and generates all configured routes.
-- `npm run check:links`: builds the static site and runs `scripts/verify-content.mjs`.
-
-If default `astro check` is invoked directly without `--noSync`, the `require is not defined` failure remains reproducible here. Revisit this workaround when upgrading Astro/Vite or when Astro changes its content-sync module loading path; do not mask other check failures with `--noSync` unless a successful build has generated the types first.
+After replacing the loader, default `npm run check` completes content sync and reports 0 errors, 0 warnings and 0 hints. `npm run build` succeeds and includes all 13 routes. `npm run check:links` runs the production build and validates canonical URLs, JSON-LD, internal links and sitemap entries. `npm test` runs the deterministic calculator tests. The original failing `glob()` loader was removed from the content config; the workaround and its changed code path are documented rather than claiming an Astro/Vite upstream fix.

@@ -1,0 +1,35 @@
+---
+import SiteLayout from '../../components/SiteLayout.astro';
+import '../../styles/xmrig-log-decoder.css';
+---
+
+<SiteLayout title="XMRig Log Decoder — Ember" description="Interpret a small set of XMRig startup, Huge Pages, MSR, pool and share signals locally in your browser.">
+  <div class="wrap decoder-page">
+    <header class="page-intro decoder-heading"><span class="page-kicker">TOOLS / DIAGNOSTICS</span><h1>What is XMRig actually telling me?</h1><p>Paste a log excerpt to find a small set of recognizable signals, what they establish, and where to look next.</p></header>
+    <div class="decoder-flow" aria-label="How the decoder works"><span>RAW LOG</span><b aria-hidden="true">→</b><span>RECOGNIZED SIGNAL</span><b aria-hidden="true">→</b><span>MEANING</span><b aria-hidden="true">→</b><span>NEXT CHECK</span></div>
+    <div class="decoder-workspace">
+      <section class="decoder-input-panel" aria-labelledby="input-title">
+        <div class="decoder-panel-top"><span class="eyebrow">01 / LOCAL INPUT</span><span>NO UPLOAD</span></div>
+        <h2 id="input-title">Paste XMRig output</h2>
+        <p id="privacy-note">Your pasted log is processed locally in this browser and is not uploaded by this tool. Results do not repeat log lines or identifiers.</p>
+        <label for="xmrig-log">XMRig console or log excerpt</label>
+        <textarea id="xmrig-log" spellcheck="false" aria-describedby="log-help privacy-note" placeholder="Paste a relevant excerpt. You can remove wallet, pool, worker and host details first."></textarea>
+        <div class="decoder-input-meta"><small id="log-help">Up to 200 KB. Blank lines, CRLF/LF and ANSI color sequences are supported.</small><small id="byte-count">0 / 200 KB</small></div>
+        <p class="decoder-validation" id="input-error" role="alert"></p>
+        <div class="decoder-actions"><button type="button" id="analyze-log" class="decoder-primary">Analyze log</button><button type="button" id="clear-log" class="decoder-secondary">Clear</button></div>
+      </section>
+      <section class="decoder-results" aria-labelledby="results-title">
+        <div class="decoder-panel-top"><span class="eyebrow">02 / SIGNALS</span><span>BOUNDED RULE SET</span></div>
+        <h2 id="results-title" tabindex="-1">Diagnostic readout</h2>
+        <p id="result-status" class="decoder-status" aria-live="polite">Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.</p>
+        <div id="signal-list" class="signal-list"></div>
+      </section>
+    </div>
+    <section class="decoder-explainer"><article><span class="eyebrow">SCOPE / 01</span><h2>A focused reader, not a diagnosis</h2><p>XMRig logs describe events from a particular miner version, configuration, operating system and pool. Ember recognizes a limited set of explicit lines; it does not determine overall system health, profitability, or the cause behind every warning.</p><p>Unknown output stays unknown. A successful startup message does not prove a pool job arrived, and a connection message does not prove shares were accepted.</p></article><article><span class="eyebrow">PRIVACY / 02</span><h2>Keep identifying details out of results</h2><p>The parser runs in this page in your browser. It makes no network request with the pasted content and does not save it to browser storage. Diagnostic cards show fixed descriptions and counts, never matched line text.</p><p>Logs can contain wallet addresses, worker names, pool endpoints, IP addresses and other identifiers. Review or redact the original log before sharing it elsewhere.</p></article></section>
+    <p class="decoder-backlink"><a href="/tools/">← Back to all tools</a> <span>Related guides: <a href="/troubleshoot/xmrig-huge-pages/">Huge Pages</a>, <a href="/troubleshoot/xmrig-msr-error/">MSR</a>, <a href="/troubleshoot/xmrig-low-hashrate/">low hashrate</a>.</span></p>
+  </div>
+</SiteLayout>
+
+<script>
+  import '../../scripts/xmrig-log-decoder.js';
+</script>

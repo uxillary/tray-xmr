@@ -40,6 +40,11 @@ if (form) {
     }
     const currency = form.elements.currency.value;
     const rateUnit = document.querySelector('#rate-unit').value;
+    if (rateUnit === 'pence' && currency !== 'GBP') {
+      for (const id of ['cost-hour', 'cost-day', 'cost-period', 'cost-year']) setText(id, '—');
+      setText('calc-status', 'Pence per kWh applies to GBP. Choose GBP or change the rate unit to /kWh.');
+      return;
+    }
     const rate = values.rate ?? 0;
     const result = calculateElectricity({ ...values, rate, currency, rateUnit });
     const periodLabel = `${formatInteger(values.days)} ${values.days === 1 ? 'DAY' : 'DAYS'}`;
@@ -55,7 +60,10 @@ if (form) {
     setText('calc-status', values.rate === null ? `Energy is calculated: ${formatEnergy(result.kwhPerDay)} kWh/day. Add your rate to see estimated electricity cost.` : `Estimate updated: ${formatCost(result.costPerDay, currency)} per day, ${formatCost(result.costPerPeriod, currency)} for ${formatInteger(values.days)} days, and ${formatCost(result.costPerYear, currency)} per 365 days.`);
   }
 
-  form.addEventListener('input', update);
+  form.addEventListener('input', (event) => {
+    if (event.target === fields.hours.input) preset.value = 'custom';
+    update();
+  });
   form.addEventListener('change', (event) => {
     if (event.target === preset && preset.value !== 'custom') {
       fields.hours.input.value = preset.value;
