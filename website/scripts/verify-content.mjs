@@ -1,9 +1,24 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, relative, resolve } from 'node:path';
 
 const dist = resolve('dist');
 const failures = [];
 const files = [];
+function existsWithExactCase(path) {
+  const parts = relative(dist, path).split(/[\\/]+/).filter(Boolean);
+  let current = dist;
+  for (const part of parts) {
+    if (!existsSync(current) || !statSync(current).isDirectory()) return false;
+    if (!readdirSync(current).includes(part)) return false;
+    current = join(current, part);
+  }
+  return existsSync(current);
+}
+
+if (existsWithExactCase(join(dist, 'Index.html'))) {
+  failures.push('case-sensitive path resolver accepted mismatched root route casing');
+}
+
 function walk(directory) {
   for (const item of readdirSync(directory, { withFileTypes: true })) {
     const path = join(directory, item.name);
@@ -36,14 +51,16 @@ for (const file of files) {
   const scriptTags = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   const clientScripts = scriptTags.filter(([, attrs]) => !/type="application\/ld\+json"/i.test(attrs));
   const route = canonical ? new URL(canonical).pathname : '';
-  if (route === '/tools/electricity-cost-calculator/' || route === '/tools/xmrig-log-decoder/') {
+  if (route === '/tools/electricity-cost-calculator/' || route === '/tools/xmrig-log-decoder/' || route === '/tools/monero-mining-profitability-calculator/') {
     const attrs = clientScripts[0]?.[1] ?? '';
     const scriptSrc = attrs.match(/\bsrc="([^"]+)"/i)?.[1];
     const scriptFile = scriptSrc ? join(dist, decodeURIComponent(new URL(scriptSrc, canonical).pathname.replace(/^\/+/, ''))) : null;
     if (clientScripts.length !== 1 || !/type="module"/i.test(attrs) || !scriptFile || !existsSync(scriptFile)) {
       failures.push(`${file}: expected one external tool module asset`);
     } else if (statSync(scriptFile).size > (route.includes('decoder') ? 16_000 : 12_000)) failures.push(`${file}: tool script exceeds its uncompressed size budget`);
-    const required = route.includes('decoder')
+    const required = route.includes('profitability')
+      ? ['All numeric inputs start blank', 'Expected-value estimate', 'not a payout', 'no live data', 'expectedRewardPerBlock']
+      : route.includes('decoder')
       ? ['Your pasted log is processed locally', 'not uploaded by this tool', 'Unknown output stays unknown', 'wallet addresses']
       : ['How the calculation works', 'kWh = (watts ÷ 1,000) × hours', 'CPU package power', 'no tariff is assumed'];
     for (const text of required) {
@@ -65,7 +82,7 @@ for (const file of files) {
     const pathname = decodeURIComponent(url.pathname);
     const target = join(dist, pathname.replace(/^\/+/, ''));
     const candidates = [target, join(target, 'index.html'), `${target}.html`];
-    const targetFile = candidates.find((candidate) => existsSync(candidate) && statSync(candidate).isFile());
+    const targetFile = candidates.find((candidate) => existsWithExactCase(candidate) && statSync(candidate).isFile());
     if (!targetFile) {
       failures.push(`${file}: broken internal link ${href}`);
       continue;
@@ -84,6 +101,7 @@ const expected = [
   'troubleshoot/xmrig-huge-pages/index.html', 'troubleshoot/xmrig-msr-error/index.html',
   'troubleshoot/xmrig-low-hashrate/index.html',
   'tools/electricity-cost-calculator/index.html',
+  'tools/monero-mining-profitability-calculator/index.html',
   'tools/xmrig-log-decoder/index.html',
 ];
 for (const path of expected) {

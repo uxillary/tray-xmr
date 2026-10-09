@@ -28,6 +28,7 @@ export function calculateElectricity({ watts, rate, rateUnit = 'kwh', hours, day
     const maximum = field === 'rate' && rateUnit === 'pence' ? LIMITS.penceRate : LIMITS[field];
     if (value > maximum) throw new RangeError(`${field} exceeds the supported limit`);
   }
+  if (!Number.isInteger(days) || days < 1) throw new RangeError('days must be a whole number from 1 to 365');
   const ratePerKwh = rateUnit === 'pence' ? rate / 100 : rate;
   const kwhPerHour = watts / 1000;
   const kwhPerDay = kwhPerHour * hours;

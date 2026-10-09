@@ -19,6 +19,7 @@ if (form) {
     const maximum = field.input === fields.rate.input && document.querySelector('#rate-unit').value === 'pence' ? LIMITS.penceRate : field.max;
     if (parsed.value > maximum) return { value: null, error: `Enter no more than ${formatInteger(maximum)}.` };
     if (field.input === fields.days.input && !Number.isInteger(parsed.value)) return { value: null, error: 'Enter a whole number of days.' };
+    if (field.input === fields.days.input && parsed.value < 1) return { value: null, error: 'Enter at least 1 day.' };
     return parsed;
   }
 

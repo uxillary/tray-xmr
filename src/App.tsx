@@ -227,7 +227,7 @@ function App() {
         </div>
       </aside>
 
-      <main className="workspace">
+      <main className={`workspace workspace--${section}`}>
         <div className="page-content">
           <header className="page-heading"><h1>{current.label}</h1></header>
 
@@ -260,7 +260,7 @@ function OverviewPage({ status, statusError, systemSnapshot, session, setup, ses
             : "Complete your wallet, pool and power setup to begin.";
   return (
     <>
-      <section className="overview-hero" aria-labelledby="overview-title">
+      <section className={`overview-hero${isMining ? " overview-hero--live" : ""}`} aria-labelledby="overview-title">
         <div className="hero-copy">
           <p className="eyebrow">THIS DEVICE</p>
           <h2 id="overview-title">{headline}</h2>
@@ -293,7 +293,7 @@ function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode, m
         <button className="setup-engine-button" type="button" onClick={editSetup}>Edit wallet, pool and resources</button>
         <p className="info-detail settings-note">Changes require a fresh acknowledgement on the Mining page.</p>
       </section>
-      <section className="settings-section" aria-labelledby="settings-diagnostics">
+      <section className={`settings-section settings-section--diagnostics${diagnosticsMode ? " is-open" : ""}`} aria-labelledby="settings-diagnostics">
         <h2 id="settings-diagnostics">Advanced / Diagnostics</h2>
         <label className="diagnostics-toggle"><span><strong>Diagnostics mode</strong><small>Show sanitized startup evidence and enable controlled diagnostic tools.</small></span><input type="checkbox" checked={diagnosticsMode} disabled={integrationTest?.running ?? false} onChange={(event) => setDiagnosticsMode(event.currentTarget.checked)} /></label>
         {diagnosticsMode && <div className="integration-test-panel" aria-live="polite">

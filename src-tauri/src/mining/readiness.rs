@@ -13,7 +13,7 @@ use std::{
 };
 
 const SCHEMA: u32 = 1;
-const DISCLOSURE: u32 = 1;
+const DISCLOSURE: u32 = 2;
 const STORAGE_ERROR: &str = "Local setup could not be read or saved. Retry, or reset saved setup.";
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug, Serialize)]
@@ -154,6 +154,7 @@ pub struct MiningReadiness {
     pub engine_issue: Option<&'static str>,
     pub engine_version: &'static str,
     pub wallet_masked: Option<String>,
+    pub developer_wallet: &'static str,
     pub pool: Option<PoolSetup>,
     pub profile: Option<ResourceProfile>,
     pub logical_processors: usize,
@@ -239,7 +240,7 @@ impl SetupService {
             && address_valid
             && pool_valid
             && threads.is_some()
-            && self.candidate(threads.unwrap_or(0)).is_ok();
+            && self.candidate(threads.unwrap_or(0), None).is_ok();
         let mut snapshot = MiningReadiness {
             engine,
             engine_issue,
@@ -250,6 +251,7 @@ impl SetupService {
                 .as_deref()
                 .filter(|_| address_valid)
                 .map(mask_address),
+            developer_wallet: super::contribution::DEVELOPER_WALLET,
             pool: self.saved.pool.clone(),
             profile: self.saved.profile,
             logical_processors: logical,
@@ -296,7 +298,11 @@ impl SetupService {
     }
 
     /// Generates a fresh validated config and reserves its loopback port until launch.
-    pub fn prepare_start(&self, logical: usize) -> Result<RuntimeCandidate, String> {
+    pub fn prepare_start(
+        &self,
+        logical: usize,
+        payout_address: Option<&str>,
+    ) -> Result<RuntimeCandidate, String> {
         let readiness = self.snapshot(logical, true);
         if !readiness.start_allowed {
             return Err(readiness
@@ -308,10 +314,15 @@ impl SetupService {
             readiness
                 .threads
                 .ok_or("Choose a supported resource profile")?,
+            payout_address,
         )
     }
 
-    fn candidate(&self, threads: usize) -> Result<RuntimeCandidate, String> {
+    fn candidate(
+        &self,
+        threads: usize,
+        payout_address: Option<&str>,
+    ) -> Result<RuntimeCandidate, String> {
         let pool = self
             .saved
             .pool
@@ -332,11 +343,15 @@ impl SetupService {
                 port: pool.port,
                 tls: pool.tls,
             },
-            public_address: self
-                .saved
-                .public_address
-                .clone()
-                .ok_or("Wallet is required")?,
+            public_address: match payout_address {
+                Some(address) if wallet::valid(address) => address.to_owned(),
+                Some(_) => return Err("Developer receiving address is invalid".into()),
+                None => self
+                    .saved
+                    .public_address
+                    .clone()
+                    .ok_or("Wallet is required")?,
+            },
             worker_id: pool.worker,
             cpu: CpuConfig {
                 enabled: true,
@@ -356,7 +371,10 @@ impl SetupService {
             reservation: Some(reservation),
             json,
             validated,
-            profile: self.saved.profile.ok_or("Choose a supported resource profile")?,
+            profile: self
+                .saved
+                .profile
+                .ok_or("Choose a supported resource profile")?,
         })
     }
 
@@ -783,7 +801,7 @@ mod tests {
         assert!(snapshot.start_allowed);
         assert!(!service.snapshot(8, false).ready);
         assert!(!service.snapshot(0, true).ready);
-        let candidate = service.candidate(4).unwrap();
+        let candidate = service.candidate(4, None).unwrap();
         let json: serde_json::Value = serde_json::from_str(candidate.config_json()).unwrap();
         assert_eq!(json["cpu"]["rx"], serde_json::json!([-1, -1, -1, -1]));
         assert_eq!(json["randomx"]["init"], 4);
@@ -795,7 +813,7 @@ mod tests {
         assert_eq!(token.len(), 64);
         let dto = serde_json::to_string(&snapshot).unwrap();
         assert!(!dto.contains(token));
-        let second = service.candidate(4).unwrap();
+        let second = service.candidate(4, None).unwrap();
         assert_ne!(candidate.json, second.json); // Fresh ephemeral secrets and port; JSON otherwise deterministic.
         let directory = provisioner::verify_install_location(&root).unwrap();
         fs::write(directory.join("xmrig.exe"), b"modified").unwrap();

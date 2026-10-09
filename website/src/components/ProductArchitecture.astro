@@ -1,0 +1,13 @@
+<figure class="product-architecture" aria-labelledby="product-architecture-title" aria-describedby="product-architecture-description product-architecture-caption">
+  <div class="architecture-heading"><span class="eyebrow">LOCAL CONTROL / EXTERNAL WORK</span><span class="architecture-index">WINDOWS · CPU · XMRIG 6.26.0</span></div>
+  <h3 id="product-architecture-title">One local manager. One mining engine. Your chosen pool.</h3>
+  <p id="product-architecture-description" class="architecture-description">Ember turns reviewed choices into a supervised XMRig session. XMRig performs the CPU work and communicates with the pool you configure.</p>
+  <ol class="architecture-flow">
+    <li><span>YOU</span><strong>Choose</strong><small>Address · pool · threads</small></li>
+    <li><span>LOCAL APP</span><strong>Ember</strong><small>Review · start · supervise</small></li>
+    <li><span>MINING ENGINE</span><strong>XMRig</strong><small>RandomX CPU work</small></li>
+    <li><span>EXTERNAL SERVICE</span><strong>Mining pool</strong><small>Work coordination · results</small></li>
+  </ol>
+  <div class="architecture-boundary"><span aria-hidden="true"></span><p><strong>Ember’s boundary:</strong> local setup and process state. Pool traffic goes from XMRig to the pool; the authenticated status API stays on loopback between Ember and XMRig.</p></div>
+  <figcaption id="product-architecture-caption">Conceptual architecture, not a network trace. The selected pool is a third-party service. Ember does not run a pool or perform the mining workload.</figcaption>
+</figure>

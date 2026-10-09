@@ -94,7 +94,7 @@ M03B adds deterministic config validation, a verified-artifact gate, fixture-inj
 
 Prefer structured XMRig local API telemetry; stdout/stderr are bounded diagnostics only. Bind API to loopback and use a per-run secret. `ReqwestLocalApiTransport` uses a fixed loopback URL, verified Bearer authorization, no proxy, no redirects, bounded body and strict deadlines. Restricted mode permits only the authenticated GET summary request; Stop uses a bounded wait and then the owned Job Object rather than a control API route.
 
-The future Ember policy/contribution layer owns the explicitly approved Contribution and accounting; neither the UI nor process adapter contains contribution logic. The working baseline is 5%, pending final decision; a higher rate is open. XMRig's built-in 1% donation is separate and must be represented honestly.
+The Ember policy/contribution layer owns the approved 5% developer schedule above the engine adapter. Rust alternates 19:1 active mining time between the saved user wallet and the fixed public developer wallet, restarting the supervised XMRig process between slots. The UI shows the active slot and app-run cumulative time totals; these are approximate work-share indicators, not pool payout accounting, and are not persisted across app restarts. XMRig's built-in 1% donation is separate and must be represented honestly.
 
 ## Miner acquisition and integrity
 

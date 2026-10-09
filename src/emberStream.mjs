@@ -8,7 +8,7 @@ export function presentEmberEvent(event) {
     case "miningStopped":
       return {
         marker: "SYSTEM",
-        message: data.reason === "startupCancelled" ? "Mining startup stopped" : "Mining stopped",
+        message: data.reason === "contributionSwitch" ? "Switching developer fee wallet" : data.reason === "startupCancelled" ? "Mining startup stopped" : "Mining stopped",
         icon: "stop",
       };
     case "miningFailed":

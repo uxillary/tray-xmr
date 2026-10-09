@@ -64,7 +64,7 @@ RandomX's fast mode needs substantial RAM, while the mining workload also compet
 
 Watch whether performance changes as the CPU warms up. Check the system's temperature and power-limit reporting with the computer or processor manufacturer's supported tools. If the system becomes unstable, uncomfortably hot, or difficult to use, stop the run and return to default settings. Do not assume a particular temperature or hashrate without the CPU manufacturer's limits and a comparable baseline.
 
-If you are also estimating household energy use, use whole-system power measured at the wall and your own electricity tariff in the [mining electricity cost calculator](/tools/electricity-cost-calculator/). CPU package power alone does not include the rest of the computer.
+If you are also estimating household energy use, use whole-system power measured at the wall and your own electricity tariff in the [mining electricity cost calculator](/tools/electricity-cost-calculator/). CPU package power alone does not include the rest of the computer. For an assumption-based reward and electricity scenario, use the [Monero mining profitability calculator](/tools/monero-mining-profitability-calculator/); its results are expected values, not pool payout predictions.
 
 ## Keep a small measurement record
 

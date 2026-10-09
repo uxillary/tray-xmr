@@ -258,6 +258,7 @@ pub enum StopReason {
     UserRequest,
     ApplicationQuit,
     StartupFailure,
+    ContributionSwitch,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]

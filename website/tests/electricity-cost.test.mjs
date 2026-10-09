@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { calculateElectricity, formatCost, parseNumber } from '../src/lib/electricity-cost.mjs';
+import { readFileSync } from 'node:fs';
 
 test('calculates the reference continuous workload', () => {
   const result = calculateElectricity({ watts: 100, rate: 0.25, hours: 24, days: 30 });
@@ -50,4 +51,14 @@ test('rejects blank, non-numeric, negative and out-of-range values', () => {
   assert.throws(() => calculateElectricity({ watts: 1, rate: 1_001, hours: 1, days: 1 }), RangeError);
   assert.throws(() => calculateElectricity({ watts: 1, rate: 0, hours: 25, days: 1 }), RangeError);
   assert.throws(() => calculateElectricity({ watts: 1, rate: 0, hours: 1, days: 366 }), RangeError);
+  assert.throws(() => calculateElectricity({ watts: 1, rate: 0, hours: 1, days: 0 }), RangeError);
+  assert.throws(() => calculateElectricity({ watts: 1, rate: 0, hours: 1, days: 1.5 }), RangeError);
+  assert.doesNotThrow(() => calculateElectricity({ watts: 1, rate: 0, hours: 1, days: 1 }));
+  assert.doesNotThrow(() => calculateElectricity({ watts: 1, rate: 0, hours: 1, days: 365 }));
+});
+
+test('electricity results section references an existing named heading', () => {
+  const page = readFileSync(new URL('../src/pages/tools/electricity-cost-calculator.astro', import.meta.url), 'utf8');
+  assert.match(page, /<section class="calculator-results" aria-labelledby="result-title">/);
+  assert.match(page, /<h2[^>]+id="result-title"[^>]*>Estimated electricity use and cost<\/h2>/);
 });

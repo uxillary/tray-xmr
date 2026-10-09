@@ -18,7 +18,7 @@ sources:
     accessed: 2026-10-06
   - organization: Microsoft Learn
     title: Privilege Constants — SeLockMemoryPrivilege
-    url: https://learn.microsoft.com/en-us/windows/desktop/secauthz/privilege-constants
+    url: https://learn.microsoft.com/en-us/windows/win32/secauthz/privilege-constants
     accessed: 2026-10-06
   - organization: Microsoft Learn
     title: Lock pages in memory

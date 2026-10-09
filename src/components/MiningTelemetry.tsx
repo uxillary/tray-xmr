@@ -49,13 +49,23 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
         ? "Closing the owned mining process"
         : view.state === "paused"
           ? "Mining is paused"
-          : "This device is connected to your selected pool";
+          : view.state === "mining"
+            ? "Mining is active on this device"
+            : view.state === "stopped"
+              ? "The session has ended"
+              : view.state === "ready"
+                ? "Ready when you are"
+                : view.state === "notConfigured"
+                  ? "Complete setup before starting"
+                  : view.state === "unavailable"
+                    ? "Status could not be confirmed"
+                    : "";
 
   return (
     <div className={`mining-operation mining-operation--${view.state}`}>
       <section className="operation-main" aria-label="Mining session status">
         <div className="operation-identity">
-          <EmberCore state={coreState} compact />
+          <EmberCore state={coreState} />
           <div>
             <span className="operation-kicker">EMBER CORE</span>
             <h2>{stateLabel}</h2>
@@ -64,7 +74,7 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
         </div>
         <div className={`operation-rate${view.freshness === "stale" || statusUnavailable ? " is-stale" : ""}`}>
           <span>Current hashrate</span>
-          <strong>{view.hashrate ?? view.hashrateLabel}</strong>
+          <strong>{formatRate(view.hashrate ?? view.hashrateLabel)}</strong>
         </div>
         <div className="operation-actions">
           <FreshnessNotice session={session} statusUnavailable={statusUnavailable} />
@@ -72,7 +82,9 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
         </div>
       </section>
 
-      {starting && <p className="starting-note">{startupMessage(session?.startupStage ?? null, session?.startupElapsedMs ?? null)}</p>}
+      <p className={`starting-note${starting ? " is-active" : ""}`} aria-live={starting ? "polite" : undefined}>
+        {starting ? startupMessage(session?.startupStage ?? null, session?.startupElapsedMs ?? null) : " "}
+      </p>
 
       <section className="operation-details" aria-label="Current mining session details">
         <PoolRoute state={poolState} label={view.poolLabel} />
@@ -91,6 +103,13 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
           <span><span>Accepted</span><strong>{accepted}</strong></span>
           <span className={view.rejected !== null && view.rejected > 0 ? "has-rejections" : ""}><span>Rejected</span><strong>{rejected}</strong></span>
         </div>
+        {session?.contribution.active && <div className="operation-contribution" aria-live="polite">
+          <span className="operational-label">5% developer fee · active time target</span>
+          <strong>{session.contribution.developerSlot ? "Developer wallet" : "Your saved wallet"} · next switch in {formatSwitchTime(session.contribution.secondsToSwitch)}</strong>
+          {session.contribution.developerSlot && <code>{session.contribution.developerWallet}</code>}
+          <span>Accounted mining time: your wallet {formatSwitchTime(session.contribution.userActiveSeconds)} · developer {formatSwitchTime(session.contribution.developerActiveSeconds)}.</span>
+          <span>Actual reward share can vary with pool results and reconnect time. XMRig's separate 1% donation also applies.</span>
+        </div>}
       </section>
 
       <details className="mining-advanced-details">
@@ -157,6 +176,11 @@ function Detail({ label, value }: { label: string; value: string }) {
   return <div><dt>{label}</dt><dd>{value}</dd></div>;
 }
 
+function formatRate(value: string) {
+  const match = /^(.*)\s+(H\/s|kH\/s|MH\/s)$/.exec(value);
+  return match ? <><span>{match[1]}</span><small>{match[2]}</small></> : value;
+}
+
 function startupMessage(stage: MiningSessionStatus["startupStage"], elapsedMs: number | null) {
   const copy = {
     checkingEngine: "Checking the verified engine",
@@ -181,6 +205,18 @@ function coreStateFor(state: string): EmberCoreState {
 
 function formatCount(value: number | null, starting: boolean) {
   return value === null ? starting ? "—" : "Unavailable" : value.toLocaleString();
+}
+
+function formatSwitchTime(seconds: number | null) {
+  if (seconds === null) return "unavailable";
+  if (seconds >= 3600) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    return `${hours}h ${minutes}m`;
+  }
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return minutes > 0 ? `${minutes}m ${remainder}s` : `${remainder}s`;
 }
 
 function formatNumber(value: number | null) {

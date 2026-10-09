@@ -1,0 +1,76 @@
+---
+import SiteLayout from '../../components/SiteLayout.astro';
+import '../../styles/site.css';
+import '../../styles/mining-profitability.css';
+---
+<SiteLayout title="Monero Mining Profitability Calculator — Ember" description="Estimate expected XMR rewards, pool-adjusted revenue, electricity cost and operating balance from your own hashrate and manual network and price assumptions.">
+  <div class="wrap mining-page">
+    <header class="page-intro mining-intro">
+      <span class="page-kicker">TOOLS / MINING ECONOMICS</span>
+      <h1>Monero Mining Profitability Calculator</h1>
+      <p>Build a transparent scenario from your own mining, network, reward and market assumptions. All numeric inputs start blank. This tool uses no live data and does not forecast future earnings.</p>
+      <p class="manual-note">Manual assumptions · Calculated in this browser · Nothing is uploaded or saved</p>
+    </header>
+
+    <div class="mining-layout">
+      <form id="mining-calculator" class="mining-form" novalidate>
+        <div class="mining-section-head"><span class="eyebrow">01 / MINING SETUP</span><span class="section-hint">Your measured or benchmarked values</span></div>
+        <div class="mining-fields">
+          <label class="mining-field"><span>Miner hashrate</span><span class="mining-input"><input name="minerHashrate" type="text" inputmode="decimal" autocomplete="off" aria-describedby="hash-help hash-error"><span>H/s</span></span><small id="hash-help">Sustained hashrate while mining; rates vary with workload and test duration. Maximum 1,000,000,000 H/s.</small><span class="field-error" id="hash-error"></span></label>
+          <label class="mining-field"><span>Whole-system wall power</span><span class="mining-input"><input name="wallPowerWatts" type="text" inputmode="decimal" autocomplete="off" aria-describedby="power-help power-error"><span>W</span></span><small id="power-help">Measure the complete computer at the wall. Maximum 20,000 W.</small><span class="field-error" id="power-error"></span></label>
+          <label class="mining-field"><span>Mining runtime</span><span class="mining-input"><input name="hoursPerDay" type="text" inputmode="decimal" autocomplete="off" aria-describedby="hours-help hours-error"><span>hours / day</span></span><small id="hours-help">Active mining hours each day, from 0 to 24.</small><span class="field-error" id="hours-error"></span></label>
+          <label class="mining-field"><span>Electricity tariff</span><span class="mining-input"><input name="electricityPricePerKwh" type="text" inputmode="decimal" autocomplete="off" aria-describedby="tariff-help tariff-error"><span class="unit-currency" data-unit-currency>GBP / kWh</span></span><small id="tariff-help">Your rate per kWh in the selected currency. Standing charges and time-of-use variation are excluded; maximum 1,000 per kWh.</small><span class="field-error" id="tariff-error"></span></label>
+          <label class="mining-field"><span>Pool fee</span><span class="mining-input"><input name="poolFeePercent" type="text" inputmode="decimal" autocomplete="off" aria-describedby="fee-help fee-error"><span>%</span></span><small id="fee-help">Applied to estimated gross rewards; 0–100%.</small><span class="field-error" id="fee-error"></span></label>
+        </div>
+
+        <div class="mining-section-head network-head"><span class="eyebrow">02 / NETWORK & REWARD</span><span class="section-hint">Use one network measure</span></div>
+        <fieldset class="network-choice">
+          <legend>Network basis</legend>
+          <label><input type="radio" name="networkBasis" value="difficulty" checked> Network difficulty <span>hashes / block</span></label>
+          <label><input type="radio" name="networkBasis" value="hashrate"> Network hashrate <span>H/s</span></label>
+        </fieldset>
+        <div class="mining-fields network-fields">
+          <label class="mining-field" id="difficulty-wrap"><span>Network difficulty</span><span class="mining-input"><input name="networkDifficulty" type="text" inputmode="decimal" autocomplete="off" aria-describedby="difficulty-help difficulty-error"><span>hashes / block</span></span><small id="difficulty-help">Expected work to find one block. Must be greater than zero; maximum 1,000,000,000,000,000,000 hashes/block.</small><span class="field-error" id="difficulty-error"></span></label>
+          <label class="mining-field" id="network-hashrate-wrap" hidden><span>Network hashrate</span><span class="mining-input"><input name="networkHashrate" type="text" inputmode="decimal" autocomplete="off" aria-describedby="network-hash-help network-hash-error"><span>H/s</span></span><small id="network-hash-help">Estimated total network work per second. Must be greater than zero; maximum 10,000,000,000,000,000 H/s.</small><span class="field-error" id="network-hash-error"></span></label>
+          <label class="mining-field"><span>Expected total block reward</span><span class="mining-input"><input name="expectedRewardPerBlock" type="text" inputmode="decimal" autocomplete="off" aria-describedby="reward-help reward-error"><span>XMR / block</span></span><small id="reward-help">Enter an assumption for emission plus transaction fees, before pool fee. No reward is retrieved live; maximum 10 XMR/block.</small><span class="field-error" id="reward-error"></span></label>
+          <label class="mining-field"><span>XMR price</span><span class="mining-input"><input name="xmrPrice" type="text" inputmode="decimal" autocomplete="off" aria-describedby="price-help price-error"><span class="unit-currency" data-unit-currency>GBP / XMR</span></span><small id="price-help">Manual price in the selected currency. No market price or FX conversion is used; maximum 10,000,000 per XMR.</small><span class="field-error" id="price-error"></span></label>
+          <label class="mining-field"><span>Display currency</span><select name="currency" aria-describedby="currency-help currency-status"><option value="GBP">GBP — £</option><option value="USD">USD — $</option><option value="EUR">EUR — €</option></select><small id="currency-help">Changing currency keeps your numbers but does not convert them. Enter the tariff and XMR price in the selected currency.</small><span class="currency-status" id="currency-status" aria-live="polite">Enter fiat assumptions in GBP.</span></label>
+        </div>
+        <button class="mining-reset" type="reset">Clear all assumptions</button>
+      </form>
+
+      <section class="mining-results" aria-labelledby="mining-results-title">
+        <div class="mining-section-head"><span class="eyebrow">03 / ESTIMATED SCENARIO</span><span class="manual-tag">USER-SUPPLIED INPUTS</span></div>
+        <h2 id="mining-results-title">Estimated net operating result</h2>
+        <p class="result-context">Expected-value estimate under constant assumptions. Results are not guaranteed income or a prediction.</p>
+        <p class="result-value" id="daily-net">Enter all assumptions to calculate</p>
+        <p class="result-sign" id="result-meaning">Includes pool-adjusted expected revenue less electricity cost.</p>
+        <div class="projection-wrap">
+          <table class="projection-table">
+            <caption>Constant-assumption projections</caption>
+            <thead><tr><th scope="col">Estimate</th><th scope="col">Daily</th><th scope="col">30 days</th><th scope="col">365 days</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Expected block equivalents</th><td data-period="1" data-key="expectedBlocks">—</td><td data-period="30" data-key="expectedBlocks">—</td><td data-period="365" data-key="expectedBlocks">—</td></tr>
+              <tr><th scope="row">Expected XMR after fee</th><td data-period="1" data-key="netXmr">—</td><td data-period="30" data-key="netXmr">—</td><td data-period="365" data-key="netXmr">—</td></tr>
+              <tr><th scope="row">Gross estimated revenue</th><td data-period="1" data-key="grossRevenue">—</td><td data-period="30" data-key="grossRevenue">—</td><td data-period="365" data-key="grossRevenue">—</td></tr>
+              <tr><th scope="row">Pool fee value</th><td data-period="1" data-key="poolFeeValue">—</td><td data-period="30" data-key="poolFeeValue">—</td><td data-period="365" data-key="poolFeeValue">—</td></tr>
+              <tr><th scope="row">Revenue after pool fees</th><td data-period="1" data-key="revenueAfterPoolFees">—</td><td data-period="30" data-key="revenueAfterPoolFees">—</td><td data-period="365" data-key="revenueAfterPoolFees">—</td></tr>
+              <tr><th scope="row">Electricity consumption</th><td data-period="1" data-key="energyKwh">—</td><td data-period="30" data-key="energyKwh">—</td><td data-period="365" data-key="energyKwh">—</td></tr>
+              <tr><th scope="row">Electricity cost</th><td data-period="1" data-key="electricityCost">—</td><td data-period="30" data-key="electricityCost">—</td><td data-period="365" data-key="electricityCost">—</td></tr>
+              <tr class="net-row"><th scope="row">Estimated net</th><td data-period="1" data-key="estimatedNet">—</td><td data-period="30" data-key="estimatedNet">—</td><td data-period="365" data-key="estimatedNet">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="break-even">Break-even electricity tariff <strong id="break-even">—</strong> <span id="break-even-note">Available when electricity consumption is above zero.</span></p>
+        <p class="mining-status" id="mining-status" aria-live="polite">Fill every numeric field to see a locally calculated estimate.</p>
+      </section>
+    </div>
+
+    <section class="mining-explainer" aria-label="Calculator method and limitations">
+      <article><span class="eyebrow">METHOD / 01</span><h2>How the estimate is calculated</h2><p>Miner hashes equal hashrate × active seconds. Expected block equivalents are miner hashes ÷ difficulty, or miner hashes ÷ (network hashrate × 120 seconds). Difficulty and hashrate are different units; the target block interval connects them.</p><p>Expected XMR is expected block equivalents × your entered total block reward. The pool fee is subtracted from estimated rewards. Electricity is whole-system watts ÷ 1,000 × hours/day × days, then multiplied by your tariff.</p><p class="method-line"><code>Estimated net = revenue after pool fees − electricity cost</code></p><p>Daily, fixed 30-day and fixed 365-day projections use the same assumptions. They do not model future changes in difficulty, hashrate, reward, price or runtime.</p></article>
+      <article><span class="eyebrow">READ THE RESULT / 02</span><h2>Expected value is not a payout</h2><p>This is a simplified pool-style expected-value model. Fractional block equivalents describe a proportional average, not individual block discoveries. Pool payout methods, luck, thresholds, stale shares, downtime and fees can make realized payouts differ.</p><p>It is not a solo-mining probability simulator, P2Pool payout model or named pool estimate. It excludes hardware purchase and depreciation, taxes, cooling, internet, other operating costs, pool-specific rules and changes in energy prices.</p><p>The expected block reward is a user assumption: enter emission plus transaction fees before pool fee. Results describe a scenario, not investment guidance or an Ember desktop-app capability.</p></article>
+      <article><span class="eyebrow">INPUTS / 03</span><h2>Choose assumptions you can explain</h2><p>Use sustained hashrate and whole-system power measured while mining. CPU package watts are not the same as power drawn by the complete computer. Network difficulty is hashes of expected work per block; network hashrate is total hashes per second. Monero's target block interval used here is approximately 120 seconds.</p><p>All numeric values are entered by you. This tool does not fetch prices, network data or block rewards, and it does not save your entries. Changing GBP, USD or EUR changes units and display only; it does not exchange or convert entered amounts.</p><p>Learn about <a href="/learn/randomx-memory-cache/">RandomX memory and cache</a>, <a href="/learn/xmrig-cpu-threads/">XMRig CPU thread configuration</a>, <a href="/troubleshoot/xmrig-low-hashrate/">low hashrate troubleshooting</a>, and the <a href="/guides/xmrig-windows-setup/">Windows XMRig setup guide</a>.</p><p>For electricity-only estimates, see the <a href="/tools/electricity-cost-calculator/">Mining Electricity Cost Calculator</a>. Browse <a href="/tools/">all Ember tools</a>.</p></article>
+    </section>
+  </div>
+</SiteLayout>
+<script>import '../../scripts/mining-profitability.js';</script>

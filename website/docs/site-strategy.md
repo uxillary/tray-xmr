@@ -9,8 +9,8 @@
 - Setup accepts a Monero mainnet public receiving address, an explicitly entered Stratum host/port/TLS choice and Quiet, Balanced or Performance profiles. The profiles select configured CPU thread counts; they are not power or temperature limits.
 - Wallet parsing validates supported address forms. Ember stores the public address locally, masks it in the frontend and does not request seeds/private keys. Ember is not a wallet.
 - Rust owns readiness validation, fresh consent checks, private session configuration, a loopback-only authenticated API and the XMRig process lifecycle. On Windows, process supervision uses a Job Object. This is a documented implementation contract, not a security certification.
-- The UI can display local session state and supported XMRig summary telemetry. Pool/share status and earnings are not generally available before a real session. The owner-machine production Start → Mining → Stop flow is still unresolved.
-- The planned 5% Ember Contribution is inactive; its mechanism and accounting are undecided. XMRig's upstream donation is separate. Public release is not ready; release/legal review and clean-machine security checks remain open.
+- A current-build owner session reached Start → Mining with authenticated XMRig telemetry, a connected pool and real hashrate. Owner acceptance of Stop/Quit remains open; no public release is available. Pool/share status is session telemetry, not earnings or persistent history.
+- Ember applies a 5% developer time-share target using 19:1 active mining time. Pool reward share can differ and session counters are not lifetime accounting. XMRig's upstream donation is separate. Public release is not ready; release/legal review and clean-machine security checks remain open.
 - No public release/download flow is confirmed in the repository. This site therefore uses “Explore Ember” and makes development status explicit.
 - **M08 review (8 October 2026):** the Windows setup guide uses standalone XMRig v6.26.0, which is both Ember's current pin and the latest official upstream release checked on that date. This is a dated research result, not a permanent version recommendation; see `docs/m08-xmrig-windows-setup-research.md`.
 
@@ -77,7 +77,7 @@ Use Astro 7 static output with TypeScript. The repo has no website framework to 
 
 ## Claims needing future verification
 
-- Successful owner-machine production mining, pool compatibility and supported real-world telemetry.
+- Owner acceptance of Stop/Quit across current release candidates, compatibility beyond the verified Windows x64 path and supported real-world telemetry boundaries.
 - Public release availability, supported Windows baseline, distribution/license obligations and security-product behaviour on clean machines.
 - Final contribution rate/mechanism/auditability, any net-revenue or profitability claims, measured wattage, earnings and pool/share support.
 - Benchmarks across CPUs, power draw, temperatures, efficiency, security certification, contribution statistics or user testimonials.

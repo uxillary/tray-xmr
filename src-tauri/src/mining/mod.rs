@@ -1,4 +1,5 @@
 pub mod config;
+pub mod contribution;
 pub mod diagnostics;
 pub mod domain;
 pub mod events;

@@ -4,7 +4,7 @@ mod system_observation;
 
 use mining::{domain::EngineLifecycleState, EngineSupervisor};
 use std::sync::{
-    atomic::{AtomicBool, Ordering},
+    atomic::{AtomicBool, AtomicU64, Ordering},
     Mutex,
 };
 use system_observation::{SystemObserver, SystemSnapshot};
@@ -14,6 +14,30 @@ struct ActiveSession {
     _runtime: mining::runtime::RuntimeSession,
     config: mining::domain::ValidatedMiningConfig,
     adapter: mining::xmrig::XmrigAdapter,
+}
+
+#[cfg(windows)]
+#[derive(Default)]
+struct ContributionSchedule {
+    running: AtomicBool,
+    cancelled: AtomicBool,
+    developer_slot: AtomicBool,
+    slot_elapsed_seconds: AtomicU64,
+    seconds_to_switch: AtomicU64,
+    user_active_seconds: AtomicU64,
+    developer_active_seconds: AtomicU64,
+}
+
+#[cfg(windows)]
+#[derive(serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+struct ContributionStatus {
+    active: bool,
+    developer_slot: bool,
+    seconds_to_switch: Option<u64>,
+    user_active_seconds: u64,
+    developer_active_seconds: u64,
+    developer_wallet: &'static str,
 }
 
 #[cfg(windows)]
@@ -50,6 +74,24 @@ fn update_tray_starting(app: &tauri::AppHandle) {
 
 #[cfg(windows)]
 fn stop_mining_sync(app: &tauri::AppHandle, quitting: bool) -> Result<(), String> {
+    use tauri::Manager;
+    let schedule = app.state::<ContributionSchedule>();
+    schedule.cancelled.store(true, Ordering::Release);
+    schedule.seconds_to_switch.store(0, Ordering::Release);
+    let result = stop_mining_sync_inner(app, quitting, false);
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(2);
+    while schedule.running.load(Ordering::Acquire) && std::time::Instant::now() < deadline {
+        std::thread::sleep(std::time::Duration::from_millis(25));
+    }
+    result
+}
+
+#[cfg(windows)]
+fn stop_mining_sync_inner(
+    app: &tauri::AppHandle,
+    quitting: bool,
+    contribution_switch: bool,
+) -> Result<(), String> {
     use mining::domain::StopReason;
     use tauri::Manager;
     let operation = app.state::<Mutex<()>>();
@@ -72,7 +114,14 @@ fn stop_mining_sync(app: &tauri::AppHandle, quitting: bool) -> Result<(), String
     {
         supervisor.stop_starting()
     } else {
-        supervisor.stop_with(StopReason::UserRequest, |_| Ok(()))
+        supervisor.stop_with(
+            if contribution_switch {
+                StopReason::ContributionSwitch
+            } else {
+                StopReason::UserRequest
+            },
+            |_| Ok(()),
+        )
     };
     app.state::<Mutex<Option<ActiveSession>>>()
         .lock()
@@ -80,6 +129,96 @@ fn stop_mining_sync(app: &tauri::AppHandle, quitting: bool) -> Result<(), String
         .take();
     update_tray(app, false, stopped.is_err());
     stopped.map_err(|e| e.message)
+}
+
+#[cfg(windows)]
+fn start_contribution_schedule(app: &tauri::AppHandle) {
+    use mining::contribution::{DEVELOPER_SLOT, USER_SLOT};
+    use tauri::Manager;
+
+    let schedule = app.state::<ContributionSchedule>();
+    if schedule
+        .running
+        .compare_exchange(false, true, Ordering::AcqRel, Ordering::Acquire)
+        .is_err()
+    {
+        return;
+    }
+    schedule.cancelled.store(false, Ordering::Release);
+    let app = app.clone();
+    std::thread::spawn(move || {
+        let schedule = app.state::<ContributionSchedule>();
+        let tick = std::time::Duration::from_secs(1);
+        let mut completed = false;
+        while !schedule.cancelled.load(Ordering::Acquire) {
+            let developer_slot = schedule.developer_slot.load(Ordering::Acquire);
+            let target = if developer_slot {
+                DEVELOPER_SLOT
+            } else {
+                USER_SLOT
+            };
+            let mut active_seconds = schedule.slot_elapsed_seconds.load(Ordering::Acquire);
+            schedule
+                .seconds_to_switch
+                .store(target.as_secs().saturating_sub(active_seconds), Ordering::Release);
+
+            while active_seconds < target.as_secs() && !schedule.cancelled.load(Ordering::Acquire) {
+                std::thread::sleep(tick);
+                if schedule.cancelled.load(Ordering::Acquire) {
+                    break;
+                }
+                let status = app.state::<EngineSupervisor>().status();
+                match status.state {
+                    EngineLifecycleState::Mining => {
+                        active_seconds = active_seconds.saturating_add(1);
+                        schedule
+                            .slot_elapsed_seconds
+                            .store(active_seconds, Ordering::Release);
+                        if developer_slot {
+                            schedule
+                                .developer_active_seconds
+                                .fetch_add(1, Ordering::AcqRel);
+                        } else {
+                            schedule.user_active_seconds.fetch_add(1, Ordering::AcqRel);
+                        }
+                        schedule.seconds_to_switch.store(
+                            target.as_secs().saturating_sub(active_seconds),
+                            Ordering::Release,
+                        );
+                    }
+                    EngineLifecycleState::Starting => {}
+                    EngineLifecycleState::Stopped | EngineLifecycleState::Error => {
+                        completed = true;
+                        break;
+                    }
+                    _ => {}
+                }
+            }
+            if completed || schedule.cancelled.load(Ordering::Acquire) {
+                break;
+            }
+
+            if stop_mining_sync_inner(&app, false, true).is_err() {
+                break;
+            }
+            if schedule.cancelled.load(Ordering::Acquire) {
+                break;
+            }
+            schedule.slot_elapsed_seconds.store(0, Ordering::Release);
+            schedule
+                .developer_slot
+                .store(!developer_slot, Ordering::Release);
+            match tauri::async_runtime::block_on(start_mining(app.clone())) {
+                Ok(_) => {}
+                Err(_) => {
+                    let _ = stop_mining_sync_inner(&app, false, true);
+                    break;
+                }
+            }
+        }
+        schedule.seconds_to_switch.store(0, Ordering::Release);
+        schedule.running.store(false, Ordering::Release);
+    });
 }
 
 #[cfg(windows)]
@@ -105,6 +244,12 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
         let mut operation_guard = Some(operation
             .lock()
             .map_err(|_| "Mining controls are temporarily unavailable")?);
+        let schedule = app.state::<ContributionSchedule>();
+        if schedule.running.load(Ordering::Acquire)
+            && schedule.cancelled.load(Ordering::Acquire)
+        {
+            return Err("The contribution schedule is stopping; try starting again in a moment.".into());
+        }
         mining::integration_diagnostic::ensure_production_start_allowed(
             &app.state::<mining::integration_diagnostic::IntegrationTestController>(),
         )?;
@@ -170,7 +315,25 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
             let setup = setup_state
                 .lock()
                 .map_err(|_| "Setup state unavailable")?;
-            let mut candidate = match setup.prepare_start(logical) {
+            let schedule = app.state::<ContributionSchedule>();
+            let developer_slot = schedule.developer_slot.load(Ordering::Acquire);
+            let current_slot_duration = if developer_slot {
+                mining::contribution::DEVELOPER_SLOT
+            } else {
+                mining::contribution::USER_SLOT
+            };
+            if !schedule.running.load(Ordering::Acquire)
+                && schedule.slot_elapsed_seconds.load(Ordering::Acquire)
+                    >= current_slot_duration.as_secs()
+            {
+                schedule
+                    .developer_slot
+                    .store(!developer_slot, Ordering::Release);
+                schedule.slot_elapsed_seconds.store(0, Ordering::Release);
+            }
+            let developer_slot = schedule.developer_slot.load(Ordering::Acquire);
+            let fee_address = developer_slot.then_some(mining::contribution::DEVELOPER_WALLET);
+            let mut candidate = match setup.prepare_start(logical, fee_address) {
                 Ok(candidate) => candidate,
                 Err(error) => { supervisor.finish_startup(); update_tray(&app, false, false); return Err(error); }
             };
@@ -284,6 +447,7 @@ async fn start_mining(app: tauri::AppHandle) -> Result<mining::readiness::Mining
                     if supervisor.status().state == EngineLifecycleState::Mining {
                         update_tray(&app, true, false);
                     }
+                    start_contribution_schedule(&app);
                     return setup_snapshot(&app);
                 }
                 Err(error) => {
@@ -449,19 +613,30 @@ struct MiningSessionStatus {
     startup_stage: Option<mining::domain::StartupStage>,
     startup_elapsed_ms: Option<u64>,
     startup_timings: Vec<mining::domain::StartupTiming>,
+    contribution: ContributionStatus,
 }
 
 #[cfg(windows)]
 #[tauri::command]
 fn mining_status(
+    app: tauri::AppHandle,
     supervisor: tauri::State<'_, EngineSupervisor>,
     diagnostics_mode: bool,
 ) -> MiningSessionStatus {
+    use tauri::Manager;
     let status = supervisor.status();
+    let schedule = app.state::<ContributionSchedule>();
+    let active = schedule.running.load(Ordering::Acquire);
+    let scheduled_seconds = schedule
+        .user_active_seconds
+        .load(Ordering::Acquire)
+        .saturating_add(schedule.developer_active_seconds.load(Ordering::Acquire));
     MiningSessionStatus {
         state: status.state,
         process_id: status.process_id,
-        session_duration_seconds: supervisor.session_duration_seconds(),
+        session_duration_seconds: (scheduled_seconds > 0)
+            .then_some(scheduled_seconds)
+            .or_else(|| supervisor.session_duration_seconds()),
         telemetry: supervisor.telemetry(),
         telemetry_freshness: supervisor.telemetry_freshness(),
         error: status.error,
@@ -478,12 +653,22 @@ fn mining_status(
         startup_stage: status.startup_stage,
         startup_elapsed_ms: status.startup_elapsed_ms,
         startup_timings: status.startup_timings,
+        contribution: ContributionStatus {
+            active,
+            developer_slot: active && schedule.developer_slot.load(Ordering::Acquire),
+            seconds_to_switch: active.then(|| schedule.seconds_to_switch.load(Ordering::Acquire)),
+            user_active_seconds: schedule.user_active_seconds.load(Ordering::Acquire),
+            developer_active_seconds: schedule.developer_active_seconds.load(Ordering::Acquire),
+            developer_wallet: mining::contribution::DEVELOPER_WALLET,
+        },
     }
 }
 
 #[cfg(windows)]
 #[tauri::command]
-fn mining_events(supervisor: tauri::State<'_, EngineSupervisor>) -> Vec<mining::events::EmberEvent> {
+fn mining_events(
+    supervisor: tauri::State<'_, EngineSupervisor>,
+) -> Vec<mining::events::EmberEvent> {
     // Event records are structured and curated by the supervisor; diagnostics
     // and raw/sanitized XMRig output never cross this retrieval boundary.
     supervisor.events()
@@ -784,6 +969,7 @@ pub fn run() {
             {
                 app.manage(Mutex::new(()));
                 app.manage(Mutex::new(None::<ActiveSession>));
+                app.manage(ContributionSchedule::default());
                 app.manage(mining::integration_diagnostic::IntegrationTestController::default());
                 let ember_data_dir = app.path().local_data_dir()?.join("Ember");
                 // Startup recovery deletes only validated child session directories

@@ -687,7 +687,9 @@ impl EngineSupervisor {
                 {
                     inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
                     inner.error = None;
-                    inner.events.stopped(reason, false, super::events::timestamp_now_ms());
+                    inner
+                        .events
+                        .stopped(reason, false, super::events::timestamp_now_ms());
                 }
                 if let (Some(stage), Some(started)) =
                     (inner.startup_stage, inner.startup_stage_started)
@@ -719,10 +721,9 @@ impl EngineSupervisor {
         let mut inner = self.inner.lock().map_err(|_| lock_error())?;
         if let Some(error) = stop_error {
             inner.lifecycle.transition(EngineLifecycleState::Error)?;
-            inner.events.failed(
-                FailureKind::StopFailed,
-                super::events::timestamp_now_ms(),
-            );
+            inner
+                .events
+                .failed(FailureKind::StopFailed, super::events::timestamp_now_ms());
             inner.error = Some(error.clone());
             inner.diagnostics = diagnostics;
             if let (Some(stage), Some(started)) = (inner.startup_stage, inner.startup_stage_started)
@@ -738,7 +739,9 @@ impl EngineSupervisor {
             return Err(error);
         }
         inner.lifecycle.transition(EngineLifecycleState::Stopped)?;
-        inner.events.stopped(reason, false, super::events::timestamp_now_ms());
+        inner
+            .events
+            .stopped(reason, false, super::events::timestamp_now_ms());
         inner.error = None;
         inner.telemetry = None;
         inner.telemetry_received_at = None;
@@ -822,15 +825,12 @@ impl EngineSupervisor {
             StopReason::ApplicationQuit => EventStopReason::ApplicationQuit,
             StopReason::UserRequest => EventStopReason::Owner,
             StopReason::StartupFailure => EventStopReason::StartupCancelled,
+            StopReason::ContributionSwitch => EventStopReason::ContributionSwitch,
         };
         self.stop_owned_process(graceful, reason)
     }
 
-    fn stop_owned_process<F>(
-        &self,
-        graceful: F,
-        reason: EventStopReason,
-    ) -> Result<(), EngineError>
+    fn stop_owned_process<F>(&self, graceful: F, reason: EventStopReason) -> Result<(), EngineError>
     where
         F: FnOnce(&mut SupervisedChild) -> io::Result<()>,
     {
@@ -848,7 +848,9 @@ impl EngineSupervisor {
                     inner.telemetry = None;
                     inner.telemetry_received_at = None;
                     inner.mining_started_at = None;
-                    inner.events.stopped(reason, false, super::events::timestamp_now_ms());
+                    inner
+                        .events
+                        .stopped(reason, false, super::events::timestamp_now_ms());
                 }
                 return Ok(()); // Explicitly idempotent when this supervisor owns no process.
             }
@@ -871,7 +873,10 @@ impl EngineSupervisor {
                     })
                 }
             }
-            (inner.process.take().expect("checked owned process"), was_mining)
+            (
+                inner.process.take().expect("checked owned process"),
+                was_mining,
+            )
         };
 
         let result = process.stop_with(graceful, STOP_GRACE);
@@ -901,10 +906,9 @@ impl EngineSupervisor {
                 if inner.lifecycle.state() != EngineLifecycleState::Error {
                     inner.lifecycle.transition(EngineLifecycleState::Error)?;
                 }
-                inner.events.failed(
-                    FailureKind::StopFailed,
-                    super::events::timestamp_now_ms(),
-                );
+                inner
+                    .events
+                    .failed(FailureKind::StopFailed, super::events::timestamp_now_ms());
                 inner.mining_started_at = None;
                 inner.error = Some(error.clone());
                 inner.diagnostics = diagnostics;

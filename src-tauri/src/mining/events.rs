@@ -54,6 +54,7 @@ pub enum StopReason {
     Owner,
     ApplicationQuit,
     StartupCancelled,
+    ContributionSwitch,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
@@ -212,20 +213,8 @@ impl EventLog {
                 );
             }
         }
-        record_delta(
-            self,
-            now_ms,
-            previous.accepted,
-            current.accepted,
-            true,
-        );
-        record_delta(
-            self,
-            now_ms,
-            previous.rejected,
-            current.rejected,
-            false,
-        );
+        record_delta(self, now_ms, previous.accepted, current.accepted, true);
+        record_delta(self, now_ms, previous.rejected, current.rejected, false);
         self.baseline = Some(TelemetryBaseline {
             pool: current.pool.or(previous.pool),
             accepted: current.accepted,
@@ -295,16 +284,33 @@ impl EventLog {
 
 fn baseline(telemetry: &MiningTelemetry) -> TelemetryBaseline {
     TelemetryBaseline {
-        pool: telemetry.pool_connection.as_ref().and_then(|pool| match pool.state {
-            PoolConnectionState::Connected | PoolConnectionState::Disconnected => Some(pool.state),
-            PoolConnectionState::Unknown => None,
-        }),
-        accepted: telemetry.results.as_ref().and_then(|results| results.accepted),
-        rejected: telemetry.results.as_ref().and_then(|results| results.rejected),
+        pool: telemetry
+            .pool_connection
+            .as_ref()
+            .and_then(|pool| match pool.state {
+                PoolConnectionState::Connected | PoolConnectionState::Disconnected => {
+                    Some(pool.state)
+                }
+                PoolConnectionState::Unknown => None,
+            }),
+        accepted: telemetry
+            .results
+            .as_ref()
+            .and_then(|results| results.accepted),
+        rejected: telemetry
+            .results
+            .as_ref()
+            .and_then(|results| results.rejected),
     }
 }
 
-fn record_delta(log: &mut EventLog, now_ms: u64, old: Option<u64>, new: Option<u64>, accepted: bool) {
+fn record_delta(
+    log: &mut EventLog,
+    now_ms: u64,
+    old: Option<u64>,
+    new: Option<u64>,
+    accepted: bool,
+) {
     let Some(delta) = old.zip(new).and_then(|(old, new)| new.checked_sub(old)) else {
         return;
     };
@@ -341,7 +347,11 @@ mod tests {
         }
     }
 
-    fn sample(pool: Option<PoolConnectionState>, accepted: Option<u64>, rejected: Option<u64>) -> MiningTelemetry {
+    fn sample(
+        pool: Option<PoolConnectionState>,
+        accepted: Option<u64>,
+        rejected: Option<u64>,
+    ) -> MiningTelemetry {
         MiningTelemetry {
             results: Some(MiningResultsTelemetry {
                 accepted,
@@ -351,8 +361,14 @@ mod tests {
                 accepted_difficulty_total: None,
             }),
             pool_connection: pool.map(|state| PoolConnectionTelemetry {
-                state, endpoint: None, uptime_seconds: None, failures: None, ping_ms: None,
-                tls_version: None, algorithm: None, current_job_difficulty: None,
+                state,
+                endpoint: None,
+                uptime_seconds: None,
+                failures: None,
+                ping_ms: None,
+                tls_version: None,
+                algorithm: None,
+                current_job_difficulty: None,
             }),
             ..MiningTelemetry::default()
         }
@@ -365,7 +381,10 @@ mod tests {
     fn started_log() -> EventLog {
         let mut log = EventLog::default();
         log.begin_session(context(), 1);
-        log.mining_started(&sample(Some(PoolConnectionState::Connected), Some(12), Some(0)), 2);
+        log.mining_started(
+            &sample(Some(PoolConnectionState::Connected), Some(12), Some(0)),
+            2,
+        );
         log
     }
 
@@ -373,7 +392,10 @@ mod tests {
     fn first_sample_is_baseline_and_repeated_samples_are_not_events() {
         let mut log = started_log();
         assert_eq!(log.snapshot().len(), 2);
-        log.mining_started(&sample(Some(PoolConnectionState::Disconnected), Some(99), Some(8)), 3);
+        log.mining_started(
+            &sample(Some(PoolConnectionState::Disconnected), Some(99), Some(8)),
+            3,
+        );
         let sample = sample(Some(PoolConnectionState::Connected), Some(12), Some(0));
         log.observe(&sample, 4);
         assert_eq!(log.snapshot().len(), 2);
@@ -382,14 +404,42 @@ mod tests {
     #[test]
     fn pool_disconnect_and_recovery_emit_once_and_unknown_preserves_baseline() {
         let mut log = started_log();
-        log.observe(&sample(Some(PoolConnectionState::Disconnected), Some(12), Some(0)), 3);
-        log.observe(&sample(Some(PoolConnectionState::Disconnected), Some(12), Some(0)), 4);
-        log.observe(&sample(Some(PoolConnectionState::Unknown), Some(12), Some(0)), 5);
-        log.observe(&sample(Some(PoolConnectionState::Connected), Some(12), Some(0)), 6);
-        let pool_events = log.snapshot().into_iter().filter(|event| event.category == EventCategory::Pool).collect::<Vec<_>>();
+        log.observe(
+            &sample(Some(PoolConnectionState::Disconnected), Some(12), Some(0)),
+            3,
+        );
+        log.observe(
+            &sample(Some(PoolConnectionState::Disconnected), Some(12), Some(0)),
+            4,
+        );
+        log.observe(
+            &sample(Some(PoolConnectionState::Unknown), Some(12), Some(0)),
+            5,
+        );
+        log.observe(
+            &sample(Some(PoolConnectionState::Connected), Some(12), Some(0)),
+            6,
+        );
+        let pool_events = log
+            .snapshot()
+            .into_iter()
+            .filter(|event| event.category == EventCategory::Pool)
+            .collect::<Vec<_>>();
         assert_eq!(pool_events.len(), 2);
-        assert!(matches!(pool_events[0].kind, EventKind::PoolConnectionChanged { to: PoolConnectionState::Disconnected, .. }));
-        assert!(matches!(pool_events[1].kind, EventKind::PoolConnectionChanged { to: PoolConnectionState::Connected, .. }));
+        assert!(matches!(
+            pool_events[0].kind,
+            EventKind::PoolConnectionChanged {
+                to: PoolConnectionState::Disconnected,
+                ..
+            }
+        ));
+        assert!(matches!(
+            pool_events[1].kind,
+            EventKind::PoolConnectionChanged {
+                to: PoolConnectionState::Connected,
+                ..
+            }
+        ));
     }
 
     #[test]
@@ -400,12 +450,25 @@ mod tests {
         log.observe(&sample(None, Some(15), Some(4)), 5);
         log.observe(&sample(None, Some(0), Some(0)), 6);
         log.observe(&sample(None, Some(1), Some(1)), 7);
-        let result_events = log.snapshot().into_iter().filter(|event| event.category == EventCategory::Result).collect::<Vec<_>>();
-        assert_eq!(result_events.iter().map(|event| event.kind.clone()).collect::<Vec<_>>(), vec![
-            EventKind::ResultsAccepted { count: 1 }, EventKind::ResultsRejected { count: 2 },
-            EventKind::ResultsAccepted { count: 2 }, EventKind::ResultsRejected { count: 2 },
-            EventKind::ResultsAccepted { count: 1 }, EventKind::ResultsRejected { count: 1 },
-        ]);
+        let result_events = log
+            .snapshot()
+            .into_iter()
+            .filter(|event| event.category == EventCategory::Result)
+            .collect::<Vec<_>>();
+        assert_eq!(
+            result_events
+                .iter()
+                .map(|event| event.kind.clone())
+                .collect::<Vec<_>>(),
+            vec![
+                EventKind::ResultsAccepted { count: 1 },
+                EventKind::ResultsRejected { count: 2 },
+                EventKind::ResultsAccepted { count: 2 },
+                EventKind::ResultsRejected { count: 2 },
+                EventKind::ResultsAccepted { count: 1 },
+                EventKind::ResultsRejected { count: 1 },
+            ]
+        );
     }
 
     #[test]
@@ -417,7 +480,13 @@ mod tests {
         log.observe(&sample(None, Some(11), Some(0)), 4);
         // API unavailability is not passed as a synthetic observation.
         log.observe(&sample(None, Some(11), Some(0)), 9);
-        assert_eq!(kinds(&log).iter().filter(|kind| matches!(kind, EventKind::ResultsAccepted { .. })).count(), 1);
+        assert_eq!(
+            kinds(&log)
+                .iter()
+                .filter(|kind| matches!(kind, EventKind::ResultsAccepted { .. }))
+                .count(),
+            1
+        );
     }
 
     #[test]
@@ -428,7 +497,13 @@ mod tests {
         log.observe(&sample(None, Some(20), Some(0)), 5);
         assert_eq!(kinds(&log).len(), 3);
         assert_eq!(log.snapshot()[0].session_id, "opaque-session-1");
-        assert!(matches!(log.snapshot()[2].kind, EventKind::MiningStopped { was_mining: true, .. }));
+        assert!(matches!(
+            log.snapshot()[2].kind,
+            EventKind::MiningStopped {
+                was_mining: true,
+                ..
+            }
+        ));
     }
 
     #[test]
@@ -453,7 +528,10 @@ mod tests {
         let mut next = context();
         next.session_id = "opaque-session-2".into();
         log.begin_session(next, 6);
-        log.mining_started(&sample(Some(PoolConnectionState::Connected), Some(0), Some(0)), 7);
+        log.mining_started(
+            &sample(Some(PoolConnectionState::Connected), Some(0), Some(0)),
+            7,
+        );
         assert_eq!(log.snapshot().len(), before + 2);
         assert_eq!(log.snapshot()[before].session_id, "opaque-session-2");
         assert_eq!(log.snapshot()[before + 1].session_id, "opaque-session-2");
@@ -468,8 +546,14 @@ mod tests {
         }
         let events = log.snapshot();
         assert_eq!(events.len(), EVENT_BUFFER_CAPACITY);
-        assert_eq!(events.first().unwrap().occurred_at_unix_ms, (EVENT_BUFFER_CAPACITY / 2 + 3) as u64);
-        assert_eq!(events.last().unwrap().occurred_at_unix_ms, (EVENT_BUFFER_CAPACITY + 3) as u64);
+        assert_eq!(
+            events.first().unwrap().occurred_at_unix_ms,
+            (EVENT_BUFFER_CAPACITY / 2 + 3) as u64
+        );
+        assert_eq!(
+            events.last().unwrap().occurred_at_unix_ms,
+            (EVENT_BUFFER_CAPACITY + 3) as u64
+        );
         assert!(events.windows(2).all(|pair| pair[0].id != pair[1].id));
     }
 
@@ -477,7 +561,14 @@ mod tests {
     fn serialized_events_have_no_fields_for_secrets_or_runtime_paths() {
         let log = started_log();
         let serialized = serde_json::to_string(&log.snapshot()).unwrap();
-        for forbidden in ["publicAddress", "accessToken", "password", "runtimePath", "endpoint", "configJson"] {
+        for forbidden in [
+            "publicAddress",
+            "accessToken",
+            "password",
+            "runtimePath",
+            "endpoint",
+            "configJson",
+        ] {
             assert!(!serialized.contains(forbidden));
         }
     }

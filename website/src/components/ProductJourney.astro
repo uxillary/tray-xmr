@@ -1,0 +1,18 @@
+<div class="product-journey" aria-label="Ember product journey and telemetry state explanation">
+  <ol class="journey-steps">
+    <li><span class="journey-index">01 / CONFIGURE</span><strong>Choose the destination</strong><p>Enter a public receiving address, your pool details and a static CPU-thread profile. Setup is saved locally.</p></li>
+    <li><span class="journey-index">02 / READY</span><strong>Review before compute</strong><p>Check the choices and disclosures. Changes require review again; Ready means setup can attempt a start.</p></li>
+    <li><span class="journey-index">03 / START</span><strong>Start when you choose</strong><p>Ember verifies the engine and supervises its own XMRig process. Opening the app does not start mining.</p></li>
+    <li><span class="journey-index">04 / OBSERVE</span><strong>Read what XMRig reports</strong><p>See mining state, hashrate, pool connection and share counters with freshness made clear.</p></li>
+  </ol>
+
+  <section class="telemetry-key" aria-labelledby="telemetry-key-title">
+    <div class="telemetry-key-heading"><span class="eyebrow">READING THE SIGNAL</span><h3 id="telemetry-key-title">A number needs a time context.</h3><p>Telemetry comes from XMRig’s authenticated, local status API. These labels describe signal freshness; they are not sample metrics.</p></div>
+    <ul class="freshness-list">
+      <li><span class="freshness-indicator freshness-indicator--fresh" aria-hidden="true"></span><span><strong>Fresh</strong><small>Recently received authenticated reading.</small></span><span class="freshness-label">CURRENT</span></li>
+      <li><span class="freshness-indicator freshness-indicator--stale" aria-hidden="true"></span><span><strong>Delayed</strong><small>Last-known reading is retained and marked stale.</small></span><span class="freshness-label">DELAYED</span></li>
+      <li><span class="freshness-indicator freshness-indicator--none" aria-hidden="true"></span><span><strong>Unavailable</strong><small>No current signal is available; Ember does not invent a value.</small></span><span class="freshness-label">NO SIGNAL</span></li>
+    </ul>
+  </section>
+  <p class="journey-limit"><strong>Current limits:</strong> Quiet, Balanced and Performance select configured thread counts; Smart Mining is not available. Activity is a recent in-memory event stream, not saved mining history. Ember Contribution is disclosed but inactive.</p>
+</div>
