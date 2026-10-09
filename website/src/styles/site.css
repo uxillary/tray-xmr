@@ -150,6 +150,8 @@ img, svg { max-width: 100%; }
 .principle-grid strong { padding-top: 2px; color: var(--ember-light); font: 600 12px var(--mono); letter-spacing: .08em; }
 .principle-grid p { grid-column: 2; margin: 0; color: var(--body); font-size: 13px; line-height: 1.55; }
 .discovery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.tools-discovery-link { margin: 18px 0 0; color: var(--muted); font-size: 14px; }
+.tools-discovery-link a, .product-resource-note a { color: var(--ember-light); text-underline-offset: 3px; }
 .discovery-card { position: relative; display: flex; min-height: 230px; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); padding: 23px; background: var(--surface); transition: border-color .2s, transform .2s var(--motion), background .2s; }
 .discovery-card:hover { transform: translateY(-3px); border-color: #75543b; background: var(--surface-raised); }
 .discovery-card:focus-visible { outline-offset: 4px; border-color: var(--ember-light); }
@@ -216,6 +218,7 @@ img, svg { max-width: 100%; }
 .product-intro .release-note { border-left: 1px solid #8c6144; padding: 5px 0 5px 20px; color: var(--body); font-size: 14px; }
 .product-band { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: center; gap: clamp(28px, 6vw, 80px); border-top: 1px solid var(--line); padding-block: 55px; }
 .product-band + .product-band { border-top: 1px solid var(--line); }
+.product-resource-note { margin: -18px 0 24px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 .product-band h2 { margin: 12px 0; font: 500 clamp(31px, 4vw, 46px)/1.1 var(--display); letter-spacing: -.04em; }
 .product-band p { margin: 0; color: var(--body); font-size: 16px; }
 .feature-rows { display: grid; border-top: 1px solid var(--line); }
@@ -363,6 +366,30 @@ img, svg { max-width: 100%; }
 .memory-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 15px; margin-top: 10px; color: var(--muted); font-size: 10px; }
 .memory-foot span { display: inline-flex; align-items: center; gap: 5px; }
 .memory-foot .icon-box { color: var(--ember-light); }
+.setup-stages { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.setup-stages li { min-width: 0; margin: 0; padding: 0; border-top: 1px solid #694c36; }
+.setup-stages a { display: grid; min-height: 94px; align-content: start; gap: 5px; padding: 10px 9px 8px 0; color: var(--body); text-decoration: none; }
+.setup-stages a:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 2px; border-radius: 3px; }
+.setup-stages span { color: var(--ember-light); font: 10px var(--mono); }
+.setup-stages strong { color: var(--text); font: 500 13px var(--display); }
+.setup-stages small { color: var(--muted); font-size: 10px; line-height: 1.35; }
+.config-anatomy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 22px 0 25px; }
+.config-anatomy > div { min-width: 0; border-left: 2px solid #936742; padding: 8px 12px; background: #191a17; }
+.config-anatomy dt { color: var(--ember-light); font: 11px var(--mono); }
+.config-anatomy dd { margin: 5px 0 0; color: var(--body); font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
+.signal-map { display: grid; gap: 8px; margin: 22px 0; padding: 0; list-style: none; }
+.signal-map li { display: grid; grid-template-columns: minmax(130px, .65fr) minmax(0, 1.35fr); gap: 14px; border: 1px solid #363831; border-radius: 8px; padding: 12px 14px; background: #191a17; }
+.signal-map strong { color: var(--text); }
+.signal-map span { color: var(--body); }
+@media (max-width: 700px) {
+  .setup-stages { grid-template-columns: 1fr; gap: 0; }
+  .setup-stages li { border-top: 0; border-left: 1px solid #694c36; }
+  .setup-stages a { min-height: 0; grid-template-columns: 30px minmax(0, 1fr); gap: 2px 8px; padding: 4px 8px 12px; }
+  .setup-stages span { grid-row: span 2; }
+  .setup-stages strong, .setup-stages small { grid-column: 2; }
+  .config-anatomy { grid-template-columns: 1fr; }
+  .signal-map li { grid-template-columns: 1fr; gap: 3px; }
+}
 
 /* Trust page */
 .trust-intro { max-width: 900px; }

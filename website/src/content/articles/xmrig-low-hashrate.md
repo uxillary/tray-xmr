@@ -50,7 +50,7 @@ Do not compare a short startup reading with a longer average, or different Rando
 
 Check the XMRig startup lines for RandomX memory allocation and Huge Pages percentages for the dataset and threads. Permission granted is not the same as full allocation. See [XMRig Huge Pages on Windows](/troubleshoot/xmrig-huge-pages/) for that distinction.
 
-If MSR reports a failure, it may mean the CPU preset was not applied; it does not itself explain an exact hashrate difference. See [MSR errors on Windows](/troubleshoot/xmrig-msr-error/). Avoid trying unrelated privilege changes or firmware settings before confirming the warning is relevant to your machine.
+If MSR reports a failure, it may mean the CPU preset was not applied; it does not itself explain an exact hashrate difference. See [MSR errors on Windows](/troubleshoot/xmrig-msr-error/). Avoid trying unrelated privilege changes or firmware settings before confirming the warning is relevant to your machine. The [local XMRig Log Decoder](/tools/xmrig-log-decoder/) can summarize its supported startup, Huge Pages, MSR, pool and share signals; it does not analyze hashrate or diagnose root causes.
 
 ## 3. Check useful thread count and cache
 

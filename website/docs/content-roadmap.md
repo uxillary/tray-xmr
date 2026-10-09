@@ -12,7 +12,7 @@ Content ships when it is useful, sourced and technically checked. Route ideas ar
 ## P1 — Early growth
 
 - Publish a sourced introduction to Monero mining and a clear hashrate explainer.
-- Write a Windows CPU mining setup guide that distinguishes general XMRig steps from Ember-specific capability.
+- **Shipped (M08):** a sourced Windows CPU mining setup guide that distinguishes standalone XMRig steps from Ember-specific capability. Recheck its upstream/version details before future edits.
 - Publish a Huge Pages troubleshooting guide with current Windows caveats and official XMRig references.
 - Add contextual internal links and glossary definitions where they resolve real reader questions.
 
@@ -20,7 +20,7 @@ Content ships when it is useful, sourced and technically checked. Route ideas ar
 
 - Explain shares, jobs, pool difficulty, solo mining and P2Pool with protocol/pool sources.
 - Cover MSR messages, rejected shares, low hashrate, pool connection issues and Windows security detections.
-- Build a transparent electricity-cost estimator and unit converter after assumptions and review are specified.
+- **Shipped:** the transparent electricity-cost calculator and local-first XMRig log decoder. Keep their bounds and assumptions visible; consider a unit converter only if a distinct reader need is established.
 - Update pages as Monero, XMRig, Windows and Ember implementation details change.
 
 ## P3 — Original data and benchmarks

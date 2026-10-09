@@ -12,6 +12,7 @@
 - The UI can display local session state and supported XMRig summary telemetry. Pool/share status and earnings are not generally available before a real session. The owner-machine production Start → Mining → Stop flow is still unresolved.
 - The planned 5% Ember Contribution is inactive; its mechanism and accounting are undecided. XMRig's upstream donation is separate. Public release is not ready; release/legal review and clean-machine security checks remain open.
 - No public release/download flow is confirmed in the repository. This site therefore uses “Explore Ember” and makes development status explicit.
+- **M08 review (8 October 2026):** the Windows setup guide uses standalone XMRig v6.26.0, which is both Ember's current pin and the latest official upstream release checked on that date. This is a dated research result, not a permanent version recommendation; see `docs/m08-xmrig-windows-setup-research.md`.
 
 ## Audience and positioning
 
@@ -43,7 +44,7 @@ Serve curious Windows users who want to understand Monero CPU mining, and existi
 | `/learn/` | Monero mining concepts |
 | `/guides/` | Practical walkthroughs |
 | `/troubleshoot/` | Evidence-led issue diagnosis |
-| `/tools/` | Future calculators/helpers, clearly labelled |
+| `/tools/` | Available transparent calculators and local helpers, with future concepts clearly labelled |
 | `/trust/` | Current safeguards, boundaries and open work |
 | `/features/`, `/download/`, `/how-it-works/`, `/hardware/`, `/glossary/` | Later routes when enough verified content exists; do not ship thin placeholders |
 

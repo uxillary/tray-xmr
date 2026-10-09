@@ -47,4 +47,4 @@ Usually, an MSR failure is an optimisation issue rather than proof the miner can
 
 XMRig restores initial MSR values on exit by default, according to its documentation. Changes are not persistent across a computer reboot. Avoid custom register arrays and instructions to disable firmware protections unless you understand the hardware-specific effect and can recover the original settings.
 
-For performance diagnosis, check [Huge Pages status](/troubleshoot/xmrig-huge-pages/) and the [structured low-hashrate checklist](/troubleshoot/xmrig-low-hashrate/). They separate status indicators from causes rather than treating every warning as the same problem.
+For performance diagnosis, check [Huge Pages status](/troubleshoot/xmrig-huge-pages/) and the [structured low-hashrate checklist](/troubleshoot/xmrig-low-hashrate/). They separate status indicators from causes rather than treating every warning as the same problem. You can also paste an excerpt into the [local XMRig Log Decoder](/tools/xmrig-log-decoder/); it recognizes a limited set of explicit MSR messages and does not repeat the matched text.
