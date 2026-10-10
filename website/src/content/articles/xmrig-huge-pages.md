@@ -2,6 +2,7 @@
 title: XMRig Huge Pages Not Working on Windows? What to Check
 description: Understand XMRig Huge Pages status on Windows, the Lock Pages in Memory privilege, partial allocation and safe next steps.
 publishedDate: 2026-10-06
+updatedDate: 2026-10-10
 section: troubleshoot
 visual: huge-pages
 callout:
@@ -10,42 +11,44 @@ callout:
   body: Compare the permission line with the allocation percentage. They report separate outcomes; a granted permission does not guarantee full allocation.
 summary: Read the exact Huge Pages lines in XMRig first. Permission granted and successful allocation are separate states, and either can be affected by Windows memory conditions.
 draft: false
-related: [xmrig-low-hashrate, randomx-memory-cache, xmrig-cpu-threads]
+related: [randomx-memory-cache, xmrig-cpu-threads, xmrig-low-hashrate, xmrig-windows-setup]
 sources:
   - organization: XMRig
     title: Huge Pages
     url: https://xmrig.com/docs/miner/hugepages
-    accessed: 2026-10-06
+    accessed: 2026-10-10
   - organization: Microsoft Learn
     title: Privilege Constants — SeLockMemoryPrivilege
     url: https://learn.microsoft.com/en-us/windows/win32/secauthz/privilege-constants
-    accessed: 2026-10-06
+    accessed: 2026-10-10
   - organization: Microsoft Learn
     title: Lock pages in memory
     url: https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/lock-pages-in-memory
-    accessed: 2026-10-06
+    accessed: 2026-10-10
 ---
 
 ## Quick diagnosis
 
-XMRig's **permission** line and its **allocation percentage** answer different questions. `permission granted` means the process has the Windows right it needs; `huge pages 100%` means the reported allocation succeeded. A grant alone does not guarantee allocation.
+Check the permission message and each allocation percentage separately. XMRig's [current Huge Pages documentation](https://xmrig.com/docs/miner/hugepages) shows the permission message `* HUGE PAGES   permission granted` and an allocation example `huge pages 100%`. The first establishes that the process has Windows' `SeLockMemoryPrivilege`; it does **not** establish that the requested memory was allocated. A percentage describes the allocation XMRig reports, not the reason for any shortfall.
 
-Start with the startup log. This is a simplified illustration, not a verbatim log:
+The table below is a signal guide, not a promise that every XMRig version prints identical surrounding lines. Use the exact wording and allocation labels in your own startup output. **Technical review: 10 October 2026.** XMRig 6.26.0 was the latest release on the official project pages at that review; the privilege and allocation advice follows the current documentation and should be checked against your own XMRig/Windows version before a system-policy change. On narrow screens, scroll the table region horizontally; the rest of the article reflows to the viewport.
 
-```text
-HUGE PAGES permission granted
-randomx dataset ... huge pages 100%
-```
+<div class="signal-table-wrap" role="region" aria-label="Huge Pages signal and next-check table" aria-describedby="signal-table-help" tabindex="0">
+<p id="signal-table-help" class="signal-table-help">Scrollable table: use Shift and the mouse wheel, touch, or arrow keys while this region is focused.</p>
+<table class="signal-table">
+  <caption>Interpret each signal on its own; none identifies every cause.</caption>
+  <thead><tr><th scope="col">Observed XMRig signal</th><th scope="col">What it establishes</th><th scope="col">What it does not establish</th><th scope="col">Safe next check</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>* HUGE PAGES   permission granted</code> is absent, or XMRig reports the privilege unavailable</th><td>The running process has not reported the required privilege as available.</td><td>It does not tell you why the right is absent, whether policy allows it, or whether allocation would succeed once available.</td><td>Check XMRig's current Windows instructions. If the device is managed, ask its administrator before changing user-right policy. Do not leave the miner set to always run elevated.</td></tr>
+    <tr><th scope="row">Permission is granted; a reported allocation is 0%</th><td>The right is available to the process, while that requested allocation was not reported as successful.</td><td>It does not prove that the privilege setting is wrong or identify the allocation failure's cause.</td><td>Record which allocation line is affected. Close memory-heavy work if practical, restart Windows, then inspect a fresh startup log as XMRig recommends for less than full allocation.</td></tr>
+    <tr><th scope="row">Permission is granted; one or more reported allocations are below 100%</th><td>Allocation is partial for the specific dataset/thread item shown.</td><td>It does not identify a single cause, and one item does not describe every allocation. Memory pressure and system layout can matter.</td><td>Read the dataset and thread lines separately; note RandomX mode, NUMA/node information and available memory. Retry after a restart before changing configuration.</td></tr>
+    <tr><th scope="row">A reported allocation is <code>huge pages 100%</code></th><td>XMRig reports full Huge Pages allocation for that item.</td><td>It does not prove every other item is full, that the setup is optimally configured, or that hashrate/temperature/responsiveness will meet a target.</td><td>No Huge Pages change is indicated for that item. If performance is still a concern, use the <a href="/troubleshoot/xmrig-low-hashrate/">low-hashrate checklist</a> and compare like-for-like runs.</td></tr>
+    <tr><th scope="row">The excerpt is incomplete or contains no interpretable permission/allocation line</th><td>Nothing reliable about Huge Pages status can be concluded from that excerpt.</td><td>Silence or a missing line does not prove support, privilege, allocation, or failure.</td><td>Use the complete startup section for your XMRig version. The <a href="/tools/xmrig-log-decoder/">local XMRig Log Decoder</a> recognizes only a bounded set of explicit signals; unknown output stays unknown.</td></tr>
+  </tbody>
+</table>
+</div>
 
-If the permission is missing, follow XMRig's Windows setup guidance. If permission is present but allocation is below 100%, first close memory-heavy applications and restart Windows, then check again. Do not reserve memory through undocumented registry changes.
-
-<ol class="diagnostic-flow">
-  <li>Check whether XMRig reports Huge Pages permission granted.</li>
-  <li>If not, use XMRig's documented Windows method to establish the privilege.</li>
-  <li>Restart Windows if you just changed how the right is assigned, then inspect a fresh startup log.</li>
-  <li>If permission is granted but allocation is partial, reduce competing memory use and retry after a restart.</li>
-  <li>If it remains partial, record the complete startup lines and review available RAM, RandomX mode and node count before changing settings.</li>
-</ol>
+This is why “permission granted” and “allocation succeeded” are separate outcomes: Windows grants a user right to the process, while XMRig still has to obtain the requested memory when it initializes. Windows does not reserve the pages in advance for XMRig; other use of memory can affect allocation. Full allocation for one line does not explain the rest of the system.
 
 ## What the messages mean
 

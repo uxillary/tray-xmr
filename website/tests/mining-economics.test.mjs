@@ -27,6 +27,25 @@ test('applies reward, pool fee, whole-system energy, tariff and break-even tarif
   close(result.breakEvenTariff, 0.037125);
 });
 
+test('the published hypothetical calculator example matches the implemented model', () => {
+  const example = { ...base, minerHashrate: 1000, wallPowerWatts: 100, hoursPerDay: 24, electricityPricePerKwh: 0.2, poolFeePercent: 1, xmrPrice: 150, expectedRewardPerBlock: 0.6, networkDifficulty: 86_400_000_000 };
+  const result = calculateMiningEconomics(example, 1);
+  close(result.expectedBlocks, 0.001);
+  close(result.grossXmr, 0.0006);
+  close(result.poolFeeXmr, 0.000006);
+  close(result.netXmr, 0.000594);
+  close(result.revenueAfterPoolFees, 0.0891);
+  close(result.energyKwh, 2.4);
+  close(result.electricityCost, 0.48);
+  close(result.estimatedNet, -0.3909);
+
+  const page = readFileSync(new URL('../src/pages/tools/monero-mining-profitability-calculator.astro', import.meta.url), 'utf8');
+  assert.match(page, /86,400,000 ÷ 86,400,000,000 = 0\.001/);
+  assert.match(page, /0\.0006 − 0\.000006 = 0\.000594 XMR/);
+  assert.match(page, /£0\.0891 − £0\.48 = <strong>−£0\.3909 per day<\/strong>/);
+  assert.match(page, /invented to demonstrate the implemented arithmetic/);
+});
+
 test('provides fixed daily, 30-day and 365-day projections from the same model', () => {
   const [daily, month, year] = calculateMiningProjections(base);
   assert.deepEqual([daily.days, month.days, year.days], [1, 30, 365]);

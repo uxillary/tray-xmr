@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-const { type } = Astro.props as { type: 'huge-pages' | 'msr' | 'hashrate' | 'threads' | 'memory' | 'setup' };
+const { type } = Astro.props as { type: 'huge-pages' | 'msr' | 'hashrate' | 'threads' | 'memory' | 'setup' | 'security' };
 const title = {
   'huge-pages': 'Memory allocation, then mining work',
   msr: 'A CPU preset behind an access boundary',
@@ -8,6 +8,7 @@ const title = {
   threads: 'Logical processors are not a thread target',
   memory: 'RandomX uses several different memory layers',
   setup: 'Five checkpoints from download to accepted shares',
+  security: 'Stop, verify, then decide',
 }[type];
 ---
 <figure class={`article-visual visual-${type}`} aria-labelledby="article-visual-title" aria-describedby="article-visual-description">
@@ -48,5 +49,15 @@ const title = {
       <li><a href="#verify-the-session"><span>05</span><strong>Verify</strong><small>Read each signal</small></a></li>
     </ol>
     <p id="article-visual-description" class="visual-caption">A practical route through standalone XMRig setup. Each stage has a separate checkpoint; reaching one does not prove the later stages succeeded.</p>
+  </>}
+  {type === 'security' && <>
+    <ol class="setup-stages" aria-label="Safe response to a Windows security warning">
+      <li><a href="#short-answer"><span>01</span><strong>Stop</strong><small>Do not run it yet</small></a></li>
+      <li><a href="#check-source"><span>02</span><strong>Verify source</strong><small>Official XMRig project</small></a></li>
+      <li><a href="#release-checks"><span>03</span><strong>Check evidence</strong><small>Hash and signed manifest</small></a></li>
+      <li><a href="#if-warning"><span>04</span><strong>Assess warning</strong><small>Leave unresolved files blocked</small></a></li>
+      <li><a href="#use-only-authorized-devices"><span>05</span><strong>Confirm authority</strong><small>Use only approved devices</small></a></li>
+    </ol>
+    <p id="article-visual-description" class="visual-caption">Decision path: stop execution, verify the official source and available release evidence, keep unresolved warnings blocked, and mine only on a computer you are authorized to use.</p>
   </>}
 </figure>

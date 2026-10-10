@@ -10,6 +10,7 @@
     "check": "astro check",
     "check:content": "npm run check:links",
     "check:links": "npm run build && node scripts/verify-content.mjs",
+    "verify:production-origin": "node scripts/verify-production-origin.mjs",
     "test": "node --test"
   },
   "dependencies": {

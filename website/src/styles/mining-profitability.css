@@ -10,8 +10,9 @@
 .mining-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; }
 .mining-field { display: grid; align-content: start; gap: 7px; min-width: 0; color: var(--text); font-size: 13px; font-weight: 600; }
 .mining-field small { color: var(--muted); font-size: 11px; font-weight: 400; line-height: 1.5; }
-.mining-input { display: flex; align-items: center; min-width: 0; min-height: 44px; border: 1px solid #42453b; border-radius: 6px; background: #0e100d; }
-.mining-field input, .mining-field select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid #42453b; border-radius: 6px; padding: 0 11px; background: #0e100d; color: var(--text); font: 14px var(--mono); }
+.mining-input { display: flex; align-items: center; min-width: 0; min-height: 44px; border: 1px solid var(--line-bright); border-radius: 6px; background: #0e100d; }
+.mining-field input, .mining-field select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--line-bright); border-radius: 6px; padding: 0 11px; background: #0e100d; color: var(--text); font: 14px var(--mono); }
+.mining-field input::placeholder { color: var(--subtle); opacity: 1; }
 .mining-input input { flex: 1; border: 0; background: transparent; outline: 0; }
 .mining-input:focus-within, .mining-field select:focus-visible, .mining-reset:focus-visible, .network-choice input:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 2px; }
 .mining-input > span { flex: 0 0 auto; padding: 0 10px; color: var(--muted); font: 10px var(--mono); white-space: nowrap; }
@@ -49,9 +50,38 @@
 .mining-explainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 40px; padding-top: 38px; }
 .mining-explainer article { min-width: 0; }
 .mining-explainer article:last-child { grid-column: 1 / -1; }
+.mining-formula-flow, .mining-input-guide, .mining-example { grid-column: 1 / -1; min-width: 0; }
+.mining-formula-flow { margin: 0; border: 1px solid var(--line); border-radius: 10px; padding: clamp(17px, 2.6vw, 26px); background: #171a15; }
+.mining-formula-flow h2 { margin: 8px 0 18px; color: var(--text); font-size: 21px; }
+.mining-formula-flow ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 9px; margin: 0; padding: 0; list-style: none; counter-reset: formula-step; }
+.mining-formula-flow li { position: relative; display: grid; align-content: start; gap: 8px; min-width: 0; min-height: 112px; border-top: 2px solid #8e5d3e; padding: 12px 10px; background: #11130f; counter-increment: formula-step; }
+.mining-formula-flow li::before { content: "0" counter(formula-step); color: var(--ember-light); font: 10px var(--mono); }
+.mining-formula-flow li strong { color: var(--text); font-size: 12px; line-height: 1.45; }
+.mining-formula-flow li span { color: var(--muted); font-size: 11px; line-height: 1.45; }
+.mining-formula-flow figcaption { margin-top: 14px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.mining-input-table-wrap, .mining-example-table-wrap { max-width: 100%; margin: 16px 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #171a15; }
+.mining-input-table-wrap:focus-visible, .mining-example-table-wrap:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 3px; }
+.mining-input-table, .mining-example-table { width: 100%; min-width: 700px; border-collapse: collapse; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.mining-input-table caption, .mining-example-table caption { padding: 12px; color: var(--text); font: 11px var(--mono); text-align: left; }
+.mining-input-table th, .mining-input-table td, .mining-example-table th, .mining-example-table td { border-top: 1px solid var(--line); padding: 11px 12px; text-align: left; vertical-align: top; }
+.mining-input-table thead th { color: var(--text); font: 10px var(--mono); }
+.mining-input-table tbody th { width: 24%; color: var(--text); font-weight: 600; }
+.mining-input-table td, .mining-example-table td { min-width: 460px; }
+.input-source-note, .source-note { border-left: 2px solid var(--ember); padding: 11px 14px; background: #171a15; }
+.input-source-note strong { color: var(--text); }
+.synthetic-note { border: 1px solid #765d3d; border-radius: 7px; padding: 12px 14px; background: #211e18; color: var(--text) !important; }
+.example-assumptions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 16px 0; }
+.example-assumptions div { min-width: 0; border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #171a15; }
+.example-assumptions dt { color: var(--muted); font-size: 10px; line-height: 1.4; }
+.example-assumptions dd { margin: 5px 0 0; color: var(--text); font: 11px var(--mono); overflow-wrap: anywhere; }
+.mining-example-table { min-width: 680px; }
+.mining-example-table tbody th { width: 29%; color: var(--text); font-weight: 600; }
+.mining-example-table td { min-width: 0; }
+.mining-example-table .example-result th, .mining-example-table .example-result td { color: var(--ember-light); }
+.mining-example-table .example-result strong { color: var(--ember-light); }
 .mining-explainer h2 { margin: 9px 0; color: var(--text); font-size: 21px; letter-spacing: -.025em; }
 .mining-explainer p { max-width: 72ch; margin: 0 0 12px; color: var(--muted); font-size: 12px; line-height: 1.75; }
-.mining-explainer a { color: var(--ember-light); }
+.mining-explainer a { color: var(--ember-light); text-decoration: underline; text-underline-offset: 3px; }
 .method-line { border-left: 2px solid var(--ember); padding: 10px 13px; background: #171a15; }
 .method-line code { color: var(--text); font: 11px var(--mono); }
 @media (max-width: 1024px) {
@@ -62,6 +92,9 @@
   .mining-layout { grid-template-columns: 1fr; }
   .mining-form { border-right: 0; border-bottom: 1px solid var(--line); }
   .mining-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mining-formula-flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mining-formula-flow li:last-child { grid-column: 1 / -1; }
+  .example-assumptions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
   .mining-page { padding-bottom: 55px; }
@@ -76,4 +109,8 @@
   .projection-table th, .projection-table td { padding: 9px 3px; }
   .projection-table tbody th, .projection-table td { font-size: 9px; }
   .projection-table thead th { font-size: 9px; }
+  .mining-formula-flow ol { grid-template-columns: 1fr; }
+  .mining-formula-flow li, .mining-formula-flow li:last-child { grid-column: auto; min-height: 0; }
+  .mining-input-table, .mining-example-table { min-width: 660px; }
+  .example-assumptions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

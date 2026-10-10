@@ -9,11 +9,11 @@
   --surface-raised: #1d201b;
   --surface-soft: #22251f;
   --line: #34382f;
-  --line-bright: #4b5044;
+  --line-bright: #686b61;
   --text: #eeefe9;
   --body: #c3c7bc;
   --muted: #a1a69a;
-  --subtle: #858b7e;
+  --subtle: #8e9486;
   --ember: #ef8a4a;
   --ember-light: #ffb47e;
   --signal: #e29b64;
@@ -381,6 +381,17 @@ img, svg { max-width: 100%; }
 .signal-map li { display: grid; grid-template-columns: minmax(130px, .65fr) minmax(0, 1.35fr); gap: 14px; border: 1px solid #363831; border-radius: 8px; padding: 12px 14px; background: #191a17; }
 .signal-map strong { color: var(--text); }
 .signal-map span { color: var(--body); }
+.signal-table-wrap { max-width: 100%; margin: 22px 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #191a17; }
+.signal-table-wrap:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 3px; }
+.signal-table-help { margin: 0; padding: 8px 12px; color: var(--muted); font-size: 11px; }
+.signal-table { width: 100%; min-width: 880px; border-collapse: collapse; color: var(--body); font-size: 12px; line-height: 1.55; }
+.signal-table caption { padding: 10px 12px; color: var(--muted); font-size: 11px; text-align: left; }
+.signal-table th, .signal-table td { border-top: 1px solid var(--line); padding: 12px; text-align: left; vertical-align: top; }
+.signal-table thead th { color: var(--text); font: 10px var(--mono); letter-spacing: .04em; }
+.signal-table tbody th { min-width: 190px; color: var(--text); font-weight: 600; }
+.signal-table td { min-width: 205px; }
+.signal-table code { color: var(--ember-light); white-space: normal; overflow-wrap: anywhere; }
+.signal-table a { color: var(--ember-light); text-underline-offset: 3px; }
 @media (max-width: 700px) {
   .setup-stages { grid-template-columns: 1fr; gap: 0; }
   .setup-stages li { border-top: 0; border-left: 1px solid #694c36; }

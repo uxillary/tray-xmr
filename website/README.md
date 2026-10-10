@@ -10,11 +10,9 @@ Use a current supported Node.js version for Astro 7 (22.12 or newer), then from 
 npm install
 npm run dev
 npm run check
-npm run build
-npm run preview
 ```
 
-Set `SITE_URL` to the canonical public origin before deployment. See `.env.example`; the fallback `https://example.com` is deliberately non-production. Build output is `dist/`.
+Local development requires no site URL setting and uses `http://localhost:4321` for generated absolute URLs. A production/release build fails unless `SITE_URL` is explicitly set to the confirmed HTTPS origin. The origin must not contain a path, credentials, query or fragment. The placeholder `example.com` is rejected for release builds. Build output is `dist/`.
 
 ## Architecture
 
@@ -29,7 +27,17 @@ Keep one clear reader intent per page. Source technical claims from authoritativ
 
 ## Deployment assumptions
 
-Static assets can be deployed to Cloudflare Pages. Use `website/` as the project root, `npm run build` as the command and `dist/` as the output directory. Set `SITE_URL` to the confirmed canonical origin. No production domain, release link, analytics or backend is configured.
+Static assets can be deployed to Cloudflare Pages. Use `website/` as the project root, `npm run build` as the command and `dist/` as the output directory. In the Cloudflare Pages project settings, set `SITE_URL` as a Production environment variable to the confirmed HTTPS canonical origin (for example, `https://your-domain.tld`, without a path). Configure a separate confirmed Preview origin if preview deployments should emit their own metadata; do not use a production domain for an unprotected preview.
+
+Before deployment, verify release output locally. In PowerShell, set the exact confirmed value for the build process, then build and inspect it:
+
+```powershell
+$env:SITE_URL = 'https://your-confirmed-domain.tld'
+npm run build
+npm run verify:production-origin
+```
+
+For a safe synthetic verification run without a real domain, use `https://ember-m12a.invalid` in place of the example hostname. The verification checks canonical and Open Graph URLs, social-image URLs, Article/Breadcrumb JSON-LD URLs, sitemap locations, robots sitemap reference, route slashes, placeholder origins and localhost references. A successful local build does not confirm live redirects, TLS, DNS, robots access, or indexing. No production domain, release link, analytics or backend is currently configured.
 
 ## Desktop app separation
 

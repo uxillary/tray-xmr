@@ -1,10 +1,11 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { siteOrigin } from '../lib/site-origin.mjs';
 
 const routes = ['/', '/ember/', '/learn/', '/guides/', '/troubleshoot/', '/tools/', '/tools/electricity-cost-calculator/', '/tools/monero-mining-profitability-calculator/', '/tools/xmrig-log-decoder/', '/trust/'];
 
 export const GET: APIRoute = async ({ site }) => {
-  const origin = site?.toString().replace(/\/$/, '') ?? 'https://example.com';
+  const origin = siteOrigin(site);
   const articles = await getCollection('articles', ({ data }) => !data.draft);
   const articleRoutes = articles.map(({ id, data }) => `/${data.section}/${id}/`);
   const urls = [...routes, ...articleRoutes].map((route) => `  <url><loc>${origin}${route}</loc></url>`).join('\n');

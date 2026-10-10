@@ -96,7 +96,7 @@ for (const file of files) {
 }
 
 const expected = [
-  'guides/xmrig-windows-setup/index.html',
+  'guides/xmrig-windows-setup/index.html', 'guides/xmrig-windows-security-warnings/index.html',
   'learn/xmrig-cpu-threads/index.html', 'learn/randomx-memory-cache/index.html',
   'troubleshoot/xmrig-huge-pages/index.html', 'troubleshoot/xmrig-msr-error/index.html',
   'troubleshoot/xmrig-low-hashrate/index.html',

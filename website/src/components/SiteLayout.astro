@@ -1,7 +1,8 @@
 ---
 import '../styles/site.css';
+import { siteOrigin } from '../lib/site-origin.mjs';
 const { title, description, canonical, type = 'website', publishedDate, updatedDate } = Astro.props;
-const origin = Astro.site?.toString().replace(/\/$/, '') ?? 'https://example.com';
+const origin = siteOrigin(Astro.site);
 const canonicalUrl = canonical ? new URL(canonical, origin).toString() : new URL(Astro.url.pathname, origin).toString();
 const nav = [
   { href: '/ember/', label: 'Ember' }, { href: '/learn/', label: 'Learn' },
