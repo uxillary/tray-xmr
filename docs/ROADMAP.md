@@ -1,6 +1,6 @@
 # Ember Roadmap
 
-**Status:** Directional roadmap, updated 2026-10-07. Outcomes are intended scope, not dates or release commitments.
+**Status:** Directional roadmap, updated 2026-10-10. Outcomes are intended scope, not dates or release commitments.
 
 ## M00 — Project foundation
 
@@ -75,6 +75,10 @@ The selected transparent model is implemented: 19 parts user-wallet mining to 1 
 ## M10 — Experience & Visual Language
 
 Continue product polish throughout earlier milestones; this is a dedicated broader refinement horizon, not a reason to defer usability work. Develop meaningful Ember Core states, visual state representations and GUI metaphors, reduced text density, progressive disclosure, beginner/advanced layers, accessible alternatives and restrained motion. Keep the premium graphite/warm Ember visual language calm and technical, not casino-like.
+
+- **D01 — Living Core design foundation:** design and architecture contract documented in [Living Core design](design/LIVING_CORE_DESIGN.md), with [D02 implementation steps](design/LIVING_CORE_IMPLEMENTATION_PLAN.md). Defines the miniature workshop, state/freshness behavior, rendering and asset approval rules without changing the UI or backend. Owner approval of still artwork and native layout remains open.
+- **D02 — Living Core Overview prototype:** planned frontend-only, static-first scene with a pure state adapter, approved versioned assets, reduced-motion/fallback behavior and native visual acceptance. Keep Mining controls and composition unchanged. Add approved low-rate animation only after the still works; defer result-event reactions until session-safe event integration is defined.
+- **Later design milestones:** review optional Mining placement and event-triggered reactions separately after D02 acceptance; retain truthful event semantics and modern desktop controls.
 
 ## M11 — Activity & History
 
