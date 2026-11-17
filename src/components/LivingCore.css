@@ -1,0 +1,38 @@
+.living-core { width: 100%; min-width: 0; display: grid; justify-items: center; pointer-events: none; }
+.living-core-viewport { position: relative; width: 100%; height: calc(156px * var(--scene-scale, 1)); overflow: hidden; isolation: isolate; }
+.living-core-canvas { position: absolute; top: calc(-12px * var(--scene-scale, 1)); left: var(--scene-left, 0px); width: 320px; height: 180px; transform: scale(var(--scene-scale, 1)); transform-origin: top left; }
+.living-core-layer, .living-core-static, .living-core-layers { position: absolute; inset: 0; width: 320px; height: 180px; }
+.living-core-layer { overflow: hidden; z-index: 2; }
+.living-core-layer--workshop { z-index: 0; }
+.living-core-layer img, .living-core-static { position: absolute; top: 0; max-width: none; image-rendering: pixelated; user-select: none; }
+.living-core-light { position: absolute; z-index: 1; inset: 36px 74px 24px 143px; opacity: 0; background: radial-gradient(ellipse, #ffac3d30, #df791b10 46%, transparent 72%); }
+.living-core-light.is-active { opacity: 1; }
+.living-core.living-core--still .core-halo { animation: none; }
+
+/* Overview alone owns this composition. The workshop shares the hero's surface. */
+.workspace--overview .page-content { container-type: inline-size; }
+.overview-hero.overview-hero--living { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(512px, 1.8fr); gap: 20px; padding: 24px 28px; background: radial-gradient(ellipse at 74% 70%, #8f583024, transparent 60%), #191c19; }
+.overview-hero--living .hero-copy { max-width: none; min-width: 0; }
+.overview-hero--living .hero-copy h2 { overflow-wrap: anywhere; }
+.overview-hero--living .hero-description { max-width: 48ch; }
+.overview-hero.overview-hero--living .hero-core-wrap { width: 100%; min-width: 0; max-width: 640px; justify-self: center; margin: 0; transform: none; gap: 0; }
+.overview-hero--living .living-core-viewport { mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
+.overview-hero--living .core-caption { margin-top: 10px; color: var(--text-secondary); letter-spacing: 2px; }
+.overview-hero.overview-hero--living .ember-core { transform: none; }
+.living-core-qualifier { margin: 9px 0 0; color: var(--warning); font-size: 13px; line-height: 1.5; }
+@container (max-width: 800px) {
+  .overview-hero.overview-hero--living { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 20px; }
+  .overview-hero--living .hero-copy { width: 100%; }
+}
+@container (max-width: 480px) {
+  .overview-hero.overview-hero--living { padding: 16px 12px; }
+  .overview-hero--living .core-caption { font-size: 9px; letter-spacing: 1px; }
+}
+/* 820px at 200% zoom: retain readable text, controls and a central artwork crop. */
+@media (max-width: 600px) {
+  .app-shell:has(.workspace--overview) .sidebar { width: 144px; flex-basis: 144px; padding-inline: 10px; }
+  .workspace--overview .overview-live-ops { grid-template-columns: minmax(0, 1fr); }
+  .workspace--overview .overview-live-time { grid-column: auto; }
+  .workspace--overview .system-grid { grid-template-columns: minmax(0, 1fr); }
+  .workspace--overview .overview-live-rate > strong { font-size: clamp(24px, 7vw, 38px); overflow-wrap: anywhere; }
+}

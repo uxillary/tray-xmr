@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "node --test src/miningTelemetry.test.mjs src/miningExperience.test.mjs src/emberStream.test.mjs src/deviceStatus.test.mjs",
+    "test": "node --test src/miningTelemetry.test.mjs src/miningExperience.test.mjs src/emberStream.test.mjs src/deviceStatus.test.mjs src/livingCoreState.test.mjs src/livingCoreAnimation.test.mjs src/livingCore.test.mjs",
+    "test:living-core": "node --test src/livingCoreState.test.mjs src/livingCoreAnimation.test.mjs src/livingCore.test.mjs",
+    "assets:check": "python scripts/prepare-living-core.py --check",
     "preview": "vite preview",
     "tauri": "tauri"
   },

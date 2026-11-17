@@ -1,0 +1,236 @@
+{
+  "version": "v1",
+  "artworkStatus": "prototype-owner-review-pending",
+  "canvas": {
+    "width": 320,
+    "height": 180
+  },
+  "reference": "ember-squish/Ember the Squish Character Sheet.png",
+  "sources": [
+    "ember-squish/Three-Frame Chibi Flame Sprite Sheet.png",
+    "ember-squish/Six-Frame Pixel Flame Mascot Sprite Sheet.png",
+    "ember-squish/Ember the Squish Character Sheet.png",
+    "imagegen workshop and crystal/pedestal plates; see implementation documentation"
+  ],
+  "notes": "Horizontal RGBA sheets. Full-scene cells share origin [0,0]. Feet anchored at y=150. Binary alpha and nearest-neighbour sampling. Character palette: 24 colors. Starting/stopping are one-shot; other non-static clips loop. No event reactions. Static fallback is neutral with a dormant crystal.",
+  "baseLayers": [
+    "workshop",
+    "shadows",
+    "pedestal"
+  ],
+  "fallback": "scene-fallback.png",
+  "assets": {
+    "character-attention": {
+      "file": "character-attention.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-mining": {
+      "file": "character-mining.png",
+      "frames": 8,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-paused": {
+      "file": "character-paused.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-ready": {
+      "file": "character-ready.png",
+      "frames": 12,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-starting": {
+      "file": "character-starting.png",
+      "frames": 8,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-stopped": {
+      "file": "character-stopped.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-stopping": {
+      "file": "character-stopping.png",
+      "frames": 8,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-unavailable": {
+      "file": "character-unavailable.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-waiting": {
+      "file": "character-waiting.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "crystal-dormant": {
+      "file": "crystal-dormant.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "crystal-lit": {
+      "file": "crystal-lit.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "pedestal": {
+      "file": "pedestal.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "shadows": {
+      "file": "shadows.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "workshop": {
+      "file": "workshop.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "scene-fallback": {
+      "file": "scene-fallback.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    }
+  },
+  "clips": {
+    "notConfigured": {
+      "character": "character-waiting",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "ready": {
+      "character": "character-ready",
+      "crystal": "crystal-dormant",
+      "fps": 4,
+      "loop": true
+    },
+    "starting": {
+      "character": "character-starting",
+      "crystal": "crystal-dormant",
+      "fps": 8,
+      "loop": false
+    },
+    "mining": {
+      "character": "character-mining",
+      "crystal": "crystal-lit",
+      "fps": 6,
+      "loop": true
+    },
+    "miningQuiet": {
+      "character": "character-unavailable",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "paused": {
+      "character": "character-paused",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "stopping": {
+      "character": "character-stopping",
+      "crystal": "crystal-dormant",
+      "fps": 8,
+      "loop": false
+    },
+    "stopped": {
+      "character": "character-stopped",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "error": {
+      "character": "character-attention",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "unavailable": {
+      "character": "character-unavailable",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    }
+  }
+}

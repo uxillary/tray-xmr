@@ -1,0 +1,243 @@
+{
+  "version": "v2",
+  "artworkStatus": "D02B-owner-acceptance-pending",
+  "canvas": {
+    "width": 320,
+    "height": 180
+  },
+  "reference": "ember-squish/Ember the Squish Character Sheet.png",
+  "sources": [
+    "ember-squish/Three-Frame Chibi Flame Sprite Sheet.png",
+    "ember-squish/Six-Frame Pixel Flame Mascot Sprite Sheet.png",
+    "ember-squish/Ember the Squish Character Sheet.png",
+    "imagegen workshop and crystal/pedestal plates; see implementation documentation"
+  ],
+  "notes": "D02B exact-pixel refinement from v1, owner references unchanged. 320x180 RGBA cells; 240px central safe crop (192px at 1x under zoom). Fixed foot pixels at y144..149 for animated clips. Upper-body breath and articulated right-hand reach; no body translation. Ready 4fps/4s, tending 6fps/2s, transitions 6fps/one second. Static first poses; dormant neutral fallback. No event reactions.",
+  "baseLayers": [
+    "workshop",
+    "shadows",
+    "pedestal"
+  ],
+  "fallback": "scene-fallback.png",
+  "assets": {
+    "character-attention": {
+      "file": "character-attention.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-mining": {
+      "file": "character-mining.png",
+      "frames": 12,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-paused": {
+      "file": "character-paused.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-ready": {
+      "file": "character-ready.png",
+      "frames": 16,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-starting": {
+      "file": "character-starting.png",
+      "frames": 6,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-stopped": {
+      "file": "character-stopped.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-stopping": {
+      "file": "character-stopping.png",
+      "frames": 6,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-unavailable": {
+      "file": "character-unavailable.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character-waiting": {
+      "file": "character-waiting.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "crystal-dormant": {
+      "file": "crystal-dormant.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "crystal-lit": {
+      "file": "crystal-lit.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "pedestal": {
+      "file": "pedestal.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "shadows": {
+      "file": "shadows.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "workshop": {
+      "file": "workshop.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "scene-fallback": {
+      "file": "scene-fallback.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 180,
+      "anchor": [
+        0,
+        0
+      ]
+    }
+  },
+  "clips": {
+    "notConfigured": {
+      "character": "character-waiting",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "ready": {
+      "character": "character-ready",
+      "crystal": "crystal-dormant",
+      "fps": 4,
+      "loop": true
+    },
+    "starting": {
+      "character": "character-starting",
+      "crystal": "crystal-dormant",
+      "fps": 6,
+      "loop": false
+    },
+    "mining": {
+      "character": "character-mining",
+      "crystal": "crystal-lit",
+      "fps": 6,
+      "loop": true
+    },
+    "miningQuiet": {
+      "character": "character-unavailable",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "paused": {
+      "character": "character-paused",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "stopping": {
+      "character": "character-stopping",
+      "crystal": "crystal-dormant",
+      "fps": 6,
+      "loop": false
+    },
+    "stopped": {
+      "character": "character-stopped",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "error": {
+      "character": "character-attention",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    },
+    "unavailable": {
+      "character": "character-unavailable",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": false
+    }
+  },
+  "characterSize": {
+    "width": 76,
+    "height": 80,
+    "maxWidth": 82,
+    "maxHeight": 82,
+    "groundY": 150
+  }
+}

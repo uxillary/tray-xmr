@@ -1,9 +1,11 @@
-import { EmberCore, type EmberCoreState } from "./EmberCore";
+import { LivingCore } from "./LivingCore";
+import { livingCoreState } from "../livingCoreState.mjs";
 import { formatHashrate, miningTelemetryViewModel } from "../miningTelemetry.mjs";
 import type { MiningReadiness, MiningSessionStatus } from "./MiningSetup";
+import "./MiningTelemetry.css";
 
 type Props = { session: MiningSessionStatus | null; setup: MiningReadiness | null; statusUnavailable?: boolean };
-type SessionProps = Props & { onStop: () => void; stopping: boolean };
+type SessionProps = Props & { onStop?: () => void; stopping?: boolean; reducedMotion?: boolean; inspectFrame?: number };
 
 export function OverviewMiningTelemetry({ session, setup, statusUnavailable = false }: Props) {
   const view = miningTelemetryViewModel(session, setup);
@@ -33,58 +35,62 @@ export function OverviewMiningTelemetry({ session, setup, statusUnavailable = fa
   );
 }
 
-export function MiningSessionTelemetry({ session, setup, statusUnavailable = false, onStop, stopping }: SessionProps) {
+export function MiningSessionTelemetry({ session, setup, statusUnavailable = false, onStop, stopping = false, reducedMotion = false, inspectFrame }: SessionProps) {
   const view = miningTelemetryViewModel(session, setup);
-  const starting = view.state === "starting";
+  const core = livingCoreState({ session, readiness: setup, statusUnavailable });
+  const starting = core.lifecycle === "starting";
   const poolState = view.poolState ?? "unavailable";
   const accepted = formatCount(view.accepted, starting);
   const rejected = formatCount(view.rejected, starting);
-  const coreState = coreStateFor(view.state);
-  const stateLabel = view.state === "error" ? "Attention" : view.stateLabel;
-  const support = starting
-    ? ""
-    : view.state === "error"
+  const lastReported = statusUnavailable || view.freshness !== "fresh" || !["mining", "paused"].includes(core.lifecycle);
+  const support = core.lifecycle === "unavailable"
+    ? "Ember cannot confirm the current session status. Check the session before starting again."
+    : starting
+      ? "Preparing your supervised mining session"
+    : core.lifecycle === "error"
       ? "The session needs attention"
-      : view.state === "stopping"
+      : core.lifecycle === "stopping"
         ? "Closing the owned mining process"
-        : view.state === "paused"
+        : core.lifecycle === "paused"
           ? "Mining is paused"
-          : view.state === "mining"
-            ? "Mining is active on this device"
-            : view.state === "stopped"
+          : core.lifecycle === "mining"
+            ? core.activeWork ? "Ember is tending the Core while this device mines." : "Waiting for current evidence of hashing."
+            : core.lifecycle === "stopped"
               ? "The session has ended"
-              : view.state === "ready"
+              : core.lifecycle === "ready"
                 ? "Ready when you are"
-                : view.state === "notConfigured"
+                : core.lifecycle === "notConfigured"
                   ? "Complete setup before starting"
-                  : view.state === "unavailable"
-                    ? "Status could not be confirmed"
-                    : "";
+                  : "";
 
   return (
-    <div className={`mining-operation mining-operation--${view.state}`}>
+    <div className={`mining-operation mining-operation--living mining-operation--${core.lifecycle}`}>
       <section className="operation-main" aria-label="Mining session status">
-        <div className="operation-identity">
-          <EmberCore state={coreState} />
-          <div>
-            <span className="operation-kicker">EMBER CORE</span>
-            <h2>{stateLabel}</h2>
+        <div className="operation-world">
+          <LivingCore view={core} reducedMotion={reducedMotion} inspectFrame={inspectFrame} />
+          <span className="core-caption">EMBER · LIVING CORE</span>
+        </div>
+        <div className="operation-console">
+          <div className="operation-identity">
+            <span className="operation-kicker">THIS DEVICE · MINING SESSION</span>
+            <h2>{core.label}</h2>
             {support && <p>{support}</p>}
           </div>
-        </div>
-        <div className={`operation-rate${view.freshness === "stale" || statusUnavailable ? " is-stale" : ""}`}>
-          <span>Current hashrate</span>
-          <strong>{formatRate(view.hashrate ?? view.hashrateLabel)}</strong>
-        </div>
-        <div className="operation-actions">
-          <FreshnessNotice session={session} statusUnavailable={statusUnavailable} />
-          {view.state !== "stopping" && <button className="setup-engine-button stop-mining-button" type="button" disabled={stopping} onClick={onStop}>{stopping ? "Stopping…" : "Stop mining"}</button>}
+          <div className={`operation-rate${lastReported ? " is-stale" : ""}`}>
+            <span>Current hashrate</span>
+            <strong>{formatRate(starting ? "—" : view.hashrate ?? view.hashrateLabel)}</strong>
+            <span className="operation-rate-context">{lastReported && view.hashrate !== null ? "Last reported · 10-second average" : "10-second average"}</span>
+          </div>
+          <div className="operation-actions">
+            <FreshnessNotice session={session} statusUnavailable={statusUnavailable} />
+            {core.qualifier && core.qualifier !== "Live telemetry" && core.qualifier !== "Updates delayed" && core.qualifier !== "Telemetry unavailable" && <p className="operation-qualifier">{core.qualifier}</p>}
+            {onStop && <button className="setup-engine-button stop-mining-button" type="button" disabled={stopping || session?.state === "stopping"} onClick={onStop}>{stopping || session?.state === "stopping" ? "Stopping…" : "Stop mining"}</button>}
+          </div>
+          <p className={`starting-note${starting ? " is-active" : ""}`} aria-live={starting ? "polite" : undefined}>
+            {starting ? startupMessage(session?.startupStage ?? null, session?.startupElapsedMs ?? null) : " "}
+          </p>
         </div>
       </section>
-
-      <p className={`starting-note${starting ? " is-active" : ""}`} aria-live={starting ? "polite" : undefined}>
-        {starting ? startupMessage(session?.startupStage ?? null, session?.startupElapsedMs ?? null) : " "}
-      </p>
 
       <section className="operation-details" aria-label="Current mining session details">
         <PoolRoute state={poolState} label={view.poolLabel} />
@@ -119,7 +125,7 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
             <Detail label="10-second average" value={formatOptionalRate(view.shortHashrate)} />
             <Detail label="60-second average" value={formatOptionalRate(view.mediumHashrate)} />
             <Detail label="15-minute average" value={formatOptionalRate(view.longHashrate)} />
-            <Detail label="CPU activity" value={view.cpuActivity} />
+            <Detail label="CPU activity" value={lastReported ? "Current activity is unconfirmed; last reported readings are retained." : view.cpuActivity} />
           </dl></section>
           <section aria-labelledby="details-pool"><h3 id="details-pool">Pool and results</h3><dl>
             <Detail label="Pool algorithm" value={view.algorithm ?? "Unavailable"} />
@@ -127,14 +133,15 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
             <Detail label="Accepted difficulty" value={formatNumber(view.acceptedDifficulty)} />
           </dl></section>
           <section aria-labelledby="details-engine"><h3 id="details-engine">Engine</h3><dl>
+            <Detail label="Engine version" value={session?.telemetry?.engineVersion || setup?.engineVersion || "Unavailable"} />
             <Detail label="Configured threads" value={view.capacityKnown ? `${view.threads} of ${view.logicalProcessors}` : "Unavailable"} />
-            <Detail label="Worker evidence" value="Configured lanes do not confirm active CPU threads. A positive rate confirms observed hashing." />
+            <Detail label="Worker evidence" value="Configured lanes do not confirm active CPU threads. A fresh positive rate confirms observed hashing." />
             <Detail label="Huge pages" value={view.hugePages ? `${view.hugePages.allocated} of ${view.hugePages.total} allocated` : "Unavailable"} />
           </dl></section>
           <section aria-labelledby="details-measurement"><h3 id="details-measurement">Measurement</h3><dl>
             <Detail label="Current rate" value="XMRig rolling 10-second average; zero is distinct from unavailable." />
             <Detail label="Pool results" value="Counts are XMRig-reported submission responses, not pool account earnings." />
-            {view.freshness === "stale" && <Detail label="Last update" value="The displayed values are the last reported sample." />}
+            {lastReported && <Detail label="Last update" value="The displayed values are the last reported sample, not confirmation of current activity." />}
           </dl></section>
         </div>
       </details>
@@ -164,9 +171,12 @@ function ThreadCapacity({ setup }: { setup: MiningReadiness | null }) {
 
 function FreshnessNotice({ session, statusUnavailable }: { session: MiningSessionStatus | null; statusUnavailable: boolean }) {
   const view = miningTelemetryViewModel(session, null);
-  if (view.state === "starting" && !statusUnavailable) return null;
-  const freshness = statusUnavailable && session ? "stale" : view.freshness;
-  const message = statusUnavailable && !session ? "Ember status unavailable" : statusUnavailable ? "Updates delayed" : view.freshnessLabel;
+  const core = livingCoreState({ session, statusUnavailable });
+  const unknown = statusUnavailable || (session !== null && core.lifecycle === "unavailable");
+  const freshness = unknown || core.qualifier === "Telemetry unavailable" ? "unavailable" : view.freshness;
+  const message = unknown ? session ? "Status unavailable · last reported readings" : "Ember status unavailable"
+    : core.qualifier === "Telemetry unavailable" ? "Telemetry unavailable"
+    : view.freshness === "unavailable" && ["mining", "paused", "stopping"].includes(view.state) ? "Telemetry unavailable" : view.freshnessLabel;
   return <div className={`telemetry-freshness telemetry-freshness--${freshness}`}>
     <span className="freshness-mark" aria-hidden="true" /><span>{message}</span>
   </div>;
@@ -191,16 +201,6 @@ function startupMessage(stage: MiningSessionStatus["startupStage"], elapsedMs: n
   const message = copy[stage ?? "waitingForMiner"];
   const seconds = Math.floor((elapsedMs ?? 0) / 1000);
   return seconds >= 10 ? `${message} · ${seconds}s` : message;
-}
-
-function coreStateFor(state: string): EmberCoreState {
-  if (state === "starting" || state === "stopping") return "starting";
-  if (state === "mining") return "mining";
-  if (state === "paused") return "paused";
-  if (state === "error") return "warning";
-  if (state === "ready") return "ready";
-  if (state === "stopped") return "stopped";
-  return "not-configured";
 }
 
 function formatCount(value: number | null, starting: boolean) {

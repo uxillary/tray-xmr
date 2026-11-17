@@ -146,7 +146,7 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
 
   if (!setup) return <section className="setup-panel"><h2>Checking your setup</h2><p className="info-detail">Ember is checking your saved settings.</p><button className="setup-engine-button" onClick={refresh}>Try again</button></section>;
 
-  if (!session && sessionStatusUnavailable) return <section className="setup-panel" role="status"><h2>Session status unavailable</h2><p className="info-detail">Ember couldn’t confirm whether a mining session is running. Check again before starting mining.</p><button className="setup-engine-button" onClick={() => void refreshSession()}>Check session status</button></section>;
+  if (!session && sessionStatusUnavailable) return <div className="active-mining-panel"><MiningSessionTelemetry session={session} setup={setup} statusUnavailable /><section className="setup-panel" role="status"><h2>Session status unavailable</h2><p className="info-detail">Ember couldn’t confirm whether a mining session is running. Check again before starting mining.</p><button className="setup-engine-button" onClick={() => void refreshSession()}>Check session status</button></section></div>;
 
   if (session && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state) || (session.state === "error" && session.processId !== null))) {
     const starting = session.state === "starting" || session.startupStage !== null;
@@ -179,6 +179,7 @@ export function MiningSetup({ setup, onChange, refresh, session, refreshSession,
   const startBlockedByWindows = error?.includes("Windows prevented") || error?.includes("no longer available") || error?.includes("stopped before Ember could connect");
 
   return <div className="mining-setup" aria-busy={busy}>
+    {session && !["ready", "notConfigured"].includes(session.state) && <MiningSessionTelemetry session={session} setup={setup} statusUnavailable={sessionStatusUnavailable} />}
     {!setup.ready && <section className="setup-welcome" aria-live="polite">
       <div><p className="eyebrow">YOUR SETUP</p><h2>Finish setup to continue</h2><p>{nextStep}</p></div>
     </section>}

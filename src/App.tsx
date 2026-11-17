@@ -6,7 +6,8 @@ import { LightningIcon } from "@phosphor-icons/react/dist/csr/Lightning";
 import { WalletIcon } from "@phosphor-icons/react/dist/csr/Wallet";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { EmberCore, type EmberCoreState } from "./components/EmberCore";
+import { LivingCore } from "./components/LivingCore";
+import { livingCoreState } from "./livingCoreState.mjs";
 import { EmptyState } from "./components/EmptyState";
 import { ThisDeviceStatus } from "./components/ThisDeviceStatus";
 import { SystemOverview } from "./components/SystemOverview";
@@ -36,18 +37,6 @@ const sections: { id: Section; label: string; icon: ReactNode }[] = [
   { id: "activity", label: "Activity", icon: <ClockCounterClockwiseIcon weight="regular" /> },
   { id: "settings", label: "Settings", icon: <GearSixIcon weight="regular" /> },
 ];
-
-const stateLabels: Record<string, { label: string; core: EmberCoreState }> = {
-  notConfigured: { label: "Not configured", core: "not-configured" },
-  unavailable: { label: "Status unavailable", core: "warning" },
-  ready: { label: "Ready", core: "ready" },
-  starting: { label: "Starting", core: "starting" },
-  mining: { label: "Mining", core: "mining" },
-  paused: { label: "Paused", core: "paused" },
-  stopping: { label: "Stopping", core: "starting" },
-  stopped: { label: "Stopped", core: "stopped" },
-  error: { label: "Needs attention", core: "warning" },
-};
 
 function App() {
   const [section, setSection] = useState<Section>("overview");
@@ -194,9 +183,6 @@ function App() {
   }, [section, session?.state]);
 
   const current = sections.find((item) => item.id === section)!;
-  const busyStates = ["starting", "mining", "paused", "stopping"];
-  const currentState = !session && sessionStatusUnavailable ? "unavailable" : session?.startupStage ? "starting" : session && (busyStates.includes(session.state) || session.state === "stopped") ? session.state : session?.state === "error" ? "error" : nativeState;
-  const status = currentState ? stateLabels[currentState] : undefined;
 
   return (
     <div className="app-shell">
@@ -231,7 +217,7 @@ function App() {
         <div className="page-content">
           <header className="page-heading"><h1>{current.label}</h1></header>
 
-          {section === "overview" && <OverviewPage status={status} statusError={statusError} systemSnapshot={systemSnapshot} session={session} setup={setup} sessionStatusUnavailable={sessionStatusUnavailable} openMining={() => setSection("mining")} />}
+          {section === "overview" && <OverviewPage statusError={statusError} systemSnapshot={systemSnapshot} session={session} setup={setup} sessionStatusUnavailable={sessionStatusUnavailable} openMining={() => setSection("mining")} />}
           {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} sessionStatusUnavailable={sessionStatusUnavailable} diagnosticsMode={diagnosticsMode} diagnosticRunning={integrationTest?.running ?? false} copyDiagnostics={() => void copyDiagnostics()} events={miningEvents} eventsUnavailable={miningEventsUnavailable} />}
           {section === "activity" && <ActivityPage />}
           {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} miningBusy={session !== null && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state))} integrationTest={integrationTest} integrationTestError={integrationTestError} startIntegrationTest={() => void startIntegrationTest()} stopIntegrationTest={() => void stopIntegrationTest()} copyIntegrationReport={() => void copyIntegrationReport()} />}
@@ -241,33 +227,39 @@ function App() {
   );
 }
 
-function OverviewPage({ status, statusError, systemSnapshot, session, setup, sessionStatusUnavailable, openMining }: { status: { label: string; core: EmberCoreState } | undefined; statusError: boolean; systemSnapshot: SystemSnapshot | null; session: MiningSessionStatus | null; setup: MiningReadiness | null; sessionStatusUnavailable: boolean; openMining: () => void }) {
-  const isMining = session?.state === "mining" || session?.state === "paused";
-  const isStarting = session?.state === "starting" || session?.startupStage !== null && session?.startupStage !== undefined;
-  const isStopping = session?.state === "stopping";
-  const isError = session?.state === "error";
-  const headline = statusError || sessionStatusUnavailable ? "Status unavailable" : status?.label ?? "Checking status";
-  const supportCopy = isMining
-    ? "Ember is supervising this mining session."
-    : isStarting
-      ? "Ember is bringing your mining session online."
-      : isStopping
-        ? "Ember is closing the owned mining session."
-        : isError
-          ? "Open Mining to review the session and available recovery actions."
-          : setup?.ready
-            ? "Your setup is ready. Start mining only when you choose to."
-            : "Complete your wallet, pool and power setup to begin.";
+export function OverviewPage({ statusError, systemSnapshot, session, setup, sessionStatusUnavailable, openMining, reducedMotion = false, inspectFrame }: { statusError: boolean; systemSnapshot: SystemSnapshot | null; session: MiningSessionStatus | null; setup: MiningReadiness | null; sessionStatusUnavailable: boolean; openMining: () => void; reducedMotion?: boolean; inspectFrame?: number }) {
+  const view = livingCoreState({ session, statusUnavailable: sessionStatusUnavailable || (!session && statusError), readiness: setup });
+  const isMining = view.lifecycle === "mining" || view.lifecycle === "paused";
+  const isStarting = view.lifecycle === "starting";
+  const isStopping = view.lifecycle === "stopping";
+  const isError = view.lifecycle === "error";
+  const headline = !session && !setup && !statusError && !sessionStatusUnavailable ? "Checking status" : view.label;
+  const supportCopy = view.lifecycle === "unavailable"
+    ? "Ember cannot confirm the current session status. Open Mining to review."
+    : view.lifecycle === "paused"
+      ? "Your mining session is paused."
+      : isMining
+        ? view.freshness === "fresh" ? "Ember is supervising this mining session." : "The last reported session is mining. Waiting for current readings."
+        : isStarting
+          ? "Ember is bringing your mining session online."
+          : isStopping
+            ? "Ember is closing the owned mining session."
+            : isError
+              ? "Open Mining to review the session and available recovery actions."
+              : setup?.ready
+                ? "Your setup is ready. Start mining only when you choose to."
+                : "Complete your wallet, pool and power setup to begin.";
   return (
     <>
-      <section className={`overview-hero${isMining ? " overview-hero--live" : ""}`} aria-labelledby="overview-title">
+      <section className={`overview-hero overview-hero--living${isMining ? " overview-hero--live" : ""}`} aria-labelledby="overview-title">
         <div className="hero-copy">
           <p className="eyebrow">THIS DEVICE</p>
           <h2 id="overview-title">{headline}</h2>
           <p className="hero-description">{supportCopy}</p>
+          {view.qualifier && view.qualifier !== "Live telemetry" && <p className="living-core-qualifier">{view.qualifier}</p>}
           {!isMining && !isStarting && !isStopping && <button className="overview-mining-action" type="button" onClick={openMining}>{isError || statusError || sessionStatusUnavailable ? "Review Mining" : setup?.ready ? "Open Mining" : "Set up Mining"}</button>}
         </div>
-        <div className="hero-core-wrap"><EmberCore state={status?.core ?? "inactive"} /><span className="core-caption">EMBER CORE</span></div>
+        <div className="hero-core-wrap"><LivingCore view={view} reducedMotion={reducedMotion} inspectFrame={inspectFrame} /><span className="core-caption">EMBER · LIVING CORE</span></div>
       </section>
 
       <OverviewMiningTelemetry session={session} setup={setup} statusUnavailable={sessionStatusUnavailable} />
