@@ -35,7 +35,8 @@
         "hashrate",
         "threads",
         "memory",
-        "setup"
+        "setup",
+        "security"
       ]
     },
     "callout": {

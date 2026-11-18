@@ -2,6 +2,12 @@
 
 Content ships when it is useful, sourced and technically checked. Route ideas are themes, not a commitment to produce every possible keyword variation.
 
+## M12A — Visual UX and discovery planning
+
+**Complete (18 November 2026):** documentation-only review of all 17 published routes. See the [visual UX audit](m12a-visual-ux-audit.md), [organic discovery journeys](m12a-organic-discovery-journeys.md), [visual content opportunities](m12a-visual-content-opportunities.md) and [prioritized M12B plan](m12a-prioritized-improvement-plan.md). No published page or visual implementation changed. Current-build browser access remained blocked; all requested viewport widths remain unverified.
+
+**Recommended next step:** M12B should establish a verified preview, then deliver available-resource-first hubs, article navigation/openings, contextual handoffs, readable tables, clearer tool composition and two diagram pilots in bounded phases. Preserve the homepage hero, current identity and technical models. M12B has not started; screen-reader, fresh contrast and controlled responsive QA remain acceptance work.
+
 ## P0 — Launch foundation
 
 - Publish accurate product, current status and trust pages.
