@@ -1,0 +1,378 @@
+[
+  {
+    "test": "First Tab exposes skip link",
+    "result": {
+      "active": "<a class=\"skip-link\" href=\"#main\">Skip to content</a>",
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "top": 1
+    }
+  },
+  {
+    "test": "Skip link activation",
+    "result": {
+      "activeId": "",
+      "activeTag": "BODY",
+      "hash": "#main"
+    }
+  },
+  {
+    "test": "Header Tools navigation",
+    "result": {
+      "title": "Monero mining tools — Ember",
+      "url": "http://127.0.0.1:4350/tools/"
+    }
+  },
+  {
+    "test": "Footer Learn navigation",
+    "result": {
+      "title": "Learn Monero mining — Ember",
+      "url": "http://127.0.0.1:4350/learn/"
+    }
+  },
+  {
+    "test": "Published resource card",
+    "result": {
+      "h1": "RandomX Memory and CPU Cache Explained",
+      "url": "http://127.0.0.1:4350/learn/randomx-memory-cache/"
+    }
+  },
+  {
+    "test": "Mobile setup code scroll and anchor clearance",
+    "result": {
+      "before": [
+        {
+          "client": 307,
+          "left": 0,
+          "scroll": 491
+        },
+        {
+          "client": 307,
+          "left": 0,
+          "scroll": 307
+        },
+        {
+          "client": 307,
+          "left": 0,
+          "scroll": 346
+        },
+        {
+          "client": 333,
+          "left": 0,
+          "scroll": 430
+        },
+        {
+          "client": 333,
+          "left": 0,
+          "scroll": 333
+        }
+      ],
+      "after": [
+        {
+          "client": 307,
+          "left": 7,
+          "scroll": 491
+        },
+        {
+          "client": 307,
+          "left": 0,
+          "scroll": 307
+        },
+        {
+          "client": 307,
+          "left": 0,
+          "scroll": 346
+        },
+        {
+          "client": 333,
+          "left": 0,
+          "scroll": 430
+        },
+        {
+          "client": 333,
+          "left": 0,
+          "scroll": 333
+        }
+      ],
+      "anchor": {
+        "active": "PRE",
+        "headerBottom": 116,
+        "targetTop": 5627.0625
+      }
+    }
+  },
+  {
+    "test": "Huge Pages table keyboard scrolling",
+    "result": {
+      "before": {
+        "client": 333,
+        "left": 0,
+        "scroll": 880
+      },
+      "after": {
+        "client": 333,
+        "focused": true,
+        "left": 16,
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "scroll": 880
+      }
+    }
+  },
+  {
+    "test": "Electricity initial blank tariff",
+    "result": {
+      "cost": "Enter a rate",
+      "energy": "2.4 kWh",
+      "tariff": ""
+    }
+  },
+  {
+    "test": "Electricity valid 100 W, 24 h, GBP 0.20/kWh",
+    "result": {
+      "daily": "£0.48",
+      "energy": "2.4 kWh",
+      "focus": "electricity-rate",
+      "period": "£14.40",
+      "year": "£175.20"
+    }
+  },
+  {
+    "test": "Electricity negative power invalidates output",
+    "result": {
+      "daily": "—",
+      "error": "Enter zero or a positive value.",
+      "invalid": "true"
+    }
+  },
+  {
+    "test": "Electricity reset",
+    "result": {
+      "cost": "Enter a rate",
+      "energy": "2.4 kWh",
+      "rate": "",
+      "watts": "100"
+    }
+  },
+  {
+    "test": "Electricity pence/USD mismatch after changing watts",
+    "result": {
+      "cost": "—",
+      "energy": "2.4 kWh",
+      "powerReadout": "100 W",
+      "status": "Pence per kWh applies to GBP. Choose GBP or change the rate unit to /kWh.",
+      "watts": "200"
+    }
+  },
+  {
+    "test": "Profitability initial blank state",
+    "result": {
+      "invalidCount": 0,
+      "net": "Complete valid assumptions to calculate",
+      "numericValues": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  {
+    "test": "Profitability first entry flags untouched fields",
+    "result": {
+      "errors": [
+        {
+          "id": "power-error",
+          "text": "Enter a value."
+        },
+        {
+          "id": "hours-error",
+          "text": "Enter a value."
+        },
+        {
+          "id": "tariff-error",
+          "text": "Enter a value."
+        },
+        {
+          "id": "fee-error",
+          "text": "Enter a value."
+        },
+        {
+          "id": "difficulty-error",
+          "text": "Enter a value."
+        },
+        {
+          "id": "reward-error",
+          "text": "Enter a value."
+        },
+        {
+          "id": "price-error",
+          "text": "Enter a value."
+        }
+      ],
+      "invalidCount": 7
+    }
+  },
+  {
+    "test": "Profitability M11B hypothetical scenario",
+    "result": {
+      "daily": "-£0.39",
+      "focus": "xmr-price",
+      "invalidCount": 0,
+      "meaning": "Estimated electricity cost exceeds revenue after pool fees under these assumptions.",
+      "projectionRows": [
+        "Expected block equivalents\t0.001 expected\t0.03 expected\t0.365 expected",
+        "Expected XMR after fee\t0.000594 XMR\t0.01782 XMR\t0.21681 XMR",
+        "Gross estimated revenue\t£0.09\t£2.70\t£32.85",
+        "Pool fee value\t£0.0009\t£0.03\t£0.33",
+        "Revenue after pool fees\t£0.09\t£2.67\t£32.52",
+        "Electricity consumption\t2.4 kWh\t72 kWh\t876 kWh",
+        "Electricity cost\t£0.48\t£14.40\t£175.20",
+        "Estimated net\t-£0.39\t-£11.73\t-£142.68"
+      ]
+    }
+  },
+  {
+    "test": "Profitability zero network difficulty invalidates result",
+    "result": {
+      "cells": [
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—"
+      ],
+      "error": "Enter a value greater than zero.",
+      "net": "Complete valid assumptions to calculate"
+    }
+  },
+  {
+    "test": "Profitability reset",
+    "result": {
+      "invalidCount": 0,
+      "net": "Complete valid assumptions to calculate",
+      "numericValues": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  {
+    "test": "Decoder empty input",
+    "result": {
+      "error": "Paste some XMRig output first.",
+      "focus": "analyze-log",
+      "status": "No analysis was run."
+    }
+  },
+  {
+    "test": "Decoder synthetic supported/unknown sample and results focus",
+    "result": {
+      "focus": "results-title",
+      "headings": [
+        "CPU backend ready",
+        "Huge Pages partially allocated",
+        "MSR operation reported a problem",
+        "Pool connection established",
+        "Share accepted"
+      ],
+      "outputLeaksEndpoint": false,
+      "outputLeaksMarker": false,
+      "status": "4 recognized lines grouped into 5 signals; 1 line left uninterpreted.",
+      "textareaFont": "\"Segoe UI\", Arial, sans-serif"
+    }
+  },
+  {
+    "test": "Decoder unknown-only sample",
+    "result": {
+      "empty": "No supported signals found. This does not mean the log is healthy; review the original output or an XMRig guide.",
+      "focus": "results-title",
+      "status": "0 recognized lines grouped into 0 signals; 1 line left uninterpreted."
+    }
+  },
+  {
+    "test": "Decoder Clear restores input focus",
+    "result": {
+      "focus": "xmrig-log",
+      "input": "",
+      "signals": 0,
+      "status": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted."
+    }
+  },
+  {
+    "test": "Native keyboard skip sequence after settled scrolling",
+    "result": {
+      "active": "<a class=\"button button-primary\" href=\"/ember/\">Explore Ember <span aria-hidden=\"true\">↗</span></a>",
+      "headerBottom": 116,
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "scrollY": 16,
+      "top": 507.453125,
+      "url": "http://127.0.0.1:4350/#main"
+    }
+  },
+  {
+    "test": "Setup Configure anchor settled 1440x900",
+    "result": {
+      "hash": "#configure-xmrig",
+      "headerBottom": 79,
+      "height": 900,
+      "scrollY": 3552,
+      "targetBottom": 133.5625,
+      "targetTop": 99.59375,
+      "width": 1440
+    }
+  },
+  {
+    "test": "Setup Configure anchor settled 390x844",
+    "result": {
+      "hash": "#configure-xmrig",
+      "headerBottom": 116,
+      "height": 844,
+      "scrollY": 6029,
+      "targetBottom": 134.03125,
+      "targetTop": 100.0625,
+      "width": 390
+    }
+  },
+  {
+    "test": "Focused table region rendered and scrollable",
+    "result": {
+      "client": 333,
+      "focused": true,
+      "height": 844,
+      "left": 80,
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "scroll": 880,
+      "width": 390
+    }
+  }
+]

@@ -1,0 +1,274 @@
+[
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/learn/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/guides/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/tools/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/ember/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/trust/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 1425,
+    "height": 900,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/learn/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/guides/",
+    "scrollWidth": 403,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/troubleshoot/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/tools/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/ember/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/trust/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 375,
+    "height": 844,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 375,
+    "width": 390
+  }
+]

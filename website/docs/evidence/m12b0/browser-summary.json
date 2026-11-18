@@ -1,0 +1,17 @@
+{
+  "primaryGeometryBrowser": "Opera GX 139.0.6053.63 (running executable product/file version)",
+  "geometryCases": 119,
+  "screenshotBrowser": "ChatGPT in-app browser (engine version not exposed by supported DOM inspection)",
+  "iabGeometryChecks": 34,
+  "interactionBrowser": "ChatGPT in-app browser",
+  "interactionCases": 25,
+  "viewportOverridesReset": true,
+  "finalState": {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "height": 720,
+    "title": "Ember — Monero mining, without the mystery",
+    "url": "http://127.0.0.1:4350/",
+    "width": 1280
+  },
+  "screenshotLimitations": "Opera viewport overrides caused scaled/letterboxed capture and full-page capture timeout; retained regular captures were replaced with in-app captures. A first desktop in-app capture had stale compositor bounds and was recaptured after a short resize/paint settle. JPEG dimensions are not CSS viewport dimensions."
+}

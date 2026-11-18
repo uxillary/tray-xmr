@@ -1,0 +1,2599 @@
+[
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 1425,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 1425,
+    "firstResourceTop": 962.859375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 1425,
+    "title": "Learn Monero mining — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 1425,
+    "firstResourceTop": 951.859375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 1425,
+    "title": "Windows XMRig guides — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 1425,
+    "firstResourceTop": 962.859375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1425,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 1425,
+    "firstResourceTop": 1098.140625,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 1425,
+    "title": "Monero mining tools — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": 489.5,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": 489.5,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1425,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": 574.75,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 579,
+        "scroll": 579
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 1198,
+        "scroll": 1198
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 1198,
+        "scroll": 1198
+      }
+    ],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": "10px",
+    "resultTop": 574.75,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1425,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": 918.84375,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": 678.890625,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1425,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 818,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1425,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 818,
+        "scroll": 818
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 818,
+        "scroll": 818
+      }
+    ],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1425,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1425,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 1425,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 1425,
+    "title": "Trust and transparency — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1425,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1425,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1425,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1425,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 1440
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 1265,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 1265,
+    "firstResourceTop": 962.859375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 1265,
+    "title": "Learn Monero mining — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 1265,
+    "firstResourceTop": 951.859375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 1265,
+    "title": "Windows XMRig guides — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 1265,
+    "firstResourceTop": 962.859375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1265,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 1265,
+    "firstResourceTop": 1098.140625,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 1265,
+    "title": "Monero mining tools — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": 489.5,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": 489.5,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1265,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": 574.75,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 569,
+        "scroll": 569
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 1179,
+        "scroll": 1179
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 1179,
+        "scroll": 1179
+      }
+    ],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": "10px",
+    "resultTop": 574.75,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1265,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": 918.84375,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": 678.890625,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1265,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 818,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1265,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 818,
+        "scroll": 818
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 818,
+        "scroll": 818
+      }
+    ],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1265,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1265,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 1265,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 1265,
+    "title": "Trust and transparency — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1265,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1265,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1265,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1265,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 1280
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 1009,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 1009,
+    "firstResourceTop": 933.0625,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 1009,
+    "title": "Learn Monero mining — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 1009,
+    "firstResourceTop": 933.0625,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 1009,
+    "title": "Windows XMRig guides — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 1009,
+    "firstResourceTop": 962.8125,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1009,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 1009,
+    "firstResourceTop": 1068.34375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 1009,
+    "title": "Monero mining tools — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": 440.53125,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": 440.53125,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1009,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": 525.78125,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 451,
+        "scroll": 451
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 925,
+        "scroll": 925
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 925,
+        "scroll": 925
+      }
+    ],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": "10px",
+    "resultTop": 525.78125,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1009,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": 892.96875,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": 629.921875,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1009,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 818,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1009,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 792,
+        "scroll": 792
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 818,
+        "scroll": 818
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 818,
+        "scroll": 818
+      }
+    ],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1009,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1009,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 1009,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 1009,
+    "title": "Trust and transparency — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1009,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1009,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1009,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 768,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1009,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 1024
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 753,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 753,
+    "firstResourceTop": 955.609375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 753,
+    "title": "Learn Monero mining — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 753,
+    "firstResourceTop": 982,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 753,
+    "title": "Windows XMRig guides — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 753,
+    "firstResourceTop": 955.609375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 753,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 753,
+    "firstResourceTop": 1175.03125,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 753,
+    "title": "Monero mining tools — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": 377.234375,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": 1190.515625,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 753,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": 511.3125,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 647,
+        "scroll": 647
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 690,
+        "scroll": 700
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 690,
+        "scroll": 690
+      }
+    ],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": "10px",
+    "resultTop": 1456.828125,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 753,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": 806.578125,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": 1196.703125,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 753,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 690,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 753,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 664,
+        "scroll": 664
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 664,
+        "scroll": 664
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 664,
+        "scroll": 664
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 690,
+        "scroll": 690
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 690,
+        "scroll": 690
+      }
+    ],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 753,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 753,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 753,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 753,
+    "title": "Trust and transparency — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 753,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 753,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 753,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 900,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 753,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 768
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 585,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 585,
+    "firstResourceTop": 1233.6875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 585,
+    "title": "Learn Monero mining — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 585,
+    "firstResourceTop": 1112.1875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 585,
+    "title": "Windows XMRig guides — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 585,
+    "firstResourceTop": 1245.671875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 585,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 585,
+    "firstResourceTop": 1313.0625,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 585,
+    "title": "Monero mining tools — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": 477.09375,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": 1316.40625,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 585,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": 529.09375,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 505,
+        "scroll": 505
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 535,
+        "scroll": 660
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 535,
+        "scroll": 660
+      }
+    ],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": "9px",
+    "resultTop": 1966.359375,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 585,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": 1017.78125,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": 1391.90625,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 585,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 535,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 585,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 509,
+        "scroll": 509
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 509,
+        "scroll": 509
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 509,
+        "scroll": 509
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 535,
+        "scroll": 535
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 535,
+        "scroll": 535
+      }
+    ],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 585,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 585,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 585,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 585,
+    "title": "Trust and transparency — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 585,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 585,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 585,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 585,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 600
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 375,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 375,
+    "firstResourceTop": 1342.921875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 375,
+    "title": "Learn Monero mining — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 375,
+    "firstResourceTop": 1296.75,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 403,
+    "title": "Windows XMRig guides — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 375,
+    "firstResourceTop": 1264.921875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 375,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 375,
+    "firstResourceTop": 1494.9375,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 375,
+    "title": "Monero mining tools — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": 465.9375,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": 1322.296875,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 375,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": 618.453125,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 303,
+        "scroll": 303
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 333,
+        "scroll": 660
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 333,
+        "scroll": 660
+      }
+    ],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": "9px",
+    "resultTop": 2152.109375,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 375,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": 1029.71875,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": 1418.96875,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 375,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 333,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 375,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 307,
+        "scroll": 491
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 307,
+        "scroll": 307
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 307,
+        "scroll": 346
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 333,
+        "scroll": 430
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 333,
+        "scroll": 333
+      }
+    ],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 375,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 375,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 375,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 375,
+    "title": "Trust and transparency — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 375,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 375,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 375,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 844,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 375,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 390
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/",
+    "scrollWidth": 345,
+    "title": "Ember — Monero mining, without the mystery",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/",
+    "clientWidth": 345,
+    "firstResourceTop": 1398.421875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/",
+    "scrollWidth": 345,
+    "title": "Learn Monero mining — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/",
+    "clientWidth": 345,
+    "firstResourceTop": 1296.75,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/",
+    "scrollWidth": 388,
+    "title": "Windows XMRig guides — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+    "clientWidth": 345,
+    "firstResourceTop": 1292.421875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/",
+    "scrollWidth": 345,
+    "title": "Monero mining troubleshooting — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/",
+    "clientWidth": 345,
+    "firstResourceTop": 1544.421875,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/tools/",
+    "scrollWidth": 345,
+    "title": "Monero mining tools — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": 465.9375,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": 1373.1875,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 345,
+    "title": "Mining Electricity Cost Calculator",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": 618.453125,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "projection-wrap",
+        "client": 273,
+        "scroll": 273
+      },
+      {
+        "class": "mining-input-table-wrap",
+        "client": 303,
+        "scroll": 660
+      },
+      {
+        "class": "mining-example-table-wrap",
+        "client": 303,
+        "scroll": 660
+      }
+    ],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": "9px",
+    "resultTop": 2234.609375,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 345,
+    "title": "Monero Mining Profitability Calculator — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": 1123.71875,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": 1512.96875,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 345,
+    "title": "XMRig Log Decoder — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "signal-table-wrap",
+        "client": 303,
+        "scroll": 880
+      }
+    ],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 345,
+    "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [
+      {
+        "class": "astro-code github-dark",
+        "client": 277,
+        "scroll": 491
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 277,
+        "scroll": 286
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 277,
+        "scroll": 346
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 303,
+        "scroll": 430
+      },
+      {
+        "class": "astro-code github-dark",
+        "client": 303,
+        "scroll": 303
+      }
+    ],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 345,
+    "title": "How to Set Up XMRig on Windows — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 345,
+    "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/ember/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/ember/",
+    "scrollWidth": 345,
+    "title": "About Ember — a clearer Monero mining manager",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/trust/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/trust/",
+    "scrollWidth": 345,
+    "title": "Trust and transparency — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 345,
+    "title": "RandomX Memory and CPU Cache Explained — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 345,
+    "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 345,
+    "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+    "width": 360
+  },
+  {
+    "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "formTop": null,
+    "h1Count": 1,
+    "height": 800,
+    "localScrollRegions": [],
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "projectionFont": null,
+    "resultTop": null,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 345,
+    "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+    "width": 360
+  }
+]
