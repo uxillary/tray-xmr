@@ -1,4 +1,3 @@
-import { ClockCounterClockwiseIcon } from "@phosphor-icons/react/dist/csr/ClockCounterClockwise";
 import { CpuIcon } from "@phosphor-icons/react/dist/csr/Cpu";
 import { GearSixIcon } from "@phosphor-icons/react/dist/csr/GearSix";
 import { HouseIcon } from "@phosphor-icons/react/dist/csr/House";
@@ -6,19 +5,21 @@ import { LightningIcon } from "@phosphor-icons/react/dist/csr/Lightning";
 import { WalletIcon } from "@phosphor-icons/react/dist/csr/Wallet";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { LivingCore } from "./components/LivingCore";
-import { livingCoreState } from "./livingCoreState.mjs";
-import { EmptyState } from "./components/EmptyState";
 import { ThisDeviceStatus } from "./components/ThisDeviceStatus";
-import { SystemOverview } from "./components/SystemOverview";
-import { OverviewMiningTelemetry } from "./components/MiningTelemetry";
 import { useSystemSnapshot } from "./hooks/useSystemSnapshot";
 import { MiningSetup, type MiningReadiness, type MiningSessionStatus } from "./components/MiningSetup";
 import type { EmberEvent } from "./emberStream.mjs";
+import { SystemOverview } from "./components/SystemOverview";
 import type { SystemSnapshot } from "./types/system";
 import "./App.css";
 
-type Section = "overview" | "mining" | "activity" | "settings";
+export type Section = "home" | "settings";
+
+/** Old destinations intentionally converge on the same everyday workspace. */
+export function workspaceDestination(path: string, hash = ""): Section {
+  const destination = (hash.replace(/^#\/?/, "") || path.replace(/^\//, "")).replace(/\/$/, "").toLowerCase();
+  return destination === "settings" ? "settings" : "home";
+}
 type TestMark = "notRun" | "running" | "passed" | "failed" | "cancelled";
 type IntegrationTestStatus = {
   running: boolean;
@@ -32,17 +33,15 @@ type IntegrationTestStatus = {
 };
 
 const sections: { id: Section; label: string; icon: ReactNode }[] = [
-  { id: "overview", label: "Overview", icon: <HouseIcon weight="regular" /> },
-  { id: "mining", label: "Mining", icon: <LightningIcon weight="regular" /> },
-  { id: "activity", label: "Activity", icon: <ClockCounterClockwiseIcon weight="regular" /> },
+  { id: "home", label: "Home", icon: <HouseIcon weight="regular" /> },
   { id: "settings", label: "Settings", icon: <GearSixIcon weight="regular" /> },
 ];
 
-function App() {
-  const [section, setSection] = useState<Section>("overview");
+function App({ reducedMotion = false, invokeCommand = invoke }: { reducedMotion?: boolean; invokeCommand?: typeof invoke }) {
+  const [section, setSection] = useState<Section>(() => workspaceDestination(window.location.pathname, window.location.hash));
+  const [setupRequested, setSetupRequested] = useState(false);
   const [nativeState, setNativeState] = useState<string | null>(null);
-  const [statusError, setStatusError] = useState(false);
-  const systemSnapshot = useSystemSnapshot();
+  const systemSnapshot = useSystemSnapshot(invokeCommand);
   const [setup, setSetup] = useState<MiningReadiness | null>(null);
   const [session, setSession] = useState<MiningSessionStatus | null>(null);
   const [sessionStatusUnavailable, setSessionStatusUnavailable] = useState(false);
@@ -54,18 +53,30 @@ function App() {
   const [integrationTest, setIntegrationTest] = useState<IntegrationTestStatus | null>(null);
   const [integrationTestError, setIntegrationTestError] = useState<string | null>(null);
 
+  function navigate(next: Section) {
+    window.history.replaceState(null, "", `#/${next}`);
+    setSection(next);
+  }
+
+  useEffect(() => {
+    const update = () => setSection(workspaceDestination(window.location.pathname, window.location.hash));
+    window.addEventListener("hashchange", update);
+    window.addEventListener("popstate", update);
+    return () => { window.removeEventListener("hashchange", update); window.removeEventListener("popstate", update); };
+  }, []);
+
   function changeDiagnosticsMode(enabled: boolean) {
     setDiagnosticsMode(enabled);
     localStorage.setItem("ember.diagnosticsMode", String(enabled));
   }
 
   async function copyDiagnostics() {
-    const report = await invoke<string>("copy_diagnostics");
+    const report = await invokeCommand<string>("copy_diagnostics");
     await navigator.clipboard.writeText(report);
   }
 
   async function refreshIntegrationTest() {
-    try { setIntegrationTest(await invoke<IntegrationTestStatus>("xmrig_integration_test_status")); }
+    try { setIntegrationTest(await invokeCommand<IntegrationTestStatus>("xmrig_integration_test_status")); }
     catch { setIntegrationTest(null); }
   }
 
@@ -82,7 +93,7 @@ function App() {
       reportAvailable: false,
     }));
     try {
-      setIntegrationTest(await invoke<IntegrationTestStatus>("start_xmrig_integration_test"));
+      setIntegrationTest(await invokeCommand<IntegrationTestStatus>("start_xmrig_integration_test"));
     } catch (failure) {
       setIntegrationTestError(typeof failure === "string" ? failure : "The XMRig integration test could not start.");
       await refreshIntegrationTest();
@@ -94,7 +105,7 @@ function App() {
   async function stopIntegrationTest() {
     setIntegrationTestError(null);
     try {
-      setIntegrationTest(await invoke<IntegrationTestStatus>("stop_xmrig_integration_test"));
+      setIntegrationTest(await invokeCommand<IntegrationTestStatus>("stop_xmrig_integration_test"));
     } catch (failure) {
       setIntegrationTestError(typeof failure === "string" ? failure : "The integration test is still stopping.");
       await refreshIntegrationTest();
@@ -105,7 +116,7 @@ function App() {
 
   async function copyIntegrationReport() {
     try {
-      const report = await invoke<string>("copy_xmrig_integration_report");
+      const report = await invokeCommand<string>("copy_xmrig_integration_report");
       await navigator.clipboard.writeText(report);
       setIntegrationTestError(null);
     } catch (failure) {
@@ -116,33 +127,32 @@ function App() {
   function acceptSetup(next: MiningReadiness) {
     setSetup(next);
     setNativeState(next.ready ? "ready" : "notConfigured");
-    setStatusError(false);
   }
 
   async function refreshSetup() {
-    try { acceptSetup(await invoke<MiningReadiness>("mining_readiness")); }
-    catch { setStatusError(true); setNativeState(null); setSetup(null); }
+    try { acceptSetup(await invokeCommand<MiningReadiness>("mining_readiness")); }
+    catch { setNativeState(null); setSetup(null); }
   }
 
   const refreshSession = useCallback(() => {
     if (sessionRequest.current) return sessionRequest.current;
-    const pending = invoke<MiningSessionStatus>("mining_status", { diagnosticsMode })
+    const pending = invokeCommand<MiningSessionStatus>("mining_status", { diagnosticsMode })
       .then((next) => { setSession(next); setSessionStatusUnavailable(false); })
       .catch(() => setSessionStatusUnavailable(true))
       .finally(() => { sessionRequest.current = null; });
     sessionRequest.current = pending;
     return pending;
-  }, [diagnosticsMode]);
+  }, [diagnosticsMode, invokeCommand]);
 
   const refreshMiningEvents = useCallback(() => {
     if (eventsRequest.current) return eventsRequest.current;
-    const pending = invoke<EmberEvent[]>("mining_events")
+    const pending = invokeCommand<EmberEvent[]>("mining_events")
       .then((next) => { setMiningEvents(next); setMiningEventsUnavailable(false); })
       .catch(() => setMiningEventsUnavailable(true))
       .finally(() => { eventsRequest.current = null; });
     eventsRequest.current = pending;
     return pending;
-  }, []);
+  }, [invokeCommand]);
 
   useEffect(() => {
     void refreshSetup();
@@ -160,7 +170,7 @@ function App() {
   }, [refreshSession]);
 
   useEffect(() => {
-    if (section !== "mining") return;
+    if (section !== "home") return;
     let cancelled = false;
     let timer = 0;
     const refresh = async () => {
@@ -179,7 +189,7 @@ function App() {
   }, [diagnosticsMode]);
 
   useEffect(() => {
-    if (section === "mining" && (session?.state === "error" || session?.state === "stopped")) void refreshSetup();
+    if (section === "home" && (session?.state === "error" || session?.state === "stopped")) void refreshSetup();
   }, [section, session?.state]);
 
   const current = sections.find((item) => item.id === section)!;
@@ -187,7 +197,7 @@ function App() {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <button className="brand-lockup" type="button" onClick={() => setSection("overview")} aria-label="Ember home">
+        <button className="brand-lockup" type="button" onClick={() => navigate("home")} aria-label="Ember home">
           <img className="brand-mark" src="/ember-mark.svg" alt="" />
           <span>ember</span>
         </button>
@@ -199,7 +209,7 @@ function App() {
               key={item.id}
               type="button"
               aria-current={section === item.id ? "page" : undefined}
-              onClick={() => setSection(item.id)}
+              onClick={() => navigate(item.id)}
             >
               <span className="nav-icon" aria-hidden="true">{item.icon}</span>
               <span>{item.label}</span>
@@ -217,64 +227,15 @@ function App() {
         <div className="page-content">
           <header className="page-heading"><h1>{current.label}</h1></header>
 
-          {section === "overview" && <OverviewPage statusError={statusError} systemSnapshot={systemSnapshot} session={session} setup={setup} sessionStatusUnavailable={sessionStatusUnavailable} openMining={() => setSection("mining")} />}
-          {section === "mining" && <MiningSetup setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} sessionStatusUnavailable={sessionStatusUnavailable} diagnosticsMode={diagnosticsMode} diagnosticRunning={integrationTest?.running ?? false} copyDiagnostics={() => void copyDiagnostics()} events={miningEvents} eventsUnavailable={miningEventsUnavailable} />}
-          {section === "activity" && <ActivityPage />}
-          {section === "settings" && <SettingsPage setup={setup} editSetup={() => setSection("mining")} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} miningBusy={session !== null && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state))} integrationTest={integrationTest} integrationTestError={integrationTestError} startIntegrationTest={() => void startIntegrationTest()} stopIntegrationTest={() => void stopIntegrationTest()} copyIntegrationReport={() => void copyIntegrationReport()} />}
+          <MiningSetup controlsOnly={section !== "home"} setupRequested={setupRequested} invokeCommand={invokeCommand} reducedMotion={reducedMotion} setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} sessionStatusUnavailable={sessionStatusUnavailable} diagnosticsMode={diagnosticsMode} diagnosticRunning={integrationTest?.running ?? false} copyDiagnostics={copyDiagnostics} events={miningEvents} eventsUnavailable={miningEventsUnavailable} />
+          {section === "settings" && <SettingsPage systemSnapshot={systemSnapshot} setup={setup} editSetup={() => { setSetupRequested(true); navigate("home"); }} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} miningBusy={session !== null && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state))} integrationTest={integrationTest} integrationTestError={integrationTestError} startIntegrationTest={() => void startIntegrationTest()} stopIntegrationTest={() => void stopIntegrationTest()} copyIntegrationReport={() => void copyIntegrationReport()} />}
         </div>
       </main>
     </div>
   );
 }
 
-export function OverviewPage({ statusError, systemSnapshot, session, setup, sessionStatusUnavailable, openMining, reducedMotion = false, inspectFrame }: { statusError: boolean; systemSnapshot: SystemSnapshot | null; session: MiningSessionStatus | null; setup: MiningReadiness | null; sessionStatusUnavailable: boolean; openMining: () => void; reducedMotion?: boolean; inspectFrame?: number }) {
-  const view = livingCoreState({ session, statusUnavailable: sessionStatusUnavailable || (!session && statusError), readiness: setup });
-  const isMining = view.lifecycle === "mining" || view.lifecycle === "paused";
-  const isStarting = view.lifecycle === "starting";
-  const isStopping = view.lifecycle === "stopping";
-  const isError = view.lifecycle === "error";
-  const headline = !session && !setup && !statusError && !sessionStatusUnavailable ? "Checking status" : view.label;
-  const supportCopy = view.lifecycle === "unavailable"
-    ? "Ember cannot confirm the current session status. Open Mining to review."
-    : view.lifecycle === "paused"
-      ? "Your mining session is paused."
-      : isMining
-        ? view.freshness === "fresh" ? "Ember is supervising this mining session." : "The last reported session is mining. Waiting for current readings."
-        : isStarting
-          ? "Ember is bringing your mining session online."
-          : isStopping
-            ? "Ember is closing the owned mining session."
-            : isError
-              ? "Open Mining to review the session and available recovery actions."
-              : setup?.ready
-                ? "Your setup is ready. Start mining only when you choose to."
-                : "Complete your wallet, pool and power setup to begin.";
-  return (
-    <>
-      <section className={`overview-hero overview-hero--living${isMining ? " overview-hero--live" : ""}`} aria-labelledby="overview-title">
-        <div className="hero-copy">
-          <p className="eyebrow">THIS DEVICE</p>
-          <h2 id="overview-title">{headline}</h2>
-          <p className="hero-description">{supportCopy}</p>
-          {view.qualifier && view.qualifier !== "Live telemetry" && <p className="living-core-qualifier">{view.qualifier}</p>}
-          {!isMining && !isStarting && !isStopping && <button className="overview-mining-action" type="button" onClick={openMining}>{isError || statusError || sessionStatusUnavailable ? "Review Mining" : setup?.ready ? "Open Mining" : "Set up Mining"}</button>}
-        </div>
-        <div className="hero-core-wrap"><LivingCore view={view} reducedMotion={reducedMotion} inspectFrame={inspectFrame} /><span className="core-caption">EMBER · LIVING CORE</span></div>
-      </section>
-
-      <OverviewMiningTelemetry session={session} setup={setup} statusUnavailable={sessionStatusUnavailable} />
-
-      <SystemOverview snapshot={systemSnapshot} />
-
-    </>
-  );
-}
-
-function ActivityPage() {
-  return <EmptyState variant="timeline" icon={<ClockCounterClockwiseIcon weight="light" />} title="Activity timeline" description="Saved local history isn’t available yet. The live session Stream appears on Mining and isn’t saved here." />;
-}
-
-function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode, miningBusy, integrationTest, integrationTestError, startIntegrationTest, stopIntegrationTest, copyIntegrationReport }: { setup: MiningReadiness | null; editSetup: () => void; diagnosticsMode: boolean; setDiagnosticsMode: (enabled: boolean) => void; miningBusy: boolean; integrationTest: IntegrationTestStatus | null; integrationTestError: string | null; startIntegrationTest: () => void; stopIntegrationTest: () => void; copyIntegrationReport: () => void }) {
+function SettingsPage({ systemSnapshot, setup, editSetup, diagnosticsMode, setDiagnosticsMode, miningBusy, integrationTest, integrationTestError, startIntegrationTest, stopIntegrationTest, copyIntegrationReport }: { systemSnapshot: SystemSnapshot | null; setup: MiningReadiness | null; editSetup: () => void; diagnosticsMode: boolean; setDiagnosticsMode: (enabled: boolean) => void; miningBusy: boolean; integrationTest: IntegrationTestStatus | null; integrationTestError: string | null; startIntegrationTest: () => void; stopIntegrationTest: () => void; copyIntegrationReport: () => void }) {
   return (
     <>
       <section className="settings-section" aria-labelledby="settings-mining">
@@ -283,8 +244,9 @@ function SettingsPage({ setup, editSetup, diagnosticsMode, setDiagnosticsMode, m
         <SettingRow icon={<CpuIcon />} label="Pool" description={setup?.pool ? `${setup.pool.host}:${setup.pool.port} · ${setup.pool.tls ? "TLS" : "Unencrypted TCP"}` : "No pool selected."} state="Untested" />
         <SettingRow icon={<LightningIcon />} label="Resource profile" description={setup?.profile ? `${setup.profile} · ${setup.threads} CPU threads` : "No profile selected."} state="Static" />
         <button className="setup-engine-button" type="button" onClick={editSetup}>Edit wallet, pool and resources</button>
-        <p className="info-detail settings-note">Changes require a fresh acknowledgement on the Mining page.</p>
+        <p className="info-detail settings-note">Changes require a fresh acknowledgement on Home.</p>
       </section>
+      <details className="settings-section"><summary>Device information</summary><SystemOverview snapshot={systemSnapshot} /></details>
       <section className={`settings-section settings-section--diagnostics${diagnosticsMode ? " is-open" : ""}`} aria-labelledby="settings-diagnostics">
         <h2 id="settings-diagnostics">Advanced / Diagnostics</h2>
         <label className="diagnostics-toggle"><span><strong>Diagnostics mode</strong><small>Show sanitized startup evidence and enable controlled diagnostic tools.</small></span><input type="checkbox" checked={diagnosticsMode} disabled={integrationTest?.running ?? false} onChange={(event) => setDiagnosticsMode(event.currentTarget.checked)} /></label>

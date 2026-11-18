@@ -17,3 +17,8 @@
   .living-core-preview-toolbar { padding: 10px 13px; }
   .living-core-preview-toolbar label { flex-wrap: wrap; }
 }
+
+@media (max-width: 600px) {
+  .living-core-preview .sidebar { height: auto; }
+  .living-core-preview .workspace { height: auto; }
+}

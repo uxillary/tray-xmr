@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { formatEmberEventTime, presentEmberEvent } from "./emberStream.mjs";
+import { eventContext, eventExplanation, formatEmberEventTime, presentEmberEvent, streamUpdate } from "./emberStream.mjs";
 
 const event = (type, data, extra = {}) => ({ id: "id", occurredAtUnixMs: 1, sessionId: "private-id", category: "system", severity: "informational", source: "emberLifecycle", kind: { type, data }, ...extra });
 
@@ -30,4 +30,24 @@ test("distinguishes startup, unexpected-exit, and stop failures", () => {
 test("formats supplied Unix timestamps in local time and handles invalid values", () => {
   assert.equal(formatEmberEventTime(0), new Date(0).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }));
   assert.equal(formatEmberEventTime(Number.NaN), "--:--:--");
+});
+
+test("stream following never interrupts an older-events reader or counts unchanged polls as new", () => {
+  const events = [{id: "a"}, {id: "b"}, {id: "c"}];
+  assert.deepEqual(streamUpdate(events, "b", false), { added: 1, follow: false });
+  assert.deepEqual(streamUpdate(events, "b", true), { added: 1, follow: true });
+  assert.deepEqual(streamUpdate(events, "c", false), { added: 0, follow: false });
+  assert.deepEqual(streamUpdate(events, null, true), { added: 0, follow: true });
+  assert.deepEqual(streamUpdate(events, "expired-id", false), { added: 3, follow: false });
+  assert.deepEqual(streamUpdate([], "c", false), { added: 0, follow: false });
+});
+
+test("copyable event context allowlists typed data and drops unknown fields and injected secrets", () => {
+  const data = { profile: "quiet", configuredThreads: 4, password: "private-token", wallet: "private-wallet" };
+  assert.deepEqual(eventContext(event("miningStarted", data)), { profile: "quiet", configuredThreads: 4 });
+  assert.deepEqual(eventContext(event("miningStarted", { profile: "private-token", configuredThreads: "private-token" })), { profile: "unavailable", configuredThreads: null });
+  assert.deepEqual(eventContext(event("futureKind", data)), {});
+  assert.deepEqual(eventContext(event("resultsAccepted", { count: 0, token: "private-token" })), { count: 0 });
+  assert.match(eventExplanation(event("miningFailed", { failure: "stopFailed" })), /may still be running/);
+  assert.equal(eventExplanation(event("resultsAccepted", { count: 1 })), null);
 });

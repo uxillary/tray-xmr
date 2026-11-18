@@ -1,38 +1,30 @@
 .living-core { width: 100%; min-width: 0; display: grid; justify-items: center; pointer-events: none; }
-.living-core-viewport { position: relative; width: 100%; height: calc(156px * var(--scene-scale, 1)); overflow: hidden; isolation: isolate; }
-.living-core-canvas { position: absolute; top: calc(-12px * var(--scene-scale, 1)); left: var(--scene-left, 0px); width: 320px; height: 180px; transform: scale(var(--scene-scale, 1)); transform-origin: top left; }
-.living-core-layer, .living-core-static, .living-core-layers { position: absolute; inset: 0; width: 320px; height: 180px; }
+.living-core-viewport { position: relative; width: 100%; height: calc(144px * var(--scene-scale, 1)); overflow: hidden; isolation: isolate; }
+.living-core-canvas { position: absolute; top: 0; left: var(--scene-left, 0px); width: 320px; height: 144px; transform: scale(var(--scene-scale, 1)); transform-origin: top left; }
+.living-core-layer, .living-core-static { position: absolute; inset: 0; width: 320px; height: 144px; }
 .living-core-layer { overflow: hidden; z-index: 2; }
 .living-core-layer--workshop { z-index: 0; }
+.living-core-layer--character { inset: auto; z-index: 3; }
 .living-core-layer img, .living-core-static { position: absolute; top: 0; max-width: none; image-rendering: pixelated; user-select: none; }
-.living-core-light { position: absolute; z-index: 1; inset: 36px 74px 24px 143px; opacity: 0; background: radial-gradient(ellipse, #ffac3d30, #df791b10 46%, transparent 72%); }
+.living-core-light { position: absolute; z-index: 1; left: 194px; top: 61px; width: 72px; height: 72px; opacity: 0; background: radial-gradient(ellipse, #ffac3d22, transparent 72%); }
 .living-core-light.is-active { opacity: 1; }
-.living-core.living-core--still .core-halo { animation: none; }
-
-/* Overview alone owns this composition. The workshop shares the hero's surface. */
-.workspace--overview .page-content { container-type: inline-size; }
-.overview-hero.overview-hero--living { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(512px, 1.8fr); gap: 20px; padding: 24px 28px; background: radial-gradient(ellipse at 74% 70%, #8f583024, transparent 60%), #191c19; }
-.overview-hero--living .hero-copy { max-width: none; min-width: 0; }
-.overview-hero--living .hero-copy h2 { overflow-wrap: anywhere; }
-.overview-hero--living .hero-description { max-width: 48ch; }
-.overview-hero.overview-hero--living .hero-core-wrap { width: 100%; min-width: 0; max-width: 640px; justify-self: center; margin: 0; transform: none; gap: 0; }
-.overview-hero--living .living-core-viewport { mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
-.overview-hero--living .core-caption { margin-top: 10px; color: var(--text-secondary); letter-spacing: 2px; }
-.overview-hero.overview-hero--living .ember-core { transform: none; }
-.living-core-qualifier { margin: 9px 0 0; color: var(--warning); font-size: 13px; line-height: 1.5; }
-@container (max-width: 800px) {
-  .overview-hero.overview-hero--living { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 20px; }
-  .overview-hero--living .hero-copy { width: 100%; }
-}
-@container (max-width: 480px) {
-  .overview-hero.overview-hero--living { padding: 16px 12px; }
-  .overview-hero--living .core-caption { font-size: 9px; letter-spacing: 1px; }
-}
-/* 820px at 200% zoom: retain readable text, controls and a central artwork crop. */
-@media (max-width: 600px) {
-  .app-shell:has(.workspace--overview) .sidebar { width: 144px; flex-basis: 144px; padding-inline: 10px; }
-  .workspace--overview .overview-live-ops { grid-template-columns: minmax(0, 1fr); }
-  .workspace--overview .overview-live-time { grid-column: auto; }
-  .workspace--overview .system-grid { grid-template-columns: minmax(0, 1fr); }
-  .workspace--overview .overview-live-rate > strong { font-size: clamp(24px, 7vw, 38px); overflow-wrap: anywhere; }
-}
+.living-core--still .core-halo { animation: none; }
+.workshop-conduit { position: absolute; z-index: 2; left: 238px; top: 90px; width: 25px; height: 18px; border-right: 2px solid #6f573a; border-bottom: 2px solid #6f573a; }
+.workshop-conduit i { position: absolute; width: 3px; height: 2px; background: #9c743b; bottom: -2px; left: 3px; }
+.workshop-conduit i:nth-child(2) { left: 13px; }
+.workshop-conduit i:nth-child(3) { left: 23px; bottom: 7px; }
+.workshop-flywheel { position: absolute; z-index: 2; left: 251px; top: 46px; width: 20px; height: 20px; }
+.workshop-flywheel i { position: absolute; left: 9px; top: 1px; width: 2px; height: 18px; background: #9d743c; box-shadow: 0 0 0 1px #34271a; }
+.workshop-flywheel i::after { content: ""; position: absolute; top: 8px; left: -8px; width: 18px; height: 2px; background: #9d743c; }
+.workshop-crystal-facet { position: absolute; z-index: 2; left: 228px; top: 86px; width: 2px; height: 12px; background: #f4ce77; opacity: .15; box-shadow: 3px 4px #eab24c, -3px 8px #e5a247; }
+.living-core[data-active-work="true"] .workshop-crystal-facet { opacity: .65; }
+.living-core[data-active-work="true"] .workshop-conduit i { background: #e9b65b; }
+.living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-crystal-facet { animation: crystal-work var(--work-cycle) steps(4) infinite; }
+.living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-flywheel { animation: wheel-work calc(var(--work-cycle) * 2) steps(8) infinite; }
+.living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-conduit i { animation: conduit-work var(--work-cycle) steps(3) infinite; }
+.workshop-conduit i:nth-child(2) { animation-delay: -.8s !important; }
+.workshop-conduit i:nth-child(3) { animation-delay: -1.6s !important; }
+@keyframes crystal-work { 0%, 100% { opacity: .35; } 50% { opacity: .85; } }
+@keyframes wheel-work { to { transform: rotate(360deg); } }
+@keyframes conduit-work { 0%, 100% { opacity: .3; } 50% { opacity: .9; } }
+@media (prefers-reduced-motion: reduce) { .living-core * { animation: none !important; transition: none !important; } }

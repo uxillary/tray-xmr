@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import { OverviewPage } from "../App";
-import manifest from "../livingCoreManifest.json";
-import { livingCoreState } from "../livingCoreState.mjs";
-import { MiningSessionTelemetry } from "../components/MiningTelemetry";
-import { EmberStream } from "../components/EmberStream";
+import { useRef, useState } from "react";
+import type { invoke } from "@tauri-apps/api/core";
+import App from "../App";
+import { checkStreamScrolling } from "./checkStreamScrolling";
 import { checkLivingCoreLifecycle } from "./checkLivingCoreLifecycle";
+import { checkDiagnostics } from "./checkDiagnostics";
 import type { MiningReadiness, MiningSessionStatus } from "../components/MiningSetup";
+import type { EmberEvent } from "../emberStream.mjs";
 import "./LivingCorePreview.css";
 
 const choices = [
@@ -19,93 +19,120 @@ const choices = [
 type Choice = typeof choices[number][0];
 
 const readiness: MiningReadiness = {
-  engine: "ready", engineIssue: null, engineVersion: "", walletMasked: null, developerWallet: "", pool: null,
-  profile: "quiet", logicalProcessors: 16, threads: 4, profileOptions: [], revision: 0, acknowledged: true,
-  ready: true, startAllowed: false, startReason: "Development preview", checks: [], storageError: null,
+  engine: "ready", engineIssue: null, engineVersion: "6.26.0", walletMasked: "48…preview", developerWallet: "Development fixture only", pool: { host: "pool.example", port: 3333, tls: true, worker: null },
+  profile: "quiet", logicalProcessors: 16, threads: 4, profileOptions: [{ profile: "quiet", threads: 4 }, { profile: "balanced", threads: 8 }, { profile: "performance", threads: 16 }], revision: 0, acknowledged: true,
+  ready: true, startAllowed: true, startReason: "Development preview", checks: [], storageError: null,
 };
+
+const previewEvents: EmberEvent[] = Array.from({ length: 36 }, (_, index) => ({
+  id: `fixture-event-${index}`, sessionId: "development-only", occurredAtUnixMs: Date.now() - (36 - index) * 10000,
+  category: index % 6 === 4 ? "pool" : index % 6 === 5 ? "result" : "system",
+  severity: index % 6 === 4 ? "warning" : index % 6 === 5 ? "success" : "informational",
+  source: index % 6 >= 4 ? "xmrigSummary" : "emberLifecycle",
+  kind: index % 6 === 4 ? { type: "poolConnectionChanged", data: { from: "connected", to: "disconnected" } }
+    : index % 6 === 5 ? { type: "resultsAccepted", data: { count: 1 } }
+      : { type: "miningStarted", data: { profile: "quiet", configuredThreads: 4 } },
+}));
 
 function fixture(choice: Choice): MiningSessionStatus {
   const state = ["stale", "missing", "zero", "missingRate", "failed"].includes(choice) ? "mining" : choice as MiningSessionStatus["state"];
   return {
-    state, processId: null, sessionDurationSeconds: null,
+    state, processId: ["mining", "starting", "stopping", "paused"].includes(state) ? 42 : null, sessionDurationSeconds: state === "mining" ? 125 : null,
     telemetryFreshness: choice === "stale" ? "stale" : choice === "missing" || state !== "mining" ? "unavailable" : "fresh",
     telemetry: choice === "missing" || state !== "mining" ? null : {
-      engineVersion: null, uptimeSeconds: null, paused: false, supportedAlgorithms: [],
+      engineVersion: "6.26.0", uptimeSeconds: 125, paused: false, supportedAlgorithms: ["rx/0"],
       shortHashrate: choice === "zero" ? 0 : choice === "missingRate" ? null : 128,
-      mediumHashrate: null, longHashrate: null, results: null, poolConnection: null, cpuHugePages: null, sampleTimeUnixMs: null,
+      mediumHashrate: 125, longHashrate: null, results: { accepted: 12, rejected: 0, total: 12, currentJobDifficulty: 10000, acceptedDifficultyTotal: 120000 }, poolConnection: { state: "connected", endpoint: "pool.example:3333", uptimeSeconds: 120, failures: 0, pingMs: 38, tlsVersion: "TLSv1.3", algorithm: "rx/0", currentJobDifficulty: 10000 }, cpuHugePages: { allocated: 4, total: 4 }, sampleTimeUnixMs: Date.now(),
     },
     error: state === "error" ? { kind: "preview", message: "Development attention pose" } : null,
-    diagnostics: [], captureHealth: null, startupStage: state === "starting" ? "waitingForMiner" : null,
-    startupElapsedMs: null, startupTimings: [],
+    diagnostics: Array.from({ length: 60 }, (_, i) => ({ source: "supervisor", message: `Development fixture evidence ${i + 1}: engine ${state === "error" ? "exit observed" : "readiness checked"}. No native process was started.` })), captureHealth: null, startupStage: state === "starting" ? "waitingForMiner" : null,
+    startupElapsedMs: null, startupTimings: [{ stage: "checkingEngine", elapsedMs: 12 }, { stage: "startingXmrig", elapsedMs: 220 }],
     contribution: { active: false, developerSlot: false, secondsToSwitch: null, userActiveSeconds: 0, developerActiveSeconds: 0, developerWallet: "" },
   };
 }
 
 export default function LivingCorePreview() {
-  const [choice, setChoice] = useState<Choice>(() => new URLSearchParams(window.location.search).get("page") === "mining" ? "mining" : "ready");
-  const [page, setPage] = useState<"overview" | "mining">(() => new URLSearchParams(window.location.search).get("page") === "mining" ? "mining" : "overview");
-  const [reduced, setReduced] = useState(false);
-  const [notice, setNotice] = useState(false);
-  const [animated, setAnimated] = useState(true);
-  const [frame, setFrame] = useState(0);
+  const initial = (new URLSearchParams(window.location.search).get("state") ?? "ready") as Choice;
+  const [choice, setChoice] = useState<Choice>(choices.some(([id]) => id === initial) ? initial : "ready");
   const [replay, setReplay] = useState(0);
-  const [dimensions, setDimensions] = useState("Measuring scene…");
-  const [checking, setChecking] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [checkResult, setCheckResult] = useState("");
-  const [controlsHidden, setControlsHidden] = useState(false);
+  const [checking, setChecking] = useState(false);
+  const [showEvents, setShowEvents] = useState(false);
+  const eventFixture = useRef(false);
+  const [effort, setEffort] = useState(128);
+  const rateFixture = useRef(128);
   const checkHost = useRef<HTMLDivElement>(null);
-  const root = useRef<HTMLDivElement>(null);
-  const session = fixture(choice);
-  const view = livingCoreState({ session, statusUnavailable: choice === "failed" });
-  const clip = manifest.clips[view.pose];
-  const frames = manifest.assets[clip.character as keyof typeof manifest.assets].frames;
-  useEffect(() => {
-    const scene = root.current?.querySelector<HTMLElement>(".living-core");
-    if (!scene) return;
-    const measure = () => {
-      const scale = Number(getComputedStyle(scene).getPropertyValue("--scene-scale")) || 1;
-      const size = manifest.characterSize;
-      setDimensions(`${Math.round(scene.clientWidth)} × ${Math.round(scene.clientHeight)} px viewport · base sprite ${size.width*scale} × ${size.height*scale} px (${size.width} × ${size.height} logical, ${scale}×; motion bounds ≤ ${size.maxWidth*scale} × ${size.maxHeight*scale} px) · ${frames} frames at ${clip.fps} fps`);
-    };
-    const observer = new ResizeObserver(measure);
-    observer.observe(scene);
-    measure();
-    return () => observer.disconnect();
-  }, [frames, clip.fps, replay, page, checking]);
-  useEffect(() => {
-    if (!checking || !checkHost.current) return;
-    // Parent content is already unmounted before the test installs its clock.
-    checkLivingCoreLifecycle(checkHost.current, fixture("mining"), readiness)
-      .then(setCheckResult, (error: unknown) => setCheckResult(`FAIL · ${error instanceof Error ? error.message : String(error)}`))
-      .finally(() => setChecking(false));
-  }, [checking]);
-  return <div className="living-core-preview" ref={root}>
-    <header className={`living-core-preview-toolbar${controlsHidden ? " is-collapsed" : ""}`}>
-      <div className="living-core-preview-heading"><strong>Living Core · development preview</strong><p>Synthetic state fixtures. No miner is started; results and earnings are never simulated.</p></div>
-      <button className="living-core-preview-collapse" type="button" aria-expanded={!controlsHidden} onClick={() => setControlsHidden((value) => !value)}>{controlsHidden ? "Show preview controls" : "Hide preview controls"}</button>
-      <label>Page <select value={page} onChange={(event) => setPage(event.target.value as "overview" | "mining")}><option value="overview">Overview</option><option value="mining">Mining</option></select></label>
-      <label>State <select value={choice} onChange={(event) => { setChoice(event.target.value as Choice); setFrame(0); setNotice(false); }}>{choices.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
-      <label><input type="checkbox" checked={reduced} onChange={(event) => setReduced(event.target.checked)} /> Reduced motion</label>
-      <label><input type="checkbox" checked={animated} onChange={(event) => setAnimated(event.target.checked)} /> Animate</label>
-      {!animated && <label>Frame <input type="range" min="0" max={frames-1} value={Math.min(frame, frames-1)} onChange={(event) => setFrame(Number(event.target.value))} /><output>{Math.min(frame, frames-1)+1}/{frames}</output></label>}
-      <button type="button" onClick={() => setReplay((value) => value+1)}>Replay transition</button>
-      <button type="button" disabled={checking} onClick={() => { setCheckResult(""); setChecking(true); }}>Run lifecycle checks</button>
-      {checkResult && <p role="status">{checkResult}</p>}
-      <p className="living-core-preview-dimensions">{dimensions}</p>
+  const model = useRef({ session: fixture(choice), setup: { ...readiness }, failed: choice === "failed", statusReads: 0 });
+  const install = (next: Choice) => {
+    const setup = next === "notConfigured" ? { ...readiness, ready: false, startAllowed: false, walletMasked: null, pool: null, profile: null, threads: null, acknowledged: false, checks: [{ id: "wallet", label: "Wallet", passed: false }, { id: "pool", label: "Pool", passed: false }, { id: "profile", label: "Power", passed: false }] } : { ...readiness };
+    model.current = { session: fixture(next), setup, failed: next === "failed", statusReads: 0 };
+  };
+  const [previewInvoke] = useState<typeof invoke>(() => {
+    install(choice);
+    return (async (command: string, args: unknown) => {
+      const current = model.current;
+      if (command === "mining_readiness") return current.setup;
+      if (command === "mining_status") { current.statusReads++; if (current.failed && current.statusReads > 1) throw new Error("Preview unavailable"); return { ...current.session, telemetry: current.session.telemetry ? { ...current.session.telemetry, sampleTimeUnixMs: Date.now(), shortHashrate: current.session.telemetry.shortHashrate === 128 ? rateFixture.current : current.session.telemetry.shortHashrate } : null }; }
+      if (command === "mining_events") return eventFixture.current ? previewEvents : [];
+      if (command === "system_snapshot") return null;
+      if (command === "start_mining") {
+        current.session = fixture("starting");
+        // Preview transition only. No native command or engine is invoked.
+        window.setTimeout(() => { if (current.session.state === "starting") current.session = fixture("mining"); }, 3200);
+        return current.setup;
+      }
+      if (command === "stop_mining") {
+        current.session = fixture("stopping");
+        window.setTimeout(() => { if (current.session.state === "stopping") current.session = fixture("stopped"); }, 4000);
+        return current.setup;
+      }
+      if (command === "update_mining_setup") {
+        const change = (args as { change: { kind: string; value: unknown } }).change;
+        if (change.kind === "wallet") current.setup.walletMasked = change.value ? "48…preview" : null;
+        if (change.kind === "pool") current.setup.pool = change.value as MiningReadiness["pool"];
+        if (change.kind === "profile") { current.setup.profile = change.value as MiningReadiness["profile"]; current.setup.threads = 4; }
+        current.setup.acknowledged = change.kind === "acknowledge";
+        current.setup.checks = [
+          { id: "wallet", label: "Wallet", passed: Boolean(current.setup.walletMasked) },
+          { id: "pool", label: "Pool", passed: Boolean(current.setup.pool) },
+          { id: "profile", label: "Power", passed: Boolean(current.setup.profile) },
+        ];
+        current.setup.ready = current.setup.checks.every((check) => check.passed) && current.setup.acknowledged;
+        current.setup.startAllowed = current.setup.ready;
+        current.session = fixture(current.setup.ready ? "ready" : "notConfigured");
+        return { ...current.setup };
+      }
+      // Diagnostics/provisioning are deliberately unavailable in this fixture route.
+      throw new Error("Not available in the isolated preview");
+    }) as typeof invoke;
+  });
+  async function runChecks() {
+    if (!checkHost.current) return;
+    setChecking(true);
+    try {
+      const lifecycle = await checkLivingCoreLifecycle(checkHost.current, fixture("mining"), readiness);
+      const stream = await checkStreamScrolling(checkHost.current);
+      const diagnostics = await checkDiagnostics(checkHost.current, fixture("error"));
+      setCheckResult(`${lifecycle} · ${stream} · ${diagnostics}`);
+    }
+    catch (error) { setCheckResult(`FAIL · ${String(error)}`); }
+    finally { setChecking(false); }
+  }
+  return <div className={`living-core-preview${reduced ? " preview-reduced" : ""}`}>
+    <header className={`living-core-preview-toolbar${hidden ? " is-collapsed" : ""}`}>
+      <div className="living-core-preview-heading"><strong>Home · isolated development preview</strong><p>Fixture telemetry{showEvents ? " and test-only events" : "; empty event feed"}. No XMRig or native mining commands.</p></div>
+      <button className="living-core-preview-collapse" type="button" onClick={() => setHidden(!hidden)}>{hidden ? "Show preview controls" : "Hide preview controls"}</button>
+      <label>State <select value={choice} onChange={(event) => { const next = event.target.value as Choice; setChoice(next); install(next); setReplay((value) => value + 1); }}>{choices.map(([id, label]) => <option value={id} key={id}>{label}</option>)}</select></label>
+      <button type="button" onClick={() => { install(choice); setReplay((value) => value + 1); }}>Replay state</button>
+      <label><input type="checkbox" checked={reduced} onChange={(event) => setReduced(event.target.checked)} /> Reduced motion (use browser emulation for timer checks)</label>
+      <label><input type="checkbox" checked={showEvents} onChange={(event) => { eventFixture.current = event.target.checked; setShowEvents(event.target.checked); }} /> Test-only event buffer</label>
+      <label>Fixture rate <select value={effort} onChange={(event) => { const rate = Number(event.target.value); rateFixture.current = rate; setEffort(rate); }}><option value={80}>80 H/s · lower</option><option value={128}>128 H/s · baseline</option><option value={192}>192 H/s · higher</option></select></label>
+      <button type="button" disabled={checking} onClick={() => void runChecks()}>Run lifecycle checks</button>
+      <p role="status">{checkResult}</p>
     </header>
-    <div className="app-shell">
-      <aside className="sidebar" aria-label="Preview context">
-        <div className="brand-lockup"><img className="brand-mark" src="/ember-mark.svg" alt="" /><span>ember</span></div>
-        <button className={`nav-item${page === "overview" ? " is-active" : ""}`} onClick={() => setPage("overview")}>Overview</button><button className={`nav-item${page === "mining" ? " is-active" : ""}`} onClick={() => setPage("mining")}>Mining</button><p className="living-core-preview-note">Isolated artwork preview</p>
-      </aside>
-      <main className={`workspace workspace--${page}`}><div className="page-content">
-        <header className="page-heading"><h1>{page === "mining" ? "Mining" : "Overview"}</h1></header>
-        {checking ? <div className="living-core-check-host" ref={checkHost} /> : page === "overview" ? <OverviewPage key={`overview-${replay}`} session={session} setup={{ ...readiness, ready: choice !== "notConfigured" }} statusError={false} sessionStatusUnavailable={choice === "failed"} systemSnapshot={null} openMining={() => setPage("mining")} reducedMotion={reduced} inspectFrame={animated || reduced ? undefined : frame} /> : <section className="active-mining-panel">
-          <MiningSessionTelemetry key={`mining-${replay}`} session={session} setup={readiness} statusUnavailable={choice === "failed"} onStop={["ready", "notConfigured", "stopped", "error", "unavailable", "unknown"].includes(choice) ? undefined : () => setNotice(true)} stopping={false} reducedMotion={reduced} inspectFrame={animated || reduced ? undefined : frame} />
-          <EmberStream events={[]} mining={view.lifecycle === "mining"} />
-        </section>}
-        {notice && <p role="status">Preview only. No mining command was sent.</p>}
-      </div></main>
-    </div>
+    {!checking && <App key={replay} invokeCommand={previewInvoke} reducedMotion={reduced} />}
+    <div ref={checkHost} className={checking ? "living-core-check-host" : undefined} />
   </div>;
 }

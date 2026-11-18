@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { OverviewPage } from "../App";
 import { MiningSessionTelemetry } from "../components/MiningTelemetry";
 import type { MiningReadiness, MiningSessionStatus } from "../components/MiningSetup";
 
@@ -15,7 +14,7 @@ export async function checkLivingCoreLifecycle(host: HTMLElement, session: Minin
   let unmounted = false;
   const pause = (ms: number) => new Promise<void>((resolve) => schedule(resolve, ms));
   const waitFor = async (condition: () => boolean, label: string) => {
-    for (let attempt = 0; attempt < 60; attempt++) {
+    for (let attempt = 0; attempt < 120; attempt++) {
       if (condition()) return;
       await pause(50);
     }
@@ -24,7 +23,7 @@ export async function checkLivingCoreLifecycle(host: HTMLElement, session: Minin
   // Instrument only the authored frame delays. Test waits use the original clock.
   // Wrappers are restored even if an assertion fails; this route never mounts App.
   window.setTimeout = ((handler: TimerHandler, delay?: number, ...args: unknown[]) => {
-    if (typeof handler !== "function" || ![1000/4, 1000/6, 1000/8].includes(delay ?? 0)) return schedule(handler, delay, ...args);
+    if (typeof handler !== "function" || ![1000/4, 1000/5, 1000/6].includes(delay ?? 0)) return schedule(handler, delay, ...args);
     const id = schedule(() => { pending.delete(id); callbacks++; handler(...args); }, delay);
     pending.add(id);
     maximum = Math.max(maximum, pending.size);
@@ -39,9 +38,8 @@ export async function checkLivingCoreLifecycle(host: HTMLElement, session: Minin
   };
   try {
     const render = async (page: "overview" | "mining", current = session, reduced = false, failed = false) => {
-      root.render(<StrictMode>{page === "overview"
-        ? <OverviewPage session={current} setup={setup} statusError={false} sessionStatusUnavailable={failed} systemSnapshot={null} openMining={() => {}} reducedMotion={reduced} />
-        : <MiningSessionTelemetry session={current} setup={setup} statusUnavailable={failed} reducedMotion={reduced} onStop={() => {}} />}</StrictMode>);
+      const fresh = current === session && current.telemetry ? { ...current, telemetry: { ...current.telemetry, sampleTimeUnixMs: Date.now() } } : current;
+      root.render(<StrictMode><MiningSessionTelemetry key={page} session={fresh} setup={setup} statusUnavailable={failed} reducedMotion={reduced} onStop={() => {}} /></StrictMode>);
       await pause(100);
       await waitFor(() => host.querySelector('[data-asset-status="ready"]') !== null, "Artwork did not load");
       host.querySelector(".living-core")?.scrollIntoView({ block: "center" });
@@ -59,6 +57,7 @@ export async function checkLivingCoreLifecycle(host: HTMLElement, session: Minin
     if (host.querySelector(".living-core-viewport")?.getAttribute("data-frame") !== "0") throw new Error("Reduced motion did not hold frame zero");
     for (const [label, current, failed] of [
       ["stale telemetry", { ...session, telemetryFreshness: "stale" }, false],
+      ["expired timestamp", { ...session, telemetry: session.telemetry ? { ...session.telemetry, sampleTimeUnixMs: Date.now() - 6000 } : null }, false],
       ["failed status polling", session, true],
       ["paused", { ...session, state: "paused" }, false],
       ["stopped", { ...session, state: "stopped" }, false],

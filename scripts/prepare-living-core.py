@@ -110,7 +110,7 @@ def validate():
         assert clip["crystal"] in manifest["assets"], pose
         assert clip["fps"] == 0 or 4 <= clip["fps"] <= 8, pose
     if manifest["version"] == "v2":
-        assert (ROOT / "src/livingCoreManifest.json").read_bytes() == (OUT / "manifest.json").read_bytes(), "bundled manifest differs from public manifest"
+        # v2 is a retained historical asset version; runtime now binds v3.
         for pose, minimum in [("ready", 4), ("mining", 4)]:
             asset = manifest["assets"][manifest["clips"][pose]["character"]]
             image = Image.open(OUT / asset["file"])
@@ -201,7 +201,7 @@ def refine():
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2)+"\n", encoding="utf-8")
     # Vite's public directory is served by URL, not intended for module imports.
     # Bundle the identical generated manifest as a source module for typed clips.
-    (ROOT / "src/livingCoreManifest.json").write_bytes((OUT / "manifest.json").read_bytes())
+    # v1/v2 are retained sources; prepare-workshop.py owns the runtime v3 manifest.
     contact = Image.new("RGB", (640, 900), (16, 18, 17))
     for i, clip in enumerate(manifest["clips"].values()):
         still = backdrop.copy()

@@ -5,7 +5,7 @@ import type { SystemSnapshot } from "../types/system";
 const REFRESH_INTERVAL_MS = 5_000;
 const isDocumentHidden = () => document.visibilityState === "hidden";
 
-export function useSystemSnapshot() {
+export function useSystemSnapshot(invokeCommand = invoke) {
   const [snapshot, setSnapshot] = useState<SystemSnapshot | null>(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function useSystemSnapshot() {
       if (stopped || inFlight || isDocumentHidden()) return;
       inFlight = true;
       try {
-        const next = await invoke<SystemSnapshot>("system_snapshot");
+        const next = await invokeCommand<SystemSnapshot>("system_snapshot");
         if (!stopped) setSnapshot(next);
       } catch {
         // Keep the last successful snapshot; optional system signals fail independently.
@@ -45,7 +45,7 @@ export function useSystemSnapshot() {
       if (timer !== undefined) window.clearTimeout(timer);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  }, [invokeCommand]);
 
   return snapshot;
 }

@@ -7,13 +7,16 @@ import { fileURLToPath } from "node:url";
 import { createServer as createHttpServer } from "node:http";
 import { createServer } from "vite";
 
-const vite = await createServer({ configFile: false, root: fileURLToPath(new URL("../", import.meta.url)), plugins: [react(), {
+const vite = await createServer({ cacheDir: "node_modules/.vite-ssr-tests", configFile: false, root: fileURLToPath(new URL("../", import.meta.url)), plugins: [react(), {
   name: "static-markup-styles", enforce: "pre",
   resolveId(id) { if (id.endsWith(".css")) return "\0static-markup-style:" + id; },
   load(id) { if (id.startsWith("\0static-markup-style:")) return "export default {}"; },
 }], server: { middlewareMode: true, hmr: { server: createHttpServer() }, watch: null }, optimizeDeps: { noDiscovery: true }, appType: "custom" });
 const { MiningSessionTelemetry } = await vite.ssrLoadModule("/src/components/MiningTelemetry.tsx");
+const { EmberStream } = await vite.ssrLoadModule("/src/components/EmberStream.tsx");
+const { workspaceDestination } = await vite.ssrLoadModule("/src/App.tsx");
 const { MiningSetup } = await vite.ssrLoadModule("/src/components/MiningSetup.tsx");
+const { SessionDiagnostics } = await vite.ssrLoadModule("/src/components/SessionDiagnostics.tsx");
 after(() => vite.close());
 
 const setup = {
@@ -51,7 +54,7 @@ test("mining composition keeps status, pool, configured threads, work and detail
   assert.match(html, /Stop mining/);
   assert.match(html, /data-pose="mining"/);
   assert.match(html, /data-active-work="true"/);
-  assert.match(html, /living-core\/v2\/character-mining\.png/);
+  assert.match(html, /living-core\/v3\/character\.png/);
   assert.doesNotMatch(html, /class="ember-core /);
   assert.doesNotMatch(html, /aria-live/);
 });
@@ -132,4 +135,75 @@ test("terminal scenes preserve setup recovery and unavailable status retains its
   assert.match(failed, /data-pose="unavailable"/);
   assert.match(failed, /Check session status/);
   assert.doesNotMatch(failed, /Start mining|Stop mining/);
+});
+
+test("Home handles all legacy destinations and Settings remains separate", () => {
+  for (const path of ["/", "/home", "/overview", "/mining", "/activity"]) {
+    assert.equal(workspaceDestination(path), "home");
+    assert.equal(workspaceDestination("/", "#" + path), "home");
+  }
+  assert.equal(workspaceDestination("/settings"), "settings");
+  assert.equal(workspaceDestination("/", "#/settings"), "settings");
+});
+
+test("Home always includes one workshop and a calm empty Stream through setup and recovery", () => {
+  const props = { setup: { ...setup, ready: false, walletMasked: null }, onChange() {}, refresh: async () => {}, refreshSession: async () => {}, events: [], eventsUnavailable: false, diagnosticsMode: false, diagnosticRunning: false, copyDiagnostics() {} };
+  for (const state of ["notConfigured", "ready", "stopped", "error"]) {
+    const html = renderToStaticMarkup(createElement(MiningSetup, { ...props, session: { state, processId: null, startupStage: null, diagnostics: [], startupTimings: [], telemetry: null, contribution: { active: false } }, sessionStatusUnavailable: false }));
+    assert.equal((html.match(/class="living-core /g) ?? []).length, 1);
+    assert.match(html, /aria-label="Setup steps"/);
+    assert.match(html, /Wallet → Pool → Power → Review/);
+    assert.match(html, /All quiet here/);
+    assert.doesNotMatch(html, /class="ember-stream-row /);
+  }
+});
+
+test("unknown status blocks Start while cached active ownership retains Stop even without readiness", () => {
+  const props = { onChange() {}, refresh: async () => {}, refreshSession: async () => {}, events: [], eventsUnavailable: false, diagnosticsMode: false, diagnosticRunning: false, copyDiagnostics() {} };
+  for (const session of [null, { state: "unavailable", startupStage: null, processId: null }, { state: "unknown", startupStage: null, processId: null }]) {
+    const html = renderToStaticMarkup(createElement(MiningSetup, { ...props, setup, session, sessionStatusUnavailable: false }));
+    assert.doesNotMatch(html, /Start mining/);
+    assert.match(html, /Check session status/);
+  }
+  const html = renderToStaticMarkup(createElement(MiningSetup, { ...props, setup: null, session: { state: "mining", processId: 42, telemetry: null, startupStage: null, contribution: { active: false } }, sessionStatusUnavailable: true }));
+  assert.match(html, /Stop mining/);
+});
+
+test("Activity renders supplied bounded events in backend order with severity and no technical clutter", () => {
+  const events = Array.from({ length: 300 }, (_, i) => ({ id: `event-${i}`, occurredAtUnixMs: 1000+i, category: "system", severity: i % 2 ? "error" : "informational", source: "emberLifecycle", sessionId: "fixture", kind: { type: "miningStarted", data: { profile: "quiet", configuredThreads: 4 } } }));
+  const html = renderToStaticMarkup(createElement(EmberStream, { events }));
+  assert.equal((html.match(/class="ember-stream-row /g) ?? []).length, 256);
+  assert.ok(html.indexOf('data-event-id="event-44"') < html.indexOf('data-event-id="event-299"'));
+  assert.doesNotMatch(html, /data-event-id="event-43"/);
+  assert.match(html, /ember-stream-row--error/);
+  assert.match(html, /this app run only/);
+  assert.doesNotMatch(html, /Technical detail|emberLifecycle|configuredThreads/);
+  const quiet = renderToStaticMarkup(createElement(EmberStream, { events: [] }));
+  assert.doesNotMatch(quiet, /<li/);
+  const failed = renderToStaticMarkup(createElement(EmberStream, { events: events.slice(-2), unavailable: true }));
+  assert.match(failed, /Last received events retained/);
+  assert.equal((failed.match(/class="ember-stream-row /g) ?? []).length, 2);
+});
+
+test("Settings retains the same owned Stop control while hiding the scene and everyday feed", () => {
+  const props = { controlsOnly: true, setup, onChange() {}, refresh: async () => {}, refreshSession: async () => {}, events: [], eventsUnavailable: false, diagnosticsMode: false, diagnosticRunning: false, copyDiagnostics() {} };
+  for (const state of ["starting", "mining", "stopping"]) {
+    const html = renderToStaticMarkup(createElement(MiningSetup, { ...props, session: { state, processId: 42, startupStage: null, telemetry: null }, sessionStatusUnavailable: true }));
+    assert.match(html, state === "stopping" ? /Stopping…/ : /Stop mining/);
+    assert.doesNotMatch(html, /class="living-core|Live activity|Start mining/);
+  }
+  assert.equal(renderToStaticMarkup(createElement(MiningSetup, { ...props, session: { state: "ready", processId: null, startupStage: null }, sessionStatusUnavailable: false })), "");
+});
+
+test("Diagnostics keeps all stage/capture errors in a named modal with separately focusable raw output", () => {
+  const session = { processId: 42, state: "error", error: { kind: "stopFailed", message: "Engine may still be running" }, startupStage: null, startupTimings: [{ stage: "startingXmrig", elapsedMs: 0 }], diagnostics: [{ source: "supervisor", message: "Sanitized test note" }], captureHealth: { stdoutReaderStarted: true, stderrReaderStarted: true, sanitizedLinesObserved: 0, stdoutEofObserved: false, stderrEofObserved: true, stdoutReadError: "readFailure", stderrReadError: "pipeClosed" } };
+  const html = renderToStaticMarkup(createElement(SessionDiagnostics, { session, diagnosticsMode: true, copyDiagnostics() {} }));
+  assert.match(html, /<dialog[^>]*aria-labelledby="diagnostics-title"/);
+  assert.match(html, /aria-label="Close diagnostics"/);
+  assert.match(html, /Engine may still be running/);
+  assert.match(html, /readFailure/); assert.match(html, /pipeClosed/);
+  assert.match(html, /<dd>0 ms<\/dd>/); assert.match(html, /Sanitized test note/);
+  assert.match(html, /role="region" aria-label="Sanitized engine output" tabindex="0"/);
+  assert.match(html, /Copy sanitized report/);
+  assert.doesNotMatch(html, /<dialog[^>]* open/);
 });

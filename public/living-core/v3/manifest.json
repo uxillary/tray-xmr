@@ -1,0 +1,146 @@
+{
+  "version": "v3",
+  "artworkStatus": "D03C-owner-review-pending",
+  "canvas": {
+    "width": 320,
+    "height": 144
+  },
+  "reference": "ember-squish/Ember the Squish Character Sheet.png",
+  "baseLayers": [
+    "workshop",
+    "pedestal"
+  ],
+  "fallback": "scene-fallback.png",
+  "assets": {
+    "workshop": {
+      "file": "workshop.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 144,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "pedestal": {
+      "file": "pedestal.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 144,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "crystal-lit": {
+      "file": "crystal-lit.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 144,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "crystal-dormant": {
+      "file": "crystal-dormant.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 144,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "character": {
+      "file": "character.png",
+      "frames": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    "scene-fallback": {
+      "file": "scene-fallback.png",
+      "frames": 1,
+      "cellWidth": 320,
+      "cellHeight": 144,
+      "anchor": [
+        0,
+        0
+      ]
+    }
+  },
+  "clips": {
+    "notConfigured": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": true
+    },
+    "ready": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 4,
+      "loop": true
+    },
+    "starting": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 4,
+      "loop": true
+    },
+    "mining": {
+      "character": "character",
+      "crystal": "crystal-lit",
+      "fps": 4,
+      "loop": true
+    },
+    "miningQuiet": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": true
+    },
+    "paused": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": true
+    },
+    "stopping": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 4,
+      "loop": true
+    },
+    "stopped": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": true
+    },
+    "error": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": true
+    },
+    "unavailable": {
+      "character": "character",
+      "crystal": "crystal-dormant",
+      "fps": 0,
+      "loop": true
+    }
+  },
+  "characterSize": {
+    "width": 32,
+    "height": 32,
+    "maxWidth": 32,
+    "maxHeight": 32,
+    "groundY": 118
+  },
+  "notes": "Dedicated simplified imagegen sprite normalized to 32px with four poses. Bounded 4fps DOM movement; no per-result reactions. Source plates and limitations: docs/design/D03C_WORKSPACE.md."
+}

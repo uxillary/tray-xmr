@@ -33,3 +33,33 @@ export function formatEmberEventTime(timestamp) {
   if (!Number.isFinite(timestamp) || Number.isNaN(date.getTime())) return "--:--:--";
   return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
 }
+
+/** Preserve backend ordering; never derive events from measurements or timestamps. */
+export function streamUpdate(events, previousId, following) {
+  const latest = events.at(-1)?.id ?? null;
+  if (latest === previousId || latest === null) return { added: 0, follow: following };
+  const previousIndex = events.findIndex((event) => event.id === previousId);
+  return { added: previousId === null ? 0 : previousIndex < 0 ? events.length : events.length - previousIndex - 1, follow: following };
+}
+
+/** Copy only known structured fields; never serialize arbitrary payload keys. */
+export function eventContext(event) {
+  const { type, data } = event.kind;
+  const oneOf = (value, allowed) => allowed.includes(value) ? value : "unavailable";
+  if (type === "miningStarted" || type === "sessionStarting") return {
+    profile: oneOf(data.profile, ["quiet", "balanced", "performance"]),
+    configuredThreads: Number.isSafeInteger(data.configuredThreads) && data.configuredThreads >= 0 ? data.configuredThreads : null,
+  };
+  if (type === "miningStopped") return { reason: oneOf(data.reason, ["owner", "applicationQuit", "startupCancelled", "contributionSwitch"]), wasMining: data.wasMining === true };
+  if (type === "miningFailed") return { failure: oneOf(data.failure, ["startup", "unexpectedEngineExit", "stopFailed"]) };
+  if (type === "poolConnectionChanged") return { from: oneOf(data.from, ["connected", "disconnected", "unknown"]), to: oneOf(data.to, ["connected", "disconnected", "unknown"]) };
+  if (type === "resultsAccepted" || type === "resultsRejected") return { count: Number.isSafeInteger(data.count) && data.count >= 0 ? data.count : null };
+  return {};
+}
+
+export function eventExplanation(event) {
+  if (event.kind.type === "miningFailed") return event.kind.data.failure === "stopFailed" ? "Check the session before closing Ember; the engine may still be running." : "Open Diagnostics for startup and engine evidence.";
+  if (event.kind.type === "poolConnectionChanged" && event.kind.data.to === "disconnected") return "The pool is unreachable. Watch for a restored connection.";
+  if (event.kind.type === "resultsRejected") return "The pool declined this submission. This does not indicate earnings.";
+  return null;
+}

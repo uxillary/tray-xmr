@@ -2,6 +2,10 @@
 
 **Updated 2026-11-17 for D03.** The owner accepted the D02B prototype as the reference for Mining integration. D03 now uses that same v2 world in Mining. D03 owner visual acceptance, packaged Windows/high-DPI and actual 200% zoom checks remain open. No Rust, XMRig, mining lifecycle, telemetry/event contracts, contribution logic, wallet/pool setup fields or website behavior is changed.
 
+## D03C — current implementation
+
+The unified Home workspace and miniature v3 workshop supersede D03 below. See the [D03C implementation/verification/acceptance record](D03C_WORKSPACE.md). Home contains the original setup/command owner, sticky lifecycle/action strip, a 32px character with deterministic walking/working/return behaviour, genuine telemetry and prominent chronological Stream. Settings retains diagnostics/device information. Dedicated asset generation/normalization, 43 frontend tests, production build, three asset versions and browser/native lifecycle/scroll checks are verified. The art set is interim; owner visual acceptance and the explicitly listed packaged/zoom/accessibility checks remain pending. D03 below is preserved as a historical record.
+
 ## D03 — Mining integration
 
 ### Composition and controls

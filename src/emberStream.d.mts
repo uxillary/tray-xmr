@@ -17,3 +17,7 @@ export type EmberEvent = {
 
 export function presentEmberEvent(event: EmberEvent): { marker: string; message: string; icon: "engine" | "stop" | "warning" | "pool" | "accepted" };
 export function formatEmberEventTime(timestamp: number): string;
+
+export function streamUpdate(events: EmberEvent[], previousId: string | null, following: boolean): { added: number; follow: boolean };
+export function eventContext(event: EmberEvent): Record<string, string | number | boolean | null>;
+export function eventExplanation(event: EmberEvent): string | null;
