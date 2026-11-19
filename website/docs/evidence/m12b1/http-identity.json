@@ -1,0 +1,162 @@
+{
+  "preview": "http://127.0.0.1:4351/",
+  "checkedAt": "2026-11-18T13:10:35.099Z",
+  "buildSha256": "3f0b9ec8a5464f33330853f614d2f1d1773d321958f23408f7072e22a7c858c4",
+  "checks": [
+    {
+      "path": "_astro/ArticleLayout.DGUI_41H.css",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/SiteLayout.BDNTWXJH.css",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/electricity-cost-calculator.CCCqd8nW.css",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/electricity-cost-calculator.astro_astro_type_script_index_0_lang.DDnCShxm.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/electricity-cost.D3C29iLX.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/monero-mining-profitability-calculator.GjTm2bj_.css",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/monero-mining-profitability-calculator.astro_astro_type_script_index_0_lang.BWlIzj_V.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/xmrig-log-decoder.UZkK7JWt.css",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "_astro/xmrig-log-decoder.astro_astro_type_script_index_0_lang.BVY3BPWz.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "ember/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "guides/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "guides/xmrig-windows-security-warnings/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "guides/xmrig-windows-setup/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "learn/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "learn/randomx-memory-cache/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "learn/xmrig-cpu-threads/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "social-card.svg",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "third-party-notices.txt",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "tools/electricity-cost-calculator/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "tools/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "tools/monero-mining-profitability-calculator/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "tools/xmrig-log-decoder/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/xmrig-huge-pages/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/xmrig-low-hashrate/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/xmrig-msr-error/index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "trust/index.html",
+      "status": 200,
+      "matches": true
+    }
+  ]
+}

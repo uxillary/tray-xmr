@@ -36,7 +36,7 @@ The same documentation lists supported Intel generations and Zen-based AMD proce
 
 ## Checks on Windows
 
-1. **Verify the source and version.** Use XMRig's official distribution and verify its published provenance. Mining software is commonly scrutinised by security products; do not disable protection or create a broad exclusion to force a driver to load.
+1. **Verify the source and version.** Use XMRig's official distribution and verify its published provenance. If Windows flags or blocks the file, follow the [Windows security-warning checks](/guides/xmrig-windows-security-warnings/) before trying to run it. Mining software is commonly scrutinised by security products; do not disable protection or create a broad exclusion to force a driver to load.
 2. **Read the full startup log.** Keep the exact MSR warning, CPU identification and XMRig version. A one-line summary may omit the reason.
 3. **Check elevation only for diagnosis.** XMRig documents that its automatic MSR configuration on Windows uses administrator privileges. If you choose to test elevated once, launch a trusted binary yourself and close unrelated apps first. Do not make permanent elevation a default habit.
 4. **If Secure Boot is implicated, pause.** XMRig notes that some hardware/software combinations may require Secure Boot to be disabled and points to an issue for context. This is not a routine fix: Secure Boot is a security control. Check your exact platform and threat model before considering any firmware change, and leave it enabled if you cannot establish a specific need.

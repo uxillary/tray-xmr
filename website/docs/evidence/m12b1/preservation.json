@@ -1,0 +1,60 @@
+{
+  "initialHead": "f935ed2ee521ee1db882289143d1b13ab9351f72",
+  "initialWorkingTree": "",
+  "changedBuildInputs": [
+    "src/components/HubPage.astro",
+    "src/components/ResourceCard.astro",
+    "src/content/articles/xmrig-msr-error.md",
+    "src/pages/guides/index.astro",
+    "src/pages/learn/index.astro",
+    "src/pages/tools/index.astro",
+    "src/pages/tools/monero-mining-profitability-calculator.astro",
+    "src/pages/tools/xmrig-log-decoder.astro",
+    "src/pages/troubleshoot/index.astro",
+    "src/styles/site.css"
+  ],
+  "unchangedBuildInputs": 45,
+  "generated": [
+    {
+      "path": "website/.astro/collections/articles.schema.json",
+      "restored": false,
+      "sha256": "daf2c4de0724ccb20a39da029e81dde87f64c40f00d6d63afd768d328ea27d62"
+    },
+    {
+      "path": "website/.astro/content-assets.mjs",
+      "restored": false,
+      "sha256": "1ae2a5698a66d66594930ac273e7110bef294add73f56d191032beedd592a797"
+    },
+    {
+      "path": "website/.astro/content-modules.mjs",
+      "restored": false,
+      "sha256": "6eec27650a023e5d1805c36b527913e976d473c2b4e5d659cbe1587643209e83"
+    },
+    {
+      "path": "website/.astro/content.d.ts",
+      "restored": false,
+      "sha256": "4c5f1bc47be0386107782091e87f52019666b19d47b42305ed588178eca6ba78"
+    },
+    {
+      "path": "website/.astro/data-store.json",
+      "restored": true,
+      "sha256": "8422e3b8af9290afbdda60b82346146401d348997f09e6cd5ddffa6d9e841650"
+    },
+    {
+      "path": "website/.astro/dev.json",
+      "restored": false,
+      "sha256": "f16edc9f2bf06242891125691edca0b3584d1831e32b5d9f753d3a0084616eab"
+    },
+    {
+      "path": "website/.astro/settings.json",
+      "restored": false,
+      "sha256": "b4e181f96580973fb73f5d3806f61788d0c8e4295ee29bf4ee2733498294f1dd"
+    },
+    {
+      "path": "website/.astro/types.d.ts",
+      "restored": false,
+      "sha256": "38ea3df3779cce222cd51ba2c9dc9ac053a859208d3097aa3165f70c71517736"
+    }
+  ],
+  "priorReportsAndEvidenceUnchanged": true
+}

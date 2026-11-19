@@ -1,0 +1,491 @@
+[
+  {
+    "test": "Published/available full-card destination",
+    "from": "/learn/",
+    "expected": "/learn/randomx-memory-cache/",
+    "result": {
+      "h1": "RandomX Memory and CPU Cache Explained",
+      "path": "/learn/randomx-memory-cache/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/learn/",
+    "expected": "/learn/xmrig-cpu-threads/",
+    "result": {
+      "h1": "Why XMRig Isn't Using All Your CPU Threads",
+      "path": "/learn/xmrig-cpu-threads/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/guides/",
+    "expected": "/guides/xmrig-windows-setup/",
+    "result": {
+      "h1": "How to Set Up XMRig on Windows",
+      "path": "/guides/xmrig-windows-setup/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/guides/",
+    "expected": "/guides/xmrig-windows-security-warnings/",
+    "result": {
+      "h1": "Windows Security Warnings When Downloading XMRig: Safe Checks",
+      "path": "/guides/xmrig-windows-security-warnings/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/troubleshoot/",
+    "expected": "/troubleshoot/xmrig-huge-pages/",
+    "result": {
+      "h1": "XMRig Huge Pages Not Working on Windows? What to Check",
+      "path": "/troubleshoot/xmrig-huge-pages/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/troubleshoot/",
+    "expected": "/troubleshoot/xmrig-msr-error/",
+    "result": {
+      "h1": "XMRig MSR Errors on Windows: What They Mean",
+      "path": "/troubleshoot/xmrig-msr-error/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/troubleshoot/",
+    "expected": "/troubleshoot/xmrig-low-hashrate/",
+    "result": {
+      "h1": "Why Is My XMRig Hashrate Low? A Windows Checklist",
+      "path": "/troubleshoot/xmrig-low-hashrate/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/troubleshoot/",
+    "expected": "/tools/xmrig-log-decoder/",
+    "result": {
+      "h1": "What is XMRig actually telling me?",
+      "path": "/tools/xmrig-log-decoder/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/tools/",
+    "expected": "/tools/electricity-cost-calculator/",
+    "result": {
+      "h1": "Mining Electricity Cost Calculator",
+      "path": "/tools/electricity-cost-calculator/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/tools/",
+    "expected": "/tools/monero-mining-profitability-calculator/",
+    "result": {
+      "h1": "Monero Mining Profitability Calculator",
+      "path": "/tools/monero-mining-profitability-calculator/"
+    }
+  },
+  {
+    "test": "Published/available full-card destination",
+    "from": "/tools/",
+    "expected": "/tools/xmrig-log-decoder/",
+    "result": {
+      "h1": "What is XMRig actually telling me?",
+      "path": "/tools/xmrig-log-decoder/"
+    }
+  },
+  {
+    "test": "Contextual handoff/guidance link",
+    "from": "/learn/",
+    "link": {
+      "href": "/guides/xmrig-windows-setup/",
+      "label": "standalone Windows XMRig setup guide"
+    },
+    "result": {
+      "h1": "How to Set Up XMRig on Windows",
+      "hash": "",
+      "path": "/guides/xmrig-windows-setup/",
+      "target": null
+    }
+  },
+  {
+    "test": "Keyboard contextual handoff/guidance link",
+    "from": "/guides/",
+    "link": {
+      "href": "/troubleshoot/",
+      "label": "Huge Pages, MSR or low-hashrate check"
+    },
+    "result": {
+      "h1": "Start with the signal you can see.",
+      "hash": "",
+      "path": "/troubleshoot/",
+      "target": null
+    }
+  },
+  {
+    "test": "Keyboard contextual handoff/guidance link",
+    "from": "/troubleshoot/",
+    "link": {
+      "href": "/guides/xmrig-windows-security-warnings/",
+      "label": "Stop and verify the source and release evidence"
+    },
+    "result": {
+      "h1": "Windows Security Warnings When Downloading XMRig: Safe Checks",
+      "hash": "",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "target": null
+    }
+  },
+  {
+    "test": "Keyboard contextual handoff/guidance link",
+    "from": "/tools/",
+    "link": {
+      "href": "/tools/electricity-cost-calculator/#power-note-title",
+      "label": "Which power value should I enter?\n↗"
+    },
+    "result": {
+      "h1": "Mining Electricity Cost Calculator",
+      "hash": "#power-note-title",
+      "path": "/tools/electricity-cost-calculator/",
+      "target": {
+        "exists": true,
+        "headerBottom": 116,
+        "heading": "What power value should I enter?",
+        "top": 99.984375
+      }
+    }
+  },
+  {
+    "test": "Keyboard contextual handoff/guidance link",
+    "from": "/tools/",
+    "link": {
+      "href": "/tools/monero-mining-profitability-calculator/#input-sources",
+      "label": "Where can I get the scenario inputs?\n↗"
+    },
+    "result": {
+      "h1": "Monero Mining Profitability Calculator",
+      "hash": "#input-sources",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "target": {
+        "exists": true,
+        "headerBottom": 116,
+        "heading": "Where to get each input",
+        "top": 100.296875
+      }
+    }
+  },
+  {
+    "test": "Keyboard contextual handoff/guidance link",
+    "from": "/tools/",
+    "link": {
+      "href": "/tools/xmrig-log-decoder/#decoder-scope",
+      "label": "What can the decoder tell me?\n↗"
+    },
+    "result": {
+      "h1": "What is XMRig actually telling me?",
+      "hash": "#decoder-scope",
+      "path": "/tools/xmrig-log-decoder/",
+      "target": {
+        "exists": true,
+        "headerBottom": 116,
+        "heading": "A focused reader, not a diagnosis",
+        "top": 100.359375
+      }
+    }
+  },
+  {
+    "test": "Keyboard MSR provenance link to security guidance",
+    "result": {
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "summary": "Stop before running a flagged miner. Verify where the file came from and what the release checks establish; a matching checksum or an official-looking filename is not proof that a binary is safe."
+    }
+  },
+  {
+    "test": "Shared header Tools navigation",
+    "result": {
+      "path": "/tools/"
+    }
+  },
+  {
+    "test": "Shared footer Learn navigation",
+    "result": {
+      "path": "/learn/"
+    }
+  },
+  {
+    "test": "Native Tab focus, stable card geometry and static semantics",
+    "route": "/learn/",
+    "before": {
+      "height": 257.84375,
+      "top": 493.4375,
+      "width": 333
+    },
+    "result": {
+      "active": "resource-card-link",
+      "badges": [
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        }
+      ],
+      "card": {
+        "height": 257.84375,
+        "top": 493.4375,
+        "width": 333
+      },
+      "clientScripts": 0,
+      "forms": 0,
+      "href": "/learn/randomx-memory-cache/",
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "plannedFocusable": 0,
+      "route": "/learn/"
+    }
+  },
+  {
+    "test": "Native Enter activates full card",
+    "from": "/learn/",
+    "result": {
+      "h1": "RandomX Memory and CPU Cache Explained",
+      "route": "/learn/randomx-memory-cache/"
+    }
+  },
+  {
+    "test": "Native Tab focus, stable card geometry and static semantics",
+    "route": "/guides/",
+    "before": {
+      "height": 257.84375,
+      "top": 466.25,
+      "width": 333
+    },
+    "result": {
+      "active": "resource-card-link",
+      "badges": [
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        }
+      ],
+      "card": {
+        "height": 257.84375,
+        "top": 466.25,
+        "width": 333
+      },
+      "clientScripts": 0,
+      "forms": 0,
+      "href": "/guides/xmrig-windows-setup/",
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "plannedFocusable": 0,
+      "route": "/guides/"
+    }
+  },
+  {
+    "test": "Native Enter activates full card",
+    "from": "/guides/",
+    "result": {
+      "h1": "How to Set Up XMRig on Windows",
+      "route": "/guides/xmrig-windows-setup/"
+    }
+  },
+  {
+    "test": "Native Tab focus, stable card geometry and static semantics",
+    "route": "/troubleshoot/",
+    "before": {
+      "height": 260.6875,
+      "top": 466.25,
+      "width": 333
+    },
+    "result": {
+      "active": "resource-card-link",
+      "badges": [
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Published"
+        },
+        {
+          "badgeRight": 135.46875,
+          "client": 94,
+          "labelRight": 126.46875,
+          "scroll": 94,
+          "text": "Available"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        }
+      ],
+      "card": {
+        "height": 260.6875,
+        "top": 466.25,
+        "width": 333
+      },
+      "clientScripts": 0,
+      "forms": 0,
+      "href": "/troubleshoot/xmrig-huge-pages/",
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "plannedFocusable": 0,
+      "route": "/troubleshoot/"
+    }
+  },
+  {
+    "test": "Native Enter activates full card",
+    "from": "/troubleshoot/",
+    "result": {
+      "h1": "XMRig Huge Pages Not Working on Windows? What to Check",
+      "route": "/troubleshoot/xmrig-huge-pages/"
+    }
+  },
+  {
+    "test": "Native Tab focus, stable card geometry and static semantics",
+    "route": "/tools/",
+    "before": {
+      "height": 408.9375,
+      "top": 466.25,
+      "width": 333
+    },
+    "result": {
+      "active": "resource-card-link",
+      "badges": [
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Available"
+        },
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Available"
+        },
+        {
+          "badgeRight": 336,
+          "client": 94,
+          "labelRight": 327,
+          "scroll": 94,
+          "text": "Available"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        },
+        {
+          "badgeRight": 355,
+          "client": 81,
+          "labelRight": 346,
+          "scroll": 81,
+          "text": "Planned"
+        }
+      ],
+      "card": {
+        "height": 408.9375,
+        "top": 466.25,
+        "width": 333
+      },
+      "clientScripts": 0,
+      "forms": 0,
+      "href": "/tools/electricity-cost-calculator/",
+      "outline": "rgb(255, 180, 126) solid 2px",
+      "plannedFocusable": 0,
+      "route": "/tools/"
+    }
+  },
+  {
+    "test": "Native Enter activates full card",
+    "from": "/tools/",
+    "result": {
+      "h1": "Mining Electricity Cost Calculator",
+      "route": "/tools/electricity-cost-calculator/"
+    }
+  }
+]

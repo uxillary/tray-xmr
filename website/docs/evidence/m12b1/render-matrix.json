@@ -1,0 +1,8311 @@
+[
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": {
+      "height": 668.1875,
+      "width": 1200
+    },
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1425,
+    "firstResourceTop": 386.75,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": "591px 591px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1425,
+    "firstResourceTop": 386.75,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": "591px 591px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1425,
+    "firstResourceTop": 386.75,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": "388px 388px 388px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 1425,
+    "firstResourceTop": 386.75,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": "1200px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 537.5,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 412.75
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 834.25,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 709.5
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1131,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1006.25
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1425,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 716.984375,
+        "right": 753.71875
+      },
+      {
+        "label": "Learn",
+        "left": 781.71875,
+        "right": 813.140625
+      },
+      {
+        "label": "Guides",
+        "left": 841.140625,
+        "right": 880.546875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 908.546875,
+        "right": 983.828125
+      },
+      {
+        "label": "Tools",
+        "left": 1011.828125,
+        "right": 1041.28125
+      },
+      {
+        "label": "Trust",
+        "left": 1069.28125,
+        "right": 1096.765625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1124.765625,
+        "right": 1243.796875
+      },
+      {
+        "label": "GitHub",
+        "left": 1271.796875,
+        "right": 1312.5
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 375,
+      "scroll": 375
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1425,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1440
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": {
+      "height": 668.1875,
+      "width": 1181
+    },
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1265,
+    "firstResourceTop": 386.5,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": "581.5px 581.5px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1265,
+    "firstResourceTop": 386.5,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": "581.5px 581.5px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1265,
+    "firstResourceTop": 386.5,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": "381.656px 381.672px 381.656px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 1265,
+    "firstResourceTop": 386.5,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": "1181px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 537.25,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 412.5
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 834,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 709.25
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1130.75,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1006
+      }
+    ],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1265,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 627.484375,
+        "right": 664.21875
+      },
+      {
+        "label": "Learn",
+        "left": 692.21875,
+        "right": 723.640625
+      },
+      {
+        "label": "Guides",
+        "left": 751.640625,
+        "right": 791.046875
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 819.046875,
+        "right": 894.328125
+      },
+      {
+        "label": "Tools",
+        "left": 922.328125,
+        "right": 951.78125
+      },
+      {
+        "label": "Trust",
+        "left": 979.78125,
+        "right": 1007.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 1035.265625,
+        "right": 1154.296875
+      },
+      {
+        "label": "GitHub",
+        "left": 1182.296875,
+        "right": 1223
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 374,
+      "scroll": 374
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1265,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1280
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": {
+      "height": 668.1875,
+      "width": 927.078125
+    },
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1009,
+    "firstResourceTop": 374.890625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": "454.531px 454.547px",
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1009,
+    "firstResourceTop": 374.890625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": "454.531px 454.547px",
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 1009,
+    "firstResourceTop": 374.890625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": "297.016px 297.031px 297.016px",
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 1009,
+    "firstResourceTop": 374.890625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": "927.078px",
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 525.640625,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 400.890625
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 847.140625,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 697.640625
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1143.890625,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1019.140625
+      }
+    ],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 1009,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 410.90625,
+        "right": 447.640625
+      },
+      {
+        "label": "Learn",
+        "left": 470.15625,
+        "right": 501.578125
+      },
+      {
+        "label": "Guides",
+        "left": 524.09375,
+        "right": 563.5
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 586.015625,
+        "right": 661.296875
+      },
+      {
+        "label": "Tools",
+        "left": 683.8125,
+        "right": 713.265625
+      },
+      {
+        "label": "Trust",
+        "left": 735.78125,
+        "right": 763.265625
+      },
+      {
+        "label": "Open-source notices",
+        "left": 785.78125,
+        "right": 904.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 927.328125,
+        "right": 968.03125
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 768,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 347,
+      "scroll": 347
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 1009,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 1024
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": {
+      "height": 657.1875,
+      "width": 691.546875
+    },
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 753,
+    "firstResourceTop": 405.3125,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": "336.766px 336.781px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 753,
+    "firstResourceTop": 405.3125,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": "336.766px 336.781px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 753,
+    "firstResourceTop": 405.3125,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": "691.547px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 753,
+    "firstResourceTop": 405.3125,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": "691.547px",
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 610.8125,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 431.3125
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 962.3125,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 782.8125
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1283.8125,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1134.3125
+      }
+    ],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 753,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 279.890625,
+        "right": 316.625
+      },
+      {
+        "label": "Learn",
+        "left": 333.515625,
+        "right": 364.9375
+      },
+      {
+        "label": "Guides",
+        "left": 381.828125,
+        "right": 421.234375
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 438.125,
+        "right": 513.40625
+      },
+      {
+        "label": "Tools",
+        "left": 530.296875,
+        "right": 559.75
+      },
+      {
+        "label": "Trust",
+        "left": 576.640625,
+        "right": 604.125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 621.015625,
+        "right": 664.671875
+      },
+      {
+        "label": "GitHub",
+        "left": 681.5625,
+        "right": 722.265625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 900,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 692,
+      "scroll": 692
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 753,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 768
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": {
+      "height": 1101.59375,
+      "width": 537
+    },
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 585,
+    "firstResourceTop": 460.65625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": "537px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 585,
+    "firstResourceTop": 460.65625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": "537px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 585,
+    "firstResourceTop": 460.65625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": "537px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 585,
+    "firstResourceTop": 460.65625,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": "537px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 605,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 667
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 996.640625,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1058.640625
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1388.28125,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1450.28125
+      }
+    ],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 585,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 24,
+        "right": 60.734375
+      },
+      {
+        "label": "Learn",
+        "left": 79.734375,
+        "right": 111.15625
+      },
+      {
+        "label": "Guides",
+        "left": 130.15625,
+        "right": 169.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 188.5625,
+        "right": 263.84375
+      },
+      {
+        "label": "Tools",
+        "left": 282.84375,
+        "right": 312.296875
+      },
+      {
+        "label": "Trust",
+        "left": 331.296875,
+        "right": 358.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 377.78125,
+        "right": 496.8125
+      },
+      {
+        "label": "GitHub",
+        "left": 515.8125,
+        "right": 556.515625
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 537,
+      "scroll": 537
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 585,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 600
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": {
+      "height": 1140.640625,
+      "width": 335
+    },
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 375,
+    "firstResourceTop": 492.4375,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": "335px",
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 375,
+    "firstResourceTop": 465.25,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": "335px",
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 375,
+    "firstResourceTop": 465.25,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": "335px",
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 375,
+    "firstResourceTop": 465.25,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": "335px",
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 631.34375,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 693.34375
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 1110.28125,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1172.28125
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1613.96875,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1675.96875
+      }
+    ],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 375,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 327.296875,
+        "right": 354.78125
+      },
+      {
+        "label": "Open-source notices",
+        "left": 20,
+        "right": 139.03125
+      },
+      {
+        "label": "GitHub",
+        "left": 158.03125,
+        "right": 198.734375
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 844,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 335,
+      "scroll": 335
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 375,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 390
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": {
+      "height": 1140.640625,
+      "width": 305
+    },
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 345,
+    "firstResourceTop": 492.4375,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": "305px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 2,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 345,
+    "firstResourceTop": 465.25,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": "305px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 4,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px",
+      "15px",
+      "14px"
+    ],
+    "clientWidth": 345,
+    "firstResourceTop": 465.25,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": "305px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 3,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px",
+      "15px",
+      "14px",
+      "15px",
+      "15px"
+    ],
+    "clientWidth": 345,
+    "firstResourceTop": 465.25,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": "305px",
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [
+      {
+        "height": 44,
+        "href": "/tools/electricity-cost-calculator/#power-note-title"
+      },
+      {
+        "height": 44,
+        "href": "/tools/monero-mining-profitability-calculator/#input-sources"
+      },
+      {
+        "height": 44,
+        "href": "/tools/xmrig-log-decoder/#decoder-scope"
+      }
+    ],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [
+      {
+        "action": "Calculate electricity cost",
+        "actionTop": 631.34375,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 693.34375
+      },
+      {
+        "action": "Build a mining scenario",
+        "actionTop": 1162.625,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1224.625
+      },
+      {
+        "action": "Decode a log",
+        "actionTop": 1666.3125,
+        "domOrder": [
+          "resource-card-top",
+          "resource-card-copy",
+          "resource-card-action",
+          "resource-model"
+        ],
+        "modelTop": 1728.3125
+      }
+    ],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/electricity-cost-calculator/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/tools/xmrig-log-decoder/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-setup/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/ember/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/trust/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/randomx-memory-cache/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/learn/xmrig-cpu-threads/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  },
+  {
+    "availableLinks": 0,
+    "badgesOutsideCards": [],
+    "cardTextSizes": [],
+    "clientWidth": 345,
+    "firstResourceTop": null,
+    "footerLinks": [
+      {
+        "label": "Ember",
+        "left": 20,
+        "right": 56.734375
+      },
+      {
+        "label": "Learn",
+        "left": 75.734375,
+        "right": 107.15625
+      },
+      {
+        "label": "Guides",
+        "left": 126.15625,
+        "right": 165.5625
+      },
+      {
+        "label": "Troubleshoot",
+        "left": 184.5625,
+        "right": 259.84375
+      },
+      {
+        "label": "Tools",
+        "left": 278.84375,
+        "right": 308.296875
+      },
+      {
+        "label": "Trust",
+        "left": 20,
+        "right": 47.484375
+      },
+      {
+        "label": "Open-source notices",
+        "left": 66.484375,
+        "right": 185.515625
+      },
+      {
+        "label": "GitHub",
+        "left": 204.515625,
+        "right": 245.21875
+      }
+    ],
+    "gridColumns": null,
+    "h1Count": 1,
+    "height": 800,
+    "helpTargets": [],
+    "hero": null,
+    "nav": {
+      "client": 305,
+      "scroll": 305
+    },
+    "nestedControls": 0,
+    "plannedLinks": 0,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scrollWidth": 345,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "toolActions": [],
+    "width": 360
+  }
+]

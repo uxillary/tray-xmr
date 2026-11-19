@@ -1,0 +1,53 @@
+{
+  "browser": "ChatGPT in-app browser",
+  "engineVersion": "Not exposed by supported DOM inspection",
+  "preview": "http://127.0.0.1:4351/",
+  "renderCases": 119,
+  "hubCases": 28,
+  "screenshots": 41,
+  "interactionRecords": 28,
+  "cssViewportPairs": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "width": 768,
+      "height": 900
+    },
+    {
+      "width": 600,
+      "height": 800
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    }
+  ],
+  "viewportOverrideReset": true,
+  "finalState": {
+    "height": 900,
+    "stylesheet": "/_astro/SiteLayout.BDNTWXJH.css",
+    "title": "Monero mining tools — Ember",
+    "url": "http://127.0.0.1:4351/tools/",
+    "width": 1440
+  },
+  "limits": [
+    "No screen reader, measured contrast, OS reduced-motion emulation, zoom or physical-device checks",
+    "Wrapped inline handoffs were verified with keyboard activation; full-card and shared-navigation destinations were also pointer-activated",
+    "JPEG dimensions may be scaled; CSS sizes come from innerWidth/innerHeight",
+    "Baseline UI-02 mobile anchor/header overlap remains and was reproduced at the guidance fragments"
+  ]
+}

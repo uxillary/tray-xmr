@@ -1,10 +1,30 @@
 ---
 import Icon from './Icon.astro';
 import StatusBadge from './StatusBadge.astro';
-const { title, description, category, icon, href, status = href ? 'Published' : 'Planned' } = Astro.props as {
-  title: string; description: string; category: string;
+
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
   icon: 'bookOpenText' | 'books' | 'graduationCap' | 'network' | 'memory' | 'hardDrives' | 'cpu' | 'gauge' | 'circuitry' | 'thermometer' | 'wrench' | 'shieldCheck' | 'steps' | 'lightning' | 'chartLineUp' | 'magnifyingGlass' | 'lockKey' | 'playCircle';
-  href?: string; status?: string;
-};
+  href?: string;
+  status?: string;
+  actionLabel?: string;
+  presentation?: 'standard' | 'tool' | 'companion';
+  tone?: 'caution';
+  input?: string;
+  output?: string;
+}
+const { title, description, category, icon, href, status = href ? 'Published' : 'Planned', actionLabel = 'Read resource', presentation = 'standard', tone, input, output } = Astro.props;
 ---
-{href ? <article class="resource-card resource-card-published"><a class="resource-card-link" href={href}><span class="resource-icon"><Icon name={icon} size="card" /></span><span class="resource-card-meta"><span>{category}</span><StatusBadge state="good" label={status} /></span><h3>{title}</h3><p>{description}</p><span class="resource-card-action">Read resource <Icon name="arrowRight" size="inline" /></span></a></article> : <article class="resource-card resource-card-planned"><div class="resource-card-body"><span class="resource-icon"><Icon name={icon} size="card" /></span><span class="resource-card-meta"><span>{category}</span><StatusBadge state="info" label={status} /></span><h3>{title}</h3><p>{description}</p></div></article>}
+<article class:list={['resource-card', href ? 'resource-card-published' : 'resource-card-planned', `resource-card-${presentation}`, { 'resource-card-caution': tone === 'caution' }]}>
+  {href ? <a class="resource-card-link" href={href}>
+    <div class="resource-card-top"><span class="resource-icon"><Icon name={icon} size="card" /></span><span class="resource-card-category">{category}</span><StatusBadge state="good" label={status} /></div>
+    <div class="resource-card-copy"><h3>{title}</h3><p>{description}</p></div>
+    <span class="resource-card-action">{actionLabel} <Icon name="arrowRight" size="inline" /></span>
+    {input && output && <dl class="resource-model"><div><dt>Input</dt><dd>{input}</dd></div><div><dt>Output</dt><dd>{output}</dd></div></dl>}
+  </a> : <div class="resource-card-body">
+    <div class="resource-card-top"><span class="resource-card-category">{category}</span><StatusBadge state="info" label={status} /></div>
+    <h3>{title}</h3><p>{description}</p>
+  </div>}
+</article>

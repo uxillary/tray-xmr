@@ -1,11 +1,18 @@
 ---
 import HubPage from '../../components/HubPage.astro';
 import { getCollection } from 'astro:content';
-const articles = (await getCollection('articles', ({ data }) => !data.draft && data.section === 'guides')).sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+const order: Record<string, number> = { 'xmrig-windows-setup': 0, 'xmrig-windows-security-warnings': 1 };
+const articles = (await getCollection('articles', ({ data }) => !data.draft && data.section === 'guides')).sort((a, b) => (order[a.id] ?? 2) - (order[b.id] ?? 2));
+const articleCards = {
+  'xmrig-windows-setup': { category: 'Starting a first session', title: 'Set up XMRig on Windows', description: 'Choose the official release, review your configuration and learn what each first-run signal establishes.', actionLabel: 'Follow the setup guide' },
+  'xmrig-windows-security-warnings': { category: 'A download was flagged', title: 'Understand a Windows security warning', description: 'Leave the file blocked while you verify its source and release evidence. Know when to stop.', actionLabel: 'Check the warning safely', tone: 'caution' as const },
+};
 const cards = [
-  { icon:'steps', category:'Before you begin', title:'Understand the machine and its limits', description:'Plan for resource use, heat, electricity cost and an explicit way to stop.' },
-  { icon:'shieldCheck', category:'Setup choices', title:'Wallet, pool and CPU profile', description:'Review the information each choice requires and how it affects a mining session.' },
-  { icon:'playCircle', category:'Operate', title:'Review, start and stop with care', description:'A careful session workflow that separates setup review from active mining.' },
+  { icon: 'steps', category: 'Before you begin', title: 'Understand the machine and its limits', description: 'Plan for resource use, heat, electricity cost and a way to stop.' },
+  { icon: 'shieldCheck', category: 'Setup choices', title: 'Wallet, pool and CPU profile', description: 'Review what each choice requires and how it affects a session.' },
+  { icon: 'playCircle', category: 'Operate', title: 'Review, start and stop with care', description: 'A workflow separating setup review from active mining.' },
 ] as const;
 ---
-<HubPage kind="guides" title="Windows XMRig guides — Ember" description="Sourced Windows XMRig guidance for safely checking downloads, configuring a standalone miner and reading first-session signals." kicker="WORKSHOP / 02" heading="A good guide explains the decision, too." intro="Practical walkthroughs should leave the reader more capable, not dependent on unexplained commands or copied settings." index="02" indexLabel="VERIFY / CONFIGURE / OPERATE" featureTitle="Check the source before the first run." featureCopy="Published Windows resources explain release verification and a separate standalone XMRig setup path. Ember-specific product information stays separate from general miner instructions." featureAside="No blanket administrator instructions, unknown executables or unexplained pool credentials." cardsTitle="A guide path, in order" cards={cards} articles={articles} note="Windows safety and setup resources are sourced independently; check version-specific guidance before following release steps." />
+<HubPage kind="guides" title="Windows XMRig guides — Ember" description="Sourced Windows XMRig guidance for safely checking downloads, configuring a standalone miner and reading first-session signals." kicker="WORKSHOP / 02" heading="A clear next step for Windows mining." intro="Set up standalone XMRig or check a flagged download. Ember remains in development, with no public download." resourcesTitle="What do you need to do?" resourcesNote="Two published Windows guides" {articles} {articleCards} {cards} note="Other guide themes remain planned until their steps are independently verified.">
+  <p slot="handoff"><strong>XMRig starts, but a signal looks wrong?</strong> Find the matching <a href="/troubleshoot/">Huge Pages, MSR or low-hashrate check</a>. Keep unresolved security warnings blocked.</p>
+</HubPage>

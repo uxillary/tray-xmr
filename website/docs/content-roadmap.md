@@ -6,7 +6,9 @@ Content ships when it is useful, sourced and technically checked. Route ideas ar
 
 **Complete (18 November 2026):** documentation-only review of all 17 published routes. See the [visual UX audit](m12a-visual-ux-audit.md), [organic discovery journeys](m12a-organic-discovery-journeys.md), [visual content opportunities](m12a-visual-content-opportunities.md) and [prioritized M12B plan](m12a-prioritized-improvement-plan.md). No published page or visual implementation changed. Current-build browser access remained blocked; all requested viewport widths remain unverified.
 
-**Recommended next step:** M12B should establish a verified preview, then deliver available-resource-first hubs, article navigation/openings, contextual handoffs, readable tables, clearer tool composition and two diagram pilots in bounded phases. Preserve the homepage hero, current identity and technical models. M12B has not started; screen-reader, fresh contrast and controlled responsive QA remain acceptance work.
+**Implementation progress (18 November 2026):** [M12B.0](m12b0-preview-baseline.md) established the verified preview. [M12B.1](m12b1-resource-first-hubs.md) delivered resource-first hubs, contextual handoffs and the mobile Guides overflow fix, with browser checks at all seven requested sizes. The homepage hero, current identity and technical models are preserved.
+
+**Recommended next step:** M12B.2 should address bounded article/navigation improvements, including the recorded mobile anchor-clearance issue. Later table/tool/diagram work remains phased. M12B.2 has not started; screen-reader, fresh contrast, zoom and real-device acceptance remain outstanding.
 
 ## P0 — Launch foundation
 
