@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "node --test src/miningTelemetry.test.mjs src/miningExperience.test.mjs src/emberStream.test.mjs src/deviceStatus.test.mjs src/livingCoreState.test.mjs src/livingCoreAnimation.test.mjs src/livingCore.test.mjs src/workshopBehaviour.test.mjs src/workshopIntensity.test.mjs",
+    "test": "node --test src/hashrateHistory.test.mjs src/miningTelemetry.test.mjs src/miningExperience.test.mjs src/emberStream.test.mjs src/deviceStatus.test.mjs src/livingCoreState.test.mjs src/livingCoreAnimation.test.mjs src/livingCore.test.mjs src/workshopBehaviour.test.mjs src/workshopIntensity.test.mjs",
     "test:living-core": "node --test src/livingCoreState.test.mjs src/livingCoreAnimation.test.mjs src/livingCore.test.mjs src/workshopBehaviour.test.mjs src/workshopIntensity.test.mjs",
     "assets:check": "python scripts/prepare-living-core.py --check && python scripts/prepare-workshop.py --check",
     "preview": "vite preview",

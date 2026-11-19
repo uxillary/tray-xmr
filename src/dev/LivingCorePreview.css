@@ -9,6 +9,10 @@
 .living-core-preview-toolbar button { padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: 5px; background: var(--surface-soft); color: var(--text-primary); font: inherit; }
 .living-core-preview-toolbar .living-core-preview-dimensions { flex-basis: 100%; margin: 0; font-variant-numeric: tabular-nums; }
 .living-core-preview-toolbar.is-collapsed > :not(.living-core-preview-heading):not(.living-core-preview-collapse) { display: none; }
+.living-core-preview-toolbar.is-collapsed { min-height: 38px; padding: 6px 16px; gap: 8px 16px; }
+.living-core-preview-toolbar.is-collapsed .living-core-preview-heading strong { display: none; }
+.living-core-preview-toolbar.is-collapsed .living-core-preview-heading p { margin: 0; }
+.living-core-preview-toolbar.is-collapsed button { padding: 5px 10px; font-size: 12px; }
 .living-core-preview .app-shell { min-height: 0; flex: 1; }
 .living-core-preview .sidebar, .living-core-preview .workspace { height: 100%; }
 .living-core-preview-note { color: var(--text-secondary); font-size: 13px; line-height: 1.5; }

@@ -1,3 +1,4 @@
+import type { HashrateHistory } from "../hashrateHistory.mjs";
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { MiningSessionTelemetry } from "./MiningTelemetry";
@@ -57,7 +58,7 @@ export type MiningSessionStatus = {
   contribution: { active: boolean; developerSlot: boolean; secondsToSwitch: number | null; userActiveSeconds: number; developerActiveSeconds: number; developerWallet: string };
 };
 
-type Props = { controlsOnly?: boolean; setupRequested?: boolean; invokeCommand?: typeof invoke; reducedMotion?: boolean; setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>; session: MiningSessionStatus | null; refreshSession: () => Promise<void>; sessionStatusUnavailable: boolean; diagnosticsMode: boolean; diagnosticRunning: boolean; copyDiagnostics: () => void | Promise<void>; events: EmberEvent[]; eventsUnavailable: boolean };
+type Props = { history?: HashrateHistory; controlsOnly?: boolean; setupRequested?: boolean; invokeCommand?: typeof invoke; reducedMotion?: boolean; setup: MiningReadiness | null; onChange: (setup: MiningReadiness) => void; refresh: () => Promise<void>; session: MiningSessionStatus | null; refreshSession: () => Promise<void>; sessionStatusUnavailable: boolean; diagnosticsMode: boolean; diagnosticRunning: boolean; copyDiagnostics: () => void | Promise<void>; events: EmberEvent[]; eventsUnavailable: boolean };
 
 const engineCopy: Record<MiningReadiness["engine"], string> = {
   notInstalled: "Not installed",
@@ -68,7 +69,7 @@ const engineCopy: Record<MiningReadiness["engine"], string> = {
   error: "Could not check",
 };
 
-export function MiningSetup({ controlsOnly = false, setupRequested = false, invokeCommand = invoke, reducedMotion = false, setup, onChange, refresh, session, refreshSession, sessionStatusUnavailable, diagnosticsMode, diagnosticRunning, copyDiagnostics, events, eventsUnavailable }: Props) {
+export function MiningSetup({ history, controlsOnly = false, setupRequested = false, invokeCommand = invoke, reducedMotion = false, setup, onChange, refresh, session, refreshSession, sessionStatusUnavailable, diagnosticsMode, diagnosticRunning, copyDiagnostics, events, eventsUnavailable }: Props) {
   const [busy, setBusy] = useState(false);
   const [starting, setStarting] = useState(false);
   const [stopping, setStopping] = useState(false);
@@ -154,7 +155,7 @@ export function MiningSetup({ controlsOnly = false, setupRequested = false, invo
     {error && <p className="field-error" role="alert">{error}</p>}
   </div> : null;
   const workspace = (content: React.ReactNode) => <section className="unified-workspace" aria-label="Home mining workspace">
-    <MiningSessionTelemetry reducedMotion={reducedMotion} session={session} setup={setup} statusUnavailable={sessionStatusUnavailable}
+    <MiningSessionTelemetry history={history} reducedMotion={reducedMotion} session={session} setup={setup} statusUnavailable={sessionStatusUnavailable}
       onStop={active ? () => void stopMining() : undefined} stopping={stopping}
       onStart={!active && setup?.ready && session && !sessionStatusUnavailable && ["ready", "notConfigured", "stopped", "error"].includes(session.state) ? () => void startMining() : undefined}
       startDisabled={!setup?.startAllowed || busy || starting || stopping || diagnosticRunning} starting={starting} />
@@ -164,12 +165,11 @@ export function MiningSetup({ controlsOnly = false, setupRequested = false, invo
 
   if (!setup) return workspace(<section className="setup-panel"><h2>Checking your setup</h2><button className="setup-engine-button" onClick={refresh}>Check setup again</button></section>);
 
-  if (!session || livingCoreState({ session, statusUnavailable: sessionStatusUnavailable }).lifecycle === "unavailable") return workspace(<section className="workspace-recovery" role="status"><p>Session status {sessionStatusUnavailable ? "unavailable" : "not yet confirmed"}. Check before starting.</p><button className="setup-engine-button" onClick={() => void refreshSession()}>Check session status</button>{session?.error && <p className="field-error" role="alert">Last reported error: {session.error.message}</p>}{error && <p className="field-error" role="alert">{error}</p>}</section>);
+  if (!session || livingCoreState({ session, statusUnavailable: sessionStatusUnavailable }).lifecycle === "unavailable") return workspace(<section className="workspace-recovery" role="status"><p>Session status {sessionStatusUnavailable ? "unavailable" : "not yet confirmed"}. Check before starting.</p><button className="setup-engine-button" onClick={() => void refreshSession()}>Check session status</button>{error && <p className="field-error" role="alert">{error}</p>}</section>);
 
   if (active) {
     const preparing = session.state === "starting" || session.startupStage !== null;
     return workspace(<>
-      {session.error && <p className="field-error" role="alert">{session.error.message}</p>}
       {(preparing || session.state === "error" || diagnosticsMode) && <SessionDiagnostics session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} />}
       {error && <p className="field-error" role="alert">{error}</p>}
     </>);
@@ -207,7 +207,7 @@ export function MiningSetup({ controlsOnly = false, setupRequested = false, invo
 
     {diagnosticRunning && <p className="ready-note">Finish or stop the XMRig integration test before mining.</p>}
     {setup.ready && error && <div role="alert"><p className="field-error">{error}</p>{startBlockedByWindows && <div className="setup-recovery-actions"><button className="text-action" disabled={busy || starting || stopping} onClick={() => void startMining()}>Try again</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void refresh()}>Check engine</button><button className="text-action" disabled={busy || starting || stopping} onClick={() => void setupEngine()}>Repair engine</button><p>Review any Windows Security notification yourself. Ember does not change security settings or restore quarantined files.</p></div>}</div>}
-    {session?.state === "error" && <>{session.error && <p className="field-error" role="alert">{session.error.message}</p>}<SessionDiagnostics session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} /></>}
+    {session?.state === "error" && <><SessionDiagnostics session={session} diagnosticsMode={diagnosticsMode} copyDiagnostics={copyDiagnostics} /></>}
     <details className="workspace-setup" open={setup.ready ? setupRequested || undefined : true}>
       <summary>{setup.ready ? "Manage setup" : "Wallet → Pool → Power → Review"}</summary>
       <nav className="setup-step-nav" aria-label="Setup steps">{(["wallet", "pool", "power", "review"] as const).map((step, index) => <button key={step} type="button" aria-pressed={visibleStep === step} onClick={() => setSelectedStep(step)}><span aria-hidden="true">{stepComplete[step] ? "✓" : index + 1}</span> {capitalize(step)}<small>{stepStatus(step) === "complete" ? "Saved" : stepStatus(step) === "current" ? "Next" : ""}</small></button>)}</nav>

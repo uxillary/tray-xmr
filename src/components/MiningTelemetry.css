@@ -1,43 +1,52 @@
-/* D03C: one everyday workspace. Controls precede the miniature world. */
-.workspace--home .page-content { container-type: inline-size; }
-.unified-workspace { display: flex; flex-direction: column; gap: 18px; }
+/* D04A: a shared rate/workshop masthead, full-width instrument and journal. */
+.workspace--home .page-content { container-type: inline-size; max-width: 1240px; padding: 24px 32px; }
+.workspace--home .page-heading { display: none; }
+.unified-workspace { display: flex; flex-direction: column; gap: 12px; }
 .unified-workspace .mining-operation--living { overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
-.workspace-status { position: sticky; top: 0; z-index: 5; background: var(--app-bg); display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 6px 0 18px; border-bottom: 1px solid var(--line-strong); }
-.workspace-status .operation-identity { display: grid; gap: 5px; }
-.workspace-status h2 { margin: 0; font-size: 28px; letter-spacing: -.7px; }
+.workspace-status { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 0 16px; border-bottom: 1px solid var(--line-strong); background: var(--app-bg); }
+.workspace-status .operation-identity { display: grid; gap: 4px; width: auto; flex: 1; }
+.workspace-status .operation-kicker { color: #baa58c; font: 11px/1.4 Consolas, monospace; letter-spacing: 1.6px; }
+.unified-workspace .workspace-status h2 { margin: 0; font-size: 29px; font-weight: 600; letter-spacing: -.8px; }
+.workspace-status .operation-status-copy { max-width: none; margin: 2px 0 0; color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
+.workspace-session-error { margin: 0; padding: 12px 14px; border-left: 2px solid var(--danger); color: #efb1a9; background: #dc8a810b; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
 .workspace-primary-action { display: flex; flex: 0 0 auto; }
 .workspace-primary-action .setup-engine-button { margin: 0; min-height: 48px; min-width: 146px; border-radius: 8px; font-size: 14px; }
-.workspace-primary-action .start-mining-button { background: #dc9a62; border-color: #e7ad7e; color: #21180f; }
-.workspace-primary-action .stop-mining-button { background: #3f2823; border-color: #b07c68; color: #ffe3d1; }
+.workspace-primary-action .start-mining-button { background: #e5ac70; border-color: #edc18c; color: #21180f; }
+.workspace-primary-action .stop-mining-button { background: #322720; border-color: #9f7657; color: #ffe3c6; }
 .workspace-setup-link { display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; color: #f0bc8d; font-size: 14px; }
-.mining-operation--living .operation-main { display: grid; grid-template-columns: minmax(320px, 1.5fr) minmax(200px, 1fr); min-height: 190px; gap: 36px; padding: 20px 0; }
-.operation-world { display: grid; min-width: 0; align-content: center; gap: 8px; }
+.mining-operation--living .operation-main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; min-height: 164px; gap: 24px; padding: 0 0 2px; }
+.operation-world { grid-column: 2; grid-row: 1; display: grid; min-width: 0; align-content: center; gap: 3px; }
 .operation-world .living-core-viewport { border-radius: 5px; mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent); }
-.operation-world .core-caption { text-align: center; color: #b3a38d; font-size: 10px; letter-spacing: 1.8px; }
-.operation-console { display: grid; min-width: 0; align-content: center; gap: 12px; padding-left: 30px; border-left: 1px solid var(--line); }
-.mining-operation--living .operation-rate { padding: 0; border: 0; gap: 7px; }
-.mining-operation--living .operation-rate > strong { font-size: clamp(32px, 4.7vw, 64px); letter-spacing: -2px; flex-wrap: wrap; gap: 6px 10px; }
+.operation-world .core-caption { text-align: center; color: #c3ac8e; font: 10px/1.5 Consolas, monospace; letter-spacing: 1px; }
+.operation-world .core-caption > span:last-child { color: #a4aea0; }
+.operation-console { grid-column: 1; grid-row: 1; display: grid; min-width: 0; align-content: center; gap: 7px; padding: 0; border: 0; }
+.mining-operation--living .operation-rate { padding: 0; border: 0; gap: 2px; }
+.mining-operation--living .operation-rate > span:first-child { font-size: 14px; color: #c0c7bb; }
+.mining-operation--living .operation-rate > strong { font-size: clamp(42px, 6vw, 76px); letter-spacing: -3px; line-height: 1.12; flex-wrap: wrap; gap: 6px 12px; color: #f4e7d2; font-weight: 500; }
+.mining-operation--living .operation-rate > strong small { font-size: 20px; color: #d7b589; letter-spacing: -.3px; }
 .mining-operation--living .operation-rate > .operation-rate-context { font-size: 13px; color: var(--text-secondary); }
-.operation-qualifier { margin: 0; color: var(--warning); font-size: 14px; }
-.operation-resting { display: grid; gap: 10px; }
-.operation-resting > strong { font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2; letter-spacing: -.6px; font-weight: 600; color: #e6d5bc; }
-.operation-resting p { max-width: 34ch; margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.65; }
+.operation-qualifier { margin: 0; color: var(--warning); font-size: 13px; line-height: 1.5; }
+.operation-resting { display: grid; gap: 8px; }
+.operation-resting > strong { font-size: clamp(26px, 3vw, 40px); line-height: 1.2; letter-spacing: -1px; font-weight: 500; color: #e6d5bc; }
+.operation-resting p { max-width: 36ch; margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
 .operation-last-rate { font-size: 13px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
-.mining-operation--living .telemetry-freshness, .mining-operation--living .operational-label, .mining-operation--living .thread-capacity-text { font-size: 13px; }
-.mining-operation--living .pool-route-node { font-size: 13px; }
-.pool-route--idle { color: var(--text-secondary); }
-.pool-route--idle .pool-route-status::before { background: #9b9c8f; }
-.mining-operation--living .starting-note { min-height: 0; padding: 0; margin: 0; font-size: 12px; }
-.mining-operation--living .operation-details { grid-template-columns: minmax(130px, 1fr) minmax(150px, 1.25fr) minmax(75px, .65fr) auto; gap: 22px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.mining-operation--living .telemetry-freshness, .mining-operation--living .operational-label, .mining-operation--living .thread-capacity-text { font-size: 12px; }
+.mining-operation--living .pool-route-node { font-size: 12px; }
+.pool-route--idle, .pool-route--unknown { color: var(--text-secondary); }
+.pool-route--idle .pool-route-status::before, .pool-route--unknown .pool-route-status::before { background: #9b9c8f; }
+.mining-operation--living .starting-note { min-height: 0; padding: 0; margin: 0; font-size: 13px; }
+.mining-operation--living .operation-details { display: grid; grid-template-columns: minmax(130px, 1fr) minmax(150px, 1.1fr) minmax(75px, .6fr) auto; gap: 20px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .mining-operation--living .operation-profile-heading { flex-wrap: wrap; gap: 4px 12px; }
-.mining-operation--living .operation-work { grid-column: auto; grid-row: auto; padding-left: 18px; gap: 16px; }
+.mining-operation--living .operation-work { grid-column: auto; grid-row: auto; padding-left: 16px; gap: 16px; }
 .mining-operation--living .operation-time { grid-column: auto; }
 .mining-operation--living .operation-details > * { min-width: 0; overflow-wrap: anywhere; }
 .operation-time .operational-label, .operation-work > span > span { display: flex; align-items: center; gap: 5px; }
 .pool-route-node { display: inline-flex; align-items: center; gap: 5px; }
+.mining-operation--living .thread-lanes { gap: 3px; }
+.mining-operation--living .thread-lane { height: 5px; border-radius: 1px; }
 .mining-operation--living .mining-advanced-details { margin: 0; padding: 0; border: 0; }
-.mining-advanced-details > summary { min-height: 44px; padding-block: 12px; }
-.workspace-fee { margin: 12px 0 0; font-size: 12px; color: var(--text-secondary); overflow-wrap: anywhere; }
+.mining-advanced-details > summary { min-height: 44px; padding-block: 12px; color: #cbb18d; }
+.workspace-fee { margin: 10px 0 0; font-size: 12px; color: var(--text-secondary); overflow-wrap: anywhere; }
 .workspace-fee span { color: var(--text-muted); }
 .workspace-recovery { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px; border-left: 2px solid var(--warning); background: #d9b17408; }
 .workspace-recovery p { margin: 0; font-size: 13px; }
@@ -46,28 +55,32 @@
 .unified-workspace .setup-welcome .eyebrow { display: none; }
 .unified-workspace .setup-welcome h2 { font-size: 17px; }
 .unified-workspace .workspace-setup:not([open]) { margin-bottom: -10px; }
-@container (max-width: 900px) {
-  .mining-operation--living .operation-main { gap: 20px; grid-template-columns: minmax(280px, 1.3fr) minmax(160px, 1fr); }
-  .operation-console { padding-left: 16px; }
-  .mining-operation--living .operation-details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
+.unified-workspace .ember-stream { border-radius: 6px; }
+.unified-workspace .ember-stream .ember-stream-heading { padding: 12px 16px; }
+.unified-workspace .stream-viewport { min-height: 180px; height: clamp(180px, 26vh, 300px); }
+@container (max-width: 780px) {
+  .mining-operation--living .operation-details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
   .mining-operation--living .operation-work { padding: 0; border: 0; }
 }
-@container (max-width: 510px) {
-  .mining-operation--living .operation-main { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .operation-console { padding: 0; border: 0; }
-  .operation-world { max-width: 100%; }
-  .workspace-status h2 { font-size: 23px; }
-  .workspace-primary-action .setup-engine-button { min-width: 122px; padding-inline: 12px; }
-  .mining-operation--living .operation-rate > strong { font-size: 42px; }
+@container (max-width: 620px) {
+  .mining-operation--living .operation-main { grid-template-columns: minmax(0, 1fr) 280px; gap: 12px; }
+  .operation-world .core-caption > span { display: none; }
+  .mining-operation--living .operation-rate > strong { font-size: 44px; }
+}
+@container (max-width: 470px) {
+  .mining-operation--living .operation-main { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .operation-console { grid-column: 1; grid-row: 1; padding: 14px 0 6px; }
+  .operation-world { grid-column: 1; grid-row: 2; max-width: 100%; }
+  .workspace-status h2 { font-size: 24px; }
+  .workspace-primary-action .setup-engine-button { min-width: 112px; padding-inline: 12px; }
   .mining-operation--living .details-groups { grid-template-columns: minmax(0, 1fr); }
   .mining-operation--living .details-groups dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
-@container (max-width: 430px) {
+@container (max-width: 330px) {
+  .workspace-status { align-items: flex-start; flex-wrap: wrap; }
   .mining-operation--living .operation-details { grid-template-columns: minmax(0, 1fr); }
 }
-@container (max-width: 330px) {
-  .workspace-status { align-items: flex-start; flex-direction: column; }
-}
+@media (max-width: 600px) { .workspace--home .page-content { padding: 18px; } }
 
 .operation-work strong, .pool-route-status { white-space: nowrap; }
 .mining-advanced-details[open] { max-height: min(480px, 60dvh); overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding-right: 12px !important; }

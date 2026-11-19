@@ -6,6 +6,8 @@ import { WalletIcon } from "@phosphor-icons/react/dist/csr/Wallet";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ThisDeviceStatus } from "./components/ThisDeviceStatus";
+import type { HashrateHistory } from "./hashrateHistory.mjs";
+import { useHashrateHistory } from "./hooks/useHashrateHistory";
 import { useSystemSnapshot } from "./hooks/useSystemSnapshot";
 import { MiningSetup, type MiningReadiness, type MiningSessionStatus } from "./components/MiningSetup";
 import type { EmberEvent } from "./emberStream.mjs";
@@ -37,7 +39,7 @@ const sections: { id: Section; label: string; icon: ReactNode }[] = [
   { id: "settings", label: "Settings", icon: <GearSixIcon weight="regular" /> },
 ];
 
-function App({ reducedMotion = false, invokeCommand = invoke }: { reducedMotion?: boolean; invokeCommand?: typeof invoke }) {
+function App({ reducedMotion = false, invokeCommand = invoke, initialPerformanceHistory }: { reducedMotion?: boolean; invokeCommand?: typeof invoke; initialPerformanceHistory?: HashrateHistory }) {
   const [section, setSection] = useState<Section>(() => workspaceDestination(window.location.pathname, window.location.hash));
   const [setupRequested, setSetupRequested] = useState(false);
   const [nativeState, setNativeState] = useState<string | null>(null);
@@ -45,6 +47,7 @@ function App({ reducedMotion = false, invokeCommand = invoke }: { reducedMotion?
   const [setup, setSetup] = useState<MiningReadiness | null>(null);
   const [session, setSession] = useState<MiningSessionStatus | null>(null);
   const [sessionStatusUnavailable, setSessionStatusUnavailable] = useState(false);
+  const history = useHashrateHistory(session, sessionStatusUnavailable, initialPerformanceHistory);
   const sessionRequest = useRef<Promise<void> | null>(null);
   const [miningEvents, setMiningEvents] = useState<EmberEvent[]>([]);
   const [miningEventsUnavailable, setMiningEventsUnavailable] = useState(false);
@@ -227,7 +230,7 @@ function App({ reducedMotion = false, invokeCommand = invoke }: { reducedMotion?
         <div className="page-content">
           <header className="page-heading"><h1>{current.label}</h1></header>
 
-          <MiningSetup controlsOnly={section !== "home"} setupRequested={setupRequested} invokeCommand={invokeCommand} reducedMotion={reducedMotion} setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} sessionStatusUnavailable={sessionStatusUnavailable} diagnosticsMode={diagnosticsMode} diagnosticRunning={integrationTest?.running ?? false} copyDiagnostics={copyDiagnostics} events={miningEvents} eventsUnavailable={miningEventsUnavailable} />
+          <MiningSetup history={history} controlsOnly={section !== "home"} setupRequested={setupRequested} invokeCommand={invokeCommand} reducedMotion={reducedMotion} setup={setup} onChange={acceptSetup} refresh={refreshSetup} session={session} refreshSession={refreshSession} sessionStatusUnavailable={sessionStatusUnavailable} diagnosticsMode={diagnosticsMode} diagnosticRunning={integrationTest?.running ?? false} copyDiagnostics={copyDiagnostics} events={miningEvents} eventsUnavailable={miningEventsUnavailable} />
           {section === "settings" && <SettingsPage systemSnapshot={systemSnapshot} setup={setup} editSetup={() => { setSetupRequested(true); navigate("home"); }} diagnosticsMode={diagnosticsMode} setDiagnosticsMode={changeDiagnosticsMode} miningBusy={session !== null && (session.startupStage !== null || ["starting", "mining", "paused", "stopping"].includes(session.state))} integrationTest={integrationTest} integrationTestError={integrationTestError} startIntegrationTest={() => void startIntegrationTest()} stopIntegrationTest={() => void stopIntegrationTest()} copyIntegrationReport={() => void copyIntegrationReport()} />}
         </div>
       </main>

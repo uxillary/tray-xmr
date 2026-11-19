@@ -4,7 +4,13 @@
 
 The Living Core is an illustrative status surface for Ember's Windows desktop app. It makes the device's mining state easier to recognize without becoming a mining control, a telemetry gauge, or an earnings claim. The concept art is a direction for character and atmosphere, not a pixel-perfect specification. D01 originally required still-art approval before implementation; the D02 owner request authorized an autonomous prototype using the supplied canonical reference. Final owner visual acceptance remains required.
 
-## D03E refinement (2026-11-19, current)
+## D04A performance workspace (2026-11-19, current)
+
+The unchanged D03E workshop now sits opposite the large rate in a compact masthead above a full-width amber performance plot. The scene stays 320×144 at normal scale with 32px Squish; narrow layouts may crop its container or stack it below the rate, never enlarge the character. The caption names tending/preparation/return/rest. Walking, tending, shimmer, conduit, machinery, intensity calibration, zero/stale guards, reduced motion and timer disposal remain owned by the existing Living Core implementation.
+
+The graph shows real timestamped **10-second average** observations, distinct from the workshop's processing-pace metaphor. No share/reward effects or financial predictions were added. Missing data splits paths; stopped observations are historical; new lifecycle/process segments clear the series. Pool evidence, thread allocation, session time and result counters form one compact rail. Unconfirmed cached pool connectivity is labelled explicitly. Activity/Verbose, Details, safety disclosures and Diagnostics retain their existing behavior. See [D04A baseline, architecture, screenshots and owner checks](D04A_LIVE_WORKSPACE.md).
+
+## D03E refinement (2026-11-19)
 
 Preserve the 320×144 workshop and original 32px four-pose sprite. Add notice/approach/turn timing, shorter pixel footfalls, spaced reach/release gestures, crystal-facing inspection and position-preserving returns. Crystal shimmer, local glow, a travelling conduit pixel and gesture contact highlight strengthen confirmed activity while retaining the session-relative adapter and hidden/reduced-motion gates. Home rejects invalid/expired sample timestamps before animating. Stopped/Ready become calm, explicit states with historical readings labelled separately.
 

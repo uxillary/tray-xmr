@@ -1,0 +1,86 @@
+[
+  {
+    "activityTop": 699.890625,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 1177,
+    "stopHeight": 44,
+    "viewport": [
+      1440,
+      900
+    ],
+    "workshopHeight": 144
+  },
+  {
+    "activityTop": 699.890625,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 937,
+    "stopHeight": 44,
+    "viewport": [
+      1200,
+      800
+    ],
+    "workshopHeight": 144
+  },
+  {
+    "activityTop": 695.890625,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 801,
+    "stopHeight": 44,
+    "viewport": [
+      1024,
+      768
+    ],
+    "workshopHeight": 144
+  },
+  {
+    "activityTop": 781.6875,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 597,
+    "stopHeight": 44,
+    "viewport": [
+      820,
+      740
+    ],
+    "workshopHeight": 144
+  },
+  {
+    "activityTop": 781.6875,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 597,
+    "stopHeight": 44,
+    "viewport": [
+      820,
+      520
+    ],
+    "workshopHeight": 144
+  },
+  {
+    "activityTop": 887.875,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 538,
+    "stopHeight": 44,
+    "viewport": [
+      600,
+      400
+    ],
+    "workshopHeight": 144
+  },
+  {
+    "activityTop": 1040.140625,
+    "characterWidth": 32,
+    "horizontalOverflow": false,
+    "plotWidth": 348,
+    "stopHeight": 44,
+    "viewport": [
+      410,
+      400
+    ],
+    "workshopHeight": 144
+  }
+]

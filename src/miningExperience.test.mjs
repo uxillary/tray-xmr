@@ -12,6 +12,7 @@ const vite = await createServer({ cacheDir: "node_modules/.vite-ssr-tests", conf
   resolveId(id) { if (id.endsWith(".css")) return "\0static-markup-style:" + id; },
   load(id) { if (id.startsWith("\0static-markup-style:")) return "export default {}"; },
 }], server: { middlewareMode: true, hmr: { server: createHttpServer() }, watch: null }, optimizeDeps: { noDiscovery: true }, appType: "custom" });
+const { LivePerformance } = await vite.ssrLoadModule("/src/components/LivePerformance.tsx");
 const { MiningSessionTelemetry } = await vite.ssrLoadModule("/src/components/MiningTelemetry.tsx");
 const { EmberStream } = await vite.ssrLoadModule("/src/components/EmberStream.tsx");
 const { workspaceDestination } = await vite.ssrLoadModule("/src/App.tsx");
@@ -57,7 +58,7 @@ test("mining composition keeps status, pool, configured threads, work and detail
   assert.match(html, /data-active-work="true"/);
   assert.match(html, /living-core\/v3\/character\.png/);
   assert.doesNotMatch(html, /class="ember-core /);
-  assert.doesNotMatch(html, /aria-live/);
+  assert.doesNotMatch(html, /class="operation-rate[^"]*" aria-live/);
 });
 
 test("starting reserves metrics, while stale and disconnected values remain truthful", () => {
@@ -241,4 +242,33 @@ test("Diagnostics keeps all stage/capture errors in a named modal with separatel
   assert.match(html, /role="region" aria-label="Sanitized engine output" tabindex="0"/);
   assert.match(html, /Copy sanitized report/);
   assert.doesNotMatch(html, /<dialog[^>]* open/);
+});
+
+
+test("performance chart labels actual averages, range, units and separated observations", () => {
+  const history = { samples: [{ time: 1000000, rate: 0, segment: 1 }, { time: 1001000, rate: 1250, segment: 1 }, { time: 1010000, rate: 1400, segment: 2 }], endTime: 1010000 };
+  const html = renderToStaticMarkup(createElement(LivePerformance, { history, live: true }));
+  assert.match(html, /10-second average/);
+  assert.match(html, /Observed range 0 H\/s to 1.4 kH\/s/);
+  assert.equal((html.match(/class="performance-line"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="performance-point"/g) ?? []).length, 3);
+  assert.match(html, /tabindex="0"/);
+  assert.match(html, /Left and right arrows inspect actual observations/);
+  assert.doesNotMatch(html, /<animate|instantaneous|earnings/i);
+  const stopped = renderToStaticMarkup(createElement(LivePerformance, { history, live: false }));
+  assert.match(stopped, /Recent session · historical/);
+  const stale = renderToStaticMarkup(createElement(LivePerformance, { history, live: true, delayed: true }));
+  assert.match(stale, /Signal interrupted · gaps preserved/);
+  const empty = renderToStaticMarkup(createElement(LivePerformance, { history: { samples: [], endTime: null }, live: false }));
+  assert.match(empty, /No confirmed observations yet/);
+  assert.doesNotMatch(empty, /class="performance-point"|tabindex="0"/);
+});
+
+test("session failures appear before the performance plot with cached errors labelled", () => {
+  const html = renderSession({ state: "error", error: { message: "Engine may still be running" } });
+  assert.ok(html.indexOf("Engine may still be running") < html.indexOf('class="live-performance"'));
+  assert.match(html, /workspace-session-error" role="alert"/);
+  assert.match(html, /Stop mining/);
+  const cached = renderSession({ error: { message: "Lost contact" } }, { statusUnavailable: true });
+  assert.match(cached, /Last reported error: Lost contact/);
 });

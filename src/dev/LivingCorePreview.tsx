@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import type { invoke } from "@tauri-apps/api/core";
+import { initialHistory, observeHashrate } from "../hashrateHistory.mjs";
 import App from "../App";
 import { checkStreamScrolling } from "./checkStreamScrolling";
 import { checkLivingCoreLifecycle } from "./checkLivingCoreLifecycle";
+import { checkLivePerformance } from "./checkLivePerformance";
 import { checkDiagnostics } from "./checkDiagnostics";
 import type { MiningReadiness, MiningSessionStatus } from "../components/MiningSetup";
 import type { EmberEvent } from "../emberStream.mjs";
 import "./LivingCorePreview.css";
 
 const choices = [
+  ["series", "Mining · simulated sample series"], ["gaps", "Mining · simulated missing-data gaps"], ["retained", "Stopped · retained simulated observations"], ["newSession", "New session · empty history"],
   ["notConfigured", "Not configured"], ["ready", "Ready"], ["starting", "Starting"],
   ["mining", "Mining"], ["paused", "Paused"], ["stopping", "Stopping"], ["stopped", "Stopped"],
   ["error", "Error"], ["unavailable", "Unavailable"], ["stale", "Mining · stale telemetry"],
@@ -35,7 +38,7 @@ const previewEvents: EmberEvent[] = Array.from({ length: 36 }, (_, index) => ({
 }));
 
 function fixture(choice: Choice): MiningSessionStatus {
-  const state = ["stale", "missing", "zero", "missingRate", "failed"].includes(choice) ? "mining" : choice as MiningSessionStatus["state"];
+  const state = ["stale", "missing", "zero", "missingRate", "failed", "series", "gaps"].includes(choice) ? "mining" : choice === "retained" ? "stopped" : choice === "newSession" ? "starting" : choice as MiningSessionStatus["state"];
   return {
     state, processId: ["mining", "starting", "stopping", "paused"].includes(state) ? 42 : null, sessionDurationSeconds: state === "mining" ? 125 : null,
     telemetryFreshness: choice === "stale" ? "stale" : choice === "missing" || state !== "mining" ? "unavailable" : "fresh",
@@ -55,7 +58,7 @@ export default function LivingCorePreview() {
   const initial = (new URLSearchParams(window.location.search).get("state") ?? "ready") as Choice;
   const [choice, setChoice] = useState<Choice>(choices.some(([id]) => id === initial) ? initial : "ready");
   const [replay, setReplay] = useState(0);
-  const [reduced, setReduced] = useState(false);
+  const [reduced, setReduced] = useState(new URLSearchParams(window.location.search).get("reduced") === "1");
   const [hidden, setHidden] = useState(false);
   const [checkResult, setCheckResult] = useState("");
   const [checking, setChecking] = useState(false);
@@ -63,22 +66,48 @@ export default function LivingCorePreview() {
   const eventFixture = useRef(false);
   const [effort, setEffort] = useState(128);
   const rateFixture = useRef(128);
+  const performanceFixture = useRef(initialHistory());
+  const seriesStart = useRef(Date.now());
   const checkHost = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef<number | null>(null);
   const clearTransition = () => { if (transitionTimer.current !== null) window.clearTimeout(transitionTimer.current); transitionTimer.current = null; };
   useEffect(() => clearTransition, []);
-  const model = useRef({ session: fixture(choice), setup: { ...readiness }, failed: choice === "failed", statusReads: 0 });
+  const model = useRef({ session: fixture(choice), setup: { ...readiness }, failed: choice === "failed", statusReads: 0, choice });
   const install = (next: Choice) => {
     clearTransition();
+    seriesStart.current = Date.now();
+    performanceFixture.current = initialHistory();
+    if (["series", "gaps", "retained"].includes(next)) {
+      const end = Date.now() - 1000;
+      for (let i = 0; i < 57; i++) {
+        const now = end - (56 - i) * 2000;
+        const sample = fixture("mining");
+        sample.telemetry!.sampleTimeUnixMs = now;
+        sample.telemetry!.shortHashrate = 860 + Math.round(55 * Math.sin(i / 5) + 17 * Math.cos(i / 2));
+        if (next === "gaps" && (i >= 17 && i <= 22 || i >= 36 && i <= 39)) sample.telemetry!.shortHashrate = null;
+        performanceFixture.current = observeHashrate(performanceFixture.current, sample, { now });
+      }
+      if (next === "retained") performanceFixture.current = observeHashrate(performanceFixture.current, fixture("stopped"));
+    }
     const setup = next === "notConfigured" ? { ...readiness, ready: false, startAllowed: false, walletMasked: null, pool: null, profile: null, threads: null, acknowledged: false, checks: [{ id: "wallet", label: "Wallet", passed: false }, { id: "pool", label: "Pool", passed: false }, { id: "profile", label: "Power", passed: false }] } : { ...readiness };
-    model.current = { session: fixture(next), setup, failed: next === "failed", statusReads: 0 };
+    model.current = { session: fixture(next), setup, failed: next === "failed", statusReads: 0, choice: next };
   };
   const [previewInvoke] = useState<typeof invoke>(() => {
     install(choice);
     return (async (command: string, args: unknown) => {
       const current = model.current;
       if (command === "mining_readiness") return current.setup;
-      if (command === "mining_status") { current.statusReads++; if (current.failed && current.statusReads > 1) throw new Error("Preview unavailable"); return { ...current.session, telemetry: current.session.telemetry ? { ...current.session.telemetry, sampleTimeUnixMs: Date.now(), shortHashrate: current.session.telemetry.shortHashrate === 128 ? rateFixture.current : current.session.telemetry.shortHashrate } : null }; }
+      if (command === "mining_status") {
+        current.statusReads++;
+        if (current.failed && current.statusReads > 1) throw new Error("Preview unavailable");
+        const elapsed = Math.floor((Date.now() - seriesStart.current) / 1000);
+        const shaped = ["series", "gaps"].includes(model.current.choice);
+        const gap = model.current.choice === "gaps" && elapsed % 30 >= 15 && elapsed % 30 <= 20;
+        return { ...current.session, sessionDurationSeconds: current.session.state === "mining" ? 125 + elapsed : current.session.sessionDurationSeconds,
+          telemetry: current.session.telemetry ? { ...current.session.telemetry,
+            sampleTimeUnixMs: model.current.choice === "stale" ? Date.now() - 8000 : Date.now(),
+            shortHashrate: gap ? null : shaped ? 860 + Math.round(55 * Math.sin((56 + elapsed / 2) / 5) + 17 * Math.cos((56 + elapsed / 2) / 2)) : current.session.telemetry.shortHashrate === 128 ? rateFixture.current : current.session.telemetry.shortHashrate } : null };
+      }
       if (command === "mining_events") return eventFixture.current ? previewEvents : [];
       if (command === "system_snapshot") return null;
       if (command === "start_mining") {
@@ -90,8 +119,8 @@ export default function LivingCorePreview() {
       }
       if (command === "stop_mining") {
         clearTransition();
-        current.session = fixture("stopping");
-        transitionTimer.current = window.setTimeout(() => { transitionTimer.current = null; if (current.session.state === "stopping") current.session = fixture("stopped"); }, 4000);
+        current.session = { ...current.session, state: "stopping", startupStage: null };
+        transitionTimer.current = window.setTimeout(() => { transitionTimer.current = null; if (current.session.state === "stopping") current.session = { ...current.session, state: "stopped", processId: null, telemetryFreshness: "unavailable" }; }, 4000);
         return current.setup;
       }
       if (command === "update_mining_setup") {
@@ -121,14 +150,15 @@ export default function LivingCorePreview() {
       const lifecycle = await checkLivingCoreLifecycle(checkHost.current, fixture("mining"), readiness);
       const stream = await checkStreamScrolling(checkHost.current);
       const diagnostics = await checkDiagnostics(checkHost.current, fixture("error"));
-      setCheckResult(`${lifecycle} · ${stream} · ${diagnostics}`);
+      const performance = await checkLivePerformance(checkHost.current, fixture("mining"), readiness);
+      setCheckResult(`${lifecycle} · ${stream} · ${diagnostics} · ${performance}`);
     }
     catch (error) { setCheckResult(`FAIL · ${String(error)}`); }
     finally { setChecking(false); }
   }
   return <div className={`living-core-preview${reduced ? " preview-reduced" : ""}`}>
     <header className={`living-core-preview-toolbar${hidden ? " is-collapsed" : ""}`}>
-      <div className="living-core-preview-heading"><strong>Home · isolated development preview</strong><p>Fixture telemetry{showEvents ? " and test-only events" : "; empty event feed"}. No XMRig or native mining commands.</p></div>
+      <div className="living-core-preview-heading"><strong>Home · isolated development preview</strong><p>Simulated preview data · Fixture telemetry{showEvents ? " and test-only events" : "; empty event feed"}. No XMRig or native mining commands.</p></div>
       <button className="living-core-preview-collapse" type="button" onClick={() => setHidden(!hidden)}>{hidden ? "Show preview controls" : "Hide preview controls"}</button>
       <label>State <select value={choice} onChange={(event) => { const next = event.target.value as Choice; setChoice(next); install(next); setReplay((value) => value + 1); }}>{choices.map(([id, label]) => <option value={id} key={id}>{label}</option>)}</select></label>
       <button type="button" onClick={() => { install(choice); setReplay((value) => value + 1); }}>Replay state</button>
@@ -138,7 +168,7 @@ export default function LivingCorePreview() {
       <button type="button" disabled={checking} onClick={() => void runChecks()}>Run lifecycle checks</button>
       <p role="status">{checkResult}</p>
     </header>
-    {!checking && <App key={replay} invokeCommand={previewInvoke} reducedMotion={reduced} />}
+    {!checking && <App initialPerformanceHistory={performanceFixture.current} key={replay} invokeCommand={previewInvoke} reducedMotion={reduced} />}
     <div ref={checkHost} className={checking ? "living-core-check-host" : undefined} />
   </div>;
 }

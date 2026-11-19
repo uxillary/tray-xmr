@@ -5,6 +5,8 @@ import { CpuIcon } from "@phosphor-icons/react/dist/csr/Cpu";
 import { LinkSimpleIcon } from "@phosphor-icons/react/dist/csr/LinkSimple";
 import { GaugeIcon } from "@phosphor-icons/react/dist/csr/Gauge";
 import { InfoIcon } from "@phosphor-icons/react/dist/csr/Info";
+import { initialHistory, type HashrateHistory } from "../hashrateHistory.mjs";
+import { LivePerformance } from "./LivePerformance";
 import { LivingCore } from "./LivingCore";
 import { initialIntensity, intensityMotion, stepIntensity, telemetryExpiryDelay } from "../workshopIntensity.mjs";
 import { livingCoreState } from "../livingCoreState.mjs";
@@ -13,9 +15,9 @@ import type { MiningReadiness, MiningSessionStatus } from "./MiningSetup";
 import "./MiningTelemetry.css";
 
 type Props = { session: MiningSessionStatus | null; setup: MiningReadiness | null; statusUnavailable?: boolean };
-type SessionProps = Props & { controlsOnly?: boolean; onStop?: () => void; stopping?: boolean; reducedMotion?: boolean; inspectFrame?: number; onStart?: () => void; startDisabled?: boolean; starting?: boolean };
+type SessionProps = Props & { history?: HashrateHistory; controlsOnly?: boolean; onStop?: () => void; stopping?: boolean; reducedMotion?: boolean; inspectFrame?: number; onStart?: () => void; startDisabled?: boolean; starting?: boolean };
 
-export function MiningSessionTelemetry({ session, setup, statusUnavailable = false, onStop, stopping = false, reducedMotion = false, inspectFrame, onStart, startDisabled = false, starting: startPending = false, controlsOnly = false }: SessionProps) {
+export function MiningSessionTelemetry({ history, session, setup, statusUnavailable = false, onStop, stopping = false, reducedMotion = false, inspectFrame, onStart, startDisabled = false, starting: startPending = false, controlsOnly = false }: SessionProps) {
   const [expiredSample, setExpiredSample] = useState<MiningSessionStatus | null>(null);
   const observedSession = useMemo(() => {
     const stamp = session?.telemetry?.sampleTimeUnixMs;
@@ -38,7 +40,7 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
   const motion = intensityMotion(core.activeWork && !reducedMotion && intensity.key === intensityKey ? intensity : initialIntensity());
   const starting = core.lifecycle === "starting";
   const resting = !statusUnavailable && !session?.error && ["stopped", "ready", "notConfigured"].includes(core.lifecycle);
-  const poolState = resting ? "idle" : view.poolState ?? "unavailable";
+  const poolState = resting ? "idle" : statusUnavailable || view.freshness !== "fresh" ? "unknown" : view.poolState ?? "unavailable";
   const accepted = formatCount(view.accepted, starting || resting);
   const rejected = formatCount(view.rejected, starting || resting);
   const lastReported = statusUnavailable || view.freshness !== "fresh" || !["mining", "paused"].includes(core.lifecycle);
@@ -46,16 +48,17 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
   return (
     <>
       <header className="workspace-status">
-        <div className="operation-identity" role="status"><span className="operation-kicker">LOCAL WORKSPACE</span><h2>{core.label}</h2></div>
+        <div className="operation-identity" role="status"><h2>{core.label}</h2><p className="operation-status-copy">{resting ? core.lifecycle === "stopped" ? "Squish is resting. Ready when you are." : core.lifecycle === "ready" ? "Your workshop is ready." : "Let’s get your workshop ready." : statusUnavailable ? "Check the connection. Stop remains available." : core.lifecycle === "mining" ? core.activeWork ? "A little work, happening right here." : "Waiting for confirmed work." : core.lifecycle === "starting" ? "Waking up the workshop." : core.lifecycle === "stopping" ? "Bringing things to a safe stop." : core.qualifier ?? "Check session details below."}</p></div>
         <div className="workspace-primary-action">
           {onStop && <button className="setup-engine-button stop-mining-button" type="button" disabled={stopping || session?.state === "stopping"} onClick={onStop}>{stopping || session?.state === "stopping" ? "Stopping…" : "Stop mining"}</button>}
           {onStart && <button className="setup-engine-button start-mining-button" type="button" disabled={startDisabled} onClick={onStart}>{startPending ? "Starting…" : "Start mining"}</button>}
           {!onStop && !onStart && core.lifecycle === "notConfigured" && <a className="workspace-setup-link" href="#setup" onClick={(event) => { event.preventDefault(); const details = document.querySelector<HTMLDetailsElement>(".workspace-setup"); if (details) details.open = true; details?.scrollIntoView({ behavior: "instant", block: "start" }); details?.querySelector<HTMLElement>("summary")?.focus(); }}>Set up mining ↓</a>}
         </div>
       </header>
+      {!controlsOnly && session?.error && <p className="workspace-session-error" role="alert">{statusUnavailable ? "Last reported error: " : ""}{session.error.message}</p>}
     {!controlsOnly && <div className={`mining-operation mining-operation--living mining-operation--${core.lifecycle}`}>
       <section className="operation-main" aria-label="Mining session status">
-        <div className="operation-world"><LivingCore view={core} reducedMotion={reducedMotion} inspectFrame={inspectFrame} intensity={motion} /><span className="core-caption">SQUISH’S WORKSHOP</span></div>
+        <div className="operation-world"><LivingCore view={core} reducedMotion={reducedMotion} inspectFrame={inspectFrame} intensity={motion} /><span className="core-caption">SQUISH’S WORKSHOP <span aria-hidden="true"> / </span><span>{core.activeWork ? "TENDING THE CORE" : core.lifecycle === "starting" ? "GETTING READY" : core.lifecycle === "stopping" ? "HEADING HOME" : "AT REST"}</span></span></div>
         <div className="operation-console">
           {resting ? <div className="operation-resting">
             <span className="operation-kicker">{core.lifecycle === "stopped" ? "AT REST" : "YOUR WORKSPACE"}</span>
@@ -71,8 +74,10 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
         </div>
       </section>
 
+      <LivePerformance preparing={starting} history={history ?? initialHistory()} live={session?.state === "mining" && !session.startupStage} delayed={statusUnavailable || view.freshness !== "fresh" || history?.breakPending} />
+
       <section className="operation-details" aria-label="Current mining session details">
-        <PoolRoute state={poolState} label={resting ? "Not connected" : view.poolLabel} />
+        <PoolRoute state={poolState} label={resting ? "Not connected" : lastReported && view.poolState === "connected" ? "Last connected · unconfirmed" : view.poolLabel} />
         <div className="operation-profile">
           <div className="operation-profile-heading">
             <span className="operational-label">CPU effort</span>
@@ -166,6 +171,7 @@ function FreshnessNotice({ session, statusUnavailable }: { session: MiningSessio
   const freshness = unknown || core.qualifier === "Telemetry unavailable" ? "unavailable" : view.freshness;
   const message = unknown ? session ? "Status unavailable · last reported readings" : "Ember status unavailable"
     : core.qualifier === "Telemetry unavailable" ? "Telemetry unavailable"
+    : view.freshness === "fresh" && session?.telemetry && session.telemetry.shortHashrate === null ? "Rate missing · telemetry received"
     : view.freshness === "unavailable" && ["mining", "paused", "stopping"].includes(view.state) ? "Telemetry unavailable" : view.freshnessLabel;
   return <div className={`telemetry-freshness telemetry-freshness--${freshness}`}>
     <span className="freshness-mark" aria-hidden="true" /><span>{message}</span>

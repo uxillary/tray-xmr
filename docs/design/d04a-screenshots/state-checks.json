@@ -1,0 +1,50 @@
+[
+  {
+    "choice": "newSession",
+    "text": "Current hashrate\n—\n10-second average\nWaiting for miner data\n\nWaiting for the first live reading",
+    "chart": "Performance 10-second average\n\nWaiting for a session\n\nRECENT 2 MIN",
+    "points": 0
+  },
+  {
+    "choice": "notConfigured",
+    "text": "YOUR WORKSPACE\nA little setup first\n\nChoose a wallet, pool and CPU profile to get ready.",
+    "chart": "Performance 10-second average\n\nWaiting for a session\n\nRECENT 2 MIN",
+    "points": 0
+  },
+  {
+    "choice": "error",
+    "text": "Current hashrate\nUnavailable\n10-second average\nTelemetry unavailable",
+    "chart": "Performance 10-second average\n\nWaiting for a session\n\nRECENT 2 MIN",
+    "points": 0
+  },
+  {
+    "choice": "unavailable",
+    "text": "Current hashrate\nUnavailable\n10-second average\nStatus unavailable · last reported readings",
+    "chart": "Performance 10-second average\n\nWaiting for a session\n\nRECENT 2 MIN",
+    "points": 0
+  },
+  {
+    "choice": "stale",
+    "text": "Current hashrate\n128\nH/s\nLast reported · 10-second average\nUpdates delayed",
+    "chart": "Performance 10-second average\n\nSignal interrupted · gaps preserved\n\nRECENT 2 MIN",
+    "points": 0
+  },
+  {
+    "choice": "zero",
+    "text": "Current hashrate\n0\nH/s\n10-second average\nLive telemetry\n\nNo recent hashing reported",
+    "chart": "Performance 10-second average\n\nWarming up\n\nRECENT 2 MIN",
+    "points": 1
+  },
+  {
+    "choice": "missingRate",
+    "text": "Current hashrate\nUnavailable\n10-second average\nRate missing · telemetry received\n\nWaiting for rate data",
+    "chart": "Performance 10-second average\n\nSignal interrupted · gaps preserved\n\nRECENT 2 MIN",
+    "points": 0
+  },
+  {
+    "choice": "failed",
+    "text": "Current hashrate\n128\nH/s\nLast reported · 10-second average\nStatus unavailable · last reported readings",
+    "chart": "Performance 10-second average\n\nSignal interrupted · gaps preserved\n\nRECENT 2 MIN",
+    "points": 1
+  }
+]
