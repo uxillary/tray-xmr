@@ -13,12 +13,20 @@
 .mining-operation--living .operation-main { display: grid; grid-template-columns: minmax(320px, 1.5fr) minmax(200px, 1fr); min-height: 190px; gap: 36px; padding: 20px 0; }
 .operation-world { display: grid; min-width: 0; align-content: center; gap: 8px; }
 .operation-world .living-core-viewport { border-radius: 5px; mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent); }
-.operation-world .core-caption { text-align: center; color: #a99682; font-size: 9px; letter-spacing: 2px; }
+.operation-world .core-caption { text-align: center; color: #b3a38d; font-size: 10px; letter-spacing: 1.8px; }
 .operation-console { display: grid; min-width: 0; align-content: center; gap: 12px; padding-left: 30px; border-left: 1px solid var(--line); }
 .mining-operation--living .operation-rate { padding: 0; border: 0; gap: 7px; }
 .mining-operation--living .operation-rate > strong { font-size: clamp(32px, 4.7vw, 64px); letter-spacing: -2px; flex-wrap: wrap; gap: 6px 10px; }
-.mining-operation--living .operation-rate > .operation-rate-context { font-size: 11px; color: var(--text-muted); }
-.operation-qualifier { margin: 0; color: var(--warning); font-size: 12px; }
+.mining-operation--living .operation-rate > .operation-rate-context { font-size: 13px; color: var(--text-secondary); }
+.operation-qualifier { margin: 0; color: var(--warning); font-size: 14px; }
+.operation-resting { display: grid; gap: 10px; }
+.operation-resting > strong { font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2; letter-spacing: -.6px; font-weight: 600; color: #e6d5bc; }
+.operation-resting p { max-width: 34ch; margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.65; }
+.operation-last-rate { font-size: 13px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.mining-operation--living .telemetry-freshness, .mining-operation--living .operational-label, .mining-operation--living .thread-capacity-text { font-size: 13px; }
+.mining-operation--living .pool-route-node { font-size: 13px; }
+.pool-route--idle { color: var(--text-secondary); }
+.pool-route--idle .pool-route-status::before { background: #9b9c8f; }
 .mining-operation--living .starting-note { min-height: 0; padding: 0; margin: 0; font-size: 12px; }
 .mining-operation--living .operation-details { grid-template-columns: minmax(130px, 1fr) minmax(150px, 1.25fr) minmax(75px, .65fr) auto; gap: 22px; padding: 18px 0; border-bottom: 1px solid var(--line); }
 .mining-operation--living .operation-profile-heading { flex-wrap: wrap; gap: 4px 12px; }
@@ -66,5 +74,13 @@
 .mining-advanced-details[open] > summary { position: sticky; top: 0; z-index: 1; width: 100%; background: var(--app-bg); }
 .details-groups dd, .operation-time strong, .operation-work strong { font-variant-numeric: tabular-nums; }
 .details-groups h3 { display: flex; align-items: center; gap: 8px; }
-.detail-help { display: block; margin-top: 4px; color: var(--text-secondary); font-size: 11px; line-height: 1.5; }
+.detail-help { display: block; margin-top: 5px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
 .detail-unavailable { color: var(--text-muted) !important; }
+.mining-operation--living .details-groups { gap: 26px 32px; padding-top: 8px; }
+.mining-operation--living .details-groups h3 { font-size: 16px; padding-bottom: 12px; }
+.mining-operation--living .details-groups dl > div { padding-block: 11px; gap: 16px; }
+.mining-operation--living .details-groups dt { font-size: 13px; line-height: 1.6; }
+.mining-operation--living .details-groups dd { font-size: 14px; line-height: 1.6; }
+.details-reading-status { display: flex; align-items: baseline; gap: 8px; margin: 4px 0 16px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+.details-reading-status .freshness-mark { flex: 0 0 6px; background: var(--success); }
+.details-reading-status .freshness-mark.is-historical { background: var(--text-muted); }

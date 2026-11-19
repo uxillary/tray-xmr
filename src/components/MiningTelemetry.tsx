@@ -17,7 +17,11 @@ type SessionProps = Props & { controlsOnly?: boolean; onStop?: () => void; stopp
 
 export function MiningSessionTelemetry({ session, setup, statusUnavailable = false, onStop, stopping = false, reducedMotion = false, inspectFrame, onStart, startDisabled = false, starting: startPending = false, controlsOnly = false }: SessionProps) {
   const [expiredSample, setExpiredSample] = useState<MiningSessionStatus | null>(null);
-  const observedSession = useMemo(() => session && session === expiredSample ? { ...session, telemetryFreshness: "stale" as const } : session, [session, expiredSample]);
+  const observedSession = useMemo(() => {
+    const stamp = session?.telemetry?.sampleTimeUnixMs;
+    const invalidStamp = session?.telemetry && (typeof stamp !== "number" || !Number.isFinite(stamp) || stamp <= 0 || stamp > Date.now() || Date.now() - stamp > 5000);
+    return session?.telemetryFreshness === "fresh" && (session === expiredSample || invalidStamp) ? { ...session, telemetryFreshness: "stale" as const } : session;
+  }, [session, expiredSample]);
   useEffect(() => {
     const delay = telemetryExpiryDelay(session);
     if (delay === null || controlsOnly) return;
@@ -33,9 +37,10 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
   }, [observedSession, intensityKey, statusUnavailable, reducedMotion]);
   const motion = intensityMotion(core.activeWork && !reducedMotion && intensity.key === intensityKey ? intensity : initialIntensity());
   const starting = core.lifecycle === "starting";
-  const poolState = view.poolState ?? "unavailable";
-  const accepted = formatCount(view.accepted, starting);
-  const rejected = formatCount(view.rejected, starting);
+  const resting = !statusUnavailable && !session?.error && ["stopped", "ready", "notConfigured"].includes(core.lifecycle);
+  const poolState = resting ? "idle" : view.poolState ?? "unavailable";
+  const accepted = formatCount(view.accepted, starting || resting);
+  const rejected = formatCount(view.rejected, starting || resting);
   const lastReported = statusUnavailable || view.freshness !== "fresh" || !["mining", "paused"].includes(core.lifecycle);
 
   return (
@@ -52,18 +57,22 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
       <section className="operation-main" aria-label="Mining session status">
         <div className="operation-world"><LivingCore view={core} reducedMotion={reducedMotion} inspectFrame={inspectFrame} intensity={motion} /><span className="core-caption">SQUISH’S WORKSHOP</span></div>
         <div className="operation-console">
-          <div className={`operation-rate${lastReported ? " is-stale" : ""}`}>
-            <span>Current hashrate</span><strong>{formatRate(starting ? "—" : view.hashrate ?? view.hashrateLabel)}</strong>
-            <span className="operation-rate-context">{lastReported && view.hashrate !== null ? "Last reported · 10-second average" : "10-second average"}</span>
-          </div>
-          <FreshnessNotice session={observedSession} statusUnavailable={statusUnavailable} />
+          {resting ? <div className="operation-resting">
+            <span className="operation-kicker">{core.lifecycle === "stopped" ? "AT REST" : "YOUR WORKSPACE"}</span>
+            <strong>{core.lifecycle === "stopped" ? "Session stopped" : core.lifecycle === "ready" ? "Ready to begin" : "A little setup first"}</strong>
+            <p>{core.lifecycle === "stopped" ? "Squish is resting. Ready when you are." : core.lifecycle === "ready" ? "Your setup is ready. Start when it suits you." : "Choose a wallet, pool and CPU profile to get ready."}</p>
+            {view.hashrate !== null && <span className="operation-last-rate">Last reported: {view.hashrate} · no live hashrate</span>}
+          </div> : <><div className={`operation-rate${lastReported ? " is-stale" : ""}`}>
+              <span>Current hashrate</span><strong>{formatRate(starting ? "—" : view.hashrate ?? view.hashrateLabel)}</strong>
+              <span className="operation-rate-context">{lastReported && view.hashrate !== null ? "Last reported · 10-second average" : "10-second average"}</span>
+            </div><FreshnessNotice session={observedSession} statusUnavailable={statusUnavailable} /></>}
           {core.qualifier && !["Live telemetry", "Updates delayed", "Telemetry unavailable"].includes(core.qualifier) && <p className="operation-qualifier">{core.qualifier}</p>}
           {starting && <p className="starting-note is-active" aria-live="polite">{startupMessage(session?.startupStage ?? null, session?.startupElapsedMs ?? null)}</p>}
         </div>
       </section>
 
       <section className="operation-details" aria-label="Current mining session details">
-        <PoolRoute state={poolState} label={view.poolLabel} />
+        <PoolRoute state={poolState} label={resting ? "Not connected" : view.poolLabel} />
         <div className="operation-profile">
           <div className="operation-profile-heading">
             <span className="operational-label">CPU effort</span>
@@ -72,12 +81,12 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
           <ThreadCapacity setup={setup} />
         </div>
         <div className="operation-time">
-          <span className="operational-label"><ClockIcon aria-hidden="true" /> Session</span>
-          <strong>{view.sessionDuration ?? (starting ? "—" : "Unavailable")}</strong>
+          <span className="operational-label"><ClockIcon aria-hidden="true" /> {resting && view.sessionDuration ? "Last session" : "Session"}</span>
+          <strong>{view.sessionDuration ?? (resting ? "Not running" : starting ? "—" : "Unavailable")}</strong>
         </div>
         <div className="operation-work" aria-label={`Accepted results: ${accepted}; rejected results: ${rejected}`}>
-          <span><span><CheckCircleIcon aria-hidden="true" /> Accepted</span><strong>{accepted}</strong></span>
-          <span className={view.rejected !== null && view.rejected > 0 ? "has-rejections" : ""}><span>Rejected</span><strong>{rejected}</strong></span>
+          <span><span><CheckCircleIcon aria-hidden="true" /> {resting && view.accepted !== null ? "Last accepted" : "Accepted"}</span><strong>{accepted}</strong></span>
+          <span className={view.rejected !== null && view.rejected > 0 ? "has-rejections" : ""}><span>{resting && view.rejected !== null ? "Last rejected" : "Rejected"}</span><strong>{rejected}</strong></span>
         </div>
 
       </section>
@@ -85,6 +94,7 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
       {session?.contribution?.active && <p className="workspace-fee">5% developer fee · {session.contribution.developerSlot ? "Developer wallet active" : "Your saved wallet active"} · next switch in {formatSwitchTime(session.contribution.secondsToSwitch)} <span>Details below</span></p>}
       <details className="mining-advanced-details">
         <summary>Details</summary>
+        <p className="details-reading-status"><span className={`freshness-mark${lastReported ? " is-historical" : ""}`} aria-hidden="true" />{!session?.telemetry ? resting ? "No session readings yet. Missing measurements appear as Unavailable." : "No telemetry received. Missing measurements appear as Unavailable." : lastReported ? "Last reported measurements · current activity unconfirmed" : "Live engine readings · XMRig local API"}</p>
         {session?.contribution?.active && <div className="operation-contribution" aria-live="polite">
           <span className="operational-label">5% developer fee · active time target</span>
           <strong>{session.contribution.developerSlot ? "Developer wallet" : "Your saved wallet"} · next switch in {formatSwitchTime(session.contribution.secondsToSwitch)}</strong>
@@ -116,7 +126,7 @@ export function MiningSessionTelemetry({ session, setup, statusUnavailable = fal
             <Detail label="Huge pages" value={view.hugePages ? `${view.hugePages.allocated} of ${view.hugePages.total} allocated` : "Unavailable"} help="Large memory pages used by the engine." />
           </dl></section>
           <section aria-labelledby="details-measurement"><h3 id="details-measurement"><InfoIcon aria-hidden="true" /> About these readings</h3><dl>
-            <Detail label="Readings" value={!session?.telemetry ? "Telemetry unavailable" : lastReported ? "Last reported · current work unconfirmed" : view.freshnessLabel} />
+            <Detail label="Readings" value={!session?.telemetry ? resting ? "No active session" : "Telemetry unavailable" : lastReported ? "Last reported · current work unconfirmed" : view.freshnessLabel} />
             <Detail label="Current rate" value="Hashes per second, averaged over 10 seconds" />
             <Detail label="Pool results" value="Submission responses, not earnings" />
             <Detail label="Workshop" value="Relative processing pace only; no earnings, share or block prediction" />

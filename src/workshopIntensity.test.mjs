@@ -35,11 +35,11 @@ test("zero, missing, stale, unavailable, reduced motion and every non-Mining lif
   assert.equal(step(previous, 100, 134000, { unavailable: true }).active, false);
   assert.equal(step(previous, 100, 134000, { reducedMotion: true }).active, false);
 });
-test("missing/old/future timestamps use steady work without a comparison; gaps and config changes recalibrate", () => {
+test("missing/old/future timestamps suppress work; gaps and config changes recalibrate", () => {
   const previous = calibrated();
   for (const stamp of [null, 0, NaN, 100000, 200001]) {
     const state = stepIntensity(previous, { session: sample(100, stamp), key: previous.key, now: 200000 });
-    assert.equal(state.active, true); assert.equal(state.responsive, false); assert.equal(state.level, "steady");
+    assert.equal(state.active, false); assert.equal(state.responsive, false); assert.equal(state.level, "steady");
   }
   for (const state of [step(previous, 100, 150000), step(previous, 100, 120000), step(previous, 100, 134000, { key: "43:performance:16" })]) {
     assert.equal(state.baseline, null); assert.equal(state.samples.length, 1);

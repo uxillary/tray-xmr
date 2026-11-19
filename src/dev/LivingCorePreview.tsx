@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { invoke } from "@tauri-apps/api/core";
 import App from "../App";
 import { checkStreamScrolling } from "./checkStreamScrolling";
@@ -64,8 +64,12 @@ export default function LivingCorePreview() {
   const [effort, setEffort] = useState(128);
   const rateFixture = useRef(128);
   const checkHost = useRef<HTMLDivElement>(null);
+  const transitionTimer = useRef<number | null>(null);
+  const clearTransition = () => { if (transitionTimer.current !== null) window.clearTimeout(transitionTimer.current); transitionTimer.current = null; };
+  useEffect(() => clearTransition, []);
   const model = useRef({ session: fixture(choice), setup: { ...readiness }, failed: choice === "failed", statusReads: 0 });
   const install = (next: Choice) => {
+    clearTransition();
     const setup = next === "notConfigured" ? { ...readiness, ready: false, startAllowed: false, walletMasked: null, pool: null, profile: null, threads: null, acknowledged: false, checks: [{ id: "wallet", label: "Wallet", passed: false }, { id: "pool", label: "Pool", passed: false }, { id: "profile", label: "Power", passed: false }] } : { ...readiness };
     model.current = { session: fixture(next), setup, failed: next === "failed", statusReads: 0 };
   };
@@ -78,14 +82,16 @@ export default function LivingCorePreview() {
       if (command === "mining_events") return eventFixture.current ? previewEvents : [];
       if (command === "system_snapshot") return null;
       if (command === "start_mining") {
+        clearTransition();
         current.session = fixture("starting");
         // Preview transition only. No native command or engine is invoked.
-        window.setTimeout(() => { if (current.session.state === "starting") current.session = fixture("mining"); }, 3200);
+        transitionTimer.current = window.setTimeout(() => { transitionTimer.current = null; if (current.session.state === "starting") current.session = fixture("mining"); }, 3200);
         return current.setup;
       }
       if (command === "stop_mining") {
+        clearTransition();
         current.session = fixture("stopping");
-        window.setTimeout(() => { if (current.session.state === "stopping") current.session = fixture("stopped"); }, 4000);
+        transitionTimer.current = window.setTimeout(() => { transitionTimer.current = null; if (current.session.state === "stopping") current.session = fixture("stopped"); }, 4000);
         return current.setup;
       }
       if (command === "update_mining_setup") {

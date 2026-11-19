@@ -29,6 +29,7 @@ export async function checkStreamScrolling(host: HTMLElement) {
     assert(host.querySelectorAll(".ember-stream-row").length === 30, "Mode switch changed the event buffer");
     assert(viewport.scrollTop === 0, "Mode switch interrupted older reading position");
     assert(Boolean(host.querySelector(".stream-source")), "Verbose has no technical provenance");
+    assert(parseFloat(getComputedStyle(host.querySelector(".ember-stream-message")!).fontSize) >= 13, "Verbose text is too small");
     const details = host.querySelector<HTMLDetailsElement>(".stream-event-detail")!;
     details.open = true;
     await pause();
@@ -42,8 +43,14 @@ export async function checkStreamScrolling(host: HTMLElement) {
     await pause();
     assert(viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight < 24, "Return to latest did not reach latest");
     assert(!host.querySelector(".stream-footer button"), "Unread count did not clear");
+    viewport.dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
+    await pause();
+    assert(viewport.scrollTop === 0 && Boolean(host.querySelector(".stream-footer button")), "Home did not pause following at oldest events");
+    viewport.dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true }));
+    await pause();
+    assert(viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight < 24 && !host.querySelector(".stream-footer button"), "End did not resume following latest");
     await render([]);
     assert(host.querySelectorAll("li").length === 0, "Empty feed invented event rows");
-    return "PASS · Stream follows latest, preserves older scroll and mode switch, retains event order, counts 2 new, returns to latest, exposes provenance, empty feed has no rows";
+    return "PASS · Stream follows latest, preserves older scroll/mode switch, counts 2 new, returns to latest, Home/End navigation, readable Verbose/provenance, empty feed has no rows";
   } finally { root.unmount(); }
 }

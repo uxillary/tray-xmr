@@ -59,11 +59,17 @@ export async function checkLivingCoreLifecycle(host: HTMLElement, session: Minin
       ["stale telemetry", { ...session, telemetryFreshness: "stale" }, false],
       ["expired timestamp", { ...session, telemetry: session.telemetry ? { ...session.telemetry, sampleTimeUnixMs: Date.now() - 6000 } : null }, false],
       ["failed status polling", session, true],
+      ["fresh zero rate", { ...session, telemetry: session.telemetry ? { ...session.telemetry, shortHashrate: 0 } : null }, false],
+      ["missing rate", { ...session, telemetry: session.telemetry ? { ...session.telemetry, shortHashrate: null } : null }, false],
+      ["missing timestamp", { ...session, telemetry: session.telemetry ? { ...session.telemetry, sampleTimeUnixMs: null } : null }, false],
+      ["missing telemetry", { ...session, telemetry: null }, false],
       ["paused", { ...session, state: "paused" }, false],
       ["stopped", { ...session, state: "stopped" }, false],
     ] as [string, MiningSessionStatus, boolean][]) {
       await render("mining", current, false, failed);
       await confirm(label, 0);
+      const scene = host.querySelector<HTMLElement>(".living-core")!;
+      if (scene.dataset.activeWork !== "false") throw new Error(`${label}: active effects were not suppressed`);
     }
     await render("mining");
     await confirm("resume confirmed work", 1);

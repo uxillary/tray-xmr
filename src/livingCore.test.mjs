@@ -31,7 +31,7 @@ try {
 }
 after(() => vite.close());
 
-const mining = { state: "mining", startupStage: null, telemetryFreshness: "fresh", telemetry: { shortHashrate: 128 } };
+const mining = { state: "mining", startupStage: null, telemetryFreshness: "fresh", telemetry: { shortHashrate: 128, sampleTimeUnixMs: Date.now() } };
 const manifest = JSON.parse(readFileSync(new URL("../public/living-core/v3/manifest.json", import.meta.url), "utf8"));
 
 test("all decorative poses use real local sprite sheets with a neutral static fallback", () => {

@@ -5,7 +5,7 @@ import { createWorkshopPlayer, staticWorkshopPose, stepWorkshop, WORKSHOP } from
 const view = (state, freshness = "fresh") => livingCoreState({ session: { state, startupStage: null, telemetryFreshness: freshness, telemetry: { shortHashrate: 128 } } });
 test("bounded paths approach, tend/inspect and return from the current position", () => {
   let frame = staticWorkshopPose(view("ready"));
-  for (let i = 0; i < 16; i++) frame = stepWorkshop(frame, view("starting"));
+  for (let i = 0; i < 28; i++) frame = stepWorkshop(frame, view("starting"));
   assert.equal(frame.x, WORKSHOP.workX);
   const positions = new Set();
   for (let i = 0; i < 150; i++) { frame = stepWorkshop(frame, view("mining")); positions.add(frame.x); assert.ok(frame.x >= WORKSHOP.minX && frame.x <= WORKSHOP.maxX); }
@@ -13,6 +13,34 @@ test("bounded paths approach, tend/inspect and return from the current position"
   frame.tick = 0;
   for (let i = 0; i < 24; i++) frame = stepWorkshop(frame, view("stopping"));
   assert.equal(frame.x, WORKSHOP.restX);
+});
+
+test("preparation notices first, arrives before working and gestures include reach, release and inspection", () => {
+  let frame = staticWorkshopPose(view("ready"));
+  for (let i = 0; i < 2; i++) { frame = stepWorkshop(frame, view("starting")); assert.equal(frame.x, WORKSHOP.restX); assert.equal(frame.phase, "notice"); }
+  const phases = new Set(), gestures = new Set();
+  for (let i = 0; i < 120; i++) {
+    const previousX = frame.x;
+    frame = stepWorkshop(frame, view("mining"));
+    assert.ok(Math.abs(frame.x - previousX) <= 6);
+    if (frame.phase === "tend") { assert.equal(frame.x, WORKSHOP.workX); gestures.add(frame.frame); }
+    if (frame.phase === "walk") assert.equal(frame.facing, 1, "backsteps keep attention on the crystal");
+    phases.add(frame.phase);
+  }
+  for (const phase of ["walk", "turn", "tend", "inspect"]) assert.ok(phases.has(phase), phase);
+  assert.deepEqual([...gestures].sort(), [0, 2]);
+});
+
+test("rapid lifecycle changes preserve position instead of resetting to a static anchor", () => {
+  const pending = new Map(); let id = 0, frame;
+  const player = createWorkshopPlayer({ view: view("ready"), onFrame(next) { frame = next; }, schedule(fn) { pending.set(++id, fn); return id; }, cancel(key) { pending.delete(key); } });
+  const advance = () => { const [key, fn] = pending.entries().next().value; pending.delete(key); fn(); };
+  player.setRunning(true); player.setView(view("starting"));
+  for (let i = 0; i < 9; i++) advance();
+  for (const state of ["stopping", "starting", "mining", "stopped", "starting"]) {
+    const x = frame.x; player.setView(view(state)); assert.equal(frame.x, x); assert.equal(pending.size, 1); advance(); assert.ok(Math.abs(frame.x - x) <= 6);
+  }
+  player.dispose(); assert.equal(pending.size, 0);
 });
 test("ready wanders only a few pixels, stopping allows a final gesture, unknown evidence freezes work", () => {
   let frame = staticWorkshopPose(view("ready"));
@@ -49,7 +77,7 @@ test("a fast Stopping → Stopped transition finishes its bounded return and sto
   player.setRunning(true); player.setView(view("stopping")); player.setView(view("stopped"));
   let count = 0;
   while (pending.size) { const [key, fn] = pending.entries().next().value; pending.delete(key); fn(); assert.ok(++count < 30); }
-  assert.equal(frame.x, WORKSHOP.restX); assert.equal(pending.size, 0); player.dispose();
+  assert.equal(frame.x, WORKSHOP.restX); assert.equal(frame.phase, "settle"); assert.equal(frame.frame, 0); assert.equal(frame.facing, 1); assert.equal(pending.size, 0); player.dispose();
 });
 
 test("intensity changes clamp scheduler speed and keep one cancellable timer", () => {

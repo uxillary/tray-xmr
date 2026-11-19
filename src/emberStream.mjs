@@ -58,6 +58,11 @@ export function eventContext(event) {
 }
 
 export function eventExplanation(event) {
+  if (event.kind.type === "miningStarted") {
+    const context = eventContext(event);
+    const profile = context.profile === "unavailable" ? "Configured profile" : `${context.profile[0].toUpperCase()}${context.profile.slice(1)} profile`;
+    return context.configuredThreads === null ? profile : `${profile} · ${context.configuredThreads} CPU threads configured.`;
+  }
   if (event.kind.type === "miningFailed") return event.kind.data.failure === "stopFailed" ? "Check the session before closing Ember; the engine may still be running." : "Open Diagnostics for startup and engine evidence.";
   if (event.kind.type === "poolConnectionChanged" && event.kind.data.to === "disconnected") return "The pool is unreachable. Watch for a restored connection.";
   if (event.kind.type === "resultsRejected") return "The pool declined this submission. This does not indicate earnings.";

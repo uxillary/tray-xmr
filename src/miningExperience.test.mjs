@@ -30,6 +30,7 @@ function renderSession(overrides = {}, props = {}) {
   const session = {
     state: "mining", processId: 42, sessionDurationSeconds: 65, telemetryFreshness: "fresh", error: null,
     telemetry: {
+      sampleTimeUnixMs: Date.now(),
       shortHashrate: 873, mediumHashrate: 860, longHashrate: 820,
       results: { accepted: 3, rejected: 0, total: 3, currentJobDifficulty: 10000, acceptedDifficultyTotal: 30000 },
       poolConnection: { state: "connected", algorithm: "rx/0", currentJobDifficulty: 10000 }, cpuHugePages: { allocated: 0, total: 16 },
@@ -67,7 +68,7 @@ test("starting reserves metrics, while stale and disconnected values remain trut
   assert.match(starting, /Accepted<\/span><strong>—/);
   assert.match(starting, /Stop mining/);
 
-  const stale = renderSession({ telemetryFreshness: "stale", telemetry: { shortHashrate: 0, results: { accepted: 0, rejected: 2 }, poolConnection: { state: "disconnected" } } });
+  const stale = renderSession({ telemetryFreshness: "stale", telemetry: { sampleTimeUnixMs: Date.now(), shortHashrate: 0, results: { accepted: 0, rejected: 2 }, poolConnection: { state: "disconnected" } } });
   assert.match(stale, /Updates delayed/);
   assert.match(stale, /<strong><span>0<\/span><small>H\/s<\/small><\/strong>/);
   assert.match(stale, /Pool status: Disconnected/);
@@ -123,6 +124,18 @@ test("ready setup places Start before editable setup details; active session exp
   assert.match(active, /Stop mining/);
 });
 
+test("missing, expired and future sample timestamps never light the workshop", () => {
+  for (const sampleTimeUnixMs of [null, NaN, 0, Date.now() - 6000, Date.now() + 60000]) {
+    const html = renderSession({ telemetry: { shortHashrate: 873, sampleTimeUnixMs } });
+    assert.doesNotMatch(html, /data-active-work="true"|crystal-lit\.png/);
+    assert.match(html, /Updates delayed|Telemetry unavailable/);
+    assert.match(html, /Last reported · 10-second average/);
+    const unavailable = renderSession({ telemetryFreshness: "unavailable", telemetry: { shortHashrate: 873, sampleTimeUnixMs } });
+    assert.match(unavailable, /Telemetry unavailable/);
+    assert.doesNotMatch(unavailable, /Updates delayed/);
+  }
+});
+
 test("terminal scenes preserve setup recovery and unavailable status retains its retry action", () => {
   const props = { setup, onChange() {}, refresh: async () => {}, refreshSession: async () => {}, events: [], eventsUnavailable: false, diagnosticsMode: false, diagnosticRunning: false, copyDiagnostics() {} };
   const stopped = { state: "stopped", startupStage: null, processId: null, telemetryFreshness: "unavailable", telemetry: null, error: null, diagnostics: [], startupTimings: [], contribution: { active: false } };
@@ -135,6 +148,28 @@ test("terminal scenes preserve setup recovery and unavailable status retains its
   assert.match(failed, /data-pose="unavailable"/);
   assert.match(failed, /Check session status/);
   assert.doesNotMatch(failed, /Start mining|Stop mining/);
+});
+
+test("intentional rest is calm, retained readings are historical and failures remain visible", () => {
+  for (const state of ["stopped", "ready", "notConfigured"]) {
+    const html = renderSession({ state, telemetryFreshness: "unavailable", telemetry: null, sessionDurationSeconds: null });
+    assert.match(html, /operation-resting/);
+    assert.match(html, state === "stopped" ? /Session stopped/ : state === "ready" ? /Ready to begin/ : /A little setup first/);
+    assert.match(html, /Pool status: Not connected/);
+    assert.match(html, /Not running/);
+    assert.doesNotMatch(html, /<strong>Unavailable<\/strong>|Live telemetry|data-active-work="true"/);
+  }
+  const stopped = renderSession({ state: "stopped" });
+  assert.match(stopped, /Last reported: 873 H\/s · no live hashrate/);
+  assert.match(stopped, /Last session/);
+  assert.match(stopped, /Last accepted/);
+  assert.match(stopped, /Last rejected/);
+  assert.doesNotMatch(stopped, /Pool status: Connected|Live telemetry/);
+  const failed = renderSession({ state: "stopped" }, { statusUnavailable: true });
+  assert.doesNotMatch(failed, /Session stopped|operation-resting/);
+  assert.match(failed, /Status unavailable/);
+  const error = renderSession({ state: "stopped", error: { kind: "stopFailed", message: "Engine still running" } });
+  assert.doesNotMatch(error, /operation-resting/);
 });
 
 test("Home handles all legacy destinations and Settings remains separate", () => {

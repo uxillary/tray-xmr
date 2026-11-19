@@ -83,16 +83,16 @@ function ArtworkScene({ view, motionAllowed, inspectFrame, intensity }: { view: 
   useEffect(() => { player.current?.setIntensity(view.activeWork ? intensity.fps : 4); }, [view.activeWork, intensity.fps]);
   useEffect(() => { player.current?.setRunning(ready && !failure && motionAllowed); }, [ready, failure, motionAllowed]);
   const visible = motionAllowed ? frame : staticWorkshopPose(view);
-  const playing = ready && !failure && motionAllowed && (view.animate || (view.lifecycle === "stopped" && frame.x !== WORKSHOP.restX));
+  const playing = ready && !failure && motionAllowed && (view.animate || (view.lifecycle === "stopped" && (frame.x !== WORKSHOP.restX || ["walk", "turn", "withdraw"].includes(frame.phase))));
   if (failure && fallbackFailure) return <EmberCore state={fallbackState(view)} compact />;
   const spriteFrame = inspectFrame === undefined ? visible.frame : Math.max(0, Math.min(3, Math.floor(inspectFrame)));
-  return <div className="living-core-viewport" data-energy={view.activeWork ? intensity.level : "inactive"} data-frame={motionAllowed ? spriteFrame : 0} data-x={visible.x} data-behaviour={visible.phase} data-playing={playing} data-asset-status={failure ? "fallback" : ready ? "ready" : "loading"} style={{ "--work-cycle": `${intensity.seconds}s` } as CSSProperties}>
+  return <div className="living-core-viewport" data-energy={view.activeWork ? intensity.level : "inactive"} data-frame={motionAllowed ? spriteFrame : 0} data-tending={view.activeWork && motionAllowed && visible.phase === "tend" && spriteFrame === 2} data-x={visible.x} data-behaviour={visible.phase} data-playing={playing} data-asset-status={failure ? "fallback" : ready ? "ready" : "loading"} style={{ "--work-cycle": `${Math.max(2.4, Math.min(4.8, intensity.seconds || 3.6))}s` } as CSSProperties}>
     <div className="living-core-canvas">
       {!ready && !failure && <img className="living-core-static" src={basePath + manifest.fallback} width="320" height="144" alt="" />}
       {failure ? <img className="living-core-static" src={basePath + manifest.fallback} width="320" height="144" alt="" onError={() => setFallbackFailure(true)} /> : <>
         {layerIds.map((id) => {
           const asset = assets[id];
-          return <span className={`living-core-layer living-core-layer--${id}`} key={id} style={id === "character" ? { left: visible.x - 16, top: WORKSHOP.groundY - 32 + (visible.phase === "walk" ? spriteFrame % 2 : visible.phase === "tend" && spriteFrame === 2 ? 1 : 0), width: 32, height: 32, transform: `scaleX(${visible.facing})` } : undefined}>
+          return <span className={`living-core-layer living-core-layer--${id}`} key={id} style={id === "character" ? { left: visible.x - 16 + (visible.phase === "tend" && spriteFrame === 2 ? 1 : 0), top: WORKSHOP.groundY - 32 - (visible.phase === "walk" ? spriteFrame % 2 : 0), width: 32, height: 32, transform: `scaleX(${visible.facing})` } : undefined}>
             <img src={basePath + asset.file} width={asset.cellWidth * asset.frames} height={asset.cellHeight} alt="" draggable="false" style={{ left: id === "character" ? -32 * spriteFrame : 0 }} onLoad={(event) => {
               if (event.currentTarget.naturalWidth !== asset.cellWidth * asset.frames || event.currentTarget.naturalHeight !== asset.cellHeight) { setFailure(true); return; }
               setLoaded((current) => current.has(id) ? current : new Set(current).add(id));
@@ -103,6 +103,7 @@ function ArtworkScene({ view, motionAllowed, inspectFrame, intensity }: { view: 
         <span className="workshop-conduit"><i /><i /><i /></span>
         <span className="workshop-flywheel"><i /></span>
         <span className="workshop-crystal-facet" />
+        <span className="workshop-crystal-contact" />
       </>}
     </div>
   </div>;

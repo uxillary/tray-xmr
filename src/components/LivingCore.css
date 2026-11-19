@@ -6,7 +6,7 @@
 .living-core-layer--workshop { z-index: 0; }
 .living-core-layer--character { inset: auto; z-index: 3; }
 .living-core-layer img, .living-core-static { position: absolute; top: 0; max-width: none; image-rendering: pixelated; user-select: none; }
-.living-core-light { position: absolute; z-index: 1; left: 194px; top: 61px; width: 72px; height: 72px; opacity: 0; background: radial-gradient(ellipse, #ffac3d22, transparent 72%); }
+.living-core-light { position: absolute; z-index: 1; left: 192px; top: 60px; width: 76px; height: 72px; opacity: 0; background: radial-gradient(ellipse, #ffc36155, #ffac3d18 45%, transparent 72%); }
 .living-core-light.is-active { opacity: 1; }
 .living-core--still .core-halo { animation: none; }
 .workshop-conduit { position: absolute; z-index: 2; left: 238px; top: 90px; width: 25px; height: 18px; border-right: 2px solid #6f573a; border-bottom: 2px solid #6f573a; }
@@ -22,9 +22,17 @@
 .living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-crystal-facet { animation: crystal-work var(--work-cycle) steps(4) infinite; }
 .living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-flywheel { animation: wheel-work calc(var(--work-cycle) * 2) steps(8) infinite; }
 .living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-conduit i { animation: conduit-work var(--work-cycle) steps(3) infinite; }
-.workshop-conduit i:nth-child(2) { animation-delay: -.8s !important; }
-.workshop-conduit i:nth-child(3) { animation-delay: -1.6s !important; }
-@keyframes crystal-work { 0%, 100% { opacity: .35; } 50% { opacity: .85; } }
+.workshop-conduit i:nth-child(2) { animation-delay: calc(var(--work-cycle) / -3) !important; }
+.workshop-conduit i:nth-child(3) { animation-delay: calc(var(--work-cycle) * -2 / 3) !important; }
+.workshop-crystal-contact { position: absolute; z-index: 2; left: 220px; top: 82px; width: 2px; height: 14px; opacity: 0; background: #ffe2a0; box-shadow: 2px -2px #ffcf77; }
+[data-asset-status="ready"][data-tending="true"] .workshop-crystal-contact { opacity: .9; }
+[data-asset-status="ready"][data-tending="true"] .living-core-light { background: radial-gradient(ellipse, #ffc36177, #ffac3d20 45%, transparent 72%); }
+.living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .living-core-light { animation: core-energy var(--work-cycle) steps(6) infinite; }
+.living-core:not(.living-core--still)[data-active-work="true"] [data-asset-status="ready"] .workshop-conduit::after { content: ""; position: absolute; width: 2px; height: 2px; background: #ffe0a0; animation: conduit-travel var(--work-cycle) steps(6) infinite; }
+.living-core[data-lifecycle="starting"] .workshop-crystal-facet { opacity: .3; }
+@keyframes crystal-work { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
 @keyframes wheel-work { to { transform: rotate(360deg); } }
-@keyframes conduit-work { 0%, 100% { opacity: .3; } 50% { opacity: .9; } }
+@keyframes conduit-work { 0%, 65%, 100% { opacity: .25; } 30% { opacity: 1; } }
+@keyframes core-energy { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes conduit-travel { 0% { left: 0; top: 16px; opacity: 0; } 10% { opacity: 1; } 65% { left: 25px; top: 16px; } 90% { left: 25px; top: 0; opacity: 1; } 100% { left: 25px; top: 0; opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .living-core * { animation: none !important; transition: none !important; } }

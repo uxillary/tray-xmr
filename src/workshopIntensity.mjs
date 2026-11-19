@@ -17,7 +17,7 @@ export function stepIntensity(previous, { session, key, unavailable = false, red
   const stamp = session.telemetry.sampleTimeUnixMs;
   const validTime = Number.isFinite(stamp) && stamp > 0 && stamp <= now && now - stamp <= 5000;
   let state = previous.key === key ? previous : initialIntensity();
-  if (!validTime) return { ...initialIntensity(), key, active: true };
+  if (!validTime) return initialIntensity();
   if (state.lastTime !== null && stamp === state.lastTime) return { ...state, active: true };
   if (state.lastTime !== null && (stamp < state.lastTime || stamp - state.lastTime > 5000)) state = initialIntensity();
   const samples = [...state.samples, { time: stamp, rate }].filter((s) => stamp - s.time <= 60000).slice(-64);

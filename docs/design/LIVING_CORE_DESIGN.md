@@ -4,7 +4,13 @@
 
 The Living Core is an illustrative status surface for Ember's Windows desktop app. It makes the device's mining state easier to recognize without becoming a mining control, a telemetry gauge, or an earnings claim. The concept art is a direction for character and atmosphere, not a pixel-perfect specification. D01 originally required still-art approval before implementation; the D02 owner request authorized an autonomous prototype using the supplied canonical reference. Final owner visual acceptance remains required.
 
-## D03D living workshop (2026-11-18, current)
+## D03E refinement (2026-11-19, current)
+
+Preserve the 320×144 workshop and original 32px four-pose sprite. Add notice/approach/turn timing, shorter pixel footfalls, spaced reach/release gestures, crystal-facing inspection and position-preserving returns. Crystal shimmer, local glow, a travelling conduit pixel and gesture contact highlight strengthen confirmed activity while retaining the session-relative adapter and hidden/reduced-motion gates. Home rejects invalid/expired sample timestamps before animating. Stopped/Ready become calm, explicit states with historical readings labelled separately.
+
+Activity gains clearer headings and actual configured context; Verbose uses 14px messages and 13px source/time/context. Details has stronger measurement hierarchy; Diagnostics adds section focus navigation, readable output and explicit Escape/focus-return cleanup. See [D03E baseline, timing decisions, evidence and remaining acceptance](D03E_REFINEMENT.md). Artwork files are unchanged; native/owner acceptance remains pending.
+
+## D03D living workshop (2026-11-18)
 
 Preserve D03C’s 320×144 world, integer 1× scale and tiny 32px Squish. The existing four-pose sheet now has a visible walking bob, a tending lean and a concerned inspection pause. Pixel-sized crystal facets, three conduit lights and a stepped flywheel make confirmed work legible without enlarging the scene. Idle retains the composed workshop; Starting approaches, Stopping returns, and unconfirmed/zero work stays dormant. No result celebrations exist.
 

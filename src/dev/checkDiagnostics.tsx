@@ -21,6 +21,9 @@ export async function checkDiagnostics(host: HTMLElement, session: MiningSession
     const rect = dialog.getBoundingClientRect();
     assert(rect.top >= 0 && rect.bottom <= window.innerHeight, "Drawer exceeds viewport");
     assert(opener.getBoundingClientRect().top === position, "Drawer displaced workspace");
+    dialog.querySelector<HTMLButtonElement>("nav button:last-child")!.click();
+    await pause();
+    assert(document.activeElement?.id === "diagnostics-output", "Section navigation did not move keyboard focus");
     const output = dialog.querySelector<HTMLElement>(".diagnostics-raw")!;
     assert(getComputedStyle(output).overflowY === "auto" && output.scrollHeight > output.clientHeight, "Raw output is not independently bounded");
     dialog.querySelector<HTMLButtonElement>("footer button")!.click();
@@ -29,8 +32,12 @@ export async function checkDiagnostics(host: HTMLElement, session: MiningSession
     dialog.querySelector<HTMLButtonElement>('[aria-label="Close diagnostics"]')!.click();
     await pause();
     assert(!dialog.open && document.activeElement === opener, "Close did not return focus");
+    opener.click(); await pause();
+    dialog.dispatchEvent(new Event("cancel", { cancelable: true }));
+    await pause();
+    assert(!dialog.open && document.activeElement === opener, "Escape cancel did not close and restore focus");
     opener.click(); await pause(); root.unmount(); await pause();
     assert(!document.querySelector(".diagnostics-drawer:modal"), "Unmount leaked modal");
-    return "PASS · Diagnostics modal, focus entry/return, containment, independent output scrolling, copy feedback and unmount cleanup";
+    return "PASS · Diagnostics modal, section keyboard focus, Escape cancel/focus return, containment, independent output scrolling, copy feedback and unmount cleanup";
   } finally { if (host.childNodes.length) root.unmount(); }
 }
