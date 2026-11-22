@@ -1,0 +1,692 @@
+[
+  {
+    "filename": "electricity-cost-calculator-initial-1440x900.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "b52a245b1ffb67a850183e46486b311a2dc1606a67640d6895d34251feedaed0",
+    "bytes": 82931
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-1440x900.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "885f0ce5a42932938bdee8d208afb2452a1a5daef1ca0f0ae6691f04865e2cac",
+    "bytes": 87278
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-1440x900.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "a47ced77eadcfaed25d6095a9c325142dc6efedef7d129a86d6c511d27008fba",
+    "bytes": 74538
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-1440x900.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "3f074d62ce8f39cf7083dd098e16d3653819f7c28aecc5796ed4a83d601c4062",
+    "bytes": 121307
+  },
+  {
+    "filename": "electricity-cost-calculator-initial-1280x800.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "42cff13784888b795e73deefa28fdffcd33c9f67300c822089d379410f12f8bb",
+    "bytes": 73333
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-1280x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "c3a71d977f0f74629252398c47d7e483dc7328f2f237c1595ab120ba2031c9db",
+    "bytes": 77665
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-1280x800.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "634f5ce10ddffc0c3812f530212134e0b506fab7305d7a436aca9ba9552a4d8d",
+    "bytes": 71009
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-1280x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "ec24e8e2769b171d57268a3522ccfab982ec28bb3e582e7742d9aa4114ef2eb8",
+    "bytes": 99095
+  },
+  {
+    "filename": "electricity-cost-calculator-initial-1024x768.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "68c3c0480c02ac7e38ba1879228f79bc05d60a712107f284139613135ceb433b",
+    "bytes": 64408
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-1024x768.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "80620ea56fd1da375ce6e1e48d1b223eeb78c369191bf5ad3b5b25993fe1630e",
+    "bytes": 66817
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-1024x768.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "e934d92943566885308d8bf75c1f0ffed28e33b0adf72c88d712dd8d956c8afb",
+    "bytes": 62949
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-1024x768.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "697eb208ea2e056819664477b0566be24849bcb2e160203a70497cf3b0bbc914",
+    "bytes": 81694
+  },
+  {
+    "filename": "electricity-cost-calculator-initial-768x900.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "e653ec7675f4202b940b9b1138cfbef435b9155b1eab7314c24f77f77c5bd665",
+    "bytes": 52661
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-768x900.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "2b04474ca970213816b5bc370f4d176a2c5ca7a93306fc2e2c16b586a3bad7a4",
+    "bytes": 62373
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-768x900.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "1fbbde2b1efde77a0df7dfb86db5656856a3893463144d9487c1921f7935324c",
+    "bytes": 45343
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-768x900.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "9cf37a2346f585296d1e5f4670f55dc3cfc4e6e3a0f4497b79f457b7646cc574",
+    "bytes": 82633
+  },
+  {
+    "filename": "electricity-cost-calculator-initial-600x800.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "67ecddbe73eb12b8a7ee3eb6c066381f4eb21390179943872e8d1a61644ac150",
+    "bytes": 45447
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-600x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "9b0c68d7df82d4396a7d6619879e8dec28fe34f3375255b4f1e333317ea41811",
+    "bytes": 49350
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-600x800.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "c7aa49a0deab9aa09bae98c37691b7ce47e711930c46441dbb108625cc0d1a65",
+    "bytes": 40537
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-600x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "a2f583fb9d6f08879d6e69fec75b85f4e5540c0c9ff86406bc6e5650e046061f",
+    "bytes": 67142
+  },
+  {
+    "filename": "electricity-cost-calculator-initial-390x844.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "046da9a9fd453dcce7f4b189dbdcf59871143c6c22be6d49933291b4d83ad412",
+    "bytes": 39738
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-390x844.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "e51e84608fbdef944aca025702629626f873e22e60e310ea4bf516fd66240fa2",
+    "bytes": 41103
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-390x844.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "6e2a7ee8c468a72aacc0cb3ca42b3688ee48549a246ab7314c1f1760e6baa06f",
+    "bytes": 36656
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-390x844.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "d97291dd94653c829cfb29d227ce4e645185d1ee5ec44b8b88fd28685bc039f4",
+    "bytes": 50621
+  },
+  {
+    "filename": "electricity-cost-calculator-initial-360x800.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "6e18b5394c70d7a71649135f950a36e50671a2a09d80bf711e92df1fb73c122a",
+    "bytes": 34634
+  },
+  {
+    "filename": "monero-mining-profitability-calculator-initial-360x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "86393d3d41b4a1bb70869d097790631bdbde9b430d4814a0d3cb47262ad6532f",
+    "bytes": 37781
+  },
+  {
+    "filename": "xmrig-log-decoder-initial-360x800.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "59b4a23cf7d81ebc65cb54076c38ef35a41b310937af27f9dc26bc40bc3fccb0",
+    "bytes": 33594
+  },
+  {
+    "filename": "xmrig-huge-pages-initial-360x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "168a107a03ff3ba5183c9d3776318bb7071db98bd8f81d2a77337ef07b63c256",
+    "bytes": 41953
+  },
+  {
+    "filename": "electricity-results-1440x900.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "459d4dbba5e55cb844ce05c2e4fd514ded367e9dabe1b0af00f137ada55a9b5d",
+    "bytes": 80379
+  },
+  {
+    "filename": "profitability-daily-negative-1440x900.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "6c9b27b250f277b3dc144651f92b7a989ab3f85bf8943801102c03930021f890",
+    "bytes": 107100
+  },
+  {
+    "filename": "decoder-unknown-1440x900.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "61fee8dadfbc42a566627d3e81366a79d3dcbe9e0d2f7075945e93fd19c7ad70",
+    "bytes": 77169
+  },
+  {
+    "filename": "decoder-signals-1440x900.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "c3c448bada8a4f01bc64689c990e0a1539ea0741aa1e16d329e51143d428af27",
+    "bytes": 98348
+  },
+  {
+    "filename": "electricity-results-1280x800.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "96933966973d51cdbbbbed787d7b87aab31c119859cb4222e74f1323b9a9a55d",
+    "bytes": 73109
+  },
+  {
+    "filename": "profitability-daily-negative-1280x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "0f65e28ed633e31c46c45a94873204daa6fdb8f32d80f323ad2b2a5057fa39fb",
+    "bytes": 90462
+  },
+  {
+    "filename": "decoder-signals-1280x800.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "b85d4b52a1037c2fcc850c1cc990afbdbbee304e4822cd56cee98face50c72a2",
+    "bytes": 92575
+  },
+  {
+    "filename": "electricity-results-1024x768.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "d750b0218d5f163bd233239d325416a5f85798490df33f6777ad2b369770bb19",
+    "bytes": 63034
+  },
+  {
+    "filename": "profitability-daily-negative-1024x768.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "c60d08bbb0c4120ffa25777aabe77174a88fba86f1612bde51b8a2763e0b66b1",
+    "bytes": 67761
+  },
+  {
+    "filename": "decoder-signals-1024x768.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "52852e141512176e1dc74096dea53c906b0e13cbb495d4de39ab41f178548b35",
+    "bytes": 80491
+  },
+  {
+    "filename": "electricity-results-768x900.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "5ca197a8f2f623a7f29723cfd8d5fb7cd63d16d2b3c183942441228171d4f8ca",
+    "bytes": 42011
+  },
+  {
+    "filename": "profitability-daily-negative-768x900.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "804a5320de2f59579cad49738dd0de0d4b48ac454b9f8041fd59cda9403f4095",
+    "bytes": 49966
+  },
+  {
+    "filename": "decoder-signals-768x900.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "0e9753c9654637e40211435d0d1ddb651eaf31a17397f6eb2788f106d37dfd21",
+    "bytes": 53424
+  },
+  {
+    "filename": "electricity-results-600x800.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "b7ad68a89449ef20f691239674c18fa284d084041fd6329d29896dfee1dffb60",
+    "bytes": 32553
+  },
+  {
+    "filename": "profitability-daily-negative-600x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "a3d012ed0953358ecc7b437223907b29bed8bd66fed7e2dbfeba2bebeac86675",
+    "bytes": 38745
+  },
+  {
+    "filename": "decoder-signals-600x800.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "b9efb181b0b96056924ac322688f68a2bcfd657d3d4a55e19d8464a892c6ca07",
+    "bytes": 45711
+  },
+  {
+    "filename": "electricity-results-390x844.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "ccfb7db2729daa9f27441c12c2c8c331c04eef4cb8aa4578d7d57f6d9d8d19d6",
+    "bytes": 27200
+  },
+  {
+    "filename": "profitability-daily-negative-390x844.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "64c22face9e0f595ed7b4061dfc5006151ead8f147b6020ae062f300014c8fe0",
+    "bytes": 34752
+  },
+  {
+    "filename": "decoder-unknown-390x844.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "29d72f68764c0f4eddd3a2a94cfa2d27903957974889457200b3aa749199de29",
+    "bytes": 39876
+  },
+  {
+    "filename": "decoder-signals-390x844.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "774fcb38f287ea57dbd10c4440fd005f1f9d014995127499c5221fe97d3a509a",
+    "bytes": 38281
+  },
+  {
+    "filename": "electricity-results-360x800.jpg",
+    "path": "/tools/electricity-cost-calculator/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "18f0e4491b246f35fab5b6946a576e430a742cef70e8b8c486620fe77a88a506",
+    "bytes": 25103
+  },
+  {
+    "filename": "profitability-daily-negative-360x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "e6a03ddbbbbc3545934684a6db954c25a564a3294d2a5ef2f8daf634b04eceed",
+    "bytes": 31345
+  },
+  {
+    "filename": "decoder-signals-360x800.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "5c4d5f3d5dc417dbd75a196b7326856fe9c1d8be164a1aa47e2f2669d9524720",
+    "bytes": 33490
+  },
+  {
+    "filename": "profitability-visual-pilot-1440x900.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "c3c2971c6077caa7978e1fdb8519e4690b23941c77f5851691ab720e6b5b3a33",
+    "bytes": 86485
+  },
+  {
+    "filename": "huge-pages-visual-pilot-1440x900.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "d02b9cb52f54fccc07eb6b249cbaa4a5d14d8dd3b3ceb7b26e9268ded4f7f36f",
+    "bytes": 90624
+  },
+  {
+    "filename": "profitability-visual-pilot-1280x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "1a6efba04cd5a7ec3a1cfd13050d8acf319f403387825716ef1bcdc6addedcdb",
+    "bytes": 79799
+  },
+  {
+    "filename": "huge-pages-visual-pilot-1280x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "11819e640530b52f3cc53755a700ae8b1b33e8701ab0a07be6497d2126b47733",
+    "bytes": 79338
+  },
+  {
+    "filename": "profitability-visual-pilot-1024x768.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "c3de5c9f6263e1753ae8c8e630a0a7565e7d482948b526c5abc0c31b96495d86",
+    "bytes": 66041
+  },
+  {
+    "filename": "huge-pages-visual-pilot-1024x768.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "f1c9e1543411d02ef93e98afc20c9e1e9a11944e08c18609876c5fef6cf779b6",
+    "bytes": 66620
+  },
+  {
+    "filename": "profitability-visual-pilot-768x900.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "4bc473f7a0b21cf0824f878c5aa16fd460f37e21a4a85e5038d0ce1f79464f3b",
+    "bytes": 71985
+  },
+  {
+    "filename": "huge-pages-visual-pilot-768x900.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "4c7657dd2153d994bd820aac4d235505bb99d52b4d4e731d5e94ade41a7c0b82",
+    "bytes": 67373
+  },
+  {
+    "filename": "profitability-visual-pilot-600x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "bcf4c2a24daaad58bd1a2fcdfee9b70184baa140e0c60c27a36dd8300b657d6f",
+    "bytes": 47011
+  },
+  {
+    "filename": "huge-pages-visual-pilot-600x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "f04e8f75e5a40ad3d5f703116d9672683f6d4ad7d227a12623e321a8e6841582",
+    "bytes": 48830
+  },
+  {
+    "filename": "profitability-visual-pilot-390x844.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "8358c751dddc2ad4662f22dce2eacb8b91b0a5dde7ee03ae7375ba72f7e85f59",
+    "bytes": 40020
+  },
+  {
+    "filename": "huge-pages-visual-pilot-390x844.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "3f418e54c32d8ec11bb0657e99536b8a89cc77121d24f01f5715af21663b5ff6",
+    "bytes": 41186
+  },
+  {
+    "filename": "profitability-visual-pilot-360x800.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "b1d729524f1d699233cea4d6efcdb3ce81eccfb2c2010d08cc517874ea9f2e8e",
+    "bytes": 38080
+  },
+  {
+    "filename": "huge-pages-visual-pilot-360x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "961111bf57ee56e7d36564a5ab0520b3330a053fc87b3b9808dce2012f3bbd5a",
+    "bytes": 39001
+  },
+  {
+    "filename": "keyboard-results-jump-390x844.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "63740ca1c49fdeb89928dc6bb168573f2213ec209f805b273d0fa7091d60b8f0",
+    "bytes": 33561
+  },
+  {
+    "filename": "projection-keyboard-390x844.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "37862fb8127c80a0a9852e76ed96569fc6bc4731daeebb770473d9ae8aced192",
+    "bytes": 27855
+  },
+  {
+    "filename": "decoder-validation-390x844.jpg",
+    "path": "/tools/xmrig-log-decoder/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "d962f6275797f74f79339d3f5b9d8ab7e92828cf51efe161260a747824578412",
+    "bytes": 27453
+  },
+  {
+    "filename": "profitability-visual-join-390x844.jpg",
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "71f8bf43e202e947e82d120e5384afa2a6c9d8f260ab83afaa38fbfb801b1441",
+    "bytes": 39723
+  }
+]

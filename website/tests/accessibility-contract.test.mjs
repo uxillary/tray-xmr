@@ -22,7 +22,7 @@ test('calculator inputs have concise labels, described help/error IDs and announ
   assert.match(electricity, /id="runtime-hours"[^>]*aria-label="Custom runtime in hours per day"/);
   for (const id of ['power-help', 'power-error', 'rate-help', 'rate-error', 'hours-error', 'days-help', 'days-error']) assert.ok(idExists(electricity, id), `missing described content ${id}`);
   assert.equal((electricity.match(/class="calc-error"[^>]*aria-live="polite"/g) ?? []).length, 4);
-  assert.match(electricity, /id="calc-status" aria-live="polite"/);
+  assert.match(electricity, /id="calc-announcement" aria-live="polite"/);
 
   const mining = source('../src/pages/tools/monero-mining-profitability-calculator.astro');
   for (const id of ['miner-hashrate', 'wall-power-watts', 'mining-hours-per-day', 'electricity-price', 'pool-fee-percent', 'network-difficulty', 'network-hashrate', 'expected-reward-per-block', 'xmr-price', 'mining-currency']) {
@@ -31,14 +31,24 @@ test('calculator inputs have concise labels, described help/error IDs and announ
   }
   for (const id of ['hash-help', 'hash-error', 'difficulty-help', 'difficulty-error', 'currency-help', 'currency-status']) assert.ok(idExists(mining, id), `missing described content ${id}`);
   assert.equal((mining.match(/class="field-error"[^>]*aria-live="polite"/g) ?? []).length, 9);
-  assert.match(mining, /id="mining-status" aria-live="polite"/);
+  assert.match(mining, /id="mining-announcement" aria-live="polite"/);
 });
 
 test('log decoder exposes its input name, accessible validation, live status and results focus target', () => {
   const html = source('../src/pages/tools/xmrig-log-decoder.astro');
   assert.match(html, /<label for="xmrig-log">XMRig console or log excerpt<\/label>/);
-  assert.match(html, /id="xmrig-log"[^>]*aria-describedby="log-help privacy-note"/);
+  assert.match(html, /id="xmrig-log"[^>]*aria-describedby="log-help privacy-note input-error"/);
   assert.match(html, /id="input-error" role="alert"/);
   assert.match(html, /id="result-status" class="decoder-status" aria-live="polite"/);
   assert.match(html, /id="results-title" tabindex="-1"/);
+});
+
+test('decoder input uses the defined monospace token and its validation is described', () => {
+  const css = source('../src/styles/xmrig-log-decoder.css');
+  const tokens = source('../src/styles/site.css');
+  assert.match(tokens, /--mono:\s*Consolas/);
+  assert.match(css, /textarea\{[^}]*var\(--mono\)/);
+  assert.doesNotMatch(css, /--font-mono/);
+  const html = source('../src/pages/tools/xmrig-log-decoder.astro');
+  assert.match(html, /textarea[^>]*wrap="off"[^>]*aria-describedby="[^"]*input-error/);
 });

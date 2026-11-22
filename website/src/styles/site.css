@@ -702,3 +702,7 @@ img, svg { max-width: 100%; }
   .freshness-list li { grid-template-columns: 14px minmax(0, 1fr); }
   .freshness-label { grid-column: 2; }
 }
+
+/* Huge Pages pilot: separate states, with substantive text in the diagram. */
+.visual-huge-pages .huge-decisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0}.huge-decisions>div{min-width:0;padding:16px;border:1px solid var(--line-bright);border-radius:8px;background:var(--bg)}.huge-decisions dt{display:flex;gap:9px;align-items:center;color:var(--text);font-size:15px;font-weight:600;line-height:1.5}.huge-decisions dd{margin:12px 0 0;color:var(--body);font-size:14px;line-height:1.7}.huge-decisions a{display:inline-flex;align-items:center;min-height:44px;color:var(--ember-light);text-decoration:underline;text-underline-offset:3px}.visual-huge-pages .visual-caption{font-size:14px;line-height:1.7}
+@media(max-width:700px){.visual-huge-pages .huge-decisions{grid-template-columns:1fr}}

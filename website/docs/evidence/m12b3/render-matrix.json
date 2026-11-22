@@ -1,0 +1,3876 @@
+{
+  "buildSha256": "4eed6e5399dcc60f436e2a6540644a3b98c7aaddeb405233b5e547b95efeb317",
+  "cases": [
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "34px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "34px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "40px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 577
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 1198,
+          "width": 1198
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 1198,
+          "width": 1198
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 818
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "32px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "32px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "38.4px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 567
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 1179,
+          "width": 1179
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 1179,
+          "width": 1179
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 818
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "width": 792
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "width": 818
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "25.6px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "25.6px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "30.72px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 449
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 925,
+          "width": 925
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 925,
+          "width": 925
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 818
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 79,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 760,
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 664,
+          "width": 664
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 664,
+          "width": 664
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 664,
+          "width": 664
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 690,
+          "width": 690
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 690,
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "24px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "24px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "28px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 645
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 700,
+          "width": 690
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 690,
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 760,
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 539,
+          "width": 509
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 509,
+          "width": 509
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 509,
+          "width": 509
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 535,
+          "width": 535
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 535,
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "26px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "26px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "28px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 503
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 535
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 117,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 760,
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 539,
+          "width": 307
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 316,
+          "width": 307
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 382,
+          "width": 307
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 473,
+          "width": 333
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 333,
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "26px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "26px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "28px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 301
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 333
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "scrollWidth": 760,
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 539,
+          "width": 277
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 316,
+          "width": 277
+        },
+        {
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 382,
+          "width": 277
+        },
+        {
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 473,
+          "width": 303
+        },
+        {
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 316,
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [
+        {
+          "id": "period-label",
+          "text": "30 DAYS"
+        },
+        {
+          "id": "power-readout",
+          "text": "100 W"
+        },
+        {
+          "id": "energy-day",
+          "text": "2.4 kWh"
+        },
+        {
+          "id": "cost-day",
+          "text": "Enter a rate"
+        },
+        {
+          "id": "energy-period",
+          "text": "72 kWh"
+        },
+        {
+          "id": "calc-status",
+          "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+        }
+      ],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [
+        {
+          "font": "26px",
+          "id": "daily-revenue",
+          "text": "—"
+        },
+        {
+          "font": "26px",
+          "id": "daily-cost",
+          "text": "—"
+        },
+        {
+          "font": "28px",
+          "id": "daily-net",
+          "text": "—"
+        }
+      ],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [
+        {
+          "name": "Scenario projection table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 271
+        },
+        {
+          "name": "Mining calculator input sources",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 303
+        },
+        {
+          "name": "Hypothetical daily calculation table",
+          "overflow": "auto",
+          "scrollWidth": 660,
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "decoderError": "",
+      "decoderStatus": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.",
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": {
+        "describedby": "log-help privacy-note input-error",
+        "font": "Consolas, \"Courier New\", monospace",
+        "size": "15px"
+      },
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "scrollWidth": 960,
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "active": {
+        "id": "",
+        "outline": "rgb(238, 239, 233) none 3px",
+        "tag": "BODY"
+      },
+      "daily": [],
+      "duplicateIds": [],
+      "energy": [],
+      "errors": [],
+      "fragment": "",
+      "h1": 1,
+      "header": 116,
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "signals": 0,
+      "textarea": null,
+      "viewport": [
+        360,
+        800
+      ]
+    }
+  ]
+}

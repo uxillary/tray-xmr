@@ -23,38 +23,58 @@ if (form) {
     return parsed;
   }
 
-  function setText(id, value) { document.querySelector(`#${id}`).textContent = value; }
-  function update() {
+  let announce = false;
+  function setText(id, value) {
+    const node = document.querySelector(`#${id}`);
+    if (node.textContent !== value) node.textContent = value;
+    if (id === 'calc-status' && announce) {
+      const live = document.querySelector('#calc-announcement');
+      if (live.textContent !== value) live.textContent = value;
+    }
+  }
+  function update(shouldAnnounce = false) {
+    announce = shouldAnnounce;
     const values = {};
     let valid = true;
     for (const [name, field] of Object.entries(fields)) {
       const parsed = read(field, name === 'rate');
       field.error.textContent = parsed.error ?? '';
       field.input.setAttribute('aria-invalid', String(Boolean(parsed.error)));
-      if (parsed.error) valid = false;
+      if (parsed.error && name !== 'rate') valid = false;
       values[name] = parsed.value;
     }
     if (!valid || values.watts === null || values.hours === null || values.days === null) {
       for (const id of ['power-readout', 'energy-day', 'energy-period', 'energy-year', 'cost-hour', 'cost-day', 'cost-period', 'cost-year']) setText(id, '—');
+      setText('period-label', 'PERIOD UNAVAILABLE');
+      setText('period-cost-label', 'PERIOD UNAVAILABLE');
       setText('calc-status', 'Correct the highlighted values to update the estimate.');
       return;
     }
     const currency = form.elements.currency.value;
     const rateUnit = document.querySelector('#rate-unit').value;
+    // Energy is independent of the tariff. Refresh it before any cost-only gate.
+    const energy = calculateElectricity({ ...values, rate: 0, currency, rateUnit: 'kwh' });
+    const periodLabel = `${formatInteger(values.days)} ${values.days === 1 ? 'DAY' : 'DAYS'}`;
+    setText('period-label', periodLabel);
+    setText('period-cost-label', periodLabel);
+    setText('power-readout', `${formatEnergy(values.watts)} W`);
+    setText('energy-day', `${formatEnergy(energy.kwhPerDay)} kWh`);
+    setText('energy-period', `${formatEnergy(energy.kwhPerPeriod)} kWh`);
+    setText('energy-year', `${formatEnergy(energy.kwhPerYear)} kWh`);
+    if (fields.rate.error.textContent) {
+      for (const id of ['cost-hour', 'cost-day', 'cost-period', 'cost-year']) setText(id, '—');
+      setText('calc-status', 'Energy reflects your current inputs. Correct the electricity rate to calculate cost.');
+      return;
+    }
     if (rateUnit === 'pence' && currency !== 'GBP') {
+      fields.rate.error.textContent = 'Pence per kWh requires GBP. Choose GBP or /kWh.';
+      fields.rate.input.setAttribute('aria-invalid', 'true');
       for (const id of ['cost-hour', 'cost-day', 'cost-period', 'cost-year']) setText(id, '—');
       setText('calc-status', 'Pence per kWh applies to GBP. Choose GBP or change the rate unit to /kWh.');
       return;
     }
     const rate = values.rate ?? 0;
     const result = calculateElectricity({ ...values, rate, currency, rateUnit });
-    const periodLabel = `${formatInteger(values.days)} ${values.days === 1 ? 'DAY' : 'DAYS'}`;
-    setText('period-label', periodLabel);
-    setText('period-cost-label', periodLabel);
-    setText('power-readout', `${formatEnergy(values.watts)} W`);
-    setText('energy-day', `${formatEnergy(result.kwhPerDay)} kWh`);
-    setText('energy-period', `${formatEnergy(result.kwhPerPeriod)} kWh`);
-    setText('energy-year', `${formatEnergy(result.kwhPerYear)} kWh`);
     for (const [id, key] of [['cost-hour', 'costPerHour'], ['cost-day', 'costPerDay'], ['cost-period', 'costPerPeriod'], ['cost-year', 'costPerYear']]) {
       setText(id, values.rate === null ? 'Enter a rate' : formatCost(result[key], currency));
     }
@@ -68,13 +88,13 @@ if (form) {
   form.addEventListener('change', (event) => {
     if (event.target === preset && preset.value !== 'custom') {
       fields.hours.input.value = preset.value;
-      update();
     } else if (event.target === fields.hours.input) preset.value = 'custom';
-    update();
+    update(true);
   });
   form.addEventListener('reset', () => requestAnimationFrame(() => {
     preset.value = '24';
-    update();
+    update(true);
   }));
+  form.addEventListener('focusout', () => update(true));
   update();
 }

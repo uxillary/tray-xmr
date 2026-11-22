@@ -10,7 +10,9 @@ Content ships when it is useful, sourced and technically checked. Route ideas ar
 
 **Article experience (22 November 2026):** [M12B.2](m12b2-article-experience.md) delivered clearer openings, rendered-heading contents, a desktop rail/native mobile disclosure, the shared sticky-header anchor fix, readable accessible table/code regions and precise contextual fragments. All 17 routes rendered at seven sizes; 70 direct/clicked article anchor checks cleared the header. Technical content, dates/citations, models, homepage hero and product disclosures are preserved.
 
-**Recommended next step:** M12B.3 may address the bounded tool composition/state defects and the two approved diagram pilots. It has not started. Screen-reader, fresh measured contrast, zoom, independent-engine and real-device acceptance remain outstanding.
+**Tool experience (22 November 2026):** [M12B.3](m12b3-tool-ux-visual-explanations.md) fixed UI-03 touched-field validation, UI-04 stale electricity readouts and UI-05 decoder typography; improved daily results and mobile projection readability; and delivered the Huge Pages/profitability visual pilots. Calculator models, parser rules, limits and all 17 routes are preserved. Verified 119 route/viewport renders and 175 interaction records, with 44 tests passing.
+
+**Recommended next step:** M12B.4 acceptance should cover screen readers, fresh measured contrast, verified text resizing/zoom, reduced-motion preferences, independent engines and physical devices. It has not started. No production deployment is authorized by these milestones.
 
 ## P0 — Launch foundation
 

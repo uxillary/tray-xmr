@@ -13,9 +13,10 @@ import '../../styles/electricity-calculator.css';
       <p>Estimate what a mining PC or other continuous workload uses and costs to run. Enter your own power measurement and electricity rate; no tariff is assumed.</p>
     </header>
 
+    <nav class="tool-jumps" aria-label="Calculator sections"><a href="#electricity-calculator">Inputs</a><a href="#result-title">Use and cost</a><a href="#power-note-title">Which watts?</a></nav>
     <section class="calculator-shell" aria-label="Electricity cost calculator">
       <form id="electricity-calculator" class="calculator-inputs" novalidate>
-        <div class="calculator-panel-heading"><span class="eyebrow">01 / YOUR INPUTS</span><span class="calculator-live"><i aria-hidden="true"></i> LOCAL CALCULATION</span></div>
+        <div class="calculator-panel-heading"><span class="eyebrow">01 / YOUR INPUTS</span><span class="calculator-live"> LOCAL CALCULATION</span></div>
         <div class="calc-field"><label for="power-watts">Whole-system power</label><span class="calc-input-wrap"><input id="power-watts" name="watts" type="text" inputmode="decimal" autocomplete="off" value="100" aria-describedby="power-help power-error"><span>W</span></span><small id="power-help">100 W is an illustrative starting value only. Replace it with your own wall measurement. Maximum 20,000 W.</small><span class="calc-error" id="power-error" aria-live="polite" aria-atomic="true"></span></div>
         <div class="calc-field"><label for="electricity-rate">Electricity rate</label><div class="calc-input-wrap"><input id="electricity-rate" name="rate" type="text" inputmode="decimal" autocomplete="off" placeholder="Enter your rate" aria-describedby="rate-help rate-error"><select id="rate-unit" name="rateUnit" aria-label="Rate unit"><option value="kwh">/ kWh</option><option value="pence">p / kWh (GBP)</option></select></div><small id="rate-help">Enter the price from your own tariff. For UK pence/kWh, select GBP and p/kWh. Rate maximum: 1,000 per kWh or 100,000 p/kWh.</small><span class="calc-error" id="rate-error" aria-live="polite" aria-atomic="true"></span></div>
         <fieldset class="calc-field calc-runtime"><legend>Runtime</legend><label for="runtime-preset" class="sr-only">Hours per day preset</label><select id="runtime-preset" name="runtime"><option value="24">24 hours / day</option><option value="12">12 hours / day</option><option value="8">8 hours / day</option><option value="custom">Custom</option></select><div class="calc-input-wrap"><input id="runtime-hours" name="hours" type="text" inputmode="decimal" value="24" aria-label="Custom runtime in hours per day" aria-describedby="hours-error"><span>hours / day</span></div><small>Choose a preset or enter any runtime from 0 to 24 hours.</small><span class="calc-error" id="hours-error" aria-live="polite" aria-atomic="true"></span></fieldset>
@@ -25,9 +26,9 @@ import '../../styles/electricity-calculator.css';
       </form>
 
       <section class="calculator-results" aria-labelledby="result-title">
-        <h2 class="sr-only" id="result-title">Estimated electricity use and cost</h2>
+        <h2 id="result-title" tabindex="-1">Estimated electricity use and cost</h2>
         <div class="calculator-panel-heading"><span class="eyebrow">02 / ENERGY → COST</span><span class="result-period-tag" id="period-label">30 DAYS</span></div>
-        <div class="energy-flow" aria-label="Power becomes energy, which is priced as electricity cost">
+        <p class="calculator-assumption-note">The starting 100 W is illustrative. These are entered assumptions, not a live hardware measurement.</p><div class="energy-flow" aria-label="Power becomes energy, which is priced as electricity cost">
           <div class="flow-node"><Icon name="cpu" size="card" /><span>POWER</span><strong id="power-readout">Set inputs</strong></div><span class="flow-connector" aria-hidden="true"></span>
           <div class="flow-node flow-energy"><Icon name="lightning" size="card" /><span>ENERGY / DAY</span><strong id="energy-day">—</strong></div><span class="flow-connector" aria-hidden="true"></span>
           <div class="flow-node flow-cost"><Icon name="chartLineUp" size="card" /><span>ESTIMATED COST / DAY</span><strong id="cost-day">Enter a rate</strong></div>
@@ -38,7 +39,7 @@ import '../../styles/electricity-calculator.css';
           <div><span>365 DAYS</span><strong id="cost-year">Enter a rate</strong></div>
         </div>
         <div class="energy-readouts"><span>ENERGY</span><span><strong id="energy-period">—</strong> / period</span><span><strong id="energy-year">—</strong> / 365 days</span></div>
-        <p class="calc-status" id="calc-status" aria-live="polite">Energy updates as you change inputs. Add a rate to see estimated electricity cost.</p>
+        <p class="calc-status" id="calc-status">Energy updates as you change inputs. Add a rate to see estimated electricity cost.</p><p class="sr-only" id="calc-announcement" aria-live="polite"></p>
       </section>
     </section>
 

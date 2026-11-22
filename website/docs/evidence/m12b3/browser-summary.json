@@ -1,0 +1,356 @@
+{
+  "milestone": "M12B.3",
+  "recordedAt": "2026-11-22T02:58:52.576Z",
+  "buildSha256": "4eed6e5399dcc60f436e2a6540644a3b98c7aaddeb405233b5e547b95efeb317",
+  "preview": "http://127.0.0.1:4353",
+  "previewPid": 31728,
+  "browser": "ChatGPT in-app browser; Chromium-family engine version not exposed",
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      900
+    ],
+    [
+      600,
+      800
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      800
+    ]
+  ],
+  "renderCases": 119,
+  "toolInitialCases": 21,
+  "interactionCases": 175,
+  "documentOverflow": 0,
+  "duplicateIds": 0,
+  "screenshots": 69,
+  "decoderTypography": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    },
+    {
+      "viewport": [
+        1280,
+        800
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    },
+    {
+      "viewport": [
+        768,
+        900
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    },
+    {
+      "viewport": [
+        600,
+        800
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "describedby": "log-help privacy-note input-error",
+      "font": "Consolas, \"Courier New\", monospace",
+      "size": "15px"
+    }
+  ],
+  "navigation": [
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        1440,
+        900
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.5,
+      "header": 79,
+      "top": 94.5
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        1440,
+        900
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.5,
+      "header": 79,
+      "top": 94.5
+    },
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        1280,
+        800
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.65625,
+      "header": 79,
+      "top": 94.65625
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        1280,
+        800
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.65625,
+      "header": 79,
+      "top": 94.65625
+    },
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        1024,
+        768
+      ],
+      "active": "mining-results-title",
+      "clearance": 16.46875,
+      "header": 79,
+      "top": 95.46875
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        1024,
+        768
+      ],
+      "active": "mining-results-title",
+      "clearance": 16.46875,
+      "header": 79,
+      "top": 95.46875
+    },
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        768,
+        900
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.609375,
+      "header": 117,
+      "top": 132.609375
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        768,
+        900
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.609375,
+      "header": 117,
+      "top": 132.609375
+    },
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        600,
+        800
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.625,
+      "header": 117,
+      "top": 132.625
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        600,
+        800
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.625,
+      "header": 117,
+      "top": 132.625
+    },
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        390,
+        844
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.796875,
+      "header": 116,
+      "top": 131.796875
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        390,
+        844
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.796875,
+      "header": 116,
+      "top": 131.796875
+    },
+    {
+      "state": "profitability-explicit-results-navigation",
+      "viewport": [
+        360,
+        800
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.796875,
+      "header": 116,
+      "top": 131.796875
+    },
+    {
+      "state": "profitability-pointer-results-jump",
+      "viewport": [
+        360,
+        800
+      ],
+      "active": "mining-results-title",
+      "clearance": 15.796875,
+      "header": 116,
+      "top": 131.796875
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        1440,
+        900
+      ],
+      "active": "results-title",
+      "clearance": 16.3125,
+      "header": 79,
+      "top": 95.3125
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        1280,
+        800
+      ],
+      "active": "results-title",
+      "clearance": 16.46875,
+      "header": 79,
+      "top": 95.46875
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        1024,
+        768
+      ],
+      "active": "results-title",
+      "clearance": 15.609375,
+      "header": 79,
+      "top": 94.609375
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        768,
+        900
+      ],
+      "active": "results-title",
+      "clearance": 16.21875,
+      "header": 117,
+      "top": 133.21875
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        600,
+        800
+      ],
+      "active": "results-title",
+      "clearance": 16.28125,
+      "header": 117,
+      "top": 133.28125
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        390,
+        844
+      ],
+      "active": "results-title",
+      "clearance": 15.84375,
+      "header": 116,
+      "top": 131.84375
+    },
+    {
+      "state": "decoder-explicit-results-navigation",
+      "viewport": [
+        360,
+        800
+      ],
+      "active": "results-title",
+      "clearance": 15.9375,
+      "header": 116,
+      "top": 131.9375
+    }
+  ],
+  "textResize": {
+    "verified": false,
+    "attempt": "Two native Ctrl++ shortcuts at the reset 1280×720 CSS viewport did not expose a verifiable zoom change; Ctrl+0 sent afterward."
+  },
+  "reducedMotion": {
+    "sourceRuleVerified": true,
+    "runtimePreferenceEmulated": false
+  },
+  "limits": [
+    "No dedicated screen reader or measured contrast audit",
+    "No verified 200%/400% text-resize acceptance",
+    "No Firefox/WebKit or physical mobile device testing",
+    "Long input form stays fully discoverable; jump links and explicit calculation provide direct results access"
+  ]
+}

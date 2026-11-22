@@ -13,7 +13,7 @@ import '../../styles/xmrig-log-decoder.css';
         <h2 id="input-title">Paste XMRig output</h2>
         <p id="privacy-note">Your pasted log is processed locally in this browser and is not uploaded by this tool. Results do not repeat log lines or identifiers.</p>
         <label for="xmrig-log">XMRig console or log excerpt</label>
-        <textarea id="xmrig-log" spellcheck="false" aria-describedby="log-help privacy-note" placeholder="Paste a relevant excerpt. You can remove wallet, pool, worker and host details first."></textarea>
+        <textarea id="xmrig-log" spellcheck="false" wrap="off" aria-describedby="log-help privacy-note input-error" placeholder="Paste a relevant excerpt. You can remove wallet, pool, worker and host details first."></textarea>
         <div class="decoder-input-meta"><small id="log-help">Up to 200 KB. Blank lines, CRLF/LF and ANSI color sequences are supported.</small><small id="byte-count">0 / 200 KB</small></div>
         <p class="decoder-validation" id="input-error" role="alert"></p>
         <div class="decoder-actions"><button type="button" id="analyze-log" class="decoder-primary">Analyze log</button><button type="button" id="clear-log" class="decoder-secondary">Clear</button></div>
@@ -22,6 +22,7 @@ import '../../styles/xmrig-log-decoder.css';
         <div class="decoder-panel-top"><span class="eyebrow">02 / SIGNALS</span><span>BOUNDED RULE SET</span></div>
         <h2 id="results-title" tabindex="-1">Diagnostic readout</h2>
         <p id="result-status" class="decoder-status" aria-live="polite">Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted.</p>
+        <p class="decoder-empty" id="decoder-empty-state">No excerpt analyzed yet. Paste output and choose Analyze log. Reported events will be grouped by supported signal in first-occurrence order; they do not establish overall health or root cause.</p>
         <div id="signal-list" class="signal-list"></div>
       </section>
     </div>
