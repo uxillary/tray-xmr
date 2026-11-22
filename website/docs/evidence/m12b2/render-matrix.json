@@ -1,0 +1,7832 @@
+{
+  "buildSha256": "6341eadfc1cba44daacf4de46696f8421cd42bc9f601ed5127f305cf422232f1",
+  "browser": "ChatGPT in-app browser; engine version not exposed",
+  "cases": [
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 557.21875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 494.140625,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 818
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 494.140625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 464.453125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 527.53125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 464.453125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "bodyTop": 464.453125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 550.421875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 489.609375,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 818
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 489.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 459.921875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 520.734375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 459.921875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "bodyTop": 459.921875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "rail",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "rail",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        1265,
+        1265
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 539.296875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 490.640625,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 792,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 818
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 818,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 792,
+          "tabindex": "0",
+          "width": 792
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 818,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 539.296875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 509.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 509.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 818
+        }
+      ],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 509.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "bodyTop": 509.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 79,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        1009,
+        1009
+      ],
+      "scrollPadding": "95px",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 554.296875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 760,
+          "tabindex": "0",
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 517.140625,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 664,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 664
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 664,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 664
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 664,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 664
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 690,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 690
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 690,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 690
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 664,
+          "tabindex": "0",
+          "width": 664
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 664,
+          "tabindex": "0",
+          "width": 664
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 664,
+          "tabindex": "0",
+          "width": 664
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 690,
+          "tabindex": "0",
+          "width": 690
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 690,
+          "tabindex": "0",
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 517.140625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 517.140625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 554.296875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 690
+        }
+      ],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 524.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "bodyTop": 524.609375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        753,
+        753
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        768,
+        900
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 535.375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 760,
+          "tabindex": "0",
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 526.265625,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 539,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 509
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 509,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 509
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 509,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 509
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 535,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 535
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 535,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 535
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 539,
+          "tabindex": "0",
+          "width": 509
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 509,
+          "tabindex": "0",
+          "width": 509
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 509,
+          "tabindex": "0",
+          "width": 509
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 535,
+          "tabindex": "0",
+          "width": 535
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 535,
+          "tabindex": "0",
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 535.375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 535.375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 535.375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 535
+        }
+      ],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 535.375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "bodyTop": 535.375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 117,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        585,
+        585
+      ],
+      "scrollPadding": "133px",
+      "viewport": [
+        600,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 664.78125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 760,
+          "tabindex": "0",
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 618.515625,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 539,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 307
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 316,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 307
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 382,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 307
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 473,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 333
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 333,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 333
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 539,
+          "tabindex": "0",
+          "width": 307
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 316,
+          "tabindex": "0",
+          "width": 307
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 382,
+          "tabindex": "0",
+          "width": 307
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 473,
+          "tabindex": "0",
+          "width": 333
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 333,
+          "tabindex": "0",
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 627.625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 627.625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 636.734375,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 333
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 599.578125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "bodyTop": 599.578125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/ember/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/guides/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 692.828125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#why-warning"
+          },
+          {
+            "exists": true,
+            "href": "#check-source"
+          },
+          {
+            "exists": true,
+            "href": "#release-checks"
+          },
+          {
+            "exists": true,
+            "href": "#if-warning"
+          },
+          {
+            "exists": true,
+            "href": "#use-only-authorized-devices"
+          },
+          {
+            "exists": true,
+            "href": "#what-not-to-do"
+          },
+          {
+            "exists": true,
+            "href": "#related-resources"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Short answer: stop and verify first"
+        },
+        {
+          "id": "why-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why Windows may show a warning"
+        },
+        {
+          "id": "check-source",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check the source, not just the filename"
+        },
+        {
+          "id": "release-checks",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the release checks can establish"
+        },
+        {
+          "id": "if-warning",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "If Defender or SmartScreen still warns"
+        },
+        {
+          "id": "use-only-authorized-devices",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Use only a computer you are allowed to mine on"
+        },
+        {
+          "id": "what-not-to-do",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What not to do"
+        },
+        {
+          "id": "related-resources",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Related resources"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "regions": [
+        {
+          "caption": "What the release checks can establish",
+          "columns": 3,
+          "font": "15px",
+          "inside": true,
+          "name": "What the release checks can establish: scrollable table",
+          "overflow": "auto",
+          "rows": 3,
+          "scrollWidth": 760,
+          "tabindex": "0",
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 618.515625,
+      "clientScripts": 0,
+      "code": [
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 539,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 277
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 316,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 277
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "scrollWidth": 382,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 277
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 473,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 303
+        },
+        {
+          "font": "Consolas, \"Courier New\", monospace",
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "scrollWidth": 316,
+          "select": "auto",
+          "size": "15px",
+          "tabindex": "0",
+          "width": 303
+        }
+      ],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#before-you-begin"
+          },
+          {
+            "exists": true,
+            "href": "#download-xmrig-safely"
+          },
+          {
+            "exists": true,
+            "href": "#configure-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#start-xmrig"
+          },
+          {
+            "exists": true,
+            "href": "#verify-the-session"
+          },
+          {
+            "exists": true,
+            "href": "#common-issues"
+          },
+          {
+            "exists": true,
+            "href": "#next-steps"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "before-you-begin",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Before you begin"
+        },
+        {
+          "id": "download-xmrig-safely",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Download XMRig safely"
+        },
+        {
+          "id": "configure-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Configure XMRig"
+        },
+        {
+          "id": "start-xmrig",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Start XMRig"
+        },
+        {
+          "id": "verify-the-session",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "5. Verify the first session"
+        },
+        {
+          "id": "common-issues",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "6. Common first-run issues"
+        },
+        {
+          "id": "next-steps",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "7. Next steps"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/guides/xmrig-windows-setup/",
+      "regions": [
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 539,
+          "tabindex": "0",
+          "width": 277
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 316,
+          "tabindex": "0",
+          "width": 277
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "2. Download XMRig safely: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 382,
+          "tabindex": "0",
+          "width": 277
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "3. Configure XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 473,
+          "tabindex": "0",
+          "width": 303
+        },
+        {
+          "columns": 0,
+          "font": null,
+          "inside": true,
+          "name": "4. Start XMRig: code example",
+          "overflow": "auto",
+          "rows": 0,
+          "scrollWidth": 316,
+          "tabindex": "0",
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/learn/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 627.625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-model"
+          },
+          {
+            "exists": true,
+            "href": "#dataset-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#cpu-cache-and-mining-threads"
+          },
+          {
+            "exists": true,
+            "href": "#huge-pages-and-windows"
+          },
+          {
+            "exists": true,
+            "href": "#numa-in-one-minute"
+          },
+          {
+            "exists": true,
+            "href": "#what-system-ram-does-not-tell-you"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-model",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick model"
+        },
+        {
+          "id": "dataset-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Dataset and cache"
+        },
+        {
+          "id": "cpu-cache-and-mining-threads",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "CPU cache and mining threads"
+        },
+        {
+          "id": "huge-pages-and-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Huge Pages and Windows"
+        },
+        {
+          "id": "numa-in-one-minute",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "NUMA in one minute"
+        },
+        {
+          "id": "what-system-ram-does-not-tell-you",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What system RAM does not tell you"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/randomx-memory-cache/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 655.671875,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#the-short-answer"
+          },
+          {
+            "exists": true,
+            "href": "#three-different-counts"
+          },
+          {
+            "exists": true,
+            "href": "#why-cache-limits-the-useful-count"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-test-a-different-thread-count"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "the-short-answer",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "The short answer"
+        },
+        {
+          "id": "three-different-counts",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Three different counts"
+        },
+        {
+          "id": "why-cache-limits-the-useful-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Why cache limits the useful count"
+        },
+        {
+          "id": "how-to-test-a-different-thread-count",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to test a different thread count"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/learn/xmrig-cpu-threads/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/electricity-cost-calculator/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 1,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/tools/xmrig-log-decoder/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/troubleshoot/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 687.203125,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-the-messages-mean"
+          },
+          {
+            "exists": true,
+            "href": "#permission-granted-but-less-than-100"
+          },
+          {
+            "exists": true,
+            "href": "#how-to-obtain-the-windows-right"
+          },
+          {
+            "exists": true,
+            "href": "#when-the-setup-is-already-working"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-the-messages-mean",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What the messages mean"
+        },
+        {
+          "id": "permission-granted-but-less-than-100",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Permission granted, but less than 100%"
+        },
+        {
+          "id": "how-to-obtain-the-windows-right",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "How to obtain the Windows right"
+        },
+        {
+          "id": "when-the-setup-is-already-working",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "When the setup is already working"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "regions": [
+        {
+          "caption": "Interpret each signal on its own; none identifies every cause.",
+          "columns": 4,
+          "font": "15px",
+          "inside": true,
+          "name": "Huge Pages signal and next-check table",
+          "overflow": "auto",
+          "rows": 5,
+          "scrollWidth": 960,
+          "tabindex": "0",
+          "width": 303
+        }
+      ],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 627.625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#check-in-this-order"
+          },
+          {
+            "exists": true,
+            "href": "#1-confirm-you-are-comparing-the-same-work"
+          },
+          {
+            "exists": true,
+            "href": "#2-read-allocation-and-optimisation-status"
+          },
+          {
+            "exists": true,
+            "href": "#3-check-useful-thread-count-and-cache"
+          },
+          {
+            "exists": true,
+            "href": "#4-check-memory-background-load-and-cooling"
+          },
+          {
+            "exists": true,
+            "href": "#keep-a-small-measurement-record"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "check-in-this-order",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Check in this order"
+        },
+        {
+          "id": "1-confirm-you-are-comparing-the-same-work",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "1. Confirm you are comparing the same work"
+        },
+        {
+          "id": "2-read-allocation-and-optimisation-status",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "2. Read allocation and optimisation status"
+        },
+        {
+          "id": "3-check-useful-thread-count-and-cache",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "3. Check useful thread count and cache"
+        },
+        {
+          "id": "4-check-memory-background-load-and-cooling",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "4. Check memory, background load and cooling"
+        },
+        {
+          "id": "keep-a-small-measurement-record",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Keep a small measurement record"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "bodyTop": 627.625,
+      "clientScripts": 0,
+      "code": [],
+      "contents": [
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ],
+        [
+          {
+            "exists": true,
+            "href": "#quick-diagnosis"
+          },
+          {
+            "exists": true,
+            "href": "#what-a-successful-status-looks-like"
+          },
+          {
+            "exists": true,
+            "href": "#checks-on-windows"
+          },
+          {
+            "exists": true,
+            "href": "#can-mining-continue-without-the-msr-change"
+          }
+        ]
+      ],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [
+        {
+          "id": "quick-diagnosis",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Quick diagnosis"
+        },
+        {
+          "id": "what-a-successful-status-looks-like",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "What a successful status looks like"
+        },
+        {
+          "id": "checks-on-windows",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Checks on Windows"
+        },
+        {
+          "id": "can-mining-continue-without-the-msr-change",
+          "level": "H2",
+          "tabindex": "-1",
+          "text": "Can mining continue without the MSR change?"
+        }
+      ],
+      "navMode": "native-details",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "clientScripts": 0,
+      "code": [],
+      "contents": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "header": 116,
+      "headings": [],
+      "navMode": "native-details",
+      "path": "/trust/",
+      "regions": [],
+      "root": [
+        345,
+        345
+      ],
+      "scrollPadding": "132px",
+      "viewport": [
+        360,
+        800
+      ]
+    }
+  ]
+}

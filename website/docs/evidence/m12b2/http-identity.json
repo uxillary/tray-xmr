@@ -1,0 +1,192 @@
+{
+  "recordedAt": "2026-11-22T02:12:26.714Z",
+  "buildSha256": "6341eadfc1cba44daacf4de46696f8421cd42bc9f601ed5127f305cf422232f1",
+  "responses": [
+    {
+      "path": "_astro/ArticleLayout.BG7Gkfwk.css",
+      "status": 200,
+      "sha256": "b0da8bdb408b7197dbbede3e0ef30c75df3964a491b6c543f62e7e92e0aa0391",
+      "matches": true
+    },
+    {
+      "path": "_astro/SiteLayout.CJO77G46.css",
+      "status": 200,
+      "sha256": "88e5deeb1ce5d0bd7e89044e5ccafb5ff898445394451468b9300c0514327622",
+      "matches": true
+    },
+    {
+      "path": "_astro/electricity-cost-calculator.CCCqd8nW.css",
+      "status": 200,
+      "sha256": "fc3ed8c8ae48d42da7b4a921709bf35e9a4942c6e997f733aca59713e3727e63",
+      "matches": true
+    },
+    {
+      "path": "_astro/electricity-cost-calculator.astro_astro_type_script_index_0_lang.DDnCShxm.js",
+      "status": 200,
+      "sha256": "5f2abe4f5603a03d0418516338d215932f8ee70e91a62e7d2a3535f565adefd7",
+      "matches": true
+    },
+    {
+      "path": "_astro/electricity-cost.D3C29iLX.js",
+      "status": 200,
+      "sha256": "35905507a76ef5127adcb5870f49b94871936e3ece96f0f4a26617f8b3283ed6",
+      "matches": true
+    },
+    {
+      "path": "_astro/monero-mining-profitability-calculator.GjTm2bj_.css",
+      "status": 200,
+      "sha256": "5f8ad93a49b26cffe656d9a08931e0e729abab1a1c0876bc804351bb17fd9b00",
+      "matches": true
+    },
+    {
+      "path": "_astro/monero-mining-profitability-calculator.astro_astro_type_script_index_0_lang.BWlIzj_V.js",
+      "status": 200,
+      "sha256": "6477f19997a723d85ce523e5b8d1f0ccff76a10c99b92ab42cd3df1d32fc5374",
+      "matches": true
+    },
+    {
+      "path": "_astro/xmrig-log-decoder.UZkK7JWt.css",
+      "status": 200,
+      "sha256": "63cf96e5fd983029e015a572f48e61d4cb615c7fd711672042f4fd8f6ba863cd",
+      "matches": true
+    },
+    {
+      "path": "_astro/xmrig-log-decoder.astro_astro_type_script_index_0_lang.BVY3BPWz.js",
+      "status": 200,
+      "sha256": "aee16fc28fdf4b190c3d5378492564e5ce2ec64dab27cfd7ab4432b66658e890",
+      "matches": true
+    },
+    {
+      "path": "ember/",
+      "status": 200,
+      "sha256": "1499a7425449d40f7ac44d58d0ca3db4594b7238af4bff1ec4ffb2b5ea4c018c",
+      "matches": true
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "sha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731",
+      "matches": true
+    },
+    {
+      "path": "guides/",
+      "status": 200,
+      "sha256": "f7ba5057d77606ad9caab7b5462d9e9cb724a44846d097fa23fdb7ec7d2e9992",
+      "matches": true
+    },
+    {
+      "path": "guides/xmrig-windows-security-warnings/",
+      "status": 200,
+      "sha256": "350cdb12cd0cf094a1d0c5102daa55f015993ba94993f15c05da1b8884160648",
+      "matches": true
+    },
+    {
+      "path": "guides/xmrig-windows-setup/",
+      "status": 200,
+      "sha256": "a9000583e0389014c2deb2383126ad5348282a5f63feaff2c85410333d89dbca",
+      "matches": true
+    },
+    {
+      "path": "",
+      "status": 200,
+      "sha256": "6e0b97a51cf2e8f6b93d3e116c23e868d44b971edbb03255a36e8a48129740d4",
+      "matches": true
+    },
+    {
+      "path": "learn/",
+      "status": 200,
+      "sha256": "1f7039d72ada15fcc28ec6c8d050f8651c0a120e46a8655f182de0f5cbdbe7a6",
+      "matches": true
+    },
+    {
+      "path": "learn/randomx-memory-cache/",
+      "status": 200,
+      "sha256": "db456b283b5cd5773a220d3aff62bdf375f6a1d161bfb081b9d02a6ee3b70895",
+      "matches": true
+    },
+    {
+      "path": "learn/xmrig-cpu-threads/",
+      "status": 200,
+      "sha256": "8e76759c9f10372c4eb455047cf796a1c54b8a738f11c95c41aea1d2564bc448",
+      "matches": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "sha256": "b8960cd960808d0e3071f8ccc45c7ff2dcbb35cf7a7fc95aefd909ddd61d116b",
+      "matches": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "sha256": "f94023943009d1c81ca62e797671ecbf53c26d3e486a21925c01f97fdd93c2b4",
+      "matches": true
+    },
+    {
+      "path": "social-card.svg",
+      "status": 200,
+      "sha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4",
+      "matches": true
+    },
+    {
+      "path": "third-party-notices.txt",
+      "status": 200,
+      "sha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7",
+      "matches": true
+    },
+    {
+      "path": "tools/electricity-cost-calculator/",
+      "status": 200,
+      "sha256": "9d7043f262592c25a597cec58edbb7050dcc67be5de748c6376e663392b176e6",
+      "matches": true
+    },
+    {
+      "path": "tools/",
+      "status": 200,
+      "sha256": "ea71d33d6018debd14ad33b516f5a55dc43d505411abea7e67a78d87970c4bfc",
+      "matches": true
+    },
+    {
+      "path": "tools/monero-mining-profitability-calculator/",
+      "status": 200,
+      "sha256": "7736c16c49ea028e00cd61579a5df68a5dcd31000e2dc5af82e1813050fc3674",
+      "matches": true
+    },
+    {
+      "path": "tools/xmrig-log-decoder/",
+      "status": 200,
+      "sha256": "52f505b778e440cd42c8021e43c322e6974ee49515daf1745dfb6c24da94a67b",
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/",
+      "status": 200,
+      "sha256": "997bc9a6da0cb3f8aaea9df3f7ffee9b42626aab5338b0a7dcf6ed1769024a84",
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/xmrig-huge-pages/",
+      "status": 200,
+      "sha256": "ecfca5393982533b3c5adcc3d9aa0a9b8ae5351b4accb13ff3478a9c37626fdf",
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/xmrig-low-hashrate/",
+      "status": 200,
+      "sha256": "45ce491439eb841c9a4a4d37064d302ec258e315453310cb443a85806b64b496",
+      "matches": true
+    },
+    {
+      "path": "troubleshoot/xmrig-msr-error/",
+      "status": 200,
+      "sha256": "d02b615215bcf42efccdf83775c7cdbaca5a2cba612f0f8a3f723dd23a6dbfad",
+      "matches": true
+    },
+    {
+      "path": "trust/",
+      "status": 200,
+      "sha256": "ef608ef65a76530cef02b64533e7d0bc732c38dd12adb48bff1c6b5001159e10",
+      "matches": true
+    }
+  ]
+}

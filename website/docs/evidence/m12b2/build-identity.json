@@ -1,0 +1,415 @@
+{
+  "milestone": "M12B.2",
+  "recordedAt": "2026-11-22T02:12:26.549Z",
+  "head": "1b0c2ed68bdb27e0d6469495fcbf4d37dd4e7182",
+  "origin": "https://ember-m12b0-audit.invalid",
+  "preview": "http://127.0.0.1:4352",
+  "sourceSha256": "a0379b08bc8ad8979c5a64b8a064345e759d20ccd9fb0eb27a3db7083cf089bc",
+  "buildSha256": "6341eadfc1cba44daacf4de46696f8421cd42bc9f601ed5127f305cf422232f1",
+  "sources": [
+    {
+      "path": "astro.config.mjs",
+      "sha256": "8bc16f1daf01b049735f1b92bdaf0d9f9e6d0477b4a3c95ac41be3fb02f9ca1c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "22e2dbb48aed5a7966481c8230d5ad0285778441db47295aa3da934688ccca50"
+    },
+    {
+      "path": "package.json",
+      "sha256": "afc342f5c66a4cf896d8ca05a59c0e4fa070e12f2d19360d70f1b077578f6b83"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731"
+    },
+    {
+      "path": "public/social-card.svg",
+      "sha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4"
+    },
+    {
+      "path": "public/third-party-notices.txt",
+      "sha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7"
+    },
+    {
+      "path": "src/components/ArticleContents.astro",
+      "sha256": "35b1b7c69346bb3e448428fdbd91999dcdaed71f21e183fd791fdcd2352764d7"
+    },
+    {
+      "path": "src/components/ArticleLayout.astro",
+      "sha256": "a794a39c3dce002e868a72333760e9f647c811672436885fce9e04656068bfe9"
+    },
+    {
+      "path": "src/components/ArticleVisual.astro",
+      "sha256": "85adb330369a130d38209385355ba298ea9b9edc4eedca8088c6569cf43ea01a"
+    },
+    {
+      "path": "src/components/HubPage.astro",
+      "sha256": "1db1c08d8ea1ff8bc579879641d00782571807daa665c0f6e49db32b17f6a393"
+    },
+    {
+      "path": "src/components/HubVisual.astro",
+      "sha256": "eae239c3cd7267915eddad388cfe7fb240e60769ec72bb9457ea3ef590cfecc5"
+    },
+    {
+      "path": "src/components/Icon.astro",
+      "sha256": "86d6af6bb450be4b5b79a08f73e15a6dbb1f7730784e70b90aec3b4ba54e8597"
+    },
+    {
+      "path": "src/components/ProductArchitecture.astro",
+      "sha256": "113156e5f4f5255d491430f09bdff3a88ee4b798d0a8f698486f43e586133ecd"
+    },
+    {
+      "path": "src/components/ProductJourney.astro",
+      "sha256": "855f1c35aa4ea348ff041f243d1c8ef5f42e91c8e8982f75b6cab48217fd8d13"
+    },
+    {
+      "path": "src/components/ProductPreview.astro",
+      "sha256": "e11b401ab75be518a411328cb587bae806287ab6d9755657412593078df843f0"
+    },
+    {
+      "path": "src/components/ResourceCard.astro",
+      "sha256": "7612d4189427f985870c24690ecaa5b7f3bd7b08333b281e45a6747bce11bd31"
+    },
+    {
+      "path": "src/components/SiteLayout.astro",
+      "sha256": "4c96df0b77b66dc6a07ddb8fdcfcb0cc86ebd8201b20f8fb51e3c60f986eb69a"
+    },
+    {
+      "path": "src/components/StatusBadge.astro",
+      "sha256": "d02c606bf48af2139fb95b8a6111ab4e7a5b5b4a029c8f0722aff74eef193c0a"
+    },
+    {
+      "path": "src/components/TechnicalCallout.astro",
+      "sha256": "6970ec3f2e49694a6d3790452233a27e872aeee0a3383f7b78496dc100a7c68c"
+    },
+    {
+      "path": "src/components/TechnicalFlow.astro",
+      "sha256": "8c595b725d1f361cc19e0c188db7d0946d367e2b7fb1bcffcd459b13655d70bf"
+    },
+    {
+      "path": "src/content.config.ts",
+      "sha256": "c627a8557b7304bca59b650592f5b7fa7a058f95b099868ce0248757a333b556"
+    },
+    {
+      "path": "src/content/article-loader.mjs",
+      "sha256": "b22be67b0f92d63281e93a2246240d4a4e2fc97e968d9ce95543ae4dbc441c4e"
+    },
+    {
+      "path": "src/content/articles/randomx-memory-cache.md",
+      "sha256": "df8509f0c9351dccf8af7045a1b10732435d88490639ab03e511478579900934"
+    },
+    {
+      "path": "src/content/articles/xmrig-cpu-threads.md",
+      "sha256": "3faf80f7aff41c926017af95358166dd6b45a9495f87c6116a4335da1a120a14"
+    },
+    {
+      "path": "src/content/articles/xmrig-huge-pages.md",
+      "sha256": "976ffa5ba3fa30241064227e1a0ac55f5e130859cef55e9036d485d4dfd5710c"
+    },
+    {
+      "path": "src/content/articles/xmrig-low-hashrate.md",
+      "sha256": "416d3a3f8d1809f1bbb5c1b98a313bc2cead3939b2bc89baf9f15f4f9c2e0951"
+    },
+    {
+      "path": "src/content/articles/xmrig-msr-error.md",
+      "sha256": "715c22726fdf640b28eed70ca61b2fbd3b7d06fd1111a1b4cd66edf4dc19c172"
+    },
+    {
+      "path": "src/content/articles/xmrig-windows-security-warnings.md",
+      "sha256": "907a2f3648a26c2e574253bdb06859d8eb3f857e9919216541730df67e8b8645"
+    },
+    {
+      "path": "src/content/articles/xmrig-windows-setup.md",
+      "sha256": "0173b0da91eddfa9c494f1842bd5e2d112abb9bf22b553dacfdaf5c0a7a8aae4"
+    },
+    {
+      "path": "src/lib/article-experience.mjs",
+      "sha256": "1b093912d8e6a90a7a98c9ece08250a4b9f2ef92d7bd0f811f7177ff43a8dede"
+    },
+    {
+      "path": "src/lib/electricity-cost.mjs",
+      "sha256": "bacd7b98da481e020b98f7df70546bed42aa9a47fe81b9dabeab25df032bd362"
+    },
+    {
+      "path": "src/lib/mining-economics.mjs",
+      "sha256": "81c1fcd60a45f43b33d921a44971d56ec9822ace9b220d6905343c58e7a4129a"
+    },
+    {
+      "path": "src/lib/site-origin.mjs",
+      "sha256": "9a33a85a93e75083031961e332a6201eab084b9eb9869b1698e0bc5deffe6040"
+    },
+    {
+      "path": "src/lib/xmrig-log-decoder.mjs",
+      "sha256": "23c97c835b2ba94fed9127f62f0de48ee4b16e25bfc63880a4cc9b4e10bca714"
+    },
+    {
+      "path": "src/pages/ember/index.astro",
+      "sha256": "c365edb0b8a1a4b36b28e5cf49c88213f09a04088fa1cc17229d39330c04201b"
+    },
+    {
+      "path": "src/pages/guides/[slug].astro",
+      "sha256": "836298355e5aaa878a5cda5f27cc89463f7109239dfa75ae6b2923083d985d66"
+    },
+    {
+      "path": "src/pages/guides/index.astro",
+      "sha256": "afabc65760cef335f27f33260d53e04f3324606d3d26e9475302fc5f01479807"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "sha256": "0623ae90496a448162ccde2a98ab37802da1e7418be2fbcf90bc8fa15a0c0dba"
+    },
+    {
+      "path": "src/pages/learn/[slug].astro",
+      "sha256": "99fd5b45466de265b559c21a3005d294bb163b7f3d42c83f1443c1a3dda99894"
+    },
+    {
+      "path": "src/pages/learn/index.astro",
+      "sha256": "f1f22e615a709cad7ca4b0f3bcdd046ac0956121ede44fc6efc0bf57b96cbc01"
+    },
+    {
+      "path": "src/pages/robots.txt.ts",
+      "sha256": "4b86722436792245f9cc646baa81939ae4286a4be7d41d18b23ad56f9813b2e0"
+    },
+    {
+      "path": "src/pages/sitemap.xml.ts",
+      "sha256": "c656d179fa7d4a3322d7792af0e084d0c4aac70b580d6c86dbd2265306586cb7"
+    },
+    {
+      "path": "src/pages/tools/electricity-cost-calculator.astro",
+      "sha256": "559d595e2c24c24c1bf9fc5a720cd15395a539b2c9ea7bfaf48deb1dfb4aa971"
+    },
+    {
+      "path": "src/pages/tools/index.astro",
+      "sha256": "da5b48799e8ec284253bed6b5d344824b33b2cb9d1e64c01f89415be1043cb2c"
+    },
+    {
+      "path": "src/pages/tools/monero-mining-profitability-calculator.astro",
+      "sha256": "86d98f82e5ad0f7a220d3b63eeb87c5ab59fd7346ca07f88210c32d9c4565111"
+    },
+    {
+      "path": "src/pages/tools/xmrig-log-decoder.astro",
+      "sha256": "e0c78dbe10db72e30ed7ce7df1adab30d89caff259defbfde7e4ed6a28f64c25"
+    },
+    {
+      "path": "src/pages/troubleshoot/[slug].astro",
+      "sha256": "3b57b22f61a59ec8f4a23e360f8a3aee2883ff3eff29eefa1c27934b1987e8ac"
+    },
+    {
+      "path": "src/pages/troubleshoot/index.astro",
+      "sha256": "fa3711787b1c9166b456d67a5cf6a356b743da3c1a542fa22cde49c4ce350423"
+    },
+    {
+      "path": "src/pages/trust/index.astro",
+      "sha256": "5f6b3d5e8914a7e2df68d80ea2c345d7d9a09f69203512640289cfe41468c4e2"
+    },
+    {
+      "path": "src/scripts/electricity-calculator.js",
+      "sha256": "725d84ea06b7b9e1d95db47251a237b8a5a85a70bd24f7d22863d4dc92e6cd01"
+    },
+    {
+      "path": "src/scripts/mining-profitability.js",
+      "sha256": "a3bc79a2cc74d00b0e8afe9594753a3751beb847b76fdc1670a97daa0999cfd4"
+    },
+    {
+      "path": "src/scripts/xmrig-log-decoder.js",
+      "sha256": "64d0b8fe450c362cf66999e198296b9f82819158976019fa95d6476a419379ee"
+    },
+    {
+      "path": "src/styles/electricity-calculator.css",
+      "sha256": "c08fbf7e907c114bf8738d882b91dc83a9aef136d6801b30cab0627dfbaa5836"
+    },
+    {
+      "path": "src/styles/mining-profitability.css",
+      "sha256": "77ddb7601e023e8fd77510b79b81fa7ec80a2427daacd73b13780d2809cb032c"
+    },
+    {
+      "path": "src/styles/site.css",
+      "sha256": "730ec204aa37d652d8c22d9d1a6bb7cf309dd4d5452aa75ae895a9dd958c73fd"
+    },
+    {
+      "path": "src/styles/xmrig-log-decoder.css",
+      "sha256": "ac8962298dce8598a532fdb7dabbab35bf6fcccc89cba08eb6afa89b5d73c8d7"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "974b0a3b37e52f3649d9df63e72e374794e9e797c8ae61eca4812f844406f7ef"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "_astro/ArticleLayout.BG7Gkfwk.css",
+      "sha256": "b0da8bdb408b7197dbbede3e0ef30c75df3964a491b6c543f62e7e92e0aa0391",
+      "bytes": 8785
+    },
+    {
+      "path": "_astro/SiteLayout.CJO77G46.css",
+      "sha256": "88e5deeb1ce5d0bd7e89044e5ccafb5ff898445394451468b9300c0514327622",
+      "bytes": 52798
+    },
+    {
+      "path": "_astro/electricity-cost-calculator.CCCqd8nW.css",
+      "sha256": "fc3ed8c8ae48d42da7b4a921709bf35e9a4942c6e997f733aca59713e3727e63",
+      "bytes": 6487
+    },
+    {
+      "path": "_astro/electricity-cost-calculator.astro_astro_type_script_index_0_lang.DDnCShxm.js",
+      "sha256": "5f2abe4f5603a03d0418516338d215932f8ee70e91a62e7d2a3535f565adefd7",
+      "bytes": 3012
+    },
+    {
+      "path": "_astro/electricity-cost.D3C29iLX.js",
+      "sha256": "35905507a76ef5127adcb5870f49b94871936e3ece96f0f4a26617f8b3283ed6",
+      "bytes": 2087
+    },
+    {
+      "path": "_astro/monero-mining-profitability-calculator.GjTm2bj_.css",
+      "sha256": "5f8ad93a49b26cffe656d9a08931e0e729abab1a1c0876bc804351bb17fd9b00",
+      "bytes": 9422
+    },
+    {
+      "path": "_astro/monero-mining-profitability-calculator.astro_astro_type_script_index_0_lang.BWlIzj_V.js",
+      "sha256": "6477f19997a723d85ce523e5b8d1f0ccff76a10c99b92ab42cd3df1d32fc5374",
+      "bytes": 7428
+    },
+    {
+      "path": "_astro/xmrig-log-decoder.UZkK7JWt.css",
+      "sha256": "63cf96e5fd983029e015a572f48e61d4cb615c7fd711672042f4fd8f6ba863cd",
+      "bytes": 4525
+    },
+    {
+      "path": "_astro/xmrig-log-decoder.astro_astro_type_script_index_0_lang.BVY3BPWz.js",
+      "sha256": "aee16fc28fdf4b190c3d5378492564e5ce2ec64dab27cfd7ab4432b66658e890",
+      "bytes": 6420
+    },
+    {
+      "path": "ember/index.html",
+      "sha256": "1499a7425449d40f7ac44d58d0ca3db4594b7238af4bff1ec4ffb2b5ea4c018c",
+      "bytes": 10988
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731",
+      "bytes": 208
+    },
+    {
+      "path": "guides/index.html",
+      "sha256": "f7ba5057d77606ad9caab7b5462d9e9cb724a44846d097fa23fdb7ec7d2e9992",
+      "bytes": 10679
+    },
+    {
+      "path": "guides/xmrig-windows-security-warnings/index.html",
+      "sha256": "350cdb12cd0cf094a1d0c5102daa55f015993ba94993f15c05da1b8884160648",
+      "bytes": 21245
+    },
+    {
+      "path": "guides/xmrig-windows-setup/index.html",
+      "sha256": "a9000583e0389014c2deb2383126ad5348282a5f63feaff2c85410333d89dbca",
+      "bytes": 34300
+    },
+    {
+      "path": "index.html",
+      "sha256": "6e0b97a51cf2e8f6b93d3e116c23e868d44b971edbb03255a36e8a48129740d4",
+      "bytes": 21155
+    },
+    {
+      "path": "learn/index.html",
+      "sha256": "1f7039d72ada15fcc28ec6c8d050f8651c0a120e46a8655f182de0f5cbdbe7a6",
+      "bytes": 13780
+    },
+    {
+      "path": "learn/randomx-memory-cache/index.html",
+      "sha256": "db456b283b5cd5773a220d3aff62bdf375f6a1d161bfb081b9d02a6ee3b70895",
+      "bytes": 17917
+    },
+    {
+      "path": "learn/xmrig-cpu-threads/index.html",
+      "sha256": "8e76759c9f10372c4eb455047cf796a1c54b8a738f11c95c41aea1d2564bc448",
+      "bytes": 14008
+    },
+    {
+      "path": "robots.txt",
+      "sha256": "b8960cd960808d0e3071f8ccc45c7ff2dcbb35cf7a7fc95aefd909ddd61d116b",
+      "bytes": 78
+    },
+    {
+      "path": "sitemap.xml",
+      "sha256": "f94023943009d1c81ca62e797671ecbf53c26d3e486a21925c01f97fdd93c2b4",
+      "bytes": 1467
+    },
+    {
+      "path": "social-card.svg",
+      "sha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4",
+      "bytes": 1486
+    },
+    {
+      "path": "third-party-notices.txt",
+      "sha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7",
+      "bytes": 1118
+    },
+    {
+      "path": "tools/electricity-cost-calculator/index.html",
+      "sha256": "9d7043f262592c25a597cec58edbb7050dcc67be5de748c6376e663392b176e6",
+      "bytes": 12672
+    },
+    {
+      "path": "tools/index.html",
+      "sha256": "ea71d33d6018debd14ad33b516f5a55dc43d505411abea7e67a78d87970c4bfc",
+      "bytes": 12151
+    },
+    {
+      "path": "tools/monero-mining-profitability-calculator/index.html",
+      "sha256": "7736c16c49ea028e00cd61579a5df68a5dcd31000e2dc5af82e1813050fc3674",
+      "bytes": 23001
+    },
+    {
+      "path": "tools/xmrig-log-decoder/index.html",
+      "sha256": "52f505b778e440cd42c8021e43c322e6974ee49515daf1745dfb6c24da94a67b",
+      "bytes": 6471
+    },
+    {
+      "path": "troubleshoot/index.html",
+      "sha256": "997bc9a6da0cb3f8aaea9df3f7ffee9b42626aab5338b0a7dcf6ed1769024a84",
+      "bytes": 14028
+    },
+    {
+      "path": "troubleshoot/xmrig-huge-pages/index.html",
+      "sha256": "ecfca5393982533b3c5adcc3d9aa0a9b8ae5351b4accb13ff3478a9c37626fdf",
+      "bytes": 22854
+    },
+    {
+      "path": "troubleshoot/xmrig-low-hashrate/index.html",
+      "sha256": "45ce491439eb841c9a4a4d37064d302ec258e315453310cb443a85806b64b496",
+      "bytes": 20879
+    },
+    {
+      "path": "troubleshoot/xmrig-msr-error/index.html",
+      "sha256": "d02b615215bcf42efccdf83775c7cdbaca5a2cba612f0f8a3f723dd23a6dbfad",
+      "bytes": 17019
+    },
+    {
+      "path": "trust/index.html",
+      "sha256": "ef608ef65a76530cef02b64533e7d0bc732c38dd12adb48bff1c6b5001159e10",
+      "bytes": 7956
+    }
+  ],
+  "routes": [
+    "/ember/",
+    "/guides/",
+    "/guides/xmrig-windows-security-warnings/",
+    "/guides/xmrig-windows-setup/",
+    "/",
+    "/learn/",
+    "/learn/randomx-memory-cache/",
+    "/learn/xmrig-cpu-threads/",
+    "/tools/electricity-cost-calculator/",
+    "/tools/",
+    "/tools/monero-mining-profitability-calculator/",
+    "/tools/xmrig-log-decoder/",
+    "/troubleshoot/",
+    "/troubleshoot/xmrig-huge-pages/",
+    "/troubleshoot/xmrig-low-hashrate/",
+    "/troubleshoot/xmrig-msr-error/",
+    "/trust/"
+  ]
+}

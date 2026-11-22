@@ -1,0 +1,672 @@
+[
+  {
+    "filename": "guides-1440x900.jpg",
+    "path": "/guides/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "e11b57460ac89c1d86163f16af4a8710634a8514e58d014eb231ee94ebcaacd2",
+    "bytes": 97001
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-1440x900.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "bf5f698658b68adb25a0025b2cbbef3b009b04a3a6e9a73edab642cba7d90b3d",
+    "bytes": 125497
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-1440x900.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "838612c8b8ed74e6d6867b96b40fd966fceec715ac229e90b7d51c85b8cb81a2",
+    "bytes": 123775
+  },
+  {
+    "filename": "home-1440x900.jpg",
+    "path": "/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "dd232a2bf8b830abb4dd7a753e3ac6253a0a2faf84104f110f61f063c711bfa1",
+    "bytes": 77647
+  },
+  {
+    "filename": "learn-1440x900.jpg",
+    "path": "/learn/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "0bdcf2377724a9b75dbb9c1a9654fd2c3b0e63709626839d1f1e320ed0758f92",
+    "bytes": 83818
+  },
+  {
+    "filename": "learn-randomx-memory-cache-1440x900.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "a29d27988b1e20c5cc3bea6ecd893377fabb17d2b6b894f3e9b1def2a2301b8e",
+    "bytes": 112396
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-1440x900.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "09a06e8664a4e11bae7cbb2e8dcdaac54565da5e0573bc72fc695e33dca314ea",
+    "bytes": 103294
+  },
+  {
+    "filename": "tools-1440x900.jpg",
+    "path": "/tools/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "7106343af5e83d917b578c743aabca3fa58397887f6d558e042cc9fb76a4698a",
+    "bytes": 75996
+  },
+  {
+    "filename": "troubleshoot-1440x900.jpg",
+    "path": "/troubleshoot/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "58e7ebb38242f2e9620b5cbcbbc92f5bd1fe7b06f23e031615e74df9179b41d6",
+    "bytes": 93811
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-1440x900.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "84407859f89281c7b539157090f2333d8161d1e605eafa5035f6ac2a50d6e530",
+    "bytes": 121337
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-1440x900.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "5d3cf6816487f4f748b696ffd2ae4f8e70d8a54c9d967571104c93ec3d57f55b",
+    "bytes": 109290
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-1440x900.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "sha256": "36e78218058fc68968299e4efacdb68702eaa4f01bdc5c29c4099194b9552df4",
+    "bytes": 116734
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-1280x800.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "c22cb2f7caac06fe8f82ec2fd38a3196b277630efe992c3e26b94697a0e8e6b7",
+    "bytes": 103167
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-1280x800.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "e50936c70fc3b718f8e937f0a4f5b8e916db89ee610a951be9e7d402f6f42d0b",
+    "bytes": 104480
+  },
+  {
+    "filename": "learn-randomx-memory-cache-1280x800.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "7677d85470460551d22be7370ec084528213a65dcfd333769d9fd96ddb79f625",
+    "bytes": 90796
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-1280x800.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "e94f197c69424dce8be651f120a6f22b6502995847344dea42d730d3565ac34c",
+    "bytes": 86946
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-1280x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "5d9b6917cc195e7acee427a71d54fb843f14db2d5706edb0e39aa810a61889de",
+    "bytes": 99085
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-1280x800.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "5a21278c9051379db7ab5026fde8b325b84766c3942c2004092a7ebb8b285a2f",
+    "bytes": 95449
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-1280x800.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      1280,
+      800
+    ],
+    "sha256": "47c95d181181052089ee12b29da99fe61178378d68de98ea2a8f93874beac2f6",
+    "bytes": 96650
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-1024x768.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "e5282c64ea4a4687f5087b7d563d01111564d84d89b541dbbb05c4ce7b72a952",
+    "bytes": 80581
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-1024x768.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "cc2441b1a632a8c2b7167b08ce065ea21d9c9566d526d4ac2365c449c5277526",
+    "bytes": 86681
+  },
+  {
+    "filename": "learn-randomx-memory-cache-1024x768.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "e0712759edb6e3bf1a2c6100e8ca57387a0636b5fd9032ae19e14b211bd70e7f",
+    "bytes": 65109
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-1024x768.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "94494ce94141b17a4f495c56216cc1cd4ca1d8d99aad64767922eb753a662410",
+    "bytes": 68755
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-1024x768.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "b2b939eb8a0d1be2de2782815a0cb514297ae904737dd0446575c59116412a37",
+    "bytes": 81693
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-1024x768.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "9bca6083e033a80c3c7c1c157548db8b2efc8513dd7afa3cd0a2a8f979f2209b",
+    "bytes": 72715
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-1024x768.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "sha256": "ab899e19d2a9073821ccc0cbfddda7b2e30d536fd7f3a7fdc0a621045362f30c",
+    "bytes": 84545
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-768x900.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "4be558c957f4aa1c91faf577338f0fabe767f53a9049e328120af457e3a1a060",
+    "bytes": 90187
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-768x900.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "984464caa24990eb9074ce089d76ade8296ded22162183c9eb6ca2d2c46a6555",
+    "bytes": 91907
+  },
+  {
+    "filename": "learn-randomx-memory-cache-768x900.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "0263eadef5e839c8d9cffd303eab0c181fd9c42bc8a5a170d17c4db6a4121958",
+    "bytes": 84108
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-768x900.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "d09d9851956eb8babe9167317d46856cc20c844749762cd16598ceccf0f38723",
+    "bytes": 75518
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-768x900.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "9b1a0d8e27d8b7acaaa7a4bec2a51cfb2c1f0b906f2204dfed3190d7925aded9",
+    "bytes": 82635
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-768x900.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "15475ff80cf5ac4b3f8f11346ab8de873e93514e40fa72d2b9e1e9c4674830f0",
+    "bytes": 71432
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-768x900.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      768,
+      900
+    ],
+    "sha256": "b09c5f67f767542e3d4c08c9415e36f5460279eb343788534dac606567388493",
+    "bytes": 80125
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-600x800.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "b8f48735bc2392ed05d74f335649a66bd9ce087c640d67ddf744f7878f7b0f70",
+    "bytes": 72731
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-600x800.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "65da86e59beb9be54086f2cc65ea8bbf4e5787e28ca33808f8a908f05d8758c2",
+    "bytes": 66378
+  },
+  {
+    "filename": "learn-randomx-memory-cache-600x800.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "3158dfc5da52f7b4c0bb500836af8be1f52e795464375fb834d7a1234c30d401",
+    "bytes": 58817
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-600x800.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "de0e2ddc77b2341567c1ed0af26bde50b9521aec5ef13cb517525f2cf2817ffb",
+    "bytes": 56540
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-600x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "9f1b062c0bc45573dc5e58b5e9518ddd0e83e5e893d818d78c9ec9af8be7fe39",
+    "bytes": 67159
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-600x800.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "fa6f129c15847c359e85ec3dd56c8b1fe300d0ec85e4666074d19cea8c9e5e29",
+    "bytes": 60907
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-600x800.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      600,
+      800
+    ],
+    "sha256": "0bfbd6d0a319f7246bc43e211edd82f0d048c3a5690624a2116c5b8ac1b4626e",
+    "bytes": 63110
+  },
+  {
+    "filename": "guides-390x844.jpg",
+    "path": "/guides/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "5bb807ef429270de48ab35e8c01cc3c2bc94eeb85d40234e145ac200af2d17e4",
+    "bytes": 41761
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-390x844.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "e957607fb34c188e52608befa5a20f7ad6869e9ec19fdfe3f3290ab33a686c63",
+    "bytes": 47997
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-390x844.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "a41a7eb14d8cdf401e56973bae5d4eaa48fa621c1901418cf4aaf67339c7922a",
+    "bytes": 48220
+  },
+  {
+    "filename": "home-390x844.jpg",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "6cb6ae6c1c145d84eb005d490cd5a382cfc3c26f1cc0046af8d88360a9728843",
+    "bytes": 37798
+  },
+  {
+    "filename": "learn-390x844.jpg",
+    "path": "/learn/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "a4f7f4af6d6ddf1bb5998f78e3b4c037a48e4a16bd442f75f9d8c870a4ed6966",
+    "bytes": 40065
+  },
+  {
+    "filename": "learn-randomx-memory-cache-390x844.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "3ec7dccb76e7d8f404be88b0c2924b078e746643ef6a841066e5f1b019461519",
+    "bytes": 47237
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-390x844.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "4d4ccfce3214736f6cf43b2daab43b633874a7e0b9d670c092a37ae53ca61699",
+    "bytes": 47895
+  },
+  {
+    "filename": "tools-390x844.jpg",
+    "path": "/tools/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "c04e564c4419698a1f3dc802cd2fb8089c543a959806e40020ba8d5ad1121722",
+    "bytes": 36065
+  },
+  {
+    "filename": "troubleshoot-390x844.jpg",
+    "path": "/troubleshoot/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "4874e401227595e69e8d6bddc012c02515b9c372fa1b19a67b412af0b5122448",
+    "bytes": 38837
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-390x844.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "e91d3975bb96a890f008e1fbe6895a2722d3c55bebb17f4820dbf0666cdd1612",
+    "bytes": 50626
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-390x844.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "5c0ce72e013fa1d56357f9d7061a58f067dea6458fa452667a595101408c9348",
+    "bytes": 51883
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-390x844.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      390,
+      844
+    ],
+    "sha256": "534ccdd079190ced4d2cbbb562f5b8f260b683735114091a9bc3de21df62c6e3",
+    "bytes": 50661
+  },
+  {
+    "filename": "guides-xmrig-windows-security-warnings-360x800.jpg",
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "ff3429a4f65755cab97ddba297ba5e9946cd209f9eb2161a4078b482f9d72178",
+    "bytes": 41519
+  },
+  {
+    "filename": "guides-xmrig-windows-setup-360x800.jpg",
+    "path": "/guides/xmrig-windows-setup/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "5f3c6e48988f32596f363b3bd92eec01b6a6e3dee64397c4ee4a35d9f963bbf1",
+    "bytes": 43950
+  },
+  {
+    "filename": "learn-randomx-memory-cache-360x800.jpg",
+    "path": "/learn/randomx-memory-cache/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "be12a01d55f09992792b2ce96f56bc725ec66f5edc5eb1dc4e3edf0716f4a040",
+    "bytes": 41063
+  },
+  {
+    "filename": "learn-xmrig-cpu-threads-360x800.jpg",
+    "path": "/learn/xmrig-cpu-threads/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "d95cf4919e64d69274877ce90fc489d7f276526c1fe80d1bc91df1b902e9fe2a",
+    "bytes": 39228
+  },
+  {
+    "filename": "troubleshoot-xmrig-huge-pages-360x800.jpg",
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "f237d1398d396d351d4b74617d826b17bb91fadf52a22cd851703b5e6ebbe72a",
+    "bytes": 41969
+  },
+  {
+    "filename": "troubleshoot-xmrig-low-hashrate-360x800.jpg",
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "43eafc3653f83b29539906c0e6a3e2299efc48beacda4f886f88010f9572a14c",
+    "bytes": 43477
+  },
+  {
+    "filename": "troubleshoot-xmrig-msr-error-360x800.jpg",
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "viewport": [
+      360,
+      800
+    ],
+    "sha256": "dcd74c7d9d66e2cd0881b59d9625a8ea69b60a968fefd130f03f2247a69ada00",
+    "bytes": 42001
+  },
+  {
+    "filename": "huge-pages-table-keyboard-390x844.jpg",
+    "viewport": [
+      390,
+      844
+    ],
+    "state": "Native Tab reaches region; Right scrolls columns locally",
+    "sha256": "c2294ee162164514ab2e666001433bc792839430c508a24bb22f887f84c10bb1",
+    "bytes": 38121
+  },
+  {
+    "filename": "contents-keyboard-1440x900.jpg",
+    "viewport": [
+      1440,
+      900
+    ],
+    "state": "Native Tab/Enter contents navigation",
+    "sha256": "be5d1c5bd7ba5e50371669d3eb9cb3362da28f47d2da0615ea40c5dc13c1c766",
+    "bytes": 120027
+  },
+  {
+    "filename": "contents-keyboard-390x844.jpg",
+    "viewport": [
+      390,
+      844
+    ],
+    "state": "Native Tab/Enter contents navigation",
+    "sha256": "db48d02d2e2980f775e8a3ae242c63f0e8550abc9528f4ce81e0ff983ee5515b",
+    "bytes": 58454
+  },
+  {
+    "filename": "security-table-390x844.jpg",
+    "viewport": [
+      390,
+      844
+    ],
+    "state": "Release checks heading, scroll hint and semantic table",
+    "sha256": "1414907b62583028492565ae308051f110179e654c3940a3e6617a288ac73cfe",
+    "bytes": 48188
+  },
+  {
+    "filename": "code-keyboard-390x844.jpg",
+    "viewport": [
+      390,
+      844
+    ],
+    "state": "Native Tab and Right in PowerShell example; command was not executed",
+    "sha256": "256d1f8c5860d9dfae523d9d9e39c83996931dcbd9e751f556f2bb6b2d3fd873",
+    "bytes": 53821
+  },
+  {
+    "filename": "rail-footer-1440x900.jpg",
+    "viewport": [
+      1440,
+      900
+    ],
+    "state": "End of article rail constrained before footer",
+    "sha256": "514df84f033c67a8423de176a8fc7d44b2d03494831b08923c20f2a9f1e91315",
+    "bytes": 52359
+  },
+  {
+    "filename": "contents-expanded-390x844.jpg",
+    "viewport": [
+      390,
+      844
+    ],
+    "state": "Native in-flow contents expanded; no nested scrolling",
+    "sha256": "40691f014ac51ea7d0c806d94b3a9a5c9d4bf039e4bf1db58e20f4c3c79fefb3",
+    "bytes": 46889
+  },
+  {
+    "filename": "anchor-clearance-360x800.jpg",
+    "viewport": [
+      360,
+      800
+    ],
+    "state": "Huge Pages fragment remains below the wrapped sticky header",
+    "sha256": "eabc3ab90ef8c23a6f890c9d096df7eeb1d1196a17b9df36ec04082305d2faa0",
+    "bytes": 46991
+  }
+]

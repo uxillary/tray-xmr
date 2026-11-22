@@ -8,7 +8,7 @@ const idExists = (html, id) => new RegExp(`\\bid=["']${id}["']`).test(html);
 test('shared shell exposes skip link, named navigation landmarks and a main target', () => {
   const html = source('../src/components/SiteLayout.astro');
   assert.match(html, /class="skip-link" href="#main"/);
-  assert.match(html, /<main id="main">/);
+  assert.match(html, /<main id="main" tabindex="-1">/);
   assert.match(html, /<nav aria-label="Main navigation">/);
   assert.match(html, /<nav class="footer-links" aria-label="Footer navigation">/);
 });

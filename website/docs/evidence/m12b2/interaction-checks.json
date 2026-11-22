@@ -1,0 +1,576 @@
+{
+  "buildSha256": "6341eadfc1cba44daacf4de46696f8421cd42bc9f601ed5127f305cf422232f1",
+  "cases": [
+    {
+      "kind": "huge-pages-keyboard-scroll",
+      "viewport": [
+        390,
+        844
+      ],
+      "before": {
+        "docX": 0,
+        "left": 0,
+        "name": "Huge Pages signal and next-check table"
+      },
+      "after": {
+        "docX": 0,
+        "left": 400,
+        "name": "Huge Pages signal and next-check table",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "root": [
+          375,
+          375
+        ]
+      }
+    },
+    {
+      "kind": "skip-navigation",
+      "viewport": [
+        1440,
+        900
+      ],
+      "skip": {
+        "href": "#main",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "A",
+        "text": "Skip to content",
+        "top": 12
+      },
+      "main": {
+        "fragment": "#main",
+        "headerBottom": 79,
+        "id": "main",
+        "tag": "MAIN",
+        "top": 79
+      },
+      "next": {
+        "href": "/",
+        "insideMain": true,
+        "text": "Home"
+      }
+    },
+    {
+      "kind": "keyboard-contents",
+      "viewport": [
+        1440,
+        900
+      ],
+      "start": {
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "A",
+        "text": "Quick diagnosis"
+      },
+      "target": {
+        "activeId": "quick-diagnosis",
+        "activeTag": "H2",
+        "clearance": 15.53125,
+        "fragment": "#quick-diagnosis",
+        "headerBottom": 79,
+        "outline": "solid",
+        "outlineWidth": "2px",
+        "path": "/troubleshoot/xmrig-huge-pages/",
+        "scrollX": 0,
+        "targetBottom": 127.53125,
+        "targetTop": 94.53125,
+        "viewport": [
+          1440,
+          900
+        ]
+      }
+    },
+    {
+      "kind": "skip-navigation",
+      "viewport": [
+        1024,
+        768
+      ],
+      "skip": {
+        "href": "#main",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "A",
+        "text": "Skip to content",
+        "top": 12
+      },
+      "main": {
+        "fragment": "#main",
+        "headerBottom": 79,
+        "id": "main",
+        "tag": "MAIN",
+        "top": 79
+      },
+      "next": {
+        "href": "/",
+        "insideMain": true,
+        "text": "Home"
+      }
+    },
+    {
+      "kind": "skip-navigation",
+      "viewport": [
+        768,
+        900
+      ],
+      "skip": {
+        "href": "#main",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "A",
+        "text": "Skip to content",
+        "top": 12
+      },
+      "main": {
+        "fragment": "#main",
+        "headerBottom": 117,
+        "id": "main",
+        "tag": "MAIN",
+        "top": 117
+      },
+      "next": {
+        "href": "/",
+        "insideMain": true,
+        "text": "Home"
+      }
+    },
+    {
+      "kind": "skip-navigation",
+      "viewport": [
+        390,
+        844
+      ],
+      "skip": {
+        "href": "#main",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "A",
+        "text": "Skip to content",
+        "top": 12
+      },
+      "main": {
+        "fragment": "#main",
+        "headerBottom": 116,
+        "id": "main",
+        "tag": "MAIN",
+        "top": 116
+      },
+      "next": {
+        "href": "/",
+        "insideMain": true,
+        "text": "Home"
+      }
+    },
+    {
+      "kind": "keyboard-contents",
+      "viewport": [
+        390,
+        844
+      ],
+      "start": {
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "SUMMARY",
+        "text": "On this page · 5 sections"
+      },
+      "target": {
+        "activeId": "quick-diagnosis",
+        "activeTag": "H2",
+        "clearance": 15.734375,
+        "fragment": "#quick-diagnosis",
+        "headerBottom": 116,
+        "outline": "solid",
+        "outlineWidth": "2px",
+        "path": "/troubleshoot/xmrig-huge-pages/",
+        "scrollX": 0,
+        "targetBottom": 161.734375,
+        "targetTop": 131.734375,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "skip-navigation",
+      "viewport": [
+        360,
+        800
+      ],
+      "skip": {
+        "href": "#main",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "A",
+        "text": "Skip to content",
+        "top": 12
+      },
+      "main": {
+        "fragment": "#main",
+        "headerBottom": 116,
+        "id": "main",
+        "tag": "MAIN",
+        "top": 116
+      },
+      "next": {
+        "href": "/",
+        "insideMain": true,
+        "text": "Home"
+      }
+    },
+    {
+      "kind": "security-table-keyboard-scroll",
+      "viewport": [
+        390,
+        844
+      ],
+      "before": {
+        "left": 0,
+        "name": "What the release checks can establish: scrollable table",
+        "tag": "DIV"
+      },
+      "after": {
+        "docX": 0,
+        "left": 320,
+        "name": "What the release checks can establish: scrollable table",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "tag": "DIV"
+      }
+    },
+    {
+      "kind": "code-keyboard-scroll",
+      "viewport": [
+        390,
+        844
+      ],
+      "tabPath": [
+        {
+          "left": 0,
+          "name": null,
+          "tag": "A",
+          "text": "official XMRig GitHub releases"
+        },
+        {
+          "left": 0,
+          "name": "2. Download XMRig safely: code example",
+          "tag": "PRE",
+          "text": "Get-FileHash .\\xmrig-6.26.0-windows-x64.zip -Algorithm SHA256"
+        }
+      ],
+      "before": {
+        "font": "Consolas, \"Courier New\", monospace",
+        "left": 0,
+        "name": "2. Download XMRig safely: code example",
+        "select": "auto",
+        "tag": "PRE"
+      },
+      "after": {
+        "docX": 0,
+        "left": 232,
+        "name": "2. Download XMRig safely: code example",
+        "outline": "rgb(255, 180, 126) solid 2px",
+        "root": [
+          375,
+          375
+        ],
+        "tag": "PRE"
+      }
+    },
+    {
+      "kind": "code-keyboard-exit",
+      "next": {
+        "insidePre": false,
+        "tag": "A",
+        "text": "xmrig.com"
+      }
+    },
+    {
+      "kind": "rail-footer-boundary",
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "footer": {
+          "bottom": 899.671875,
+          "height": 198.09375,
+          "left": 112.5,
+          "right": 1312.5,
+          "top": 701.578125,
+          "width": 1200,
+          "x": 112.5,
+          "y": 701.578125
+        },
+        "header": {
+          "bottom": 79,
+          "height": 79,
+          "left": 0,
+          "right": 1425,
+          "top": 0,
+          "width": 1425,
+          "x": 0,
+          "y": 0
+        },
+        "rail": {
+          "bottom": 320.78125,
+          "height": 225.78125,
+          "left": 1018.5,
+          "right": 1258.5,
+          "top": 95,
+          "width": 240,
+          "x": 1018.5,
+          "y": 95
+        },
+        "reading": {
+          "bottom": 511.578125,
+          "height": 4405.046875,
+          "left": 150.5,
+          "right": 1274.5,
+          "top": -3893.46875,
+          "width": 1124,
+          "x": 150.5,
+          "y": -3893.46875
+        }
+      }
+    },
+    {
+      "kind": "huge-pages-original-overlap-regression",
+      "activeId": "permission-granted-but-less-than-100",
+      "activeTag": "H2",
+      "clearance": 16.421875,
+      "fragment": "#permission-granted-but-less-than-100",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 192.421875,
+      "targetTop": 132.421875,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/troubleshoot/xmrig-huge-pages/",
+      "selector": ".signal-table a[href=\"/tools/xmrig-log-decoder/\"]",
+      "to": "/tools/xmrig-log-decoder/",
+      "label": "local XMRig Log Decoder",
+      "actual": {
+        "fragment": "",
+        "h1": "What is XMRig actually telling me?",
+        "headerBottom": 116,
+        "path": "/tools/xmrig-log-decoder/",
+        "top": null
+      }
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/troubleshoot/xmrig-huge-pages/",
+      "selector": ".signal-table a[href=\"/troubleshoot/xmrig-low-hashrate/\"]",
+      "to": "/troubleshoot/xmrig-low-hashrate/",
+      "label": "low-hashrate checklist",
+      "actual": {
+        "fragment": "",
+        "h1": "Why Is My XMRig Hashrate Low? A Windows Checklist",
+        "headerBottom": 116,
+        "path": "/troubleshoot/xmrig-low-hashrate/",
+        "top": null
+      }
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/guides/xmrig-windows-setup/",
+      "selector": ".article-body a[href=\"/guides/xmrig-windows-security-warnings/\"]",
+      "to": "/guides/xmrig-windows-security-warnings/",
+      "label": "Windows security-warning checks for XMRig",
+      "actual": {
+        "fragment": "",
+        "h1": "Windows Security Warnings When Downloading XMRig: Safe Checks",
+        "headerBottom": 116,
+        "path": "/guides/xmrig-windows-security-warnings/",
+        "top": null
+      }
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/troubleshoot/xmrig-msr-error/",
+      "selector": ".article-body a[href=\"/guides/xmrig-windows-security-warnings/#check-source\"]",
+      "to": "/guides/xmrig-windows-security-warnings/#check-source",
+      "label": "Windows security-warning checks",
+      "actual": {
+        "fragment": "#check-source",
+        "h1": "Windows Security Warnings When Downloading XMRig: Safe Checks",
+        "headerBottom": 116,
+        "path": "/guides/xmrig-windows-security-warnings/",
+        "top": 132.265625
+      }
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/learn/xmrig-cpu-threads/",
+      "selector": ".article-body a[href=\"/learn/randomx-memory-cache/\"]",
+      "to": "/learn/randomx-memory-cache/",
+      "label": "RandomX memory and cache explainer",
+      "actual": {
+        "fragment": "",
+        "h1": "RandomX Memory and CPU Cache Explained",
+        "headerBottom": 116,
+        "path": "/learn/randomx-memory-cache/",
+        "top": null
+      }
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/troubleshoot/xmrig-low-hashrate/",
+      "selector": ".article-body a[href=\"/tools/electricity-cost-calculator/#power-note-title\"]",
+      "to": "/tools/electricity-cost-calculator/#power-note-title",
+      "label": "mining electricity cost calculator",
+      "actual": {
+        "fragment": "#power-note-title",
+        "h1": "Mining Electricity Cost Calculator",
+        "headerBottom": 116,
+        "path": "/tools/electricity-cost-calculator/",
+        "top": 131.984375
+      }
+    },
+    {
+      "kind": "contextual-handoff",
+      "from": "/troubleshoot/xmrig-low-hashrate/",
+      "selector": ".article-body a[href=\"/tools/monero-mining-profitability-calculator/#input-sources\"]",
+      "to": "/tools/monero-mining-profitability-calculator/#input-sources",
+      "label": "Monero mining profitability calculator",
+      "actual": {
+        "fragment": "#input-sources",
+        "h1": "Monero Mining Profitability Calculator",
+        "headerBottom": 116,
+        "path": "/tools/monero-mining-profitability-calculator/",
+        "top": 132.296875
+      }
+    },
+    {
+      "kind": "inherited-tool-anchor-regression",
+      "activeId": "",
+      "activeTag": "BODY",
+      "clearance": 15.984375,
+      "fragment": "#power-note-title",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/tools/electricity-cost-calculator/",
+      "scrollX": 0,
+      "targetBottom": 194.671875,
+      "targetTop": 131.984375,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "kind": "inherited-tool-anchor-regression",
+      "activeId": "",
+      "activeTag": "BODY",
+      "clearance": 16.296875,
+      "fragment": "#input-sources",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "scrollX": 0,
+      "targetBottom": 163.640625,
+      "targetTop": 132.296875,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "kind": "inherited-tool-anchor-regression",
+      "activeId": "",
+      "activeTag": "BODY",
+      "clearance": 16.359375,
+      "fragment": "#decoder-scope",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/tools/xmrig-log-decoder/",
+      "scrollX": 0,
+      "targetBottom": 165.359375,
+      "targetTop": 132.359375,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "kind": "inherited-tool-anchor-regression",
+      "activeId": "",
+      "activeTag": "BODY",
+      "clearance": 15.875,
+      "fragment": "#power-note-title",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/tools/electricity-cost-calculator/",
+      "scrollX": 0,
+      "targetBottom": 194.5625,
+      "targetTop": 131.875,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "kind": "inherited-tool-anchor-regression",
+      "activeId": "",
+      "activeTag": "BODY",
+      "clearance": 16.296875,
+      "fragment": "#input-sources",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "scrollX": 0,
+      "targetBottom": 163.640625,
+      "targetTop": 132.296875,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "kind": "inherited-tool-anchor-regression",
+      "activeId": "",
+      "activeTag": "BODY",
+      "clearance": 16.359375,
+      "fragment": "#decoder-scope",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/tools/xmrig-log-decoder/",
+      "scrollX": 0,
+      "targetBottom": 198.359375,
+      "targetTop": 132.359375,
+      "viewport": [
+        360,
+        800
+      ]
+    },
+    {
+      "kind": "longest-rail-fit",
+      "viewport": [
+        1280,
+        800
+      ],
+      "geometry": {
+        "footerTop": 4032.703125,
+        "headerBottom": 79,
+        "links": 8,
+        "rail": {
+          "bottom": 484.5625,
+          "height": 389.5625,
+          "left": 938.5,
+          "right": 1178.5,
+          "top": 95,
+          "width": 240,
+          "x": 938.5,
+          "y": 95
+        }
+      }
+    }
+  ]
+}

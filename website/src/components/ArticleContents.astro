@@ -1,0 +1,31 @@
+---
+import { contentsTree } from '../lib/article-experience.mjs';
+interface Heading { depth: number; slug: string; text: string; }
+const { headings = [], items = contentsTree(headings), nested = false } = Astro.props;
+---
+{nested ? <ul>{items.map((item: Heading & { children: Heading[] }) => <li><a href={`#${encodeURIComponent(item.slug)}`}>{item.text}</a>{item.children.length > 0 && <Astro.self items={item.children} nested />}</li>)}</ul> :
+  <div class="article-navigation">
+  <nav class="article-contents desktop-contents" aria-labelledby="article-contents-title">
+    <h2 id="article-contents-title">On this page</h2>
+    <Astro.self items={items} nested />
+  </nav>
+  <details class="mobile-contents">
+    <summary>On this page <span>· {headings.length} sections</span></summary>
+    <nav class="article-contents" aria-label="Article sections"><Astro.self items={items} nested /></nav>
+  </details>
+  </div>
+}
+<style>
+  .article-navigation{min-width:0}.desktop-contents{display:none}
+  .mobile-contents{border-block:1px solid var(--line);font-size:.9rem}
+  summary{padding:12px 0;min-height:48px;cursor:pointer;color:var(--text);font-weight:600}
+  summary span{color:var(--muted);font-weight:400}
+  .mobile-contents .article-contents{border:0;padding:0 0 12px}
+  .article-contents{min-width:0;border-block:1px solid var(--line);padding:16px 0;color:var(--body);font-size:.875rem;line-height:1.45}
+  h2{margin:0 0 8px;color:var(--text);font:600 .8rem/1.5 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+  :global(.article-contents ul){list-style:none;padding:0;margin:0}
+  :global(.article-contents ul ul){padding-left:16px;border-left:1px solid var(--line);margin-left:8px}
+  :global(.article-contents a){display:flex;align-items:center;min-height:36px;padding:7px 0;color:var(--body);text-decoration:underline;text-decoration-color:var(--line-bright);text-underline-offset:4px}
+  :global(.article-contents a:hover){color:var(--ember-light)}
+  @media(min-width:1200px){.article-navigation{position:sticky;top:calc(var(--header-clearance) + 16px);align-self:start}.desktop-contents{display:block;border-block:0;border-left:1px solid var(--line);padding:0 0 0 20px}.mobile-contents{display:none}}
+</style>

@@ -2,6 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { basename, join, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { articleExperience } from '../lib/article-experience.mjs';
 
 const { parse: parseYaml } = createRequire(import.meta.url)('yaml');
 const articleDirectory = fileURLToPath(new URL('./articles/', import.meta.url));
@@ -24,6 +25,9 @@ const articleLoader = {
         const id = basename(file, '.md');
         const parsedData = await parseData({ id, data, filePath });
         const rendered = await renderMarkdown(body, { fileURL: pathToFileURL(filePath) });
+        const enhanced = articleExperience(rendered.html);
+        rendered.html = enhanced.html;
+        rendered.metadata = { ...rendered.metadata, headings: enhanced.headings };
         store.set({ id, data: parsedData, body, rendered, digest: generateDigest(source), filePath: relative(process.cwd(), filePath).replaceAll('\\', '/') });
       }
     }

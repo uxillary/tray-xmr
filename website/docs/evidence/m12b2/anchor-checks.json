@@ -1,0 +1,1337 @@
+{
+  "buildSha256": "6341eadfc1cba44daacf4de46696f8421cd42bc9f601ed5127f305cf422232f1",
+  "settleMs": 1600,
+  "secondMeasurementMs": 120,
+  "cases": [
+    {
+      "mode": "direct",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16.109375,
+      "fragment": "#related-resources",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 128.109375,
+      "targetTop": 95.109375,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16.109375,
+      "fragment": "#related-resources",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 128.109375,
+      "targetTop": 95.109375,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 16.4375,
+      "fragment": "#next-steps",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 128.4375,
+      "targetTop": 95.4375,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 16.4375,
+      "fragment": "#next-steps",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 128.4375,
+      "targetTop": 95.4375,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.140625,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 128.140625,
+      "targetTop": 95.140625,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.140625,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 128.140625,
+      "targetTop": 95.140625,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 15.921875,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 127.921875,
+      "targetTop": 94.921875,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 15.921875,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 127.921875,
+      "targetTop": 94.921875,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 16.421875,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 128.421875,
+      "targetTop": 95.421875,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 16.421875,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 128.421875,
+      "targetTop": 95.421875,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 15.578125,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 127.578125,
+      "targetTop": 94.578125,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 15.578125,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 127.578125,
+      "targetTop": 94.578125,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 16.375,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 128.375,
+      "targetTop": 95.375,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 16.375,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 128.375,
+      "targetTop": 95.375,
+      "viewport": [
+        1440,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16.1875,
+      "fragment": "#related-resources",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 128.1875,
+      "targetTop": 95.1875,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16.1875,
+      "fragment": "#related-resources",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 128.1875,
+      "targetTop": 95.1875,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 15.9375,
+      "fragment": "#next-steps",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 127.9375,
+      "targetTop": 94.9375,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 15.9375,
+      "fragment": "#next-steps",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 127.9375,
+      "targetTop": 94.9375,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.296875,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 128.296875,
+      "targetTop": 95.296875,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.296875,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 128.296875,
+      "targetTop": 95.296875,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 16.078125,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 128.078125,
+      "targetTop": 95.078125,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 16.078125,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 128.078125,
+      "targetTop": 95.078125,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 15.5,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 127.5,
+      "targetTop": 94.5,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 15.5,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 127.5,
+      "targetTop": 94.5,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 15.734375,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 127.734375,
+      "targetTop": 94.734375,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 15.734375,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 127.734375,
+      "targetTop": 94.734375,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.53125,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 79,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 127.53125,
+      "targetTop": 94.53125,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.53125,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 79,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 127.53125,
+      "targetTop": 94.53125,
+      "viewport": [
+        1024,
+        768
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16.34375,
+      "fragment": "#related-resources",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 166.34375,
+      "targetTop": 133.34375,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16.34375,
+      "fragment": "#related-resources",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 166.34375,
+      "targetTop": 133.34375,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 15.515625,
+      "fragment": "#next-steps",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 165.515625,
+      "targetTop": 132.515625,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 15.515625,
+      "fragment": "#next-steps",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 165.515625,
+      "targetTop": 132.515625,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.109375,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 166.109375,
+      "targetTop": 133.109375,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.109375,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 166.109375,
+      "targetTop": 133.109375,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 16.390625,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 166.390625,
+      "targetTop": 133.390625,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 16.390625,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 166.390625,
+      "targetTop": 133.390625,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 15.84375,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 165.84375,
+      "targetTop": 132.84375,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 15.84375,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 165.84375,
+      "targetTop": 132.84375,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 16.078125,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 166.078125,
+      "targetTop": 133.078125,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 16.078125,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 166.078125,
+      "targetTop": 133.078125,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.90625,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 117,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 165.90625,
+      "targetTop": 132.90625,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.90625,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 117,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 165.90625,
+      "targetTop": 132.90625,
+      "viewport": [
+        768,
+        900
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16,
+      "fragment": "#related-resources",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 162,
+      "targetTop": 132,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16,
+      "fragment": "#related-resources",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 162,
+      "targetTop": 132,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 16,
+      "fragment": "#next-steps",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 162,
+      "targetTop": 132,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 16,
+      "fragment": "#next-steps",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 162,
+      "targetTop": 132,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.015625,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 192.015625,
+      "targetTop": 132.015625,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 16.015625,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 192.015625,
+      "targetTop": 132.015625,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 15.6875,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 191.6875,
+      "targetTop": 131.6875,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 15.6875,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 191.6875,
+      "targetTop": 131.6875,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 16.453125,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 192.453125,
+      "targetTop": 132.453125,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 16.453125,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 192.453125,
+      "targetTop": 132.453125,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 15.671875,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 191.671875,
+      "targetTop": 131.671875,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 15.671875,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 191.671875,
+      "targetTop": 131.671875,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.765625,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 191.765625,
+      "targetTop": 131.765625,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.765625,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 191.765625,
+      "targetTop": 131.765625,
+      "viewport": [
+        390,
+        844
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16,
+      "fragment": "#related-resources",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 162,
+      "targetTop": 132,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "related-resources",
+      "activeTag": "H2",
+      "clearance": 16,
+      "fragment": "#related-resources",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-security-warnings/",
+      "scrollX": 0,
+      "targetBottom": 162,
+      "targetTop": 132,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 16.03125,
+      "fragment": "#next-steps",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 162.03125,
+      "targetTop": 132.03125,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "next-steps",
+      "activeTag": "H2",
+      "clearance": 16.03125,
+      "fragment": "#next-steps",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/guides/xmrig-windows-setup/",
+      "scrollX": 0,
+      "targetBottom": 162.03125,
+      "targetTop": 132.03125,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 15.984375,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 191.984375,
+      "targetTop": 131.984375,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "what-system-ram-does-not-tell-you",
+      "activeTag": "H2",
+      "clearance": 15.984375,
+      "fragment": "#what-system-ram-does-not-tell-you",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/randomx-memory-cache/",
+      "scrollX": 0,
+      "targetBottom": 191.984375,
+      "targetTop": 131.984375,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 15.71875,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 191.71875,
+      "targetTop": 131.71875,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "how-to-test-a-different-thread-count",
+      "activeTag": "H2",
+      "clearance": 15.71875,
+      "fragment": "#how-to-test-a-different-thread-count",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/learn/xmrig-cpu-threads/",
+      "scrollX": 0,
+      "targetBottom": 191.71875,
+      "targetTop": 131.71875,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 15.890625,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 191.890625,
+      "targetTop": 131.890625,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "when-the-setup-is-already-working",
+      "activeTag": "H2",
+      "clearance": 15.890625,
+      "fragment": "#when-the-setup-is-already-working",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "scrollX": 0,
+      "targetBottom": 191.890625,
+      "targetTop": 131.890625,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 16.09375,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 192.09375,
+      "targetTop": 132.09375,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "keep-a-small-measurement-record",
+      "activeTag": "H2",
+      "clearance": 16.09375,
+      "fragment": "#keep-a-small-measurement-record",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-low-hashrate/",
+      "scrollX": 0,
+      "targetBottom": 192.09375,
+      "targetTop": 132.09375,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "direct",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.796875,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 116,
+      "outline": "solid",
+      "outlineWidth": "2px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 191.796875,
+      "targetTop": 131.796875,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    },
+    {
+      "mode": "clicked",
+      "activeId": "can-mining-continue-without-the-msr-change",
+      "activeTag": "H2",
+      "clearance": 15.796875,
+      "fragment": "#can-mining-continue-without-the-msr-change",
+      "headerBottom": 116,
+      "outline": "none",
+      "outlineWidth": "3px",
+      "path": "/troubleshoot/xmrig-msr-error/",
+      "scrollX": 0,
+      "targetBottom": 191.796875,
+      "targetTop": 131.796875,
+      "viewport": [
+        360,
+        800
+      ],
+      "settledDelta": 0
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
+import { htmlToHast } from 'satteri';
+
+function elements(node) {
+  return [...(node.type === 'element' ? [node] : []), ...(node.children ?? []).flatMap(elements)];
+}
 
 const dist = resolve('dist');
 const failures = [];
@@ -31,8 +36,23 @@ walk(dist);
 const canonicalUrls = new Set();
 const pageTitles = new Set();
 const descriptions = new Set();
+let articleCount = 0;
 for (const file of files) {
   const html = readFileSync(file, 'utf8');
+  const renderedElements = elements(htmlToHast(html));
+  const ids = renderedElements.flatMap((node) => node.properties.id ? [node.properties.id] : []);
+  if (new Set(ids).size !== ids.length) failures.push(`${file}: duplicate rendered IDs`);
+  const body = renderedElements.find((node) => node.properties.className?.includes('article-body'));
+  if (body) {
+    articleCount++;
+    const headings = elements(body).filter((node) => /^h[2-6]$/.test(node.tagName)).map((node) => node.properties.id);
+    const contents = renderedElements.filter((node) => node.tagName === 'nav' && node.properties.className?.includes('article-contents'));
+    if (contents.length !== 2 || !headings.length) failures.push(`${file}: missing article contents or headings`);
+    for (const nav of contents) {
+      const targets = elements(nav).filter((node) => node.tagName === 'a').map((node) => decodeURIComponent(String(node.properties.href).slice(1)));
+      if (JSON.stringify(targets) !== JSON.stringify(headings)) failures.push(`${file}: contents do not match rendered article headings`);
+    }
+  }
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1];
   const title = html.match(/<title>(.*?)<\/title>/i)?.[1];
   const description = html.match(/<meta name="description" content="([^"]+)"/i)?.[1];
@@ -95,6 +115,8 @@ for (const file of files) {
   }
 }
 
+if (articleCount !== 7) failures.push(`expected 7 articles with section navigation, found ${articleCount}`);
+
 const expected = [
   'guides/xmrig-windows-setup/index.html', 'guides/xmrig-windows-security-warnings/index.html',
   'learn/xmrig-cpu-threads/index.html', 'learn/randomx-memory-cache/index.html',
@@ -123,5 +145,5 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Verified ${files.length} static pages: unique canonical URLs, valid JSON-LD, resolved local links, published article content and sitemap entries.`);
+  console.log(`Verified ${files.length} static pages: unique canonical URLs, valid JSON-LD, resolved local links, ${articleCount} article contents matching rendered headings, unique IDs and sitemap entries.`);
 }

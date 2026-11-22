@@ -1,0 +1,95 @@
+{
+  "milestone": "M12B.2",
+  "recordedAt": "2026-11-22T02:09:36.180Z",
+  "buildSha256": "6341eadfc1cba44daacf4de46696f8421cd42bc9f601ed5127f305cf422232f1",
+  "preview": "http://127.0.0.1:4352",
+  "previewPid": 34468,
+  "browser": "ChatGPT in-app browser; Chromium-family engine version not exposed",
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      900
+    ],
+    [
+      600,
+      800
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      800
+    ]
+  ],
+  "renderCases": 119,
+  "articleCases": 49,
+  "articleSections": 41,
+  "documentOverflow": 0,
+  "duplicateIds": 0,
+  "missingContentsTargets": 0,
+  "articleClientScripts": 0,
+  "anchors": 70,
+  "anchorWidths": [
+    {
+      "width": 1440,
+      "cases": 14,
+      "header": 79,
+      "min": 15.578125,
+      "max": 16.4375,
+      "maxSettledDelta": 0
+    },
+    {
+      "width": 1024,
+      "cases": 14,
+      "header": 79,
+      "min": 15.5,
+      "max": 16.296875,
+      "maxSettledDelta": 0
+    },
+    {
+      "width": 768,
+      "cases": 14,
+      "header": 117,
+      "min": 15.515625,
+      "max": 16.390625,
+      "maxSettledDelta": 0
+    },
+    {
+      "width": 390,
+      "cases": 14,
+      "header": 116,
+      "min": 15.671875,
+      "max": 16.453125,
+      "maxSettledDelta": 0
+    },
+    {
+      "width": 360,
+      "cases": 14,
+      "header": 116,
+      "min": 15.71875,
+      "max": 16.09375,
+      "maxSettledDelta": 0
+    }
+  ],
+  "interactions": 27,
+  "screenshots": 67,
+  "limits": [
+    "One Chromium-family browser, no Firefox/WebKit or physical-device acceptance",
+    "No dedicated screen-reader, 200%/400% zoom or fresh measured contrast audit",
+    "Inherited calculator/decoder defects UI-03/UI-04/UI-05/UI-07 remain outside M12B.2"
+  ]
+}

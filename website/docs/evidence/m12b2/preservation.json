@@ -1,0 +1,368 @@
+{
+  "milestone": "M12B.2",
+  "recordedAt": "2026-11-22T02:17:09.788Z",
+  "branch": "main",
+  "head": "1b0c2ed68bdb27e0d6469495fcbf4d37dd4e7182",
+  "initialStatus": [
+    " M website/.astro/data-store.json",
+    " M website/.astro/dev.json"
+  ],
+  "generated": [
+    {
+      "path": "website/.astro/collections/articles.schema.json",
+      "initialSha256": "daf2c4de0724ccb20a39da029e81dde87f64c40f00d6d63afd768d328ea27d62",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/content-assets.mjs",
+      "initialSha256": "1ae2a5698a66d66594930ac273e7110bef294add73f56d191032beedd592a797",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/content-modules.mjs",
+      "initialSha256": "6eec27650a023e5d1805c36b527913e976d473c2b4e5d659cbe1587643209e83",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/content.d.ts",
+      "initialSha256": "4c5f1bc47be0386107782091e87f52019666b19d47b42305ed588178eca6ba78",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/data-store.json",
+      "initialSha256": "c68e28e51e489b7d780e76de5420b83e6de1f6f5f6b5faa062837b076ff4af80",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/dev.json",
+      "initialSha256": "40379677d3cce8d31c7104e92c9254a8821b842cb0fe6d6dc93def1c64e7e4af",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/settings.json",
+      "initialSha256": "b4e181f96580973fb73f5d3806f61788d0c8e4295ee29bf4ee2733498294f1dd",
+      "matchesInitialBytes": true
+    },
+    {
+      "path": "website/.astro/types.d.ts",
+      "initialSha256": "38ea3df3779cce222cd51ba2c9dc9ac053a859208d3097aa3165f70c71517736",
+      "matchesInitialBytes": true
+    }
+  ],
+  "originalDirtyStatePreserved": true,
+  "protectedBuildInputs": 49,
+  "protectedComparisonMethod": "Initially clean source files compared to Git HEAD, normalizing CRLF only when necessary. Generated files compare exact saved starting bytes.",
+  "protectedComparisons": [
+    {
+      "path": "astro.config.mjs",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "package-lock.json",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "package.json",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "public/favicon.svg",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "public/social-card.svg",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "public/third-party-notices.txt",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/ArticleVisual.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/HubPage.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/HubVisual.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/Icon.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/ProductArchitecture.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/ProductJourney.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/ProductPreview.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/ResourceCard.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/StatusBadge.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/TechnicalCallout.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/components/TechnicalFlow.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/content.config.ts",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/content/articles/randomx-memory-cache.md",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/content/articles/xmrig-cpu-threads.md",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/content/articles/xmrig-huge-pages.md",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/content/articles/xmrig-windows-security-warnings.md",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/content/articles/xmrig-windows-setup.md",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/lib/electricity-cost.mjs",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/lib/mining-economics.mjs",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/lib/site-origin.mjs",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/lib/xmrig-log-decoder.mjs",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/ember/index.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/guides/[slug].astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/guides/index.astro",
+      "matchesHeadBytes": false,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/index.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/learn/[slug].astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/learn/index.astro",
+      "matchesHeadBytes": false,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/robots.txt.ts",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/sitemap.xml.ts",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/tools/electricity-cost-calculator.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/tools/index.astro",
+      "matchesHeadBytes": false,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/tools/monero-mining-profitability-calculator.astro",
+      "matchesHeadBytes": false,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/tools/xmrig-log-decoder.astro",
+      "matchesHeadBytes": false,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/troubleshoot/[slug].astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/troubleshoot/index.astro",
+      "matchesHeadBytes": false,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/pages/trust/index.astro",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/scripts/electricity-calculator.js",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/scripts/mining-profitability.js",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/scripts/xmrig-log-decoder.js",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/styles/electricity-calculator.css",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/styles/mining-profitability.css",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "src/styles/xmrig-log-decoder.css",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    },
+    {
+      "path": "tsconfig.json",
+      "matchesHeadBytes": true,
+      "matchesHeadWithCRLFNormalized": true
+    }
+  ],
+  "allowedBuildInputs": [
+    "src/components/ArticleLayout.astro",
+    "src/components/ArticleContents.astro",
+    "src/components/SiteLayout.astro",
+    "src/content/article-loader.mjs",
+    "src/lib/article-experience.mjs",
+    "src/styles/site.css",
+    "src/content/articles/xmrig-msr-error.md",
+    "src/content/articles/xmrig-low-hashrate.md"
+  ],
+  "articles": [
+    {
+      "path": "src/content/articles/randomx-memory-cache.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    },
+    {
+      "path": "src/content/articles/xmrig-cpu-threads.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    },
+    {
+      "path": "src/content/articles/xmrig-huge-pages.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    },
+    {
+      "path": "src/content/articles/xmrig-low-hashrate.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    },
+    {
+      "path": "src/content/articles/xmrig-msr-error.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    },
+    {
+      "path": "src/content/articles/xmrig-windows-security-warnings.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    },
+    {
+      "path": "src/content/articles/xmrig-windows-setup.md",
+      "frontmatterUnchanged": true,
+      "onlyAllowedLinkFragmentsChanged": true
+    }
+  ],
+  "desktopChanges": [],
+  "previewMetadataRemoved": true,
+  "screenshots": 67,
+  "screenshotBytes": 4775904,
+  "buildStillMatchesBrowser": true,
+  "validatedRenderCases": 119,
+  "finalTrackedChanges": [
+    "website/.astro/data-store.json",
+    "website/.astro/dev.json",
+    "website/docs/content-roadmap.md",
+    "website/scripts/verify-content.mjs",
+    "website/src/components/ArticleLayout.astro",
+    "website/src/components/SiteLayout.astro",
+    "website/src/content/article-loader.mjs",
+    "website/src/content/articles/xmrig-low-hashrate.md",
+    "website/src/content/articles/xmrig-msr-error.md",
+    "website/src/styles/site.css",
+    "website/tests/accessibility-contract.test.mjs"
+  ]
+}
