@@ -1,0 +1,15 @@
+
+> ember-website@0.1.0 check
+> astro check
+
+14:43:48 [content] Syncing content
+14:43:48 [content] Astro config changed
+14:43:48 [content] Clearing content store
+14:43:52 [content] Synced content
+14:43:52 [types] Generated 6.14s
+14:43:52 [check] Getting diagnostics for Astro files in C:\Users\trigg\Documents\GitHub\tray-xmr\website...
+Result (50 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+

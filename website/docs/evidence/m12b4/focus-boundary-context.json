@@ -1,0 +1,12 @@
+{
+  "class": "skip-link",
+  "fill": "rgb(255, 180, 126)",
+  "offset": "4px",
+  "outline": "rgb(255, 180, 126) solid 2px",
+  "parentFill": "rgb(17, 19, 16)",
+  "path": "/",
+  "viewport": [
+    1440,
+    900
+  ]
+}

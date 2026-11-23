@@ -1,0 +1,283 @@
+{
+  "baselineHead": "5a95fa3e0a11ba6c87744f76664997ca6f70763a",
+  "baselineWorkingTree": [],
+  "files": [
+    {
+      "path": "website/docs/content-roadmap.md",
+      "sha256": "153a009d72cc0ae110d8f4a2a59807969cef8fe6e305aa56ae4bf5cf6f407e1e"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/anchors.json",
+      "sha256": "9075082003f3b5ffcca28953b3ba1adc6955469540bee55df8d70491f04620c7"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/browser-identity.json",
+      "sha256": "890d8be45fabfddf6a7152f33063ef7d3b148662745a74e608167409a7703359"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/build-identity.json",
+      "sha256": "443fbde039a337819957f5c25621e5e1d06017f84462259a3b03a9b57133217d"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/contrast-rendered.json",
+      "sha256": "29c3598a9d4fd61a775cd1fae7fbe9feb7033c49a37865e41d81c99f6c19b163"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/contrast-results.json",
+      "sha256": "2b0785c8dea0f416063a367dfbffd1a69d6b1563a6c7efe9617c895f5c2c0268"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/decoder-results-390x844.jpg",
+      "sha256": "645b3319411b614aec3b790b96c28c668558a8cedc92c64736a55fa53075345d"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/ember-1440x900.jpg",
+      "sha256": "f97656bf841079e816bf43c93a644fdccf16b941bc9a5c4c16db5ed7fabb4233"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/ember-390x844.jpg",
+      "sha256": "e5d6677ec2e1b469965b0b358ae017527f46c61cfacfebf9ef5957b1fbce0521"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/environment.json",
+      "sha256": "99297f4bd15b31df38c8c5a39fcd92fe94909ba1382c937c15fa2a6f0d9c38fe"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/files-changed.json",
+      "sha256": null
+    },
+    {
+      "path": "website/docs/evidence/m12b4/focus-boundary-context.json",
+      "sha256": "49e06654f3a4c3697d01207cdcf03c534c012d9ae34bd836234f7849fc980f0e"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/git-diff-check.txt",
+      "sha256": "358c82c9e786d3eef9f0d9344720648e6d79b698db9f274d1c17c84af3976673"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-1440x900.jpg",
+      "sha256": "e11b57460ac89c1d86163f16af4a8710634a8514e58d014eb231ee94ebcaacd2"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-390x844.jpg",
+      "sha256": "5bb807ef429270de48ab35e8c01cc3c2bc94eeb85d40234e145ac200af2d17e4"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-after-320x800.jpg",
+      "sha256": "f153fae1bf37d66d14efd1f987de33cd62e65d06289b66949c771b4aea8e46af"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-before-320x800.jpg",
+      "sha256": "1e0874664a3939689ef7f719f243951177a80736ab27c80e171b796b1a10502b"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-xmrig-windows-security-warnings-1440x900.jpg",
+      "sha256": "bf5f698658b68adb25a0025b2cbbef3b009b04a3a6e9a73edab642cba7d90b3d"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-xmrig-windows-security-warnings-390x844.jpg",
+      "sha256": "e957607fb34c188e52608befa5a20f7ad6869e9ec19fdfe3f3290ab33a686c63"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-xmrig-windows-setup-1440x900.jpg",
+      "sha256": "838612c8b8ed74e6d6867b96b40fd966fceec715ac229e90b7d51c85b8cb81a2"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/guides-xmrig-windows-setup-390x844.jpg",
+      "sha256": "a41a7eb14d8cdf401e56973bae5d4eaa48fa621c1901418cf4aaf67339c7922a"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/home-1440x900.jpg",
+      "sha256": "dd232a2bf8b830abb4dd7a753e3ac6253a0a2faf84104f110f61f063c711bfa1"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/home-390x844.jpg",
+      "sha256": "b417ae1600f687c265b5e1e08065ebf671778df32cc7849f4d24f235f33be263"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/http-identity.json",
+      "sha256": "ae9b2b03c44928ec3c459ce220fe1996e0d84a661414f79996017bdcc9e55935"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/huge-pages-anchor-390x844.jpg",
+      "sha256": "66ddb222135c19e0d6b48d2b17ae342a2e570b3a0bdb42edbb31cdb5439ad8b3"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/keyboard.json",
+      "sha256": "70d7e69911e9033945fbb696fd36fb8e95cb6e602865cba978f7a76b40670370"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/learn-1440x900.jpg",
+      "sha256": "0bdcf2377724a9b75dbb9c1a9654fd2c3b0e63709626839d1f1e320ed0758f92"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/learn-390x844.jpg",
+      "sha256": "a4f7f4af6d6ddf1bb5998f78e3b4c037a48e4a16bd442f75f9d8c870a4ed6966"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/learn-randomx-memory-cache-1440x900.jpg",
+      "sha256": "a29d27988b1e20c5cc3bea6ecd893377fabb17d2b6b894f3e9b1def2a2301b8e"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/learn-randomx-memory-cache-390x844.jpg",
+      "sha256": "3ec7dccb76e7d8f404be88b0c2924b078e746643ef6a841066e5f1b019461519"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/learn-xmrig-cpu-threads-1440x900.jpg",
+      "sha256": "09a06e8664a4e11bae7cbb2e8dcdaac54565da5e0573bc72fc695e33dca314ea"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/learn-xmrig-cpu-threads-390x844.jpg",
+      "sha256": "4d4ccfce3214736f6cf43b2daab43b633874a7e0b9d670c092a37ae53ca61699"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/measure-contrast.mjs",
+      "sha256": "2f9f4e8ed94cfaff0f55ff0a72617a844d32a0c383c70ed1243b0840e573e389"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/navigation-before.json",
+      "sha256": "0990e135b6f56ab29407f38d313333347d5a627112336ca05b643d4ebeee69f5"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/npm-check-links.txt",
+      "sha256": "1270762987e2d1611f850f20e87a0067f69cf22b72e60a6baddd4d355fa219f7"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/npm-check.txt",
+      "sha256": "08947742635f283388a95e081af23a87a8ee3343c496c3ab4c63eaaf76ac811a"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/npm-production-origin.txt",
+      "sha256": "f71faf7da9f61fbb15651e1ddc28b8c49de31843d32277d23537016539d359d7"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/npm-test.txt",
+      "sha256": "42eeb0a76d7eff7057d53f5a65652b6ba62a41b2c464b440f9206db92e3db997"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/opera-smoke.json",
+      "sha256": "5e79e96bfec1a34b0015ca0b6ec732927dc86c9076736bccba6501aa00c97382"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/preservation.json",
+      "sha256": "b909bb089e75a01c0e0a90fa5171207e85b4cba5a73489b682b33ea3cec627fb"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/profit-negative-1440x900.jpg",
+      "sha256": "65dd98fde3249e76f78b96ebd2e4da2891448bee4551963f1437719ed257a385"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/profit-negative-390x844.jpg",
+      "sha256": "df29e70ea9f0cc0a66bd4442aae0d0675eafdc31f08e1fc275d23ac741bccd02"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/reflow-before.json",
+      "sha256": "6ea3b2c72520670c3d1a0c7ecda830b1973f1e0ba619f95908d19ac3dae98dd1"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/render-matrix.json",
+      "sha256": "2181337d059e593b05a815b4c530e10382d14c4a84ead3a33436165ae2d00509"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/screenshots.json",
+      "sha256": "3ddee84dae2ff5e2d0dae749424772a6659672c63ae7c20f576645b08b84ee46"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/semantics.json",
+      "sha256": "2bc3a11eb2cbc49502dddd5887e4a6fc4105330750ce5eeb01d1671cbbd8adcc"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tool-states.json",
+      "sha256": "95eecf53e101a86bc08f7da76fc4ec32c431deabc16d55319a10c0a7557888b5"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-1440x900.jpg",
+      "sha256": "7106343af5e83d917b578c743aabca3fa58397887f6d558e042cc9fb76a4698a"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-390x844.jpg",
+      "sha256": "c04e564c4419698a1f3dc802cd2fb8089c543a959806e40020ba8d5ad1121722"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-electricity-cost-calculator-1440x900.jpg",
+      "sha256": "b52a245b1ffb67a850183e46486b311a2dc1606a67640d6895d34251feedaed0"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-electricity-cost-calculator-390x844.jpg",
+      "sha256": "046da9a9fd453dcce7f4b189dbdcf59871143c6c22be6d49933291b4d83ad412"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-monero-mining-profitability-calculator-1440x900.jpg",
+      "sha256": "885f0ce5a42932938bdee8d208afb2452a1a5daef1ca0f0ae6691f04865e2cac"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-monero-mining-profitability-calculator-390x844.jpg",
+      "sha256": "e51e84608fbdef944aca025702629626f873e22e60e310ea4bf516fd66240fa2"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-xmrig-log-decoder-1440x900.jpg",
+      "sha256": "a47ced77eadcfaed25d6095a9c325142dc6efedef7d129a86d6c511d27008fba"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/tools-xmrig-log-decoder-390x844.jpg",
+      "sha256": "6e2a7ee8c468a72aacc0cb3ca42b3688ee48549a246ab7314c1f1760e6baa06f"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-1440x900.jpg",
+      "sha256": "58e7ebb38242f2e9620b5cbcbbc92f5bd1fe7b06f23e031615e74df9179b41d6"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-390x844.jpg",
+      "sha256": "4874e401227595e69e8d6bddc012c02515b9c372fa1b19a67b412af0b5122448"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-xmrig-huge-pages-1440x900.jpg",
+      "sha256": "3f074d62ce8f39cf7083dd098e16d3653819f7c28aecc5796ed4a83d601c4062"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-xmrig-huge-pages-390x844.jpg",
+      "sha256": "d97291dd94653c829cfb29d227ce4e645185d1ee5ec44b8b88fd28685bc039f4"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-xmrig-low-hashrate-1440x900.jpg",
+      "sha256": "5d3cf6816487f4f748b696ffd2ae4f8e70d8a54c9d967571104c93ec3d57f55b"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-xmrig-low-hashrate-390x844.jpg",
+      "sha256": "5c0ce72e013fa1d56357f9d7061a58f067dea6458fa452667a595101408c9348"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-xmrig-msr-error-1440x900.jpg",
+      "sha256": "36e78218058fc68968299e4efacdb68702eaa4f01bdc5c29c4099194b9552df4"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/troubleshoot-xmrig-msr-error-390x844.jpg",
+      "sha256": "534ccdd079190ced4d2cbbb562f5b8f260b683735114091a9bc3de21df62c6e3"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/trust-1440x900.jpg",
+      "sha256": "f7780767b4fe23fcd906ee91dcd6c6de528fb7efc11c6bc0249dd7a505b2ef95"
+    },
+    {
+      "path": "website/docs/evidence/m12b4/trust-390x844.jpg",
+      "sha256": "c952693a2eed54120058f15470a6652c938a70aa138da80a6a8733aa32370d06"
+    },
+    {
+      "path": "website/docs/m12b4-final-acceptance.md",
+      "sha256": "468367f2b44d44b5009f349261b3037ac9e36657f18a4aacaa9d5b7320c21a66"
+    },
+    {
+      "path": "website/scripts/verify-content.mjs",
+      "sha256": "f37b345404c000f951889d4879c1017ef274e592fb97b986138fa0fefab2a991"
+    },
+    {
+      "path": "website/src/components/SiteLayout.astro",
+      "sha256": "3e2e2636ba82ee2e3f4d60e334e14627d919596405e1a3206b8192bd458d60d7"
+    },
+    {
+      "path": "website/src/styles/site.css",
+      "sha256": "a361e4b91b9c1752b7ee13096ade3f6ffdf0937143a30ca5b7f5b9e8f1182839"
+    }
+  ],
+  "selfHashNote": "Inventory omits its own hash to avoid self-reference."
+}

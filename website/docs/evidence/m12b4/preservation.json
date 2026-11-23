@@ -1,0 +1,344 @@
+{
+  "baseline": {
+    "branch": "main",
+    "head": "5a95fa3e0a11ba6c87744f76664997ca6f70763a",
+    "workingTree": [],
+    "sourceSha256": "d1c9d903c10d18f38a88199ea3dda2820043ebbe74430a4c72c86d6a1fdf7dab"
+  },
+  "currentHead": "5a95fa3e0a11ba6c87744f76664997ca6f70763a",
+  "buildInputs": [
+    {
+      "sha256": "8bc16f1daf01b049735f1b92bdaf0d9f9e6d0477b4a3c95ac41be3fb02f9ca1c",
+      "path": "website/astro.config.mjs",
+      "currentSha256": "8bc16f1daf01b049735f1b92bdaf0d9f9e6d0477b4a3c95ac41be3fb02f9ca1c"
+    },
+    {
+      "sha256": "22e2dbb48aed5a7966481c8230d5ad0285778441db47295aa3da934688ccca50",
+      "path": "website/package-lock.json",
+      "currentSha256": "22e2dbb48aed5a7966481c8230d5ad0285778441db47295aa3da934688ccca50"
+    },
+    {
+      "sha256": "afc342f5c66a4cf896d8ca05a59c0e4fa070e12f2d19360d70f1b077578f6b83",
+      "path": "website/package.json",
+      "currentSha256": "afc342f5c66a4cf896d8ca05a59c0e4fa070e12f2d19360d70f1b077578f6b83"
+    },
+    {
+      "sha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731",
+      "path": "website/public/favicon.svg",
+      "currentSha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731"
+    },
+    {
+      "sha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4",
+      "path": "website/public/social-card.svg",
+      "currentSha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4"
+    },
+    {
+      "sha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7",
+      "path": "website/public/third-party-notices.txt",
+      "currentSha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7"
+    },
+    {
+      "sha256": "35b1b7c69346bb3e448428fdbd91999dcdaed71f21e183fd791fdcd2352764d7",
+      "path": "website/src/components/ArticleContents.astro",
+      "currentSha256": "35b1b7c69346bb3e448428fdbd91999dcdaed71f21e183fd791fdcd2352764d7"
+    },
+    {
+      "sha256": "a794a39c3dce002e868a72333760e9f647c811672436885fce9e04656068bfe9",
+      "path": "website/src/components/ArticleLayout.astro",
+      "currentSha256": "a794a39c3dce002e868a72333760e9f647c811672436885fce9e04656068bfe9"
+    },
+    {
+      "sha256": "a168824c1c8d129ed6e1bfc606287fd107229c5bb47fef4efacaf9e498c7677b",
+      "path": "website/src/components/ArticleVisual.astro",
+      "currentSha256": "a168824c1c8d129ed6e1bfc606287fd107229c5bb47fef4efacaf9e498c7677b"
+    },
+    {
+      "sha256": "1db1c08d8ea1ff8bc579879641d00782571807daa665c0f6e49db32b17f6a393",
+      "path": "website/src/components/HubPage.astro",
+      "currentSha256": "1db1c08d8ea1ff8bc579879641d00782571807daa665c0f6e49db32b17f6a393"
+    },
+    {
+      "sha256": "eae239c3cd7267915eddad388cfe7fb240e60769ec72bb9457ea3ef590cfecc5",
+      "path": "website/src/components/HubVisual.astro",
+      "currentSha256": "eae239c3cd7267915eddad388cfe7fb240e60769ec72bb9457ea3ef590cfecc5"
+    },
+    {
+      "sha256": "86d6af6bb450be4b5b79a08f73e15a6dbb1f7730784e70b90aec3b4ba54e8597",
+      "path": "website/src/components/Icon.astro",
+      "currentSha256": "86d6af6bb450be4b5b79a08f73e15a6dbb1f7730784e70b90aec3b4ba54e8597"
+    },
+    {
+      "sha256": "113156e5f4f5255d491430f09bdff3a88ee4b798d0a8f698486f43e586133ecd",
+      "path": "website/src/components/ProductArchitecture.astro",
+      "currentSha256": "113156e5f4f5255d491430f09bdff3a88ee4b798d0a8f698486f43e586133ecd"
+    },
+    {
+      "sha256": "855f1c35aa4ea348ff041f243d1c8ef5f42e91c8e8982f75b6cab48217fd8d13",
+      "path": "website/src/components/ProductJourney.astro",
+      "currentSha256": "855f1c35aa4ea348ff041f243d1c8ef5f42e91c8e8982f75b6cab48217fd8d13"
+    },
+    {
+      "sha256": "e11b401ab75be518a411328cb587bae806287ab6d9755657412593078df843f0",
+      "path": "website/src/components/ProductPreview.astro",
+      "currentSha256": "e11b401ab75be518a411328cb587bae806287ab6d9755657412593078df843f0"
+    },
+    {
+      "sha256": "7612d4189427f985870c24690ecaa5b7f3bd7b08333b281e45a6747bce11bd31",
+      "path": "website/src/components/ResourceCard.astro",
+      "currentSha256": "7612d4189427f985870c24690ecaa5b7f3bd7b08333b281e45a6747bce11bd31"
+    },
+    {
+      "sha256": "4c96df0b77b66dc6a07ddb8fdcfcb0cc86ebd8201b20f8fb51e3c60f986eb69a",
+      "path": "website/src/components/SiteLayout.astro",
+      "currentSha256": "3e2e2636ba82ee2e3f4d60e334e14627d919596405e1a3206b8192bd458d60d7"
+    },
+    {
+      "sha256": "d02c606bf48af2139fb95b8a6111ab4e7a5b5b4a029c8f0722aff74eef193c0a",
+      "path": "website/src/components/StatusBadge.astro",
+      "currentSha256": "d02c606bf48af2139fb95b8a6111ab4e7a5b5b4a029c8f0722aff74eef193c0a"
+    },
+    {
+      "sha256": "6970ec3f2e49694a6d3790452233a27e872aeee0a3383f7b78496dc100a7c68c",
+      "path": "website/src/components/TechnicalCallout.astro",
+      "currentSha256": "6970ec3f2e49694a6d3790452233a27e872aeee0a3383f7b78496dc100a7c68c"
+    },
+    {
+      "sha256": "8c595b725d1f361cc19e0c188db7d0946d367e2b7fb1bcffcd459b13655d70bf",
+      "path": "website/src/components/TechnicalFlow.astro",
+      "currentSha256": "8c595b725d1f361cc19e0c188db7d0946d367e2b7fb1bcffcd459b13655d70bf"
+    },
+    {
+      "sha256": "c627a8557b7304bca59b650592f5b7fa7a058f95b099868ce0248757a333b556",
+      "path": "website/src/content.config.ts",
+      "currentSha256": "c627a8557b7304bca59b650592f5b7fa7a058f95b099868ce0248757a333b556"
+    },
+    {
+      "sha256": "b22be67b0f92d63281e93a2246240d4a4e2fc97e968d9ce95543ae4dbc441c4e",
+      "path": "website/src/content/article-loader.mjs",
+      "currentSha256": "b22be67b0f92d63281e93a2246240d4a4e2fc97e968d9ce95543ae4dbc441c4e"
+    },
+    {
+      "sha256": "df8509f0c9351dccf8af7045a1b10732435d88490639ab03e511478579900934",
+      "path": "website/src/content/articles/randomx-memory-cache.md",
+      "currentSha256": "df8509f0c9351dccf8af7045a1b10732435d88490639ab03e511478579900934"
+    },
+    {
+      "sha256": "3faf80f7aff41c926017af95358166dd6b45a9495f87c6116a4335da1a120a14",
+      "path": "website/src/content/articles/xmrig-cpu-threads.md",
+      "currentSha256": "3faf80f7aff41c926017af95358166dd6b45a9495f87c6116a4335da1a120a14"
+    },
+    {
+      "sha256": "976ffa5ba3fa30241064227e1a0ac55f5e130859cef55e9036d485d4dfd5710c",
+      "path": "website/src/content/articles/xmrig-huge-pages.md",
+      "currentSha256": "976ffa5ba3fa30241064227e1a0ac55f5e130859cef55e9036d485d4dfd5710c"
+    },
+    {
+      "sha256": "416d3a3f8d1809f1bbb5c1b98a313bc2cead3939b2bc89baf9f15f4f9c2e0951",
+      "path": "website/src/content/articles/xmrig-low-hashrate.md",
+      "currentSha256": "416d3a3f8d1809f1bbb5c1b98a313bc2cead3939b2bc89baf9f15f4f9c2e0951"
+    },
+    {
+      "sha256": "715c22726fdf640b28eed70ca61b2fbd3b7d06fd1111a1b4cd66edf4dc19c172",
+      "path": "website/src/content/articles/xmrig-msr-error.md",
+      "currentSha256": "715c22726fdf640b28eed70ca61b2fbd3b7d06fd1111a1b4cd66edf4dc19c172"
+    },
+    {
+      "sha256": "907a2f3648a26c2e574253bdb06859d8eb3f857e9919216541730df67e8b8645",
+      "path": "website/src/content/articles/xmrig-windows-security-warnings.md",
+      "currentSha256": "907a2f3648a26c2e574253bdb06859d8eb3f857e9919216541730df67e8b8645"
+    },
+    {
+      "sha256": "0173b0da91eddfa9c494f1842bd5e2d112abb9bf22b553dacfdaf5c0a7a8aae4",
+      "path": "website/src/content/articles/xmrig-windows-setup.md",
+      "currentSha256": "0173b0da91eddfa9c494f1842bd5e2d112abb9bf22b553dacfdaf5c0a7a8aae4"
+    },
+    {
+      "sha256": "1b093912d8e6a90a7a98c9ece08250a4b9f2ef92d7bd0f811f7177ff43a8dede",
+      "path": "website/src/lib/article-experience.mjs",
+      "currentSha256": "1b093912d8e6a90a7a98c9ece08250a4b9f2ef92d7bd0f811f7177ff43a8dede"
+    },
+    {
+      "sha256": "bacd7b98da481e020b98f7df70546bed42aa9a47fe81b9dabeab25df032bd362",
+      "path": "website/src/lib/electricity-cost.mjs",
+      "currentSha256": "bacd7b98da481e020b98f7df70546bed42aa9a47fe81b9dabeab25df032bd362"
+    },
+    {
+      "sha256": "81c1fcd60a45f43b33d921a44971d56ec9822ace9b220d6905343c58e7a4129a",
+      "path": "website/src/lib/mining-economics.mjs",
+      "currentSha256": "81c1fcd60a45f43b33d921a44971d56ec9822ace9b220d6905343c58e7a4129a"
+    },
+    {
+      "sha256": "9a33a85a93e75083031961e332a6201eab084b9eb9869b1698e0bc5deffe6040",
+      "path": "website/src/lib/site-origin.mjs",
+      "currentSha256": "9a33a85a93e75083031961e332a6201eab084b9eb9869b1698e0bc5deffe6040"
+    },
+    {
+      "sha256": "23c97c835b2ba94fed9127f62f0de48ee4b16e25bfc63880a4cc9b4e10bca714",
+      "path": "website/src/lib/xmrig-log-decoder.mjs",
+      "currentSha256": "23c97c835b2ba94fed9127f62f0de48ee4b16e25bfc63880a4cc9b4e10bca714"
+    },
+    {
+      "sha256": "c365edb0b8a1a4b36b28e5cf49c88213f09a04088fa1cc17229d39330c04201b",
+      "path": "website/src/pages/ember/index.astro",
+      "currentSha256": "c365edb0b8a1a4b36b28e5cf49c88213f09a04088fa1cc17229d39330c04201b"
+    },
+    {
+      "sha256": "836298355e5aaa878a5cda5f27cc89463f7109239dfa75ae6b2923083d985d66",
+      "path": "website/src/pages/guides/[slug].astro",
+      "currentSha256": "836298355e5aaa878a5cda5f27cc89463f7109239dfa75ae6b2923083d985d66"
+    },
+    {
+      "sha256": "afabc65760cef335f27f33260d53e04f3324606d3d26e9475302fc5f01479807",
+      "path": "website/src/pages/guides/index.astro",
+      "currentSha256": "afabc65760cef335f27f33260d53e04f3324606d3d26e9475302fc5f01479807"
+    },
+    {
+      "sha256": "0623ae90496a448162ccde2a98ab37802da1e7418be2fbcf90bc8fa15a0c0dba",
+      "path": "website/src/pages/index.astro",
+      "currentSha256": "0623ae90496a448162ccde2a98ab37802da1e7418be2fbcf90bc8fa15a0c0dba"
+    },
+    {
+      "sha256": "99fd5b45466de265b559c21a3005d294bb163b7f3d42c83f1443c1a3dda99894",
+      "path": "website/src/pages/learn/[slug].astro",
+      "currentSha256": "99fd5b45466de265b559c21a3005d294bb163b7f3d42c83f1443c1a3dda99894"
+    },
+    {
+      "sha256": "f1f22e615a709cad7ca4b0f3bcdd046ac0956121ede44fc6efc0bf57b96cbc01",
+      "path": "website/src/pages/learn/index.astro",
+      "currentSha256": "f1f22e615a709cad7ca4b0f3bcdd046ac0956121ede44fc6efc0bf57b96cbc01"
+    },
+    {
+      "sha256": "4b86722436792245f9cc646baa81939ae4286a4be7d41d18b23ad56f9813b2e0",
+      "path": "website/src/pages/robots.txt.ts",
+      "currentSha256": "4b86722436792245f9cc646baa81939ae4286a4be7d41d18b23ad56f9813b2e0"
+    },
+    {
+      "sha256": "c656d179fa7d4a3322d7792af0e084d0c4aac70b580d6c86dbd2265306586cb7",
+      "path": "website/src/pages/sitemap.xml.ts",
+      "currentSha256": "c656d179fa7d4a3322d7792af0e084d0c4aac70b580d6c86dbd2265306586cb7"
+    },
+    {
+      "sha256": "8f4686f0959d86317f3e6a3702f63c50d6e4a3ada5c2a9601f5987392bf4638b",
+      "path": "website/src/pages/tools/electricity-cost-calculator.astro",
+      "currentSha256": "8f4686f0959d86317f3e6a3702f63c50d6e4a3ada5c2a9601f5987392bf4638b"
+    },
+    {
+      "sha256": "da5b48799e8ec284253bed6b5d344824b33b2cb9d1e64c01f89415be1043cb2c",
+      "path": "website/src/pages/tools/index.astro",
+      "currentSha256": "da5b48799e8ec284253bed6b5d344824b33b2cb9d1e64c01f89415be1043cb2c"
+    },
+    {
+      "sha256": "4962175b9ae5e9ce5a62656e8d2dcbd0e5ae002867bfbd54652d16404b61661b",
+      "path": "website/src/pages/tools/monero-mining-profitability-calculator.astro",
+      "currentSha256": "4962175b9ae5e9ce5a62656e8d2dcbd0e5ae002867bfbd54652d16404b61661b"
+    },
+    {
+      "sha256": "339f2ec6a3509ae4b558324c841dd160618782bbf5f3b687c4359bd43e89848d",
+      "path": "website/src/pages/tools/xmrig-log-decoder.astro",
+      "currentSha256": "339f2ec6a3509ae4b558324c841dd160618782bbf5f3b687c4359bd43e89848d"
+    },
+    {
+      "sha256": "3b57b22f61a59ec8f4a23e360f8a3aee2883ff3eff29eefa1c27934b1987e8ac",
+      "path": "website/src/pages/troubleshoot/[slug].astro",
+      "currentSha256": "3b57b22f61a59ec8f4a23e360f8a3aee2883ff3eff29eefa1c27934b1987e8ac"
+    },
+    {
+      "sha256": "fa3711787b1c9166b456d67a5cf6a356b743da3c1a542fa22cde49c4ce350423",
+      "path": "website/src/pages/troubleshoot/index.astro",
+      "currentSha256": "fa3711787b1c9166b456d67a5cf6a356b743da3c1a542fa22cde49c4ce350423"
+    },
+    {
+      "sha256": "5f6b3d5e8914a7e2df68d80ea2c345d7d9a09f69203512640289cfe41468c4e2",
+      "path": "website/src/pages/trust/index.astro",
+      "currentSha256": "5f6b3d5e8914a7e2df68d80ea2c345d7d9a09f69203512640289cfe41468c4e2"
+    },
+    {
+      "sha256": "3bed7859b578fa33694aa92a14b8b2b66116ef5c9463acda7fa293e538a4fa50",
+      "path": "website/src/scripts/electricity-calculator.js",
+      "currentSha256": "3bed7859b578fa33694aa92a14b8b2b66116ef5c9463acda7fa293e538a4fa50"
+    },
+    {
+      "sha256": "6d8ae9f449d0fd341c311ddcbfc9688fd417f7d333b0f448e1fc81401e69cd9c",
+      "path": "website/src/scripts/mining-profitability.js",
+      "currentSha256": "6d8ae9f449d0fd341c311ddcbfc9688fd417f7d333b0f448e1fc81401e69cd9c"
+    },
+    {
+      "sha256": "c4f992660b236700871c99f7fc51d308ad7f04db800c3e7f1b9df0634eb9c2c6",
+      "path": "website/src/scripts/xmrig-log-decoder.js",
+      "currentSha256": "c4f992660b236700871c99f7fc51d308ad7f04db800c3e7f1b9df0634eb9c2c6"
+    },
+    {
+      "sha256": "7071403304428a3f8cebf6118feee43c3a996964cfe443e861eda79193591c45",
+      "path": "website/src/styles/electricity-calculator.css",
+      "currentSha256": "7071403304428a3f8cebf6118feee43c3a996964cfe443e861eda79193591c45"
+    },
+    {
+      "sha256": "c590cdb76d328c194312328e19cfb9cdc7da2ace8f4099c0d55ec1418a5ea3df",
+      "path": "website/src/styles/mining-profitability.css",
+      "currentSha256": "c590cdb76d328c194312328e19cfb9cdc7da2ace8f4099c0d55ec1418a5ea3df"
+    },
+    {
+      "sha256": "666c4d5440f351f39d16cb7936ba9383abe1f8a35907d1e3cb614acb1411129e",
+      "path": "website/src/styles/site.css",
+      "currentSha256": "a361e4b91b9c1752b7ee13096ade3f6ffdf0937143a30ca5b7f5b9e8f1182839"
+    },
+    {
+      "sha256": "0f01b0b7de1adbec01b0d993f0dcd6fab61ff10c16bcb15c8eb7b9edcd6cda67",
+      "path": "website/src/styles/xmrig-log-decoder.css",
+      "currentSha256": "0f01b0b7de1adbec01b0d993f0dcd6fab61ff10c16bcb15c8eb7b9edcd6cda67"
+    },
+    {
+      "sha256": "974b0a3b37e52f3649d9df63e72e374794e9e797c8ae61eca4812f844406f7ef",
+      "path": "website/tsconfig.json",
+      "currentSha256": "974b0a3b37e52f3649d9df63e72e374794e9e797c8ae61eca4812f844406f7ef"
+    }
+  ],
+  "unchangedInputs": 55,
+  "changedInputs": [
+    "website/src/components/SiteLayout.astro",
+    "website/src/styles/site.css"
+  ],
+  "generated": [
+    {
+      "path": "website/.astro/collections/articles.schema.json",
+      "sha256": "daf2c4de0724ccb20a39da029e81dde87f64c40f00d6d63afd768d328ea27d62",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/content-assets.mjs",
+      "sha256": "1ae2a5698a66d66594930ac273e7110bef294add73f56d191032beedd592a797",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/content-modules.mjs",
+      "sha256": "6eec27650a023e5d1805c36b527913e976d473c2b4e5d659cbe1587643209e83",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/content.d.ts",
+      "sha256": "4c5f1bc47be0386107782091e87f52019666b19d47b42305ed588178eca6ba78",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/data-store.json",
+      "sha256": "c68e28e51e489b7d780e76de5420b83e6de1f6f5f6b5faa062837b076ff4af80",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/dev.json",
+      "sha256": "40379677d3cce8d31c7104e92c9254a8821b842cb0fe6d6dc93def1c64e7e4af",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/settings.json",
+      "sha256": "b4e181f96580973fb73f5d3806f61788d0c8e4295ee29bf4ee2733498294f1dd",
+      "restoredExactly": true
+    },
+    {
+      "path": "website/.astro/types.d.ts",
+      "sha256": "38ea3df3779cce222cd51ba2c9dc9ac053a859208d3097aa3165f70c71517736",
+      "restoredExactly": true
+    }
+  ],
+  "ownedPreviewMetadataRemoved": true
+}

@@ -1,0 +1,646 @@
+[
+  {
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "mode": "direct",
+    "clearance": 16,
+    "focus": "related-resources",
+    "fragment": "#related-resources",
+    "headerBottom": 116,
+    "heading": "Related resources",
+    "headingTop": 132,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "mode": "clicked contents",
+    "clearance": 16,
+    "focus": "related-resources",
+    "fragment": "#related-resources",
+    "headerBottom": 116,
+    "heading": "Related resources",
+    "headingTop": 132,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-setup/",
+    "mode": "direct",
+    "clearance": 16,
+    "focus": "next-steps",
+    "fragment": "#next-steps",
+    "headerBottom": 116,
+    "heading": "7. Next steps",
+    "headingTop": 132,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-setup/",
+    "mode": "clicked contents",
+    "clearance": 16,
+    "focus": "next-steps",
+    "fragment": "#next-steps",
+    "headerBottom": 116,
+    "heading": "7. Next steps",
+    "headingTop": 132,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/learn/randomx-memory-cache/",
+    "mode": "direct",
+    "clearance": 16.015625,
+    "focus": "what-system-ram-does-not-tell-you",
+    "fragment": "#what-system-ram-does-not-tell-you",
+    "headerBottom": 116,
+    "heading": "What system RAM does not tell you",
+    "headingTop": 132.015625,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/learn/randomx-memory-cache/",
+    "mode": "clicked contents",
+    "clearance": 16.015625,
+    "focus": "what-system-ram-does-not-tell-you",
+    "fragment": "#what-system-ram-does-not-tell-you",
+    "headerBottom": 116,
+    "heading": "What system RAM does not tell you",
+    "headingTop": 132.015625,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/learn/xmrig-cpu-threads/",
+    "mode": "direct",
+    "clearance": 15.6875,
+    "focus": "how-to-test-a-different-thread-count",
+    "fragment": "#how-to-test-a-different-thread-count",
+    "headerBottom": 116,
+    "heading": "How to test a different thread count",
+    "headingTop": 131.6875,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/learn/xmrig-cpu-threads/",
+    "mode": "clicked contents",
+    "clearance": 15.6875,
+    "focus": "how-to-test-a-different-thread-count",
+    "fragment": "#how-to-test-a-different-thread-count",
+    "headerBottom": 116,
+    "heading": "How to test a different thread count",
+    "headingTop": 131.6875,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct",
+    "clearance": 16.453125,
+    "focus": "when-the-setup-is-already-working",
+    "fragment": "#when-the-setup-is-already-working",
+    "headerBottom": 116,
+    "heading": "When the setup is already working",
+    "headingTop": 132.453125,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16.453125,
+    "focus": "when-the-setup-is-already-working",
+    "fragment": "#when-the-setup-is-already-working",
+    "headerBottom": 116,
+    "heading": "When the setup is already working",
+    "headingTop": 132.453125,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "mode": "direct",
+    "clearance": 15.671875,
+    "focus": "keep-a-small-measurement-record",
+    "fragment": "#keep-a-small-measurement-record",
+    "headerBottom": 116,
+    "heading": "Keep a small measurement record",
+    "headingTop": 131.671875,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "mode": "clicked contents",
+    "clearance": 15.671875,
+    "focus": "keep-a-small-measurement-record",
+    "fragment": "#keep-a-small-measurement-record",
+    "headerBottom": 116,
+    "heading": "Keep a small measurement record",
+    "headingTop": 131.671875,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "mode": "direct",
+    "clearance": 15.765625,
+    "focus": "can-mining-continue-without-the-msr-change",
+    "fragment": "#can-mining-continue-without-the-msr-change",
+    "headerBottom": 116,
+    "heading": "Can mining continue without the MSR change?",
+    "headingTop": 131.765625,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "mode": "clicked contents",
+    "clearance": 15.765625,
+    "focus": "can-mining-continue-without-the-msr-change",
+    "fragment": "#can-mining-continue-without-the-msr-change",
+    "headerBottom": 116,
+    "heading": "Can mining continue without the MSR change?",
+    "headingTop": 131.765625,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "mode": "direct",
+    "clearance": 16.109375,
+    "focus": "related-resources",
+    "fragment": "#related-resources",
+    "headerBottom": 79,
+    "heading": "Related resources",
+    "headingTop": 95.109375,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "mode": "clicked contents",
+    "clearance": 16.109375,
+    "focus": "related-resources",
+    "fragment": "#related-resources",
+    "headerBottom": 79,
+    "heading": "Related resources",
+    "headingTop": 95.109375,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-setup/",
+    "mode": "direct",
+    "clearance": 16.4375,
+    "focus": "next-steps",
+    "fragment": "#next-steps",
+    "headerBottom": 79,
+    "heading": "7. Next steps",
+    "headingTop": 95.4375,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-setup/",
+    "mode": "clicked contents",
+    "clearance": 16.4375,
+    "focus": "next-steps",
+    "fragment": "#next-steps",
+    "headerBottom": 79,
+    "heading": "7. Next steps",
+    "headingTop": 95.4375,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/learn/randomx-memory-cache/",
+    "mode": "direct",
+    "clearance": 16.140625,
+    "focus": "what-system-ram-does-not-tell-you",
+    "fragment": "#what-system-ram-does-not-tell-you",
+    "headerBottom": 79,
+    "heading": "What system RAM does not tell you",
+    "headingTop": 95.140625,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/learn/randomx-memory-cache/",
+    "mode": "clicked contents",
+    "clearance": 16.140625,
+    "focus": "what-system-ram-does-not-tell-you",
+    "fragment": "#what-system-ram-does-not-tell-you",
+    "headerBottom": 79,
+    "heading": "What system RAM does not tell you",
+    "headingTop": 95.140625,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/learn/xmrig-cpu-threads/",
+    "mode": "direct",
+    "clearance": 15.921875,
+    "focus": "how-to-test-a-different-thread-count",
+    "fragment": "#how-to-test-a-different-thread-count",
+    "headerBottom": 79,
+    "heading": "How to test a different thread count",
+    "headingTop": 94.921875,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/learn/xmrig-cpu-threads/",
+    "mode": "clicked contents",
+    "clearance": 15.921875,
+    "focus": "how-to-test-a-different-thread-count",
+    "fragment": "#how-to-test-a-different-thread-count",
+    "headerBottom": 79,
+    "heading": "How to test a different thread count",
+    "headingTop": 94.921875,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct",
+    "clearance": 16.421875,
+    "focus": "when-the-setup-is-already-working",
+    "fragment": "#when-the-setup-is-already-working",
+    "headerBottom": 79,
+    "heading": "When the setup is already working",
+    "headingTop": 95.421875,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16.421875,
+    "focus": "when-the-setup-is-already-working",
+    "fragment": "#when-the-setup-is-already-working",
+    "headerBottom": 79,
+    "heading": "When the setup is already working",
+    "headingTop": 95.421875,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "mode": "direct",
+    "clearance": 15.578125,
+    "focus": "keep-a-small-measurement-record",
+    "fragment": "#keep-a-small-measurement-record",
+    "headerBottom": 79,
+    "heading": "Keep a small measurement record",
+    "headingTop": 94.578125,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "mode": "clicked contents",
+    "clearance": 15.578125,
+    "focus": "keep-a-small-measurement-record",
+    "fragment": "#keep-a-small-measurement-record",
+    "headerBottom": 79,
+    "heading": "Keep a small measurement record",
+    "headingTop": 94.578125,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "mode": "direct",
+    "clearance": 16.375,
+    "focus": "can-mining-continue-without-the-msr-change",
+    "fragment": "#can-mining-continue-without-the-msr-change",
+    "headerBottom": 79,
+    "heading": "Can mining continue without the MSR change?",
+    "headingTop": 95.375,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "mode": "clicked contents",
+    "clearance": 16.375,
+    "focus": "can-mining-continue-without-the-msr-change",
+    "fragment": "#can-mining-continue-without-the-msr-change",
+    "headerBottom": 79,
+    "heading": "Can mining continue without the MSR change?",
+    "headingTop": 95.375,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "viewport-change scroll-restoration probe",
+    "clearance": 16.125,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 79,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 95.125,
+    "viewport": [
+      1280,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16.125,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 79,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 95.125,
+    "viewport": [
+      1280,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "viewport-change scroll-restoration probe",
+    "clearance": 16,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 79,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 95,
+    "viewport": [
+      1024,
+      768
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 79,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 95,
+    "viewport": [
+      1024,
+      768
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "viewport-change scroll-restoration probe",
+    "clearance": 16.375,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 117,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 133.375,
+    "viewport": [
+      768,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16.375,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 117,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 133.375,
+    "viewport": [
+      768,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "viewport-change scroll-restoration probe",
+    "clearance": 108.265625,
+    "focus": "",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 117,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 225.265625,
+    "viewport": [
+      600,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16.265625,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 117,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 133.265625,
+    "viewport": [
+      600,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "viewport-change scroll-restoration probe",
+    "clearance": 823.421875,
+    "focus": "",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 116,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 939.421875,
+    "viewport": [
+      360,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 16.421875,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 116,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 132.421875,
+    "viewport": [
+      360,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "viewport-change scroll-restoration probe",
+    "clearance": 15.796875,
+    "focus": "",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 116,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 131.796875,
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "clicked contents",
+    "clearance": 15.796875,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 116,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 131.796875,
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct fresh document",
+    "clearance": 16.125,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 79,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 95.125,
+    "viewport": [
+      1280,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct fresh document",
+    "clearance": 16,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 79,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 95,
+    "viewport": [
+      1024,
+      768
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct fresh document",
+    "clearance": 16.375,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 117,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 133.375,
+    "viewport": [
+      768,
+      900
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct fresh document",
+    "clearance": 16.265625,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 117,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 133.265625,
+    "viewport": [
+      600,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct fresh document",
+    "clearance": 16.421875,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 116,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 132.421875,
+    "viewport": [
+      360,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "mode": "direct fresh document",
+    "clearance": 15.796875,
+    "focus": "permission-granted-but-less-than-100",
+    "fragment": "#permission-granted-but-less-than-100",
+    "headerBottom": 116,
+    "heading": "Permission granted, but less than 100%",
+    "headingTop": 131.796875,
+    "viewport": [
+      320,
+      800
+    ]
+  }
+]

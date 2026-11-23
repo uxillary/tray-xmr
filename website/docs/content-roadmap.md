@@ -12,7 +12,7 @@ Content ships when it is useful, sourced and technically checked. Route ideas ar
 
 **Tool experience (22 November 2026):** [M12B.3](m12b3-tool-ux-visual-explanations.md) fixed UI-03 touched-field validation, UI-04 stale electricity readouts and UI-05 decoder typography; improved daily results and mobile projection readability; and delivered the Huge Pages/profitability visual pilots. Calculator models, parser rules, limits and all 17 routes are preserved. Verified 119 route/viewport renders and 175 interaction records, with 44 tests passing.
 
-**Recommended next step:** M12B.4 acceptance should cover screen readers, fresh measured contrast, verified text resizing/zoom, reduced-motion preferences, independent engines and physical devices. It has not started. No production deployment is authorized by these milestones.
+**Final acceptance (23 November 2026):** [M12B.4](m12b4-final-acceptance.md) fixed CSS320 document overflow and current-page versus section-location navigation semantics. All 17 routes pass the seven requested sizes plus a 320px reflow probe (136 records); 40 controlled direct/clicked fragment checks clear the header, 4,460 rendered contrast sample groups pass, and all 44 tests remain passing. Keyboard, semantic and representative tool-state checks passed within their recorded scope. Native zoom/text scaling, actual screen-reader acceptance, Firefox/WebKit and physical-device checks remain **OWNER ACTION REQUIRED**; CSS resizing is not zoom or device acceptance. Ready for owner review, not unconditional production approval. No M13 work, production-domain configuration or deployment is authorized by these milestones.
 
 ## P0 — Launch foundation
 

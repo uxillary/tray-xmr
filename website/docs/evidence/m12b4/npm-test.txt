@@ -1,0 +1,56 @@
+
+> ember-website@0.1.0 test
+> node --test
+
+✔ shared shell exposes skip link, named navigation landmarks and a main target (2.4314ms)
+✔ calculator inputs have concise labels, described help/error IDs and announced errors (7.1658ms)
+✔ log decoder exposes its input name, accessible validation, live status and results focus target (2.0382ms)
+✔ decoder input uses the defined monospace token and its validation is described (4.308ms)
+✔ contents use rendered Markdown and raw HTML headings, decoded text and existing IDs (14.9122ms)
+✔ missing IDs are stable and avoid authored IDs, repeated headings and shell IDs (2.1883ms)
+✔ duplicate authored IDs and invalid fragment IDs fail the build (0.8775ms)
+✔ contents preserve hierarchy and recover from skipped levels without inventing headings (0.4747ms)
+✔ wide tables get a named focusable region, caption and row/column scope without losing values (1.0709ms)
+✔ existing diagnostic table regions and captions are preserved without nested scroll traps (1.2721ms)
+✔ calculates the reference continuous workload (3.207ms)
+✔ handles zero and fractional values (37.5998ms)
+✔ keeps very small non-zero costs visible (0.5265ms)
+✔ runtime and pence rate are applied consistently (0.6604ms)
+✔ accepts decimal comma and grouped locale values (1.2851ms)
+✔ rejects blank, non-numeric, negative and out-of-range values (0.7763ms)
+✔ electricity results section references an existing named heading (2.3204ms)
+✔ difficulty and network-hashrate approaches agree when difficulty is rate × target interval (2.696ms)
+✔ applies reward, pool fee, whole-system energy, tariff and break-even tariff (0.3502ms)
+✔ the published hypothetical calculator example matches the implemented model (1.3789ms)
+✔ provides fixed daily, 30-day and 365-day projections from the same model (1.6504ms)
+✔ handles zero assumptions and undefined zero-energy break-even without infinity (0.3681ms)
+✔ rejects invalid, exclusive-basis, unsupported and out-of-range assumptions (0.8291ms)
+✔ formats tiny non-zero XMR and fiat estimates without showing a rounded zero (21.6967ms)
+✔ route starts numeric inputs blank and calculations have no network or persistence calls (2.1513ms)
+✔ local development has a useful localhost origin without configuration (1.276ms)
+✔ an explicit process environment value takes precedence over file configuration (0.2348ms)
+✔ release builds require an explicit HTTPS origin (0.6111ms)
+✔ release builds reject placeholders, insecure origins and non-origin URL parts (1.598ms)
+✔ shared metadata requires Astro to provide the centrally configured site URL (0.2956ms)
+✔ profitability partial input leaves untouched fields quiet and results unavailable (6.3678ms)
+✔ profitability blur and edits validate only touched fields and clear corrected errors (2.0222ms)
+✔ explicit calculation exposes missing assumptions and focuses the first invalid field (3.1461ms)
+✔ profitability daily results reuse the model; removing an assumption clears every headline (32.3786ms)
+✔ profitability basis switch, currency labels and reset preserve existing behavior (4.7148ms)
+✔ electricity reproduces pence mismatch → new watts/runtime/period → compatible currency recovery (6.4704ms)
+✔ invalid tariff preserves fresh energy; invalid power clears stale results; unit recovery does not convert numbers (5.0646ms)
+✔ calculator input events do not announce a full result on every keystroke (4.1978ms)
+✔ rejects empty, non-text and oversized input (3.6661ms)
+✔ recognizes documented signals across CRLF/LF, timestamps and ANSI colors (1.5794ms)
+✔ groups duplicate state lines but preserves first and last chronology (0.624ms)
+✔ keeps success and failure events separate and never returns captured identifiers (0.5527ms)
+✔ leaves unrelated, malformed and unknown output uninterpreted (0.3361ms)
+✔ normalizes Windows CRLF and summarizes repeated shares without merging outcomes (0.3224ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 44
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 551.2929

@@ -1,0 +1,10 @@
+{
+  "links": [
+    {
+      "current": "page",
+      "href": "/troubleshoot/",
+      "label": "Troubleshoot"
+    }
+  ],
+  "path": "/troubleshoot/xmrig-huge-pages/"
+}

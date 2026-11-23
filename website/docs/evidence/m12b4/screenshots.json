@@ -1,0 +1,444 @@
+{
+  "screenshots": [
+    {
+      "file": "decoder-results-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 40204,
+      "sha256": "645b3319411b614aec3b790b96c28c668558a8cedc92c64736a55fa53075345d"
+    },
+    {
+      "file": "ember-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 93492,
+      "sha256": "f97656bf841079e816bf43c93a644fdccf16b941bc9a5c4c16db5ed7fabb4233"
+    },
+    {
+      "file": "ember-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 47339,
+      "sha256": "e5d6677ec2e1b469965b0b358ae017527f46c61cfacfebf9ef5957b1fbce0521"
+    },
+    {
+      "file": "guides-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 97001,
+      "sha256": "e11b57460ac89c1d86163f16af4a8710634a8514e58d014eb231ee94ebcaacd2"
+    },
+    {
+      "file": "guides-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 41761,
+      "sha256": "5bb807ef429270de48ab35e8c01cc3c2bc94eeb85d40234e145ac200af2d17e4"
+    },
+    {
+      "file": "guides-after-320x800.jpg",
+      "cssViewport": [
+        320,
+        800
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 33590,
+      "sha256": "f153fae1bf37d66d14efd1f987de33cd62e65d06289b66949c771b4aea8e46af"
+    },
+    {
+      "file": "guides-before-320x800.jpg",
+      "cssViewport": [
+        320,
+        800
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "before M12B.4 fixes",
+      "bytes": 35844,
+      "sha256": "1e0874664a3939689ef7f719f243951177a80736ab27c80e171b796b1a10502b"
+    },
+    {
+      "file": "guides-xmrig-windows-security-warnings-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 125497,
+      "sha256": "bf5f698658b68adb25a0025b2cbbef3b009b04a3a6e9a73edab642cba7d90b3d"
+    },
+    {
+      "file": "guides-xmrig-windows-security-warnings-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 47997,
+      "sha256": "e957607fb34c188e52608befa5a20f7ad6869e9ec19fdfe3f3290ab33a686c63"
+    },
+    {
+      "file": "guides-xmrig-windows-setup-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 123775,
+      "sha256": "838612c8b8ed74e6d6867b96b40fd966fceec715ac229e90b7d51c85b8cb81a2"
+    },
+    {
+      "file": "guides-xmrig-windows-setup-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 48220,
+      "sha256": "a41a7eb14d8cdf401e56973bae5d4eaa48fa621c1901418cf4aaf67339c7922a"
+    },
+    {
+      "file": "home-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 77647,
+      "sha256": "dd232a2bf8b830abb4dd7a753e3ac6253a0a2faf84104f110f61f063c711bfa1"
+    },
+    {
+      "file": "home-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 37793,
+      "sha256": "b417ae1600f687c265b5e1e08065ebf671778df32cc7849f4d24f235f33be263"
+    },
+    {
+      "file": "huge-pages-anchor-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 56278,
+      "sha256": "66ddb222135c19e0d6b48d2b17ae342a2e570b3a0bdb42edbb31cdb5439ad8b3"
+    },
+    {
+      "file": "learn-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 83818,
+      "sha256": "0bdcf2377724a9b75dbb9c1a9654fd2c3b0e63709626839d1f1e320ed0758f92"
+    },
+    {
+      "file": "learn-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 40065,
+      "sha256": "a4f7f4af6d6ddf1bb5998f78e3b4c037a48e4a16bd442f75f9d8c870a4ed6966"
+    },
+    {
+      "file": "learn-randomx-memory-cache-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 112396,
+      "sha256": "a29d27988b1e20c5cc3bea6ecd893377fabb17d2b6b894f3e9b1def2a2301b8e"
+    },
+    {
+      "file": "learn-randomx-memory-cache-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 47237,
+      "sha256": "3ec7dccb76e7d8f404be88b0c2924b078e746643ef6a841066e5f1b019461519"
+    },
+    {
+      "file": "learn-xmrig-cpu-threads-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 103294,
+      "sha256": "09a06e8664a4e11bae7cbb2e8dcdaac54565da5e0573bc72fc695e33dca314ea"
+    },
+    {
+      "file": "learn-xmrig-cpu-threads-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 47895,
+      "sha256": "4d4ccfce3214736f6cf43b2daab43b633874a7e0b9d670c092a37ae53ca61699"
+    },
+    {
+      "file": "profit-negative-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 109827,
+      "sha256": "65dd98fde3249e76f78b96ebd2e4da2891448bee4551963f1437719ed257a385"
+    },
+    {
+      "file": "profit-negative-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 36699,
+      "sha256": "df29e70ea9f0cc0a66bd4442aae0d0675eafdc31f08e1fc275d23ac741bccd02"
+    },
+    {
+      "file": "tools-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 75996,
+      "sha256": "7106343af5e83d917b578c743aabca3fa58397887f6d558e042cc9fb76a4698a"
+    },
+    {
+      "file": "tools-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 36065,
+      "sha256": "c04e564c4419698a1f3dc802cd2fb8089c543a959806e40020ba8d5ad1121722"
+    },
+    {
+      "file": "tools-electricity-cost-calculator-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 82931,
+      "sha256": "b52a245b1ffb67a850183e46486b311a2dc1606a67640d6895d34251feedaed0"
+    },
+    {
+      "file": "tools-electricity-cost-calculator-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 39738,
+      "sha256": "046da9a9fd453dcce7f4b189dbdcf59871143c6c22be6d49933291b4d83ad412"
+    },
+    {
+      "file": "tools-monero-mining-profitability-calculator-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 87278,
+      "sha256": "885f0ce5a42932938bdee8d208afb2452a1a5daef1ca0f0ae6691f04865e2cac"
+    },
+    {
+      "file": "tools-monero-mining-profitability-calculator-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 41103,
+      "sha256": "e51e84608fbdef944aca025702629626f873e22e60e310ea4bf516fd66240fa2"
+    },
+    {
+      "file": "tools-xmrig-log-decoder-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 74538,
+      "sha256": "a47ced77eadcfaed25d6095a9c325142dc6efedef7d129a86d6c511d27008fba"
+    },
+    {
+      "file": "tools-xmrig-log-decoder-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 36656,
+      "sha256": "6e2a7ee8c468a72aacc0cb3ca42b3688ee48549a246ab7314c1f1760e6baa06f"
+    },
+    {
+      "file": "troubleshoot-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 93811,
+      "sha256": "58e7ebb38242f2e9620b5cbcbbc92f5bd1fe7b06f23e031615e74df9179b41d6"
+    },
+    {
+      "file": "troubleshoot-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 38837,
+      "sha256": "4874e401227595e69e8d6bddc012c02515b9c372fa1b19a67b412af0b5122448"
+    },
+    {
+      "file": "troubleshoot-xmrig-huge-pages-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 121307,
+      "sha256": "3f074d62ce8f39cf7083dd098e16d3653819f7c28aecc5796ed4a83d601c4062"
+    },
+    {
+      "file": "troubleshoot-xmrig-huge-pages-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 50621,
+      "sha256": "d97291dd94653c829cfb29d227ce4e645185d1ee5ec44b8b88fd28685bc039f4"
+    },
+    {
+      "file": "troubleshoot-xmrig-low-hashrate-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 109290,
+      "sha256": "5d3cf6816487f4f748b696ffd2ae4f8e70d8a54c9d967571104c93ec3d57f55b"
+    },
+    {
+      "file": "troubleshoot-xmrig-low-hashrate-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 51883,
+      "sha256": "5c0ce72e013fa1d56357f9d7061a58f067dea6458fa452667a595101408c9348"
+    },
+    {
+      "file": "troubleshoot-xmrig-msr-error-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 116734,
+      "sha256": "36e78218058fc68968299e4efacdb68702eaa4f01bdc5c29c4099194b9552df4"
+    },
+    {
+      "file": "troubleshoot-xmrig-msr-error-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 50661,
+      "sha256": "534ccdd079190ced4d2cbbb562f5b8f260b683735114091a9bc3de21df62c6e3"
+    },
+    {
+      "file": "trust-1440x900.jpg",
+      "cssViewport": [
+        1440,
+        900
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 79940,
+      "sha256": "f7780767b4fe23fcd906ee91dcd6c6de528fb7efc11c6bc0249dd7a505b2ef95"
+    },
+    {
+      "file": "trust-390x844.jpg",
+      "cssViewport": [
+        390,
+        844
+      ],
+      "viewportMethod": "Recorded browser innerWidth/innerHeight; bitmap dimensions are not the CSS viewport.",
+      "state": "verified current build",
+      "bytes": 45785,
+      "sha256": "c952693a2eed54120058f15470a6652c938a70aa138da80a6a8733aa32370d06"
+    }
+  ]
+}

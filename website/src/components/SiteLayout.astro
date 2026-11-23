@@ -42,7 +42,7 @@ const sectionNavPaths = new Set(['/learn/', '/guides/', '/troubleshoot/', '/tool
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Ember home"><span class="brand-mark" aria-hidden="true">E</span><span>EMBER<span class="brand-period">.</span></span></a>
         <nav aria-label="Main navigation">
-          {nav.map((item) => <a href={item.href} aria-current={activePath === item.href || (sectionNavPaths.has(item.href) && activePath.startsWith(item.href)) ? 'page' : undefined}>{item.label}</a>)}
+          {nav.map((item) => <a href={item.href} aria-current={activePath === item.href ? 'page' : sectionNavPaths.has(item.href) && activePath.startsWith(item.href) ? 'location' : undefined}>{item.label}</a>)}
         </nav>
         <a class="header-cta" href="/ember/">Explore Ember <span aria-hidden="true">↗</span></a>
       </div>

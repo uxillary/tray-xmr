@@ -1,0 +1,10 @@
+warning: in the working copy of 'website/.astro/collections/articles.schema.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/.astro/content-assets.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/.astro/content.d.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/.astro/dev.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/.astro/settings.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/.astro/types.d.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/docs/content-roadmap.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/scripts/verify-content.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/src/components/SiteLayout.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'website/src/styles/site.css', LF will be replaced by CRLF the next time Git touches it

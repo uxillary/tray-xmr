@@ -1,0 +1,274 @@
+{
+  "browser": "Opera GX 139.0.6053.63 (installed executable product/file version)",
+  "engine": "Chromium family; exact engine version not exposed",
+  "records": [
+    {
+      "path": "/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css"
+      ],
+      "h1": [
+        "Monero mining,without themystery."
+      ],
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "path": "/guides/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css"
+      ],
+      "h1": [
+        "A clear next step for Windows mining."
+      ],
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/ArticleLayout.BG7Gkfwk.css"
+      ],
+      "h1": [
+        "XMRig Huge Pages Not Working on Windows? What to Check"
+      ],
+      "regions": [
+        {
+          "client": 818,
+          "name": "Huge Pages signal and next-check table",
+          "scroll": 960
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/monero-mining-profitability-calculator.BUwVbfpE.css"
+      ],
+      "h1": [
+        "Monero Mining Profitability Calculator"
+      ],
+      "regions": [
+        {
+          "client": 577,
+          "name": "Scenario projection table",
+          "scroll": 660
+        },
+        {
+          "client": 1198,
+          "name": "Mining calculator input sources",
+          "scroll": 1198
+        },
+        {
+          "client": 1198,
+          "name": "Hypothetical daily calculation table",
+          "scroll": 1198
+        }
+      ],
+      "root": [
+        1425,
+        1425
+      ],
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "path": "/tools/electricity-cost-calculator/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/electricity-cost-calculator.BfYf7sxz.css"
+      ],
+      "h1": [
+        "Mining Electricity Cost Calculator"
+      ],
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "path": "/tools/xmrig-log-decoder/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/xmrig-log-decoder.Z-DK93Gb.css"
+      ],
+      "h1": [
+        "What is XMRig actually telling me?"
+      ],
+      "regions": [],
+      "root": [
+        1425,
+        1425
+      ],
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "path": "/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css"
+      ],
+      "h1": [
+        "Monero mining,without themystery."
+      ],
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "/guides/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css"
+      ],
+      "h1": [
+        "A clear next step for Windows mining."
+      ],
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "/troubleshoot/xmrig-huge-pages/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/ArticleLayout.BG7Gkfwk.css"
+      ],
+      "h1": [
+        "XMRig Huge Pages Not Working on Windows? What to Check"
+      ],
+      "regions": [
+        {
+          "client": 333,
+          "name": "Huge Pages signal and next-check table",
+          "scroll": 960
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "/tools/monero-mining-profitability-calculator/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/monero-mining-profitability-calculator.BUwVbfpE.css"
+      ],
+      "h1": [
+        "Monero Mining Profitability Calculator"
+      ],
+      "regions": [
+        {
+          "client": 301,
+          "name": "Scenario projection table",
+          "scroll": 660
+        },
+        {
+          "client": 333,
+          "name": "Mining calculator input sources",
+          "scroll": 660
+        },
+        {
+          "client": 333,
+          "name": "Hypothetical daily calculation table",
+          "scroll": 660
+        }
+      ],
+      "root": [
+        375,
+        375
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "/tools/electricity-cost-calculator/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/electricity-cost-calculator.BfYf7sxz.css"
+      ],
+      "h1": [
+        "Mining Electricity Cost Calculator"
+      ],
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "/tools/xmrig-log-decoder/",
+      "css": [
+        "/_astro/SiteLayout.u5IyGVAB.css",
+        "/_astro/xmrig-log-decoder.Z-DK93Gb.css"
+      ],
+      "h1": [
+        "What is XMRig actually telling me?"
+      ],
+      "regions": [],
+      "root": [
+        375,
+        375
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ]
+}

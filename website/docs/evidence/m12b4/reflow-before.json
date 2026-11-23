@@ -1,0 +1,189 @@
+[
+  {
+    "path": "/ember/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/guides/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-setup/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/learn/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/learn/randomx-memory-cache/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/learn/xmrig-cpu-threads/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/tools/electricity-cost-calculator/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/tools/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/tools/xmrig-log-decoder/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  },
+  {
+    "path": "/trust/",
+    "root": [
+      305,
+      320
+    ],
+    "viewport": [
+      320,
+      800
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "reviewedDate": "2026-11-23",
+  "platform": "Windows",
+  "primaryBrowser": "ChatGPT in-app browser (Chromium family; exact version not exposed)",
+  "secondaryBrowser": "Opera GX 139.0.6053.63 (installed executable ProductVersion/FileVersion)",
+  "zoom": {
+    "status": "ENVIRONMENT BLOCKED",
+    "percentages": [
+      100,
+      200,
+      400
+    ],
+    "verifiedPercentages": [],
+    "reason": "Native Opera app control timed out. Internal browser-settings navigation was rejected by the browser security policy (HTTP/HTTPS only). No indirect workaround was used."
+  },
+  "textOnlyScaling": {
+    "status": "NOT VERIFIED",
+    "reason": "No supported text-only scaling control was available through the permitted browser surface."
+  },
+  "screenReader": {
+    "status": "NOT VERIFIED",
+    "nativeInteraction": "ENVIRONMENT BLOCKED",
+    "reason": "Native UI control unavailable. NVDA/Narrator were not running in the observed process inventory; the standard NVDA install path was absent. No actual speech or browse-mode acceptance was performed."
+  },
+  "firefox": "NOT VERIFIED — no available Firefox surface or standard installation found",
+  "webkit": "NOT VERIFIED — no WebKit/Safari surface",
+  "physicalMobile": "NOT VERIFIED — no physical-device surface",
+  "viewportOverrides": "CSS responsive overrides only; not browser zoom, independent engines or physical-device acceptance."
+}

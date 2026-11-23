@@ -71,6 +71,15 @@ for (const file of files) {
   const scriptTags = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   const clientScripts = scriptTags.filter(([, attrs]) => !/type="application\/ld\+json"/i.test(attrs));
   const route = canonical ? new URL(canonical).pathname : '';
+  const mainNav = renderedElements.find((node) => node.tagName === 'nav' && node.properties.ariaLabel === 'Main navigation');
+  if (!mainNav) failures.push(`${file}: missing main navigation`);
+  else {
+    for (const link of elements(mainNav).filter((node) => node.tagName === 'a')) {
+      const href = String(link.properties.href);
+      const expected = route === href ? 'page' : ['/learn/', '/guides/', '/troubleshoot/', '/tools/'].includes(href) && route.startsWith(href) ? 'location' : undefined;
+      if (link.properties.ariaCurrent !== expected) failures.push(`${file}: incorrect current-page/location semantics for ${href}`);
+    }
+  }
   if (route === '/tools/electricity-cost-calculator/' || route === '/tools/xmrig-log-decoder/' || route === '/tools/monero-mining-profitability-calculator/') {
     const attrs = clientScripts[0]?.[1] ?? '';
     const scriptSrc = attrs.match(/\bsrc="([^"]+)"/i)?.[1];

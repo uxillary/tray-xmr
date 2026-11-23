@@ -1,0 +1,1461 @@
+[
+  {
+    "path": "/ember/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "caption": "Conceptual architecture, not a network trace. The selected pool is a third-party service. Ember does not run a pool or perform the mining workload.",
+        "label": null,
+        "labelledBy": "product-architecture-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "More of the mining process, made understandable."
+      },
+      {
+        "id": "product-purpose",
+        "tag": "H2",
+        "text": "A mining engine shouldn't have to be the whole experience."
+      },
+      {
+        "id": "journey-title",
+        "tag": "H2",
+        "text": "From considered setup to observed work."
+      },
+      {
+        "id": "telemetry-key-title",
+        "tag": "H3",
+        "text": "A number needs a time context."
+      },
+      {
+        "id": "product-architecture-title",
+        "tag": "H3",
+        "text": "One local manager. One mining engine. Your chosen pool."
+      },
+      {
+        "id": "product-controls",
+        "tag": "H2",
+        "text": "Choices before activity. State during a session."
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Guided setup"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Start → Mining"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Stop / Quit"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Public distribution"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Ember is being built, not offered as a public download."
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/guides/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "A clear next step for Windows mining."
+      },
+      {
+        "id": "resources-title",
+        "tag": "H2",
+        "text": "What do you need to do?"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Set up XMRig on Windows"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Understand a Windows security warning"
+      },
+      {
+        "id": "future-title",
+        "tag": "H2",
+        "text": "Planned topics"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Understand the machine and its limits"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Wallet, pool and CPU profile"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Review, start and stop with care"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/guides/xmrig-windows-security-warnings/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Windows Security Warnings When Downloading XMRig: Safe Checks"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "short-answer",
+        "tag": "H2",
+        "text": "Short answer: stop and verify first"
+      },
+      {
+        "id": "why-warning",
+        "tag": "H2",
+        "text": "Why Windows may show a warning"
+      },
+      {
+        "id": "check-source",
+        "tag": "H2",
+        "text": "Check the source, not just the filename"
+      },
+      {
+        "id": "release-checks",
+        "tag": "H2",
+        "text": "What the release checks can establish"
+      },
+      {
+        "id": "if-warning",
+        "tag": "H2",
+        "text": "If Defender or SmartScreen still warns"
+      },
+      {
+        "id": "use-only-authorized-devices",
+        "tag": "H2",
+        "text": "Use only a computer you are allowed to mine on"
+      },
+      {
+        "id": "what-not-to-do",
+        "tag": "H2",
+        "text": "What not to do"
+      },
+      {
+        "id": "related-resources",
+        "tag": "H2",
+        "text": "Related resources"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "Stop, verify, then decide"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": [
+      {
+        "caption": "What the release checks can establish",
+        "headers": [
+          {
+            "scope": "col",
+            "text": "Check"
+          },
+          {
+            "scope": "col",
+            "text": "What a match supports"
+          },
+          {
+            "scope": "col",
+            "text": "What it cannot prove"
+          },
+          {
+            "scope": "row",
+            "text": "Compare the downloaded archive’s SHA-256 with the matching release-manifest entry"
+          },
+          {
+            "scope": "row",
+            "text": "Verify the detached signature on the release manifest after checking the XMRig GPG key fingerprint from the official XMRig key page and its linked project copy"
+          },
+          {
+            "scope": "row",
+            "text": "Check a Windows publisher signature, if one is present"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/guides/xmrig-windows-setup/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "How to Set Up XMRig on Windows"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "before-you-begin",
+        "tag": "H2",
+        "text": "1. Before you begin"
+      },
+      {
+        "id": "download-xmrig-safely",
+        "tag": "H2",
+        "text": "2. Download XMRig safely"
+      },
+      {
+        "id": "configure-xmrig",
+        "tag": "H2",
+        "text": "3. Configure XMRig"
+      },
+      {
+        "id": "start-xmrig",
+        "tag": "H2",
+        "text": "4. Start XMRig"
+      },
+      {
+        "id": "verify-the-session",
+        "tag": "H2",
+        "text": "5. Verify the first session"
+      },
+      {
+        "id": "common-issues",
+        "tag": "H2",
+        "text": "6. Common first-run issues"
+      },
+      {
+        "id": "next-steps",
+        "tag": "H2",
+        "text": "7. Next steps"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "Five checkpoints from download to accepted shares"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "caption": "EMBER DESKTOP / PRODUCT PREVIEWIllustrative setup · no live user data",
+        "label": null,
+        "labelledBy": "product-preview-caption"
+      },
+      {
+        "caption": "Conceptual only. Pool protocol, work and result handling depend on configuration and the mining service. Ember does not perform the RandomX workload.",
+        "label": null,
+        "labelledBy": "flow-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "home-title",
+        "tag": "H1",
+        "text": "Monero mining,without themystery."
+      },
+      {
+        "id": "principles-title",
+        "tag": "H2",
+        "text": "Mining should make sense before it's running."
+      },
+      {
+        "id": "flow-title",
+        "tag": "H2",
+        "text": "Where Ember fits in the work."
+      },
+      {
+        "id": "knowledge-title",
+        "tag": "H2",
+        "text": "Good answers for the work in front of you."
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Learn"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Guides"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Troubleshoot"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Trust is part of the product."
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "A more understandable way to approach Monero mining."
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/learn/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": "A concept map connecting system memory, CPU cache and mining threads.",
+        "labelledBy": null
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Understand what your CPU is doing."
+      },
+      {
+        "id": "resources-title",
+        "tag": "H2",
+        "text": "Choose a concept"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "RandomX memory and cache"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Cores, processors and mining threads"
+      },
+      {
+        "id": "future-title",
+        "tag": "H2",
+        "text": "Planned topics"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "What is Monero mining?"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Hashrate, explained"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Pools, solo mining and P2Pool"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/learn/randomx-memory-cache/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "RandomX Memory and CPU Cache Explained"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "quick-model",
+        "tag": "H2",
+        "text": "Quick model"
+      },
+      {
+        "id": "dataset-and-cache",
+        "tag": "H2",
+        "text": "Dataset and cache"
+      },
+      {
+        "id": "cpu-cache-and-mining-threads",
+        "tag": "H2",
+        "text": "CPU cache and mining threads"
+      },
+      {
+        "id": "huge-pages-and-windows",
+        "tag": "H2",
+        "text": "Huge Pages and Windows"
+      },
+      {
+        "id": "numa-in-one-minute",
+        "tag": "H2",
+        "text": "NUMA in one minute"
+      },
+      {
+        "id": "what-system-ram-does-not-tell-you",
+        "tag": "H2",
+        "text": "What system RAM does not tell you"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "RandomX uses several different memory layers"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/learn/xmrig-cpu-threads/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Why XMRig Isn't Using All Your CPU Threads"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "the-short-answer",
+        "tag": "H2",
+        "text": "The short answer"
+      },
+      {
+        "id": "three-different-counts",
+        "tag": "H2",
+        "text": "Three different counts"
+      },
+      {
+        "id": "why-cache-limits-the-useful-count",
+        "tag": "H2",
+        "text": "Why cache limits the useful count"
+      },
+      {
+        "id": "how-to-test-a-different-thread-count",
+        "tag": "H2",
+        "text": "How to test a different thread count"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "Logical processors are not a thread target"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/tools/electricity-cost-calculator/",
+    "badReferences": [],
+    "controls": [
+      {
+        "describedBy": "power-help power-error",
+        "id": "power-watts",
+        "label": "Whole-system power",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "rate-help rate-error",
+        "id": "electricity-rate",
+        "label": "Electricity rate",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": null,
+        "id": "rate-unit",
+        "label": "Rate unit",
+        "tag": "SELECT",
+        "type": null
+      },
+      {
+        "describedBy": null,
+        "id": "runtime-preset",
+        "label": "Hours per day preset",
+        "tag": "SELECT",
+        "type": null
+      },
+      {
+        "describedBy": "hours-error",
+        "id": "runtime-hours",
+        "label": "Custom runtime in hours per day",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "days-help days-error",
+        "id": "period-days",
+        "label": "Calculation period",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": null,
+        "id": "currency",
+        "label": "Currency",
+        "tag": "SELECT",
+        "type": null
+      },
+      {
+        "describedBy": null,
+        "id": "",
+        "label": "Reset to defaults",
+        "tag": "BUTTON",
+        "type": "reset"
+      }
+    ],
+    "figures": [],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Mining Electricity Cost Calculator"
+      },
+      {
+        "id": "result-title",
+        "tag": "H2",
+        "text": "Estimated electricity use and cost"
+      },
+      {
+        "id": "power-note-title",
+        "tag": "H2",
+        "text": "What power value should I enter?"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "How the calculation works"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Why mining electricity use matters"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/tools/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Small tools. Clearer decisions."
+      },
+      {
+        "id": "resources-title",
+        "tag": "H2",
+        "text": "Choose a tool"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Electricity cost calculator"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Mining profitability calculator"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "XMRig log decoder"
+      },
+      {
+        "id": "future-title",
+        "tag": "H2",
+        "text": "Planned topics"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Hashrate unit converter"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "CPU mining scenario"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "badReferences": [],
+    "controls": [
+      {
+        "describedBy": "hash-help hash-error",
+        "id": "miner-hashrate",
+        "label": "Miner hashrate",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "power-help power-error",
+        "id": "wall-power-watts",
+        "label": "Whole-system wall power",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": null,
+        "id": "",
+        "label": "Network difficulty hashes / block",
+        "tag": "INPUT",
+        "type": "radio"
+      },
+      {
+        "describedBy": null,
+        "id": "",
+        "label": "Network hashrate H/s",
+        "tag": "INPUT",
+        "type": "radio"
+      },
+      {
+        "describedBy": "difficulty-help difficulty-error",
+        "id": "network-difficulty",
+        "label": "Network difficulty",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "network-hash-help network-hash-error",
+        "id": "network-hashrate",
+        "label": "Network hashrate",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "reward-help reward-error",
+        "id": "expected-reward-per-block",
+        "label": "Expected total block reward",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "hours-help hours-error",
+        "id": "mining-hours-per-day",
+        "label": "Mining runtime",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "tariff-help tariff-error",
+        "id": "electricity-price",
+        "label": "Electricity tariff",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "fee-help fee-error",
+        "id": "pool-fee-percent",
+        "label": "Pool fee",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "price-help price-error",
+        "id": "xmr-price",
+        "label": "XMR price",
+        "tag": "INPUT",
+        "type": "text"
+      },
+      {
+        "describedBy": "currency-help currency-status",
+        "id": "mining-currency",
+        "label": "Display currency",
+        "tag": "SELECT",
+        "type": null
+      },
+      {
+        "describedBy": null,
+        "id": "",
+        "label": "Calculate and view estimate",
+        "tag": "BUTTON",
+        "type": "submit"
+      },
+      {
+        "describedBy": null,
+        "id": "",
+        "label": "Clear all assumptions",
+        "tag": "BUTTON",
+        "type": "reset"
+      }
+    ],
+    "figures": [
+      {
+        "caption": "The model estimates XMR from entered work, a network assumption and reward, converts it using your price, subtracts the pool fee, then subtracts electricity. Expected value is not a payout prediction. All assumptions are held constant; no live data is fetched.",
+        "label": null,
+        "labelledBy": "formula-flow-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Monero Mining Profitability Calculator"
+      },
+      {
+        "id": "mining-results-title",
+        "tag": "H2",
+        "text": "Your daily estimate"
+      },
+      {
+        "id": "formula-flow-title",
+        "tag": "H2",
+        "text": "From work and assumptions to an operating estimate"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Expected revenue branch"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Electricity branch"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "How the estimate is calculated"
+      },
+      {
+        "id": "input-sources",
+        "tag": "H2",
+        "text": "Where to get each input"
+      },
+      {
+        "id": "worked-example",
+        "tag": "H2",
+        "text": "Follow one invented daily scenario"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Expected value is not a payout"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Keep the result in context"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": [
+      {
+        "caption": "Constant-assumption projections",
+        "headers": [
+          {
+            "scope": "col",
+            "text": "Estimate"
+          },
+          {
+            "scope": "col",
+            "text": "Daily"
+          },
+          {
+            "scope": "col",
+            "text": "30 days"
+          },
+          {
+            "scope": "col",
+            "text": "365 days"
+          },
+          {
+            "scope": "row",
+            "text": "Expected block equivalents"
+          },
+          {
+            "scope": "row",
+            "text": "Expected XMR after fee"
+          },
+          {
+            "scope": "row",
+            "text": "Gross estimated revenue"
+          },
+          {
+            "scope": "row",
+            "text": "Pool fee value"
+          },
+          {
+            "scope": "row",
+            "text": "Revenue after pool fees"
+          },
+          {
+            "scope": "row",
+            "text": "Electricity consumption"
+          },
+          {
+            "scope": "row",
+            "text": "Electricity cost"
+          },
+          {
+            "scope": "row",
+            "text": "Estimated net"
+          }
+        ]
+      },
+      {
+        "caption": "Inputs and suggested sources",
+        "headers": [
+          {
+            "scope": "col",
+            "text": "Input"
+          },
+          {
+            "scope": "col",
+            "text": "How to obtain or estimate it"
+          },
+          {
+            "scope": "row",
+            "text": "Miner hashrate"
+          },
+          {
+            "scope": "row",
+            "text": "Whole-system wall power"
+          },
+          {
+            "scope": "row",
+            "text": "Mining hours per day"
+          },
+          {
+            "scope": "row",
+            "text": "Electricity tariff"
+          },
+          {
+            "scope": "row",
+            "text": "Pool fee"
+          },
+          {
+            "scope": "row",
+            "text": "XMR price"
+          },
+          {
+            "scope": "row",
+            "text": "Network difficulty or hashrate"
+          },
+          {
+            "scope": "row",
+            "text": "Expected block reward"
+          }
+        ]
+      },
+      {
+        "caption": "Daily calculation from those hypothetical inputs",
+        "headers": [
+          {
+            "scope": "row",
+            "text": "Active time and expected hashes"
+          },
+          {
+            "scope": "row",
+            "text": "Expected block equivalents"
+          },
+          {
+            "scope": "row",
+            "text": "Expected gross XMR"
+          },
+          {
+            "scope": "row",
+            "text": "Pool fee and expected XMR after fee"
+          },
+          {
+            "scope": "row",
+            "text": "Revenue after pool fee"
+          },
+          {
+            "scope": "row",
+            "text": "Electricity"
+          },
+          {
+            "scope": "row",
+            "text": "Estimated net operating result"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/tools/xmrig-log-decoder/",
+    "badReferences": [],
+    "controls": [
+      {
+        "describedBy": "log-help privacy-note input-error",
+        "id": "xmrig-log",
+        "label": "XMRig console or log excerpt",
+        "tag": "TEXTAREA",
+        "type": null
+      },
+      {
+        "describedBy": null,
+        "id": "analyze-log",
+        "label": "Analyze log",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      {
+        "describedBy": null,
+        "id": "clear-log",
+        "label": "Clear",
+        "tag": "BUTTON",
+        "type": "button"
+      }
+    ],
+    "figures": [],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "What is XMRig actually telling me?"
+      },
+      {
+        "id": "input-title",
+        "tag": "H2",
+        "text": "Paste XMRig output"
+      },
+      {
+        "id": "results-title",
+        "tag": "H2",
+        "text": "Diagnostic readout"
+      },
+      {
+        "id": "decoder-scope",
+        "tag": "H2",
+        "text": "A focused reader, not a diagnosis"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Keep identifying details out of results"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/troubleshoot/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": "A diagnostic signal path: observe, check, verify.",
+        "labelledBy": null
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Start with the signal you can see."
+      },
+      {
+        "id": "resources-title",
+        "tag": "H2",
+        "text": "Find your next check"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Huge Pages are unavailable or partial"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "XMRig reports an MSR error"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Hashrate is lower than expected"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "XMRig Log Decoder"
+      },
+      {
+        "id": "future-title",
+        "tag": "H2",
+        "text": "Planned topics"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Pool connection problems"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/troubleshoot/xmrig-huge-pages/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "XMRig Huge Pages Not Working on Windows? What to Check"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "quick-diagnosis",
+        "tag": "H2",
+        "text": "Quick diagnosis"
+      },
+      {
+        "id": "what-the-messages-mean",
+        "tag": "H2",
+        "text": "What the messages mean"
+      },
+      {
+        "id": "permission-granted-but-less-than-100",
+        "tag": "H2",
+        "text": "Permission granted, but less than 100%"
+      },
+      {
+        "id": "how-to-obtain-the-windows-right",
+        "tag": "H2",
+        "text": "How to obtain the Windows right"
+      },
+      {
+        "id": "when-the-setup-is-already-working",
+        "tag": "H2",
+        "text": "When the setup is already working"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "Read privilege, allocation and performance separately"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": [
+      {
+        "caption": "Interpret each signal on its own; none identifies every cause.",
+        "headers": [
+          {
+            "scope": "col",
+            "text": "Observed XMRig signal"
+          },
+          {
+            "scope": "col",
+            "text": "What it establishes"
+          },
+          {
+            "scope": "col",
+            "text": "What it does not establish"
+          },
+          {
+            "scope": "col",
+            "text": "Safe next check"
+          },
+          {
+            "scope": "row",
+            "text": "* HUGE PAGES   permission granted is absent, or XMRig reports the privilege unavailable"
+          },
+          {
+            "scope": "row",
+            "text": "Permission is granted; a reported allocation is 0%"
+          },
+          {
+            "scope": "row",
+            "text": "Permission is granted; one or more reported allocations are below 100%"
+          },
+          {
+            "scope": "row",
+            "text": "A reported allocation is huge pages 100%"
+          },
+          {
+            "scope": "row",
+            "text": "The excerpt is incomplete or contains no interpretable permission/allocation line"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/troubleshoot/xmrig-low-hashrate/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Why Is My XMRig Hashrate Low? A Windows Checklist"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "quick-diagnosis",
+        "tag": "H2",
+        "text": "Quick diagnosis"
+      },
+      {
+        "id": "check-in-this-order",
+        "tag": "H2",
+        "text": "Check in this order"
+      },
+      {
+        "id": "1-confirm-you-are-comparing-the-same-work",
+        "tag": "H2",
+        "text": "1. Confirm you are comparing the same work"
+      },
+      {
+        "id": "2-read-allocation-and-optimisation-status",
+        "tag": "H2",
+        "text": "2. Read allocation and optimisation status"
+      },
+      {
+        "id": "3-check-useful-thread-count-and-cache",
+        "tag": "H2",
+        "text": "3. Check useful thread count and cache"
+      },
+      {
+        "id": "4-check-memory-background-load-and-cooling",
+        "tag": "H2",
+        "text": "4. Check memory, background load and cooling"
+      },
+      {
+        "id": "keep-a-small-measurement-record",
+        "tag": "H2",
+        "text": "Keep a small measurement record"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "Check the signal, then narrow the cause"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/troubleshoot/xmrig-msr-error/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [
+      {
+        "label": null,
+        "labelledBy": "article-visual-title"
+      }
+    ],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "XMRig MSR Errors on Windows: What They Mean"
+      },
+      {
+        "id": "article-contents-title",
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "id": "quick-diagnosis",
+        "tag": "H2",
+        "text": "Quick diagnosis"
+      },
+      {
+        "id": "what-a-successful-status-looks-like",
+        "tag": "H2",
+        "text": "What a successful status looks like"
+      },
+      {
+        "id": "checks-on-windows",
+        "tag": "H2",
+        "text": "Checks on Windows"
+      },
+      {
+        "id": "can-mining-continue-without-the-msr-change",
+        "tag": "H2",
+        "text": "Can mining continue without the MSR change?"
+      },
+      {
+        "id": "article-visual-title",
+        "tag": "H2",
+        "text": "A CPU preset behind an access boundary"
+      },
+      {
+        "id": "sources-title",
+        "tag": "H2",
+        "text": "Sources"
+      },
+      {
+        "id": "",
+        "tag": "H2",
+        "text": "Related reading"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  },
+  {
+    "path": "/trust/",
+    "badReferences": [],
+    "controls": [],
+    "figures": [],
+    "h1": 1,
+    "headings": [
+      {
+        "id": "",
+        "tag": "H1",
+        "text": "Say what happens. Be clear about what hasn't been proven."
+      },
+      {
+        "id": "implemented-title",
+        "tag": "H2",
+        "text": "Implemented foundations"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Local setup, no Ember account"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Receiving address, not wallet custody"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Pinned XMRig provisioning"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Supervised process tree"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Bounded local status"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Security tools stay in control"
+      },
+      {
+        "id": "open-work-title",
+        "tag": "H2",
+        "text": "Open work and limits"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Stop and Quit acceptance"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Distribution and clean-machine checks"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "5% developer time share"
+      },
+      {
+        "id": "",
+        "tag": "H3",
+        "text": "Local verification has limits"
+      }
+    ],
+    "lang": "en",
+    "main": 1,
+    "tables": []
+  }
+]

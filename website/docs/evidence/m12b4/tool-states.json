@@ -1,0 +1,1424 @@
+[
+  {
+    "label": "profit partial untouched",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "wall-power-watts",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit explicit invalid",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "wall-power-watts",
+      "network-difficulty",
+      "expected-reward-per-block",
+      "mining-hours-per-day",
+      "electricity-price",
+      "pool-fee-percent",
+      "xmr-price"
+    ],
+    "focus": "wall-power-watts",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Complete the highlighted assumptions. No valid estimate is available."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit synthetic negative",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "mining-results-title",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £0.09, electricity £0.48, operating balance -£0.39. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit projection disclosure",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £0.09, electricity £0.48, operating balance -£0.39. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit synthetic positive",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "mining-results-title",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £5.94, electricity £0.48, operating balance £5.46. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit currency relabel retained assumptions",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "mining-results-title",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Currency changed to USD. Numeric assumptions were kept; enter or confirm the tariff and XMR price in USD. No conversion was applied."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £5.94, electricity £0.48, operating balance £5.46. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit malformed touched field suppress results",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "miner-hashrate",
+      "network-difficulty"
+    ],
+    "focus": "wall-power-watts",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Use numbers only."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter a value."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Currency changed to USD. Numeric assumptions were kept; enter or confirm the tariff and XMR price in USD. No conversion was applied."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £5.94, electricity £0.48, operating balance £5.46. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit keyboard reset",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £5.94, electricity £0.48, operating balance £5.46. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit reset settled after announcement debounce",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Complete the remaining assumptions to see an estimate. Untouched fields are not marked invalid."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit currency settled",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "mining-results-title",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Currency changed to USD. Numeric assumptions were kept; enter or confirm the tariff and XMR price in USD. No conversion was applied."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee US$0.09, electricity US$0.48, operating balance -US$0.39. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "profit malformed settled",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "miner-hashrate"
+    ],
+    "focus": "wall-power-watts",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Use numbers only."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Currency changed to USD. Numeric assumptions were kept; enter or confirm the tariff and XMR price in USD. No conversion was applied."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Complete the highlighted assumptions. No valid estimate is available."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "electricity missing tariff",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "electricity valid GBP pence",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "electricity-rate",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Estimate updated: £0.48 per day, £14.40 for 30 days, and £175.20 per 365 days."
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "electricity mismatched currency current energy",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "electricity-rate"
+    ],
+    "focus": "power-watts",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Pence per kWh requires GBP. Choose GBP or /kWh."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Pence per kWh applies to GBP. Choose GBP or change the rate unit to /kWh."
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "electricity currency recovery runtime period",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "period-days",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Estimate updated: £0.48 per day, £3.36 for 7 days, and £175.20 per 365 days."
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "electricity invalid power",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "power-watts"
+    ],
+    "focus": "electricity-rate",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Use numbers only."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Correct the highlighted values to update the estimate."
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "electricity keyboard reset",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Energy is calculated: 2.4 kWh/day. Add your rate to see estimated electricity cost."
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "decoder empty keyboard Analyze",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "xmrig-log"
+    ],
+    "focus": "xmrig-log",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": "Paste some XMRig output first."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "No analysis was run."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "decoder unknown only",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "results-title",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "0 recognized lines grouped into 0 signals; 2 lines left uninterpreted."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "decoder synthetic long signal log",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "results-title",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "225 recognized lines grouped into 10 signals; 26 lines left uninterpreted."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ],
+    "syntheticInput": {
+      "bytes": 7378,
+      "lines": 251,
+      "signals": 10,
+      "readoutDoesNotEchoEndpoint": true
+    }
+  },
+  {
+    "label": "decoder edit invalidates prior cards",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "xmrig-log",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Input changed. Choose Analyze log to refresh the readout."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "decoder oversized synthetic input",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [
+      "xmrig-log"
+    ],
+    "focus": "xmrig-log",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": "This log is over the 200 KB limit. Paste a shorter excerpt."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "No analysis was run."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "decoder keyboard Clear",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "xmrig-log",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Analyze an excerpt to see recognized signals. Unknown lines are left uninterpreted."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "article contents keyboard focus",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "before-you-begin",
+    "live": [],
+    "path": "/guides/xmrig-windows-setup/",
+    "root": {
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "label": "homepage desktop skip focus",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "main",
+    "live": [],
+    "path": "/",
+    "root": {
+      "client": 1425,
+      "scroll": 1425
+    },
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "label": "profit desktop synthetic negative",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "mining-results-title",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Enter fiat assumptions in GBP."
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Daily estimate: revenue after pool fee £0.09, electricity £0.48, operating balance -£0.39. Expected value, not a payout."
+      }
+    ],
+    "path": "/tools/monero-mining-profitability-calculator/",
+    "root": {
+      "client": 1425,
+      "scroll": 1425
+    },
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "label": "electricity desktop valid",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "rate-unit",
+    "live": [
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "Estimate updated: £0.48 per day, £14.40 for 30 days, and £175.20 per 365 days."
+      }
+    ],
+    "path": "/tools/electricity-cost-calculator/",
+    "root": {
+      "client": 1425,
+      "scroll": 1425
+    },
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "label": "decoder desktop synthetic long log",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "results-title",
+    "live": [
+      {
+        "live": null,
+        "role": "alert",
+        "text": ""
+      },
+      {
+        "live": "polite",
+        "role": null,
+        "text": "225 recognized lines grouped into 10 signals; 26 lines left uninterpreted."
+      }
+    ],
+    "path": "/tools/xmrig-log-decoder/",
+    "root": {
+      "client": 1425,
+      "scroll": 1425
+    },
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "label": "homepage keyboard skip visible focus",
+    "bodyBefore": "radial-gradient(at 85% -25%, rgba(57, 49, 38, 0.25) 0px, rgba(0, 0, 0, 0) 46%), linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0) 380px)",
+    "errors": [],
+    "focus": "",
+    "live": [],
+    "path": "/",
+    "root": {
+      "client": 1425,
+      "scroll": 1425
+    },
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]
