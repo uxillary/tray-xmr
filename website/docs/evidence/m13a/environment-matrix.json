@@ -1,0 +1,41 @@
+{
+  "note": "All operations local. https://www.cloudflare.com is an external validation fixture, not an Ember origin or deployment. Synthetic output is protected noindex. Draft probe was removed.",
+  "results": [
+    {
+      "label": "Unconfigured local development is localhost and noindex",
+      "exitCode": 0
+    },
+    {
+      "label": "Release build without SITE_URL fails",
+      "exitCode": 1
+    },
+    {
+      "label": "Synthetic origin cannot be made indexable",
+      "exitCode": 1
+    },
+    {
+      "label": "Explicit indexable fixture build",
+      "exitCode": 0
+    },
+    {
+      "label": "Indexable fixture has no accidental noindex rules",
+      "exitCode": 0
+    },
+    {
+      "label": "Indexable fixture metadata, schema and discovery",
+      "exitCode": 0
+    },
+    {
+      "label": "Unconfigured indexing defaults to noindex, even in release build",
+      "exitCode": 0
+    },
+    {
+      "label": "Default noindex HTML and header artifact",
+      "exitCode": 0
+    },
+    {
+      "label": "Draft fixture excluded from routes, sitemap and discovery",
+      "exitCode": 0
+    }
+  ]
+}

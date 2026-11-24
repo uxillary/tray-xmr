@@ -1,10 +1,12 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { htmlToHast } from 'satteri';
+import { parse as parseYaml } from 'yaml';
 
 function elements(node) {
   return [...(node.type === 'element' ? [node] : []), ...(node.children ?? []).flatMap(elements)];
 }
+const textContent = (node) => node.value ?? (node.children ?? []).map(textContent).join('');
 
 const dist = resolve('dist');
 const failures = [];
@@ -28,7 +30,7 @@ function walk(directory) {
   for (const item of readdirSync(directory, { withFileTypes: true })) {
     const path = join(directory, item.name);
     if (item.isDirectory()) walk(path);
-    else if (item.name.endsWith('.html')) files.push(path);
+    else if (item.name.endsWith('.html') && path !== join(dist, '404.html')) files.push(path);
   }
 }
 walk(dist);
@@ -36,7 +38,10 @@ walk(dist);
 const canonicalUrls = new Set();
 const pageTitles = new Set();
 const descriptions = new Set();
+const errorPath = join(dist, '404.html');
+if (!existsSync(errorPath) || !readFileSync(errorPath, 'utf8').includes('name="robots" content="noindex, follow"')) failures.push('missing protected static 404 error document');
 let articleCount = 0;
+const discoveryGraph = new Map();
 for (const file of files) {
   const html = readFileSync(file, 'utf8');
   const renderedElements = elements(htmlToHast(html));
@@ -71,6 +76,36 @@ for (const file of files) {
   const scriptTags = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   const clientScripts = scriptTags.filter(([, attrs]) => !/type="application\/ld\+json"/i.test(attrs));
   const route = canonical ? new URL(canonical).pathname : '';
+  const headings = renderedElements.filter((node) => node.tagName === 'h1');
+  if (headings.length !== 1) failures.push(`${file}: expected exactly one H1`);
+  const meta = (name) => renderedElements.find((node) => node.tagName === 'meta' && (node.properties.name === name || node.properties.property === name))?.properties.content;
+  const renderedTitle = textContent(renderedElements.find((node) => node.tagName === 'title') ?? {});
+  for (const name of ['og:title', 'twitter:title']) if (meta(name) !== renderedTitle) failures.push(`${file}: ${name} disagrees with the title`);
+  for (const name of ['og:description', 'twitter:description']) if (meta(name) !== meta('description')) failures.push(`${file}: ${name} disagrees with the description`);
+  if (meta('twitter:card') !== 'summary_large_image' || meta('og:image:type') !== 'image/png' || meta('og:image:width') !== '1200' || meta('og:image:height') !== '630') failures.push(`${file}: incomplete PNG social card metadata`);
+  const schemas = renderedElements.filter((node) => node.tagName === 'script' && node.properties.type === 'application/ld+json').flatMap((node) => {
+    try { return [JSON.parse(textContent(node))]; } catch { return []; }
+  });
+  if (route === '/') {
+    const schema = schemas.find((item) => item['@type'] === 'WebSite');
+    if (!schema || schema.name !== 'Ember' || schema.url !== canonical || schema.publisher?.name !== 'Ember' || schema.publisher?.['@type'] !== 'Organization') failures.push(`${file}: missing or inconsistent WebSite identity`);
+  }
+  if (body) {
+    const article = schemas.find((item) => item['@type'] === 'TechArticle');
+    const times = renderedElements.filter((node) => node.tagName === 'time').map((node) => node.properties.dateTime);
+    if (!article || article.mainEntityOfPage !== canonical || article.headline !== textContent(headings[0] ?? {}) || article.description !== meta('description') || !times.includes(article.datePublished) || (article.dateModified && !times.includes(article.dateModified))) failures.push(`${file}: Article schema disagrees with visible content/dates`);
+    const crumbs = schemas.find((item) => item['@type'] === 'BreadcrumbList')?.itemListElement;
+    const origin = canonical ? new URL(canonical).origin : '';
+    if (crumbs?.length !== 3 || crumbs.some((item, i) => item.position !== i + 1) || crumbs[0]?.item !== origin || crumbs[1]?.item !== `${origin}/${route.split('/')[1]}/` || crumbs[2]?.item !== canonical) failures.push(`${file}: inconsistent breadcrumb path`);
+  }
+  const main = renderedElements.find((node) => node.tagName === 'main');
+  const links = elements(main ?? {}).filter((node) => node.tagName === 'a').flatMap((node) => {
+    try {
+      const url = new URL(String(node.properties.href), canonical);
+      return url.origin === new URL(canonical).origin && url.pathname !== route ? [url.pathname] : [];
+    } catch { return []; }
+  });
+  discoveryGraph.set(route, links);
   const mainNav = renderedElements.find((node) => node.tagName === 'nav' && node.properties.ariaLabel === 'Main navigation');
   if (!mainNav) failures.push(`${file}: missing main navigation`);
   else {
@@ -125,6 +160,12 @@ for (const file of files) {
 }
 
 if (articleCount !== 7) failures.push(`expected 7 articles with section navigation, found ${articleCount}`);
+const reached = new Set(['/']);
+const queue = ['/'];
+for (const route of queue) for (const target of discoveryGraph.get(route) ?? []) {
+  if (discoveryGraph.has(target) && !reached.has(target)) { reached.add(target); queue.push(target); }
+}
+for (const route of discoveryGraph.keys()) if (!reached.has(route)) failures.push(`${route}: unreachable from homepage main-content HTML links`);
 
 const expected = [
   'guides/xmrig-windows-setup/index.html', 'guides/xmrig-windows-security-warnings/index.html',
@@ -142,6 +183,14 @@ for (const path of expected) {
 }
 
 const sitemap = readFileSync(join(dist, 'sitemap.xml'), 'utf8');
+for (const file of readdirSync('src/content/articles').filter((name) => name.endsWith('.md'))) {
+  const source = readFileSync(join('src/content/articles', file), 'utf8');
+  const data = parseYaml(source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '');
+  if (data?.draft) {
+    const route = `/${data.section}/${file.replace(/\.md$/, '')}/`;
+    if (discoveryGraph.has(route) || sitemap.includes(route)) failures.push(`draft article is published: ${route}`);
+  }
+}
 for (const path of expected.map((item) => `/${item.replace('/index.html', '/')}`)) {
   if (!sitemap.includes(path)) failures.push(`sitemap is missing ${path}`);
 }
@@ -154,5 +203,5 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Verified ${files.length} static pages: unique canonical URLs, valid JSON-LD, resolved local links, ${articleCount} article contents matching rendered headings, unique IDs and sitemap entries.`);
+  console.log(`Verified ${files.length} static pages: unique metadata, consistent social/Article/WebSite/Breadcrumb data, resolved local links and fragments, homepage HTML discovery, draft exclusions, ${articleCount} article contents matching rendered headings, unique IDs and sitemap entries.`);
 }

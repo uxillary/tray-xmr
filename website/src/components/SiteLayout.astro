@@ -19,6 +19,7 @@ const sectionNavPaths = new Set(['/learn/', '/guides/', '/troubleshoot/', '/tool
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#111310" />
     <meta name="description" content={description} />
+    {import.meta.env.SITE_INDEXING !== 'index' && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content={type} />
     {publishedDate && <meta property="article:published_time" content={publishedDate.toISOString()} />}
@@ -27,13 +28,21 @@ const sectionNavPaths = new Set(['/learn/', '/guides/', '/troubleshoot/', '/tool
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Ember" />
-    <meta property="og:image" content={`${origin}/social-card.svg`} />
+    <meta property="og:image" content={`${origin}/social-card.png`} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Ember — Monero mining, without the mystery" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content={`${origin}/social-card.svg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={`${origin}/social-card.png`} />
+    <meta name="twitter:image:alt" content="Ember — Monero mining, without the mystery" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
+    {activePath === '/' && <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'WebSite', name: 'Ember', url: `${origin}/`,
+      publisher: { '@type': 'Organization', name: 'Ember', url: `${origin}/` },
+    })} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>

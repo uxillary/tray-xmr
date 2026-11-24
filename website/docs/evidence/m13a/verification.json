@@ -1,0 +1,526 @@
+{
+  "date": "2026-11-24",
+  "head": "a80288182c1ae4d534df1eff9194d22fc3ed69ee",
+  "syntheticOrigin": "https://ember-m12b0-audit.invalid",
+  "indexing": "noindex",
+  "publishedRoutes": 17,
+  "errorDocuments": 1,
+  "automatedChecks": {
+    "npmTest": "PASS: 47 tests",
+    "npmCheck": "PASS: 0 errors, warnings or hints (52 files)",
+    "npmCheckLinks": "PASS: 17 published routes, metadata/schema, links/fragments, discovery, article contents, drafts",
+    "productionOrigin": "PASS: canonical, OG, PNG, JSON-LD, sitemap, robots, noindex HTML and header artifact",
+    "diffCheck": "PASS: git diff --check; additional whitespace scan includes untracked text files"
+  },
+  "http": {
+    "origin": "http://127.0.0.1:4364",
+    "note": "Local Astro preview, not a production host. _headers is verified as an artifact; this preview does not apply its rules.",
+    "responses": [
+      {
+        "path": "/404.html",
+        "status": 200,
+        "sha256": "e600eb50262a7d2b4d75fa6e04c39236a6ab32509be7383ec114086e90ae2544"
+      },
+      {
+        "path": "/ember/",
+        "status": 200,
+        "sha256": "09141ddaff6357ca7356e3cd4b4594c4900e8a9a327dc94929c84e112db8e217"
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "sha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731"
+      },
+      {
+        "path": "/guides/",
+        "status": 200,
+        "sha256": "94301ad286f8e43e683e66a5d344cc88187c1a8e9708ee5871dd15a3789f7eb5"
+      },
+      {
+        "path": "/guides/xmrig-windows-security-warnings/",
+        "status": 200,
+        "sha256": "2bee5c028f455bcd47ee79d9c0f88cdc57ef4963cf5b41f0b5175e89e2f8ed13"
+      },
+      {
+        "path": "/guides/xmrig-windows-setup/",
+        "status": 200,
+        "sha256": "fb3b55546424117006ac9d861ceb000de8111be6ff0944fea9d6ea8633893311"
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "e9ca727c80a91ebd4a5ef6341ef7c996a18006ccff52d88fc0fbe1a706a1a2d1"
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "sha256": "aaea6bbb9d0f29fbd5aab9184f427de1de6e286c66648a1ca757b7f6ca32fc34"
+      },
+      {
+        "path": "/learn/randomx-memory-cache/",
+        "status": 200,
+        "sha256": "63acc6f002490f4e404846965bf51151c143251a8c58e37259cf7e3a6420e80c"
+      },
+      {
+        "path": "/learn/xmrig-cpu-threads/",
+        "status": 200,
+        "sha256": "a54e3edbf5ff26422a713864cbc0fad7396392aa0125707f16b82059353d2ee0"
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "b8960cd960808d0e3071f8ccc45c7ff2dcbb35cf7a7fc95aefd909ddd61d116b"
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "sha256": "f94023943009d1c81ca62e797671ecbf53c26d3e486a21925c01f97fdd93c2b4"
+      },
+      {
+        "path": "/social-card.png",
+        "status": 200,
+        "sha256": "bbc05e87d84be046e00b59ffc51c588e99fff319b9fdde244ee706c221b9300d"
+      },
+      {
+        "path": "/social-card.svg",
+        "status": 200,
+        "sha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4"
+      },
+      {
+        "path": "/third-party-notices.txt",
+        "status": 200,
+        "sha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7"
+      },
+      {
+        "path": "/tools/electricity-cost-calculator/",
+        "status": 200,
+        "sha256": "e1df724bde75c5efad851b25d28b0d9dbb4eddc69f6e3e5314ce2bcb6a83a3ef"
+      },
+      {
+        "path": "/tools/",
+        "status": 200,
+        "sha256": "f73db0cad4c5c5448c1291bbdcf5c9ac56a4b2deb0157e1f681cf3a08bff6ab4"
+      },
+      {
+        "path": "/tools/monero-mining-profitability-calculator/",
+        "status": 200,
+        "sha256": "c8b9fc41cf11b54b78d9647798e3147ecab0bf22f46462d5b980ef815a37b725"
+      },
+      {
+        "path": "/tools/xmrig-log-decoder/",
+        "status": 200,
+        "sha256": "4ab8b2dc15a4df41d4cd7b100c9d1fcc50906604d23c60aa97e023d946ac949e"
+      },
+      {
+        "path": "/troubleshoot/",
+        "status": 200,
+        "sha256": "b26a4e4b9b050890a6bd60a3e98ded8de4663c9b79038dc9753cdff94ccb0f7e"
+      },
+      {
+        "path": "/troubleshoot/xmrig-huge-pages/",
+        "status": 200,
+        "sha256": "9040d976531ecdcd02c35c78d88c5a92f9e4300a61cf26f8a4ad5a34cf9d834a"
+      },
+      {
+        "path": "/troubleshoot/xmrig-low-hashrate/",
+        "status": 200,
+        "sha256": "8b0d02078e9d4aa1bfda58a8011a0ec3c607ad1e25afd6451326eaffb21d1fd8"
+      },
+      {
+        "path": "/troubleshoot/xmrig-msr-error/",
+        "status": 200,
+        "sha256": "8b64fafa1ff3a387c85872f6192f65e94198533d0696dfbb31e90c9acdc1ea9b"
+      },
+      {
+        "path": "/trust/",
+        "status": 200,
+        "sha256": "b6b11224a04c527be743b925a873319b93cc17e89cadc33bfbfade5011852a88"
+      },
+      {
+        "path": "/_astro/ArticleLayout.BG7Gkfwk.css",
+        "status": 200,
+        "sha256": "b0da8bdb408b7197dbbede3e0ef30c75df3964a491b6c543f62e7e92e0aa0391"
+      },
+      {
+        "path": "/_astro/electricity-cost-calculator.astro_astro_type_script_index_0_lang.m-MV5aLd.js",
+        "status": 200,
+        "sha256": "4d9a2510cb8a4095889921b9efe4e8b996df3553eed116cab4f83fdb040385f7"
+      },
+      {
+        "path": "/_astro/electricity-cost-calculator.BfYf7sxz.css",
+        "status": 200,
+        "sha256": "7c173a538c170ba6d52f6d4bf50728abad45016ec288d61ed42f232d8f4f6804"
+      },
+      {
+        "path": "/_astro/electricity-cost.D3C29iLX.js",
+        "status": 200,
+        "sha256": "35905507a76ef5127adcb5870f49b94871936e3ece96f0f4a26617f8b3283ed6"
+      },
+      {
+        "path": "/_astro/monero-mining-profitability-calculator.astro_astro_type_script_index_0_lang.zdirv3CN.js",
+        "status": 200,
+        "sha256": "e3d4374e5ad74fe0d642745b3991c2dcff27b963fb62bf75de7627f4dc259660"
+      },
+      {
+        "path": "/_astro/monero-mining-profitability-calculator.BUwVbfpE.css",
+        "status": 200,
+        "sha256": "3e3928c9e8f18a0b3d1ddff6102f6218f9fdf996adc5542f788b9596bab322c4"
+      },
+      {
+        "path": "/_astro/SiteLayout.u5IyGVAB.css",
+        "status": 200,
+        "sha256": "e69ef36d8f801f6f3384f85b91bee5155a8b8fc1a2c98da23fb0c86a21fbcb00"
+      },
+      {
+        "path": "/_astro/xmrig-log-decoder.astro_astro_type_script_index_0_lang.CxNBW7er.js",
+        "status": 200,
+        "sha256": "cb3385ca904c225bbe950526ca471f8ffd7d804837027aed2690053a6660e998"
+      },
+      {
+        "path": "/_astro/xmrig-log-decoder.Z-DK93Gb.css",
+        "status": 200,
+        "sha256": "6d818ea5c69ca34551dfe5311b52aa063734076a510ab2a037ae0dad0bcdd51e"
+      },
+      {
+        "path": "/m13a-unknown-path/",
+        "status": 404,
+        "sha256": "e600eb50262a7d2b4d75fa6e04c39236a6ab32509be7383ec114086e90ae2544"
+      },
+      {
+        "path": "/tools/m13a-unknown-path/",
+        "status": 404,
+        "sha256": "e600eb50262a7d2b4d75fa6e04c39236a6ab32509be7383ec114086e90ae2544"
+      }
+    ]
+  },
+  "measuredHtmlMatchesFinalBuild": true,
+  "preservation": [
+    {
+      "file": "src/components/ArticleContents.astro",
+      "previousSha256": "35b1b7c69346bb3e448428fdbd91999dcdaed71f21e183fd791fdcd2352764d7",
+      "currentSha256": "35b1b7c69346bb3e448428fdbd91999dcdaed71f21e183fd791fdcd2352764d7",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ArticleLayout.astro",
+      "previousSha256": "a794a39c3dce002e868a72333760e9f647c811672436885fce9e04656068bfe9",
+      "currentSha256": "a794a39c3dce002e868a72333760e9f647c811672436885fce9e04656068bfe9",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ArticleVisual.astro",
+      "previousSha256": "a168824c1c8d129ed6e1bfc606287fd107229c5bb47fef4efacaf9e498c7677b",
+      "currentSha256": "a168824c1c8d129ed6e1bfc606287fd107229c5bb47fef4efacaf9e498c7677b",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/HubPage.astro",
+      "previousSha256": "1db1c08d8ea1ff8bc579879641d00782571807daa665c0f6e49db32b17f6a393",
+      "currentSha256": "1db1c08d8ea1ff8bc579879641d00782571807daa665c0f6e49db32b17f6a393",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/HubVisual.astro",
+      "previousSha256": "eae239c3cd7267915eddad388cfe7fb240e60769ec72bb9457ea3ef590cfecc5",
+      "currentSha256": "eae239c3cd7267915eddad388cfe7fb240e60769ec72bb9457ea3ef590cfecc5",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/Icon.astro",
+      "previousSha256": "86d6af6bb450be4b5b79a08f73e15a6dbb1f7730784e70b90aec3b4ba54e8597",
+      "currentSha256": "86d6af6bb450be4b5b79a08f73e15a6dbb1f7730784e70b90aec3b4ba54e8597",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ProductArchitecture.astro",
+      "previousSha256": "113156e5f4f5255d491430f09bdff3a88ee4b798d0a8f698486f43e586133ecd",
+      "currentSha256": "113156e5f4f5255d491430f09bdff3a88ee4b798d0a8f698486f43e586133ecd",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ProductJourney.astro",
+      "previousSha256": "855f1c35aa4ea348ff041f243d1c8ef5f42e91c8e8982f75b6cab48217fd8d13",
+      "currentSha256": "855f1c35aa4ea348ff041f243d1c8ef5f42e91c8e8982f75b6cab48217fd8d13",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ProductPreview.astro",
+      "previousSha256": "e11b401ab75be518a411328cb587bae806287ab6d9755657412593078df843f0",
+      "currentSha256": "e11b401ab75be518a411328cb587bae806287ab6d9755657412593078df843f0",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ResourceCard.astro",
+      "previousSha256": "7612d4189427f985870c24690ecaa5b7f3bd7b08333b281e45a6747bce11bd31",
+      "currentSha256": "7612d4189427f985870c24690ecaa5b7f3bd7b08333b281e45a6747bce11bd31",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/SiteLayout.astro",
+      "previousSha256": "3e2e2636ba82ee2e3f4d60e334e14627d919596405e1a3206b8192bd458d60d7",
+      "currentSha256": "958044b9a9d6a7adb8c81b759c64a0372249a19b87e305e75fe42265404a6051",
+      "unchanged": false
+    },
+    {
+      "file": "src/components/StatusBadge.astro",
+      "previousSha256": "d02c606bf48af2139fb95b8a6111ab4e7a5b5b4a029c8f0722aff74eef193c0a",
+      "currentSha256": "d02c606bf48af2139fb95b8a6111ab4e7a5b5b4a029c8f0722aff74eef193c0a",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/TechnicalCallout.astro",
+      "previousSha256": "6970ec3f2e49694a6d3790452233a27e872aeee0a3383f7b78496dc100a7c68c",
+      "currentSha256": "6970ec3f2e49694a6d3790452233a27e872aeee0a3383f7b78496dc100a7c68c",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/TechnicalFlow.astro",
+      "previousSha256": "8c595b725d1f361cc19e0c188db7d0946d367e2b7fb1bcffcd459b13655d70bf",
+      "currentSha256": "8c595b725d1f361cc19e0c188db7d0946d367e2b7fb1bcffcd459b13655d70bf",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/article-loader.mjs",
+      "previousSha256": "b22be67b0f92d63281e93a2246240d4a4e2fc97e968d9ce95543ae4dbc441c4e",
+      "currentSha256": "b22be67b0f92d63281e93a2246240d4a4e2fc97e968d9ce95543ae4dbc441c4e",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/randomx-memory-cache.md",
+      "previousSha256": "df8509f0c9351dccf8af7045a1b10732435d88490639ab03e511478579900934",
+      "currentSha256": "df8509f0c9351dccf8af7045a1b10732435d88490639ab03e511478579900934",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/xmrig-cpu-threads.md",
+      "previousSha256": "3faf80f7aff41c926017af95358166dd6b45a9495f87c6116a4335da1a120a14",
+      "currentSha256": "3faf80f7aff41c926017af95358166dd6b45a9495f87c6116a4335da1a120a14",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/xmrig-huge-pages.md",
+      "previousSha256": "976ffa5ba3fa30241064227e1a0ac55f5e130859cef55e9036d485d4dfd5710c",
+      "currentSha256": "976ffa5ba3fa30241064227e1a0ac55f5e130859cef55e9036d485d4dfd5710c",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/xmrig-low-hashrate.md",
+      "previousSha256": "416d3a3f8d1809f1bbb5c1b98a313bc2cead3939b2bc89baf9f15f4f9c2e0951",
+      "currentSha256": "416d3a3f8d1809f1bbb5c1b98a313bc2cead3939b2bc89baf9f15f4f9c2e0951",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/xmrig-msr-error.md",
+      "previousSha256": "715c22726fdf640b28eed70ca61b2fbd3b7d06fd1111a1b4cd66edf4dc19c172",
+      "currentSha256": "715c22726fdf640b28eed70ca61b2fbd3b7d06fd1111a1b4cd66edf4dc19c172",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/xmrig-windows-security-warnings.md",
+      "previousSha256": "907a2f3648a26c2e574253bdb06859d8eb3f857e9919216541730df67e8b8645",
+      "currentSha256": "907a2f3648a26c2e574253bdb06859d8eb3f857e9919216541730df67e8b8645",
+      "unchanged": true
+    },
+    {
+      "file": "src/content/articles/xmrig-windows-setup.md",
+      "previousSha256": "0173b0da91eddfa9c494f1842bd5e2d112abb9bf22b553dacfdaf5c0a7a8aae4",
+      "currentSha256": "0173b0da91eddfa9c494f1842bd5e2d112abb9bf22b553dacfdaf5c0a7a8aae4",
+      "unchanged": true
+    },
+    {
+      "file": "src/content.config.ts",
+      "previousSha256": "c627a8557b7304bca59b650592f5b7fa7a058f95b099868ce0248757a333b556",
+      "currentSha256": "c627a8557b7304bca59b650592f5b7fa7a058f95b099868ce0248757a333b556",
+      "unchanged": true
+    },
+    {
+      "file": "src/lib/article-experience.mjs",
+      "previousSha256": "1b093912d8e6a90a7a98c9ece08250a4b9f2ef92d7bd0f811f7177ff43a8dede",
+      "currentSha256": "1b093912d8e6a90a7a98c9ece08250a4b9f2ef92d7bd0f811f7177ff43a8dede",
+      "unchanged": true
+    },
+    {
+      "file": "src/lib/electricity-cost.mjs",
+      "previousSha256": "bacd7b98da481e020b98f7df70546bed42aa9a47fe81b9dabeab25df032bd362",
+      "currentSha256": "bacd7b98da481e020b98f7df70546bed42aa9a47fe81b9dabeab25df032bd362",
+      "unchanged": true
+    },
+    {
+      "file": "src/lib/mining-economics.mjs",
+      "previousSha256": "81c1fcd60a45f43b33d921a44971d56ec9822ace9b220d6905343c58e7a4129a",
+      "currentSha256": "81c1fcd60a45f43b33d921a44971d56ec9822ace9b220d6905343c58e7a4129a",
+      "unchanged": true
+    },
+    {
+      "file": "src/lib/site-origin.mjs",
+      "previousSha256": "9a33a85a93e75083031961e332a6201eab084b9eb9869b1698e0bc5deffe6040",
+      "currentSha256": "a3723dac369aa97f8a87c6599cae0f028d2403db93116c28a9eb356a7a841a66",
+      "unchanged": false
+    },
+    {
+      "file": "src/lib/xmrig-log-decoder.mjs",
+      "previousSha256": "23c97c835b2ba94fed9127f62f0de48ee4b16e25bfc63880a4cc9b4e10bca714",
+      "currentSha256": "23c97c835b2ba94fed9127f62f0de48ee4b16e25bfc63880a4cc9b4e10bca714",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/ember/index.astro",
+      "previousSha256": "c365edb0b8a1a4b36b28e5cf49c88213f09a04088fa1cc17229d39330c04201b",
+      "currentSha256": "c365edb0b8a1a4b36b28e5cf49c88213f09a04088fa1cc17229d39330c04201b",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/guides/index.astro",
+      "previousSha256": "afabc65760cef335f27f33260d53e04f3324606d3d26e9475302fc5f01479807",
+      "currentSha256": "afabc65760cef335f27f33260d53e04f3324606d3d26e9475302fc5f01479807",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/guides/[slug].astro",
+      "previousSha256": "836298355e5aaa878a5cda5f27cc89463f7109239dfa75ae6b2923083d985d66",
+      "currentSha256": "836298355e5aaa878a5cda5f27cc89463f7109239dfa75ae6b2923083d985d66",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/index.astro",
+      "previousSha256": "0623ae90496a448162ccde2a98ab37802da1e7418be2fbcf90bc8fa15a0c0dba",
+      "currentSha256": "1f62fc6b6f5a58e3ff84a53232983231020300343486cba8134de93d937a0dd9",
+      "unchanged": false
+    },
+    {
+      "file": "src/pages/learn/index.astro",
+      "previousSha256": "f1f22e615a709cad7ca4b0f3bcdd046ac0956121ede44fc6efc0bf57b96cbc01",
+      "currentSha256": "f1f22e615a709cad7ca4b0f3bcdd046ac0956121ede44fc6efc0bf57b96cbc01",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/learn/[slug].astro",
+      "previousSha256": "99fd5b45466de265b559c21a3005d294bb163b7f3d42c83f1443c1a3dda99894",
+      "currentSha256": "99fd5b45466de265b559c21a3005d294bb163b7f3d42c83f1443c1a3dda99894",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/robots.txt.ts",
+      "previousSha256": "4b86722436792245f9cc646baa81939ae4286a4be7d41d18b23ad56f9813b2e0",
+      "currentSha256": "4b86722436792245f9cc646baa81939ae4286a4be7d41d18b23ad56f9813b2e0",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/sitemap.xml.ts",
+      "previousSha256": "c656d179fa7d4a3322d7792af0e084d0c4aac70b580d6c86dbd2265306586cb7",
+      "currentSha256": "c656d179fa7d4a3322d7792af0e084d0c4aac70b580d6c86dbd2265306586cb7",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/tools/electricity-cost-calculator.astro",
+      "previousSha256": "8f4686f0959d86317f3e6a3702f63c50d6e4a3ada5c2a9601f5987392bf4638b",
+      "currentSha256": "8f4686f0959d86317f3e6a3702f63c50d6e4a3ada5c2a9601f5987392bf4638b",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/tools/index.astro",
+      "previousSha256": "da5b48799e8ec284253bed6b5d344824b33b2cb9d1e64c01f89415be1043cb2c",
+      "currentSha256": "c9b7d8d0f1891015009206aa1e4b1f350f4864b3527ea770905f8549b6bd93da",
+      "unchanged": false
+    },
+    {
+      "file": "src/pages/tools/monero-mining-profitability-calculator.astro",
+      "previousSha256": "4962175b9ae5e9ce5a62656e8d2dcbd0e5ae002867bfbd54652d16404b61661b",
+      "currentSha256": "4962175b9ae5e9ce5a62656e8d2dcbd0e5ae002867bfbd54652d16404b61661b",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/tools/xmrig-log-decoder.astro",
+      "previousSha256": "339f2ec6a3509ae4b558324c841dd160618782bbf5f3b687c4359bd43e89848d",
+      "currentSha256": "339f2ec6a3509ae4b558324c841dd160618782bbf5f3b687c4359bd43e89848d",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/troubleshoot/index.astro",
+      "previousSha256": "fa3711787b1c9166b456d67a5cf6a356b743da3c1a542fa22cde49c4ce350423",
+      "currentSha256": "fa3711787b1c9166b456d67a5cf6a356b743da3c1a542fa22cde49c4ce350423",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/troubleshoot/[slug].astro",
+      "previousSha256": "3b57b22f61a59ec8f4a23e360f8a3aee2883ff3eff29eefa1c27934b1987e8ac",
+      "currentSha256": "3b57b22f61a59ec8f4a23e360f8a3aee2883ff3eff29eefa1c27934b1987e8ac",
+      "unchanged": true
+    },
+    {
+      "file": "src/pages/trust/index.astro",
+      "previousSha256": "5f6b3d5e8914a7e2df68d80ea2c345d7d9a09f69203512640289cfe41468c4e2",
+      "currentSha256": "5f6b3d5e8914a7e2df68d80ea2c345d7d9a09f69203512640289cfe41468c4e2",
+      "unchanged": true
+    },
+    {
+      "file": "src/scripts/electricity-calculator.js",
+      "previousSha256": "3bed7859b578fa33694aa92a14b8b2b66116ef5c9463acda7fa293e538a4fa50",
+      "currentSha256": "3bed7859b578fa33694aa92a14b8b2b66116ef5c9463acda7fa293e538a4fa50",
+      "unchanged": true
+    },
+    {
+      "file": "src/scripts/mining-profitability.js",
+      "previousSha256": "6d8ae9f449d0fd341c311ddcbfc9688fd417f7d333b0f448e1fc81401e69cd9c",
+      "currentSha256": "6d8ae9f449d0fd341c311ddcbfc9688fd417f7d333b0f448e1fc81401e69cd9c",
+      "unchanged": true
+    },
+    {
+      "file": "src/scripts/xmrig-log-decoder.js",
+      "previousSha256": "c4f992660b236700871c99f7fc51d308ad7f04db800c3e7f1b9df0634eb9c2c6",
+      "currentSha256": "c4f992660b236700871c99f7fc51d308ad7f04db800c3e7f1b9df0634eb9c2c6",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/electricity-calculator.css",
+      "previousSha256": "7071403304428a3f8cebf6118feee43c3a996964cfe443e861eda79193591c45",
+      "currentSha256": "7071403304428a3f8cebf6118feee43c3a996964cfe443e861eda79193591c45",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/mining-profitability.css",
+      "previousSha256": "c590cdb76d328c194312328e19cfb9cdc7da2ace8f4099c0d55ec1418a5ea3df",
+      "currentSha256": "c590cdb76d328c194312328e19cfb9cdc7da2ace8f4099c0d55ec1418a5ea3df",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/site.css",
+      "previousSha256": "a361e4b91b9c1752b7ee13096ade3f6ffdf0937143a30ca5b7f5b9e8f1182839",
+      "currentSha256": "a361e4b91b9c1752b7ee13096ade3f6ffdf0937143a30ca5b7f5b9e8f1182839",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/xmrig-log-decoder.css",
+      "previousSha256": "0f01b0b7de1adbec01b0d993f0dcd6fab61ff10c16bcb15c8eb7b9edcd6cda67",
+      "currentSha256": "0f01b0b7de1adbec01b0d993f0dcd6fab61ff10c16bcb15c8eb7b9edcd6cda67",
+      "unchanged": true
+    }
+  ],
+  "trackedAstroFilesRestored": 8,
+  "desktopChanges": false,
+  "calculatorParserControllerStyleChanges": false,
+  "changedFiles": [
+    "website/.env.example",
+    "website/README.md",
+    "website/astro.config.mjs",
+    "website/docs/content-roadmap.md",
+    "website/docs/evidence/m13a/environment-matrix.json",
+    "website/docs/evidence/m13a/metadata-audit.json",
+    "website/docs/evidence/m13a/performance.json",
+    "website/docs/evidence/m13a/verification.json",
+    "website/docs/m13a-organic-growth-framework.md",
+    "website/docs/m13a-performance-baseline.md",
+    "website/docs/m13a-production-search-readiness.md",
+    "website/docs/m13a-search-console-onboarding.md",
+    "website/public/404.html",
+    "website/public/social-card.png",
+    "website/scripts/measure-performance.mjs",
+    "website/scripts/verify-content.mjs",
+    "website/scripts/verify-production-origin.mjs",
+    "website/src/components/SiteLayout.astro",
+    "website/src/lib/site-origin.mjs",
+    "website/src/pages/index.astro",
+    "website/src/pages/tools/index.astro",
+    "website/tests/site-origin.test.mjs"
+  ]
+}

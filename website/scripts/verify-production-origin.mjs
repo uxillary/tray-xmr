@@ -1,13 +1,15 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
-import { resolveSiteUrl } from '../src/lib/site-origin.mjs';
+import { resolveSiteUrl, resolveSiteIndexing } from '../src/lib/site-origin.mjs';
 
 const dist = resolve('dist');
 const failures = [];
 const rawOrigin = process.env.SITE_URL;
 let origin;
+let indexing;
 try {
   origin = resolveSiteUrl({ envValue: rawOrigin, releaseBuild: true });
+  indexing = resolveSiteIndexing({ value: process.env.SITE_INDEXING, site: origin });
 } catch (error) {
   console.error(error.message);
   process.exit(1);
@@ -25,9 +27,9 @@ function walk(directory) {
   });
 }
 
-const htmlFiles = walk(dist).filter((path) => path.endsWith('.html'));
+const htmlFiles = walk(dist).filter((path) => path.endsWith('.html') && path !== join(dist, '404.html'));
 const canonicalUrls = new Set();
-const expectedImage = `${origin}/social-card.svg`;
+const expectedImage = `${origin}/social-card.png`;
 const absolutePlaceholder = /(?:https?:)?\/\/(?:[a-z0-9-]+\.)*example\.com\b/i;
 const localAbsoluteUrl = /https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?(?:\/|\b)/i;
 const metadata = (html, property) => {
@@ -71,6 +73,10 @@ for (const file of htmlFiles) {
   const ogUrl = metadata(html, 'og:url');
   const ogImage = metadata(html, 'og:image');
   const twitterImage = metadata(html, 'twitter:image');
+  const robots = metadata(html, 'robots');
+  if (indexing === 'noindex' ? robots !== 'noindex, follow' : robots !== undefined) {
+    failures.push(`${file}: robots metadata disagrees with SITE_INDEXING=${indexing}`);
+  }
 
   if (!route.endsWith('/')) failures.push(`${file}: generated route ${route} lacks a trailing slash`);
   if (canonical !== expectedCanonical) failures.push(`${file}: canonical is ${canonical ?? '(missing)'}, expected ${expectedCanonical}`);
@@ -91,6 +97,25 @@ for (const file of htmlFiles) {
 }
 
 if (htmlFiles.length !== 17) failures.push(`expected 17 static HTML routes, found ${htmlFiles.length}`);
+const errorPath = join(dist, '404.html');
+if (!existsSync(errorPath) || metadata(readFileSync(errorPath, 'utf8'), 'robots') !== 'noindex, follow') failures.push('404.html must exist and remain noindex in every environment');
+
+const headersPath = join(dist, '_headers');
+const expectedHeaders = indexing === 'noindex'
+  ? '/*\n  X-Robots-Tag: noindex\n'
+  : '# Indexable production build; no X-Robots-Tag restriction.\n';
+if (!existsSync(headersPath) || readFileSync(headersPath, 'utf8') !== expectedHeaders) {
+  failures.push(`_headers does not match SITE_INDEXING=${indexing}`);
+}
+const imagePath = join(dist, 'social-card.png');
+if (!existsSync(imagePath)) failures.push('social-card.png is missing');
+else {
+  const image = readFileSync(imagePath);
+  if (image.length < 24 || image.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a'
+    || image.readUInt32BE(16) !== 1200 || image.readUInt32BE(20) !== 630) {
+    failures.push('social-card.png must be a 1200 × 630 PNG');
+  }
+}
 
 const sitemapPath = join(dist, 'sitemap.xml');
 const robotsPath = join(dist, 'robots.txt');
@@ -100,6 +125,7 @@ if (!existsSync(robotsPath)) failures.push('robots.txt is missing');
 if (existsSync(sitemapPath)) {
   const sitemap = readFileSync(sitemapPath, 'utf8');
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
+  if (locations.some((loc) => /\/404(?:\.html|\/)$/.test(loc))) failures.push('404 error document must not appear in the sitemap');
   for (const loc of locations) {
     try {
       const parsed = new URL(loc);
@@ -122,5 +148,5 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Verified ${htmlFiles.length} static routes against ${origin}: canonical, Open Graph, social image, JSON-LD, sitemap, robots, slashes, and no example.com or localhost URLs.`);
+  console.log(`Verified ${htmlFiles.length} static routes against ${origin}: canonical, Open Graph, PNG social image, JSON-LD, sitemap, robots, ${indexing} metadata/headers, slashes, and no example.com or localhost URLs. Local output verification only; live hosting is not checked.`);
 }

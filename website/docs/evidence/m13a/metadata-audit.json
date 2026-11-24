@@ -1,0 +1,747 @@
+{
+  "origin": "https://ember-m12b0-audit.invalid",
+  "verification": "Local synthetic release output; not a deployed origin",
+  "startingHead": "a80288182c1ae4d534df1eff9194d22fc3ed69ee",
+  "records": [
+    {
+      "route": "/ember/",
+      "previousTitle": "About Ember — a clearer Monero mining manager",
+      "previousDescription": "What Ember is building for Windows Monero mining, how its current foundation works, and what remains in development.",
+      "title": "About Ember — a clearer Monero mining manager",
+      "description": "What Ember is building for Windows Monero mining, how its current foundation works, and what remains in development.",
+      "h1": [
+        "More of the mining process, made understandable."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/ember/",
+      "ogTitle": "About Ember — a clearer Monero mining manager",
+      "ogDescription": "What Ember is building for Windows Monero mining, how its current foundation works, and what remains in development.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/ember/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/learn/",
+        "/troubleshoot/",
+        "/tools/",
+        "/trust/"
+      ],
+      "primarySearchIntent": "Understand development status and controls",
+      "intendedAudience": "Prospective desktop users"
+    },
+    {
+      "route": "/guides/",
+      "previousTitle": "Windows XMRig guides — Ember",
+      "previousDescription": "Sourced Windows XMRig guidance for safely checking downloads, configuring a standalone miner and reading first-session signals.",
+      "title": "Windows XMRig guides — Ember",
+      "description": "Sourced Windows XMRig guidance for safely checking downloads, configuring a standalone miner and reading first-session signals.",
+      "h1": [
+        "A clear next step for Windows mining."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/guides/",
+      "ogTitle": "Windows XMRig guides — Ember",
+      "ogDescription": "Sourced Windows XMRig guidance for safely checking downloads, configuring a standalone miner and reading first-session signals.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/guides/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/guides/xmrig-windows-setup/",
+        "/guides/xmrig-windows-security-warnings/",
+        "/troubleshoot/"
+      ],
+      "primarySearchIntent": "Choose a Windows setup or warning workflow",
+      "intendedAudience": "New Windows miners"
+    },
+    {
+      "route": "/guides/xmrig-windows-security-warnings/",
+      "previousTitle": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+      "previousDescription": "What to check when Windows or Defender warns about an XMRig download: verify the official source and available release evidence, and know when to stop.",
+      "title": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+      "description": "What to check when Windows or Defender warns about an XMRig download: verify the official source and available release evidence, and know when to stop.",
+      "h1": [
+        "Windows Security Warnings When Downloading XMRig: Safe Checks"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+      "ogTitle": "Windows Security Warnings When Downloading XMRig: Safe Checks — Ember",
+      "ogDescription": "What to check when Windows or Defender warns about an XMRig download: verify the official source and available release evidence, and know when to stop.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Guides",
+              "item": "https://ember-m12b0-audit.invalid/guides/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Windows Security Warnings When Downloading XMRig: Safe Checks",
+              "item": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Windows Security Warnings When Downloading XMRig: Safe Checks",
+          "description": "What to check when Windows or Defender warns about an XMRig download: verify the official source and available release evidence, and know when to stop.",
+          "datePublished": "2026-10-10",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-security-warnings/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/guides/",
+        "/guides/xmrig-windows-setup/",
+        "/troubleshoot/xmrig-huge-pages/",
+        "/ember/"
+      ],
+      "primarySearchIntent": "Stop and verify a flagged download",
+      "intendedAudience": "Windows users facing a security warning"
+    },
+    {
+      "route": "/guides/xmrig-windows-setup/",
+      "previousTitle": "How to Set Up XMRig on Windows — Ember",
+      "previousDescription": "Set up standalone XMRig for Monero on Windows: choose the official build, configure a pool and wallet address, start safely and read each first-run signal.",
+      "title": "How to Set Up XMRig on Windows — Ember",
+      "description": "Set up standalone XMRig for Monero on Windows: choose the official build, configure a pool and wallet address, start safely and read each first-run signal.",
+      "h1": [
+        "How to Set Up XMRig on Windows"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+      "ogTitle": "How to Set Up XMRig on Windows — Ember",
+      "ogDescription": "Set up standalone XMRig for Monero on Windows: choose the official build, configure a pool and wallet address, start safely and read each first-run signal.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Guides",
+              "item": "https://ember-m12b0-audit.invalid/guides/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "How to Set Up XMRig on Windows",
+              "item": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "How to Set Up XMRig on Windows",
+          "description": "Set up standalone XMRig for Monero on Windows: choose the official build, configure a pool and wallet address, start safely and read each first-run signal.",
+          "datePublished": "2026-10-08",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/guides/xmrig-windows-setup/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/guides/",
+        "/learn/randomx-memory-cache/",
+        "/learn/xmrig-cpu-threads/",
+        "/tools/electricity-cost-calculator/",
+        "/guides/xmrig-windows-security-warnings/",
+        "/tools/xmrig-log-decoder/",
+        "/troubleshoot/xmrig-huge-pages/",
+        "/troubleshoot/xmrig-msr-error/",
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/ember/"
+      ],
+      "primarySearchIntent": "Set up standalone XMRig safely",
+      "intendedAudience": "Windows users starting a first session"
+    },
+    {
+      "route": "/",
+      "previousTitle": "Ember — Monero mining, without the mystery",
+      "previousDescription": "A clearer way to run and understand Monero mining on Windows, with practical guides and transparent product information.",
+      "title": "Ember — Monero mining, without the mystery",
+      "description": "Understand Monero mining with practical XMRig guides, local calculators and a log decoder. Explore Ember, a Windows mining manager in development.",
+      "h1": [
+        "Monero mining,without themystery."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/",
+      "ogTitle": "Ember — Monero mining, without the mystery",
+      "ogDescription": "Understand Monero mining with practical XMRig guides, local calculators and a log decoder. Explore Ember, a Windows mining manager in development.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Ember",
+          "url": "https://ember-m12b0-audit.invalid/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember",
+            "url": "https://ember-m12b0-audit.invalid/"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/ember/",
+        "/learn/",
+        "/guides/",
+        "/troubleshoot/",
+        "/tools/",
+        "/trust/"
+      ],
+      "primarySearchIntent": "Find useful mining resources / evaluate Ember",
+      "intendedAudience": "New visitors and prospective Windows users"
+    },
+    {
+      "route": "/learn/",
+      "previousTitle": "Learn Monero mining — Ember",
+      "previousDescription": "Understand Monero mining, RandomX, CPU cache and XMRig thread selection through clear, technically grounded explanations.",
+      "title": "Learn Monero mining — Ember",
+      "description": "Understand Monero mining, RandomX, CPU cache and XMRig thread selection through clear, technically grounded explanations.",
+      "h1": [
+        "Understand what your CPU is doing."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/learn/",
+      "ogTitle": "Learn Monero mining — Ember",
+      "ogDescription": "Understand Monero mining, RandomX, CPU cache and XMRig thread selection through clear, technically grounded explanations.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/learn/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/learn/randomx-memory-cache/",
+        "/learn/xmrig-cpu-threads/",
+        "/guides/xmrig-windows-setup/"
+      ],
+      "primarySearchIntent": "Choose a RandomX/CPU explanation",
+      "intendedAudience": "Learners and XMRig users"
+    },
+    {
+      "route": "/learn/randomx-memory-cache/",
+      "previousTitle": "RandomX Memory and CPU Cache Explained — Ember",
+      "previousDescription": "A practical guide to RandomX's dataset, cache, per-thread CPU cache needs, Huge Pages and NUMA for XMRig users.",
+      "title": "RandomX Memory and CPU Cache Explained — Ember",
+      "description": "A practical guide to RandomX's dataset, cache, per-thread CPU cache needs, Huge Pages and NUMA for XMRig users.",
+      "h1": [
+        "RandomX Memory and CPU Cache Explained"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+      "ogTitle": "RandomX Memory and CPU Cache Explained — Ember",
+      "ogDescription": "A practical guide to RandomX's dataset, cache, per-thread CPU cache needs, Huge Pages and NUMA for XMRig users.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Learn",
+              "item": "https://ember-m12b0-audit.invalid/learn/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "RandomX Memory and CPU Cache Explained",
+              "item": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "RandomX Memory and CPU Cache Explained",
+          "description": "A practical guide to RandomX's dataset, cache, per-thread CPU cache needs, Huge Pages and NUMA for XMRig users.",
+          "datePublished": "2026-10-06",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/learn/randomx-memory-cache/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/learn/",
+        "/learn/xmrig-cpu-threads/",
+        "/troubleshoot/xmrig-huge-pages/",
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/ember/"
+      ],
+      "primarySearchIntent": "Understand RandomX memory and cache layers",
+      "intendedAudience": "XMRig users interpreting resource limits"
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "previousTitle": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+      "previousDescription": "Understand logical processors, RandomX mining threads and cache limits so you can interpret XMRig auto-configuration without blindly forcing more threads.",
+      "title": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+      "description": "Understand logical processors, RandomX mining threads and cache limits so you can interpret XMRig auto-configuration without blindly forcing more threads.",
+      "h1": [
+        "Why XMRig Isn't Using All Your CPU Threads"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+      "ogTitle": "Why XMRig Isn't Using All Your CPU Threads — Ember",
+      "ogDescription": "Understand logical processors, RandomX mining threads and cache limits so you can interpret XMRig auto-configuration without blindly forcing more threads.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Learn",
+              "item": "https://ember-m12b0-audit.invalid/learn/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Why XMRig Isn't Using All Your CPU Threads",
+              "item": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Why XMRig Isn't Using All Your CPU Threads",
+          "description": "Understand logical processors, RandomX mining threads and cache limits so you can interpret XMRig auto-configuration without blindly forcing more threads.",
+          "datePublished": "2026-10-06",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/learn/xmrig-cpu-threads/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/learn/",
+        "/learn/randomx-memory-cache/",
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/ember/",
+        "/troubleshoot/xmrig-huge-pages/"
+      ],
+      "primarySearchIntent": "Explain worker counts and cache limits",
+      "intendedAudience": "Users questioning XMRig thread selection"
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "previousTitle": "Mining Electricity Cost Calculator",
+      "previousDescription": "Estimate the electricity energy and running cost of a mining PC or other continuous workload using your own measured power, runtime and tariff.",
+      "title": "Mining Electricity Cost Calculator",
+      "description": "Estimate the electricity energy and running cost of a mining PC or other continuous workload using your own measured power, runtime and tariff.",
+      "h1": [
+        "Mining Electricity Cost Calculator"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+      "ogTitle": "Mining Electricity Cost Calculator",
+      "ogDescription": "Estimate the electricity energy and running cost of a mining PC or other continuous workload using your own measured power, runtime and tariff.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/tools/electricity-cost-calculator/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/tools/monero-mining-profitability-calculator/",
+        "/learn/randomx-memory-cache/",
+        "/ember/",
+        "/tools/"
+      ],
+      "primarySearchIntent": "Estimate workload energy and cost",
+      "intendedAudience": "Users with measured watts, runtime and tariff"
+    },
+    {
+      "route": "/tools/",
+      "previousTitle": "Monero mining tools — Ember",
+      "previousDescription": "A manual mining profitability estimate, electricity cost calculator and local XMRig log decoder, plus planned tools.",
+      "title": "Monero mining tools — Ember",
+      "description": "Use a mining profitability calculator, electricity cost calculator and XMRig log decoder locally in your browser. Manual inputs, no uploads or live data.",
+      "h1": [
+        "Small tools. Clearer decisions."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/tools/",
+      "ogTitle": "Monero mining tools — Ember",
+      "ogDescription": "Use a mining profitability calculator, electricity cost calculator and XMRig log decoder locally in your browser. Manual inputs, no uploads or live data.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/tools/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/tools/electricity-cost-calculator/",
+        "/tools/electricity-cost-calculator/#power-note-title",
+        "/tools/monero-mining-profitability-calculator/",
+        "/tools/monero-mining-profitability-calculator/#input-sources",
+        "/tools/xmrig-log-decoder/",
+        "/tools/xmrig-log-decoder/#decoder-scope"
+      ],
+      "primarySearchIntent": "Find an available local instrument",
+      "intendedAudience": "Miners comparing scenarios or reading logs"
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "previousTitle": "Monero Mining Profitability Calculator — Ember",
+      "previousDescription": "Estimate expected XMR rewards, pool-adjusted revenue, electricity cost and operating balance from your own hashrate and manual network and price assumptions.",
+      "title": "Monero Mining Profitability Calculator — Ember",
+      "description": "Estimate expected XMR rewards, pool-adjusted revenue, electricity cost and operating balance from your own hashrate and manual network and price assumptions.",
+      "h1": [
+        "Monero Mining Profitability Calculator"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+      "ogTitle": "Monero Mining Profitability Calculator — Ember",
+      "ogDescription": "Estimate expected XMR rewards, pool-adjusted revenue, electricity cost and operating balance from your own hashrate and manual network and price assumptions.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/tools/monero-mining-profitability-calculator/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/tools/electricity-cost-calculator/#power-note-title",
+        "/learn/randomx-memory-cache/",
+        "/learn/xmrig-cpu-threads/",
+        "/guides/xmrig-windows-setup/",
+        "/tools/electricity-cost-calculator/"
+      ],
+      "primarySearchIntent": "Explore expected revenue and electricity balance",
+      "intendedAudience": "Users supplying manual mining/network/price inputs"
+    },
+    {
+      "route": "/tools/xmrig-log-decoder/",
+      "previousTitle": "XMRig Log Decoder — Ember",
+      "previousDescription": "Interpret a small set of XMRig startup, Huge Pages, MSR, pool and share signals locally in your browser.",
+      "title": "XMRig Log Decoder — Ember",
+      "description": "Interpret a small set of XMRig startup, Huge Pages, MSR, pool and share signals locally in your browser.",
+      "h1": [
+        "What is XMRig actually telling me?"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+      "ogTitle": "XMRig Log Decoder — Ember",
+      "ogDescription": "Interpret a small set of XMRig startup, Huge Pages, MSR, pool and share signals locally in your browser.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/tools/xmrig-log-decoder/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/tools/",
+        "/troubleshoot/xmrig-huge-pages/",
+        "/troubleshoot/xmrig-msr-error/",
+        "/troubleshoot/xmrig-low-hashrate/"
+      ],
+      "primarySearchIntent": "Interpret supported signals locally",
+      "intendedAudience": "Users with an XMRig output excerpt"
+    },
+    {
+      "route": "/troubleshoot/",
+      "previousTitle": "Monero mining troubleshooting — Ember",
+      "previousDescription": "Evidence-led guidance for XMRig Huge Pages, MSR errors and low RandomX hashrate on Windows.",
+      "title": "Monero mining troubleshooting — Ember",
+      "description": "Evidence-led guidance for XMRig Huge Pages, MSR errors and low RandomX hashrate on Windows.",
+      "h1": [
+        "Start with the signal you can see."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/",
+      "ogTitle": "Monero mining troubleshooting — Ember",
+      "ogDescription": "Evidence-led guidance for XMRig Huge Pages, MSR errors and low RandomX hashrate on Windows.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/troubleshoot/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [
+        "/troubleshoot/xmrig-huge-pages/",
+        "/troubleshoot/xmrig-msr-error/",
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/tools/xmrig-log-decoder/",
+        "/guides/xmrig-windows-security-warnings/"
+      ],
+      "primarySearchIntent": "Choose a symptom-specific next check",
+      "intendedAudience": "Windows XMRig users with a problem"
+    },
+    {
+      "route": "/troubleshoot/xmrig-huge-pages/",
+      "previousTitle": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+      "previousDescription": "Understand XMRig Huge Pages status on Windows, the Lock Pages in Memory privilege, partial allocation and safe next steps.",
+      "title": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+      "description": "Understand XMRig Huge Pages status on Windows, the Lock Pages in Memory privilege, partial allocation and safe next steps.",
+      "h1": [
+        "XMRig Huge Pages Not Working on Windows? What to Check"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+      "ogTitle": "XMRig Huge Pages Not Working on Windows? What to Check — Ember",
+      "ogDescription": "Understand XMRig Huge Pages status on Windows, the Lock Pages in Memory privilege, partial allocation and safe next steps.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Troubleshoot",
+              "item": "https://ember-m12b0-audit.invalid/troubleshoot/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "XMRig Huge Pages Not Working on Windows? What to Check",
+              "item": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "XMRig Huge Pages Not Working on Windows? What to Check",
+          "description": "Understand XMRig Huge Pages status on Windows, the Lock Pages in Memory privilege, partial allocation and safe next steps.",
+          "datePublished": "2026-10-06",
+          "dateModified": "2026-10-10",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-huge-pages/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/troubleshoot/",
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/tools/xmrig-log-decoder/",
+        "/learn/randomx-memory-cache/",
+        "/ember/",
+        "/learn/xmrig-cpu-threads/",
+        "/guides/xmrig-windows-setup/"
+      ],
+      "primarySearchIntent": "Separate privilege from allocation and choose a check",
+      "intendedAudience": "Windows users seeing unavailable/partial Huge Pages"
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "previousTitle": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+      "previousDescription": "Diagnose a low XMRig RandomX hashrate by checking allocation, threads, memory, system load, thermals and benchmark conditions in order.",
+      "title": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+      "description": "Diagnose a low XMRig RandomX hashrate by checking allocation, threads, memory, system load, thermals and benchmark conditions in order.",
+      "h1": [
+        "Why Is My XMRig Hashrate Low? A Windows Checklist"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+      "ogTitle": "Why Is My XMRig Hashrate Low? A Windows Checklist — Ember",
+      "ogDescription": "Diagnose a low XMRig RandomX hashrate by checking allocation, threads, memory, system load, thermals and benchmark conditions in order.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Troubleshoot",
+              "item": "https://ember-m12b0-audit.invalid/troubleshoot/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Why Is My XMRig Hashrate Low? A Windows Checklist",
+              "item": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Why Is My XMRig Hashrate Low? A Windows Checklist",
+          "description": "Diagnose a low XMRig RandomX hashrate by checking allocation, threads, memory, system load, thermals and benchmark conditions in order.",
+          "datePublished": "2026-10-06",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-low-hashrate/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/troubleshoot/",
+        "/troubleshoot/xmrig-huge-pages/",
+        "/troubleshoot/xmrig-msr-error/",
+        "/tools/xmrig-log-decoder/",
+        "/learn/xmrig-cpu-threads/",
+        "/learn/randomx-memory-cache/",
+        "/tools/electricity-cost-calculator/#power-note-title",
+        "/tools/monero-mining-profitability-calculator/#input-sources",
+        "/ember/"
+      ],
+      "primarySearchIntent": "Investigate low sustained hashrate",
+      "intendedAudience": "Users comparing XMRig performance conditions"
+    },
+    {
+      "route": "/troubleshoot/xmrig-msr-error/",
+      "previousTitle": "XMRig MSR Errors on Windows: What They Mean — Ember",
+      "previousDescription": "Learn what XMRig's RandomX MSR setup does, why it can fail on Windows, and what to check before changing system security settings.",
+      "title": "XMRig MSR Errors on Windows: What They Mean — Ember",
+      "description": "Learn what XMRig's RandomX MSR setup does, why it can fail on Windows, and what to check before changing system security settings.",
+      "h1": [
+        "XMRig MSR Errors on Windows: What They Mean"
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+      "ogTitle": "XMRig MSR Errors on Windows: What They Mean — Ember",
+      "ogDescription": "Learn what XMRig's RandomX MSR setup does, why it can fail on Windows, and what to check before changing system security settings.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ember-m12b0-audit.invalid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Troubleshoot",
+              "item": "https://ember-m12b0-audit.invalid/troubleshoot/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "XMRig MSR Errors on Windows: What They Mean",
+              "item": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "XMRig MSR Errors on Windows: What They Mean",
+          "description": "Learn what XMRig's RandomX MSR setup does, why it can fail on Windows, and what to check before changing system security settings.",
+          "datePublished": "2026-10-06",
+          "mainEntityOfPage": "https://ember-m12b0-audit.invalid/troubleshoot/xmrig-msr-error/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ember"
+          }
+        }
+      ],
+      "primaryHtmlLinks": [
+        "/",
+        "/troubleshoot/",
+        "/guides/xmrig-windows-security-warnings/#check-source",
+        "/troubleshoot/xmrig-huge-pages/",
+        "/troubleshoot/xmrig-low-hashrate/",
+        "/tools/xmrig-log-decoder/",
+        "/ember/",
+        "/learn/xmrig-cpu-threads/"
+      ],
+      "primarySearchIntent": "Interpret an MSR warning safely",
+      "intendedAudience": "Windows users seeing XMRig MSR errors"
+    },
+    {
+      "route": "/trust/",
+      "previousTitle": "Trust and transparency — Ember",
+      "previousDescription": "How Ember currently handles setup, wallet information, XMRig provisioning and process lifecycle, and what remains unverified.",
+      "title": "Trust and transparency — Ember",
+      "description": "How Ember currently handles setup, wallet information, XMRig provisioning and process lifecycle, and what remains unverified.",
+      "h1": [
+        "Say what happens. Be clear about what hasn't been proven."
+      ],
+      "canonical": "https://ember-m12b0-audit.invalid/trust/",
+      "ogTitle": "Trust and transparency — Ember",
+      "ogDescription": "How Ember currently handles setup, wallet information, XMRig provisioning and process lifecycle, and what remains unverified.",
+      "ogUrl": "https://ember-m12b0-audit.invalid/trust/",
+      "socialImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "twitterImage": "https://ember-m12b0-audit.invalid/social-card.png",
+      "robots": "noindex, follow",
+      "structuredData": [],
+      "primaryHtmlLinks": [],
+      "primarySearchIntent": "Check privacy, provisioning and evidence limits",
+      "intendedAudience": "Cautious prospective users and contributors"
+    }
+  ]
+}

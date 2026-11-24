@@ -1,3 +1,5 @@
+import { isIP } from 'node:net';
+
 export const LOCAL_SITE_URL = 'http://localhost:4321';
 
 export function resolveSiteUrl({ fileValue, envValue, releaseBuild = false } = {}) {
@@ -22,11 +24,28 @@ export function resolveSiteUrl({ fileValue, envValue, releaseBuild = false } = {
   if (releaseBuild && url.protocol !== 'https:') {
     throw new Error('Production SITE_URL must use HTTPS.');
   }
-  if (releaseBuild && (url.hostname === 'example.com' || url.hostname.endsWith('.example.com'))) {
-    throw new Error('Production SITE_URL cannot use the placeholder example.com domain. Configure the confirmed production origin.');
+  if (releaseBuild && /(^|\.)example\.(com|net|org)\.?$/i.test(url.hostname)) {
+    throw new Error('Production SITE_URL cannot use a placeholder example.com, example.net or example.org domain. Configure the confirmed production origin.');
+  }
+  if (releaseBuild && (/(^|\.)localhost\.?$/i.test(url.hostname) || isIP(url.hostname.replace(/^\[|\]$/g, '')))) {
+    throw new Error('Production SITE_URL cannot use localhost or an IP address. Configure the confirmed HTTPS hostname.');
   }
 
   return url.origin;
+}
+
+export function resolveSiteIndexing({ value, site } = {}) {
+  const indexing = value?.trim() || 'noindex';
+  if (!['index', 'noindex'].includes(indexing)) {
+    throw new Error('SITE_INDEXING must be index or noindex. Leave it unset for protected local and preview builds.');
+  }
+  if (indexing === 'index') {
+    const origin = resolveSiteUrl({ envValue: site, releaseBuild: true });
+    if (/\.(invalid|test|example|local)\.?$/i.test(new URL(origin).hostname)) {
+      throw new Error('Indexable builds require the confirmed public SITE_URL, not a synthetic or reserved hostname.');
+    }
+  }
+  return indexing;
 }
 
 export function siteOrigin(site) {

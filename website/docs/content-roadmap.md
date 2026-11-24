@@ -14,6 +14,12 @@ Content ships when it is useful, sourced and technically checked. Route ideas ar
 
 **Final acceptance (23 November 2026):** [M12B.4](m12b4-final-acceptance.md) fixed CSS320 document overflow and current-page versus section-location navigation semantics. All 17 routes pass the seven requested sizes plus a 320px reflow probe (136 records); 40 controlled direct/clicked fragment checks clear the header, 4,460 rendered contrast sample groups pass, and all 44 tests remain passing. Keyboard, semantic and representative tool-state checks passed within their recorded scope. Native zoom/text scaling, actual screen-reader acceptance, Firefox/WebKit and physical-device checks remain **OWNER ACTION REQUIRED**; CSS resizing is not zoom or device acceptance. Ready for owner review, not unconditional production approval. No M13 work, production-domain configuration or deployment is authorized by these milestones.
 
+## M13A — Production and organic discovery foundation
+
+**Complete locally (24 November 2026); production/owner acceptance remains open.** The [production/search readiness audit](m13a-production-search-readiness.md) records the actual M12B.4 baseline at `a802881`, unknown public hosting/origin, owner-ready Cloudflare Pages settings and an all-17-route metadata/schema/social audit. Builds now default to HTML/header noindex, require an explicit public origin to opt into indexing, retain stronger release-origin safeguards and include a non-indexed static error document. Focused homepage/tools descriptions, homepage WebSite identity and a compatible PNG sharing card improve presentation without new articles or tool behavior changes.
+
+The [performance baseline](m13a-performance-baseline.md) records 36 local Chromium observations across the six priority routes, with laboratory/field limitations explicit; no performance rewrite was justified. The [Search Console onboarding guide](m13a-search-console-onboarding.md) and [organic growth framework](m13a-organic-growth-framework.md) prepare verification, privacy-conscious measurement, Day 0/30/60/90 reviews and preliminary M13B questions. No client analytics, public deployment, domain/DNS change, search submission or invented search baseline was introduced. Native zoom, actual screen-reader, Firefox/Safari and physical-device acceptance from M12B.4 remain owner actions. M13B research/content production has **not begun**.
+
 ## P0 — Launch foundation
 
 - Publish accurate product, current status and trust pages.
