@@ -6,3 +6,4 @@
 @media(max-width:600px){.decoder-flow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.decoder-flow b{display:none}.decoder-flow span{white-space:normal}.decoder-input-panel textarea{min-height:220px}}
 .decoder-page{padding-top:0}.decoder-page .decoder-heading{padding:48px 0 24px}.decoder-page .decoder-heading h1{font-size:clamp(32px,4vw,52px)}
 @media(max-width:600px){.decoder-page .decoder-heading{padding-top:32px}.decoder-page .decoder-heading h1{font-size:34px}}
+.decoder-context{max-width:78ch;margin:32px 0;color:var(--body);font-size:16px;line-height:1.75}.decoder-context a{color:var(--ember-light);text-decoration:underline;text-underline-offset:4px}

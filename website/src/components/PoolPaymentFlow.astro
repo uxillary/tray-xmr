@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+import '../styles/resource-methods.css';
+const symptoms = [['no-connection','No connection','Endpoint / retry'],['connected-no-work','Connected, no work','Job availability'],['rejected-submissions','Rejected submissions','Response / reason'],['accepted-no-payment','Accepted, no payment','Accounting / wallet'],['p2pool-shares','P2Pool shows no shares','Different thresholds'],['further-information','Still unclear?','Capture safe context']];
+---
+<nav class="symptom-selector" aria-label="Choose your pool or payment symptom">{symptoms.map(([id,title,detail],i)=><a href={`#${id}`}><span class="symptom-number">0{i+1}</span><span><strong>{title}</strong><small>{detail}</small></span><Icon name="arrowDown" size="inline"/></a>)}</nav>
+<figure class="payment-flow" aria-labelledby="payment-flow-title" aria-describedby="payment-flow-caption">
+  <figcaption id="payment-flow-title"><span class="eyebrow">EVENTS / NOT A PAYMENT PROMISE</span><strong>Every stage needs its own evidence.</strong></figcaption>
+  <ol class="submission-path"><li><Icon name="network" size="diagram"/><strong>Connection</strong><span>Endpoint reached</span></li><li><Icon name="steps" size="diagram"/><strong>Job</strong><span>Work received</span></li><li><Icon name="cpu" size="diagram"/><strong>Submission</strong><span>Candidate sent</span></li></ol>
+  <div class="response-fork"><div><span class="eyebrow">REJECTED RESPONSE</span><p>Read the supplied reason and context. It does not identify a universal cause.</p></div><div><span class="eyebrow">ACCEPTED RESPONSE</span><p>Acknowledges that submission. Payment conditions still need checking below.</p></div></div>
+  <div class="payment-branches"><div><h2>Conventional pool</h2><p>Accepted work → pool accounting and reward scheme → published payout conditions → transaction, if eligible.</p><small>Thresholds, fees, schedule and confirmations belong to that pool's rules.</small></div><div><h2>P2Pool</h2><p>Accepted miner submission <strong>may not qualify as a sidechain share</strong>. A qualifying share must be in the payout window when P2Pool finds a Monero block for a payout.</p><small>A share can leave the window without a payout. Check the selected chain's evidence.</small></div></div>
+  <p id="payment-flow-caption">Connection does not prove a job arrived. A job does not prove a successful submission. An accepted miner submission is not a transaction or a guarantee of payment. Conventional pool accounting and P2Pool share eligibility are separate paths.</p>
+</figure>

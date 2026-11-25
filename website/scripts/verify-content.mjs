@@ -159,7 +159,7 @@ for (const file of files) {
   }
 }
 
-if (articleCount !== 7) failures.push(`expected 7 articles with section navigation, found ${articleCount}`);
+if (articleCount !== 8) failures.push(`expected 8 articles with section navigation, found ${articleCount}`);
 const reached = new Set(['/']);
 const queue = ['/'];
 for (const route of queue) for (const target of discoveryGraph.get(route) ?? []) {
@@ -172,6 +172,7 @@ const expected = [
   'learn/xmrig-cpu-threads/index.html', 'learn/randomx-memory-cache/index.html',
   'troubleshoot/xmrig-huge-pages/index.html', 'troubleshoot/xmrig-msr-error/index.html',
   'troubleshoot/xmrig-low-hashrate/index.html',
+  'troubleshoot/xmrig-pool-shares-payments/index.html',
   'tools/electricity-cost-calculator/index.html',
   'tools/monero-mining-profitability-calculator/index.html',
   'tools/xmrig-log-decoder/index.html',

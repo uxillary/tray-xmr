@@ -3,6 +3,8 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import SiteLayout from './SiteLayout.astro';
 import ArticleVisual from './ArticleVisual.astro';
+import PerformanceContext from './PerformanceContext.astro';
+import PoolPaymentFlow from './PoolPaymentFlow.astro';
 import ArticleContents from './ArticleContents.astro';
 import { siteOrigin } from '../lib/site-origin.mjs';
 interface Props { entry: CollectionEntry<'articles'>; }
@@ -50,8 +52,10 @@ const relatedEntries = entry.data.related.flatMap((id) => {
       <ArticleContents headings={headings} />
       <div class="article-content">
 
+      {entry.data.visual === 'hashrate' && <PerformanceContext />}
+      {entry.data.visual === 'pool-payments' && <PoolPaymentFlow />}
       <div class="article-body"><Content /></div>
-      <ArticleVisual type={entry.data.visual} />
+      {entry.data.visual !== 'hashrate' && entry.data.visual !== 'pool-payments' && <ArticleVisual type={entry.data.visual} />}
       <section class="article-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2><ul>{entry.data.sources.map((source) => <li><a href={source.url} rel="external noreferrer">{source.organization}: {source.title}</a><span> Accessed <time datetime={source.accessed.toISOString().slice(0, 10)}>{source.accessed.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></span></li>)}</ul></section>
       <aside class="article-context"><strong>About Ember</strong><p>Ember is an in-development Windows desktop interface for XMRig. It has no public release; these explanations stand on their own and do not depend on Ember.</p><a href="/ember/">See the current product status →</a></aside>
       {relatedEntries.length > 0 && <nav class="article-related" aria-label="Related articles"><h2>Related reading</h2><ul>{relatedEntries.map((item) => <li><a href={`/${item.data.section}/${item.id}/`}>{item.data.title} <span aria-hidden="true">↗</span></a></li>)}</ul></nav>}

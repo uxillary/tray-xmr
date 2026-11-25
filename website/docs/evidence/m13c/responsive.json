@@ -1,0 +1,1522 @@
+[
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1425,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 784,
+        "overflow": "auto",
+        "scroll": 784,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 784,
+        "overflow": "auto",
+        "scroll": 784,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1265,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 784,
+        "overflow": "auto",
+        "scroll": 784,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 784,
+        "overflow": "auto",
+        "scroll": 784,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 792,
+        "overflow": "auto",
+        "scroll": 792,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 818,
+        "overflow": "auto",
+        "scroll": 818,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 1009,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 784,
+        "overflow": "auto",
+        "scroll": 784,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 784,
+        "overflow": "auto",
+        "scroll": 784,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 690,
+        "overflow": "auto",
+        "scroll": 690,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 664,
+        "overflow": "auto",
+        "scroll": 664,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 664,
+        "overflow": "auto",
+        "scroll": 664,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 664,
+        "overflow": "auto",
+        "scroll": 664,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 690,
+        "overflow": "auto",
+        "scroll": 690,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 690,
+        "overflow": "auto",
+        "scroll": 690,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 753,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 656,
+        "overflow": "auto",
+        "scroll": 656,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 656,
+        "overflow": "auto",
+        "scroll": 656,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 535,
+        "overflow": "auto",
+        "scroll": 650,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 509,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 509,
+        "overflow": "auto",
+        "scroll": 509,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 509,
+        "overflow": "auto",
+        "scroll": 509,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 535,
+        "overflow": "auto",
+        "scroll": 535,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 535,
+        "overflow": "auto",
+        "scroll": 535,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 585,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 501,
+        "overflow": "auto",
+        "scroll": 501,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 501,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 585,
+    "width": 600
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 844,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 844,
+    "regions": [
+      {
+        "client": 333,
+        "overflow": "auto",
+        "scroll": 650,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 844,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 844,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 844,
+    "regions": [
+      {
+        "client": 307,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 307,
+        "overflow": "auto",
+        "scroll": 316,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 307,
+        "overflow": "auto",
+        "scroll": 382,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 333,
+        "overflow": "auto",
+        "scroll": 473,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 333,
+        "overflow": "auto",
+        "scroll": 333,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 844,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 844,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 375,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 844,
+    "regions": [
+      {
+        "client": 299,
+        "overflow": "auto",
+        "scroll": 490,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 299,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 303,
+        "overflow": "auto",
+        "scroll": 650,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 277,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 277,
+        "overflow": "auto",
+        "scroll": 316,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 277,
+        "overflow": "auto",
+        "scroll": 382,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 303,
+        "overflow": "auto",
+        "scroll": 473,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 303,
+        "overflow": "auto",
+        "scroll": 316,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 345,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 269,
+        "overflow": "auto",
+        "scroll": 490,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 269,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": true,
+        "label": "power-diagram-caption"
+      }
+    ],
+    "h1": [
+      "Mining Electricity Cost Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/electricity-cost-calculator/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": true,
+        "label": "comparison-context-title"
+      }
+    ],
+    "h1": [
+      "Why Is My XMRig Hashrate Low? A Windows Checklist"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 263,
+        "overflow": "auto",
+        "scroll": 650,
+        "tab": "0",
+        "tag": "DIV"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": false,
+        "label": null
+      }
+    ],
+    "h1": [
+      "Start with the signal you can see."
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/troubleshoot/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [],
+    "h1": [
+      "What is XMRig actually telling me?"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/xmrig-log-decoder/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "How to Set Up XMRig on Windows"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 237,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 237,
+        "overflow": "auto",
+        "scroll": 316,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 237,
+        "overflow": "auto",
+        "scroll": 382,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 263,
+        "overflow": "auto",
+        "scroll": 473,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 263,
+        "overflow": "auto",
+        "scroll": 316,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/guides/xmrig-windows-setup/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": false,
+        "label": "article-visual-title"
+      }
+    ],
+    "h1": [
+      "Why XMRig Isn't Using All Your CPU Threads"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/learn/xmrig-cpu-threads/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": true,
+        "label": "formula-flow-title"
+      }
+    ],
+    "h1": [
+      "Monero Mining Profitability Calculator"
+    ],
+    "height": 900,
+    "regions": [],
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "client": 305,
+    "figures": [
+      {
+        "caption": true,
+        "label": "payment-flow-title"
+      }
+    ],
+    "h1": [
+      "XMRig Pool Connections, Rejected Shares and Missing Payments"
+    ],
+    "height": 900,
+    "regions": [
+      {
+        "client": 229,
+        "overflow": "auto",
+        "scroll": 490,
+        "tab": "0",
+        "tag": "PRE"
+      },
+      {
+        "client": 229,
+        "overflow": "auto",
+        "scroll": 539,
+        "tab": "0",
+        "tag": "PRE"
+      }
+    ],
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "scroll": 305,
+    "width": 320
+  }
+]

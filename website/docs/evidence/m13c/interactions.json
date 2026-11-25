@@ -1,0 +1,34 @@
+[
+  {
+    "check": "390px selector keyboard focus",
+    "focusVisible": true,
+    "outline": "rgb(255, 180, 126) solid 2px",
+    "text": "04Accepted, no paymentAccounting / wallet"
+  },
+  {
+    "check": "390px keyboard anchor clearance",
+    "hash": "#accepted-no-payment",
+    "headerBottom": 116,
+    "headingTop": 132.265625
+  },
+  {
+    "check": "390px worksheet keyboard scroll",
+    "client": 333,
+    "focused": true,
+    "outline": "rgb(255, 180, 126) solid 2px",
+    "scroll": 650,
+    "scrollLeft": 40
+  },
+  {
+    "check": "180 W, 24h, GBP 0.25/kWh existing calculator",
+    "cost": "£1.08",
+    "energy": "4.32 kWh"
+  },
+  {
+    "check": "320px rejection anchor",
+    "client": 305,
+    "documentWidth": 305,
+    "header": 116,
+    "top": 131.953125
+  }
+]

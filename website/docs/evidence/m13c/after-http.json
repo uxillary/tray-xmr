@@ -1,0 +1,172 @@
+[
+  {
+    "route": "/favicon.svg",
+    "status": 200,
+    "sha256": "e9f8a99ba82919d57a4ccff7fcc67b17ebec2fbe2f767f576b189771e3549731"
+  },
+  {
+    "route": "/",
+    "status": 200,
+    "sha256": "e9ca727c80a91ebd4a5ef6341ef7c996a18006ccff52d88fc0fbe1a706a1a2d1"
+  },
+  {
+    "route": "/robots.txt",
+    "status": 200,
+    "sha256": "b8960cd960808d0e3071f8ccc45c7ff2dcbb35cf7a7fc95aefd909ddd61d116b"
+  },
+  {
+    "route": "/sitemap.xml",
+    "status": 200,
+    "sha256": "985c076fbb64dd33307f7dd3ac28efbc2ba33067746b1063dbd67960c11671d5"
+  },
+  {
+    "route": "/social-card.png",
+    "status": 200,
+    "sha256": "bbc05e87d84be046e00b59ffc51c588e99fff319b9fdde244ee706c221b9300d"
+  },
+  {
+    "route": "/social-card.svg",
+    "status": 200,
+    "sha256": "6dd509703763399b77b720c13a449dde62e56a5234c1e4c40b1e62ee491872d4"
+  },
+  {
+    "route": "/third-party-notices.txt",
+    "status": 200,
+    "sha256": "a232f933cae05086dc23625bfe1600d9841c9d8a09e7e017b6be496ccfbb4aa7"
+  },
+  {
+    "route": "/ember/",
+    "status": 200,
+    "sha256": "09141ddaff6357ca7356e3cd4b4594c4900e8a9a327dc94929c84e112db8e217"
+  },
+  {
+    "route": "/guides/",
+    "status": 200,
+    "sha256": "94301ad286f8e43e683e66a5d344cc88187c1a8e9708ee5871dd15a3789f7eb5"
+  },
+  {
+    "route": "/learn/",
+    "status": 200,
+    "sha256": "aaea6bbb9d0f29fbd5aab9184f427de1de6e286c66648a1ca757b7f6ca32fc34"
+  },
+  {
+    "route": "/tools/",
+    "status": 200,
+    "sha256": "f73db0cad4c5c5448c1291bbdcf5c9ac56a4b2deb0157e1f681cf3a08bff6ab4"
+  },
+  {
+    "route": "/troubleshoot/",
+    "status": 200,
+    "sha256": "5f09ab35c2ef38676c79fb2476c18a1a7a9638988cfae4d4ff610f451a1794ac"
+  },
+  {
+    "route": "/trust/",
+    "status": 200,
+    "sha256": "b6b11224a04c527be743b925a873319b93cc17e89cadc33bfbfade5011852a88"
+  },
+  {
+    "route": "/_astro/ArticleLayout.BG7Gkfwk.css",
+    "status": 200,
+    "sha256": "b0da8bdb408b7197dbbede3e0ef30c75df3964a491b6c543f62e7e92e0aa0391"
+  },
+  {
+    "route": "/_astro/electricity-cost-calculator.astro_astro_type_script_index_0_lang.m-MV5aLd.js",
+    "status": 200,
+    "sha256": "4d9a2510cb8a4095889921b9efe4e8b996df3553eed116cab4f83fdb040385f7"
+  },
+  {
+    "route": "/_astro/electricity-cost-calculator.BfYf7sxz.css",
+    "status": 200,
+    "sha256": "7c173a538c170ba6d52f6d4bf50728abad45016ec288d61ed42f232d8f4f6804"
+  },
+  {
+    "route": "/_astro/electricity-cost.D3C29iLX.js",
+    "status": 200,
+    "sha256": "35905507a76ef5127adcb5870f49b94871936e3ece96f0f4a26617f8b3283ed6"
+  },
+  {
+    "route": "/_astro/monero-mining-profitability-calculator.astro_astro_type_script_index_0_lang.zdirv3CN.js",
+    "status": 200,
+    "sha256": "e3d4374e5ad74fe0d642745b3991c2dcff27b963fb62bf75de7627f4dc259660"
+  },
+  {
+    "route": "/_astro/monero-mining-profitability-calculator.BUwVbfpE.css",
+    "status": 200,
+    "sha256": "3e3928c9e8f18a0b3d1ddff6102f6218f9fdf996adc5542f788b9596bab322c4"
+  },
+  {
+    "route": "/_astro/resource-methods.Czv_cpEl.css",
+    "status": 200,
+    "sha256": "4046fdb15e68620ea49e602fa5b46d993129c4b3aaeb813240d4b1dfa0d110e6"
+  },
+  {
+    "route": "/_astro/SiteLayout.u5IyGVAB.css",
+    "status": 200,
+    "sha256": "e69ef36d8f801f6f3384f85b91bee5155a8b8fc1a2c98da23fb0c86a21fbcb00"
+  },
+  {
+    "route": "/_astro/xmrig-log-decoder.astro_astro_type_script_index_0_lang.CxNBW7er.js",
+    "status": 200,
+    "sha256": "cb3385ca904c225bbe950526ca471f8ffd7d804837027aed2690053a6660e998"
+  },
+  {
+    "route": "/_astro/xmrig-log-decoder.DyEN54dm.css",
+    "status": 200,
+    "sha256": "6e69c23b1c1964e8d34747bdfc60a76c6e03412f91abf0030c6c025f00f4c1aa"
+  },
+  {
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "status": 200,
+    "sha256": "d3e4e4dd372a914fb204498c4b033ea6a8fe23e96fcb64541df348b0864d49ef"
+  },
+  {
+    "route": "/guides/xmrig-windows-setup/",
+    "status": 200,
+    "sha256": "80efb7259f51ce3f4f33935d176ba8c06d1cc77dbeacc2ce011dbea094b0b697"
+  },
+  {
+    "route": "/learn/randomx-memory-cache/",
+    "status": 200,
+    "sha256": "9fb83927ba40c267a7246096cac2df251c9efb049889f35279d0fe712581bbf5"
+  },
+  {
+    "route": "/learn/xmrig-cpu-threads/",
+    "status": 200,
+    "sha256": "ba52fda92f94f1a4fff88fe1000b16ef9c358d5b5ed13058703a789f1c6893b4"
+  },
+  {
+    "route": "/tools/electricity-cost-calculator/",
+    "status": 200,
+    "sha256": "8a0931ffd63193590904c655a7ba2921f5025de4bfdf53a5866401027272b9d2"
+  },
+  {
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "status": 200,
+    "sha256": "ba99f8bfdd3d2ccdc499930f763610c22bfac55984fc01f7e6d9b480c2ea0ed6"
+  },
+  {
+    "route": "/tools/xmrig-log-decoder/",
+    "status": 200,
+    "sha256": "949ad6585d134129661373200e7de4813fabf0b42774afb8075e45ef1adbb89a"
+  },
+  {
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "status": 200,
+    "sha256": "2147c7adbc17b8f8e766c3a0facf6b05bbdb12d9d7f74c6aadee95a6410b2fcd"
+  },
+  {
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "status": 200,
+    "sha256": "fc7f146a0d071547e0e0e8d2817d3e60d7ecce9a04cec5feff565cd627c92597"
+  },
+  {
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "status": 200,
+    "sha256": "af6f8a4d0efd2892132e5b38303fb68065b8ad1e836f7b93b6d6ff539b3a819a"
+  },
+  {
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "status": 200,
+    "sha256": "67e3c3d565969136f6c635625a8a67082e63d723f8b2d426f267a99cd4ef81df"
+  }
+]

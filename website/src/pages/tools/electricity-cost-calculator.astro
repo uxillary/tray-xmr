@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../../components/SiteLayout.astro';
 import Icon from '../../components/Icon.astro';
+import PowerMeasurement from '../../components/PowerMeasurement.astro';
 import '../../styles/site.css';
 import '../../styles/electricity-calculator.css';
 ---
@@ -43,10 +44,10 @@ import '../../styles/electricity-calculator.css';
       </section>
     </section>
 
-    <section class="power-note" aria-labelledby="power-note-title"><div class="power-note-icon"><Icon name="circuitry" size="feature" /></div><div><span class="eyebrow">MEASURE THE WHOLE SYSTEM</span><h2 id="power-note-title">What power value should I enter?</h2><p>For a household electricity estimate, use whole-system power measured at the wall. CPU package power is only one part of the computer: GPU, motherboard, RAM, storage, fans and power-supply losses also contribute. Software-reported CPU power is useful for rough comparisons, but may not represent wall draw.</p></div></section>
+    <PowerMeasurement />
 
     <section class="calculator-explainer" aria-label="Calculation details">
-      <article><span class="eyebrow">METHOD / 01</span><h2>How the calculation works</h2><p>Watts are converted to kilowatts, then multiplied by the hours the system runs. Energy in kilowatt-hours is multiplied by your entered electricity rate.</p><p class="formula-block"><code>kWh = (watts ÷ 1,000) × hours</code><code>Cost = kWh × price per kWh</code></p><p>Worked example: a 100 W load running 24 hours uses 2.4 kWh/day. Multiply that energy by your own price per kWh to estimate daily cost; the calculator calculates live values from your entries.</p><p>The day uses your runtime. The selected period uses your chosen number of days. The yearly estimate uses 365 days. Values are calculated without rounding and rounded only for display.</p></article>
+      <article><span class="eyebrow">METHOD / 01</span><h2>How the calculation works</h2><p>Watts are converted to kilowatts, then multiplied by the hours the system runs. Energy in kilowatt-hours is multiplied by your entered electricity rate.</p><p class="formula-block"><code>kWh = (watts ÷ 1,000) × hours</code><code>Cost = kWh × price per kWh</code></p><p>Hypothetical arithmetic: a constant 100 W load running 24 hours would use 2.4 kWh/day. Multiply that energy by your own price per kWh to estimate daily cost; this is not a hardware measurement.</p><p>The day uses your runtime. The selected period uses your chosen number of days. The yearly estimate uses 365 days. Values are calculated without rounding and rounded only for display.</p></article>
       <article><span class="eyebrow">CONTEXT / 02</span><h2>Why mining electricity use matters</h2><p>Continuous workloads accumulate energy over time, and part-time operation changes the estimate directly. A measured whole-system value gives a better household-cost estimate than CPU package power alone.</p><p>Electricity is one part of mining economics. This tool intentionally estimates energy and electricity cost only; it does not estimate mining income or profitability. For a manual expected-value scenario, use the <a href="/tools/monero-mining-profitability-calculator/">Monero Mining Profitability Calculator</a>.</p><a href="/learn/randomx-memory-cache/">Understand the memory used by RandomX <span aria-hidden="true">↗</span></a><p>Considering Ember alongside your estimate? <a href="/ember/">See what the in-development Windows app currently supports</a>.</p></article>
     </section>
     <p class="calculator-backlink"><a href="/tools/">← Back to all tools</a></p>

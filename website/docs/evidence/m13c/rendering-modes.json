@@ -1,0 +1,393 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/158.0.4370.33",
+    "revision": "@56b8f691820060b6e15f702165117f203442943f",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+    "jsVersion": "15.8.13.3"
+  },
+  "method": "Headless local CSS/DOM checks, not native zoom, physical device, print pagination or screen reader acceptance.",
+  "rows": [
+    {
+      "check": "reduced motion",
+      "route": "/tools/electricity-cost-calculator/",
+      "matches": true,
+      "scrollBehavior": "auto",
+      "animations": 0
+    },
+    {
+      "check": "reduced motion",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "matches": true,
+      "scrollBehavior": "auto",
+      "animations": 0
+    },
+    {
+      "check": "reduced motion",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "matches": true,
+      "scrollBehavior": "auto",
+      "animations": 0
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/tools/electricity-cost-calculator/",
+      "id": "power-note-title",
+      "width": 1440,
+      "top": 94.53125,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/tools/electricity-cost-calculator/",
+      "id": "measure-workflow",
+      "width": 1440,
+      "top": 94.65625,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "id": "keep-a-small-measurement-record",
+      "width": 1440,
+      "top": 94.734375,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "id": "read-a-hypothetical-ab-comparison",
+      "width": 1440,
+      "top": 95.28125,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "no-connection",
+      "width": 1440,
+      "top": 95.140625,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "connected-no-work",
+      "width": 1440,
+      "top": 94.859375,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "rejected-submissions",
+      "width": 1440,
+      "top": 94.671875,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "accepted-no-payment",
+      "width": 1440,
+      "top": 95.078125,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "p2pool-shares",
+      "width": 1440,
+      "top": 94.984375,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "further-information",
+      "width": 1440,
+      "top": 95.078125,
+      "header": 79,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/tools/electricity-cost-calculator/",
+      "id": "power-note-title",
+      "width": 390,
+      "top": 131.90625,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/tools/electricity-cost-calculator/",
+      "id": "measure-workflow",
+      "width": 390,
+      "top": 131.859375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "id": "keep-a-small-measurement-record",
+      "width": 390,
+      "top": 131.890625,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "id": "read-a-hypothetical-ab-comparison",
+      "width": 390,
+      "top": 131.921875,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "no-connection",
+      "width": 390,
+      "top": 132.375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "connected-no-work",
+      "width": 390,
+      "top": 132.484375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "rejected-submissions",
+      "width": 390,
+      "top": 132.078125,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "accepted-no-payment",
+      "width": 390,
+      "top": 132.265625,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "p2pool-shares",
+      "width": 390,
+      "top": 131.5625,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "further-information",
+      "width": 390,
+      "top": 132.4375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/tools/electricity-cost-calculator/",
+      "id": "power-note-title",
+      "width": 320,
+      "top": 132.234375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/tools/electricity-cost-calculator/",
+      "id": "measure-workflow",
+      "width": 320,
+      "top": 132.03125,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "id": "keep-a-small-measurement-record",
+      "width": 320,
+      "top": 131.671875,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "id": "read-a-hypothetical-ab-comparison",
+      "width": 320,
+      "top": 131.890625,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "no-connection",
+      "width": 320,
+      "top": 132.296875,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "connected-no-work",
+      "width": 320,
+      "top": 131.984375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "rejected-submissions",
+      "width": 320,
+      "top": 131.953125,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "accepted-no-payment",
+      "width": 320,
+      "top": 132.109375,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "p2pool-shares",
+      "width": 320,
+      "top": 131.78125,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "reduced-motion direct fragment clearance",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "id": "further-information",
+      "width": 320,
+      "top": 131.625,
+      "header": 116,
+      "pass": true
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/tools/electricity-cost-calculator/",
+      "title": "Mining Electricity Cost Calculator",
+      "textLength": 7460,
+      "internalLinks": 5
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "title": "Why Is My XMRig Hashrate Low? A Windows Checklist",
+      "textLength": 9288,
+      "internalLinks": 17
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "title": "XMRig Pool Connections, Rejected Shares and Missing Payments",
+      "textLength": 11031,
+      "internalLinks": 12
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/tools/xmrig-log-decoder/",
+      "title": "What is XMRig actually telling me?",
+      "textLength": 2069,
+      "internalLinks": 6
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/guides/xmrig-windows-setup/",
+      "title": "How to Set Up XMRig on Windows",
+      "textLength": 16501,
+      "internalLinks": 28
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/learn/xmrig-cpu-threads/",
+      "title": "Why XMRig Isn't Using All Your CPU Threads",
+      "textLength": 3814,
+      "internalLinks": 11
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "title": "Monero Mining Profitability Calculator",
+      "textLength": 10497,
+      "internalLinks": 7
+    },
+    {
+      "check": "JavaScript disabled",
+      "route": "/troubleshoot/",
+      "title": "Start with the signal you can see.",
+      "textLength": 1300,
+      "internalLinks": 6
+    },
+    {
+      "check": "print worksheet",
+      "route": "/tools/electricity-cost-calculator/",
+      "sheets": [
+        {
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "breakInside": "avoid"
+        }
+      ],
+      "tables": [],
+      "client": 801,
+      "scroll": 801
+    },
+    {
+      "check": "print worksheet",
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "sheets": [
+        {
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "breakInside": "avoid"
+        }
+      ],
+      "tables": [
+        {
+          "width": 735.71875,
+          "minWidth": "0px"
+        }
+      ],
+      "client": 801,
+      "scroll": 801
+    }
+  ],
+  "failures": []
+}

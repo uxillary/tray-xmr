@@ -96,7 +96,7 @@ for (const file of htmlFiles) {
   }
 }
 
-if (htmlFiles.length !== 17) failures.push(`expected 17 static HTML routes, found ${htmlFiles.length}`);
+if (htmlFiles.length !== 18) failures.push(`expected 18 static HTML routes, found ${htmlFiles.length}`);
 const errorPath = join(dist, '404.html');
 if (!existsSync(errorPath) || metadata(readFileSync(errorPath, 'utf8'), 'robots') !== 'noindex, follow') failures.push('404.html must exist and remain noindex in every environment');
 

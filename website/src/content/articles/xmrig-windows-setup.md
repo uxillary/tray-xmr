@@ -161,6 +161,8 @@ Treat the first run as a sequence of observations. One green-looking line is not
 
 Exact console wording and formatting can change by version, CPU and pool. Use the labels and surrounding context in the log rather than treating a copied sample line as a universal success test. The [local XMRig Log Decoder](/tools/xmrig-log-decoder/) recognizes only a bounded set of XMRig 6.26.0 startup, Huge Pages, MSR, pool and share messages; it processes pasted text in your browser and does not diagnose root causes, verify files, or analyze hashrate. Do not paste a log publicly without checking it for wallet addresses, hostnames, usernames and other identifying details.
 
+If the session's next stage is unclear, separate [no connection](/troubleshoot/xmrig-pool-shares-payments/#no-connection), [connection without jobs](/troubleshoot/xmrig-pool-shares-payments/#connected-no-work), and [rejected submissions](/troubleshoot/xmrig-pool-shares-payments/#rejected-submissions). An accepted counter is not a payment: [check the pool or P2Pool accounting path](/troubleshoot/xmrig-pool-shares-payments/#accepted-no-payment) before assuming earnings are missing.
+
 <h2 id="common-issues">6. Common first-run issues</h2>
 
 - **Huge Pages are partial or unavailable.** XMRig reports permission separately from successful allocation. On Windows, obtaining `SeLockMemoryPrivilege` may require an administrator-managed step; available memory can still prevent full allocation. Read [Huge Pages on Windows](/troubleshoot/xmrig-huge-pages/) before changing local policy. Do not leave the miner permanently elevated as a shortcut.

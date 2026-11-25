@@ -1,0 +1,401 @@
+{
+  "scope": "M13C authored files and retained evidence; excludes six pre-existing untracked M13B documents. Self inventory hash/size omitted.",
+  "files": [
+    {
+      "path": "website/docs/content-roadmap.md",
+      "git_status": " M",
+      "bytes": 11301,
+      "sha256": "59d5f0a0b06a4b94b62269902bb741a3f8e52bfc1d6dac21ec6e9d8de36d4ac0"
+    },
+    {
+      "path": "website/scripts/verify-content.mjs",
+      "git_status": " M",
+      "bytes": 12842,
+      "sha256": "4dde2859977aa8d6edd4afc34dce8f8202d2c293e881cc40ca353c54c1f92f90"
+    },
+    {
+      "path": "website/scripts/verify-production-origin.mjs",
+      "git_status": " M",
+      "bytes": 7656,
+      "sha256": "b84c76aa0ec7f1d4e67b8c1eff37b2f785638b0c6b9ca9d69c058a96cb7b349b"
+    },
+    {
+      "path": "website/src/components/ArticleLayout.astro",
+      "git_status": " M",
+      "bytes": 10406,
+      "sha256": "60b1e3418de11c77951aff47bf088c108899b8f9f995089f4ea1acbd11182e12"
+    },
+    {
+      "path": "website/src/components/HubPage.astro",
+      "git_status": " M",
+      "bytes": 3143,
+      "sha256": "db1da1b9ee41d34f0f9eecc4d6db4f7b56041726839f1317eb375d72a63fa951"
+    },
+    {
+      "path": "website/src/content.config.ts",
+      "git_status": " M",
+      "bytes": 961,
+      "sha256": "7bb10396affe5f6ab788a64f8ef50f8ad8034ce6968a1e43ced1d3821554b89b"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-cpu-threads.md",
+      "git_status": " M",
+      "bytes": 3881,
+      "sha256": "8ccb432f9e75b4975ad308ef1e4f221545baaf1114443f70fe9d6e40832720fd"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-low-hashrate.md",
+      "git_status": " M",
+      "bytes": 10729,
+      "sha256": "eebaa744a9ed6d578731d6a834b5dca08508be774dacc0fa84646b049d754d9e"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-windows-setup.md",
+      "git_status": " M",
+      "bytes": 19203,
+      "sha256": "3d8badea9d34de867bf4e6abe171411a32d402cd90218e0830f0fdcbaf918bb4"
+    },
+    {
+      "path": "website/src/pages/tools/electricity-cost-calculator.astro",
+      "git_status": " M",
+      "bytes": 7978,
+      "sha256": "44e867263b79ef7379fa28d85e6fdc4fbf88641c0d28d1b5acb7b173f7f74095"
+    },
+    {
+      "path": "website/src/pages/tools/monero-mining-profitability-calculator.astro",
+      "git_status": " M",
+      "bytes": 23400,
+      "sha256": "19c73b919c0e7ba9344d1e4d6be204d904b89c358293a40f9fc17687d13ed853"
+    },
+    {
+      "path": "website/src/pages/tools/xmrig-log-decoder.astro",
+      "git_status": " M",
+      "bytes": 4781,
+      "sha256": "e489f96eec0ce171d4a087d44049a886e441e6ec14c7c6c7b9ffd2167358e167"
+    },
+    {
+      "path": "website/src/pages/troubleshoot/index.astro",
+      "git_status": " M",
+      "bytes": 2675,
+      "sha256": "ece1ddce007128762a7c78cdc5db56cc235c566c77522674830d9e1e59cce376"
+    },
+    {
+      "path": "website/src/styles/xmrig-log-decoder.css",
+      "git_status": " M",
+      "bytes": 6035,
+      "sha256": "4536991d0d23bdd5a0d327527d7f1723ae85c13875197552265de7edfe1a5035"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-build.json",
+      "git_status": "??",
+      "bytes": 5900,
+      "sha256": "339fed39dbf7aa6237b8d32098bd680ce6ec1fa29e7afb4f29c369a1eec87c00"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-comparison-detail-1440.jpg",
+      "git_status": "??",
+      "bytes": 116175,
+      "sha256": "eca743f362502c5c4a6d1f5b39083cfa47b7520b0e205db79899fe768c606f9d"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-console-detail-320.jpg",
+      "git_status": "??",
+      "bytes": 39134,
+      "sha256": "91c341daa9f5e694bdb2c90a526195b72886133d8b7f4c33c10a812118a83d63"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-decoder-1440.jpg",
+      "git_status": "??",
+      "bytes": 74440,
+      "sha256": "561b1827567e229e90dbc441ac0f7397e3cdd7d5c41fad3bb04492de5e86d770"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-decoder-390.jpg",
+      "git_status": "??",
+      "bytes": 36598,
+      "sha256": "b6ff7f83aeebc2eedfc3f71b5d3aedc5b7757631225c394ec4d5b9977253bd48"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-electricity-1440.jpg",
+      "git_status": "??",
+      "bytes": 82597,
+      "sha256": "213f227cc4d4c6fb9daef1f261fa208ddf800fa28b1a88d40fbf39f482d3182b"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-electricity-390.jpg",
+      "git_status": "??",
+      "bytes": 39606,
+      "sha256": "3d40e69b23cf0f151ed4cba4964b153e22d660e265fb2f6e70be713faf7640ac"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-http.json",
+      "git_status": "??",
+      "bytes": 5327,
+      "sha256": "585788ef50e1452b9e09676d2c255d6aee5505a41c1db1c81d2a488d36f9eff8"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-low-hashrate-1440.jpg",
+      "git_status": "??",
+      "bytes": 99496,
+      "sha256": "007936216276391da01352dd5a73bee9f1c3fbf266c89b319d37c5cda8d21ad6"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-low-hashrate-390.jpg",
+      "git_status": "??",
+      "bytes": 44416,
+      "sha256": "af39210bdeb51a87aa2fa824c8c63b915050c616bb20d7a7a36dd00bd9631e64"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-measurement-detail-1440.jpg",
+      "git_status": "??",
+      "bytes": 101604,
+      "sha256": "6e37945933e2a6f88901dbd11da5d915f3c4ef10aef6fea1c6cd290c507962d0"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-measurement-detail-320.jpg",
+      "git_status": "??",
+      "bytes": 36728,
+      "sha256": "446e22ecb3bd497f03ae1975e3740e80433d255f4d4e39fd3e82f03e747d5430"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-measurement-detail-390.jpg",
+      "git_status": "??",
+      "bytes": 39709,
+      "sha256": "23c1b63d467fd2c47cd1ae75ae67a7794389d839d0ca21c7509e127575f50cfa"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-payment-flow-390.jpg",
+      "git_status": "??",
+      "bytes": 33941,
+      "sha256": "f6392ebaac9d04503ac393ec545e1b7fecce8de33da308458e9814404326b1c0"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-payment-flow-768.jpg",
+      "git_status": "??",
+      "bytes": 80767,
+      "sha256": "1c3ffcf7de95bd65f099adc87069c4ebd60360de3252ce269968c347956eddfd"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-pool-payments-1440.jpg",
+      "git_status": "??",
+      "bytes": 90469,
+      "sha256": "3b7baea43afd04a94e19d1db03cf4512468f00cecd080b20780ae729dec7ff6a"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-pool-payments-390.jpg",
+      "git_status": "??",
+      "bytes": 41754,
+      "sha256": "3481e3fd80aadfd390f2300864d4baad917f5ff97aef88eac4b3d67a140a38f1"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-profitability-1440.jpg",
+      "git_status": "??",
+      "bytes": 87143,
+      "sha256": "627bc00ab126485900ea498fbc2e944a38166833447fae6b5acb6ce424e8604e"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-profitability-390.jpg",
+      "git_status": "??",
+      "bytes": 41018,
+      "sha256": "3c2caaa34ec058ec2cd375ba869f52ef29ca6355360f7c7cc22edf7d9939d19b"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-setup-1440.jpg",
+      "git_status": "??",
+      "bytes": 123751,
+      "sha256": "e128d87bca9e41188343ca7ac874a6af334081366351c3e75cc3684588fca309"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-setup-390.jpg",
+      "git_status": "??",
+      "bytes": 48234,
+      "sha256": "3e18b6417c48d0df35d08243ed73561a1f09ffccac962524704c28a1db014c31"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-threads-1440.jpg",
+      "git_status": "??",
+      "bytes": 103290,
+      "sha256": "d226411ed36102e36e5957615912e8a8db393c51343a138ca44263d4b2b261a9"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-threads-390.jpg",
+      "git_status": "??",
+      "bytes": 47903,
+      "sha256": "ae2ccacb6c69dcecb0ff6206e3f064febe4b7d7e7bc4fc073588113b5c36902b"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-troubleshoot-1440.jpg",
+      "git_status": "??",
+      "bytes": 87925,
+      "sha256": "419f8b7bd804e51837590436a2b43f7aba8d3fd85b93391c511c04ec61dc224d"
+    },
+    {
+      "path": "website/docs/evidence/m13c/after-troubleshoot-390.jpg",
+      "git_status": "??",
+      "bytes": 38849,
+      "sha256": "b3631246f61c1ecbd1a9ef10ad6b53b5f3ce070cfa990d48003d7e57555bc2f3"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-build.json",
+      "git_status": "??",
+      "bytes": 5553,
+      "sha256": "c08d686b000ebcd73a6c4d1ff2050725e01d1c342d21209aa3588a7af1fbfce0"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-decoder-1440.jpg",
+      "git_status": "??",
+      "bytes": 74542,
+      "sha256": "6742d79dfd3501e5d3a4474ac4993327f2e7f0e12f32a7b33ae64dfdd06c635d"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-decoder-390.jpg",
+      "git_status": "??",
+      "bytes": 36608,
+      "sha256": "500bc5e65c7740833d1e4b786553f49edeb22e4337bbf4edae5f5faa94544e42"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-electricity-1440.jpg",
+      "git_status": "??",
+      "bytes": 82912,
+      "sha256": "553ca9e6ca1605f9a73d061a594a1d347b4e9950969b4d30143fada70088fb1e"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-electricity-390.jpg",
+      "git_status": "??",
+      "bytes": 39708,
+      "sha256": "1cd087bfe0b1f926801dcc9476aadc1e6e049b9165a93e053de489f2a573f538"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-low-hashrate-1440.jpg",
+      "git_status": "??",
+      "bytes": 109327,
+      "sha256": "b63f57876f7189f0fd24b3c4af834f01e526dfc45380d88e92b4ec87ded61aeb"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-low-hashrate-390.jpg",
+      "git_status": "??",
+      "bytes": 51879,
+      "sha256": "67d94f8df4d60d73c1bdfc9f8d6e60d83ad6dc0cd2c2218e2b0e1e3ffcb5b679"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-measurement-detail-1440.jpg",
+      "git_status": "??",
+      "bytes": 107173,
+      "sha256": "abd39186cf7b6f9b0d2d16e0477d8f82241448ee370c764e5c16ee95511360b9"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-setup-1440.jpg",
+      "git_status": "??",
+      "bytes": 123786,
+      "sha256": "0bc10fb013761fae52bbf9e7bade6788e2f0468bb4bc3e9d1a8fcccd435bcbc9"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-setup-390.jpg",
+      "git_status": "??",
+      "bytes": 48237,
+      "sha256": "7de285ed2ce4be5bd923222a548dac46b7924cd87bb9b2ec33b8a53fcd5a2220"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-troubleshoot-1440.jpg",
+      "git_status": "??",
+      "bytes": 93771,
+      "sha256": "008e8df004c7d1b1fef801b24dee52b1148de20b07f9b16f547fdee7a5b46096"
+    },
+    {
+      "path": "website/docs/evidence/m13c/before-troubleshoot-390.jpg",
+      "git_status": "??",
+      "bytes": 38871,
+      "sha256": "8aedfa9a95e470706f64b9ea1a05326d9eeede62efad36eb22e2e0edb905a581"
+    },
+    {
+      "path": "website/docs/evidence/m13c/changed-files.json",
+      "git_status": "??",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "path": "website/docs/evidence/m13c/contrast.json",
+      "git_status": "??",
+      "bytes": 18557,
+      "sha256": "68905cecc8101c34327ec5164e3a25116db404dcb5dce062bd21da51dcea8dcb"
+    },
+    {
+      "path": "website/docs/evidence/m13c/interactions.json",
+      "git_status": "??",
+      "bytes": 768,
+      "sha256": "3b0abff03aa11482313b2f708462262272d39bbb822f2d9717ba1ec045620522"
+    },
+    {
+      "path": "website/docs/evidence/m13c/performance-after.json",
+      "git_status": "??",
+      "bytes": 318393,
+      "sha256": "f03f08f19287b68465789fe4d4732649d80f745d37e0015da855f692a39fdb90"
+    },
+    {
+      "path": "website/docs/evidence/m13c/performance-before.json",
+      "git_status": "??",
+      "bytes": 223325,
+      "sha256": "9bfcfb789e24711690b7995ba8acf6798a252da67441e822a06aa71d22fc1b0b"
+    },
+    {
+      "path": "website/docs/evidence/m13c/preservation.json",
+      "git_status": "??",
+      "bytes": 2611,
+      "sha256": "23482822bae15858e56adbdecbadf4a94c1b802efaca9b20d4cf04fdeeba40ee"
+    },
+    {
+      "path": "website/docs/evidence/m13c/rendering-modes.json",
+      "git_status": "??",
+      "bytes": 10923,
+      "sha256": "8cf2310c875d3e5cf71149701804aac117d1fccefa97f7ae85d5d6f0c78fa29b"
+    },
+    {
+      "path": "website/docs/evidence/m13c/responsive.json",
+      "git_status": "??",
+      "bytes": 28490,
+      "sha256": "52177d64713dbeb8ec99fad19fdda96b1c7947b1b5aa30561ca79741266497ce"
+    },
+    {
+      "path": "website/docs/evidence/m13c/screenshots.json",
+      "git_status": "??",
+      "bytes": 11369,
+      "sha256": "1f4a42c256743e1019ac4455bcf3477af2577e313f8e8749f5b233a08ce126d7"
+    },
+    {
+      "path": "website/docs/m13c-measurement-performance-diagnostics.md",
+      "git_status": "??",
+      "bytes": 17233,
+      "sha256": "fce488e98db484011ccc95e8f0f254e01e82d584ffddf9ca84cb17f8000d3107"
+    },
+    {
+      "path": "website/src/components/PerformanceContext.astro",
+      "git_status": "??",
+      "bytes": 1273,
+      "sha256": "a93e7e9894275743ae2bbf77eec2ed6f78cdfb0c84eacdff1ff8bd3a3c4fe19c"
+    },
+    {
+      "path": "website/src/components/PoolPaymentFlow.astro",
+      "git_status": "??",
+      "bytes": 2559,
+      "sha256": "476cfb64de867d5cc20a7ffbbd0bda474cbad632090e3e81157aafe03b547b29"
+    },
+    {
+      "path": "website/src/components/PowerMeasurement.astro",
+      "git_status": "??",
+      "bytes": 7800,
+      "sha256": "5a387ae12312d540ee873c6f8e993feca4680680dcc091cf6ceb2b95850fc1f8"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-pool-shares-payments.md",
+      "git_status": "??",
+      "bytes": 10825,
+      "sha256": "6a9024ddc7a5e51946dc9911973f0c7630df14f8da9703385af0943ff44a7ec2"
+    },
+    {
+      "path": "website/src/styles/resource-methods.css",
+      "git_status": "??",
+      "bytes": 8433,
+      "sha256": "8dd6b09f1cd5d68a31d27e8233678ff16630b11841a88ed00c1c419f10736d83"
+    }
+  ]
+}

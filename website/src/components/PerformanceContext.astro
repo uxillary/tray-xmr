@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+import '../styles/resource-methods.css';
+---
+<figure class="performance-context" aria-labelledby="comparison-context-title" aria-describedby="comparison-context-caption">
+  <figcaption id="comparison-context-title"><span class="eyebrow">SAME CPU NAME ≠ SAME TEST</span><strong>Compare the conditions before the number.</strong></figcaption>
+  <ol class="evidence-chain"><li><Icon name="cpu" size="diagram"/><strong>Hardware</strong><span>Topology, cache, RAM channels</span></li><li><Icon name="gear" size="diagram"/><strong>Configuration</strong><span>Version, variant, workers, allocation</span></li><li><Icon name="thermometer" size="diagram"/><strong>Conditions</strong><span>Workload, duration, heat, background tasks</span></li><li><Icon name="chartLineUp" size="diagram"/><strong>Observed result</strong><span>Matched H/s and wall-power interval</span></li></ol>
+  <p id="comparison-context-caption">A CPU model identifies only part of the experiment. If configuration or measurement conditions differ, the rates may not be comparable. Unknown conditions remain unknown; a higher number alone does not establish a better setting.</p>
+  <a href="#keep-a-small-measurement-record">Build a comparable A/B record →</a>
+</figure>

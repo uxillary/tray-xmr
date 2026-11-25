@@ -1,0 +1,832 @@
+[
+  {
+    "route": "/tools/electricity-cost-calculator/",
+    "groups": [
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 12,
+        "text": "REUSE / COPY OR PRINT",
+        "weight": 500
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 3,
+        "size": 36,
+        "text": "What power value should I enter?",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 18,
+        "text": "Use average whole-PC power at the wall for the running-",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 18,
+        "text": "whole-PC power at the wall",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 17,
+        "text": "Plug-in meter",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 13,
+        "text": "RAM, board, GPU, storage and fans",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(239, 138, 74)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.474147390860394,
+        "required": 3,
+        "size": 24,
+        "text": "→",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 13,
+        "text": "Whole-PC W / kWh",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 16,
+        "text": "unknown",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(161, 166, 154)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.502695156271075,
+        "required": 4.5,
+        "size": 14,
+        "text": "Method references checked 25 November 2026: Energy Savi",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 3,
+        "size": 22,
+        "text": "A small measurement record",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 16,
+        "text": "Copy these labels into your own notes, or print this pa",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 16,
+        "text": "Ofgem explains regional and multi-rate tariff context",
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.103719702420475,
+        "required": 4.5,
+        "size": 11,
+        "text": "HYPOTHETICAL ARITHMETIC · NOT HARDWARE DATA",
+        "weight": 500
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.215934044938711,
+        "required": 4.5,
+        "size": 16,
+        "text": "Holding that average for 8 hours would use 1.44 kWh. At",
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 15.185690091734902,
+        "required": 4.5,
+        "size": 16,
+        "text": "180 W average",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 16,
+        "text": "Measurement notes",
+        "weight": 600
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 14,
+        "text": "Meter model/resolution, background work, temperatures; ",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(161, 166, 154)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.502695156271075,
+        "required": 4.5,
+        "size": 12,
+        "text": "Record: __________________ / unknown",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 14,
+        "text": "Intel: TDP is a thermal design target",
+        "weight": 400
+      }
+    ]
+  },
+  {
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "groups": [
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 12,
+        "text": "SYNTHETIC ARITHMETIC · NO ACTUAL CPU OR BENCHMARK",
+        "weight": 500
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 3,
+        "size": 24,
+        "text": "Compare the conditions before the number.",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 16,
+        "text": "Observed result",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 13,
+        "text": "Matched H/s and wall-power interval",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(161, 166, 154)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.502695156271075,
+        "required": 4.5,
+        "size": 14,
+        "text": "A CPU model identifies only part of the experiment. If ",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 15,
+        "text": "Build a comparable A/B record →",
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(161, 166, 154)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.055273635334092,
+        "required": 4.5,
+        "size": 13,
+        "text": "Scroll horizontally to compare all columns. Keyboard: f",
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 15.185690091734902,
+        "required": 4.5,
+        "size": 14,
+        "text": "Comparable-run worksheet — fill in A and B in your own ",
+        "weight": 600
+      },
+      {
+        "background": [
+          34,
+          37,
+          31
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 13.426704965124287,
+        "required": 4.5,
+        "size": 14,
+        "text": "Run B / one change",
+        "weight": 600
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 15.185690091734902,
+        "required": 4.5,
+        "size": 15,
+        "text": "Changed variable, stability and responsiveness notes",
+        "weight": 600
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.215934044938711,
+        "required": 4.5,
+        "size": 15,
+        "text": "Record / unknown",
+        "weight": 400
+      },
+      {
+        "background": [
+          25.32,
+          28.29,
+          24.33
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 14.829643202181929,
+        "required": 4.5,
+        "size": 15,
+        "text": "Thermals, clocks, ambient and background work",
+        "weight": 600
+      },
+      {
+        "background": [
+          25.32,
+          28.29,
+          24.33
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 9.976409102798714,
+        "required": 4.5,
+        "size": 15,
+        "text": "Record / unknown",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(216, 216, 209)",
+        "images": 0,
+        "pass": true,
+        "ratio": 13.039819087592477,
+        "required": 4.5,
+        "size": 17,
+        "text": "B has 5% less throughput and 12.5% less power use; its ",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 18,
+        "text": "Run B",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 17,
+        "text": "≈54.3 H/s/W",
+        "weight": 400
+      }
+    ]
+  },
+  {
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "groups": [
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 12,
+        "text": "06",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 15,
+        "text": "Still unclear?",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(161, 166, 154)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.502695156271075,
+        "required": 4.5,
+        "size": 13,
+        "text": "A share can leave the window without a payout. Check th",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 12,
+        "text": "EVENTS / NOT A PAYMENT PROMISE",
+        "weight": 500
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 3,
+        "size": 24,
+        "text": "Every stage needs its own evidence.",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 4.5,
+        "size": 16,
+        "text": "Submission",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 13,
+        "text": "Candidate sent",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 11,
+        "text": "ACCEPTED RESPONSE",
+        "weight": 500
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 15,
+        "text": "Accepted miner submission may not qualify as a sidechai",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(238, 239, 233)",
+        "images": 0,
+        "pass": true,
+        "ratio": 16.148715044203662,
+        "required": 3,
+        "size": 19,
+        "text": "P2Pool",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 15,
+        "text": "may not qualify as a sidechain share",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(161, 166, 154)",
+        "images": 0,
+        "pass": true,
+        "ratio": 7.502695156271075,
+        "required": 4.5,
+        "size": 14,
+        "text": "Connection does not prove a job arrived. A job does not",
+        "weight": 400
+      },
+      {
+        "background": [
+          11,
+          13,
+          11
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 11.221830138204204,
+        "required": 4.5,
+        "size": 12,
+        "text": "SYNTHETIC XMRIG 6.26.0-STYLE RESPONSE EXAMPLES",
+        "weight": 500
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(216, 216, 209)",
+        "images": 0,
+        "pass": true,
+        "ratio": 13.039819087592477,
+        "required": 4.5,
+        "size": 15,
+        "text": "cpu accepted (12/0) diff 100000 (45 ms)\ncpu rejected (1",
+        "weight": 400
+      },
+      {
+        "background": [
+          11,
+          13,
+          11
+        ],
+        "foreground": "rgb(216, 216, 209)",
+        "images": 0,
+        "pass": true,
+        "ratio": 13.61916647794216,
+        "required": 4.5,
+        "size": 15,
+        "text": "The invented reason is a placeholder, not a real diagno",
+        "weight": 400
+      }
+    ]
+  },
+  {
+    "route": "/tools/xmrig-log-decoder/",
+    "groups": [
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 16,
+        "text": "Connection, rejection or payment question? Identify the",
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(195, 199, 188)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.86379392740831,
+        "required": 4.5,
+        "size": 16,
+        "text": "Connection, rejection or payment question?",
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "foreground": "rgb(255, 180, 126)",
+        "images": 0,
+        "pass": true,
+        "ratio": 10.744463331942915,
+        "required": 4.5,
+        "size": 16,
+        "text": "check payment conditions separately",
+        "weight": 400
+      }
+    ]
+  }
+]

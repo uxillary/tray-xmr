@@ -6,7 +6,7 @@ import type { Props as Card } from './ResourceCard.astro';
 
 interface PublishedArticle {
   id: string;
-  data: { title: string; summary: string; section: 'learn' | 'guides' | 'troubleshoot'; visual: 'huge-pages' | 'msr' | 'hashrate' | 'threads' | 'memory' | 'setup' | 'security' };
+  data: { title: string; summary: string; section: 'learn' | 'guides' | 'troubleshoot'; visual: 'huge-pages' | 'msr' | 'hashrate' | 'threads' | 'memory' | 'setup' | 'security' | 'pool-payments' };
 }
 interface Resource extends Card { help?: { href: string; label: string }; }
 interface Props {
@@ -28,7 +28,7 @@ const articleResources: Resource[] = articles.map((article) => ({
   title: article.data.title,
   description: article.data.summary,
   category: 'Published guide',
-  icon: article.data.visual === 'security' ? 'shieldCheck' : article.data.visual === 'setup' ? 'steps' : article.data.visual === 'memory' ? 'hardDrives' : article.data.visual === 'threads' ? 'cpu' : article.data.visual === 'huge-pages' ? 'memory' : article.data.visual === 'msr' ? 'lockKey' : 'gauge',
+  icon: article.data.visual === 'pool-payments' ? 'network' : article.data.visual === 'security' ? 'shieldCheck' : article.data.visual === 'setup' ? 'steps' : article.data.visual === 'memory' ? 'hardDrives' : article.data.visual === 'threads' ? 'cpu' : article.data.visual === 'huge-pages' ? 'memory' : article.data.visual === 'msr' ? 'lockKey' : 'gauge',
   ...articleCards[article.id],
   href: `/${article.data.section}/${article.id}/`,
 }));

@@ -1,0 +1,27 @@
+{
+  "baseline_head": "ae9e8061c51b6e7ec13d0df9edb5c59204da13b3",
+  "baseline_hashes": {
+    "website/docs/m13b-competitor-analysis.md": "9bb8d93ec453a54cbd8ecf71ac6cafe3a997e3cce3245e0732a9fd520c81b13c",
+    "website/docs/m13b-content-growth-roadmap.md": "73a2532029a010f01d04c113b0b7b7cf8560ff92bad443eea1ccd5a0e8b3ebad",
+    "website/docs/m13b-interactive-resource-opportunities.md": "57ac2e201ebac9fc521ea91c70278f8074c4e9a888ccf3c8a8bc692d6c4cedf2",
+    "website/docs/m13b-original-research-programme.md": "0f18f7c04d881835aa3faf7fa060f19b83c3e49d063caa8a9bff871e3210f975",
+    "website/docs/m13b-promotion-opportunities.md": "8b03e2397bbf39a7737cfbd16ff64a2f0fa5fba721ac7053336f5b21010c49cc",
+    "website/docs/m13b-search-intent-research.md": "694483446735dbfdc6d9c2491ab0ce8a27fae7ff621e383df7ac78865915f023",
+    "website/docs/content-roadmap.md": "a0e2901c19fab313169d1ccaff712e3e92ef09aad21d4f55b8f9fbeb2263fd2b",
+    "website/.astro/content-assets.mjs": "1ae2a5698a66d66594930ac273e7110bef294add73f56d191032beedd592a797",
+    "website/.astro/content-modules.mjs": "6eec27650a023e5d1805c36b527913e976d473c2b4e5d659cbe1587643209e83",
+    "website/.astro/content.d.ts": "4c5f1bc47be0386107782091e87f52019666b19d47b42305ed588178eca6ba78",
+    "website/.astro/data-store.json": "c68e28e51e489b7d780e76de5420b83e6de1f6f5f6b5faa062837b076ff4af80",
+    "website/.astro/dev.json": "40379677d3cce8d31c7104e92c9254a8821b842cb0fe6d6dc93def1c64e7e4af",
+    "website/.astro/settings.json": "b4e181f96580973fb73f5d3806f61788d0c8e4295ee29bf4ee2733498294f1dd",
+    "website/.astro/types.d.ts": "38ea3df3779cce222cd51ba2c9dc9ac053a859208d3097aa3165f70c71517736",
+    "website/.astro/collections/articles.schema.json": "daf2c4de0724ccb20a39da029e81dde87f64c40f00d6d63afd768d328ea27d62",
+    "website/src/lib/electricity-cost.mjs": "bacd7b98da481e020b98f7df70546bed42aa9a47fe81b9dabeab25df032bd362",
+    "website/src/lib/mining-economics.mjs": "81c1fcd60a45f43b33d921a44971d56ec9822ace9b220d6905343c58e7a4129a",
+    "website/src/lib/xmrig-log-decoder.mjs": "23c97c835b2ba94fed9127f62f0de48ee4b16e25bfc63880a4cc9b4e10bca714",
+    "website/package.json": "afc342f5c66a4cf896d8ca05a59c0e4fa070e12f2d19360d70f1b077578f6b83",
+    "website/package-lock.json": "22e2dbb48aed5a7966481c8230d5ad0285778441db47295aa3da934688ccca50",
+    "website/src/pages/index.astro": "1f62fc6b6f5a58e3ff84a53232983231020300343486cba8134de93d937a0dd9"
+  },
+  "result": "All baseline hashes preserved except intentionally extended central roadmap. Generated schema restored only after matching initial bytes to HEAD."
+}

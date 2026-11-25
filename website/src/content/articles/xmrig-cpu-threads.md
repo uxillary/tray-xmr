@@ -47,3 +47,5 @@ Use XMRig's CPU configuration options rather than editing CPU affinity or firmwa
 Do not add threads solely to make Task Manager reach 100%. A useful profile is the one that performs consistently under your intended workload, not the one that occupies every scheduler slot.
 
 If XMRig reports fewer workers than expected and hashrate is also low, check the [low-hashrate checklist](/troubleshoot/xmrig-low-hashrate/) for Huge Pages, MSR, memory pressure and thermal conditions. A lower worker count alone is not proof of a configuration error.
+
+Before comparing profiles, complete the [A/B performance record](/troubleshoot/xmrig-low-hashrate/#keep-a-small-measurement-record). To compare throughput per watt, use [average whole-PC power over a matching interval](/tools/electricity-cost-calculator/#measure-workflow); a CPU model, TDP or package reading cannot stand in for that measurement.
