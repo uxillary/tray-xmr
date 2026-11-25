@@ -2,6 +2,7 @@
 title: "XMRig MSR Errors on Windows: What They Mean"
 description: Learn what XMRig's RandomX MSR setup does, why it can fail on Windows, and what to check before changing system security settings.
 publishedDate: 2026-10-06
+updatedDate: 2026-11-25
 section: troubleshoot
 visual: msr
 callout:
@@ -29,6 +30,8 @@ MSR means **model-specific register**: CPU control registers used for hardware-s
 If the log says MSR setup failed, check that XMRig is a current, trusted build, note whether it is running elevated, and look for the complete error context. Mining may still proceed without the MSR change, but performance can differ. Do not paste custom register values from a forum into `config.json` as a first response.
 
 ## What a successful status looks like
+
+The [versioned MSR reference](/troubleshoot/xmrig-log-reference/#msr-optimization) distinguishes source wording from the decoder’s narrower recognition rules.
 
 XMRig's MSR page gives an example success message similar to “register values for … preset has been set successfully.” Exact text varies by version and CPU. The important point is that the automatic preset was applied; it is not a guaranteed hashrate target.
 

@@ -2,7 +2,7 @@
 title: XMRig Huge Pages Not Working on Windows? What to Check
 description: Understand XMRig Huge Pages status on Windows, the Lock Pages in Memory privilege, partial allocation and safe next steps.
 publishedDate: 2026-10-06
-updatedDate: 2026-10-10
+updatedDate: 2026-11-25
 section: troubleshoot
 visual: huge-pages
 callout:
@@ -51,6 +51,8 @@ The table below is a signal guide, not a promise that every XMRig version prints
 This is why “permission granted” and “allocation succeeded” are separate outcomes: Windows grants a user right to the process, while XMRig still has to obtain the requested memory when it initializes. Windows does not reserve the pages in advance for XMRig; other use of memory can affect allocation. Full allocation for one line does not explain the rest of the system.
 
 ## What the messages mean
+
+Compare the [full and partial allocation examples](/troubleshoot/xmrig-log-reference/#cpu-memory) with the exact region named in your output.
 
 XMRig calls the feature “Huge Pages” across operating systems. Windows documentation calls its corresponding memory pages **Large Pages**. XMRig says the required Windows user right is `SeLockMemoryPrivilege`, displayed in policy interfaces as **Lock pages in memory**.
 

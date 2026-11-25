@@ -1,0 +1,44 @@
+[
+  {
+    "check": "keyboard Enter section",
+    "focus": "difficulty-thresholds",
+    "hash": "#difficulty-thresholds",
+    "header": 116,
+    "outline": "rgb(255, 180, 126) solid 2px",
+    "top": 535.078125
+  },
+  {
+    "check": "reference category Tab order",
+    "focus": "03Connection & jobs2",
+    "outline": "rgb(255, 180, 126) solid 2px"
+  },
+  {
+    "check": "320px console ArrowRight",
+    "client": 261,
+    "focused": true,
+    "outline": "rgb(255, 180, 126) solid 2px",
+    "scroll": 35,
+    "width": 609
+  },
+  {
+    "check": "320px lesson Tab order",
+    "focus": "02 · Three different thresholds",
+    "outline": "rgb(255, 180, 126) solid 2px"
+  },
+  {
+    "check": "320px lesson Enter anchor",
+    "focus": "difficulty-thresholds",
+    "hash": "#difficulty-thresholds",
+    "header": 116,
+    "outline": "rgb(255, 180, 126) solid 2px",
+    "top": 164.078125
+  },
+  {
+    "check": "320px table ArrowRight",
+    "client": 265,
+    "focused": true,
+    "outline": "rgb(255, 180, 126) solid 2px",
+    "scroll": 37,
+    "width": 650
+  }
+]

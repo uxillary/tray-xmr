@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { htmlToHast } from 'satteri';
 import { parse as parseYaml } from 'yaml';
+import { referenceCategories, referenceEntries } from '../src/data/xmrig-reference.mjs';
 
 function elements(node) {
   return [...(node.type === 'element' ? [node] : []), ...(node.children ?? []).flatMap(elements)];
@@ -52,7 +53,17 @@ for (const file of files) {
     articleCount++;
     const headings = elements(body).filter((node) => /^h[2-6]$/.test(node.tagName)).map((node) => node.properties.id);
     const contents = renderedElements.filter((node) => node.tagName === 'nav' && node.properties.className?.includes('article-contents'));
-    if (contents.length !== 2 || !headings.length) failures.push(`${file}: missing article contents or headings`);
+    const technicalNav = renderedElements.find((node) => node.tagName === 'nav' && node.properties.className?.includes('technical-index'));
+    if (technicalNav && (!elements(technicalNav).some((n) => n.tagName === 'a') || contents.length)) failures.push(`${file}: invalid technical resource index`);
+    if (technicalNav) {
+      const required = file.includes('xmrig-log-reference')
+        ? ['reference-categories', 'reference-scope', ...referenceCategories.map((item) => item.id), ...referenceEntries.map((item) => item.id)]
+        : ['relative-hashrate', 'difficulty-thresholds', 'expected-versus-actual', 'model-assumptions'];
+      for (const id of required) if (!ids.includes(id)) failures.push(`${file}: missing static technical anchor ${id}`);
+      if (file.includes('xmrig-log-reference') && renderedElements.filter((node) => node.properties['dataReferenceId']).length !== referenceEntries.length) failures.push(`${file}: incomplete static reference inventory`);
+      if (file.includes('mining-difficulty-expected-rewards') && renderedElements.filter((node) => node.tagName === 'figure').length !== 3) failures.push(`${file}: expected three static education figures`);
+    }
+    if (!technicalNav && (contents.length !== 2 || !headings.length)) failures.push(`${file}: missing article contents or headings`);
     for (const nav of contents) {
       const targets = elements(nav).filter((node) => node.tagName === 'a').map((node) => decodeURIComponent(String(node.properties.href).slice(1)));
       if (JSON.stringify(targets) !== JSON.stringify(headings)) failures.push(`${file}: contents do not match rendered article headings`);
@@ -159,7 +170,7 @@ for (const file of files) {
   }
 }
 
-if (articleCount !== 8) failures.push(`expected 8 articles with section navigation, found ${articleCount}`);
+if (articleCount !== 10) failures.push(`expected 10 articles with section navigation, found ${articleCount}`);
 const reached = new Set(['/']);
 const queue = ['/'];
 for (const route of queue) for (const target of discoveryGraph.get(route) ?? []) {
@@ -168,6 +179,8 @@ for (const route of queue) for (const target of discoveryGraph.get(route) ?? [])
 for (const route of discoveryGraph.keys()) if (!reached.has(route)) failures.push(`${route}: unreachable from homepage main-content HTML links`);
 
 const expected = [
+  'learn/mining-difficulty-expected-rewards/index.html',
+  'troubleshoot/xmrig-log-reference/index.html',
   'guides/xmrig-windows-setup/index.html', 'guides/xmrig-windows-security-warnings/index.html',
   'learn/xmrig-cpu-threads/index.html', 'learn/randomx-memory-cache/index.html',
   'troubleshoot/xmrig-huge-pages/index.html', 'troubleshoot/xmrig-msr-error/index.html',

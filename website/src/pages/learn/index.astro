@@ -3,15 +3,15 @@ import HubPage from '../../components/HubPage.astro';
 import { getCollection } from 'astro:content';
 const articles = (await getCollection('articles', ({ data }) => !data.draft && data.section === 'learn')).sort((a, b) => a.id.localeCompare(b.id));
 const articleCards = {
+  'mining-difficulty-expected-rewards': { category: 'Network / expected work', title: 'Difficulty, hashrate and expected rewards', description: 'Follow a hypothetical miner through relative work, three thresholds and expected versus actual outcomes.', actionLabel: 'Understand the arithmetic' },
   'randomx-memory-cache': { category: 'Memory / the working model', title: 'RandomX memory and cache', description: 'Distinguish dataset RAM, the RandomX cache and CPU cache. Understand the role each resource plays.', actionLabel: 'Understand the memory layers' },
   'xmrig-cpu-threads': { category: 'CPU / the worker count', title: 'Cores, processors and mining threads', description: 'Understand the three counts, why XMRig may use fewer workers, and how to compare thread settings carefully.', actionLabel: 'Understand mining threads' },
 };
 const cards = [
   { icon: 'graduationCap', category: 'Foundations', title: 'What is Monero mining?', description: 'An introduction to mining and the work it contributes to the network.' },
-  { icon: 'gauge', category: 'Measurements', title: 'Hashrate, explained', description: 'What the number measures and why its time window matters.' },
   { icon: 'network', category: 'Network', title: 'Pools, solo mining and P2Pool', description: 'The different ways miners participate and coordinate work.' },
 ] as const;
 ---
-<HubPage kind="learn" title="Learn Monero mining — Ember" description="Understand Monero mining, RandomX, CPU cache and XMRig thread selection through clear, technically grounded explanations." kicker="FIELD NOTES / 01" heading="Understand what your CPU is doing." intro="Understand RandomX memory and the workers doing the mining. These sourced explanations help you read XMRig’s resource choices." resourcesTitle="Choose a concept" resourcesNote="Two published explanations" {articles} {articleCards} {cards} note="Further concepts will be published after sourcing and technical review.">
+<HubPage kind="learn" title="Learn Monero mining — Ember" description="Understand Monero mining, RandomX, CPU cache and XMRig thread selection through clear, technically grounded explanations." kicker="FIELD NOTES / 01" heading="Understand what your CPU is doing." intro="Understand the memory, workers and network behind mining. Follow sourced explanations from local computation to expected rewards." resourcesTitle="Choose a concept" resourcesNote="Three published explanations" {articles} {articleCards} {cards} note="Further concepts will be published after sourcing and technical review.">
   <p slot="handoff"><strong>Ready for practical steps?</strong> Follow the <a href="/guides/xmrig-windows-setup/">standalone Windows XMRig setup guide</a>, from preparation to first-session checks.</p>
 </HubPage>

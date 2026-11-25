@@ -39,6 +39,7 @@ const sectionNavPaths = new Set(['/learn/', '/guides/', '/troubleshoot/', '/tool
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
+    <slot name="head" />
     {activePath === '/' && <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org', '@type': 'WebSite', name: 'Ember', url: `${origin}/`,
       publisher: { '@type': 'Organization', name: 'Ember', url: `${origin}/` },

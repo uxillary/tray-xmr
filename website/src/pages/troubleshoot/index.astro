@@ -1,9 +1,10 @@
 ---
 import HubPage from '../../components/HubPage.astro';
 import { getCollection } from 'astro:content';
-const order: Record<string, number> = { 'xmrig-huge-pages': 0, 'xmrig-msr-error': 1, 'xmrig-low-hashrate': 2, 'xmrig-pool-shares-payments': 3 };
+const order: Record<string, number> = { 'xmrig-huge-pages': 0, 'xmrig-msr-error': 1, 'xmrig-low-hashrate': 2, 'xmrig-pool-shares-payments': 3, 'xmrig-log-reference': 4 };
 const articles = (await getCollection('articles', ({ data }) => !data.draft && data.section === 'troubleshoot')).sort((a, b) => (order[a.id] ?? 3) - (order[b.id] ?? 3));
 const articleCards = {
+  'xmrig-log-reference': { category: 'Reference / XMRig 6.26.0', title: 'Browse mining messages and warnings', description: 'A finite, source-scoped reference with synthetic examples, limits and safe next checks. Read it without pasting a log.', actionLabel: 'Browse the diagnostic reference' },
   'xmrig-huge-pages': { category: 'Memory allocation', title: 'Huge Pages are unavailable or partial', description: 'Read privilege and allocation separately, then choose a safe next check.', actionLabel: 'Check Huge Pages' },
   'xmrig-msr-error': { category: 'CPU optimisation', title: 'XMRig reports an MSR error', description: 'Understand an unavailable CPU preset, read the full warning and keep security protections in place.', actionLabel: 'Understand the MSR warning' },
   'xmrig-low-hashrate': { category: 'Performance', title: 'Hashrate is lower than expected', description: 'Establish a comparable baseline, then check allocation, threads, load and cooling.', actionLabel: 'Follow the hashrate checklist' },
@@ -13,6 +14,6 @@ const cards = [
   { icon: 'magnifyingGlass', category: 'Have output to inspect?', title: 'XMRig Log Decoder', description: 'Inspect supported signals locally and find possible next checks. The decoder does not establish root causes; unknown output stays unknown.', href: '/tools/xmrig-log-decoder/', status: 'Available', actionLabel: 'Decode a log', presentation: 'companion' },
 ] as const;
 ---
-<HubPage kind="troubleshoot" title="Monero mining troubleshooting — Ember" description="Diagnose XMRig Huge Pages, MSR, low hashrate, pool connections, rejected shares and missing payments with source-backed checks." kicker="DIAGNOSTICS / 03" heading="Start with the signal you can see." intro="Match a visible symptom to a safe next check. A warning alone is not a reason to weaken system protections." resourcesTitle="Find your next check" resourcesNote="Four guides + a local log reader" {articles} {articleCards} {cards} note="Additional diagnostics will be published after sourcing and technical review.">
+<HubPage kind="troubleshoot" title="Monero mining troubleshooting — Ember" description="Diagnose XMRig Huge Pages, MSR, low hashrate, pool connections, rejected shares and missing payments with source-backed checks." kicker="DIAGNOSTICS / 03" heading="Start with the signal you can see." intro="Match a visible symptom to a safe next check. A warning alone is not a reason to weaken system protections." resourcesTitle="Find your next check" resourcesNote="Four guides + a reference + a local log reader" {articles} {articleCards} {cards} note="Additional diagnostics will be published after sourcing and technical review.">
   <p slot="handoff"><strong>Windows blocked a miner download?</strong> <a href="/guides/xmrig-windows-security-warnings/">Stop and verify the source and release evidence</a> before trying to run it.</p>
 </HubPage>

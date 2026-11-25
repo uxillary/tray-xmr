@@ -1,0 +1,285 @@
+{
+  "branch": "main",
+  "head": "5b1302eb08de93c8dead07ee06f7933b2d966b98",
+  "entryWorkingTree": "clean",
+  "scope": "website/ only",
+  "fileCount": 49,
+  "implementationAndReportCount": 27,
+  "evidenceCount": 22,
+  "files": [
+    {
+      "path": "website/docs/content-roadmap.md",
+      "bytes": 13304,
+      "sha256": "500a573cb72f69747d0b16739319d04dca88f6fa5504a69c956ee2e131187fc3"
+    },
+    {
+      "path": "website/docs/evidence/m13d/after-learn-1440.jpg",
+      "bytes": 86610,
+      "sha256": "2954cc5e158fe50b258a09a775657e54444f2907bbba8f4f34006a5de7c2cb07"
+    },
+    {
+      "path": "website/docs/evidence/m13d/after-troubleshoot-1440.jpg",
+      "bytes": 107468,
+      "sha256": "dca9679c876bf2915196ad576461f4791c35aacc05dd9ce11a42344efaaf22e1"
+    },
+    {
+      "path": "website/docs/evidence/m13d/anchors.json",
+      "bytes": 17352,
+      "sha256": "ae735eb17d2c6d631051743d51f2653a1129960345551b0d45156d781d0c4719"
+    },
+    {
+      "path": "website/docs/evidence/m13d/before-learn-1440.jpg",
+      "bytes": 97544,
+      "sha256": "e249e0b9c1e41b68dd5e8075b52ec49af269695e054383f95ee326e90fadb9b6"
+    },
+    {
+      "path": "website/docs/evidence/m13d/before-troubleshoot-1440.jpg",
+      "bytes": 92469,
+      "sha256": "fa9fc9ef36a213a8bc5595f235b66c608a4df7eb1a5653646dd9a77be99dd318"
+    },
+    {
+      "path": "website/docs/evidence/m13d/build-audit.json",
+      "bytes": 47327,
+      "sha256": "b1f9392717923644088f37f7eb4685d0192973baa9d2e971534486a85962c6dc"
+    },
+    {
+      "path": "website/docs/evidence/m13d/contrast.json",
+      "bytes": 12802,
+      "sha256": "2b4970d2ecc31428b1460b8525ed5b444d2b02b9797b62317843f575de39b64a"
+    },
+    {
+      "path": "website/docs/evidence/m13d/difficulty-overview-1440.jpg",
+      "bytes": 97134,
+      "sha256": "2a489b4e91bf46fe201626c6f2116f72de82f6ddf256bde46491a7127ec5318f"
+    },
+    {
+      "path": "website/docs/evidence/m13d/expected-rewards-1440.jpg",
+      "bytes": 95296,
+      "sha256": "8789811074d1e9d9825c5c1810ede32ec0d2a76fb820eaa391a45887a7c9a18b"
+    },
+    {
+      "path": "website/docs/evidence/m13d/expected-rewards-390.jpg",
+      "bytes": 37925,
+      "sha256": "91cf1eec8ddcf03c8d82629df0b494130335c8dbdf98f98c799e8603229faa17"
+    },
+    {
+      "path": "website/docs/evidence/m13d/files-changed.json",
+      "hashExcluded": "Self-reference avoided; path included in exact inventory."
+    },
+    {
+      "path": "website/docs/evidence/m13d/keyboard.json",
+      "bytes": 1051,
+      "sha256": "1affc393a83d36789e14d4efd1c743fd64a693cb135f8a804bf423e8be48f509"
+    },
+    {
+      "path": "website/docs/evidence/m13d/reference-entry-1440.jpg",
+      "bytes": 82563,
+      "sha256": "8812e09399b17400f9ca3bbb6942de735a7806c0c1b1eddefc7309e11a0e02ae"
+    },
+    {
+      "path": "website/docs/evidence/m13d/reference-entry-320.jpg",
+      "bytes": 39961,
+      "sha256": "ba0f3805f44ccafaa0a507e6c58ef8fd2446c258145b0d93b377f28913002263"
+    },
+    {
+      "path": "website/docs/evidence/m13d/reference-navigation-390.jpg",
+      "bytes": 37409,
+      "sha256": "0cd68e4337a5f3d76622f999313206474caf626eb2fa2cc92eb782cf4534ed79"
+    },
+    {
+      "path": "website/docs/evidence/m13d/reference-overview-1440.jpg",
+      "bytes": 94290,
+      "sha256": "5d3c15b89888742bfaec1768d172e4a39e8269e13968e2c8e5e82860c19d1122"
+    },
+    {
+      "path": "website/docs/evidence/m13d/relative-hashrate-1440.jpg",
+      "bytes": 100104,
+      "sha256": "3bbd87adb5a8cfbe2d2c9582313ed539faf9a6e2f6e181653e9eece2a856ba5b"
+    },
+    {
+      "path": "website/docs/evidence/m13d/relative-hashrate-390.jpg",
+      "bytes": 45955,
+      "sha256": "d0f8ab1457dfaa57911e069b6d734235809eee62ca98407ec03888069543e3d2"
+    },
+    {
+      "path": "website/docs/evidence/m13d/responsive.json",
+      "bytes": 37413,
+      "sha256": "19d5dbc955b3e6ba17fdc43c3aab92d9b73e4ae9532f9b0e6d9945d7c0b18230"
+    },
+    {
+      "path": "website/docs/evidence/m13d/thresholds-1440.jpg",
+      "bytes": 84834,
+      "sha256": "d6db27170886fbe2925cee542cf58420e9fb91e349b201dbde988fe1c774e469"
+    },
+    {
+      "path": "website/docs/evidence/m13d/thresholds-320.jpg",
+      "bytes": 41397,
+      "sha256": "87c89378c6b86f55a1652304b00964733b7c0bc6ee33f0b833e270617e9ff727"
+    },
+    {
+      "path": "website/docs/evidence/m13d/thresholds-390.jpg",
+      "bytes": 46330,
+      "sha256": "cc85e8a27aa0d6bd3f780b6f28f11e577ef2f7679a2a04b7a78527019cea5f99"
+    },
+    {
+      "path": "website/docs/m13d-technical-reference-visual-education.md",
+      "hashExcluded": "Self-reference avoided; path included in exact inventory."
+    },
+    {
+      "path": "website/scripts/verify-content.mjs",
+      "bytes": 14469,
+      "sha256": "b9f3b3a0bf5f7055cfdc1b743eac8084daa8f802f1149ff181d3d4154ab56f99"
+    },
+    {
+      "path": "website/scripts/verify-production-origin.mjs",
+      "bytes": 7808,
+      "sha256": "b90bb75d6f1b54e2a2f6e6e028dd5422285ffb41b92640dcab666afdd486f16b"
+    },
+    {
+      "path": "website/src/components/ArticleLayout.astro",
+      "bytes": 11510,
+      "sha256": "17ef412fcc366840f29b3e7d09182b896640998d92b3018e2944f385113ee822"
+    },
+    {
+      "path": "website/src/components/HubPage.astro",
+      "bytes": 3351,
+      "sha256": "a53d81d248c2410a6913e9defec0d40c44f525bb70211c486c7c4f339bcbe76c"
+    },
+    {
+      "path": "website/src/components/MiningEducation.astro",
+      "bytes": 9650,
+      "sha256": "bbb002e2ba333da3de866b2650e1d7c2cb3eb8c9e9f97141c60859393144e621"
+    },
+    {
+      "path": "website/src/components/SiteLayout.astro",
+      "bytes": 4237,
+      "sha256": "55f79a23f4598b9700639c87e148cd47629d3d7cefd9b82605f47248447398bc"
+    },
+    {
+      "path": "website/src/components/XmrigReference.astro",
+      "bytes": 2980,
+      "sha256": "73498f9bffbbcc7c9556957b39f627953bf4200902c97eb31097840aee97d451"
+    },
+    {
+      "path": "website/src/content.config.ts",
+      "bytes": 1014,
+      "sha256": "0a372c4bddca21065e9b35465b058094c2028d4d56417aaa2b1706adf6c0eb98"
+    },
+    {
+      "path": "website/src/content/articles/mining-difficulty-expected-rewards.md",
+      "bytes": 2916,
+      "sha256": "32ce244d4991e37ea70bceabbbb79c7f40a7a44fb5a353ec3ace2adfd40d56e2"
+    },
+    {
+      "path": "website/src/content/articles/randomx-memory-cache.md",
+      "bytes": 4978,
+      "sha256": "491cde6f92370fd3f2cc994861d64fc1ca6eb90a08caef92492119f3474b4987"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-cpu-threads.md",
+      "bytes": 4124,
+      "sha256": "8c17e203bc662a189eee6ca3d8a1346b36e50ef32e2c6f8f6b0243bd424df49e"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-huge-pages.md",
+      "bytes": 9562,
+      "sha256": "624f07c695702fdf56fe27b361819eabb317a760604baef320de14d89dda175d"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-log-reference.md",
+      "bytes": 2758,
+      "sha256": "d6c2ce7ce7483bb04c9687a869865f190a5989a1242a5c3e8b4c989c9c8e1d4b"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-low-hashrate.md",
+      "bytes": 11014,
+      "sha256": "de3e01e02c0a1018a5dcfc158f8b9d8faa604917214c73cae70efbe447e78ea9"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-msr-error.md",
+      "bytes": 4953,
+      "sha256": "6d0c7a8b83e20f1cf6e7afbe6b52de4b6976add3469c2587231ced2ee9d12753"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-pool-shares-payments.md",
+      "bytes": 11243,
+      "sha256": "b64f23509f1cabdb05e3c76190017174d1823a94d83387f9398495bf2377ca33"
+    },
+    {
+      "path": "website/src/content/articles/xmrig-windows-setup.md",
+      "bytes": 19395,
+      "sha256": "4dd9284d516527d04f057ebda8cbe21514f50a42bbd9b89105ae5d0e7200eea0"
+    },
+    {
+      "path": "website/src/data/mining-education.mjs",
+      "bytes": 596,
+      "sha256": "b8a1e92ba7734204c7bcca3bcabaf9cbb15181d4db7b8c00201882abe8778e2e"
+    },
+    {
+      "path": "website/src/data/xmrig-reference.mjs",
+      "bytes": 12872,
+      "sha256": "85d4c381d92552dc838aa6853063800a3113bf3a3dd1b30d65eae24be44212ea"
+    },
+    {
+      "path": "website/src/pages/learn/index.astro",
+      "bytes": 2308,
+      "sha256": "beea755b2101000fd641801bdf1a67d0847edbe08da14504ea206ee542af8fd0"
+    },
+    {
+      "path": "website/src/pages/tools/monero-mining-profitability-calculator.astro",
+      "bytes": 23688,
+      "sha256": "3b31eaad87b3611c8ca5832387ee27eca0f1682faab57fd652ef6704325e18dd"
+    },
+    {
+      "path": "website/src/pages/tools/xmrig-log-decoder.astro",
+      "bytes": 4953,
+      "sha256": "bbfdc9a259137e98bf58f4904ed1e590077d93d8b3f408bcbdd6ef2eb0e581b1"
+    },
+    {
+      "path": "website/src/pages/troubleshoot/index.astro",
+      "bytes": 3012,
+      "sha256": "ccad893770943d76c3dc36da6e25b101a79a32302b9004b26d54933747cf0401"
+    },
+    {
+      "path": "website/src/styles/technical-resources.css",
+      "bytes": 9044,
+      "sha256": "424abc38028955f4379a8bcc1d3c9ac9c61f82c90d6283dc94e9bc951578e9ca"
+    },
+    {
+      "path": "website/tests/technical-resources.test.mjs",
+      "bytes": 5198,
+      "sha256": "fdf74283d2ea61e102aa27f17f39ef896996ec78965bf6c3dcbd3067bc7c4a30"
+    }
+  ],
+  "verification": {
+    "tests": 52,
+    "astroDiagnostics": 0,
+    "publishedRoutes": 20,
+    "responsiveRecords": 160,
+    "anchorRecords": 91,
+    "contrastGroups": 46,
+    "minimumNewTextContrast": 7.028428309427263,
+    "preservedSources": [
+      "website/src/lib/xmrig-log-decoder.mjs",
+      "website/src/lib/mining-economics.mjs",
+      "website/src/lib/electricity-cost.mjs",
+      "website/src/scripts/xmrig-log-decoder.js",
+      "website/src/scripts/mining-profitability.js",
+      "website/src/scripts/electricity-calculator.js",
+      "website/package.json",
+      "website/package-lock.json",
+      "website/src/components/PerformanceContext.astro",
+      "website/src/components/PoolPaymentFlow.astro",
+      "website/src/components/PowerMeasurement.astro",
+      "website/src/styles/resource-methods.css",
+      "website/src/pages/index.astro"
+    ],
+    "homepageHtmlByteIdentical": true,
+    "compiledToolJsByteIdentical": true,
+    "gitDiffCheck": "passed",
+    "ownerAcceptance": "pending",
+    "nativeZoomScreenReaderPhysicalDevices": "unverified",
+    "reducedMotion": "source inspection; new components have no motion; OS preference emulation not performed",
+    "noJavaScript": "static HTML and native links verified; browser JavaScript-disable run not performed"
+  }
+}

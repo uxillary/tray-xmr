@@ -2,6 +2,7 @@
 title: "XMRig Pool Connections, Rejected Shares and Missing Payments"
 description: "Separate XMRig connection, job, submission and payout states. Check rejected shares safely and understand why accepted submissions may not be P2Pool shares."
 publishedDate: 2026-11-25
+updatedDate: 2026-11-25
 section: troubleshoot
 visual: pool-payments
 summary: "Find the last stage you can actually verify: connection, work, submission response or payment eligibility. An accepted XMRig submission is not a wallet payment."
@@ -27,6 +28,8 @@ sources:
 ---
 
 <h2 id="no-connection">1. No connection or repeated reconnects</h2>
+
+The [three difficulty thresholds](/learn/mining-difficulty-expected-rewards/#difficulty-thresholds) explain why an accepted submission need not be a sidechain share or Monero block. Browse the [console reference](/troubleshoot/xmrig-log-reference/#pool-work) for source-scoped examples.
 
 **What the signal establishes:** a failed attempt or repeated retries show that XMRig has not maintained the intended endpoint connection during that excerpt. A disconnect after earlier work is a different event from never connecting.
 

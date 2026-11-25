@@ -2,6 +2,7 @@
 title: How to Set Up XMRig on Windows
 description: "Set up standalone XMRig for Monero on Windows: choose the official build, configure a pool and wallet address, start safely and read each first-run signal."
 publishedDate: 2026-10-08
+updatedDate: 2026-11-25
 section: guides
 visual: setup
 summary: Follow one careful path from the official Windows release to a first foreground session. This guide covers pool configuration, safe provenance checks and what startup, connection and share messages do—and do not—confirm.
@@ -147,6 +148,8 @@ This command starts XMRig in the foreground using that config; it begins trying 
 You can also start XMRig by opening its executable and allowing it to find the adjacent `config.json`, but this guide uses the explicit PowerShell command so the selected configuration is visible. Avoid adding startup tasks or background execution until you understand the consequences.
 
 <h2 id="verify-the-session">5. Verify the first session</h2>
+
+For unfamiliar console output, browse the [XMRig 6.26.0 message reference](/troubleshoot/xmrig-log-reference/). It separates startup, work and submission evidence.
 
 Treat the first run as a sequence of observations. One green-looking line is not proof that every later stage succeeded:
 

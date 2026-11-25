@@ -1,0 +1,730 @@
+[
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 739.53125
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 2954.40625
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 3849.96875
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 4710.53125
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 5524.09375
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 481.640625
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 1367.609375
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 2233.828125
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 3281.015625
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 731.734375
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 2963.609375
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 3846.171875
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 4732.734375
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 5649.296875
+  },
+  {
+    "width": 1280,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 440.109375
+  },
+  {
+    "width": 1280,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 1336.078125
+  },
+  {
+    "width": 1280,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 2202.296875
+  },
+  {
+    "width": 1280,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 3270.484375
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 684.609375
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 3058.90625
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 4058.890625
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 5085.875
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 544.859375
+  },
+  {
+    "width": 1024,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 388.796875
+  },
+  {
+    "width": 1024,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 1274.46875
+  },
+  {
+    "width": 1024,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 2204.359375
+  },
+  {
+    "width": 1024,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 79,
+    "top": 3311.71875
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 674.109375
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 3292.5
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 4409.078125
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 5510.65625
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 6601.484375
+  },
+  {
+    "width": 768,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 435.796875
+  },
+  {
+    "width": 768,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 1540.84375
+  },
+  {
+    "width": 768,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 2598.078125
+  },
+  {
+    "width": 768,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 3797.28125
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 980.78125
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 3691.921875
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 4852.25
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 5958.828125
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 7103.15625
+  },
+  {
+    "width": 600,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 608.921875
+  },
+  {
+    "width": 600,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 2053.9375
+  },
+  {
+    "width": 600,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 3280.5625
+  },
+  {
+    "width": 600,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 117,
+    "top": 4855.3125
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 1203.65625
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 4616.734375
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 6065.3125
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 7494.265625
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 8851.53125
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 846.25
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 2516.265625
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 4121.59375
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 6007.046875
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 1312.8125
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 5011.515625
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 6477.59375
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 8008.046875
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 9487.8125
+  },
+  {
+    "width": 360,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 751.25
+  },
+  {
+    "width": 360,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 2473.265625
+  },
+  {
+    "width": 360,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 4230.09375
+  },
+  {
+    "width": 360,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 6172.546875
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 1427.859375
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 5559.1875
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 7301.640625
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 8970.09375
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 10662.546875
+  },
+  {
+    "width": 320,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 870.609375
+  },
+  {
+    "width": 320,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 2756.078125
+  },
+  {
+    "width": 320,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 4734.90625
+  },
+  {
+    "width": 320,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "direct fragment",
+    "headerBottom": 116,
+    "top": 6865.15625
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "clicked category",
+    "headerBottom": 79,
+    "top": 126.53125
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 484.53125
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 3164.40625
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 4310.96875
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 5411.53125
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 6560.09375
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 433.640625
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 1718.609375
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 3025.828125
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "clicked index",
+    "headerBottom": 79,
+    "top": 4384.015625
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "cpu-memory",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 833.65625
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "msr-optimization",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 4468.734375
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "pool-work",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 6067.3125
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "submissions",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 7616.265625
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "id": "connection-errors",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 9077.53125
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "relative-hashrate",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 636.25
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "difficulty-thresholds",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 2551.265625
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "expected-versus-actual",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 4314.59375
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "id": "model-assumptions",
+    "method": "clicked index",
+    "headerBottom": 116,
+    "top": 6357.046875
+  }
+]

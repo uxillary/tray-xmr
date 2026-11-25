@@ -2,6 +2,7 @@
 title: Why XMRig Isn't Using All Your CPU Threads
 description: Understand logical processors, RandomX mining threads and cache limits so you can interpret XMRig auto-configuration without blindly forcing more threads.
 publishedDate: 2026-10-06
+updatedDate: 2026-11-25
 section: learn
 visual: threads
 callout:
@@ -23,6 +24,8 @@ sources:
 ---
 
 ## The short answer
+
+After choosing a worker count, read [CPU readiness and speed output](/troubleshoot/xmrig-log-reference/#cpu-memory) to separate startup from sustained performance.
 
 XMRig does not need to mine on every logical processor to use the CPU well. RandomX performance depends on each mining thread getting enough CPU cache and memory bandwidth. If cache is the limiting resource, adding threads can leave the total hashrate unchanged or make it lower.
 

@@ -2,6 +2,7 @@
 title: RandomX Memory and CPU Cache Explained
 description: A practical guide to RandomX's dataset, cache, per-thread CPU cache needs, Huge Pages and NUMA for XMRig users.
 publishedDate: 2026-10-06
+updatedDate: 2026-11-25
 section: learn
 visual: memory
 callout:
@@ -31,6 +32,8 @@ sources:
 RandomX uses a large **dataset** held in system memory, a smaller **cache** used to build that dataset, and CPU cache close to the cores running mining threads. These are different resources. A computer can have plenty of installed RAM yet still be limited by CPU cache, memory bandwidth, available free RAM or how memory is placed across processor nodes.
 
 ## Dataset and cache
+
+Use the [dataset and allocation reference](/troubleshoot/xmrig-log-reference/#cpu-memory) when matching this memory model to startup output.
 
 XMRig's current optimization guide describes fast-mode dataset requirements as about 2,080 MB per NUMA node, with a 256 MB cache on the first node. Its configuration reference describes RandomX modes as auto, fast (2 GB memory) and light (256 MB memory). These are rounded documentation figures; actual reported allocation includes implementation and system details. Light mode lowers memory use substantially but is much slower, according to XMRig.
 

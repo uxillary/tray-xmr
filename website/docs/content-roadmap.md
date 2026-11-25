@@ -40,7 +40,16 @@ The [interactive assessment](m13b-interactive-resource-opportunities.md) priorit
 
 Checks cover all eight affected routes at eight CSS widths (1440 through 320px), bounded keyboard/anchor/contrast/no-JavaScript/reduced-motion/print-style checks, 47 regression tests, Astro diagnostics, static links/metadata/sitemap and the protected production-origin contract. Browser checks are Chromium-family local evidence, not native zoom, screen-reader, Firefox/Safari, physical-device or public-production acceptance. Those owner gates and final visual review remain open.
 
-Only B02/B03/B01 are implemented. B04, B05, B06, dataset ingestion, configuration generation, new navigation sections and original measurements remain separately scoped future work.
+At M13C close, B02/B03/B01 were implemented. B04 and B05 followed in M13D below. B06, dataset ingestion, configuration generation, new navigation sections and original measurements remain separately scoped future work.
+
+## M13D — Technical reference and visual mining education
+
+**Implemented locally (25 November 2026); awaiting owner visual acceptance.** The [implementation report](m13d-technical-reference-visual-education.md) records screenshots, source/coverage mapping, arithmetic, accessibility, payloads and exact inventory. All 18 existing routes remain; two collection resources bring the total to **20**.
+
+- **B05 — Implemented:** `/troubleshoot/xmrig-log-reference/` contains 15 finite entries in five anchored categories, scoped to XMRig 6.26.0. Seven displayed examples match the unchanged decoder; one native MSR-success wording gap, two heuristic families and five reference-only entries are explicit. All ten existing recognizer families are mapped. Static data supports later filtering, but B07 remains unimplemented.
+- **B04 — Implemented:** `/learn/mining-difficulty-expected-rewards/` explains rates, network difficulty, job/sidechain/network thresholds and expected versus actual outcomes through three original static illustrations. Fixed hypothetical arithmetic agrees with both calculator network bases. No live statistics, probability simulation or B12 controls.
+
+Learn/Troubleshoot hubs and relevant setup, allocation, MSR, performance, memory, worker, decoder, payment and calculator passages now link to the appropriate explanation. The homepage, three M13C visuals, calculator mathematics, parser, privacy behavior, dependencies and desktop sources remain preserved. New CSS is requested only by the two new resources. Local verification: 52 passing tests, zero Astro diagnostics, 20-route build/link/origin checks, 160 route/width records, 91 anchor checks and measured new-text contrast above 7:1. Native zoom, actual screen readers, other engines and physical devices remain owner checks. No commit, push, deployment or promotion occurred.
 
 ## P0 — Launch foundation
 
@@ -51,7 +60,7 @@ Only B02/B03/B01 are implemented. B04, B05, B06, dataset ingestion, configuratio
 
 ## P1 — Early growth
 
-- Publish a sourced introduction to Monero mining and a clear hashrate explainer.
+- Publish a sourced introduction to Monero mining. **Shipped (M13D):** the difficulty/expected-rewards lesson explains hashrate, relative work and the limits of expected-value estimates.
 - **Shipped (M08):** a sourced Windows CPU mining setup guide that distinguishes standalone XMRig steps from Ember-specific capability. Recheck its upstream/version details before future edits.
 - **Shipped (M11B):** the Huge Pages guide distinguishes privilege from allocation with a sourced signal table and dated XMRig version-scope note. Review Windows-specific instructions against current upstream documentation before future updates.
 - Add contextual internal links and glossary definitions where they resolve real reader questions.

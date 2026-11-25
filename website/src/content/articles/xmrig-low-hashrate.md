@@ -73,6 +73,8 @@ If you are also estimating household energy use, use whole-system power measured
 
 ## Keep a small measurement record
 
+Reading several speed numbers? The [hashrate-window reference](/troubleshoot/xmrig-log-reference/#speed-summary) explains why time windows matter. [Relative network work](/learn/mining-difficulty-expected-rewards/#relative-hashrate) is a separate comparison from local performance.
+
 Make an A/B record before changing settings. Copy or print the worksheet below; write **unknown** where evidence is missing. It is a static sheet, with no account, upload or browser storage. If a comparison changes several conditions, it cannot isolate the effect of one setting.
 
 <div class="record-sheet run-worksheet">

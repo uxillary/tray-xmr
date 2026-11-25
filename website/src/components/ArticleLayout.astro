@@ -5,11 +5,15 @@ import SiteLayout from './SiteLayout.astro';
 import ArticleVisual from './ArticleVisual.astro';
 import PerformanceContext from './PerformanceContext.astro';
 import PoolPaymentFlow from './PoolPaymentFlow.astro';
+import XmrigReference from './XmrigReference.astro';
+import MiningEducation from './MiningEducation.astro';
+import technicalStyles from '../styles/technical-resources.css?url';
 import ArticleContents from './ArticleContents.astro';
 import { siteOrigin } from '../lib/site-origin.mjs';
 interface Props { entry: CollectionEntry<'articles'>; }
 const { entry } = Astro.props as Props;
 const { Content, headings } = await render(entry);
+const technical = ['log-reference', 'difficulty'].includes(entry.data.visual);
 // Keep the MSR continuation/firmware caveat prominent without repeating a callout.
 const opening = entry.data.visual === 'msr' && entry.data.callout ? entry.data.callout.body : entry.data.summary;
 const sectionTitle = entry.data.section === 'learn' ? 'Learn' : entry.data.section === 'guides' ? 'Guides' : 'Troubleshoot';
@@ -42,20 +46,23 @@ const relatedEntries = entry.data.related.flatMap((id) => {
 });
 ---
 <SiteLayout title={`${entry.data.title} — Ember`} description={entry.data.description} canonical={path} type="article" publishedDate={entry.data.publishedDate} updatedDate={entry.data.updatedDate}>
+  <Fragment slot="head">{technical && <link rel="stylesheet" href={technicalStyles} />}</Fragment>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <div class="wrap article-wrap">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href={`/${entry.data.section}/`}>{sectionTitle}</a><span aria-hidden="true">/</span><span aria-current="page">Article</span></nav>
-    <article class="article">
+    <article class:list={["article", { "article-technical": technical }]}>
       <header class="article-header"><span class="page-kicker">{sectionTitle.toUpperCase()} / XMRIG + RANDOMX</span><h1>{entry.data.title}</h1><div class="article-deck"><p>{opening}</p></div><p class="article-date">Published <time datetime={entry.data.publishedDate.toISOString().slice(0, 10)}>{entry.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>{entry.data.updatedDate && <> · Updated <time datetime={entry.data.updatedDate.toISOString().slice(0, 10)}>{entry.data.updatedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></>}</p></header>
       <div class="article-reading">
-      <ArticleContents headings={headings} />
+      {!technical && <ArticleContents headings={headings} />}
       <div class="article-content">
 
       {entry.data.visual === 'hashrate' && <PerformanceContext />}
       {entry.data.visual === 'pool-payments' && <PoolPaymentFlow />}
+      {entry.data.visual === 'log-reference' && <XmrigReference />}
+      {entry.data.visual === 'difficulty' && <MiningEducation />}
       <div class="article-body"><Content /></div>
-      {entry.data.visual !== 'hashrate' && entry.data.visual !== 'pool-payments' && <ArticleVisual type={entry.data.visual} />}
+      {!technical && entry.data.visual !== 'hashrate' && entry.data.visual !== 'pool-payments' && <ArticleVisual type={entry.data.visual} />}
       <section class="article-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2><ul>{entry.data.sources.map((source) => <li><a href={source.url} rel="external noreferrer">{source.organization}: {source.title}</a><span> Accessed <time datetime={source.accessed.toISOString().slice(0, 10)}>{source.accessed.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></span></li>)}</ul></section>
       <aside class="article-context"><strong>About Ember</strong><p>Ember is an in-development Windows desktop interface for XMRig. It has no public release; these explanations stand on their own and do not depend on Ember.</p><a href="/ember/">See the current product status →</a></aside>
       {relatedEntries.length > 0 && <nav class="article-related" aria-label="Related articles"><h2>Related reading</h2><ul>{relatedEntries.map((item) => <li><a href={`/${item.data.section}/${item.id}/`}>{item.data.title} <span aria-hidden="true">↗</span></a></li>)}</ul></nav>}
@@ -75,4 +82,8 @@ const relatedEntries = entry.data.related.flatMap((id) => {
   @media(min-width:1200px){.article-reading{grid-template-columns:minmax(0,820px) 240px;column-gap:48px;align-items:start}.article-content{grid-column:1;grid-row:1}.article-reading :global(.article-navigation){grid-column:2;grid-row:1}}
   @media(max-width:1199px){.article,.breadcrumbs{max-width:820px}}
   @media(max-width:600px){.article-header h1{font-size:2.15rem}.breadcrumbs{margin-bottom:24px}.article-deck{font-size:1.0625rem}.article-body{font-size:1rem}.article-reading{gap:20px}.article-body :global(h2){font-size:1.5rem}}
+</style>
+
+<style>
+.article-technical .article-reading{grid-template-columns:minmax(0,1fr)}.article-technical .article-content{max-width:100%;grid-column:1}.article-technical .article-body,.article-technical .article-sources,.article-technical .article-context,.article-technical .article-related,.article-technical .article-back{max-width:820px}.article-technical .article-header{max-width:940px}.article-technical .article-header h1{max-width:940px}
 </style>

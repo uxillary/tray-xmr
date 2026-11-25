@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { referenceCategories, referenceEntries, referenceVersion } from '../data/xmrig-reference.mjs';
+---
+<div class="technical-resource log-reference">
+  <div class="reference-scope"><div><span class="technical-label">REFERENCE EDITION</span><strong>XMRig {referenceVersion}</strong><span>{referenceEntries.length} entries · 5 categories</span></div><p>Read the event, then its limits. Examples below are synthetic, with invented values and no captured user logs. Excerpts omit timestamps, colour codes and some fields.</p></div>
+  <nav id="reference-categories" class="technical-index" aria-label="Reference categories"><span class="technical-label">JUMP TO A CATEGORY</span><ul>{referenceCategories.map((category, i) => <li><a href={`#${category.id}`}><span class="index-number">0{i + 1}</span>{category.label}<span class="index-count">{referenceEntries.filter((e) => e.category === category.id).length}</span></a></li>)}</ul></nav>
+  <p class="technical-handoff">Have an excerpt to inspect? <a href="/tools/xmrig-log-decoder/">Use the local log decoder</a>. Its 10 recognizer families are mapped below; coverage is narrower than this reference. <a href="#reference-scope">Read the scope and coverage key</a>.</p>
+  {referenceCategories.map((category, i) => <section class="reference-category" aria-labelledby={category.id}>
+    <header class="reference-category-heading"><Icon name={category.icon} size="section" /><div><span class="technical-label">0{i + 1} / MESSAGE FAMILIES</span><h2 id={category.id} tabindex="-1">{category.label}</h2></div></header>
+    {referenceEntries.filter((e) => e.category === category.id).map((entry) => <section class="reference-entry" aria-labelledby={entry.id} data-reference-id={entry.id}>
+      <div class="entry-top"><h3 id={entry.id} tabindex="-1"><a href={`#${entry.id}`}>{entry.title}</a></h3><span class:list={['signal-status', entry.level.toLowerCase()]}>{entry.level}</span></div>
+      <p class="entry-scope">v{entry.version} · <span>{entry.coverage}</span> · {entry.exampleKind}</p>
+      {entry.example && <><p class="console-label">SYNTHETIC EXAMPLE · {entry.exampleKind}</p><pre class="reference-console" tabindex="0" role="region" aria-label={`Synthetic example: ${entry.title}`}><code>{entry.example}</code></pre></>}
+      <dl class="signal-boundaries"><div><dt>Establishes</dt><dd>{entry.establishes}</dd></div><div><dt>Does not establish</dt><dd>{entry.doesNot}</dd></div></dl>
+      <p class="entry-context"><strong>Read in context.</strong> {entry.context}</p>
+      <p class="entry-next"><strong>Next check</strong> {entry.action} <a href={entry.href}>{entry.link}</a>.</p>
+      <p class="entry-source"><a href={entry.source.url} rel="external noreferrer">Primary source: {entry.source.path}</a> · Reviewed {entry.reviewed}</p>
+    </section>)}
+    <a class="category-return" href="#reference-categories">Back to category index</a>
+  </section>)}
+</div>

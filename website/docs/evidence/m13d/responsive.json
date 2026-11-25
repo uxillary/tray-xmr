@@ -1,0 +1,1932 @@
+[
+  {
+    "width": 1440,
+    "route": "/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/ember/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/learn/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/guides/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/tools/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/trust/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": [
+      {
+        "client": 818,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1440,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": [
+      {
+        "client": 577,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 1425,
+    "h1": 1,
+    "scroll": 1425,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/ember/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/learn/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/guides/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/tools/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/trust/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": [
+      {
+        "client": 818,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1280,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": [
+      {
+        "client": 567,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 1265,
+    "h1": 1,
+    "scroll": 1265,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/ember/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/learn/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/guides/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/tools/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/trust/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": [
+      {
+        "client": 818,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 1024,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": [
+      {
+        "client": 449,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 1009,
+    "h1": 1,
+    "scroll": 1009,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/ember/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/learn/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/guides/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/tools/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/trust/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": [
+      {
+        "client": 690,
+        "contained": "auto",
+        "label": "What the release checks can establish: scrollable table",
+        "scroll": 760,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": [
+      {
+        "client": 690,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 768,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": [
+      {
+        "client": 645,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 690,
+        "contained": "auto",
+        "label": "Mining calculator input sources",
+        "scroll": 700,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 753,
+    "h1": 1,
+    "scroll": 753,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/ember/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/learn/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/guides/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/tools/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/trust/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 537,
+        "contained": "auto",
+        "label": "Constant-assumption teaching arithmetic",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 509,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 535,
+        "contained": "auto",
+        "label": "What the release checks can establish: scrollable table",
+        "scroll": 760,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 533,
+        "contained": "auto",
+        "label": "Synthetic example: Hashrate windows",
+        "scroll": 543,
+        "tabindex": "0"
+      },
+      {
+        "client": 533,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset applied",
+        "scroll": 667,
+        "tabindex": "0"
+      },
+      {
+        "client": 533,
+        "contained": "auto",
+        "label": "Synthetic example: Algorithm configuration mismatch",
+        "scroll": 568,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 535,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 535,
+        "contained": "auto",
+        "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 501,
+        "contained": "auto",
+        "label": "3. Shares are being rejected: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 600,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": [
+      {
+        "client": 503,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 535,
+        "contained": "auto",
+        "label": "Mining calculator input sources",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 535,
+        "contained": "auto",
+        "label": "Hypothetical daily calculation table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 600,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 585,
+    "h1": 1,
+    "scroll": 585,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/ember/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/learn/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/guides/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/tools/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/trust/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 335,
+        "contained": "auto",
+        "label": "Constant-assumption teaching arithmetic",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 307,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      },
+      {
+        "client": 307,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 316,
+        "tabindex": "0"
+      },
+      {
+        "client": 307,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 382,
+        "tabindex": "0"
+      },
+      {
+        "client": 333,
+        "contained": "auto",
+        "label": "3. Configure XMRig: code example",
+        "scroll": 473,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 333,
+        "contained": "auto",
+        "label": "What the release checks can establish: scrollable table",
+        "scroll": 760,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: Hashrate windows",
+        "scroll": 494,
+        "tabindex": "0"
+      },
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset applied",
+        "scroll": 609,
+        "tabindex": "0"
+      },
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset could not be applied",
+        "scroll": 401,
+        "tabindex": "0"
+      },
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: New job received",
+        "scroll": 463,
+        "tabindex": "0"
+      },
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: Submission rejected",
+        "scroll": 432,
+        "tabindex": "0"
+      },
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: Connection read error",
+        "scroll": 340,
+        "tabindex": "0"
+      },
+      {
+        "client": 331,
+        "contained": "auto",
+        "label": "Synthetic example: Algorithm configuration mismatch",
+        "scroll": 517,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 333,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 333,
+        "contained": "auto",
+        "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 299,
+        "contained": "auto",
+        "label": "2. Connected, but no mining jobs: code example",
+        "scroll": 490,
+        "tabindex": "0"
+      },
+      {
+        "client": 299,
+        "contained": "auto",
+        "label": "3. Shares are being rejected: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 390,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": [
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 333,
+        "contained": "auto",
+        "label": "Mining calculator input sources",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 333,
+        "contained": "auto",
+        "label": "Hypothetical daily calculation table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 375,
+    "h1": 1,
+    "scroll": 375,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/ember/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/learn/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/guides/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/tools/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/trust/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 305,
+        "contained": "auto",
+        "label": "Constant-assumption teaching arithmetic",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 277,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      },
+      {
+        "client": 277,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 316,
+        "tabindex": "0"
+      },
+      {
+        "client": 277,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 382,
+        "tabindex": "0"
+      },
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "3. Configure XMRig: code example",
+        "scroll": 473,
+        "tabindex": "0"
+      },
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "4. Start XMRig: code example",
+        "scroll": 316,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "What the release checks can establish: scrollable table",
+        "scroll": 760,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: Hashrate windows",
+        "scroll": 494,
+        "tabindex": "0"
+      },
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset applied",
+        "scroll": 609,
+        "tabindex": "0"
+      },
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset could not be applied",
+        "scroll": 401,
+        "tabindex": "0"
+      },
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: New job received",
+        "scroll": 463,
+        "tabindex": "0"
+      },
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: Submission rejected",
+        "scroll": 432,
+        "tabindex": "0"
+      },
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: Connection read error",
+        "scroll": 340,
+        "tabindex": "0"
+      },
+      {
+        "client": 301,
+        "contained": "auto",
+        "label": "Synthetic example: Algorithm configuration mismatch",
+        "scroll": 517,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 269,
+        "contained": "auto",
+        "label": "2. Connected, but no mining jobs: code example",
+        "scroll": 490,
+        "tabindex": "0"
+      },
+      {
+        "client": 269,
+        "contained": "auto",
+        "label": "3. Shares are being rejected: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 360,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": [
+      {
+        "client": 271,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "Mining calculator input sources",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 303,
+        "contained": "auto",
+        "label": "Hypothetical daily calculation table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 345,
+    "h1": 1,
+    "scroll": 345,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/ember/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/learn/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/guides/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/tools/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/trust/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 265,
+        "contained": "auto",
+        "label": "Constant-assumption teaching arithmetic",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/learn/randomx-memory-cache/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/learn/xmrig-cpu-threads/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/guides/xmrig-windows-setup/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 237,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      },
+      {
+        "client": 237,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 316,
+        "tabindex": "0"
+      },
+      {
+        "client": 237,
+        "contained": "auto",
+        "label": "2. Download XMRig safely: code example",
+        "scroll": 382,
+        "tabindex": "0"
+      },
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "3. Configure XMRig: code example",
+        "scroll": 473,
+        "tabindex": "0"
+      },
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "4. Start XMRig: code example",
+        "scroll": 316,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/guides/xmrig-windows-security-warnings/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "What the release checks can establish: scrollable table",
+        "scroll": 760,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: RandomX dataset initialized",
+        "scroll": 263,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: Hashrate windows",
+        "scroll": 494,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset applied",
+        "scroll": 609,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: MSR preset could not be applied",
+        "scroll": 401,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: Pool endpoint active",
+        "scroll": 278,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: New job received",
+        "scroll": 463,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: Submission accepted",
+        "scroll": 301,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: Submission rejected",
+        "scroll": 432,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: Connection read error",
+        "scroll": 340,
+        "tabindex": "0"
+      },
+      {
+        "client": 261,
+        "contained": "auto",
+        "label": "Synthetic example: Algorithm configuration mismatch",
+        "scroll": 517,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-huge-pages/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "Huge Pages signal and next-check table",
+        "scroll": 960,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-msr-error/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-low-hashrate/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+        "scroll": 650,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/troubleshoot/xmrig-pool-shares-payments/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 229,
+        "contained": "auto",
+        "label": "2. Connected, but no mining jobs: code example",
+        "scroll": 490,
+        "tabindex": "0"
+      },
+      {
+        "client": 229,
+        "contained": "auto",
+        "label": "3. Shares are being rejected: code example",
+        "scroll": 539,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/tools/xmrig-log-decoder/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  },
+  {
+    "width": 320,
+    "route": "/tools/monero-mining-profitability-calculator/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": [
+      {
+        "client": 231,
+        "contained": "auto",
+        "label": "Scenario projection table",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "Mining calculator input sources",
+        "scroll": 660,
+        "tabindex": "0"
+      },
+      {
+        "client": 263,
+        "contained": "auto",
+        "label": "Hypothetical daily calculation table",
+        "scroll": 660,
+        "tabindex": "0"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "route": "/tools/electricity-cost-calculator/",
+    "client": 305,
+    "h1": 1,
+    "scroll": 305,
+    "wide": []
+  }
+]

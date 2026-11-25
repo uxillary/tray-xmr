@@ -1,0 +1,654 @@
+[
+  {
+    "route": "/troubleshoot/xmrig-log-reference/",
+    "clientScripts": 0,
+    "failures": [],
+    "figures": 0,
+    "groups": [
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 32,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.502695156271075,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 1,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 22.4,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 16,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.502695156271075,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 31,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.86379392740831,
+        "size": 17,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 22,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.744463331942915,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 31,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.86379392740831,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 5,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 36,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 15,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 20,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 5,
+        "foreground": "rgb(181, 203, 166)",
+        "ratio": 10.723107070626645,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 15,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.86379392740831,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 13,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.502695156271075,
+        "size": 12,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          11,
+          13,
+          11
+        ],
+        "count": 13,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.866187875346093,
+        "size": 15,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 30,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 650
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 15,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 15,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.744463331942915,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 17,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.744463331942915,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 4,
+        "foreground": "rgb(214, 181, 140)",
+        "ratio": 9.646779490855394,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 4,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.86379392740831,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 5,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.744463331942915,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 400
+      }
+    ],
+    "headingSequence": [
+      "H1",
+      "H2",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H2",
+      "H3",
+      "H3",
+      "H2",
+      "H3",
+      "H3",
+      "H2",
+      "H3",
+      "H3",
+      "H2",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H2",
+      "H2",
+      "H2"
+    ]
+  },
+  {
+    "route": "/learn/mining-difficulty-expected-rewards/",
+    "clientScripts": 0,
+    "failures": [],
+    "figures": 3,
+    "groups": [
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 4,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.502695156271075,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 4,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.744463331942915,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 3,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 36,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 13,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.86379392740831,
+        "size": 17,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 8,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 17,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 9,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.055273635334092,
+        "size": 13,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 2,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 32,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 2,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 8,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.055273635334092,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 1,
+        "foreground": "rgb(239, 138, 74)",
+        "ratio": 7.028428309427263,
+        "size": 32,
+        "threshold": 3,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 1,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 17,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 1,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.215934044938711,
+        "size": 15,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 5,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 15,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 4,
+        "foreground": "rgb(161, 166, 154)",
+        "ratio": 7.055273635334092,
+        "size": 15,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 1,
+        "foreground": "rgb(181, 203, 166)",
+        "ratio": 10.723107070626645,
+        "size": 14,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 6,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.744463331942915,
+        "size": 17,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 5,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.215934044938711,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 1,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 5,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 17,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          11,
+          13,
+          11
+        ],
+        "count": 3,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 11.221830138204204,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 3,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 18,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 2,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 15.185690091734902,
+        "size": 26.4,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 2,
+        "foreground": "rgb(239, 138, 74)",
+        "ratio": 7.028428309427263,
+        "size": 24,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          23,
+          26,
+          22
+        ],
+        "count": 1,
+        "foreground": "rgb(255, 180, 126)",
+        "ratio": 10.103719702420475,
+        "size": 26.4,
+        "threshold": 3,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 1,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 16,
+        "threshold": 4.5,
+        "weight": 400
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 3,
+        "foreground": "rgb(238, 239, 233)",
+        "ratio": 16.148715044203662,
+        "size": 15,
+        "threshold": 4.5,
+        "weight": 700
+      },
+      {
+        "background": [
+          17,
+          19,
+          16
+        ],
+        "count": 9,
+        "foreground": "rgb(195, 199, 188)",
+        "ratio": 10.86379392740831,
+        "size": 15,
+        "threshold": 4.5,
+        "weight": 400
+      }
+    ],
+    "headingSequence": [
+      "H1",
+      "H2",
+      "H2",
+      "H3",
+      "H3",
+      "H3",
+      "H2",
+      "H2",
+      "H2",
+      "H2"
+    ]
+  }
+]
