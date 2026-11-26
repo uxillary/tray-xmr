@@ -1,6 +1,6 @@
 # M13B — Content growth roadmap
 
-Implementation status, 25 November 2026: **B06 implemented locally in M13E; awaiting owner visual acceptance.** The dedicated comparison route and its UI/model review are documented in the [M13E report](m13e-mining-efficiency-comparison.md). Research scores and proposals below remain the historical M13B assessment. B07/B12 remain unimplemented.
+Implementation status, 26 November 2026: **B06 implemented locally in M13E; B07 and B12 implemented locally in M13F; awaiting owner visual acceptance.** See the [M13E report](m13e-mining-efficiency-comparison.md) and [M13F report](m13f-interactive-reference-education.md). Research scores and proposals below remain the historical M13B assessment.
 
 24 November 2026. **M13B research complete; M13C not started.** Documentation only. [Central roadmap](content-roadmap.md), [search matrix and baseline](m13b-search-intent-research.md), [competitor comparison](m13b-competitor-analysis.md), [interactive feasibility](m13b-interactive-resource-opportunities.md), [experiment protocols](m13b-original-research-programme.md), [promotion/rules](m13b-promotion-opportunities.md).
 

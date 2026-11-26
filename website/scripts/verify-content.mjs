@@ -143,6 +143,13 @@ for (const file of files) {
     for (const text of required) {
       if (!html.includes(text)) failures.push(`${file}: missing static tool content: ${text}`);
     }
+  } else if (['/troubleshoot/xmrig-log-reference/', '/learn/mining-difficulty-expected-rewards/'].includes(route)) {
+    const attrs = clientScripts[0]?.[1] ?? '';
+    const src = attrs.match(/\bsrc="([^\"]+)"/i)?.[1];
+    // Astro may inline small, fully bundled modules below its asset threshold.
+    const localAsset = src && /^\/_astro\/[^\"]+\.js$/.test(src) && existsSync(join(dist, src.slice(1)));
+    if (clientScripts.length !== 1 || !/type="module"/i.test(attrs) || (src && !localAsset) || (!src && !clientScripts[0]?.[2].trim())) failures.push(`${file}: expected one local enhancement module`);
+    else if ((localAsset ? statSync(join(dist, src.slice(1))).size : Buffer.byteLength(clientScripts[0][2])) > 12_000) failures.push(`${file}: enhancement exceeds its uncompressed size budget`);
   } else if (clientScripts.length) {
     failures.push(`${file}: unexpected client-side script outside the calculator route`);
   }

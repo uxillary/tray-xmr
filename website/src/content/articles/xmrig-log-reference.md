@@ -2,7 +2,7 @@
 title: "XMRig Log Reference: Mining Messages, Warnings and Status Explained"
 description: Browse 15 source-scoped XMRig 6.26.0 message families, synthetic console examples, decoder coverage and safe next checks.
 publishedDate: 2026-11-25
-updatedDate: 2026-11-25
+updatedDate: 2026-11-26
 section: troubleshoot
 visual: log-reference
 summary: "A console line establishes one event. Browse CPU, memory, MSR, connection and submission signals, then check what each can—and cannot—tell you."

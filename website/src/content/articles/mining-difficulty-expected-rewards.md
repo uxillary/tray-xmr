@@ -2,7 +2,7 @@
 title: Monero Mining Difficulty, Hashrate and Expected Rewards Explained
 description: Understand network difficulty, job and P2Pool thresholds, relative hashrate and expected rewards through three static hypothetical mining illustrations.
 publishedDate: 2026-11-25
-updatedDate: 2026-11-25
+updatedDate: 2026-11-26
 section: learn
 visual: difficulty
 summary: "Follow the work from hashes per second to expected block equivalents. Three visual explanations separate your share of computation, the thresholds a result can meet and the payments a formula cannot promise."

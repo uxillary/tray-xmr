@@ -61,6 +61,15 @@ Tools hub, electricity/measurement guidance, profitability, low-hashrate and CPU
 
 Verification: 61 passing tests, zero Astro diagnostics, 21-route build/link/origin checks, all 21 served-page hashes matched to the build, and 48 responsive cases across the six affected routes at eight widths from 1440 through 320px. Local Chromium keyboard, proportional-bar, recovery, contrast, reduced-motion and no-JavaScript checks are recorded in the report. Owner visual acceptance and inherited native-zoom, screen-reader, other-engine and physical-device gates remain open. No commit, push, deployment or hardware experiment occurred. B07 and B12 remain unimplemented.
 
+## M13F — Interactive reference and mining education
+
+**Implemented locally (26 November 2026); awaiting owner visual acceptance.** The [implementation and verification report](m13f-interactive-reference-education.md) records preview links, desktop/mobile captures, model boundaries, browser evidence, performance deltas and the exact changed-file inventory. All **21** published routes and **15** XMRig 6.26.0 reference entries remain.
+
+- **B07 — Implemented:** local literal multi-term retrieval across the existing reference, derived category options/counts, composed filters, result announcements, clear/reset and a bounded no-result explanation. Hidden fragment targets reset filters and reveal the existing anchor; search text never enters the URL. Complete source-scoped reference HTML remains usable without JavaScript.
+- **B12 — Implemented:** a deterministic teaching workspace accepts hypothetical miner/network rates and units, precise duration with an optional synchronized whole-hour slider, and an invented reward. A separate validated model shows relative work, implied difficulty, hashes, expected block equivalents and gross reward. Proportional strips replace the magnified illustration; text remains useful below pixel resolution. No probability model or payout forecast is introduced.
+
+The existing decoder and electricity/profitability/efficiency mathematics, dependencies, desktop files, route architecture and production-origin/noindex protections are preserved. Verification and its limits are recorded in the report; inherited native-zoom, screen-reader, other-engine and physical-device acceptance remain owner actions. No commit, push or deployment occurred.
+
 ## P0 — Launch foundation
 
 - Publish accurate product, current status and trust pages.

@@ -13,6 +13,7 @@ import { siteOrigin } from '../lib/site-origin.mjs';
 interface Props { entry: CollectionEntry<'articles'>; }
 const { entry } = Astro.props as Props;
 const { Content, headings } = await render(entry);
+const visibleTitle = entry.data.visual === 'log-reference' ? 'XMRig log reference' : entry.data.visual === 'difficulty' ? 'Mining difficulty & expected rewards' : entry.data.title;
 const technical = ['log-reference', 'difficulty'].includes(entry.data.visual);
 // Keep the MSR continuation/firmware caveat prominent without repeating a callout.
 const opening = entry.data.visual === 'msr' && entry.data.callout ? entry.data.callout.body : entry.data.summary;
@@ -32,7 +33,7 @@ const breadcrumb = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
-  headline: entry.data.title,
+  headline: visibleTitle,
   description: entry.data.description,
   datePublished: entry.data.publishedDate.toISOString().slice(0, 10),
   ...(entry.data.updatedDate ? { dateModified: entry.data.updatedDate.toISOString().slice(0, 10) } : {}),
@@ -52,7 +53,7 @@ const relatedEntries = entry.data.related.flatMap((id) => {
   <div class="wrap article-wrap">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href={`/${entry.data.section}/`}>{sectionTitle}</a><span aria-hidden="true">/</span><span aria-current="page">Article</span></nav>
     <article class:list={["article", { "article-technical": technical }]}>
-      <header class="article-header"><span class="page-kicker">{sectionTitle.toUpperCase()} / XMRIG + RANDOMX</span><h1>{entry.data.title}</h1><div class="article-deck"><p>{opening}</p></div><p class="article-date">Published <time datetime={entry.data.publishedDate.toISOString().slice(0, 10)}>{entry.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>{entry.data.updatedDate && <> · Updated <time datetime={entry.data.updatedDate.toISOString().slice(0, 10)}>{entry.data.updatedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></>}</p></header>
+      <header class="article-header"><span class="page-kicker">{sectionTitle.toUpperCase()} / XMRIG + RANDOMX</span><h1>{visibleTitle}</h1><div class="article-deck"><p>{opening}</p></div><p class="article-date">Published <time datetime={entry.data.publishedDate.toISOString().slice(0, 10)}>{entry.data.publishedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>{entry.data.updatedDate && <> · Updated <time datetime={entry.data.updatedDate.toISOString().slice(0, 10)}>{entry.data.updatedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></>}</p></header>
       <div class="article-reading">
       {!technical && <ArticleContents headings={headings} />}
       <div class="article-content">
@@ -85,5 +86,5 @@ const relatedEntries = entry.data.related.flatMap((id) => {
 </style>
 
 <style>
-.article-technical .article-reading{grid-template-columns:minmax(0,1fr)}.article-technical .article-content{max-width:100%;grid-column:1}.article-technical .article-body,.article-technical .article-sources,.article-technical .article-context,.article-technical .article-related,.article-technical .article-back{max-width:820px}.article-technical .article-header{max-width:940px}.article-technical .article-header h1{max-width:940px}
+.article-technical .article-reading{grid-template-columns:minmax(0,1fr)}.article-technical .article-content{max-width:100%;grid-column:1}.article-technical .article-body,.article-technical .article-sources,.article-technical .article-context,.article-technical .article-related,.article-technical .article-back{max-width:820px}.article-technical .article-header{max-width:940px}.article-technical .article-header h1{max-width:940px;font-size:clamp(2rem,3.6vw,3rem)}
 </style>

@@ -1,0 +1,56 @@
+[
+  {
+    "route": "troubleshoot/xmrig-log-reference",
+    "html": 38019,
+    "htmlGzip": 8405,
+    "assets": [
+      {
+        "path": "/_astro/technical-resources.BFG0dABg.css",
+        "bytes": 9005,
+        "gzip": 2240
+      },
+      {
+        "path": "/_astro/SiteLayout.u5IyGVAB.css",
+        "bytes": 53524,
+        "gzip": 11275
+      },
+      {
+        "path": "/_astro/resource-methods.Czv_cpEl.css",
+        "bytes": 8293,
+        "gzip": 2053
+      },
+      {
+        "path": "/_astro/ArticleLayout.DwrNSjj1.css",
+        "bytes": 9676,
+        "gzip": 1969
+      }
+    ]
+  },
+  {
+    "route": "learn/mining-difficulty-expected-rewards",
+    "html": 21750,
+    "htmlGzip": 6764,
+    "assets": [
+      {
+        "path": "/_astro/technical-resources.BFG0dABg.css",
+        "bytes": 9005,
+        "gzip": 2240
+      },
+      {
+        "path": "/_astro/SiteLayout.u5IyGVAB.css",
+        "bytes": 53524,
+        "gzip": 11275
+      },
+      {
+        "path": "/_astro/resource-methods.Czv_cpEl.css",
+        "bytes": 8293,
+        "gzip": 2053
+      },
+      {
+        "path": "/_astro/ArticleLayout.DwrNSjj1.css",
+        "bytes": 9676,
+        "gzip": 1969
+      }
+    ]
+  }
+]

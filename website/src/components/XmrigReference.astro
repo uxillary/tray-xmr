@@ -1,14 +1,23 @@
 ---
 import Icon from './Icon.astro';
 import { referenceCategories, referenceEntries, referenceVersion } from '../data/xmrig-reference.mjs';
+import { referenceSearchText } from '../lib/reference-filter.mjs';
 ---
 <div class="technical-resource log-reference">
-  <div class="reference-scope"><div><span class="technical-label">REFERENCE EDITION</span><strong>XMRig {referenceVersion}</strong><span>{referenceEntries.length} entries · 5 categories</span></div><p>Read the event, then its limits. Examples below are synthetic, with invented values and no captured user logs. Excerpts omit timestamps, colour codes and some fields.</p></div>
+  <div class="reference-scope"><div><span class="technical-label">REFERENCE EDITION</span><strong>XMRig {referenceVersion}</strong><span>{referenceEntries.length} entries · {referenceCategories.length} categories</span></div><p>Read the event, then its limits. Examples below are synthetic, with invented values and no captured user logs. Excerpts omit timestamps, colour codes and some fields.</p></div>
+  <form id="reference-filter" class="reference-toolbar" hidden role="search" aria-label="Search the finite reference">
+    <div><label for="reference-query">Search reference</label><input id="reference-query" name="query" type="search" maxlength="240" autocomplete="off" spellcheck="false" placeholder="Try huge pages, MSR or rejected" aria-describedby="reference-search-help" /></div>
+    <div><label for="reference-category">Category</label><select id="reference-category" name="category"><option value="">All entries ({referenceEntries.length})</option>{referenceCategories.map(category => <option value={category.id}>{category.label} ({referenceEntries.filter(entry => entry.category === category.id).length})</option>)}</select></div>
+    <div class="reference-actions"><button type="button" id="reference-clear">Clear search</button><button type="reset">Reset all filters</button></div>
+    <p id="reference-search-help">Local phrase lookup, not log diagnosis. All search terms must match; use a short message or keyword. Search text stays in this page and is never saved or added to the URL.</p>
+    <p id="reference-results"></p><span id="reference-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></span>
+  </form>
+  <p id="reference-empty" class="reference-empty" hidden>No matching entries. This finite, version-specific reference cannot judge an unfamiliar message as valid, harmless or malicious. Clear the search or reset filters; for an excerpt, <a href="/tools/xmrig-log-decoder/">try the local log decoder</a> and read its coverage limits.</p>
   <nav id="reference-categories" class="technical-index" aria-label="Reference categories"><span class="technical-label">JUMP TO A CATEGORY</span><ul>{referenceCategories.map((category, i) => <li><a href={`#${category.id}`}><span class="index-number">0{i + 1}</span>{category.label}<span class="index-count">{referenceEntries.filter((e) => e.category === category.id).length}</span></a></li>)}</ul></nav>
   <p class="technical-handoff">Have an excerpt to inspect? <a href="/tools/xmrig-log-decoder/">Use the local log decoder</a>. Its 10 recognizer families are mapped below; coverage is narrower than this reference. <a href="#reference-scope">Read the scope and coverage key</a>.</p>
   {referenceCategories.map((category, i) => <section class="reference-category" aria-labelledby={category.id}>
     <header class="reference-category-heading"><Icon name={category.icon} size="section" /><div><span class="technical-label">0{i + 1} / MESSAGE FAMILIES</span><h2 id={category.id} tabindex="-1">{category.label}</h2></div></header>
-    {referenceEntries.filter((e) => e.category === category.id).map((entry) => <section class="reference-entry" aria-labelledby={entry.id} data-reference-id={entry.id}>
+    {referenceEntries.filter((e) => e.category === category.id).map((entry) => <section class="reference-entry" aria-labelledby={entry.id} data-reference-id={entry.id} data-category={entry.category} data-search={referenceSearchText(entry, referenceCategories)}>
       <div class="entry-top"><h3 id={entry.id} tabindex="-1"><a href={`#${entry.id}`}>{entry.title}</a></h3><span class:list={['signal-status', entry.level.toLowerCase()]}>{entry.level}</span></div>
       <p class="entry-scope">v{entry.version} · <span>{entry.coverage}</span> · {entry.exampleKind}</p>
       {entry.example && <><p class="console-label">SYNTHETIC EXAMPLE · {entry.exampleKind}</p><pre class="reference-console" tabindex="0" role="region" aria-label={`Synthetic example: ${entry.title}`}><code>{entry.example}</code></pre></>}
@@ -20,3 +29,6 @@ import { referenceCategories, referenceEntries, referenceVersion } from '../data
     <a class="category-return" href="#reference-categories">Back to category index</a>
   </section>)}
 </div>
+<script>
+  import '../scripts/reference-filter.js';
+</script>

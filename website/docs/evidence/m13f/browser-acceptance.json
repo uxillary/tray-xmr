@@ -1,0 +1,1432 @@
+{
+  "recordedAt": "2026-11-26T09:26:43.643Z",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/158.0.4370.33",
+    "revision": "@56b8f691820060b6e15f702165117f203442943f",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+    "jsVersion": "15.8.13.3"
+  },
+  "baseUrl": "http://127.0.0.1:4376/",
+  "identity": [
+    {
+      "route": "/",
+      "sha256": "e9ca727c80a91ebd4a5ef6341ef7c996a18006ccff52d88fc0fbe1a706a1a2d1",
+      "status": 200
+    },
+    {
+      "route": "/ember/",
+      "sha256": "09141ddaff6357ca7356e3cd4b4594c4900e8a9a327dc94929c84e112db8e217",
+      "status": 200
+    },
+    {
+      "route": "/learn/",
+      "sha256": "5256fe0bd1727b6d3178e6591903e369ed3d97ac89ebdb36f7445eda6a155482",
+      "status": 200
+    },
+    {
+      "route": "/guides/",
+      "sha256": "94301ad286f8e43e683e66a5d344cc88187c1a8e9708ee5871dd15a3789f7eb5",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/",
+      "sha256": "bdbd04f6f477f2092404637ce89d37392c0f99dfea0e8b20907b8a99fb5b92cf",
+      "status": 200
+    },
+    {
+      "route": "/tools/",
+      "sha256": "cde5fa98eee3413b584681f7828a627026a6db7adfca251f2c221f4ac1d6f6d9",
+      "status": 200
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "sha256": "56ac916d6e79348584da5dfcf5504c77f5aeb67910f6b578ef8d9261a2d64505",
+      "status": 200
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "sha256": "8475704b5edf5df1e987bc521b0061b9d968c9b02c41c5274d8b59db881cac59",
+      "status": 200
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "sha256": "ac2d8b7dc31555022ddac5b8dd5f04646f469edfa36e14d13321d1c8f2d4e1ee",
+      "status": 200
+    },
+    {
+      "route": "/tools/xmrig-log-decoder/",
+      "sha256": "2df1fe1cdfb9c51fba26b0dfff775a48788d1963cf7cae4519726da6a7b11554",
+      "status": 200
+    },
+    {
+      "route": "/trust/",
+      "sha256": "b6b11224a04c527be743b925a873319b93cc17e89cadc33bfbfade5011852a88",
+      "status": 200
+    },
+    {
+      "route": "/learn/mining-difficulty-expected-rewards/",
+      "sha256": "370e1f3815aa0a858c4631ab81fd69ab0f528b1474842ec805c327c2fa8066fd",
+      "status": 200
+    },
+    {
+      "route": "/learn/randomx-memory-cache/",
+      "sha256": "ef7496da4f637b95b7d10565c2ff6d05e62308713ad72bcb142f2d48f32d2fc6",
+      "status": 200
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "sha256": "cdf8aa7bd8e943328e47b921617acbd99cff81005b42c3ee126e9b4a00a12f9c",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-huge-pages/",
+      "sha256": "9bc15202db8b02c5bd95097f8e78094fad8c0422ceaa034cea36cf40d0bfa74c",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-log-reference/",
+      "sha256": "2f3809db71749146fea90b266f1195fee3a83bc830338dc431a90fa7808c3aaf",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "sha256": "11180a9163b844301e48a40af15f63ecc0e5b80a6a75f6297e9c24fcf2e20e75",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-msr-error/",
+      "sha256": "f47b5ff22d2959646af697e5cb3d44fb4055b76362d2b03b5a59ff27bead7580",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "sha256": "74b48c1dd2012b2fe7da51786630f817b5e7a254837a91a93e10be5fc7a0c503",
+      "status": 200
+    },
+    {
+      "route": "/guides/xmrig-windows-security-warnings/",
+      "sha256": "c464d0f2fdf3fdb7b26e44615b7a24c812534047c17447910584ecbdf4ca78de",
+      "status": 200
+    },
+    {
+      "route": "/guides/xmrig-windows-setup/",
+      "sha256": "5c46d6b79b9cee78ed4131bbb7d220c8d31073e4a8c5d621dded27e4910a53d5",
+      "status": 200
+    }
+  ],
+  "checks": [
+    {
+      "name": "Reference search   HUGE   pages 50% ",
+      "observed": [
+        "huge-pages-partial"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Reference search cpu READY threads",
+      "observed": [
+        "cpu-ready"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Reference search HP allocation",
+      "observed": [
+        "huge-pages-full",
+        "huge-pages-partial"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Reference search [.*(?= <script>",
+      "observed": [],
+      "passed": true
+    },
+    {
+      "name": "Categories, combined filters, clear retains category and reset restores all",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Direct fragment, hidden entry/category reveal, same fragment and back/forward",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Default arithmetic, changed miner/network/duration/reward, equivalent units and conditional reward",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Synchronized slider and precise duration, locale duration, invalid/recovery and reset",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Tiny nonzero display and zero miner/reward",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Actual keyboard Tab order, visible focus, clear Enter and duration ArrowRight",
+      "observed": [
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "sequence": [
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "reference-query",
+              "tag": "INPUT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "reference-category",
+              "tag": "SELECT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "reference-clear",
+              "tag": "BUTTON",
+              "outline": "solid",
+              "width": "3px"
+            }
+          ]
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "sequence": [
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "2px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "",
+              "tag": "A",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "teaching-miner",
+              "tag": "INPUT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "teaching-minerUnit",
+              "tag": "SELECT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "teaching-network",
+              "tag": "INPUT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "teaching-networkUnit",
+              "tag": "SELECT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "teaching-seconds",
+              "tag": "INPUT",
+              "outline": "solid",
+              "width": "3px"
+            },
+            {
+              "id": "teaching-duration-slider",
+              "tag": "INPUT",
+              "outline": "solid",
+              "width": "3px"
+            }
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "All requested responsive widths and sticky-header anchor clearance",
+      "observed": [
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 1440,
+          "top": 94.5625,
+          "header": 79
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 1280,
+          "top": 95.484375,
+          "header": 79
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 1024,
+          "top": 95.46875,
+          "header": 79
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 768,
+          "top": 132.84375,
+          "header": 117
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 600,
+          "top": 133.359375,
+          "header": 117
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 390,
+          "top": 131.640625,
+          "header": 116
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 360,
+          "top": 131.515625,
+          "header": 116
+        },
+        {
+          "path": "/troubleshoot/xmrig-log-reference/",
+          "width": 320,
+          "top": 131.859375,
+          "header": 116
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 1440,
+          "top": 127.03125,
+          "header": 79
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 1280,
+          "top": 126.578125,
+          "header": 79
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 1024,
+          "top": 127.484375,
+          "header": 79
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 768,
+          "top": 165.390625,
+          "header": 117
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 600,
+          "top": 164.609375,
+          "header": 117
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 390,
+          "top": 164.1875,
+          "header": 116
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 360,
+          "top": 164.28125,
+          "header": 116
+        },
+        {
+          "path": "/learn/mining-difficulty-expected-rewards/",
+          "width": 320,
+          "top": 163.609375,
+          "header": 116
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "Computed contrast, accessibility tree equivalents and reduced-motion state",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "JavaScript-disabled complete static reference and lesson with inactive controls hidden",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "responsive": [
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1
+    },
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1
+    }
+  ],
+  "contrast": [
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "groups": [
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 7.502695156271075,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "22.4px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "14px",
+          "weight": "400",
+          "ratio": 7.502695156271075,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "17px",
+          "weight": "400",
+          "ratio": 10.86379392740831,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "16px",
+          "weight": "600",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            11,
+            13,
+            11
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 16.866187875346093,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            29,
+            32,
+            27
+          ],
+          "size": "15px",
+          "weight": "600",
+          "ratio": 14.245743068306437,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "15px",
+          "weight": "400",
+          "ratio": 10.215934044938713,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "15px",
+          "weight": "400",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 10.744463331942915,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 10.86379392740831,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "36px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "20px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(181, 203, 166)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 10.723107070626643,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "14px",
+          "weight": "400",
+          "ratio": 10.86379392740831,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "12px",
+          "weight": "400",
+          "ratio": 7.502695156271075,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            11,
+            13,
+            11
+          ],
+          "size": "15px",
+          "weight": "400",
+          "ratio": 16.866187875346093,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "14px",
+          "weight": "650",
+          "ratio": 16.148715044203662,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "16px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "16px",
+          "weight": "700",
+          "ratio": 10.744463331942915,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 10.744463331942915,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(214, 181, 140)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 9.646779490855394,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 10.86379392740831,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "14px",
+          "weight": "400",
+          "ratio": 10.744463331942915,
+          "required": 4.5
+        }
+      ]
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "groups": [
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 7.502695156271075,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 10.744463331942915,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "13px",
+          "weight": "400",
+          "ratio": 7.055273635334092,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "36px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 10.215934044938713,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "16px",
+          "weight": "600",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            11,
+            13,
+            11
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 16.866187875346093,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "14px",
+          "weight": "400",
+          "ratio": 7.055273635334092,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 255, 255)",
+          "background": [
+            59,
+            59,
+            59
+          ],
+          "size": "13.3333px",
+          "weight": "400",
+          "ratio": 11.201788790415135,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            29,
+            32,
+            27
+          ],
+          "size": "15px",
+          "weight": "600",
+          "ratio": 14.245743068306437,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "18px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "15px",
+          "weight": "400",
+          "ratio": 10.215934044938713,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "28.8px",
+          "weight": "400",
+          "ratio": 15.185690091734902,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "28.8px",
+          "weight": "400",
+          "ratio": 10.103719702420477,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "16px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 10.103719702420477,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "36px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "17px",
+          "weight": "400",
+          "ratio": 10.86379392740831,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "17px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "32px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "14px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(239, 138, 74)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "32px",
+          "weight": "400",
+          "ratio": 7.028428309427263,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "17px",
+          "weight": "400",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(161, 166, 154)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "15px",
+          "weight": "400",
+          "ratio": 7.055273635334092,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(181, 203, 166)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "14px",
+          "weight": "700",
+          "ratio": 10.723107070626643,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "17px",
+          "weight": "400",
+          "ratio": 10.744463331942915,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "17px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            11,
+            13,
+            11
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 11.221830138204204,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "26.4px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(239, 138, 74)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "24px",
+          "weight": "700",
+          "ratio": 7.028428309427263,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(255, 180, 126)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "26.4px",
+          "weight": "700",
+          "ratio": 10.103719702420477,
+          "required": 3
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "16px",
+          "weight": "400",
+          "ratio": 16.148715044203662,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            23,
+            26,
+            22
+          ],
+          "size": "15px",
+          "weight": "700",
+          "ratio": 15.185690091734902,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(238, 239, 233)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "15px",
+          "weight": "700",
+          "ratio": 16.148715044203662,
+          "required": 4.5
+        },
+        {
+          "foreground": "rgb(195, 199, 188)",
+          "background": [
+            17,
+            19,
+            16
+          ],
+          "size": "15px",
+          "weight": "400",
+          "ratio": 10.86379392740831,
+          "required": 4.5
+        }
+      ]
+    }
+  ],
+  "transfers": [
+    {
+      "path": "/troubleshoot/xmrig-log-reference/",
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4376/troubleshoot/xmrig-log-reference/",
+          "type": "Document",
+          "encoding": "gzip",
+          "encodedBytes": 11003
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/technical-resources.974R0n8Q.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 3261
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/resource-methods.Czv_cpEl.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 2364
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/ArticleLayout.BGC4TmUB.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 2292
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/SiteLayout.u5IyGVAB.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 11588
+        }
+      ]
+    },
+    {
+      "path": "/learn/mining-difficulty-expected-rewards/",
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4376/learn/mining-difficulty-expected-rewards/",
+          "type": "Document",
+          "encoding": "gzip",
+          "encodedBytes": 8584
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/technical-resources.974R0n8Q.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 3261
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/resource-methods.Czv_cpEl.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 2364
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/ArticleLayout.BGC4TmUB.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 2292
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/SiteLayout.u5IyGVAB.css",
+          "type": "Stylesheet",
+          "encoding": "gzip",
+          "encodedBytes": 11588
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/RewardTeaching.astro_astro_type_script_index_0_lang.B95d6g1B.js",
+          "type": "Script",
+          "encoding": "gzip",
+          "encodedBytes": 2543
+        },
+        {
+          "url": "http://127.0.0.1:4376/_astro/electricity-cost.D3C29iLX.js",
+          "type": "Script",
+          "encoding": "gzip",
+          "encodedBytes": 1268
+        }
+      ]
+    }
+  ],
+  "runtimeErrors": [],
+  "externalRequests": [],
+  "failedRequests": [],
+  "limitations": "Headless desktop Chromium CSS widths; no native zoom, actual screen-reader session, other engines or physical devices."
+}

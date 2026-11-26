@@ -1,16 +1,18 @@
 ---
 import Icon from './Icon.astro';
+import RewardTeaching from './RewardTeaching.astro';
 import { teachingExample as example, teachingScenarios } from '../data/mining-education.mjs';
 const n = (value: number) => new Intl.NumberFormat('en-GB', { maximumFractionDigits: 3 }).format(value);
 ---
 <div class="technical-resource mining-education">
   <nav class="technical-index lesson-index" aria-label="Lesson sections"><span class="technical-label">FOLLOW THE WORK</span><ul><li><a href="#relative-hashrate">01 · Your fraction of the work</a></li><li><a href="#difficulty-thresholds">02 · Three different thresholds</a></li><li><a href="#expected-versus-actual">03 · An average, not a schedule</a></li><li><a href="#model-assumptions">Model assumptions & limits</a></li></ul></nav>
+  <RewardTeaching />
   <section class="lesson-section" aria-labelledby="relative-hashrate">
     <span class="technical-label">01 / RATE → RELATIVE WORK</span><h2 id="relative-hashrate" tabindex="-1">Your fraction of the work</h2>
     <p>A mining hash is one proof-of-work result computed from candidate block data. The miner varies the work and tests results against a target. Hashrate measures this computation: <strong>1 H/s means one hash per second</strong>. More attempts increase expected discoveries; they do not reserve a winning result.</p>
     <figure class="rate-figure" aria-labelledby="rate-caption">
       <div class="rate-nodes"><div class="miner-node"><Icon name="cpu" size="diagram" /><span>ONE MINER</span><strong>{n(example.minerHashrate)} <small>H/s</small></strong><p>h · constant teaching rate</p></div><div class="rate-connector" aria-hidden="true">contributes to <b>→</b></div><div class="network-node"><Icon name="network" size="diagram" /><span>WHOLE NETWORK</span><strong>{n(example.networkHashrate)} <small>H/s</small></strong><p>H · includes this miner</p></div></div>
-      <div class="rate-ratio"><span>RELATIVE EXPECTED CONTRIBUTION</span><strong>1,000 ÷ 1,000,000 = 0.001 = 0.1%</strong><div class="rate-strip" aria-hidden="true"><span></span></div><p>One part in 1,000. The orange segment is magnified; this schematic is <strong>not to scale</strong>.</p></div>
+      <div class="rate-ratio"><span>RELATIVE EXPECTED CONTRIBUTION</span><strong>1,000 ÷ 1,000,000 = 0.001 = 0.1%</strong><div class="rate-strip" aria-hidden="true"><span style="width:0.1%"></span></div><p>One part in 1,000. This strip is proportional: the orange fraction may be narrower than a screen pixel. Read the exact percentage above.</p></div>
       <figcaption id="rate-caption">Hypothetical rates, not observed network data. At 1,000 H/s out of 1,000,000 H/s (1 MH/s), this miner contributes 0.1% of the network’s hashing work under constant conditions.</figcaption>
     </figure>
     <div class="protocol-note"><strong>Protocol rule</strong><p>Monero targets a <strong>120-second (two-minute)</strong> block interval and adjusts difficulty over time. Actual intervals vary. <a href="https://docs.getmonero.org/technical-specs/#block-time" rel="external noreferrer">Monero technical specification</a>.</p></div>

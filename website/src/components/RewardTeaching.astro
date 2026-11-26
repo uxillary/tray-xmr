@@ -1,0 +1,40 @@
+---
+import { defaultTeachingInputs, teachingUnits } from '../lib/reward-education.mjs';
+const defaults = defaultTeachingInputs();
+---
+<section id="teaching-workspace" class="teaching-workspace" hidden aria-labelledby="teaching-title">
+  <span class="technical-label">CHANGE ONE ASSUMPTION · SEE THE EXPECTATION</span>
+  <h2 id="teaching-title">Explore hypothetical work & reward</h2>
+  <p>Every value here is hypothetical, including the reward. No current network data is retrieved. The whole network includes this miner.</p>
+  <div class="teaching-grid">
+    <form id="teaching-form" novalidate>
+      <div class="teaching-fields">{(['miner', 'network'] as const).map(field => <>
+        <div><label for={`teaching-${field}`}>{field === 'miner' ? 'Miner hashrate' : 'Total network hashrate'}</label><input id={`teaching-${field}`} name={field} type="text" inputmode="decimal" value={defaults[field]} autocomplete="off" maxlength="80" aria-describedby={`teaching-${field}-error teaching-bounds`} /><span class="teaching-error" id={`teaching-${field}-error`}></span></div>
+        <div><label for={`teaching-${field}Unit`}>{field === 'miner' ? 'Miner unit' : 'Network unit'}</label><select id={`teaching-${field}Unit`} name={`${field}Unit`} aria-describedby={`teaching-${field}Unit-error`}>{Object.keys(teachingUnits).map(unit => <option selected={unit === 'H/s'}>{unit}</option>)}</select><span class="teaching-error" id={`teaching-${field}Unit-error`}></span></div>
+      </>)}
+      <div class="teaching-wide"><label for="teaching-seconds">Observation duration (seconds)</label><input id="teaching-seconds" name="seconds" type="text" inputmode="decimal" value={defaults.seconds} autocomplete="off" maxlength="80" aria-describedby="teaching-seconds-error teaching-duration-help" /><span class="teaching-error" id="teaching-seconds-error"></span><small id="teaching-duration-help">3,600 seconds = 1 hour. Constant useful hashing throughout.</small>
+      <label for="teaching-duration-slider">Explore duration (1–24 hours)</label><input id="teaching-duration-slider" type="range" min="3600" max="86400" step="3600" value="3600" aria-describedby="teaching-slider-note" /><small id="teaching-slider-note">The precise seconds input also accepts values outside this slider’s range.</small></div>
+      <div class="teaching-wide"><label for="teaching-reward">Hypothetical reward (XMR per block)</label><input id="teaching-reward" name="reward" type="text" inputmode="decimal" value={defaults.reward} autocomplete="off" maxlength="80" aria-describedby="teaching-reward-error teaching-bounds" /><span class="teaching-error" id="teaching-reward-error"></span></div></div>
+      <button type="reset">Reset teaching example</button>
+      <p id="teaching-bounds" class="teaching-help">Arithmetic bounds, not hardware claims: non-zero rates and rewards start at 10⁻⁹; rates are capped at 10¹⁸ H/s, duration at 315,360,000 seconds (10 × 365 days), reward at 1,000,000 XMR. Zero miner rate or reward is valid. Duration must be positive, at least 10⁻⁹ seconds. Use decimal notation. Changing a unit keeps the number and changes its meaning; no automatic conversion.</p>
+    </form>
+    <div class="teaching-results" aria-labelledby="teaching-results-title">
+      <h3 id="teaching-results-title">Under these fixed assumptions</h3>
+      <dl>{[
+        ['contribution', 'Relative network contribution', '0.1%'], ['hashes', 'Total hashes performed', '3,600,000'],
+        ['difficulty', 'Implied network difficulty', '120,000,000'], ['blocks', 'Expected block equivalents', '0.03'],
+        ['gross', 'Illustrative expected gross reward', '0.015 XMR'],
+      ].map(([id, label, value]) => <div><dt>{label}</dt><dd id={`teaching-${id}`}>{value}</dd></div>)}</dl>
+      <div class="rate-strip teaching-strip" aria-hidden="true"><span id="teaching-fraction" style="width:0.1%"></span></div>
+      <p id="teaching-ratio">One part in 1,000 of the network’s work.</p><p id="teaching-visual-note">Proportional strip; very small contributions may be narrower than a screen pixel. The numeric value is authoritative.</p>
+      <p id="teaching-interpretation"></p>
+      <p>Conditional solo examples: no blocks discovered → <strong>0 XMR</strong>; one block discovered → <strong id="teaching-one-block">0.5 XMR</strong>. These are two examples, not all possible outcomes. No probabilities are assigned.</p>
+    </div>
+  </div>
+  <p>Implied difficulty = total network H/s × 120 seconds, under a constant-rate target-interval teaching assumption. This is not a live difficulty measurement. Expected block equivalents = (miner H/s × observation seconds) ÷ implied difficulty; expected gross reward = block equivalents × assumed reward.</p>
+  <p>Increasing miner hashrate or observation duration increases expected work with other assumptions fixed. This reserves no winning block and guarantees no payment. Fees, downtime, stale work and costs are omitted. For manual price and cost assumptions, use the <a href="/tools/monero-mining-profitability-calculator/">profitability calculator</a>; compare measured work per wall watt in the <a href="/tools/mining-efficiency-calculator/">efficiency calculator</a>.</p>
+  <p id="teaching-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+</section>
+<script>
+  import '../scripts/reward-education.js';
+</script>
