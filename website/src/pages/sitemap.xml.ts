@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { siteOrigin } from '../lib/site-origin.mjs';
 
-const routes = ['/', '/ember/', '/learn/', '/guides/', '/troubleshoot/', '/tools/', '/tools/electricity-cost-calculator/', '/tools/monero-mining-profitability-calculator/', '/tools/xmrig-log-decoder/', '/trust/'];
+const routes = ['/', '/ember/', '/learn/', '/guides/', '/troubleshoot/', '/tools/', '/tools/electricity-cost-calculator/', '/tools/mining-efficiency-calculator/', '/tools/monero-mining-profitability-calculator/', '/tools/xmrig-log-decoder/', '/trust/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = siteOrigin(site);

@@ -45,6 +45,7 @@ import '../../styles/electricity-calculator.css';
     </section>
 
     <PowerMeasurement />
+    <p class="calculator-backlink">Comparing two measured profiles? Use the <a href="/tools/mining-efficiency-calculator/">mining efficiency comparison</a> to see hashes per joule alongside the electricity-cost difference.</p>
 
     <section class="calculator-explainer" aria-label="Calculation details">
       <article><span class="eyebrow">METHOD / 01</span><h2>How the calculation works</h2><p>Watts are converted to kilowatts, then multiplied by the hours the system runs. Energy in kilowatt-hours is multiplied by your entered electricity rate.</p><p class="formula-block"><code>kWh = (watts ÷ 1,000) × hours</code><code>Cost = kWh × price per kWh</code></p><p>Hypothetical arithmetic: a constant 100 W load running 24 hours would use 2.4 kWh/day. Multiply that energy by your own price per kWh to estimate daily cost; this is not a hardware measurement.</p><p>The day uses your runtime. The selected period uses your chosen number of days. The yearly estimate uses 365 days. Values are calculated without rounding and rounded only for display.</p></article>

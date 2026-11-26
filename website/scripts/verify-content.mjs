@@ -126,14 +126,16 @@ for (const file of files) {
       if (link.properties.ariaCurrent !== expected) failures.push(`${file}: incorrect current-page/location semantics for ${href}`);
     }
   }
-  if (route === '/tools/electricity-cost-calculator/' || route === '/tools/xmrig-log-decoder/' || route === '/tools/monero-mining-profitability-calculator/') {
+  if (route === '/tools/electricity-cost-calculator/' || route === '/tools/xmrig-log-decoder/' || route === '/tools/monero-mining-profitability-calculator/' || route === '/tools/mining-efficiency-calculator/') {
     const attrs = clientScripts[0]?.[1] ?? '';
     const scriptSrc = attrs.match(/\bsrc="([^"]+)"/i)?.[1];
     const scriptFile = scriptSrc ? join(dist, decodeURIComponent(new URL(scriptSrc, canonical).pathname.replace(/^\/+/, ''))) : null;
     if (clientScripts.length !== 1 || !/type="module"/i.test(attrs) || !scriptFile || !existsSync(scriptFile)) {
       failures.push(`${file}: expected one external tool module asset`);
     } else if (statSync(scriptFile).size > (route.includes('decoder') ? 16_000 : 12_000)) failures.push(`${file}: tool script exceeds its uncompressed size budget`);
-    const required = route.includes('profitability')
+    const required = route.includes('efficiency')
+      ? ['Interactive calculation requires JavaScript', 'same algorithm variant', 'whole-system power at the wall', 'Greater efficiency does not guarantee profitability', 'B change %', 'neither uploaded nor automatically saved']
+      : route.includes('profitability')
       ? ['All numeric inputs start blank', 'Expected-value estimate', 'not a payout', 'no live data', 'expectedRewardPerBlock']
       : route.includes('decoder')
       ? ['Your pasted log is processed locally', 'not uploaded by this tool', 'Unknown output stays unknown', 'wallet addresses']

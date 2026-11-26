@@ -102,6 +102,8 @@ Measure hashrate and wall energy over matching intervals. Use the [whole-PC meas
 
 ### Read a hypothetical A/B comparison
 
+Have two matched measurements? The [mining efficiency comparison](/tools/mining-efficiency-calculator/) calculates hashes per joule, throughput and whole-PC power differences, and electricity-cost projections from your own inputs.
+
 <section class="run-example" aria-label="Hypothetical performance comparison">
 <span class="eyebrow">SYNTHETIC ARITHMETIC · NO ACTUAL CPU OR BENCHMARK</span>
 <p>Assume the same unnamed system, software, algorithm, workload and observation method; only one declared configuration setting differs. These invented values illustrate a trade-off, not a recommended profile.</p>

@@ -51,6 +51,16 @@ At M13C close, B02/B03/B01 were implemented. B04 and B05 followed in M13D below.
 
 Learn/Troubleshoot hubs and relevant setup, allocation, MSR, performance, memory, worker, decoder, payment and calculator passages now link to the appropriate explanation. The homepage, three M13C visuals, calculator mathematics, parser, privacy behavior, dependencies and desktop sources remain preserved. New CSS is requested only by the two new resources. Local verification: 52 passing tests, zero Astro diagnostics, 20-route build/link/origin checks, 160 route/width records, 91 anchor checks and measured new-text contrast above 7:1. Native zoom, actual screen readers, other engines and physical devices remain owner checks. No commit, push, deployment or promotion occurred.
 
+## M13E — Interactive mining efficiency comparison
+
+**Implemented locally (25 November 2026); awaiting owner visual acceptance.** B06 is implemented at `/tools/mining-efficiency-calculator/`. The [implementation and acceptance report](m13e-mining-efficiency-comparison.md) contains the verified local preview, desktop/mobile screenshots, formulas, validation contract, performance observations, exact changed files and outstanding checks. All 20 existing published routes remain; the new tool brings the total to **21**.
+
+The comparison workspace accepts two sustained hashrates (H/s or kH/s), measured total whole-PC wall watts, optional names and shared manual tariff/currency/runtime. It starts with blank measurements, offers an explicitly hypothetical example and reset, and immediately compares hashes per joule, signed B-relative-to-A throughput/power differences, daily energy and 1/30/365-day electricity costs. Proportional zero-baseline bars and deterministic text explain trade-offs without recommending a configuration or promising profitability. Invalid cost assumptions preserve independently valid efficiency; invalid measurements clear dependent comparisons.
+
+Tools hub, electricity/measurement guidance, profitability, low-hashrate and CPU-thread content link to the comparison. Static methodology, limitations and an honest no-JavaScript fallback remain available. Existing calculator models, decoder parser, production-origin/noindex safeguards, dependencies, desktop files and educational content are preserved. No automatic input storage, live data, backend or external request was introduced.
+
+Verification: 61 passing tests, zero Astro diagnostics, 21-route build/link/origin checks, all 21 served-page hashes matched to the build, and 48 responsive cases across the six affected routes at eight widths from 1440 through 320px. Local Chromium keyboard, proportional-bar, recovery, contrast, reduced-motion and no-JavaScript checks are recorded in the report. Owner visual acceptance and inherited native-zoom, screen-reader, other-engine and physical-device gates remain open. No commit, push, deployment or hardware experiment occurred. B07 and B12 remain unimplemented.
+
 ## P0 — Launch foundation
 
 - Publish accurate product, current status and trust pages.

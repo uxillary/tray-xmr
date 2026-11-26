@@ -1,0 +1,91 @@
+---
+import SiteLayout from '../../components/SiteLayout.astro';
+import '../../styles/mining-efficiency.css';
+const configurations = [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }];
+---
+<SiteLayout title="Monero Mining Efficiency Calculator — Compare Hashrate and Power" description="Compare two measured Monero mining configurations: hashes per joule, hashrate, whole-PC wall power and electricity costs. Local calculations, manual inputs.">
+  <div class="wrap efficiency-page">
+    <header class="efficiency-intro">
+      <span class="page-kicker">TOOLS / MEASURED PERFORMANCE</span>
+      <h1>Mining efficiency comparison</h1>
+      <p>Compare two configurations. See the throughput, power and electricity trade-off.</p>
+    </header>
+    <p class="efficiency-boundary">Use sustained hashrate and average <strong>whole-PC wall power</strong> over matching intervals. Compare the <strong>same algorithm variant</strong> and workload; raw rates across different algorithms are not comparable. <a href="#measurement-method">Measurement checklist ↓</a></p>
+
+    <noscript><p class="efficiency-noscript">Interactive calculation requires JavaScript. The formulas, measurement checklist and limitations below remain available. Nothing is uploaded or saved.</p><style>.efficiency-instrument { display: none; }</style></noscript>
+    <section class="efficiency-instrument" aria-label="A and B mining efficiency workspace">
+      <div class="efficiency-toolbar"><span class="eyebrow">A / B · LOCAL COMPARISON</span><div><button type="button" id="efficiency-example">Load example</button><button type="reset" form="efficiency-form">Reset</button></div></div>
+      <p id="efficiency-example-note" class="efficiency-example-note" hidden>Hypothetical example loaded — invented inputs, no measured hardware performance. You can edit every value.</p>
+      <div class="efficiency-workspace">
+        <form id="efficiency-form" novalidate autocomplete="off">
+          <div class="efficiency-configs">
+            {configurations.map(({ key, label }) => <fieldset class={`efficiency-config config-${key}`}>
+              <legend><span class="config-letter">{label}</span> Configuration {label}</legend>
+              <label for={`${key}-name`}>Name <span class="optional">optional</span></label>
+              <input id={`${key}-name`} name={`${key}Name`} type="text" maxlength="60" placeholder={key === 'a' ? 'e.g. Current profile' : 'e.g. Fewer threads'} />
+              <label for={`${key}-hashrate`}>Sustained hashrate</label>
+              <div class="efficiency-input-unit"><input id={`${key}-hashrate`} name={`${key}Hashrate`} type="text" inputmode="decimal" aria-describedby={`measurement-help ${key}Hashrate-error`} /><select id={`${key}-unit`} name={`${key}Unit`} aria-label={`Configuration ${label} hashrate unit`} aria-describedby={`${key}Unit-error`}><option value="H/s">H/s</option><option value="kH/s">kH/s</option></select></div>
+              <span class="efficiency-error" id={`${key}Hashrate-error`}></span><span class="efficiency-error" id={`${key}Unit-error`}></span>
+              <label for={`${key}-watts`}>Average wall power</label>
+              <div class="efficiency-input-unit"><input id={`${key}-watts`} name={`${key}Watts`} type="text" inputmode="decimal" aria-describedby={`measurement-help ${key}Watts-error`} /><span>W</span></div>
+              <span class="efficiency-error" id={`${key}Watts-error`}></span>
+            </fieldset>)}
+          </div>
+          <p id="measurement-help" class="efficiency-help">Positive measured values only. Names are optional readout labels.</p>
+          <fieldset class="efficiency-assumptions">
+            <legend>Shared electricity assumptions</legend>
+            <div class="efficiency-shared-fields">
+              <div><label for="efficiency-tariff">Tariff / kWh</label><input id="efficiency-tariff" name="tariff" type="text" inputmode="decimal" aria-describedby="assumptions-help tariff-error" /><span class="efficiency-error" id="tariff-error"></span></div>
+              <div><label for="efficiency-currency">Currency</label><select id="efficiency-currency" name="currency" aria-describedby="assumptions-help currency-error"><option value="GBP">GBP — £</option><option value="USD">USD — $</option><option value="EUR">EUR — €</option></select><span class="efficiency-error" id="currency-error"></span></div>
+              <div><label for="efficiency-hours">Hours / day</label><input id="efficiency-hours" name="hours" type="text" inputmode="decimal" value="24" aria-describedby="assumptions-help hours-error" /><span class="efficiency-error" id="hours-error"></span></div>
+            </div>
+            <p id="assumptions-help" class="efficiency-help">Tariff: 0–1,000 currency units/kWh; enter pounds, dollars or euros, not pence or cents. Runtime: 0–24 h/day; zero means no projected energy or cost. Efficiency is independent of both. Currency changes labels only, with no conversion.</p>
+            <p id="efficiency-currency-note" class="efficiency-help" hidden></p>
+          </fieldset>
+        </form>
+        <section class="efficiency-primary" aria-labelledby="efficiency-results-title">
+          <div class="efficiency-result-heading"><h2 id="efficiency-results-title" tabindex="-1">Hashes per joule</h2><span>HIGHER = MORE EFFICIENT</span></div>
+          <p class="efficiency-winner" id="efficiency-winner">Awaiting measurements</p>
+          <figure class="efficiency-figure" aria-labelledby="efficiency-bars-caption">
+            {configurations.map(({ key, label }) => <div class={`efficiency-bar-row config-${key}`}>
+              <div><span><b>{label}</b> <span id={`${key}-result-name`}>Configuration {label}</span></span><strong><span id={`${key}-efficiency`}>—</span> <small>hashes/J</small></strong></div>
+              <div class="efficiency-track" aria-hidden="true"><span id={`${key}-bar`} style="width: 0%"></span></div>
+            </div>)}
+            <figcaption id="efficiency-bars-caption">Bars share a zero baseline. The larger value fills the scale; the other is proportional. H/s per watt is equivalent to hashes per joule.</figcaption>
+          </figure>
+          <div class="efficiency-delta"><span>B relative to A</span><strong id="efficiency-change">—</strong><span>efficiency change</span></div>
+          <div class="efficiency-tradeoffs">
+            <div><span>Hashrate difference · B − A</span><strong id="hashrate-difference">—</strong><small id="hashrate-change">—</small></div>
+            <div><span>Wall power difference · B − A</span><strong id="power-difference">—</strong><small id="power-change">—</small></div>
+          </div>
+          <p id="efficiency-status" class="efficiency-status">Enter both sets of measurements to compare efficiency. Add a tariff for electricity costs.</p>
+          <p class="sr-only" id="efficiency-announcement" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </div>
+      <section class="efficiency-costs" aria-labelledby="efficiency-costs-title">
+        <div class="efficiency-section-heading"><h2 id="efficiency-costs-title">Electricity expenditure</h2><p>Same runtime and tariff for A and B · projections, not bills</p></div>
+        <div class="efficiency-table-scroll" role="region" aria-label="Energy and electricity comparison, scroll horizontally if needed" tabindex="0">
+          <table>
+            <caption>Daily energy and fixed-period electricity costs. Difference is B minus A; negative means B uses or costs less.</caption>
+            <thead><tr><th scope="col">Measure / period</th><th scope="col">A</th><th scope="col">B</th><th scope="col">Difference · B − A</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Energy / day</th><td id="a-energy">—</td><td id="b-energy">—</td><td id="energy-difference">—</td></tr>
+              {[1, 30, 365].map(days => <tr><th scope="row">Cost / {days === 1 ? 'day' : `${days} days`}</th><td id={`a-cost-${days}`}>—</td><td id={`b-cost-${days}`}>—</td><td id={`cost-difference-${days}`}>—</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="efficiency-interpretation" aria-labelledby="interpretation-title"><span class="eyebrow">READING THE TRADE-OFF</span><h2 id="interpretation-title">What the comparison means</h2><p id="efficiency-interpretation">Enter sustained hashrate and average whole-PC wall power for both configurations.</p><p class="efficiency-help">Greater efficiency does not guarantee profitability. Your choice depends on goals, measurement reliability, revenue and operating constraints. Differences within normal run variation or meter uncertainty may be inconclusive.</p></section>
+    </section>
+
+    <div class="efficiency-methods">
+      <section id="measurement-method" aria-labelledby="measurement-title"><span class="eyebrow">METHOD / 01</span><h2 id="measurement-title">Make the measurements comparable</h2><p>Use the same algorithm variant, comparable workload, observation intervals and measurement boundaries. Keep software version, background work, thermals and other operating conditions stable. Record sustained rates after warm-up, rather than isolated peaks.</p><p>This comparison uses <strong>total whole-system power at the wall</strong>, including the rest of the PC and power-supply losses. CPU package telemetry and TDP cannot replace wall measurements. Do not mix component-level power with whole-PC power. Incremental mining power subtracts an idle baseline and answers a different question; no idle subtraction is performed here.</p><p><a href="/tools/electricity-cost-calculator/#measure-workflow">Measure whole-PC power</a> and keep the <a href="/troubleshoot/xmrig-low-hashrate/#keep-a-small-measurement-record">comparable-run worksheet</a>. For profile context, read the <a href="/learn/xmrig-cpu-threads/">CPU threads explanation</a> and <a href="/learn/randomx-memory-cache/">RandomX memory/cache explanation</a>.</p></section>
+      <section aria-labelledby="formula-title"><span class="eyebrow">METHOD / 02</span><h2 id="formula-title">From watts to energy and cost</h2><div class="efficiency-formulas"><code>Efficiency = (H/s) ÷ wall watts</code><code>kWh/day = (wall watts ÷ 1,000) × hours/day</code><code>Cost = kWh/day × tariff × days</code><code>B change % = (B ÷ A − 1) × 100</code></div><p>1 kH/s = 1,000 H/s. Hashes per joule = H/s per watt. Differences are always B − A, with A as the percentage baseline. Calculations retain full precision; readouts are rounded only for display. Small non-zero values remain visible.</p><p>Arithmetic range: 0.000001–1,000,000,000,000 H/s and 0.000001–1,000,000,000 W, with units normalized first. These broad numeric safeguards prevent unusable projections; they are not claims about hardware. Costs assume constant power, runtime and tariff over 1, 30 or 365 days; 30 days is not a calendar month. Zero tariff is valid.</p></section>
+      <section class="efficiency-limitations" aria-labelledby="limits-title"><span class="eyebrow">CONTEXT / 03</span><h2 id="limits-title">Efficiency is one part of the decision</h2><p>The explicit example uses hypothetical A = 8,500 H/s at 145 W and B = 7,900 H/s at 105 W, running 24 hours/day at GBP 0.25/kWh. These are invented arithmetic inputs, not benchmarks or hardware recommendations.</p><p>This tool compares throughput, energy efficiency and electricity expenditure. It does not model mining revenue, hardware costs, cooling, wear, fees, reward variability or profitability. To explore manual revenue assumptions, use the <a href="/tools/monero-mining-profitability-calculator/">mining profitability calculator</a>. For one workload’s energy bill, use the <a href="/tools/electricity-cost-calculator/">electricity cost calculator</a>. To interpret supported console signals, use the <a href="/tools/xmrig-log-decoder/">XMRig log decoder</a>.</p><p>All calculations run locally in your browser. Inputs are neither uploaded nor automatically saved. No live network, market or benchmark data is used.</p></section>
+    </div>
+    <p class="efficiency-back"><a href="/tools/">← All mining tools</a></p>
+  </div>
+</SiteLayout>
+<script>
+  import '../../scripts/mining-efficiency.js';
+</script>

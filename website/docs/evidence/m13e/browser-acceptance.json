@@ -1,0 +1,1412 @@
+{
+  "recordedAt": "2026-11-25T18:01:51.115Z",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/158.0.4370.33",
+    "revision": "@56b8f691820060b6e15f702165117f203442943f",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+    "jsVersion": "15.8.13.3"
+  },
+  "baseUrl": "http://127.0.0.1:4375/",
+  "identity": [
+    {
+      "route": "/",
+      "sha256": "e9ca727c80a91ebd4a5ef6341ef7c996a18006ccff52d88fc0fbe1a706a1a2d1",
+      "status": 200
+    },
+    {
+      "route": "/ember/",
+      "sha256": "09141ddaff6357ca7356e3cd4b4594c4900e8a9a327dc94929c84e112db8e217",
+      "status": 200
+    },
+    {
+      "route": "/learn/",
+      "sha256": "5256fe0bd1727b6d3178e6591903e369ed3d97ac89ebdb36f7445eda6a155482",
+      "status": 200
+    },
+    {
+      "route": "/guides/",
+      "sha256": "94301ad286f8e43e683e66a5d344cc88187c1a8e9708ee5871dd15a3789f7eb5",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/",
+      "sha256": "bdbd04f6f477f2092404637ce89d37392c0f99dfea0e8b20907b8a99fb5b92cf",
+      "status": 200
+    },
+    {
+      "route": "/tools/",
+      "sha256": "cde5fa98eee3413b584681f7828a627026a6db7adfca251f2c221f4ac1d6f6d9",
+      "status": 200
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "sha256": "56ac916d6e79348584da5dfcf5504c77f5aeb67910f6b578ef8d9261a2d64505",
+      "status": 200
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "sha256": "8475704b5edf5df1e987bc521b0061b9d968c9b02c41c5274d8b59db881cac59",
+      "status": 200
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "sha256": "ac2d8b7dc31555022ddac5b8dd5f04646f469edfa36e14d13321d1c8f2d4e1ee",
+      "status": 200
+    },
+    {
+      "route": "/tools/xmrig-log-decoder/",
+      "sha256": "2df1fe1cdfb9c51fba26b0dfff775a48788d1963cf7cae4519726da6a7b11554",
+      "status": 200
+    },
+    {
+      "route": "/trust/",
+      "sha256": "b6b11224a04c527be743b925a873319b93cc17e89cadc33bfbfade5011852a88",
+      "status": 200
+    },
+    {
+      "route": "/learn/mining-difficulty-expected-rewards/",
+      "sha256": "f35eec3cd9ccabe2394880e63435f065308634416bf0a0652410fbc0895547f8",
+      "status": 200
+    },
+    {
+      "route": "/learn/randomx-memory-cache/",
+      "sha256": "3a21234956685440f73992b70b163f29cc963ebed538db257b6aa35f8f4bb784",
+      "status": 200
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "sha256": "4a31f0aa3301cf65f4e528232364770a09df7c99806a47a6e16bac07a6d2db1d",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-huge-pages/",
+      "sha256": "b44c1e016205ae7f3c42cecfdbe6a82bfafd07f07980239bf64369814de0bc8e",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-log-reference/",
+      "sha256": "bcf50d83f9298ac63c343a9f858074c818e68325c8576e38a986c61e974c0f3c",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "sha256": "2577c04c98ea4fddf0092c447b8885026eed68f9953b3808aff0cf3426f4cc9e",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-msr-error/",
+      "sha256": "7034abda9b85d5a2bea211a63663ebb4bbad0a90d5c93bf7fa19eaea1db9949a",
+      "status": 200
+    },
+    {
+      "route": "/troubleshoot/xmrig-pool-shares-payments/",
+      "sha256": "86ee3e62ee33e26e10bab57e92752727c0992b22ce4910885170f131ec6e4ab8",
+      "status": 200
+    },
+    {
+      "route": "/guides/xmrig-windows-security-warnings/",
+      "sha256": "cffb775ecb69e03cec8f550f3021545823737f3a4f96ecaecbb7f77848272bfe",
+      "status": 200
+    },
+    {
+      "route": "/guides/xmrig-windows-setup/",
+      "sha256": "034bacc4ffb520315c177f5f7d8cc701b2bbc046d1d4e3a3bbcd307f01636ec0",
+      "status": 200
+    }
+  ],
+  "checks": [
+    {
+      "name": "Blank initial measurements and quiet validation",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Example arithmetic and proportional zero-baseline bars",
+      "observed": [
+        0.7791318270770325,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "Touched-field errors and debounced result announcements avoid per-keystroke chatter",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Editing both configurations, units and safe optional names",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Invalid tariff/runtime preserve efficiency and suppress affected projections; recovery and currency work",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Zero tariff/runtime and stale-result removal",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Reset restores blank measurements without moving focus",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Keyboard Tab order, visible focus and Enter example activation",
+      "observed": [
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "A",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "efficiency-example",
+          "tag": "BUTTON",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "",
+          "tag": "BUTTON",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "a-name",
+          "tag": "INPUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "a-hashrate",
+          "tag": "INPUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "a-unit",
+          "tag": "SELECT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "a-watts",
+          "tag": "INPUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "b-name",
+          "tag": "INPUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "b-hashrate",
+          "tag": "INPUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "b-unit",
+          "tag": "SELECT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "id": "b-watts",
+          "tag": "INPUT",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "Keyboard table scrolling is contained",
+      "observed": {
+        "left": 40,
+        "width": 231,
+        "content": 590
+      },
+      "passed": true
+    },
+    {
+      "name": "Measurement anchors clear the sticky header",
+      "observed": [
+        {
+          "width": 1440,
+          "top": 94.671875,
+          "headerBottom": 79
+        },
+        {
+          "width": 390,
+          "top": 132.578125,
+          "headerBottom": 116
+        },
+        {
+          "width": 320,
+          "top": 132.3125,
+          "headerBottom": 116
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "Accessibility tree retains numeric bar equivalents and table labels",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "Reduced motion has no animated instrument elements",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "name": "JavaScript-disabled static fallback and methods remain available",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "responsive": [
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 1150,
+          "scrollWidth": 1150
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 1131,
+          "scrollWidth": 1131
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 877,
+          "scrollWidth": 877
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 642,
+          "scrollWidth": 642
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 487,
+          "scrollWidth": 590
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 301,
+          "scrollWidth": 590
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 271,
+          "scrollWidth": 590
+        }
+      ]
+    },
+    {
+      "route": "/tools/mining-efficiency-calculator/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Energy and electricity comparison, scroll horizontally if needed",
+          "width": 231,
+          "scrollWidth": 590
+        }
+      ]
+    },
+    {
+      "route": "/tools/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/electricity-cost-calculator/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 577,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 1198,
+          "scrollWidth": 1198
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 1198,
+          "scrollWidth": 1198
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 567,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 1179,
+          "scrollWidth": 1179
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 1179,
+          "scrollWidth": 1179
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 449,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 925,
+          "scrollWidth": 925
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 925,
+          "scrollWidth": 925
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 645,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 690,
+          "scrollWidth": 700
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 690,
+          "scrollWidth": 690
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 503,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 535,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 535,
+          "scrollWidth": 660
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 301,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 333,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 333,
+          "scrollWidth": 660
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 271,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 303,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 303,
+          "scrollWidth": 660
+        }
+      ]
+    },
+    {
+      "route": "/tools/monero-mining-profitability-calculator/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Scenario projection table",
+          "width": 231,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Mining calculator input sources",
+          "width": 263,
+          "scrollWidth": 660
+        },
+        {
+          "label": "Hypothetical daily calculation table",
+          "width": 263,
+          "scrollWidth": 660
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 818,
+          "scrollWidth": 818
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 818,
+          "scrollWidth": 818
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 818,
+          "scrollWidth": 818
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 690,
+          "scrollWidth": 690
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 535,
+          "scrollWidth": 650
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 333,
+          "scrollWidth": 650
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 303,
+          "scrollWidth": 650
+        }
+      ]
+    },
+    {
+      "route": "/troubleshoot/xmrig-low-hashrate/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1,
+      "tables": [
+        {
+          "label": "Comparable-run worksheet — fill in A and B in your own notes; mark missing information unknown.: scrollable table",
+          "width": 263,
+          "scrollWidth": 650
+        }
+      ]
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1425,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1265,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1009,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 768,
+      "viewport": 768,
+      "document": 753,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 600,
+      "viewport": 600,
+      "document": 585,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 360,
+      "viewport": 360,
+      "document": 345,
+      "h1": 1,
+      "tables": []
+    },
+    {
+      "route": "/learn/xmrig-cpu-threads/",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "h1": 1,
+      "tables": []
+    }
+  ],
+  "contrast": [
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "12px",
+      "weight": "500",
+      "ratio": 10.744463331942915,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "42.4px",
+      "weight": "700",
+      "ratio": 16.148715044203662,
+      "required": 3
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "16px",
+      "weight": "400",
+      "ratio": 10.86379392740831,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "14px",
+      "weight": "400",
+      "ratio": 10.86379392740831,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "14px",
+      "weight": "700",
+      "ratio": 10.86379392740831,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "12px",
+      "weight": "500",
+      "ratio": 11.221830138204204,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        29,
+        32,
+        27
+      ],
+      "size": "13.6px",
+      "weight": "400",
+      "ratio": 9.478330852623353,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        29,
+        32,
+        27
+      ],
+      "size": "13.6px",
+      "weight": "400",
+      "ratio": 14.245743068306437,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "16px",
+      "weight": "650",
+      "ratio": 15.185690091734902,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(11, 13, 11)",
+      "background": [
+        195,
+        199,
+        188
+      ],
+      "size": "14px",
+      "weight": "700",
+      "ratio": 11.34646248430029,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "12.8px",
+      "weight": "600",
+      "ratio": 10.215934044938713,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "11.2px",
+      "weight": "400",
+      "ratio": 7.055273635334092,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "12.8px",
+      "weight": "400",
+      "ratio": 7.055273635334092,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(11, 13, 11)",
+      "background": [
+        239,
+        138,
+        74
+      ],
+      "size": "14px",
+      "weight": "700",
+      "ratio": 7.806217012140956,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "12.48px",
+      "weight": "400",
+      "ratio": 7.055273635334092,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "13.6px",
+      "weight": "600",
+      "ratio": 15.185690091734902,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "16.8px",
+      "weight": "700",
+      "ratio": 16.866187875346093,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "10.08px",
+      "weight": "400",
+      "ratio": 7.836033128997305,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "13.6px",
+      "weight": "400",
+      "ratio": 11.221830138204204,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "12.8px",
+      "weight": "400",
+      "ratio": 16.866187875346093,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "12.8px",
+      "weight": "400",
+      "ratio": 11.34646248430029,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "29.6px",
+      "weight": "600",
+      "ratio": 16.866187875346093,
+      "required": 3
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "10.4px",
+      "weight": "400",
+      "ratio": 7.836033128997305,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "11.52px",
+      "weight": "400",
+      "ratio": 7.836033128997305,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "12.48px",
+      "weight": "400",
+      "ratio": 11.34646248430029,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "28.8px",
+      "weight": "600",
+      "ratio": 11.221830138204204,
+      "required": 3
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "17.6px",
+      "weight": "500",
+      "ratio": 16.866187875346093,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "12px",
+      "weight": "400",
+      "ratio": 7.836033128997305,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(161, 166, 154)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "12px",
+      "weight": "500",
+      "ratio": 7.836033128997305,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "13.6px",
+      "weight": "500",
+      "ratio": 11.34646248430029,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        11,
+        13,
+        11
+      ],
+      "size": "13.6px",
+      "weight": "400",
+      "ratio": 16.866187875346093,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "12px",
+      "weight": "500",
+      "ratio": 10.103719702420477,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "17.6px",
+      "weight": "700",
+      "ratio": 15.185690091734902,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        23,
+        26,
+        22
+      ],
+      "size": "15.2px",
+      "weight": "400",
+      "ratio": 10.215934044938713,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(238, 239, 233)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "20px",
+      "weight": "700",
+      "ratio": 16.148715044203662,
+      "required": 3
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "14.4px",
+      "weight": "400",
+      "ratio": 10.86379392740831,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "14.4px",
+      "weight": "700",
+      "ratio": 10.86379392740831,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(255, 180, 126)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "12.8px",
+      "weight": "400",
+      "ratio": 10.744463331942915,
+      "required": 4.5
+    },
+    {
+      "foreground": "rgb(195, 199, 188)",
+      "background": [
+        17,
+        19,
+        16
+      ],
+      "size": "13.6px",
+      "weight": "400",
+      "ratio": 10.86379392740831,
+      "required": 4.5
+    }
+  ],
+  "runtimeErrors": [],
+  "externalRequests": [],
+  "limitations": "CSS viewports on headless desktop Chromium; no native zoom, screen-reader session, other engines or physical device verification."
+}
